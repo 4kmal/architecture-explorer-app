@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="Electron" agent="PetaKerja Architecture Explorer" version="27.0.2">
+  <diagram name="PetaKerja Module Hierarchy - Original" id="petakerja_module_hierarchy">
+    <mxGraphModel dx="1500" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="1000" math="0" shadow="0" background="light-dark(#ffffff,#0f131a)">
+      <root>
+        <mxCell id="modules-root" />
+        <mxCell id="modules-layer" parent="modules-root" />
+        <object id="modules-page-background" label="">
+          <mxCell parent="modules-layer" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#fbfcfe,#0b1118);strokeColor=none;pointerEvents=0;locked=1;">
+            <mxGeometry x="0" y="0" width="1500" height="1000" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-title" label="PetaKerja Module Hierarchy">
+          <mxCell parent="modules-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=22;fontStyle=1;fontColor=light-dark(#172033,#f3f6fb);">
+            <mxGeometry x="160" y="22" width="1180" height="38" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-subtitle" label="Current core, job-search, analytics and account module responsibilities.">
+          <mxCell parent="modules-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=11;fontStyle=2;fontColor=light-dark(#475467,#c5cedb);">
+            <mxGeometry x="160" y="58" width="1180" height="26" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-group-core" label="Core Application">
+          <mxCell parent="modules-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;container=1;collapsible=0;align=left;verticalAlign=top;spacingTop=12;spacingLeft=14;fontFamily=Arial;fontSize=14;fontStyle=1;fillColor=light-dark(#f8fafc,#151a22);strokeColor=light-dark(#98a2b3,#7d8796);fontColor=light-dark(#172033,#f3f6fb);strokeWidth=1;">
+            <mxGeometry x="70" y="100" width="640" height="350" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-group-jobs" label="Job Search Module">
+          <mxCell parent="modules-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;container=1;collapsible=0;align=left;verticalAlign=top;spacingTop=12;spacingLeft=14;fontFamily=Arial;fontSize=14;fontStyle=1;fillColor=light-dark(#f8fafc,#151a22);strokeColor=light-dark(#98a2b3,#7d8796);fontColor=light-dark(#172033,#f3f6fb);strokeWidth=1;">
+            <mxGeometry x="790" y="100" width="640" height="350" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-group-account" label="Accounts and Administration">
+          <mxCell parent="modules-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;container=1;collapsible=0;align=left;verticalAlign=top;spacingTop=12;spacingLeft=14;fontFamily=Arial;fontSize=14;fontStyle=1;fillColor=light-dark(#f8fafc,#151a22);strokeColor=light-dark(#98a2b3,#7d8796);fontColor=light-dark(#172033,#f3f6fb);strokeWidth=1;">
+            <mxGeometry x="70" y="540" width="640" height="350" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-group-analysis" label="Analytics and Assistance">
+          <mxCell parent="modules-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;container=1;collapsible=0;align=left;verticalAlign=top;spacingTop=12;spacingLeft=14;fontFamily=Arial;fontSize=14;fontStyle=1;fillColor=light-dark(#f8fafc,#151a22);strokeColor=light-dark(#98a2b3,#7d8796);fontColor=light-dark(#172033,#f3f6fb);strokeWidth=1;">
+            <mxGeometry x="790" y="540" width="640" height="350" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-core-shell" label="Boot and application shell&#10;MyPetaApp + templates" petakerjaKey="modules/core-shell">
+          <mxCell parent="modules-layer" vertex="1" style="rounded=0;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#667085,#aeb7c7);strokeWidth=1;shadow=0;">
+            <mxGeometry x="150" y="175" width="480" height="70" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-core-map" label="Interactive map&#10;MapManager + MapLibre" petakerjaKey="modules/core-map">
+          <mxCell parent="modules-layer" vertex="1" style="rounded=0;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#667085,#aeb7c7);strokeWidth=1;shadow=0;">
+            <mxGeometry x="150" y="275" width="480" height="70" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-core-poi" label="POI and categories&#10;POIManager + Search + Category" petakerjaKey="modules/core-poi">
+          <mxCell parent="modules-layer" vertex="1" style="rounded=0;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#667085,#aeb7c7);strokeWidth=1;shadow=0;">
+            <mxGeometry x="150" y="375" width="480" height="70" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-jobs-manager" label="JobFinderManager" petakerjaKey="modules/jobs-manager">
+          <mxCell parent="modules-layer" vertex="1" style="rounded=0;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#667085,#aeb7c7);strokeWidth=1;shadow=0;">
+            <mxGeometry x="870" y="175" width="480" height="70" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-jobs-modes" label="Daily Index&#10;Pipeline Index&#10;Live Search" petakerjaKey="modules/jobs-modes">
+          <mxCell parent="modules-layer" vertex="1" style="rounded=0;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#667085,#aeb7c7);strokeWidth=1;shadow=0;">
+            <mxGeometry x="870" y="275" width="480" height="70" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-jobs-markers" label="Job cards and map markers&#10;markers.ts" petakerjaKey="modules/jobs-markers">
+          <mxCell parent="modules-layer" vertex="1" style="rounded=0;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#667085,#aeb7c7);strokeWidth=1;shadow=0;">
+            <mxGeometry x="870" y="375" width="480" height="70" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-account-auth" label="Better Auth" petakerjaKey="modules/account-auth">
+          <mxCell parent="modules-layer" vertex="1" style="rounded=0;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#667085,#aeb7c7);strokeWidth=1;shadow=0;">
+            <mxGeometry x="150" y="615" width="480" height="70" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-account-bridge" label="public.users profile bridge" petakerjaKey="modules/account-bridge">
+          <mxCell parent="modules-layer" vertex="1" style="rounded=0;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#667085,#aeb7c7);strokeWidth=1;shadow=0;">
+            <mxGeometry x="150" y="715" width="480" height="70" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-account-admin" label="Administration, configuration&#10;and user status" petakerjaKey="modules/account-admin">
+          <mxCell parent="modules-layer" vertex="1" style="rounded=0;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#667085,#aeb7c7);strokeWidth=1;shadow=0;">
+            <mxGeometry x="150" y="815" width="480" height="70" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-analysis-insights" label="InsightsManager&#10;OpenDataAPI" petakerjaKey="modules/analysis-insights">
+          <mxCell parent="modules-layer" vertex="1" style="rounded=0;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#667085,#aeb7c7);strokeWidth=1;shadow=0;">
+            <mxGeometry x="870" y="615" width="480" height="70" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-analysis-highlight" label="Area highlighting" petakerjaKey="modules/analysis-highlight">
+          <mxCell parent="modules-layer" vertex="1" style="rounded=0;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#667085,#aeb7c7);strokeWidth=1;shadow=0;">
+            <mxGeometry x="870" y="715" width="480" height="70" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-analysis-chatbot" label="ChatbotManager&#10;AI provider routes" petakerjaKey="modules/analysis-chatbot">
+          <mxCell parent="modules-layer" vertex="1" style="rounded=0;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#667085,#aeb7c7);strokeWidth=1;shadow=0;">
+            <mxGeometry x="870" y="815" width="480" height="70" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-core-jobs" label="Map workspace" petakerjaKey="modules/core-jobs">
+          <mxCell parent="modules-layer" edge="1" source="modules-core-map" target="modules-jobs-manager" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontFamily=Arial;fontSize=11;fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=1;exitY=0.5;exitPerimeter=0;entryX=0;entryY=0.35;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" x="-0.72" y="-13">
+              <Array as="points">
+                <mxPoint x="715" y="310" />
+                <mxPoint x="715" y="200" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="modules-core-analysis" label="Location context" petakerjaKey="modules/core-analysis">
+          <mxCell parent="modules-layer" edge="1" source="modules-core-map" target="modules-analysis-insights" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontFamily=Arial;fontSize=11;fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=1;exitY=0.5;exitPerimeter=0;entryX=0;entryY=0.35;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" x="0.64" y="-13">
+              <Array as="points">
+                <mxPoint x="735" y="310" />
+                <mxPoint x="735" y="650" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="modules-account-jobs" label="Save job status" petakerjaKey="modules/account-jobs">
+          <mxCell parent="modules-layer" edge="1" source="modules-account-bridge" target="modules-jobs-manager" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontFamily=Arial;fontSize=11;fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=1;exitY=0.5;exitPerimeter=0;entryX=0;entryY=0.75;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" x="0.7" y="13">
+              <Array as="points">
+                <mxPoint x="775" y="750" />
+                <mxPoint x="775" y="220" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="modules-account-analysis" label="Protected AI functions" petakerjaKey="modules/account-analysis">
+          <mxCell parent="modules-layer" edge="1" source="modules-account-auth" target="modules-analysis-chatbot" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontFamily=Arial;fontSize=11;fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=1;exitY=0.5;exitPerimeter=0;entryX=0;entryY=0.5;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" x="0.72" y="13">
+              <Array as="points">
+                <mxPoint x="755" y="650" />
+                <mxPoint x="755" y="850" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

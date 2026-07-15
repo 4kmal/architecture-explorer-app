@@ -1,0 +1,236 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="Electron" agent="PetaKerja Architecture Explorer" version="27.0.2">
+  <diagram name="PetaKerja Access Administrator Dashboard - Polished" id="petakerja_flow_admin_access_dashboard">
+    <mxGraphModel dx="980" dy="1500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="980" pageHeight="1500" math="0" shadow="0" background="light-dark(#fbfcfe,#0b1118)">
+      <root>
+        <mxCell id="admin-access-dashboard-flowchart-root" />
+        <mxCell id="admin-access-dashboard-flowchart-layer" parent="admin-access-dashboard-flowchart-root" />
+        <object id="admin-access-dashboard-flowchart-page-background" label="">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#fbfcfe,#0b1118);strokeColor=none;pointerEvents=0;locked=1;shadow=0;">
+            <mxGeometry as="geometry" x="0" y="0" width="980" height="1500" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-title" label="PetaKerja Access Administrator Dashboard Flow Chart">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=light-dark(#172033,#f3f6fb);fontSize=14;fontStyle=1;fontFamily=Arial;">
+            <mxGeometry as="geometry" x="120" y="18" width="740" height="38" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-subtitle" label="Administrator entry, local access guard and protected dashboard-data loading.">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=light-dark(#172033,#f3f6fb);fontSize=14;fontStyle=1;fontFamily=Arial;">
+            <mxGeometry as="geometry" x="100" y="58" width="780" height="30" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-precondition" label="Precondition: The Administrator entry is selected from the signed-in user menu or the /admin route is opened directly.">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=light-dark(#475467,#c5cedb);fontSize=11;fontStyle=2;fontFamily=Arial;">
+            <mxGeometry as="geometry" x="100" y="92" width="780" height="32" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-start" label="Start" petakerjaKey="admin-access-dashboard-flowchart/start">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;fillColor=light-dark(#ecfdf3,#133221);strokeColor=light-dark(#1f7a4d,#72d6a1);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;fontStyle=1;">
+            <mxGeometry as="geometry" x="456.665" y="135" width="66.67" height="40" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-select-dashboard" label="Administrator selects the Admin Dashboard" petakerjaKey="admin-access-dashboard-flowchart/select-dashboard">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
+            <mxGeometry as="geometry" x="380" y="205" width="220" height="50" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-check-user" label="Check the current signed-in user" petakerjaKey="admin-access-dashboard-flowchart/check-user">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
+            <mxGeometry as="geometry" x="390" y="285" width="200" height="50" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-session-active" label="Active session found?" petakerjaKey="admin-access-dashboard-flowchart/session-active">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=light-dark(#fff7df,#3a2e16);strokeColor=light-dark(#9a6700,#f4c95d);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;fontStyle=1;">
+            <mxGeometry as="geometry" x="430" y="375" width="120" height="70" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-sign-in-required" label="Return to PetaKerja and request administrator sign-in" petakerjaKey="admin-access-dashboard-flowchart/sign-in-required">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#fff1f2,#3b1d22);strokeColor=light-dark(#b42318,#ff9b92);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
+            <mxGeometry as="geometry" x="690" y="380" width="220" height="60" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-role-allowed" label="Administrator role allowed?" petakerjaKey="admin-access-dashboard-flowchart/role-allowed">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=light-dark(#fff7df,#3a2e16);strokeColor=light-dark(#9a6700,#f4c95d);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;fontStyle=1;">
+            <mxGeometry as="geometry" x="430" y="495" width="120" height="70" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-access-denied" label="Return to PetaKerja and deny administrator access" petakerjaKey="admin-access-dashboard-flowchart/access-denied">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#fff1f2,#3b1d22);strokeColor=light-dark(#b42318,#ff9b92);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
+            <mxGeometry as="geometry" x="70" y="500" width="220" height="60" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-open-dashboard" label="Open the administrator dashboard" petakerjaKey="admin-access-dashboard-flowchart/open-dashboard">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
+            <mxGeometry as="geometry" x="390" y="615" width="200" height="50" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-loading-state" label="Display the dashboard loading state" petakerjaKey="admin-access-dashboard-flowchart/loading-state">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
+            <mxGeometry as="geometry" x="385" y="695" width="210" height="50" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-request-admin-data" label="Request provider, AI usage and user information" petakerjaKey="admin-access-dashboard-flowchart/request-admin-data">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
+            <mxGeometry as="geometry" x="365" y="775" width="250" height="60" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-retrieve-admin-data" label="Retrieve the three protected dashboard data sets" petakerjaKey="admin-access-dashboard-flowchart/retrieve-admin-data">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
+            <mxGeometry as="geometry" x="370" y="865" width="240" height="60" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-request-successful" label="Dashboard requests successful?" petakerjaKey="admin-access-dashboard-flowchart/request-successful">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=light-dark(#fff7df,#3a2e16);strokeColor=light-dark(#9a6700,#f4c95d);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;fontStyle=1;">
+            <mxGeometry as="geometry" x="430" y="965" width="120" height="70" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-request-error" label="Clear loading and display the dashboard loading error" petakerjaKey="admin-access-dashboard-flowchart/request-error">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#fff1f2,#3b1d22);strokeColor=light-dark(#b42318,#ff9b92);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
+            <mxGeometry as="geometry" x="690" y="970" width="220" height="60" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-store-admin-data" label="Store the returned provider, usage and user information" petakerjaKey="admin-access-dashboard-flowchart/store-admin-data">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
+            <mxGeometry as="geometry" x="365" y="1085" width="250" height="60" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-clear-loading" label="Clear the dashboard loading state" petakerjaKey="admin-access-dashboard-flowchart/clear-loading">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
+            <mxGeometry as="geometry" x="390" y="1175" width="200" height="50" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-display-overview" label="Display the administrator Overview" petakerjaKey="admin-access-dashboard-flowchart/display-overview">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ecfdf3,#133221);strokeColor=light-dark(#1f7a4d,#72d6a1);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;fontStyle=1;">
+            <mxGeometry as="geometry" x="390" y="1245" width="200" height="55" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-end" label="End" petakerjaKey="admin-access-dashboard-flowchart/end">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;fillColor=light-dark(#ecfdf3,#133221);strokeColor=light-dark(#1f7a4d,#72d6a1);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;fontStyle=1;">
+            <mxGeometry as="geometry" x="456.665" y="1340" width="66.67" height="40" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-start-to-select" label="" petakerjaKey="admin-access-dashboard-flowchart/start-to-select">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" edge="1" source="admin-access-dashboard-flowchart-start" target="admin-access-dashboard-flowchart-select-dashboard" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-select-to-check" label="" petakerjaKey="admin-access-dashboard-flowchart/select-to-check">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" edge="1" source="admin-access-dashboard-flowchart-select-dashboard" target="admin-access-dashboard-flowchart-check-user" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-check-to-session" label="" petakerjaKey="admin-access-dashboard-flowchart/check-to-session">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" edge="1" source="admin-access-dashboard-flowchart-check-user" target="admin-access-dashboard-flowchart-session-active" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-session-no" label="No" petakerjaKey="admin-access-dashboard-flowchart/session-no">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" edge="1" source="admin-access-dashboard-flowchart-session-active" target="admin-access-dashboard-flowchart-sign-in-required" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#b42318,#ff9b92);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-sign-in-to-end" label="" petakerjaKey="admin-access-dashboard-flowchart/sign-in-to-end">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" edge="1" source="admin-access-dashboard-flowchart-sign-in-required" target="admin-access-dashboard-flowchart-end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#b42318,#ff9b92);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=1;exitY=0.5;entryX=1;entryY=0.25;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1">
+              <Array as="points">
+                <mxPoint x="950" y="410" />
+                <mxPoint x="950" y="1360" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-session-yes" label="Yes" petakerjaKey="admin-access-dashboard-flowchart/session-yes">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" edge="1" source="admin-access-dashboard-flowchart-session-active" target="admin-access-dashboard-flowchart-role-allowed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-role-no" label="No" petakerjaKey="admin-access-dashboard-flowchart/role-no">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" edge="1" source="admin-access-dashboard-flowchart-role-allowed" target="admin-access-dashboard-flowchart-access-denied" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#b42318,#ff9b92);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0;exitY=0.5;entryX=1;entryY=0.5;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-denied-to-end" label="" petakerjaKey="admin-access-dashboard-flowchart/denied-to-end">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" edge="1" source="admin-access-dashboard-flowchart-access-denied" target="admin-access-dashboard-flowchart-end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#b42318,#ff9b92);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0;exitY=0.5;entryX=0;entryY=0.35;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1">
+              <Array as="points">
+                <mxPoint x="30" y="530" />
+                <mxPoint x="30" y="1360" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-role-yes" label="Yes" petakerjaKey="admin-access-dashboard-flowchart/role-yes">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" edge="1" source="admin-access-dashboard-flowchart-role-allowed" target="admin-access-dashboard-flowchart-open-dashboard" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-open-to-loading" label="" petakerjaKey="admin-access-dashboard-flowchart/open-to-loading">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" edge="1" source="admin-access-dashboard-flowchart-open-dashboard" target="admin-access-dashboard-flowchart-loading-state" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-loading-to-request" label="" petakerjaKey="admin-access-dashboard-flowchart/loading-to-request">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" edge="1" source="admin-access-dashboard-flowchart-loading-state" target="admin-access-dashboard-flowchart-request-admin-data" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-request-to-retrieve" label="" petakerjaKey="admin-access-dashboard-flowchart/request-to-retrieve">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" edge="1" source="admin-access-dashboard-flowchart-request-admin-data" target="admin-access-dashboard-flowchart-retrieve-admin-data" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-retrieve-to-result" label="" petakerjaKey="admin-access-dashboard-flowchart/retrieve-to-result">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" edge="1" source="admin-access-dashboard-flowchart-retrieve-admin-data" target="admin-access-dashboard-flowchart-request-successful" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-request-no" label="No" petakerjaKey="admin-access-dashboard-flowchart/request-no">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" edge="1" source="admin-access-dashboard-flowchart-request-successful" target="admin-access-dashboard-flowchart-request-error" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#b42318,#ff9b92);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-error-to-end" label="" petakerjaKey="admin-access-dashboard-flowchart/error-to-end">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" edge="1" source="admin-access-dashboard-flowchart-request-error" target="admin-access-dashboard-flowchart-end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#b42318,#ff9b92);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=1;exitY=0.5;entryX=1;entryY=0.75;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1">
+              <Array as="points">
+                <mxPoint x="925" y="1000" />
+                <mxPoint x="925" y="1360" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-request-yes" label="Yes" petakerjaKey="admin-access-dashboard-flowchart/request-yes">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" edge="1" source="admin-access-dashboard-flowchart-request-successful" target="admin-access-dashboard-flowchart-store-admin-data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-store-to-clear" label="" petakerjaKey="admin-access-dashboard-flowchart/store-to-clear">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" edge="1" source="admin-access-dashboard-flowchart-store-admin-data" target="admin-access-dashboard-flowchart-clear-loading" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-clear-to-overview" label="" petakerjaKey="admin-access-dashboard-flowchart/clear-to-overview">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" edge="1" source="admin-access-dashboard-flowchart-clear-loading" target="admin-access-dashboard-flowchart-display-overview" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#1f7a4d,#72d6a1);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-overview-to-end" label="" petakerjaKey="admin-access-dashboard-flowchart/overview-to-end">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" edge="1" source="admin-access-dashboard-flowchart-display-overview" target="admin-access-dashboard-flowchart-end" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#1f7a4d,#72d6a1);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-note-1" label="Protected provider, usage and user requests repeat the Better Auth session and admin/owner role checks on the server.">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=light-dark(#475467,#c5cedb);fontSize=11;fontStyle=2;fontFamily=Arial;">
+            <mxGeometry as="geometry" x="80" y="1418" width="820" height="24" />
+          </mxCell>
+        </object>
+        <object id="admin-access-dashboard-flowchart-note-2" label="Blog statistics are loaded separately only when the Blog section is selected.">
+          <mxCell parent="admin-access-dashboard-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=light-dark(#475467,#c5cedb);fontSize=11;fontStyle=2;fontFamily=Arial;">
+            <mxGeometry as="geometry" x="80" y="1442" width="820" height="24" />
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

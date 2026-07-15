@@ -1,0 +1,390 @@
+<mxfile host="Electron" agent="PetaKerja Architecture Explorer" version="27.0.2">
+  <diagram name="Google OAuth Sign In" id="petakerja_google_oauth_sequence">
+    <mxGraphModel dx="1600" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="google-oauth-sequence-root" />
+        <mxCell id="google-oauth-sequence-layer" parent="google-oauth-sequence-root" />
+        <mxCell id="google-oauth-page-background" parent="google-oauth-sequence-layer" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;locked=1;pointerEvents=0;">
+          <mxGeometry as="geometry" x="0" y="0" width="1600" height="1100" />
+        </mxCell>
+        <object label="PetaKerja Sign in with Google OAuth Sequence" petakerjaKey="google-oauth-sequence/title" id="google-oauth-title">
+          <mxCell parent="google-oauth-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=18;fontStyle=1;" vertex="1">
+            <mxGeometry as="geometry" x="500" y="20" width="600" height="30" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="google-oauth-sequence/participant-user" id="google-oauth-participant-user">
+          <mxCell parent="google-oauth-sequence-layer" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeColor=light-dark(#467dfe, #ededed);gradientColor=light-dark(#447af9, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="80" y="72" width="20" height="40" />
+          </mxCell>
+        </object>
+        <object label="User" petakerjaKey="google-oauth-sequence/participant-user-label" id="google-oauth-participant-user-label">
+          <mxCell parent="google-oauth-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" vertex="1">
+            <mxGeometry as="geometry" x="55" y="110" width="70" height="20" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="google-oauth-sequence/participant-user-activation" id="google-oauth-activation-user">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="85" y="130" width="10" height="920" />
+          </mxCell>
+        </object>
+        <object label="PetaKerja UI&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;UserMenuManager / AuthModalManager&lt;/font&gt;&lt;/div&gt;" petakerjaKey="google-oauth-sequence/participant-ui" id="google-oauth-participant-ui">
+          <mxCell parent="google-oauth-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
+            <mxGeometry as="geometry" x="230" y="70" width="100" height="60" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="google-oauth-sequence/participant-ui-activation" id="google-oauth-activation-ui">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="275" y="130" width="10" height="920" />
+          </mxCell>
+        </object>
+        <object label="AuthManager" petakerjaKey="google-oauth-sequence/participant-auth-manager" id="google-oauth-participant-auth-manager">
+          <mxCell parent="google-oauth-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
+            <mxGeometry as="geometry" x="430" y="70" width="100" height="60" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="google-oauth-sequence/participant-auth-manager-activation" id="google-oauth-activation-auth-manager">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="475" y="130" width="10" height="920" />
+          </mxCell>
+        </object>
+        <object label="authClient" petakerjaKey="google-oauth-sequence/participant-auth-client" id="google-oauth-participant-auth-client">
+          <mxCell parent="google-oauth-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
+            <mxGeometry as="geometry" x="630" y="70" width="100" height="60" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="google-oauth-sequence/participant-auth-client-activation" id="google-oauth-activation-auth-client">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="675" y="130" width="10" height="920" />
+          </mxCell>
+        </object>
+        <object label="Better Auth API&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;Express /api/auth/*&lt;/font&gt;&lt;/div&gt;" petakerjaKey="google-oauth-sequence/participant-better-auth" id="google-oauth-participant-better-auth">
+          <mxCell parent="google-oauth-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
+            <mxGeometry as="geometry" x="830" y="70" width="100" height="60" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="google-oauth-sequence/participant-better-auth-activation" id="google-oauth-activation-better-auth">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="875" y="130" width="10" height="920" />
+          </mxCell>
+        </object>
+        <object label="Google OAuth" petakerjaKey="google-oauth-sequence/participant-google-oauth" id="google-oauth-participant-google-oauth">
+          <mxCell parent="google-oauth-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
+            <mxGeometry as="geometry" x="1030" y="70" width="100" height="60" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="google-oauth-sequence/participant-google-oauth-activation" id="google-oauth-activation-google-oauth">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="1075" y="130" width="10" height="920" />
+          </mxCell>
+        </object>
+        <object label="PetaKerja Profile API&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;/api/me/auth-profile&lt;/font&gt;&lt;/div&gt;" petakerjaKey="google-oauth-sequence/participant-profile-api" id="google-oauth-participant-profile-api">
+          <mxCell parent="google-oauth-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
+            <mxGeometry as="geometry" x="1230" y="70" width="100" height="60" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="google-oauth-sequence/participant-profile-api-activation" id="google-oauth-activation-profile-api">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="1275" y="130" width="10" height="920" />
+          </mxCell>
+        </object>
+        <object label="Supabase / PostgreSQL" petakerjaKey="google-oauth-sequence/participant-database" id="google-oauth-participant-database">
+          <mxCell parent="google-oauth-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
+            <mxGeometry as="geometry" x="1430" y="70" width="100" height="60" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="google-oauth-sequence/participant-database-activation" id="google-oauth-activation-database">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="1475" y="130" width="10" height="920" />
+          </mxCell>
+        </object>
+        <object label="alt" petakerjaKey="google-oauth-sequence/fragment-oauth" id="google-oauth-fragment-oauth">
+          <mxCell parent="google-oauth-sequence-layer" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="55" y="305" width="1460" height="205" />
+          </mxCell>
+        </object>
+        <object label="alt" petakerjaKey="google-oauth-sequence/fragment-session" id="google-oauth-fragment-session">
+          <mxCell parent="google-oauth-sequence-layer" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="55" y="515" width="1460" height="205" />
+          </mxCell>
+        </object>
+        <object label="alt" petakerjaKey="google-oauth-sequence/fragment-profile" id="google-oauth-fragment-profile">
+          <mxCell parent="google-oauth-sequence-layer" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="1160" y="795" width="355" height="165" />
+          </mxCell>
+        </object>
+        <object label="Select Sign in" petakerjaKey="google-oauth-sequence/message-01" id="google-oauth-message-01" simpleLabelEn="Select Sign in" simpleLabelMs="Pilih Log masuk" codeLabelEn="Select Sign in" codeLabelMs="Select Sign in">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.021739;exitPerimeter=0;entryX=0;entryY=0.021739;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-user" target="google-oauth-activation-ui">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Check whether sign-in is required" petakerjaKey="google-oauth-sequence/message-02" id="google-oauth-message-02" simpleLabelEn="Check whether sign-in is required" simpleLabelMs="Semak sama ada log masuk diperlukan" codeLabelEn="requireAuth()" codeLabelMs="requireAuth()">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.043478;exitPerimeter=0;entryX=0;entryY=0.043478;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-ui" target="google-oauth-activation-auth-manager">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Open the sign-in prompt" petakerjaKey="google-oauth-sequence/message-03" id="google-oauth-message-03" simpleLabelEn="Open the sign-in prompt" simpleLabelMs="Buka prompt log masuk" codeLabelEn="openAuthPrompt()" codeLabelMs="openAuthPrompt()">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.065217;exitPerimeter=0;entryX=1;entryY=0.065217;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-auth-manager" target="google-oauth-activation-ui">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Display the Google sign-in prompt" petakerjaKey="google-oauth-sequence/message-04" id="google-oauth-message-04" simpleLabelEn="Display the Google sign-in prompt" simpleLabelMs="Paparkan prompt log masuk Google" codeLabelEn="Display Google sign-in prompt" codeLabelMs="Display Google sign-in prompt">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.086957;exitPerimeter=0;entryX=1;entryY=0.086957;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-ui" target="google-oauth-activation-user">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Select Continue with Google" petakerjaKey="google-oauth-sequence/message-05" id="google-oauth-message-05" simpleLabelEn="Select Continue with Google" simpleLabelMs="Pilih Teruskan dengan Google" codeLabelEn="Select Continue with Google" codeLabelMs="Select Continue with Google">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.108696;exitPerimeter=0;entryX=0;entryY=0.108696;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-user" target="google-oauth-activation-ui">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Start Google sign-in" petakerjaKey="google-oauth-sequence/message-06" id="google-oauth-message-06" simpleLabelEn="Start Google sign-in" simpleLabelMs="Mulakan log masuk Google" codeLabelEn="signInWithOAuth(&amp;quot;google&amp;quot;)" codeLabelMs="signInWithOAuth(&amp;quot;google&amp;quot;)">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.130435;exitPerimeter=0;entryX=0;entryY=0.130435;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-ui" target="google-oauth-activation-auth-manager">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Send the Google sign-in request" petakerjaKey="google-oauth-sequence/message-07" id="google-oauth-message-07" simpleLabelEn="Send the Google sign-in request" simpleLabelMs="Hantar permintaan log masuk Google" codeLabelEn="signIn.social({ provider: &amp;quot;google&amp;quot; })" codeLabelMs="signIn.social({ provider: &amp;quot;google&amp;quot; })">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.152174;exitPerimeter=0;entryX=0;entryY=0.152174;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-auth-manager" target="google-oauth-activation-auth-client">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Request social sign-in" petakerjaKey="google-oauth-sequence/message-08" id="google-oauth-message-08" simpleLabelEn="Request social sign-in" simpleLabelMs="Minta log masuk sosial" codeLabelEn="POST /api/auth/sign-in/social" codeLabelMs="POST /api/auth/sign-in/social">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.173913;exitPerimeter=0;entryX=0;entryY=0.173913;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-auth-client" target="google-oauth-activation-better-auth">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Redirect to Google OAuth" petakerjaKey="google-oauth-sequence/message-09" id="google-oauth-message-09" simpleLabelEn="Redirect to Google OAuth" simpleLabelMs="Ubah hala ke Google OAuth" codeLabelEn="Redirect to Google OAuth" codeLabelMs="Redirect to Google OAuth">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.211957;exitPerimeter=0;entryX=0;entryY=0.211957;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-better-auth" target="google-oauth-activation-google-oauth">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Show account selection and consent" petakerjaKey="google-oauth-sequence/message-10" id="google-oauth-message-10" simpleLabelEn="Show account selection and consent" simpleLabelMs="Paparkan pemilihan akaun dan persetujuan" codeLabelEn="Show account selection and consent" codeLabelMs="Show account selection and consent">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.233696;exitPerimeter=0;entryX=1;entryY=0.233696;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-google-oauth" target="google-oauth-activation-user">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Select an account and grant consent" petakerjaKey="google-oauth-sequence/message-11" id="google-oauth-message-11" simpleLabelEn="Select an account and grant consent" simpleLabelMs="Pilih akaun dan beri persetujuan" codeLabelEn="Select account and grant consent" codeLabelMs="Select account and grant consent">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.255435;exitPerimeter=0;entryX=0;entryY=0.255435;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-user" target="google-oauth-activation-google-oauth">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Return to PetaKerja" petakerjaKey="google-oauth-sequence/message-12" id="google-oauth-message-12" simpleLabelEn="Return to PetaKerja" simpleLabelMs="Kembali ke PetaKerja" codeLabelEn="GET /api/auth/callback/google" codeLabelMs="GET /api/auth/callback/google">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.277174;exitPerimeter=0;entryX=1;entryY=0.277174;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-google-oauth" target="google-oauth-activation-better-auth">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Create or update the account and session" petakerjaKey="google-oauth-sequence/message-13" id="google-oauth-message-13" simpleLabelEn="Create or update the account and session" simpleLabelMs="Cipta atau kemas kini akaun dan sesi" codeLabelEn="Create or update user, account and session" codeLabelMs="Create or update user, account and session">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.298913;exitPerimeter=0;entryX=0;entryY=0.298913;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-better-auth" target="google-oauth-activation-database">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Confirm the account and session are saved" petakerjaKey="google-oauth-sequence/message-14" id="google-oauth-message-14" simpleLabelEn="Confirm the account and session are saved" simpleLabelMs="Sahkan akaun dan sesi telah disimpan" codeLabelEn="Account and session persisted" codeLabelMs="Account and session persisted">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.320652;exitPerimeter=0;entryX=1;entryY=0.320652;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-database" target="google-oauth-activation-better-auth">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Set the session cookie and return to PetaKerja" petakerjaKey="google-oauth-sequence/message-15" id="google-oauth-message-15" simpleLabelEn="Set the session cookie and return to PetaKerja" simpleLabelMs="Tetapkan kuki sesi dan kembali ke PetaKerja" codeLabelEn="Set session cookie and redirect to PetaKerja" codeLabelMs="Set session cookie and redirect to PetaKerja">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.342391;exitPerimeter=0;entryX=1;entryY=0.342391;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-better-auth" target="google-oauth-activation-ui">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Return OAuth rejection or cancellation" petakerjaKey="google-oauth-sequence/message-16" id="google-oauth-message-16" simpleLabelEn="Return OAuth rejection or cancellation" simpleLabelMs="Pulangkan penolakan atau pembatalan OAuth" codeLabelEn="OAuth rejected, cancelled or failed" codeLabelMs="OAuth rejected, cancelled or failed">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.375000;exitPerimeter=0;entryX=1;entryY=0.375000;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-google-oauth" target="google-oauth-activation-better-auth">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Keep the guest state and show the sign-in error" petakerjaKey="google-oauth-sequence/message-17" id="google-oauth-message-17" simpleLabelEn="Keep the guest state and show the sign-in error" simpleLabelMs="Kekalkan keadaan tetamu dan paparkan ralat log masuk" codeLabelEn="Remain in guest state / show sign-in error" codeLabelMs="Remain in guest state / show sign-in error">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.396739;exitPerimeter=0;entryX=1;entryY=0.396739;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-better-auth" target="google-oauth-activation-ui">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Initialize authentication" petakerjaKey="google-oauth-sequence/message-18" id="google-oauth-message-18" simpleLabelEn="Initialize authentication" simpleLabelMs="Mulakan pengesahan" codeLabelEn="init()" codeLabelMs="init()">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.440217;exitPerimeter=0;entryX=0;entryY=0.440217;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-ui" target="google-oauth-activation-auth-manager">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Request the current session" petakerjaKey="google-oauth-sequence/message-19" id="google-oauth-message-19" simpleLabelEn="Request the current session" simpleLabelMs="Minta sesi semasa" codeLabelEn="getSession()" codeLabelMs="getSession()">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.461957;exitPerimeter=0;entryX=0;entryY=0.461957;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-auth-manager" target="google-oauth-activation-auth-client">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Retrieve the current session" petakerjaKey="google-oauth-sequence/message-20" id="google-oauth-message-20" simpleLabelEn="Retrieve the current session" simpleLabelMs="Dapatkan sesi semasa" codeLabelEn="GET /api/auth/get-session" codeLabelMs="GET /api/auth/get-session">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.483696;exitPerimeter=0;entryX=0;entryY=0.483696;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-auth-client" target="google-oauth-activation-better-auth">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Read the saved session and user" petakerjaKey="google-oauth-sequence/message-21" id="google-oauth-message-21" simpleLabelEn="Read the saved session and user" simpleLabelMs="Baca sesi dan pengguna yang disimpan" codeLabelEn="Read Better Auth session and user" codeLabelMs="Read Better Auth session and user">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.505435;exitPerimeter=0;entryX=0;entryY=0.505435;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-better-auth" target="google-oauth-activation-database">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Return the session and user" petakerjaKey="google-oauth-sequence/message-22" id="google-oauth-message-22" simpleLabelEn="Return the session and user" simpleLabelMs="Pulangkan sesi dan pengguna" codeLabelEn="Session and user" codeLabelMs="Session and user">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.527174;exitPerimeter=0;entryX=1;entryY=0.527174;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-database" target="google-oauth-activation-better-auth">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Return the Better Auth session" petakerjaKey="google-oauth-sequence/message-23" id="google-oauth-message-23" simpleLabelEn="Return the Better Auth session" simpleLabelMs="Pulangkan sesi Better Auth" codeLabelEn="Better Auth session" codeLabelMs="Better Auth session">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.548913;exitPerimeter=0;entryX=1;entryY=0.548913;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-better-auth" target="google-oauth-activation-auth-client">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Return the signed-in user" petakerjaKey="google-oauth-sequence/message-24" id="google-oauth-message-24" simpleLabelEn="Return the signed-in user" simpleLabelMs="Pulangkan pengguna yang log masuk" codeLabelEn="Session user" codeLabelMs="Session user">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.570652;exitPerimeter=0;entryX=1;entryY=0.570652;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-auth-client" target="google-oauth-activation-auth-manager">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Return no authenticated session" petakerjaKey="google-oauth-sequence/message-25" id="google-oauth-message-25" simpleLabelEn="Return no authenticated session" simpleLabelMs="Pulangkan tiada sesi yang disahkan" codeLabelEn="No authenticated session" codeLabelMs="No authenticated session">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.603261;exitPerimeter=0;entryX=1;entryY=0.603261;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-better-auth" target="google-oauth-activation-auth-client">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Display the guest sign-in control" petakerjaKey="google-oauth-sequence/message-26" id="google-oauth-message-26" simpleLabelEn="Display the guest sign-in control" simpleLabelMs="Paparkan kawalan log masuk tetamu" codeLabelEn="setUser(null); render guest sign-in" codeLabelMs="setUser(null); render guest sign-in">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.625000;exitPerimeter=0;entryX=1;entryY=0.625000;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-auth-manager" target="google-oauth-activation-ui">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Request the PetaKerja profile" petakerjaKey="google-oauth-sequence/message-27" id="google-oauth-message-27" simpleLabelEn="Request the PetaKerja profile" simpleLabelMs="Minta profil PetaKerja" codeLabelEn="GET /api/me/auth-profile" codeLabelMs="GET /api/me/auth-profile">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.657609;exitPerimeter=0;entryX=0;entryY=0.657609;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-auth-manager" target="google-oauth-activation-profile-api">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Verify the Better Auth session" petakerjaKey="google-oauth-sequence/message-28" id="google-oauth-message-28" simpleLabelEn="Verify the Better Auth session" simpleLabelMs="Sahkan sesi Better Auth" codeLabelEn="getAppSessionFromHeaders()" codeLabelMs="getAppSessionFromHeaders()">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.679348;exitPerimeter=0;entryX=1;entryY=0.679348;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-profile-api" target="google-oauth-activation-better-auth">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Return the verified Better Auth user" petakerjaKey="google-oauth-sequence/message-29" id="google-oauth-message-29" simpleLabelEn="Return the verified Better Auth user" simpleLabelMs="Pulangkan pengguna Better Auth yang disahkan" codeLabelEn="Verified Better Auth user" codeLabelMs="Verified Better Auth user">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.701087;exitPerimeter=0;entryX=0;entryY=0.701087;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-better-auth" target="google-oauth-activation-profile-api">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Find the linked PetaKerja profile" petakerjaKey="google-oauth-sequence/message-30" id="google-oauth-message-30" simpleLabelEn="Find the linked PetaKerja profile" simpleLabelMs="Cari profil PetaKerja yang dipaut" codeLabelEn="Find by better_auth_user_id" codeLabelMs="Find by better_auth_user_id">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.766304;exitPerimeter=0;entryX=0;entryY=0.766304;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-profile-api" target="google-oauth-activation-database">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Return the linked profile" petakerjaKey="google-oauth-sequence/message-31" id="google-oauth-message-31" simpleLabelEn="Return the linked profile" simpleLabelMs="Pulangkan profil yang dipaut" codeLabelEn="Linked public.users profile" codeLabelMs="Linked public.users profile">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.782609;exitPerimeter=0;entryX=1;entryY=0.782609;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-database" target="google-oauth-activation-profile-api">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Find an existing profile by email" petakerjaKey="google-oauth-sequence/message-32" id="google-oauth-message-32" simpleLabelEn="Find an existing profile by email" simpleLabelMs="Cari profil sedia ada melalui e-mel" codeLabelEn="Find existing user by email" codeLabelMs="Find existing user by email">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.815217;exitPerimeter=0;entryX=0;entryY=0.815217;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-profile-api" target="google-oauth-activation-database">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Link the existing profile" petakerjaKey="google-oauth-sequence/message-33" id="google-oauth-message-33" simpleLabelEn="Link the existing profile" simpleLabelMs="Pautkan profil sedia ada" codeLabelEn="Update better_auth_user_id and profile fields" codeLabelMs="Update better_auth_user_id and profile fields">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.836957;exitPerimeter=0;entryX=0;entryY=0.836957;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-profile-api" target="google-oauth-activation-database">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Create a new PetaKerja profile" petakerjaKey="google-oauth-sequence/message-34" id="google-oauth-message-34" simpleLabelEn="Create a new PetaKerja profile" simpleLabelMs="Cipta profil PetaKerja baharu" codeLabelEn="INSERT public.users" codeLabelMs="INSERT public.users">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.869565;exitPerimeter=0;entryX=0;entryY=0.869565;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-profile-api" target="google-oauth-activation-database">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Return the created profile" petakerjaKey="google-oauth-sequence/message-35" id="google-oauth-message-35" simpleLabelEn="Return the created profile" simpleLabelMs="Pulangkan profil yang dicipta" codeLabelEn="Created application profile" codeLabelMs="Created application profile">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.885870;exitPerimeter=0;entryX=1;entryY=0.885870;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-database" target="google-oauth-activation-profile-api">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Return the PetaKerja user profile" petakerjaKey="google-oauth-sequence/message-36" id="google-oauth-message-36" simpleLabelEn="Return the PetaKerja user profile" simpleLabelMs="Pulangkan profil pengguna PetaKerja" codeLabelEn="AuthUser profile" codeLabelMs="AuthUser profile">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.913043;exitPerimeter=0;entryX=1;entryY=0.913043;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-profile-api" target="google-oauth-activation-auth-manager">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Update the signed-in user" petakerjaKey="google-oauth-sequence/message-37" id="google-oauth-message-37" simpleLabelEn="Update the signed-in user" simpleLabelMs="Kemas kini pengguna yang log masuk" codeLabelEn="setUser(profile)" codeLabelMs="setUser(profile)">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;edgeStyle=orthogonalEdgeStyle;loopSize=42;align=left;spacingLeft=4;exitX=1;exitY=0.928261;exitPerimeter=0;entryX=1;entryY=0.943478;entryPerimeter=0;" edge="1" source="google-oauth-activation-auth-manager" target="google-oauth-activation-auth-manager">
+            <mxGeometry as="geometry" relative="1">
+              <Array as="points">
+                <mxPoint x="552" y="984" />
+                <mxPoint x="552" y="998" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="Notify subscribed interface components" petakerjaKey="google-oauth-sequence/message-38" id="google-oauth-message-38" simpleLabelEn="Notify subscribed interface components" simpleLabelMs="Maklumkan komponen antara muka" codeLabelEn="Notify subscribers" codeLabelMs="Notify subscribers">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.956522;exitPerimeter=0;entryX=1;entryY=0.956522;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-auth-manager" target="google-oauth-activation-ui">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Display the authenticated user menu" petakerjaKey="google-oauth-sequence/message-39" id="google-oauth-message-39" simpleLabelEn="Display the authenticated user menu" simpleLabelMs="Paparkan menu pengguna yang disahkan" codeLabelEn="Render authenticated user menu" codeLabelMs="Render authenticated user menu">
+          <mxCell parent="google-oauth-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.978261;exitPerimeter=0;entryX=1;entryY=0.978261;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="google-oauth-activation-ui" target="google-oauth-activation-user">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="google-oauth-sequence/oauth-divider" id="google-oauth-sequence-oauth-divider">
+          <mxCell edge="1" parent="google-oauth-sequence-layer" style="endArrow=none;dashed=1;html=1;rounded=0;strokeWidth=1;">
+            <mxGeometry as="geometry" relative="1">
+              <mxPoint x="55" y="460" as="sourcePoint" />
+              <mxPoint x="1515" y="460" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="[OAuth authorized]" petakerjaKey="google-oauth-sequence/oauth-success" id="google-oauth-sequence-oauth-success">
+          <mxCell parent="google-oauth-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
+            <mxGeometry as="geometry" x="125" y="310" width="230" height="20" />
+          </mxCell>
+        </object>
+        <object label="[else: rejected / cancelled / error]" petakerjaKey="google-oauth-sequence/oauth-failure" id="google-oauth-sequence-oauth-failure">
+          <mxCell parent="google-oauth-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
+            <mxGeometry as="geometry" x="70" y="462" width="270" height="20" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="google-oauth-sequence/session-divider" id="google-oauth-sequence-session-divider">
+          <mxCell edge="1" parent="google-oauth-sequence-layer" style="endArrow=none;dashed=1;html=1;rounded=0;strokeWidth=1;">
+            <mxGeometry as="geometry" relative="1">
+              <mxPoint x="55" y="670" as="sourcePoint" />
+              <mxPoint x="1515" y="670" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="[session user exists]" petakerjaKey="google-oauth-sequence/session-success" id="google-oauth-sequence-session-success">
+          <mxCell parent="google-oauth-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
+            <mxGeometry as="geometry" x="125" y="520" width="230" height="20" />
+          </mxCell>
+        </object>
+        <object label="[else: no session]" petakerjaKey="google-oauth-sequence/session-empty" id="google-oauth-sequence-session-empty">
+          <mxCell parent="google-oauth-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
+            <mxGeometry as="geometry" x="70" y="672" width="230" height="20" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="google-oauth-sequence/profile-divider-1" id="google-oauth-sequence-profile-divider-1">
+          <mxCell edge="1" parent="google-oauth-sequence-layer" style="endArrow=none;dashed=1;html=1;rounded=0;strokeWidth=1;">
+            <mxGeometry as="geometry" relative="1">
+              <mxPoint x="1160" y="860" as="sourcePoint" />
+              <mxPoint x="1515" y="860" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="google-oauth-sequence/profile-divider-2" id="google-oauth-sequence-profile-divider-2">
+          <mxCell edge="1" parent="google-oauth-sequence-layer" style="endArrow=none;dashed=1;html=1;rounded=0;strokeWidth=1;">
+            <mxGeometry as="geometry" relative="1">
+              <mxPoint x="1160" y="910" as="sourcePoint" />
+              <mxPoint x="1515" y="910" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="[better_auth_user_id found]" petakerjaKey="google-oauth-sequence/profile-found" id="google-oauth-sequence-profile-found">
+          <mxCell parent="google-oauth-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
+            <mxGeometry as="geometry" x="1215" y="800" width="240" height="20" />
+          </mxCell>
+        </object>
+        <object label="[else: email match]" petakerjaKey="google-oauth-sequence/profile-email" id="google-oauth-sequence-profile-email">
+          <mxCell parent="google-oauth-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
+            <mxGeometry as="geometry" x="1172" y="862" width="220" height="20" />
+          </mxCell>
+        </object>
+        <object label="[else: no profile]" petakerjaKey="google-oauth-sequence/profile-create" id="google-oauth-sequence-profile-create">
+          <mxCell parent="google-oauth-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
+            <mxGeometry as="geometry" x="1172" y="912" width="220" height="20" />
+          </mxCell>
+        </object>
+        <object label="Google OAuth only. Password sign-in is intentionally unavailable in PetaKerja." petakerjaKey="google-oauth-sequence/note" id="google-oauth-note">
+          <mxCell parent="google-oauth-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=10;fontStyle=2;fontColor=#555555;" vertex="1">
+            <mxGeometry as="geometry" x="400" y="1062" width="800" height="20" />
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

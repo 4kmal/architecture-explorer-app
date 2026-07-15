@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="Electron" agent="PetaKerja Architecture Explorer" version="27.0.2">
+  <diagram name="PetaKerja Administrator Sign Out" id="petakerja_flow_admin_sign_out">
+    <mxGraphModel dx="980" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="980" pageHeight="1100" math="0" shadow="0" background="light-dark(#ffffff,#0f131a)">
+      <root>
+        <mxCell id="admin-sign-out-flowchart-root" />
+        <mxCell id="admin-sign-out-flowchart-layer" parent="admin-sign-out-flowchart-root" />
+        <object id="admin-sign-out-flowchart-page-background" label="">
+          <mxCell parent="admin-sign-out-flowchart-layer" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#0f131a);strokeColor=none;pointerEvents=0;locked=1;">
+            <mxGeometry as="geometry" x="0" y="0" width="980" height="1100" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-title" label="PetaKerja Administrator Sign Out Flow Chart">
+          <mxCell parent="admin-sign-out-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=light-dark(#111827,#eef1f6);fontSize=22;fontStyle=1;">
+            <mxGeometry as="geometry" x="120" y="18" width="740" height="38" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-subtitle" label="Better Auth sign-out followed by application-state and administrator-dashboard synchronization.">
+          <mxCell parent="admin-sign-out-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=light-dark(#111827,#eef1f6);fontSize=11;fontStyle=2;">
+            <mxGeometry as="geometry" x="100" y="58" width="780" height="30" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-precondition" label="Precondition: The Administrator is signed in and an authenticated Sign Out control is available.">
+          <mxCell parent="admin-sign-out-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=light-dark(#111827,#eef1f6);align=left;fontSize=11;fontStyle=2;">
+            <mxGeometry as="geometry" x="100" y="92" width="780" height="32" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-start" label="Start" petakerjaKey="admin-sign-out-flowchart/start">
+          <mxCell parent="admin-sign-out-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="456.665" y="145" width="66.67" height="40" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-select-sign-out" label="Administrator selects Sign Out" petakerjaKey="admin-sign-out-flowchart/select-sign-out">
+          <mxCell parent="admin-sign-out-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="390" y="220" width="200" height="50" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-pending-state" label="Disable the available Sign Out control" petakerjaKey="admin-sign-out-flowchart/pending-state">
+          <mxCell parent="admin-sign-out-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="390" y="300" width="200" height="50" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-request-sign-out" label="Submit the sign-out request to Better Auth" petakerjaKey="admin-sign-out-flowchart/request-sign-out">
+          <mxCell parent="admin-sign-out-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="375" y="380" width="230" height="55" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-sign-out-successful" label="Sign-out successful?" petakerjaKey="admin-sign-out-flowchart/sign-out-successful">
+          <mxCell parent="admin-sign-out-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="430" y="480" width="120" height="70" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-sign-out-failure" label="Keep the current session and re-enable Sign Out" petakerjaKey="admin-sign-out-flowchart/sign-out-failure">
+          <mxCell parent="admin-sign-out-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="680" y="485" width="220" height="60" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-invalidate-session" label="Invalidate the session and clear its cookie" petakerjaKey="admin-sign-out-flowchart/invalidate-session">
+          <mxCell parent="admin-sign-out-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="380" y="600" width="220" height="55" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-clear-user" label="Clear the PetaKerja user state" petakerjaKey="admin-sign-out-flowchart/clear-user">
+          <mxCell parent="admin-sign-out-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="390" y="685" width="200" height="50" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-notify-subscribers" label="Notify authentication subscribers" petakerjaKey="admin-sign-out-flowchart/notify-subscribers">
+          <mxCell parent="admin-sign-out-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="390" y="765" width="200" height="50" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-display-signed-out" label="Display the signed-out dashboard access state and guest menu" petakerjaKey="admin-sign-out-flowchart/display-signed-out">
+          <mxCell parent="admin-sign-out-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="360" y="845" width="260" height="60" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-end" label="End" petakerjaKey="admin-sign-out-flowchart/end">
+          <mxCell parent="admin-sign-out-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="456.665" y="960" width="66.67" height="40" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-start-to-select" label="" petakerjaKey="admin-sign-out-flowchart/start-to-select">
+          <mxCell parent="admin-sign-out-flowchart-layer" edge="1" source="admin-sign-out-flowchart-start" target="admin-sign-out-flowchart-select-sign-out" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-select-to-pending" label="" petakerjaKey="admin-sign-out-flowchart/select-to-pending">
+          <mxCell parent="admin-sign-out-flowchart-layer" edge="1" source="admin-sign-out-flowchart-select-sign-out" target="admin-sign-out-flowchart-pending-state" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-pending-to-request" label="" petakerjaKey="admin-sign-out-flowchart/pending-to-request">
+          <mxCell parent="admin-sign-out-flowchart-layer" edge="1" source="admin-sign-out-flowchart-pending-state" target="admin-sign-out-flowchart-request-sign-out" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-request-to-result" label="" petakerjaKey="admin-sign-out-flowchart/request-to-result">
+          <mxCell parent="admin-sign-out-flowchart-layer" edge="1" source="admin-sign-out-flowchart-request-sign-out" target="admin-sign-out-flowchart-sign-out-successful" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-result-no" label="No" petakerjaKey="admin-sign-out-flowchart/result-no">
+          <mxCell parent="admin-sign-out-flowchart-layer" edge="1" source="admin-sign-out-flowchart-sign-out-successful" target="admin-sign-out-flowchart-sign-out-failure" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-failure-to-end" label="" petakerjaKey="admin-sign-out-flowchart/failure-to-end">
+          <mxCell parent="admin-sign-out-flowchart-layer" edge="1" source="admin-sign-out-flowchart-sign-out-failure" target="admin-sign-out-flowchart-end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=1;exitY=0.5;entryX=1;entryY=0.5;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1">
+              <Array as="points">
+                <mxPoint x="930" y="515" />
+                <mxPoint x="930" y="980" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-result-yes" label="Yes" petakerjaKey="admin-sign-out-flowchart/result-yes">
+          <mxCell parent="admin-sign-out-flowchart-layer" edge="1" source="admin-sign-out-flowchart-sign-out-successful" target="admin-sign-out-flowchart-invalidate-session" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-session-to-user" label="" petakerjaKey="admin-sign-out-flowchart/session-to-user">
+          <mxCell parent="admin-sign-out-flowchart-layer" edge="1" source="admin-sign-out-flowchart-invalidate-session" target="admin-sign-out-flowchart-clear-user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-user-to-notify" label="" petakerjaKey="admin-sign-out-flowchart/user-to-notify">
+          <mxCell parent="admin-sign-out-flowchart-layer" edge="1" source="admin-sign-out-flowchart-clear-user" target="admin-sign-out-flowchart-notify-subscribers" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-notify-to-display" label="" petakerjaKey="admin-sign-out-flowchart/notify-to-display">
+          <mxCell parent="admin-sign-out-flowchart-layer" edge="1" source="admin-sign-out-flowchart-notify-subscribers" target="admin-sign-out-flowchart-display-signed-out" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-display-to-end" label="" petakerjaKey="admin-sign-out-flowchart/display-to-end">
+          <mxCell parent="admin-sign-out-flowchart-layer" edge="1" source="admin-sign-out-flowchart-display-signed-out" target="admin-sign-out-flowchart-end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-note-1" label="If sign-out fails, the current implementation logs the failure, preserves the session and re-enables the available Sign Out control.">
+          <mxCell parent="admin-sign-out-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=light-dark(#111827,#eef1f6);align=left;fontSize=11;fontStyle=2;">
+            <mxGeometry as="geometry" x="80" y="1018" width="820" height="24" />
+          </mxCell>
+        </object>
+        <object id="admin-sign-out-flowchart-note-2" label="After successful sign-out, an open administrator dashboard renders its signed-out access state.">
+          <mxCell parent="admin-sign-out-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=light-dark(#111827,#eef1f6);align=left;fontSize=11;fontStyle=2;">
+            <mxGeometry as="geometry" x="80" y="1042" width="820" height="24" />
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

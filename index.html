@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <meta name="color-scheme" content="light dark">
+  <title>PetaKerja Architecture Explorer</title>
+  <script>
+    (function () {
+      var preference = 'system';
+      try {
+        var stored = localStorage.getItem('petakerja-explorer-theme');
+        if (stored === 'light' || stored === 'dark' || stored === 'system') preference = stored;
+      } catch (_error) { /* Browser storage may be unavailable in file mode. */ }
+      var effective = preference === 'system'
+        ? (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : preference;
+      document.documentElement.dataset.themePreference = preference;
+      document.documentElement.dataset.theme = effective;
+      document.documentElement.style.colorScheme = effective;
+    }());
+  </script>
+  <link rel="stylesheet" href="styles.css?v=20260715-8">
+</head>
+<body>
+  <a id="skip-link" class="skip-link" href="#diagram-workspace">Skip to diagram</a>
+  <header class="app-header">
+    <div class="brand-block"><h1>PetaKerja Architecture Explorer</h1><p id="app-subtitle">Trace UI to class to route to table across current code, the FYP model and legacy modules.</p></div>
+    <div class="header-controls">
+      <a id="learning-link" class="header-learning-link" href="#learn"><i data-lucide="book-open" aria-hidden="true"></i><span>For Dummies</span></a>
+      <div id="render-mode-control" class="segmented" role="group" aria-label="Diagram mode">
+        <button id="mode-actual" type="button" data-render-mode="actual" aria-pressed="true">Actual diagram</button>
+        <button id="mode-map" type="button" data-render-mode="map" aria-pressed="false">Interactive map</button>
+      </div>
+      <label class="theme-field" for="theme-select"><span id="theme-label" class="sr-only">Theme</span><select id="theme-select" aria-labelledby="theme-label"><option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option></select></label>
+      <div class="segmented" role="group" aria-label="Language"><button type="button" data-language="ms" aria-pressed="false">BM</button><button type="button" data-language="en" aria-pressed="true">EN</button></div>
+      <label class="compact-field diagram-picker-field" for="diagram-picker"><span class="sr-only">Diagram</span><select id="diagram-picker" aria-label="Choose diagram"></select></label>
+      <label class="compact-field" for="scope-filter"><span id="scope-label" class="sr-only">System scope</span><select id="scope-filter" aria-label="Choose system scope"></select></label>
+      <div class="search-shell"><label id="search-label" class="sr-only" for="global-search">Global search</label><input id="global-search" type="search" autocomplete="off" placeholder="Class, route, table or UI..." aria-controls="search-results"><div id="search-results" class="search-results" role="listbox" aria-label="Search results" hidden></div></div>
+      <span id="snapshot-status" class="snapshot-status">73 tables · 86 FK · file://</span>
+    </div>
+  </header>
+  <div class="mobile-tabs" role="tablist" aria-label="Explorer panels"><button type="button" class="is-active" data-mobile-panel="diagram" role="tab" aria-selected="true">Diagram</button><button type="button" data-mobile-panel="ui" role="tab" aria-selected="false">UI</button><button type="button" data-mobile-panel="details" role="tab" aria-selected="false">Details</button></div>
+  <section id="learning-shell" class="learning-shell" aria-labelledby="learning-title" hidden>
+    <header class="learning-mobile-header">
+      <button id="learning-back" type="button" class="secondary-button"><i data-lucide="arrow-left" aria-hidden="true"></i><span>Back to Explorer</span></button>
+      <label class="learning-mobile-topic-field" for="learning-mobile-topic"><span class="sr-only">Choose lesson</span><select id="learning-mobile-topic" aria-label="Choose lesson"></select></label>
+      <div class="learning-mobile-tabs" role="tablist" aria-label="Learning panels">
+        <button type="button" class="is-active" data-learning-panel="lesson" role="tab" aria-selected="true">Learn</button>
+        <button type="button" data-learning-panel="example" role="tab" aria-selected="false">Example</button>
+        <button type="button" data-learning-panel="quiz" role="tab" aria-selected="false">Quiz</button>
+      </div>
+    </header>
+    <aside class="learning-navigation" aria-label="Learning chapters">
+      <div class="learning-navigation__heading">
+        <div><p class="eyebrow">Diagram literacy</p><h2 id="learning-title">Diagrams for Dummies</h2></div>
+        <button id="learning-nav-back" type="button" class="icon-button" aria-label="Back to Explorer"><i data-lucide="x" aria-hidden="true"></i></button>
+      </div>
+      <label class="learning-search"><span class="sr-only">Search lessons</span><i data-lucide="search" aria-hidden="true"></i><input id="learning-search" type="search" autocomplete="off" placeholder="Search notation..."></label>
+      <nav id="learning-nav"></nav>
+      <div class="learning-progress-summary"><strong id="learning-progress-label">Progress</strong><div class="learning-progress-track" aria-hidden="true"><span id="learning-progress-bar"></span></div><span id="learning-progress-text">0 of 0 topics</span><button id="learning-reset" type="button" class="text-button">Reset progress</button></div>
+    </aside>
+    <main id="learning-reader" class="learning-reader learning-mobile-active" data-learning-region="lesson" tabindex="-1"></main>
+    <aside class="learning-practice" aria-label="Interactive practice">
+      <section id="learning-example-panel" class="learning-practice__section learning-mobile-active" data-learning-region="example" aria-labelledby="learning-example-title"></section>
+      <section id="learning-quiz-panel" class="learning-practice__section" data-learning-region="quiz" aria-labelledby="learning-quiz-title"></section>
+    </aside>
+    <p id="learning-live" class="sr-only" aria-live="polite"></p>
+  </section>
+  <main class="app-shell">
+    <aside class="navigation-panel" aria-label="Diagram list">
+      <div class="panel-heading"><h2 id="nav-title">Diagrams</h2><p id="nav-description">Choose an architecture view.</p></div><nav id="diagram-nav"></nav>
+      <section class="status-legend" aria-labelledby="legend-title"><h2 id="legend-title">Content status</h2><p><span data-status="current"></span><b id="legend-current">Current code</b></p><p><span data-status="concept"></span><b id="legend-concept">FYP conceptual model</b></p><p><span data-status="legacy"></span><b id="legend-legacy">Legacy / unavailable</b></p></section>
+    </aside>
+    <section id="diagram-workspace" class="workspace-panel mobile-active" data-panel="diagram" aria-labelledby="diagram-title">
+      <header class="workspace-heading">
+        <div class="workspace-copy"><div class="title-row"><h2 id="diagram-title"></h2><span id="diagram-status" class="status-chip"></span></div><p id="diagram-description"></p></div>
+        <div class="diagram-actions" aria-label="Diagram controls">
+          <div id="sequence-label-control" class="segmented sequence-label-mode" role="group" aria-label="Sequence message detail" hidden><button id="sequence-label-simple" type="button" data-sequence-label-mode="simple" aria-pressed="true">Simple</button><button id="sequence-label-code" type="button" data-sequence-label-mode="code" aria-pressed="false">Code</button></div>
+          <div id="workspace-mode-control" class="segmented workspace-mode" role="group" aria-label="Workspace mode"><button id="workspace-view" type="button" data-workspace-mode="view" aria-pressed="true">View</button><button id="workspace-edit" type="button" data-workspace-mode="edit" aria-pressed="false">Edit</button><button id="workspace-agent" type="button" data-workspace-mode="agent" aria-pressed="false">Agent</button></div>
+          <button id="import-diagram" type="button" class="secondary-button">Import .drawio</button><button id="validate-diagram" type="button" class="secondary-button" hidden>Validate</button><button id="save-diagram" type="button" class="secondary-button" hidden>Save as</button>
+          <input id="diagram-file-input" class="sr-only" type="file" accept=".drawio,.xml,application/xml,text/xml"><button id="open-reference" type="button" class="secondary-button">Reference asset</button>
+          <div class="zoom-controls" aria-label="Diagram zoom"><button id="zoom-out" type="button" aria-label="Zoom out">−</button><button id="zoom-fit" type="button">Fit</button><button id="zoom-in" type="button" aria-label="Zoom in">+</button></div>
+        </div>
+      </header>
+      <div id="graph-canvas" class="graph-canvas" tabindex="-1"><div id="graph-viewport" class="graph-viewport"></div><p id="graph-empty" class="graph-empty" hidden>No nodes are available for this scope.</p></div>
+      <div id="editor-surface" class="editor-surface" hidden>
+        <iframe id="drawio-editor" title="PetaKerja diagram editor" referrerpolicy="no-referrer"></iframe><div id="editor-loading" class="editor-loading" role="status">Loading the local editor...</div>
+        <div id="agent-canvas-activity" class="agent-canvas-activity" aria-hidden="true"></div>
+        <aside id="agent-panel" class="agent-panel" hidden aria-labelledby="agent-title">
+          <header><div><h3 id="agent-title">Diagram Agent</h3><p id="agent-subtitle">Plan first, then draw visibly in the editor.</p></div><span id="agent-state" class="agent-state" role="status" aria-live="polite" aria-atomic="true">Idle</span></header>
+          <div class="agent-settings">
+            <label><span id="agent-provider-label">Provider</span><select id="agent-provider"><option value="openai">OpenAI</option><option value="compatible">OpenAI-compatible</option><option value="codex">Codex bridge</option></select></label>
+            <label id="agent-base-field"><span id="agent-base-label">Base URL</span><input id="agent-base-url" type="url" value="https://api.openai.com/v1" autocomplete="off" spellcheck="false"></label>
+            <label id="agent-model-field"><span id="agent-model-label">Model</span><input id="agent-model" type="text" value="gpt-5.6-terra" autocomplete="off" spellcheck="false"></label>
+            <label id="agent-key-field"><span id="agent-key-label">API key</span><input id="agent-api-key" type="password" autocomplete="off" spellcheck="false" placeholder="Session only"></label>
+            <button id="agent-test" type="button" class="secondary-button">Test connection</button>
+          </div>
+          <div id="agent-provider-status" class="agent-provider-status" role="status"><strong>OpenAI</strong><span>gpt-5.6-terra · policy 2026-07-14 · not tested</span></div>
+          <label id="agent-prompt-label" class="agent-prompt-label" for="agent-prompt">Diagram request</label><textarea id="agent-prompt" rows="4" placeholder="Describe the diagram or change you want..."></textarea>
+          <div class="agent-actions"><button id="agent-propose" type="button">Create plan</button><button id="agent-run" type="button" disabled>Run plan</button><button id="agent-stop" type="button" class="secondary-button" disabled>Stop</button><button id="agent-revert" type="button" class="secondary-button" disabled>Revert run</button></div>
+          <section class="agent-plan" aria-labelledby="agent-plan-title"><h4 id="agent-plan-title">Plan preview</h4><div id="agent-plan-content"><p>No plan yet.</p></div></section>
+          <section class="agent-log" aria-labelledby="agent-log-title"><h4 id="agent-log-title">Activity</h4><ol id="agent-log" aria-live="polite"></ol></section>
+          <details class="bridge-details"><summary><span id="bridge-title">Optional Codex bridge</span> <span id="bridge-status">Checking...</span></summary><p id="bridge-description">Connect Codex to the same visible operation queue. The Explorer never edits <code>.mcp.json</code>.</p><pre id="bridge-config"></pre><button id="copy-bridge-config" type="button" class="secondary-button">Copy MCP configuration</button></details>
+        </aside>
+      </div>
+      <div id="diagram-drop-overlay" class="diagram-drop-overlay" hidden><strong>Drop a .drawio or .xml file</strong><span>The file is processed locally and is not uploaded.</span></div>
+      <div class="graph-help"><span id="help-hover">Hover / focus: highlight links</span><span id="help-click">Click: pin selection</span><span><kbd>Esc</kbd>: <span id="help-escape">clear</span></span><span><kbd>/</kbd>: <span id="help-search">search</span></span><output id="zoom-value">Fit</output></div>
+    </section>
+    <aside class="context-column">
+      <section class="ui-panel" data-panel="ui" aria-labelledby="ui-panel-title"><header class="context-heading"><div><h2 id="ui-panel-title">Actual UI mapping</h2><p id="ui-caption"></p></div><select id="ui-view-select" aria-label="Choose UI view"></select></header><div id="ui-stage" class="ui-stage"><img id="ui-image" alt=""><div id="ui-hotspots" class="ui-hotspots"></div></div><p id="screenshot-note" class="panel-note">An anonymised guest screenshot. Select a hotspot to inspect the related implementation.</p></section>
+      <section class="details-panel" data-panel="details" aria-labelledby="details-title"><header class="context-heading"><div><h2 id="details-title">Implementation details</h2><p id="details-subtitle">Cross-reference to the current checkout.</p></div></header><section id="validation-panel" class="validation-panel" aria-labelledby="validation-title" hidden><header><h3 id="validation-title">Diagram validation</h3><span id="validation-change-kind"></span></header><div id="validation-summary" class="validation-summary"></div><div id="validation-issues" class="validation-issues"></div></section><div id="details-content"></div></section>
+    </aside>
+  </main>
+  <dialog id="reference-dialog" class="reference-dialog"><header><h2 id="reference-title">Reference asset</h2><button id="close-reference" type="button" aria-label="Close">×</button></header><div><img id="reference-image" alt=""></div></dialog>
+  <dialog id="import-dialog" class="import-dialog"><header><div><h2 id="import-title">Review Draw.io import</h2><p id="import-subtitle">Choose the page and confirm or override its detected type.</p></div><button id="close-import" type="button" aria-label="Close">×</button></header><div id="import-file-summary" class="import-file-summary"></div><div id="import-pages" class="import-pages"></div><footer><button id="cancel-import" type="button" class="secondary-button">Cancel</button><button id="confirm-import" type="button">Open in editor</button></footer></dialog>
+  <dialog id="runtime-dialog" class="runtime-dialog" aria-labelledby="runtime-title" aria-describedby="runtime-description"><header><div><h2 id="runtime-title">Start the local editor</h2><p id="runtime-subtitle">This copy is open in read-only file mode.</p></div><button id="close-runtime" type="button" aria-label="Close">×</button></header><div class="runtime-dialog-body"><p id="runtime-description">The embedded Draw.io editor needs a same-origin local HTTP server. All files remain on this computer.</p><ol><li id="runtime-step-launcher">Close this tab and double-click <code>Start-Explorer.cmd</code> in the Explorer folder.</li><li id="runtime-step-command">Or run this command in PowerShell:</li></ol><div class="runtime-command-row"><code id="runtime-command"></code><button id="copy-runtime-command" type="button" class="secondary-button">Copy command</button></div></div><footer><button id="dismiss-runtime" type="button" class="secondary-button">Close</button></footer></dialog>
+  <p id="status-message" class="sr-only" aria-live="polite"></p>
+  <script src="architecture-data.js?v=20260715-14"></script><script src="translations.js?v=20260715-14"></script><script src="diagram-assets.js?v=20260715-16"></script><script src="learning-data.js?v=20260715-13"></script><script src="auth-sequence-svg.js?v=20260714-3"></script><script src="auth-sequence-asset.js?v=20260714-4"></script><script src="vendor/drawio/js/deflate/pako.min.js?v=20260714-3"></script><script src="editor-core.js?v=20260715-15"></script><script src="openai-model-policy.js?v=20260714-1"></script><script src="agent-runtime.js?v=20260714-4"></script><script src="vendor/lucide/lucide.min.js?v=1.24.0"></script><script src="app.js?v=20260715-16"></script><script src="learning.js?v=20260715-13"></script>
+</body>
+</html>

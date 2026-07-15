@@ -1,0 +1,266 @@
+<mxfile host="Electron" agent="PetaKerja Architecture Explorer" version="27.0.2">
+  <diagram name="Explore the 3D Map" id="petakerja_user_explore_3d_map_sequence">
+    <mxGraphModel dx="1600" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="user-explore-3d-map-sequence-root" />
+        <mxCell id="user-explore-3d-map-sequence-layer" parent="user-explore-3d-map-sequence-root" />
+        <mxCell id="user-explore-3d-map-sequence-background" parent="user-explore-3d-map-sequence-layer" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;locked=1;pointerEvents=0;">
+          <mxGeometry as="geometry" x="0" y="0" width="1600" height="1100" />
+        </mxCell>
+        <object label="PetaKerja User Explore the 3D Map Sequence" id="user-explore-3d-map-sequence-title" petakerjaKey="user-explore-3d-map-sequence/title">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=18;fontStyle=1;" vertex="1">
+            <mxGeometry as="geometry" x="330" y="20" width="940" height="30" />
+          </mxCell>
+        </object>
+        <object label="User" id="user-explore-3d-map-sequence-participant-user" petakerjaKey="user-explore-3d-map-sequence/participant-user">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeColor=light-dark(#467dfe, #ededed);gradientColor=light-dark(#447af9, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="80" y="72" width="20" height="40" />
+          </mxCell>
+        </object>
+        <object label="" id="user-explore-3d-map-sequence-activation-user" petakerjaKey="user-explore-3d-map-sequence/participant-user-activation">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="85" y="130" width="10" height="915" />
+          </mxCell>
+        </object>
+        <object label="PetaKerja Workspace UI" id="user-explore-3d-map-sequence-participant-ui" petakerjaKey="user-explore-3d-map-sequence/participant-ui">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
+            <mxGeometry as="geometry" x="240" y="70" width="100" height="60" />
+          </mxCell>
+        </object>
+        <object label="" id="user-explore-3d-map-sequence-activation-ui" petakerjaKey="user-explore-3d-map-sequence/participant-ui-activation">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="285" y="130" width="10" height="915" />
+          </mxCell>
+        </object>
+        <object label="MyPetaApp" id="user-explore-3d-map-sequence-participant-app" petakerjaKey="user-explore-3d-map-sequence/participant-app">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
+            <mxGeometry as="geometry" x="440" y="70" width="100" height="60" />
+          </mxCell>
+        </object>
+        <object label="" id="user-explore-3d-map-sequence-activation-app" petakerjaKey="user-explore-3d-map-sequence/participant-app-activation">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="485" y="130" width="10" height="915" />
+          </mxCell>
+        </object>
+        <object label="MapManager" id="user-explore-3d-map-sequence-participant-map-manager" petakerjaKey="user-explore-3d-map-sequence/participant-map-manager">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
+            <mxGeometry as="geometry" x="640" y="70" width="100" height="60" />
+          </mxCell>
+        </object>
+        <object label="" id="user-explore-3d-map-sequence-activation-map-manager" petakerjaKey="user-explore-3d-map-sequence/participant-map-manager-activation">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="685" y="130" width="10" height="915" />
+          </mxCell>
+        </object>
+        <object label="&lt;font style=&quot;font-size: 9px;&quot;&gt;POIManager /&lt;br&gt;CategoryManager&lt;/font&gt;" id="user-explore-3d-map-sequence-participant-poi-managers" petakerjaKey="user-explore-3d-map-sequence/participant-poi-managers">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
+            <mxGeometry as="geometry" x="840" y="70" width="100" height="60" />
+          </mxCell>
+        </object>
+        <object label="" id="user-explore-3d-map-sequence-activation-poi-managers" petakerjaKey="user-explore-3d-map-sequence/participant-poi-managers-activation">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="885" y="130" width="10" height="915" />
+          </mxCell>
+        </object>
+        <object label="PetaKerja Data API&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;supabase.ts&lt;/font&gt;&lt;/div&gt;" id="user-explore-3d-map-sequence-participant-data-api" petakerjaKey="user-explore-3d-map-sequence/participant-data-api">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
+            <mxGeometry as="geometry" x="1040" y="70" width="100" height="60" />
+          </mxCell>
+        </object>
+        <object label="" id="user-explore-3d-map-sequence-activation-data-api" petakerjaKey="user-explore-3d-map-sequence/participant-data-api-activation">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="1085" y="130" width="10" height="915" />
+          </mxCell>
+        </object>
+        <object label="Supabase / PostgreSQL&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;POI data&lt;/font&gt;&lt;/div&gt;" id="user-explore-3d-map-sequence-participant-database" petakerjaKey="user-explore-3d-map-sequence/participant-database">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
+            <mxGeometry as="geometry" x="1240" y="70" width="100" height="60" />
+          </mxCell>
+        </object>
+        <object label="" id="user-explore-3d-map-sequence-activation-database" petakerjaKey="user-explore-3d-map-sequence/participant-database-activation">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="1285" y="130" width="10" height="915" />
+          </mxCell>
+        </object>
+        <object label="MapLibre GL" id="user-explore-3d-map-sequence-participant-maplibre" petakerjaKey="user-explore-3d-map-sequence/participant-maplibre">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
+            <mxGeometry as="geometry" x="1440" y="70" width="100" height="60" />
+          </mxCell>
+        </object>
+        <object label="" id="user-explore-3d-map-sequence-activation-maplibre" petakerjaKey="user-explore-3d-map-sequence/participant-maplibre-activation">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="1485" y="130" width="10" height="915" />
+          </mxCell>
+        </object>
+        <object label="alt" id="user-explore-3d-map-sequence-fragment-data-result" petakerjaKey="user-explore-3d-map-sequence/fragment-data-result">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="240" y="410" width="1300" height="220" />
+          </mxCell>
+        </object>
+        <object label="opt" id="user-explore-3d-map-sequence-fragment-terrain" petakerjaKey="user-explore-3d-map-sequence/fragment-terrain">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="40" y="655" width="1500" height="165" />
+          </mxCell>
+        </object>
+        <object label="opt" id="user-explore-3d-map-sequence-fragment-buildings" petakerjaKey="user-explore-3d-map-sequence/fragment-buildings">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="40" y="825" width="1500" height="165" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="user-explore-3d-map-sequence/divider-data-failed" id="user-explore-3d-map-sequence-divider-data-failed">
+          <mxCell edge="1" parent="user-explore-3d-map-sequence-layer" style="endArrow=none;dashed=1;html=1;rounded=0;strokeWidth=1;">
+            <mxGeometry as="geometry" relative="1">
+              <mxPoint x="240" y="590" as="sourcePoint" />
+              <mxPoint x="1540" y="590" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="[map data available]" id="user-explore-3d-map-sequence-data-available" petakerjaKey="user-explore-3d-map-sequence/data-available">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
+            <mxGeometry as="geometry" x="310" y="413" width="250" height="18" />
+          </mxCell>
+        </object>
+        <object label="[data request fails]" id="user-explore-3d-map-sequence-data-unavailable" petakerjaKey="user-explore-3d-map-sequence/data-unavailable">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
+            <mxGeometry as="geometry" x="310" y="592" width="250" height="18" />
+          </mxCell>
+        </object>
+        <object label="[user enables 3D terrain]" id="user-explore-3d-map-sequence-terrain-selected" petakerjaKey="user-explore-3d-map-sequence/terrain-selected">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
+            <mxGeometry as="geometry" x="110" y="658" width="250" height="18" />
+          </mxCell>
+        </object>
+        <object label="[user toggles 3D buildings]" id="user-explore-3d-map-sequence-buildings-selected" petakerjaKey="user-explore-3d-map-sequence/buildings-selected">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
+            <mxGeometry as="geometry" x="110" y="828" width="250" height="18" />
+          </mxCell>
+        </object>
+        <object label="Select the Malaysia Map workspace" id="user-explore-3d-map-sequence-message-01" petakerjaKey="user-explore-3d-map-sequence/message-01" simpleLabelEn="Select the Malaysia Map workspace" simpleLabelMs="Pilih ruang kerja Peta Malaysia" codeLabelEn=".sp-template-card[data-preset=&quot;malaysia-map&quot;]" codeLabelMs=".sp-template-card[data-preset=&quot;malaysia-map&quot;]">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.027322;exitPerimeter=0;entryX=0;entryY=0.027322;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-explore-3d-map-sequence-activation-user" target="user-explore-3d-map-sequence-activation-ui">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Open the selected workspace" id="user-explore-3d-map-sequence-message-02" petakerjaKey="user-explore-3d-map-sequence/message-02" simpleLabelEn="Open the selected workspace" simpleLabelMs="Buka ruang kerja yang dipilih" codeLabelEn="MyPetaApp.onPresetSelected(preset)" codeLabelMs="MyPetaApp.onPresetSelected(preset)">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.060109;exitPerimeter=0;entryX=0;entryY=0.060109;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-explore-3d-map-sequence-activation-ui" target="user-explore-3d-map-sequence-activation-app">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Enter the map workspace" id="user-explore-3d-map-sequence-message-03" petakerjaKey="user-explore-3d-map-sequence/message-03" simpleLabelEn="Enter the map workspace" simpleLabelMs="Masuki ruang kerja peta" codeLabelEn="MapManager.enterWorkspace()" codeLabelMs="MapManager.enterWorkspace()">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.092896;exitPerimeter=0;entryX=0;entryY=0.092896;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-explore-3d-map-sequence-activation-app" target="user-explore-3d-map-sequence-activation-map-manager">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Prepare the workspace transition" id="user-explore-3d-map-sequence-message-04" petakerjaKey="user-explore-3d-map-sequence/message-04" simpleLabelEn="Prepare the workspace transition" simpleLabelMs="Sediakan peralihan ruang kerja" codeLabelEn="beginWorkspaceTransition(); map.resize()" codeLabelMs="beginWorkspaceTransition(); map.resize()">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.125683;exitPerimeter=0;entryX=0;entryY=0.125683;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-explore-3d-map-sequence-activation-map-manager" target="user-explore-3d-map-sequence-activation-maplibre">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Confirm that the base map is ready" id="user-explore-3d-map-sequence-message-05" petakerjaKey="user-explore-3d-map-sequence/message-05" simpleLabelEn="Confirm that the base map is ready" simpleLabelMs="Sahkan bahawa peta asas telah sedia" codeLabelEn="style.load / baseLayersReady" codeLabelMs="style.load / baseLayersReady">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.158470;exitPerimeter=0;entryX=1;entryY=0.158470;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-explore-3d-map-sequence-activation-maplibre" target="user-explore-3d-map-sequence-activation-map-manager">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Move the camera to Malaysia" id="user-explore-3d-map-sequence-message-06" petakerjaKey="user-explore-3d-map-sequence/message-06" simpleLabelEn="Move the camera to Malaysia" simpleLabelMs="Gerakkan kamera ke Malaysia" codeLabelEn="map.flyTo({ center, zoom, pitch: 1, bearing: 0 })" codeLabelMs="map.flyTo({ center, zoom, pitch: 1, bearing: 0 })">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.191257;exitPerimeter=0;entryX=0;entryY=0.191257;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-explore-3d-map-sequence-activation-map-manager" target="user-explore-3d-map-sequence-activation-maplibre">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Confirm that the camera movement is complete" id="user-explore-3d-map-sequence-message-07" petakerjaKey="user-explore-3d-map-sequence/message-07" simpleLabelEn="Confirm that the camera movement is complete" simpleLabelMs="Sahkan pergerakan kamera selesai" codeLabelEn="map.once('idle')" codeLabelMs="map.once('idle')">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.224044;exitPerimeter=0;entryX=1;entryY=0.224044;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-explore-3d-map-sequence-activation-maplibre" target="user-explore-3d-map-sequence-activation-map-manager">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Start map exploration" id="user-explore-3d-map-sequence-message-08" petakerjaKey="user-explore-3d-map-sequence/message-08" simpleLabelEn="Start map exploration" simpleLabelMs="Mulakan penerokaan peta" codeLabelEn="state.explorationStarted = true; onExplorationStart()" codeLabelMs="state.explorationStarted = true; onExplorationStart()">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.256831;exitPerimeter=0;entryX=1;entryY=0.256831;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-explore-3d-map-sequence-activation-map-manager" target="user-explore-3d-map-sequence-activation-app">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Initialize points of interest and categories" id="user-explore-3d-map-sequence-message-09" petakerjaKey="user-explore-3d-map-sequence/message-09" simpleLabelEn="Initialize points of interest and categories" simpleLabelMs="Mulakan titik minat dan kategori" codeLabelEn="setupSource(); loadForView(); loadCounts()" codeLabelMs="setupSource(); loadForView(); loadCounts()">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.289617;exitPerimeter=0;entryX=0;entryY=0.289617;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-explore-3d-map-sequence-activation-app" target="user-explore-3d-map-sequence-activation-poi-managers">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Request map data for the visible area" id="user-explore-3d-map-sequence-message-10" petakerjaKey="user-explore-3d-map-sequence/message-10" simpleLabelEn="Request map data for the visible area" simpleLabelMs="Minta data peta bagi kawasan yang kelihatan" codeLabelEn="fetchPOIsInBounds(); fetchCategoriesWithCounts()" codeLabelMs="fetchPOIsInBounds(); fetchCategoriesWithCounts()">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.322404;exitPerimeter=0;entryX=0;entryY=0.322404;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-explore-3d-map-sequence-activation-poi-managers" target="user-explore-3d-map-sequence-activation-data-api">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Retrieve POIs and category counts" id="user-explore-3d-map-sequence-message-11" petakerjaKey="user-explore-3d-map-sequence/message-11" simpleLabelEn="Retrieve POIs and category counts" simpleLabelMs="Dapatkan POI dan bilangan kategori" codeLabelEn="get_pois_in_bounds + get_poi_categories_with_counts RPC" codeLabelMs="RPC get_pois_in_bounds + get_poi_categories_with_counts">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.355191;exitPerimeter=0;entryX=0;entryY=0.355191;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-explore-3d-map-sequence-activation-data-api" target="user-explore-3d-map-sequence-activation-database">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Return the map records" id="user-explore-3d-map-sequence-message-12" petakerjaKey="user-explore-3d-map-sequence/message-12" simpleLabelEn="Return the map records" simpleLabelMs="Pulangkan rekod peta" codeLabelEn="BoundsPOI[] + CategoryWithCount[]" codeLabelMs="BoundsPOI[] + CategoryWithCount[]">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.387978;exitPerimeter=0;entryX=1;entryY=0.387978;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-explore-3d-map-sequence-activation-database" target="user-explore-3d-map-sequence-activation-data-api">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Return POIs and category totals" id="user-explore-3d-map-sequence-message-13" petakerjaKey="user-explore-3d-map-sequence/message-13" simpleLabelEn="Return POIs and category totals" simpleLabelMs="Pulangkan POI dan jumlah kategori" codeLabelEn="resolve data requests" codeLabelMs="selesaikan permintaan data">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.420765;exitPerimeter=0;entryX=1;entryY=0.420765;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-explore-3d-map-sequence-activation-data-api" target="user-explore-3d-map-sequence-activation-poi-managers">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Place the POIs on the map" id="user-explore-3d-map-sequence-message-14" petakerjaKey="user-explore-3d-map-sequence/message-14" simpleLabelEn="Place the POIs on the map" simpleLabelMs="Letakkan POI pada peta" codeLabelEn="GeoJSONSource.setData()" codeLabelMs="GeoJSONSource.setData()">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.453552;exitPerimeter=0;entryX=0;entryY=0.453552;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-explore-3d-map-sequence-activation-poi-managers" target="user-explore-3d-map-sequence-activation-maplibre">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Display the interactive map and POIs" id="user-explore-3d-map-sequence-message-15" petakerjaKey="user-explore-3d-map-sequence/message-15" simpleLabelEn="Display the interactive map and POIs" simpleLabelMs="Paparkan peta interaktif dan POI" codeLabelEn="render map canvas, clusters and labels" codeLabelMs="paparkan kanvas peta, kelompok dan label">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.486339;exitPerimeter=0;entryX=1;entryY=0.486339;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-explore-3d-map-sequence-activation-maplibre" target="user-explore-3d-map-sequence-activation-user">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Display the map without unavailable POIs" id="user-explore-3d-map-sequence-message-16" petakerjaKey="user-explore-3d-map-sequence/message-16" simpleLabelEn="Display the map without unavailable POIs" simpleLabelMs="Paparkan peta tanpa POI yang tidak tersedia" codeLabelEn="loadForView() catch; counts fallback []" codeLabelMs="loadForView() catch; kiraan fallback []">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.524590;exitPerimeter=0;entryX=1;entryY=0.524590;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-explore-3d-map-sequence-activation-poi-managers" target="user-explore-3d-map-sequence-activation-ui">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Select 3D Terrain" id="user-explore-3d-map-sequence-message-17" petakerjaKey="user-explore-3d-map-sequence/message-17" simpleLabelEn="Select 3D Terrain" simpleLabelMs="Pilih Terrain 3D" codeLabelEn=".basemap-mode-btn[data-basemap=&quot;terrain&quot;]" codeLabelMs=".basemap-mode-btn[data-basemap=&quot;terrain&quot;]">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.622951;exitPerimeter=0;entryX=0;entryY=0.622951;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-explore-3d-map-sequence-activation-user" target="user-explore-3d-map-sequence-activation-ui">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Enable the 3D terrain mode" id="user-explore-3d-map-sequence-message-18" petakerjaKey="user-explore-3d-map-sequence/message-18" simpleLabelEn="Enable the 3D terrain mode" simpleLabelMs="Aktifkan mod terrain 3D" codeLabelEn="MapManager.setBasemapMode('terrain')" codeLabelMs="MapManager.setBasemapMode('terrain')">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.655738;exitPerimeter=0;entryX=0;entryY=0.655738;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-explore-3d-map-sequence-activation-ui" target="user-explore-3d-map-sequence-activation-map-manager">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Apply satellite imagery and terrain elevation" id="user-explore-3d-map-sequence-message-19" petakerjaKey="user-explore-3d-map-sequence/message-19" simpleLabelEn="Apply satellite imagery and terrain elevation" simpleLabelMs="Gunakan imej satelit dan ketinggian terrain" codeLabelEn="setStyle(); setTerrain({ source: 'terrain-dem', exaggeration: 1.2 })" codeLabelMs="setStyle(); setTerrain({ source: 'terrain-dem', exaggeration: 1.2 })">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.688525;exitPerimeter=0;entryX=0;entryY=0.688525;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-explore-3d-map-sequence-activation-map-manager" target="user-explore-3d-map-sequence-activation-maplibre">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Display the 3D terrain" id="user-explore-3d-map-sequence-message-20" petakerjaKey="user-explore-3d-map-sequence/message-20" simpleLabelEn="Display the 3D terrain" simpleLabelMs="Paparkan terrain 3D" codeLabelEn="map:basemap-transition-end" codeLabelMs="map:basemap-transition-end">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.721311;exitPerimeter=0;entryX=1;entryY=0.721311;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-explore-3d-map-sequence-activation-maplibre" target="user-explore-3d-map-sequence-activation-user">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Toggle 3D buildings" id="user-explore-3d-map-sequence-message-21" petakerjaKey="user-explore-3d-map-sequence/message-21" simpleLabelEn="Toggle 3D buildings" simpleLabelMs="Togol bangunan 3D" codeLabelEn="#toggle-3d-buildings" codeLabelMs="#toggle-3d-buildings">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.808743;exitPerimeter=0;entryX=0;entryY=0.808743;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-explore-3d-map-sequence-activation-user" target="user-explore-3d-map-sequence-activation-ui">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Update the 3D building layer" id="user-explore-3d-map-sequence-message-22" petakerjaKey="user-explore-3d-map-sequence/message-22" simpleLabelEn="Update the 3D building layer" simpleLabelMs="Kemas kini lapisan bangunan 3D" codeLabelEn="MapManager.toggle3DBuildings()" codeLabelMs="MapManager.toggle3DBuildings()">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.841530;exitPerimeter=0;entryX=0;entryY=0.841530;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-explore-3d-map-sequence-activation-ui" target="user-explore-3d-map-sequence-activation-map-manager">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Change building visibility" id="user-explore-3d-map-sequence-message-23" petakerjaKey="user-explore-3d-map-sequence/message-23" simpleLabelEn="Change building visibility" simpleLabelMs="Ubah keterlihatan bangunan" codeLabelEn="map.setLayoutProperty('building-3d', 'visibility', ...)" codeLabelMs="map.setLayoutProperty('building-3d', 'visibility', ...)">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.874317;exitPerimeter=0;entryX=0;entryY=0.874317;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-explore-3d-map-sequence-activation-map-manager" target="user-explore-3d-map-sequence-activation-maplibre">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Display the 3D building extrusions" id="user-explore-3d-map-sequence-message-24" petakerjaKey="user-explore-3d-map-sequence/message-24" simpleLabelEn="Display the 3D building extrusions" simpleLabelMs="Paparkan ekstrusi bangunan 3D" codeLabelEn="render fill-extrusion layer" codeLabelMs="paparkan lapisan fill-extrusion">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.907104;exitPerimeter=0;entryX=1;entryY=0.907104;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-explore-3d-map-sequence-activation-maplibre" target="user-explore-3d-map-sequence-activation-user">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Implementation note: map exploration is public. 3D terrain uses satellite imagery plus a DEM on screens wider than 768px; building extrusions appear within their configured zoom range." id="user-explore-3d-map-sequence-implementation-note" petakerjaKey="user-explore-3d-map-sequence/implementation-note">
+          <mxCell parent="user-explore-3d-map-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=9;fontStyle=2;fontColor=#555555;" vertex="1">
+            <mxGeometry as="geometry" x="220" y="1065" width="1160" height="20" />
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,414 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="Electron" agent="PetaKerja Architecture Explorer" version="27.0.2">
+  <diagram name="PetaKerja Manage AI Chatbot Configuration" id="petakerja_flow_admin_manage_ai_configuration">
+    <mxGraphModel dx="1400" dy="2050" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="2050" math="0" shadow="0" background="light-dark(#ffffff,#0f131a)">
+      <root>
+        <mxCell id="admin-manage-ai-configuration-flowchart-root" />
+        <mxCell id="admin-manage-ai-configuration-flowchart-layer" parent="admin-manage-ai-configuration-flowchart-root" />
+        <object id="admin-manage-ai-configuration-flowchart-page-background" label="">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#0f131a);strokeColor=none;pointerEvents=0;locked=1;">
+            <mxGeometry as="geometry" x="0" y="0" width="1400" height="2050" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-title" label="PetaKerja Administrator Manage AI Chatbot Configuration Flow Chart">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=light-dark(#111827,#eef1f6);fontSize=22;fontStyle=1;">
+            <mxGeometry as="geometry" x="120" y="18" width="1160" height="38" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-subtitle" label="Provider visibility for administrators and owners; shared-key and model-refresh actions are owner-only.">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=light-dark(#111827,#eef1f6);fontSize=11;fontStyle=2;">
+            <mxGeometry as="geometry" x="100" y="58" width="1200" height="30" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-precondition" label="Precondition: The Administrator is signed in, has the admin or owner role, and the Admin Dashboard is open.">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=light-dark(#111827,#eef1f6);align=left;fontSize=11;fontStyle=2;">
+            <mxGeometry as="geometry" x="100" y="92" width="1200" height="32" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-start" label="Start" petakerjaKey="admin-manage-ai-configuration-flowchart/start">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="666.665" y="125" width="66.67" height="40" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-select-providers" label="Administrator selects the AI Providers section" petakerjaKey="admin-manage-ai-configuration-flowchart/select-providers">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="590" y="190" width="220" height="50" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-loading-state" label="Display the loading state" petakerjaKey="admin-manage-ai-configuration-flowchart/loading-state">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="610" y="260" width="180" height="50" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-request-providers" label="Request provider configuration" petakerjaKey="admin-manage-ai-configuration-flowchart/request-providers">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="590" y="330" width="220" height="50" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-retrieve-providers" label="Read platform credentials and combine them with the provider registry" petakerjaKey="admin-manage-ai-configuration-flowchart/retrieve-providers">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="570" y="400" width="260" height="60" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-request-successful" label="Request successful?" petakerjaKey="admin-manage-ai-configuration-flowchart/request-successful">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="640" y="490" width="120" height="70" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-request-error" label="Clear loading and display the provider loading error" petakerjaKey="admin-manage-ai-configuration-flowchart/request-error">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="1080" y="495" width="250" height="60" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-display-providers" label="Display provider names, key status, model counts and fetch status" petakerjaKey="admin-manage-ai-configuration-flowchart/display-providers">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="565" y="590" width="270" height="60" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-owner-role" label="Owner role?" petakerjaKey="admin-manage-ai-configuration-flowchart/owner-role">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="640" y="680" width="120" height="70" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-read-only" label="Display provider information in read-only mode and explain the owner requirement" petakerjaKey="admin-manage-ai-configuration-flowchart/read-only">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="80" y="685" width="300" height="65" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-owner-action" label="Owner action?" petakerjaKey="admin-manage-ai-configuration-flowchart/owner-action">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="640" y="785" width="120" height="70" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-open-key-modal" label="Open the platform-key dialog" petakerjaKey="admin-manage-ai-configuration-flowchart/open-key-modal">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="170" y="900" width="220" height="50" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-enter-key" label="Enter and submit a platform API key" petakerjaKey="admin-manage-ai-configuration-flowchart/enter-key">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="170" y="980" width="220" height="50" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-key-valid" label="Provider and key valid?" petakerjaKey="admin-manage-ai-configuration-flowchart/key-valid">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="220" y="1065" width="120" height="70" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-validation-error" label="Display the platform-key validation error" petakerjaKey="admin-manage-ai-configuration-flowchart/validation-error">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="55" y="1170" width="245" height="60" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-save-credential" label="Encrypt and save the shared platform credential" petakerjaKey="admin-manage-ai-configuration-flowchart/save-credential">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="390" y="1170" width="260" height="60" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-save-successful" label="Credential saved successfully?" petakerjaKey="admin-manage-ai-configuration-flowchart/save-successful">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="460" y="1270" width="120" height="70" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-save-error" label="Display the platform-key request error" petakerjaKey="admin-manage-ai-configuration-flowchart/save-error">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="125" y="1370" width="245" height="60" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-record-audit" label="Record the platform key saved audit event" petakerjaKey="admin-manage-ai-configuration-flowchart/record-audit">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="390" y="1370" width="260" height="60" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-save-success" label="Display success for the saved platform key" petakerjaKey="admin-manage-ai-configuration-flowchart/save-success">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="400" y="1460" width="240" height="60" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-request-refresh" label="Request model-list refresh" petakerjaKey="admin-manage-ai-configuration-flowchart/request-refresh">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="1030" y="900" width="230" height="50" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-read-credentials" label="Read available platform credentials" petakerjaKey="admin-manage-ai-configuration-flowchart/read-credentials">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="1030" y="980" width="230" height="50" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-refresh-providers" label="Refresh every supported provider and continue after individual failures" petakerjaKey="admin-manage-ai-configuration-flowchart/refresh-providers">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="995" y="1065" width="300" height="65" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-any-failures" label="Any provider failures?" petakerjaKey="admin-manage-ai-configuration-flowchart/any-failures">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="1085" y="1170" width="120" height="70" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-refresh-complete" label="Save model metadata, invalidate caches and display complete success" petakerjaKey="admin-manage-ai-configuration-flowchart/refresh-complete">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="820" y="1290" width="270" height="65" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-refresh-partial" label="Save successful metadata, record errors and display partial results" petakerjaKey="admin-manage-ai-configuration-flowchart/refresh-partial">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="1140" y="1290" width="230" height="65" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-reload-refresh" label="Reload the provider table" petakerjaKey="admin-manage-ai-configuration-flowchart/reload-refresh">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="1010" y="1420" width="270" height="55" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-reload-providers" label="Reload provider information and display the result" petakerjaKey="admin-manage-ai-configuration-flowchart/reload-providers">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="565" y="1660" width="270" height="60" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-end" label="End" petakerjaKey="admin-manage-ai-configuration-flowchart/end">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
+            <mxGeometry as="geometry" x="666.665" y="1800" width="66.67" height="40" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-start-to-select" label="" petakerjaKey="admin-manage-ai-configuration-flowchart/start-to-select">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-start" target="admin-manage-ai-configuration-flowchart-select-providers" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-select-to-loading" label="" petakerjaKey="admin-manage-ai-configuration-flowchart/select-to-loading">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-select-providers" target="admin-manage-ai-configuration-flowchart-loading-state" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-loading-to-request" label="" petakerjaKey="admin-manage-ai-configuration-flowchart/loading-to-request">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-loading-state" target="admin-manage-ai-configuration-flowchart-request-providers" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-request-to-retrieve" label="" petakerjaKey="admin-manage-ai-configuration-flowchart/request-to-retrieve">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-request-providers" target="admin-manage-ai-configuration-flowchart-retrieve-providers" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-retrieve-to-result" label="" petakerjaKey="admin-manage-ai-configuration-flowchart/retrieve-to-result">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-retrieve-providers" target="admin-manage-ai-configuration-flowchart-request-successful" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-request-no" label="No" petakerjaKey="admin-manage-ai-configuration-flowchart/request-no">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-request-successful" target="admin-manage-ai-configuration-flowchart-request-error" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-request-error-to-end" label="" petakerjaKey="admin-manage-ai-configuration-flowchart/request-error-to-end">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-request-error" target="admin-manage-ai-configuration-flowchart-end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=1;exitY=0.5;entryX=1;entryY=0.5;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1">
+              <Array as="points">
+                <mxPoint x="1380" y="525" />
+                <mxPoint x="1380" y="1820" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-request-yes" label="Yes" petakerjaKey="admin-manage-ai-configuration-flowchart/request-yes">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-request-successful" target="admin-manage-ai-configuration-flowchart-display-providers" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-display-to-owner" label="" petakerjaKey="admin-manage-ai-configuration-flowchart/display-to-owner">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-display-providers" target="admin-manage-ai-configuration-flowchart-owner-role" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-owner-no" label="No" petakerjaKey="admin-manage-ai-configuration-flowchart/owner-no">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-owner-role" target="admin-manage-ai-configuration-flowchart-read-only" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0;exitY=0.5;entryX=1;entryY=0.5;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-read-only-to-end" label="" petakerjaKey="admin-manage-ai-configuration-flowchart/read-only-to-end">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-read-only" target="admin-manage-ai-configuration-flowchart-end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1">
+              <Array as="points">
+                <mxPoint x="20" y="717" />
+                <mxPoint x="20" y="1820" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-owner-yes" label="Yes" petakerjaKey="admin-manage-ai-configuration-flowchart/owner-yes">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-owner-role" target="admin-manage-ai-configuration-flowchart-owner-action" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-action-save" label="Save key" petakerjaKey="admin-manage-ai-configuration-flowchart/action-save">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-owner-action" target="admin-manage-ai-configuration-flowchart-open-key-modal" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0;exitY=0.5;entryX=1;entryY=0.5;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1">
+              <Array as="points">
+                <mxPoint x="440" y="820" />
+                <mxPoint x="440" y="925" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-action-refresh" label="Refresh models" petakerjaKey="admin-manage-ai-configuration-flowchart/action-refresh">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-owner-action" target="admin-manage-ai-configuration-flowchart-request-refresh" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1">
+              <Array as="points">
+                <mxPoint x="960" y="820" />
+                <mxPoint x="960" y="925" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-action-finish" label="Finish" petakerjaKey="admin-manage-ai-configuration-flowchart/action-finish">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-owner-action" target="admin-manage-ai-configuration-flowchart-end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=1;exitY=0.5;entryX=1;entryY=0.5;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" x="-0.97" y="-8">
+              <Array as="points">
+                <mxPoint x="1390" y="820" />
+                <mxPoint x="1390" y="1820" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-modal-to-enter" label="" petakerjaKey="admin-manage-ai-configuration-flowchart/modal-to-enter">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-open-key-modal" target="admin-manage-ai-configuration-flowchart-enter-key" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-enter-to-valid" label="" petakerjaKey="admin-manage-ai-configuration-flowchart/enter-to-valid">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-enter-key" target="admin-manage-ai-configuration-flowchart-key-valid" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-valid-no" label="No" petakerjaKey="admin-manage-ai-configuration-flowchart/valid-no">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-key-valid" target="admin-manage-ai-configuration-flowchart-validation-error" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.3;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-validation-to-end" label="" petakerjaKey="admin-manage-ai-configuration-flowchart/validation-to-end">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-validation-error" target="admin-manage-ai-configuration-flowchart-end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1">
+              <Array as="points">
+                <mxPoint x="30" y="1200" />
+                <mxPoint x="30" y="1820" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-valid-yes" label="Yes" petakerjaKey="admin-manage-ai-configuration-flowchart/valid-yes">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-key-valid" target="admin-manage-ai-configuration-flowchart-save-credential" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.7;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-save-to-result" label="" petakerjaKey="admin-manage-ai-configuration-flowchart/save-to-result">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-save-credential" target="admin-manage-ai-configuration-flowchart-save-successful" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-save-no" label="No" petakerjaKey="admin-manage-ai-configuration-flowchart/save-no">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-save-successful" target="admin-manage-ai-configuration-flowchart-save-error" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.3;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-save-error-to-end" label="" petakerjaKey="admin-manage-ai-configuration-flowchart/save-error-to-end">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-save-error" target="admin-manage-ai-configuration-flowchart-end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1">
+              <Array as="points">
+                <mxPoint x="45" y="1400" />
+                <mxPoint x="45" y="1820" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-save-yes" label="Yes" petakerjaKey="admin-manage-ai-configuration-flowchart/save-yes">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-save-successful" target="admin-manage-ai-configuration-flowchart-record-audit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-audit-to-success" label="" petakerjaKey="admin-manage-ai-configuration-flowchart/audit-to-success">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-record-audit" target="admin-manage-ai-configuration-flowchart-save-success" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-save-success-to-reload" label="" petakerjaKey="admin-manage-ai-configuration-flowchart/save-success-to-reload">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-save-success" target="admin-manage-ai-configuration-flowchart-reload-providers" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1">
+              <Array as="points">
+                <mxPoint x="520" y="1520" />
+                <mxPoint x="520" y="1690" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-refresh-to-credentials" label="" petakerjaKey="admin-manage-ai-configuration-flowchart/refresh-to-credentials">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-request-refresh" target="admin-manage-ai-configuration-flowchart-read-credentials" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-credentials-to-provider" label="" petakerjaKey="admin-manage-ai-configuration-flowchart/credentials-to-provider">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-read-credentials" target="admin-manage-ai-configuration-flowchart-refresh-providers" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-provider-to-result" label="" petakerjaKey="admin-manage-ai-configuration-flowchart/provider-to-result">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-refresh-providers" target="admin-manage-ai-configuration-flowchart-any-failures" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-failures-no" label="No" petakerjaKey="admin-manage-ai-configuration-flowchart/failures-no">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-any-failures" target="admin-manage-ai-configuration-flowchart-refresh-complete" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.3;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-failures-yes" label="Yes" petakerjaKey="admin-manage-ai-configuration-flowchart/failures-yes">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-any-failures" target="admin-manage-ai-configuration-flowchart-refresh-partial" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.7;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-complete-to-refresh-reload" label="" petakerjaKey="admin-manage-ai-configuration-flowchart/complete-to-refresh-reload">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-refresh-complete" target="admin-manage-ai-configuration-flowchart-reload-refresh" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1">
+              <Array as="points">
+                <mxPoint x="955" y="1390" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-partial-to-refresh-reload" label="" petakerjaKey="admin-manage-ai-configuration-flowchart/partial-to-refresh-reload">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-refresh-partial" target="admin-manage-ai-configuration-flowchart-reload-refresh" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0;exitY=0.5;entryX=1;entryY=0.5;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1">
+              <Array as="points">
+                <mxPoint x="1255" y="1390" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-refresh-reload-to-result" label="" petakerjaKey="admin-manage-ai-configuration-flowchart/refresh-reload-to-result">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-reload-refresh" target="admin-manage-ai-configuration-flowchart-reload-providers" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0;exitY=0.5;entryX=1;entryY=0.5;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1">
+              <Array as="points">
+                <mxPoint x="1145" y="1690" />
+                <mxPoint x="860" y="1690" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-reload-to-end" label="" petakerjaKey="admin-manage-ai-configuration-flowchart/reload-to-end">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" edge="1" source="admin-manage-ai-configuration-flowchart-reload-providers" target="admin-manage-ai-configuration-flowchart-end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-note-1" label="Individual users' model preferences are outside this administrator use case.">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=light-dark(#111827,#eef1f6);align=left;fontSize=11;fontStyle=2;">
+            <mxGeometry as="geometry" x="80" y="1968" width="1240" height="24" />
+          </mxCell>
+        </object>
+        <object id="admin-manage-ai-configuration-flowchart-note-2" label="Deployment warning: the refresh handler expects custom_headers, fetched_models, models_fetched_at and fetch_error, but those fields are absent from the live ai_provider_credentials table snapshot.">
+          <mxCell parent="admin-manage-ai-configuration-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=light-dark(#111827,#eef1f6);align=left;fontSize=11;fontStyle=2;">
+            <mxGeometry as="geometry" x="80" y="1992" width="1240" height="24" />
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,332 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.2 Chrome/134.0.6998.205 Electron/35.3.0 Safari/537.36" version="27.0.2">
+  <diagram id="petakerja_flow_google_sign_in" name="PetaKerja Google Sign-In">
+    <mxGraphModel dx="980" dy="1540" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="980" pageHeight="1540" math="0" shadow="0">
+      <root>
+        <mxCell id="google-sign-in-flow-root" />
+        <mxCell id="google-sign-in-flow-layer" parent="google-sign-in-flow-root" />
+        <object id="google-sign-in-flow-page-background" label="" petakerjaKey="user-google-sign-in-flowchart/page-background">
+          <mxCell parent="google-sign-in-flow-layer" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;pointerEvents=0;locked=1;">
+            <mxGeometry as="geometry" x="0" y="0" width="980" height="1540" />
+          </mxCell>
+        </object>
+        <object label="PetaKerja Sign in with Google Flow Chart" petakerjaKey="user-google-sign-in-flowchart/title" id="google-sign-in-flow-title">
+          <mxCell style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=20;fontStyle=1;" parent="google-sign-in-flow-layer" vertex="1">
+            <mxGeometry x="170" y="10" width="510" height="35" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="Google-only authentication; password sign-in, registration and password reset are not part of this flow." petakerjaKey="user-google-sign-in-flowchart/scope-note" id="google-sign-in-flow-scope-note">
+          <mxCell style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;fontStyle=2;fontColor=#505a66;" parent="google-sign-in-flow-layer" vertex="1">
+            <mxGeometry x="165" y="45" width="520" height="24" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="Start" petakerjaKey="user-google-sign-in-flowchart/start" id="google-sign-in-flow-start">
+          <mxCell style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" parent="google-sign-in-flow-layer" vertex="1">
+            <mxGeometry x="391.665" y="75" width="66.67" height="40" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="User selects Sign in" petakerjaKey="user-google-sign-in-flowchart/select-sign-in" id="google-sign-in-flow-select-sign-in">
+          <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
+            <mxGeometry x="350" y="140" width="150" height="40" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="Display the Google sign-in prompt" petakerjaKey="user-google-sign-in-flowchart/show-google-prompt" id="google-sign-in-flow-show-google-prompt">
+          <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
+            <mxGeometry x="350" y="205" width="150" height="40" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="User selects Continue with Google" petakerjaKey="user-google-sign-in-flowchart/select-google" id="google-sign-in-flow-select-google">
+          <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
+            <mxGeometry x="350" y="270" width="150" height="40" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="Start Google OAuth" petakerjaKey="user-google-sign-in-flowchart/start-google-oauth" id="google-sign-in-flow-start-google-oauth">
+          <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
+            <mxGeometry x="350" y="335" width="150" height="40" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="Google authorization completed?" petakerjaKey="user-google-sign-in-flowchart/authorization-completed" id="google-sign-in-flow-authorization-completed">
+          <mxCell style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="google-sign-in-flow-layer" vertex="1">
+            <mxGeometry x="348.01" y="393" width="154.29" height="90" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="Display cancellation or sign-in error" petakerjaKey="user-google-sign-in-flowchart/display-auth-error" id="google-sign-in-flow-display-auth-error">
+          <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
+            <mxGeometry x="630" y="414" width="170" height="48" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="Remain in guest state and display Sign in" petakerjaKey="user-google-sign-in-flowchart/guest-state" id="google-sign-in-flow-guest-state">
+          <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
+            <mxGeometry x="625" y="533" width="180" height="52" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="Create or update identity, account and session" petakerjaKey="user-google-sign-in-flowchart/save-auth-session" id="google-sign-in-flow-save-auth-session">
+          <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
+            <mxGeometry x="340.15" y="510" width="170" height="50" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="MEvPa_66McuczyVfslhs-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="google-sign-in-flow-layer" source="google-sign-in-flow-redirect-petakerja" target="google-sign-in-flow-active-session-found">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <object label="Redirect to PetaKerja" petakerjaKey="user-google-sign-in-flowchart/redirect-petakerja" id="google-sign-in-flow-redirect-petakerja">
+          <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
+            <mxGeometry x="349.99" y="580" width="150" height="40" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="Check the active session" petakerjaKey="user-google-sign-in-flowchart/check-active-session" id="google-sign-in-flow-check-active-session">
+          <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
+            <mxGeometry x="350" y="640" width="150" height="40" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="Request the PetaKerja profile" petakerjaKey="user-google-sign-in-flowchart/request-profile" id="google-sign-in-flow-request-profile">
+          <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
+            <mxGeometry x="350.15" y="825" width="150" height="40" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="Load the linked profile" petakerjaKey="user-google-sign-in-flowchart/load-linked-profile" id="google-sign-in-flow-load-linked-profile">
+          <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
+            <mxGeometry x="105" y="915" width="145" height="40" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="Matching email profile found?" petakerjaKey="user-google-sign-in-flowchart/matching-email-found" id="google-sign-in-flow-matching-email-found">
+          <mxCell style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="google-sign-in-flow-layer" vertex="1">
+            <mxGeometry x="595" y="800" width="154.29" height="90" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="Link the existing profile" petakerjaKey="user-google-sign-in-flowchart/link-existing-profile" id="google-sign-in-flow-link-existing-profile">
+          <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
+            <mxGeometry x="595" y="960" width="155" height="40" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="Profile obtained successfully?" petakerjaKey="user-google-sign-in-flowchart/profile-obtained" id="google-sign-in-flow-profile-obtained">
+          <mxCell style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="google-sign-in-flow-layer" vertex="1">
+            <mxGeometry x="356.58" y="1090" width="137.14" height="80" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="Return the profile to the application" petakerjaKey="user-google-sign-in-flowchart/return-profile" id="google-sign-in-flow-return-profile">
+          <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
+            <mxGeometry x="339.99" y="1220" width="170" height="44" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="Update the signed-in user state" petakerjaKey="user-google-sign-in-flowchart/update-user-state" id="google-sign-in-flow-update-user-state">
+          <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
+            <mxGeometry x="349.99" y="1300" width="150" height="44" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="Display the authenticated user menu" petakerjaKey="user-google-sign-in-flowchart/display-authenticated-menu" id="google-sign-in-flow-display-authenticated-menu">
+          <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
+            <mxGeometry x="345" y="1380" width="160" height="44" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="End" petakerjaKey="user-google-sign-in-flowchart/end" id="google-sign-in-flow-end">
+          <mxCell style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" parent="google-sign-in-flow-layer" vertex="1">
+            <mxGeometry x="391.815" y="1460" width="66.67" height="40" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="user-google-sign-in-flowchart/start-to-select" id="google-sign-in-flow-start-to-select">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-start" target="google-sign-in-flow-select-sign-in" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="user-google-sign-in-flowchart/select-to-prompt" id="google-sign-in-flow-select-to-prompt">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-select-sign-in" target="google-sign-in-flow-show-google-prompt" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="user-google-sign-in-flowchart/prompt-to-google" id="google-sign-in-flow-prompt-to-google">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-show-google-prompt" target="google-sign-in-flow-select-google" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="user-google-sign-in-flowchart/google-to-oauth" id="google-sign-in-flow-google-to-oauth">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-select-google" target="google-sign-in-flow-start-google-oauth" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="user-google-sign-in-flowchart/oauth-to-authorization" id="google-sign-in-flow-oauth-to-authorization">
+          <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-start-google-oauth" target="google-sign-in-flow-authorization-completed" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="Yes" petakerjaKey="user-google-sign-in-flowchart/authorization-yes" id="google-sign-in-flow-authorization-yes">
+          <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-authorization-completed" target="google-sign-in-flow-save-auth-session" edge="1">
+            <mxGeometry x="-0.4817" y="15" relative="1" as="geometry">
+              <mxPoint x="425.145" y="533" as="sourcePoint" />
+              <mxPoint as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="No" petakerjaKey="user-google-sign-in-flowchart/authorization-no" id="google-sign-in-flow-authorization-no">
+          <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-authorization-completed" target="google-sign-in-flow-display-auth-error" edge="1">
+            <mxGeometry x="-0.5662" y="8" relative="1" as="geometry">
+              <mxPoint x="635" y="439.0000000000002" as="targetPoint" />
+              <mxPoint as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="user-google-sign-in-flowchart/error-to-guest" id="google-sign-in-flow-error-to-guest">
+          <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-display-auth-error" target="google-sign-in-flow-guest-state" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="720.0588235294122" y="463" as="sourcePoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="user-google-sign-in-flowchart/session-to-redirect" id="google-sign-in-flow-session-to-redirect">
+          <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-save-auth-session" target="google-sign-in-flow-redirect-petakerja" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="user-google-sign-in-flowchart/redirect-to-check" id="google-sign-in-flow-redirect-to-check">
+          <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-redirect-petakerja" target="google-sign-in-flow-check-active-session" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="user-google-sign-in-flowchart/check-to-session-decision" id="google-sign-in-flow-check-to-session-decision">
+          <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-check-active-session" target="google-sign-in-flow-active-session-found" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="425" y="695" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="Yes" petakerjaKey="user-google-sign-in-flowchart/session-yes" id="google-sign-in-flow-session-yes">
+          <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="google-sign-in-flow-layer" target="google-sign-in-flow-request-profile" edge="1" source="google-sign-in-flow-active-session-found">
+            <mxGeometry x="-0.0002" y="-25" relative="1" as="geometry">
+              <mxPoint x="424.9949999999999" y="785" as="sourcePoint" />
+              <mxPoint x="425" y="825" as="targetPoint" />
+              <mxPoint as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="No" petakerjaKey="user-google-sign-in-flowchart/session-no" id="google-sign-in-flow-session-no">
+          <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;edgeStyle=orthogonalEdgeStyle;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-active-session-found" target="google-sign-in-flow-guest-state" edge="1">
+            <mxGeometry x="-0.8196" y="-15" relative="1" as="geometry">
+              <mxPoint x="485" y="730" as="sourcePoint" />
+              <mxPoint as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="user-google-sign-in-flowchart/profile-to-linked" id="google-sign-in-flow-profile-to-linked">
+          <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-request-profile" target="google-sign-in-flow-linked-profile-found" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="425" y="884.9999999999998" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="Yes" petakerjaKey="user-google-sign-in-flowchart/linked-yes" id="google-sign-in-flow-linked-yes">
+          <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-linked-profile-found" target="google-sign-in-flow-load-linked-profile" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="365" y="919.9999999999998" as="sourcePoint" />
+              <mxPoint as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="No" petakerjaKey="user-google-sign-in-flowchart/linked-no" id="google-sign-in-flow-linked-no">
+          <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;edgeStyle=orthogonalEdgeStyle;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-linked-profile-found" target="google-sign-in-flow-matching-email-found" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="485" y="919.9999999999998" as="sourcePoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="Yes" petakerjaKey="user-google-sign-in-flowchart/email-yes" id="google-sign-in-flow-email-yes">
+          <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-matching-email-found" target="google-sign-in-flow-link-existing-profile" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="No" petakerjaKey="user-google-sign-in-flowchart/email-no" id="google-sign-in-flow-email-no">
+          <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-matching-email-found" target="google-sign-in-flow-create-new-profile" edge="1">
+            <mxGeometry x="-0.6509" relative="1" as="geometry">
+              <mxPoint x="925" y="956" as="targetPoint" />
+              <mxPoint as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="user-google-sign-in-flowchart/load-to-profile-result" id="google-sign-in-flow-load-to-profile-result">
+          <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;edgeStyle=orthogonalEdgeStyle;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-load-linked-profile" target="google-sign-in-flow-profile-obtained" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="user-google-sign-in-flowchart/link-to-profile-result" id="google-sign-in-flow-link-to-profile-result">
+          <mxCell style="orthogonalLoop=1;jettySize=auto;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;startFill=0;edgeStyle=orthogonalEdgeStyle;endArrow=classic;endFill=1;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-link-existing-profile" target="google-sign-in-flow-profile-obtained" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="673" y="1040" />
+                <mxPoint x="425" y="1040" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="user-google-sign-in-flowchart/create-to-profile-result" id="google-sign-in-flow-create-to-profile-result">
+          <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;edgeStyle=orthogonalEdgeStyle;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-create-new-profile" target="google-sign-in-flow-profile-obtained" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="868" y="1040" />
+                <mxPoint x="425" y="1040" />
+              </Array>
+              <mxPoint x="925" y="1004" as="sourcePoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="Yes" petakerjaKey="user-google-sign-in-flowchart/profile-success" id="google-sign-in-flow-profile-success">
+          <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-profile-obtained" target="google-sign-in-flow-return-profile" edge="1">
+            <mxGeometry x="-0.3311" y="-25" relative="1" as="geometry">
+              <mxPoint as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="No" petakerjaKey="user-google-sign-in-flowchart/profile-failure" id="google-sign-in-flow-profile-failure">
+          <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.561;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;edgeStyle=orthogonalEdgeStyle;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-profile-obtained" target="google-sign-in-flow-guest-state" edge="1">
+            <mxGeometry x="-0.9615" y="-20" relative="1" as="geometry">
+              <mxPoint as="offset" />
+              <Array as="points">
+                <mxPoint x="980" y="1130" />
+                <mxPoint x="980" y="690" />
+                <mxPoint x="726" y="690" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="user-google-sign-in-flowchart/return-to-state" id="google-sign-in-flow-return-to-state">
+          <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-return-profile" target="google-sign-in-flow-update-user-state" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="user-google-sign-in-flowchart/state-to-menu" id="google-sign-in-flow-state-to-menu">
+          <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-update-user-state" target="google-sign-in-flow-display-authenticated-menu" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="user-google-sign-in-flowchart/menu-to-end" id="google-sign-in-flow-menu-to-end">
+          <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-display-authenticated-menu" target="google-sign-in-flow-end" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="user-google-sign-in-flowchart/guest-to-end" id="google-sign-in-flow-guest-to-end">
+          <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;edgeStyle=orthogonalEdgeStyle;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-guest-state" target="google-sign-in-flow-end" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="960" y="559" />
+                <mxPoint x="960" y="1480" />
+              </Array>
+              <mxPoint x="150" y="1295" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="Active session found?" petakerjaKey="user-google-sign-in-flowchart/active-session-found" id="google-sign-in-flow-active-session-found">
+          <mxCell style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="google-sign-in-flow-layer">
+            <mxGeometry x="347.85" y="700" width="154.29" height="90" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="Linked profile found?" petakerjaKey="user-google-sign-in-flowchart/linked-profile-found" id="google-sign-in-flow-linked-profile-found">
+          <mxCell style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="google-sign-in-flow-layer">
+            <mxGeometry x="347.85" y="890" width="154.29" height="90" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="Create a new PetaKerja profile" petakerjaKey="user-google-sign-in-flowchart/create-new-profile" id="google-sign-in-flow-create-new-profile">
+          <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="google-sign-in-flow-layer">
+            <mxGeometry x="790" y="960" width="155" height="40" as="geometry" />
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

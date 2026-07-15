@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="Electron" agent="PetaKerja Architecture Explorer" version="27.0.2">
+  <diagram name="PetaKerja Monitor System Activity Logs - Polished" id="petakerja_flow_admin_monitor_activity">
+    <mxGraphModel dx="980" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="980" pageHeight="1200" math="0" shadow="0" background="light-dark(#fbfcfe,#0b1118)">
+      <root>
+        <mxCell id="admin-monitor-activity-flowchart-root" />
+        <mxCell id="admin-monitor-activity-flowchart-layer" parent="admin-monitor-activity-flowchart-root" />
+        <object id="admin-monitor-activity-flowchart-page-background" label="">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#fbfcfe,#0b1118);strokeColor=none;pointerEvents=0;locked=1;shadow=0;">
+            <mxGeometry as="geometry" x="0" y="0" width="980" height="1200" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-title" label="PetaKerja Administrator Monitor System Activity Logs Flow Chart">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=light-dark(#172033,#f3f6fb);fontSize=14;fontStyle=1;fontFamily=Arial;">
+            <mxGeometry as="geometry" x="120" y="18" width="740" height="38" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-subtitle" label="Current implementation: the latest 100 AI assistant usage events, not general server logs.">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=light-dark(#172033,#f3f6fb);fontSize=14;fontStyle=1;fontFamily=Arial;">
+            <mxGeometry as="geometry" x="100" y="58" width="780" height="30" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-precondition" label="Precondition: The Administrator is signed in, has the admin or owner role, and the Admin Dashboard is open.">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=light-dark(#475467,#c5cedb);fontSize=11;fontStyle=2;fontFamily=Arial;">
+            <mxGeometry as="geometry" x="100" y="92" width="780" height="32" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-start" label="Start" petakerjaKey="admin-monitor-activity-flowchart/start">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;fillColor=light-dark(#ecfdf3,#133221);strokeColor=light-dark(#1f7a4d,#72d6a1);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;fontStyle=1;">
+            <mxGeometry as="geometry" x="456.665" y="145" width="66.67" height="40" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-select-usage" label="Administrator selects the Usage section" petakerjaKey="admin-monitor-activity-flowchart/select-usage">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
+            <mxGeometry as="geometry" x="390" y="220" width="200" height="50" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-loading-state" label="Display the loading state" petakerjaKey="admin-monitor-activity-flowchart/loading-state">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
+            <mxGeometry as="geometry" x="400" y="305" width="180" height="50" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-request-activity" label="Request recent AI activity information" petakerjaKey="admin-monitor-activity-flowchart/request-activity">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
+            <mxGeometry as="geometry" x="380" y="390" width="220" height="50" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-retrieve-activity" label="Retrieve up to 100 recent AI usage events and calculate totals" petakerjaKey="admin-monitor-activity-flowchart/retrieve-activity">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
+            <mxGeometry as="geometry" x="360" y="475" width="260" height="65" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-request-successful" label="Request successful?" petakerjaKey="admin-monitor-activity-flowchart/request-successful">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=light-dark(#fff7df,#3a2e16);strokeColor=light-dark(#9a6700,#f4c95d);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;fontStyle=1;">
+            <mxGeometry as="geometry" x="430" y="580" width="120" height="70" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-request-error" label="Clear loading and display the dashboard loading error" petakerjaKey="admin-monitor-activity-flowchart/request-error">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#fff1f2,#3b1d22);strokeColor=light-dark(#b42318,#ff9b92);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
+            <mxGeometry as="geometry" x="680" y="585" width="220" height="60" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-store-activity" label="Store the activity rows and totals, then clear loading" petakerjaKey="admin-monitor-activity-flowchart/store-activity">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
+            <mxGeometry as="geometry" x="365" y="700" width="250" height="60" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-events-returned" label="Activity events returned?" petakerjaKey="admin-monitor-activity-flowchart/events-returned">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=light-dark(#fff7df,#3a2e16);strokeColor=light-dark(#9a6700,#f4c95d);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;fontStyle=1;">
+            <mxGeometry as="geometry" x="430" y="800" width="120" height="70" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-empty-state" label="Display No usage events yet" petakerjaKey="admin-monitor-activity-flowchart/empty-state">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#f3f4f6,#242933);strokeColor=light-dark(#667085,#aeb7c7);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
+            <mxGeometry as="geometry" x="90" y="805" width="200" height="60" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-display-activity" label="Display usage totals and the activity table" petakerjaKey="admin-monitor-activity-flowchart/display-activity">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ecfdf3,#133221);strokeColor=light-dark(#1f7a4d,#72d6a1);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;fontStyle=1;">
+            <mxGeometry as="geometry" x="375" y="900" width="230" height="60" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-end" label="End" petakerjaKey="admin-monitor-activity-flowchart/end">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;fillColor=light-dark(#ecfdf3,#133221);strokeColor=light-dark(#1f7a4d,#72d6a1);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;fontStyle=1;">
+            <mxGeometry as="geometry" x="456.665" y="1035" width="66.67" height="40" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-start-to-select" label="" petakerjaKey="admin-monitor-activity-flowchart/start-to-select">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" edge="1" source="admin-monitor-activity-flowchart-start" target="admin-monitor-activity-flowchart-select-usage" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-select-to-loading" label="" petakerjaKey="admin-monitor-activity-flowchart/select-to-loading">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" edge="1" source="admin-monitor-activity-flowchart-select-usage" target="admin-monitor-activity-flowchart-loading-state" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-loading-to-request" label="" petakerjaKey="admin-monitor-activity-flowchart/loading-to-request">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" edge="1" source="admin-monitor-activity-flowchart-loading-state" target="admin-monitor-activity-flowchart-request-activity" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-request-to-retrieve" label="" petakerjaKey="admin-monitor-activity-flowchart/request-to-retrieve">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" edge="1" source="admin-monitor-activity-flowchart-request-activity" target="admin-monitor-activity-flowchart-retrieve-activity" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-retrieve-to-result" label="" petakerjaKey="admin-monitor-activity-flowchart/retrieve-to-result">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" edge="1" source="admin-monitor-activity-flowchart-retrieve-activity" target="admin-monitor-activity-flowchart-request-successful" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-request-no" label="No" petakerjaKey="admin-monitor-activity-flowchart/request-no">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" edge="1" source="admin-monitor-activity-flowchart-request-successful" target="admin-monitor-activity-flowchart-request-error" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#b42318,#ff9b92);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-error-to-end" label="" petakerjaKey="admin-monitor-activity-flowchart/error-to-end">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" edge="1" source="admin-monitor-activity-flowchart-request-error" target="admin-monitor-activity-flowchart-end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#b42318,#ff9b92);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=1;exitY=0.5;entryX=1;entryY=0.35;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1">
+              <Array as="points">
+                <mxPoint x="930" y="615" />
+                <mxPoint x="930" y="1055" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-request-yes" label="Yes" petakerjaKey="admin-monitor-activity-flowchart/request-yes">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" edge="1" source="admin-monitor-activity-flowchart-request-successful" target="admin-monitor-activity-flowchart-store-activity" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-store-to-events" label="" petakerjaKey="admin-monitor-activity-flowchart/store-to-events">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" edge="1" source="admin-monitor-activity-flowchart-store-activity" target="admin-monitor-activity-flowchart-events-returned" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-events-no" label="No" petakerjaKey="admin-monitor-activity-flowchart/events-no">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" edge="1" source="admin-monitor-activity-flowchart-events-returned" target="admin-monitor-activity-flowchart-empty-state" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#667085,#aeb7c7);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0;exitY=0.5;entryX=1;entryY=0.5;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-empty-to-end" label="" petakerjaKey="admin-monitor-activity-flowchart/empty-to-end">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" edge="1" source="admin-monitor-activity-flowchart-empty-state" target="admin-monitor-activity-flowchart-end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#667085,#aeb7c7);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0;exitY=0.5;entryX=0;entryY=0.35;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1">
+              <Array as="points">
+                <mxPoint x="50" y="835" />
+                <mxPoint x="50" y="1055" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-events-yes" label="Yes" petakerjaKey="admin-monitor-activity-flowchart/events-yes">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" edge="1" source="admin-monitor-activity-flowchart-events-returned" target="admin-monitor-activity-flowchart-display-activity" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#1f7a4d,#72d6a1);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-display-to-end" label="" petakerjaKey="admin-monitor-activity-flowchart/display-to-end">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" edge="1" source="admin-monitor-activity-flowchart-display-activity" target="admin-monitor-activity-flowchart-end" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#1f7a4d,#72d6a1);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-note-1" label="The Usage section reads public.ai_usage_events and calculates request, error, token and estimated-cost totals.">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=light-dark(#475467,#c5cedb);fontSize=11;fontStyle=2;fontFamily=Arial;">
+            <mxGeometry as="geometry" x="80" y="1118" width="820" height="24" />
+          </mxCell>
+        </object>
+        <object id="admin-monitor-activity-flowchart-note-2" label="General server logs and public.ai_admin_audit_logs are not displayed by this use case.">
+          <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=light-dark(#475467,#c5cedb);fontSize=11;fontStyle=2;fontFamily=Arial;">
+            <mxGeometry as="geometry" x="80" y="1142" width="820" height="24" />
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

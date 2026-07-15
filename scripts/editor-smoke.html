@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>PetaKerja editor smoke test</title>
+</head>
+<body>
+  <pre id="result">Running...</pre>
+  <script src="../architecture-data.js"></script>
+  <script src="../translations.js"></script>
+  <script src="../diagram-assets.js"></script>
+  <script src="../vendor/drawio/js/deflate/pako.min.js"></script>
+  <script src="../editor-core.js"></script>
+  <script>
+    (async function () {
+      const output = document.getElementById('result');
+      try {
+        const params = new URLSearchParams(location.search);
+        const source = params.get('source');
+        if (!source) throw new Error('Pass ?source= followed by a same-origin .drawio fixture.');
+        const response = await fetch(source, { cache: 'no-store' });
+        if (!response.ok) throw new Error(`HTTP ${response.status} for ${source}`);
+        let xml = await response.text();
+        const mutation = params.get('mutate');
+        if (mutation) {
+          const documentNode = new DOMParser().parseFromString(xml, 'application/xml');
+          const parserError = documentNode.querySelector('parsererror');
+          if (parserError) throw new Error(parserError.textContent || 'Invalid fixture XML.');
+          const cells = [...documentNode.querySelectorAll('mxCell')];
+          const rootClass = cells.find((cell) => cell.id === 'class_4');
+          if (mutation === 'rename' && rootClass) rootClass.setAttribute('value', 'RenamedIdentity');
+          if (mutation === 'delete' && rootClass) rootClass.remove();
+          if (mutation === 'dangling') cells.find((cell) => cell.getAttribute('edge') === '1')?.removeAttribute('target');
+          if (mutation === 'reverse-extend') {
+            const edge = cells.find((cell) => cell.getAttribute('edge') === '1' && /extend/i.test(cell.getAttribute('value') || ''));
+            if (edge) {
+              const source = edge.getAttribute('source');
+              edge.setAttribute('source', edge.getAttribute('target') || '');
+              edge.setAttribute('target', source || '');
+            }
+          }
+          if (mutation === 'geometry' && rootClass) {
+            const geometry = rootClass.querySelector('mxGeometry');
+            geometry?.setAttribute('x', String(Number(geometry.getAttribute('x') || 0) + 40));
+          }
+          xml = new XMLSerializer().serializeToString(documentNode);
+        }
+        const manifests = PETAKERJA_EDITOR.buildCanonicalManifests(
+          PETAKERJA_ARCHITECTURE,
+          PETAKERJA_DIAGRAM_ASSETS,
+          PETAKERJA_TRANSLATIONS,
+        );
+        const analysis = PETAKERJA_EDITOR.analyseXML(xml, manifests, {});
+        const result = {
+          fatal: analysis.fatal,
+          mutation: mutation || null,
+          pages: analysis.pages.map((page) => ({
+            id: page.id,
+            name: page.name,
+            diagramId: page.diagramId,
+            componentCount: page.componentCount,
+            relationshipCount: page.relationshipCount,
+            detection: page.detection,
+            counts: page.counts,
+            issues: page.issues.reduce((summary, entry) => {
+              summary[entry.ruleId] = (summary[entry.ruleId] || 0) + 1;
+              return summary;
+            }, {}),
+            issueCells: page.issues.filter((entry) => ['renamed-component', 'ambiguous-component', 'unmapped-component'].includes(entry.ruleId))
+              .map((entry) => ({ ruleId: entry.ruleId, cellIds: entry.cellIds, message: entry.message.en })),
+          })),
+        };
+        document.body.dataset.status = analysis.fatal ? 'failed' : 'passed';
+        output.textContent = JSON.stringify(result, null, 2);
+      } catch (error) {
+        document.body.dataset.status = 'failed';
+        output.textContent = JSON.stringify({ fatal: true, error: error.message }, null, 2);
+      }
+    }());
+  </script>
+</body>
+</html>

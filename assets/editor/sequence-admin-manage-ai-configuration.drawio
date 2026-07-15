@@ -1,0 +1,534 @@
+<mxfile host="Electron" agent="PetaKerja Architecture Explorer" version="27.0.2">
+  <diagram name="Manage AI Chatbot Configuration" id="petakerja_admin_manage_ai_configuration_sequence">
+    <mxGraphModel dx="1600" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="admin-manage-ai-configuration-sequence-root" />
+        <mxCell id="admin-manage-ai-configuration-sequence-layer" parent="admin-manage-ai-configuration-sequence-root" />
+        <mxCell id="admin-manage-ai-configuration-background" parent="admin-manage-ai-configuration-sequence-layer" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;locked=1;pointerEvents=0;">
+          <mxGeometry as="geometry" x="0" y="0" width="1600" height="1100" />
+        </mxCell>
+        <object label="PetaKerja Administrator Manage AI Chatbot Configuration Sequence" id="admin-manage-ai-configuration-title" petakerjaKey="admin-manage-ai-configuration-sequence/title">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=18;fontStyle=1;" vertex="1">
+            <mxGeometry as="geometry" x="390" y="20" width="820" height="30" />
+          </mxCell>
+        </object>
+        <object label="Administrator" id="admin-manage-ai-configuration-participant-administrator" petakerjaKey="admin-manage-ai-configuration-sequence/participant-administrator">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeColor=light-dark(#467dfe, #ededed);gradientColor=light-dark(#447af9, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="65" y="72" width="20" height="40" />
+          </mxCell>
+        </object>
+        <object label="" id="admin-manage-ai-configuration-activation-administrator" petakerjaKey="admin-manage-ai-configuration-sequence/participant-administrator-activation">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="70" y="130" width="10" height="965" />
+          </mxCell>
+        </object>
+        <object label="PetaKerja Admin UI" id="admin-manage-ai-configuration-participant-ui" petakerjaKey="admin-manage-ai-configuration-sequence/participant-ui">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
+            <mxGeometry as="geometry" x="225" y="70" width="100" height="60" />
+          </mxCell>
+        </object>
+        <object label="" id="admin-manage-ai-configuration-activation-ui" petakerjaKey="admin-manage-ai-configuration-sequence/participant-ui-activation">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="270" y="130" width="10" height="965" />
+          </mxCell>
+        </object>
+        <object label="&lt;font style=&quot;font-size: 9px;&quot;&gt;AdminDashboard&lt;br&gt;Manager&lt;/font&gt;" id="admin-manage-ai-configuration-participant-manager" petakerjaKey="admin-manage-ai-configuration-sequence/participant-manager">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
+            <mxGeometry as="geometry" x="425" y="70" width="100" height="60" />
+          </mxCell>
+        </object>
+        <object label="" id="admin-manage-ai-configuration-activation-manager" petakerjaKey="admin-manage-ai-configuration-sequence/participant-manager-activation">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="470" y="130" width="10" height="965" />
+          </mxCell>
+        </object>
+        <object label="Admin API Client&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;aiProviderApi.ts&lt;/font&gt;&lt;/div&gt;" id="admin-manage-ai-configuration-participant-client" petakerjaKey="admin-manage-ai-configuration-sequence/participant-client">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
+            <mxGeometry as="geometry" x="625" y="70" width="100" height="60" />
+          </mxCell>
+        </object>
+        <object label="" id="admin-manage-ai-configuration-activation-client" petakerjaKey="admin-manage-ai-configuration-sequence/participant-client-activation">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="670" y="130" width="10" height="965" />
+          </mxCell>
+        </object>
+        <object label="Admin AI Providers API&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;/api/admin/ai/providers*&lt;/font&gt;&lt;/div&gt;" id="admin-manage-ai-configuration-participant-api" petakerjaKey="admin-manage-ai-configuration-sequence/participant-api">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
+            <mxGeometry as="geometry" x="825" y="70" width="100" height="60" />
+          </mxCell>
+        </object>
+        <object label="" id="admin-manage-ai-configuration-activation-api" petakerjaKey="admin-manage-ai-configuration-sequence/participant-api-activation">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="870" y="130" width="10" height="965" />
+          </mxCell>
+        </object>
+        <object label="Better Auth Session" id="admin-manage-ai-configuration-participant-session" petakerjaKey="admin-manage-ai-configuration-sequence/participant-session">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
+            <mxGeometry as="geometry" x="1010" y="70" width="100" height="60" />
+          </mxCell>
+        </object>
+        <object label="" id="admin-manage-ai-configuration-activation-session" petakerjaKey="admin-manage-ai-configuration-sequence/participant-session-activation">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="1055" y="130" width="10" height="965" />
+          </mxCell>
+        </object>
+        <object label="Supabase / PostgreSQL&lt;div&gt;&lt;font style=&quot;font-size: 7px;&quot;&gt;users · credentials · audit logs&lt;/font&gt;&lt;/div&gt;" id="admin-manage-ai-configuration-participant-database" petakerjaKey="admin-manage-ai-configuration-sequence/participant-database">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
+            <mxGeometry as="geometry" x="1210" y="70" width="100" height="60" />
+          </mxCell>
+        </object>
+        <object label="" id="admin-manage-ai-configuration-activation-database" petakerjaKey="admin-manage-ai-configuration-sequence/participant-database-activation">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="1255" y="130" width="10" height="965" />
+          </mxCell>
+        </object>
+        <object label="External AI Provider APIs" id="admin-manage-ai-configuration-participant-external" petakerjaKey="admin-manage-ai-configuration-sequence/participant-external">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
+            <mxGeometry as="geometry" x="1430" y="70" width="100" height="60" />
+          </mxCell>
+        </object>
+        <object label="" id="admin-manage-ai-configuration-activation-external" petakerjaKey="admin-manage-ai-configuration-sequence/participant-external-activation">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="1475" y="130" width="10" height="965" />
+          </mxCell>
+        </object>
+        <object label="alt" id="admin-manage-ai-configuration-fragment-access" petakerjaKey="admin-manage-ai-configuration-sequence/fragment-access">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="220" y="255" width="1320" height="310" />
+          </mxCell>
+        </object>
+        <object label="[administrator or owner]" id="admin-manage-ai-configuration-sequence-access-authorized" petakerjaKey="admin-manage-ai-configuration-sequence/access-authorized">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=8;" vertex="1">
+            <mxGeometry as="geometry" x="300" y="260" width="300" height="16" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="admin-manage-ai-configuration-sequence/divider-no-session" id="admin-manage-ai-configuration-sequence-divider-no-session">
+          <mxCell edge="1" parent="admin-manage-ai-configuration-sequence-layer" style="endArrow=none;dashed=1;html=1;rounded=0;strokeWidth=1;">
+            <mxGeometry as="geometry" relative="1">
+              <mxPoint x="220" y="470" as="sourcePoint" />
+              <mxPoint x="1540" y="470" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="[no active session]" id="admin-manage-ai-configuration-sequence-access-no-session" petakerjaKey="admin-manage-ai-configuration-sequence/access-no-session">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=8;" vertex="1">
+            <mxGeometry as="geometry" x="300" y="472" width="300" height="16" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="admin-manage-ai-configuration-sequence/divider-role-denied" id="admin-manage-ai-configuration-sequence-divider-role-denied">
+          <mxCell edge="1" parent="admin-manage-ai-configuration-sequence-layer" style="endArrow=none;dashed=1;html=1;rounded=0;strokeWidth=1;">
+            <mxGeometry as="geometry" relative="1">
+              <mxPoint x="220" y="515" as="sourcePoint" />
+              <mxPoint x="1540" y="515" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="[role not allowed]" id="admin-manage-ai-configuration-sequence-access-role-denied" petakerjaKey="admin-manage-ai-configuration-sequence/access-role-denied">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=8;" vertex="1">
+            <mxGeometry as="geometry" x="300" y="517" width="300" height="16" />
+          </mxCell>
+        </object>
+        <object label="alt" id="admin-manage-ai-configuration-fragment-capability" petakerjaKey="admin-manage-ai-configuration-sequence/fragment-capability">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="40" y="570" width="1500" height="525" />
+          </mxCell>
+        </object>
+        <object label="[administrator]" id="admin-manage-ai-configuration-sequence-capability-administrator" petakerjaKey="admin-manage-ai-configuration-sequence/capability-administrator">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=8;" vertex="1">
+            <mxGeometry as="geometry" x="120" y="574" width="300" height="16" />
+          </mxCell>
+        </object>
+        <object label="View only — owner role required for shared keys and model refresh." id="admin-manage-ai-configuration-administrator-read-only" petakerjaKey="admin-manage-ai-configuration-sequence/administrator-read-only">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontSize=8;fontStyle=2;" vertex="1">
+            <mxGeometry as="geometry" x="255" y="578" width="520" height="18" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="admin-manage-ai-configuration-sequence/divider-owner" id="admin-manage-ai-configuration-sequence-divider-owner">
+          <mxCell edge="1" parent="admin-manage-ai-configuration-sequence-layer" style="endArrow=none;dashed=1;html=1;rounded=0;strokeWidth=1;">
+            <mxGeometry as="geometry" relative="1">
+              <mxPoint x="40" y="610" as="sourcePoint" />
+              <mxPoint x="1540" y="610" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="[owner]" id="admin-manage-ai-configuration-sequence-capability-owner" petakerjaKey="admin-manage-ai-configuration-sequence/capability-owner">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=8;" vertex="1">
+            <mxGeometry as="geometry" x="120" y="612" width="300" height="16" />
+          </mxCell>
+        </object>
+        <object label="opt" id="admin-manage-ai-configuration-fragment-save-key" petakerjaKey="admin-manage-ai-configuration-sequence/fragment-save-key">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="220" y="625" width="1320" height="240" />
+          </mxCell>
+        </object>
+        <object label="[save platform key]" id="admin-manage-ai-configuration-sequence-save-key" petakerjaKey="admin-manage-ai-configuration-sequence/save-key">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=8;" vertex="1">
+            <mxGeometry as="geometry" x="300" y="628" width="300" height="16" />
+          </mxCell>
+        </object>
+        <object label="alt" id="admin-manage-ai-configuration-fragment-save-result" petakerjaKey="admin-manage-ai-configuration-sequence/fragment-save-result">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="450" y="764" width="1090" height="73" />
+          </mxCell>
+        </object>
+        <object label="[key saved]" id="admin-manage-ai-configuration-sequence-save-success" petakerjaKey="admin-manage-ai-configuration-sequence/save-success">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=8;" vertex="1">
+            <mxGeometry as="geometry" x="520" y="766" width="180" height="16" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="admin-manage-ai-configuration-sequence/divider-save-error" id="admin-manage-ai-configuration-sequence-divider-save-error">
+          <mxCell edge="1" parent="admin-manage-ai-configuration-sequence-layer" style="endArrow=none;dashed=1;html=1;rounded=0;strokeWidth=1;">
+            <mxGeometry as="geometry" relative="1">
+              <mxPoint x="450" y="800" as="sourcePoint" />
+              <mxPoint x="1540" y="800" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="[invalid provider, empty key or request failed]" id="admin-manage-ai-configuration-sequence-save-error" petakerjaKey="admin-manage-ai-configuration-sequence/save-error">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=8;" vertex="1">
+            <mxGeometry as="geometry" x="520" y="802" width="330" height="16" />
+          </mxCell>
+        </object>
+        <object label="opt" id="admin-manage-ai-configuration-fragment-refresh-models" petakerjaKey="admin-manage-ai-configuration-sequence/fragment-refresh-models">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="220" y="864" width="1320" height="231" />
+          </mxCell>
+        </object>
+        <object label="[refresh model lists]" id="admin-manage-ai-configuration-sequence-refresh-models" petakerjaKey="admin-manage-ai-configuration-sequence/refresh-models">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=8;" vertex="1">
+            <mxGeometry as="geometry" x="300" y="866" width="300" height="16" />
+          </mxCell>
+        </object>
+        <object label="loop" id="admin-manage-ai-configuration-fragment-provider-loop" petakerjaKey="admin-manage-ai-configuration-sequence/fragment-provider-loop">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="820" y="944" width="700" height="80" />
+          </mxCell>
+        </object>
+        <object label="[each provider supporting model fetching]" id="admin-manage-ai-configuration-sequence-provider-loop" petakerjaKey="admin-manage-ai-configuration-sequence/provider-loop">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=8;" vertex="1">
+            <mxGeometry as="geometry" x="900" y="946" width="360" height="16" />
+          </mxCell>
+        </object>
+        <object label="alt" id="admin-manage-ai-configuration-fragment-provider-result" petakerjaKey="admin-manage-ai-configuration-sequence/fragment-provider-result">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="835" y="948" width="680" height="74" />
+          </mxCell>
+        </object>
+        <object label="[refresh succeeded]" id="admin-manage-ai-configuration-sequence-provider-success" petakerjaKey="admin-manage-ai-configuration-sequence/provider-success">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=7;" vertex="1">
+            <mxGeometry as="geometry" x="910" y="950" width="220" height="16" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="admin-manage-ai-configuration-sequence/divider-provider-failure" id="admin-manage-ai-configuration-sequence-divider-provider-failure">
+          <mxCell edge="1" parent="admin-manage-ai-configuration-sequence-layer" style="endArrow=none;dashed=1;html=1;rounded=0;strokeWidth=1;">
+            <mxGeometry as="geometry" relative="1">
+              <mxPoint x="835" y="989" as="sourcePoint" />
+              <mxPoint x="1515" y="989" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="[refresh failed]" id="admin-manage-ai-configuration-sequence-provider-failure" petakerjaKey="admin-manage-ai-configuration-sequence/provider-failure">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=7;" vertex="1">
+            <mxGeometry as="geometry" x="910" y="991" width="220" height="16" />
+          </mxCell>
+        </object>
+        <object label="alt" id="admin-manage-ai-configuration-fragment-refresh-summary" petakerjaKey="admin-manage-ai-configuration-sequence/fragment-refresh-summary">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);" vertex="1">
+            <mxGeometry as="geometry" x="220" y="1050" width="1320" height="45" />
+          </mxCell>
+        </object>
+        <object label="[complete success]" id="admin-manage-ai-configuration-sequence-refresh-complete" petakerjaKey="admin-manage-ai-configuration-sequence/refresh-complete">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=6;" vertex="1">
+            <mxGeometry as="geometry" x="300" y="1051" width="190" height="16" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="admin-manage-ai-configuration-sequence/divider-refresh-partial" id="admin-manage-ai-configuration-sequence-divider-refresh-partial">
+          <mxCell edge="1" parent="admin-manage-ai-configuration-sequence-layer" style="endArrow=none;dashed=1;html=1;rounded=0;strokeWidth=1;">
+            <mxGeometry as="geometry" relative="1">
+              <mxPoint x="220" y="1066" as="sourcePoint" />
+              <mxPoint x="1540" y="1066" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="[partial provider failure]" id="admin-manage-ai-configuration-sequence-refresh-partial" petakerjaKey="admin-manage-ai-configuration-sequence/refresh-partial">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=6;" vertex="1">
+            <mxGeometry as="geometry" x="300" y="1067" width="220" height="16" />
+          </mxCell>
+        </object>
+        <object label="" petakerjaKey="admin-manage-ai-configuration-sequence/divider-refresh-request-error" id="admin-manage-ai-configuration-sequence-divider-refresh-request-error">
+          <mxCell edge="1" parent="admin-manage-ai-configuration-sequence-layer" style="endArrow=none;dashed=1;html=1;rounded=0;strokeWidth=1;">
+            <mxGeometry as="geometry" relative="1">
+              <mxPoint x="220" y="1080" as="sourcePoint" />
+              <mxPoint x="1540" y="1080" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object label="[request failed]" id="admin-manage-ai-configuration-sequence-refresh-request-error" petakerjaKey="admin-manage-ai-configuration-sequence/refresh-request-error">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=6;" vertex="1">
+            <mxGeometry as="geometry" x="300" y="1081" width="180" height="16" />
+          </mxCell>
+        </object>
+        <object label="Select the Admin Dashboard" id="admin-manage-ai-configuration-message-01" petakerjaKey="admin-manage-ai-configuration-sequence/message-01" simpleLabelEn="Select the Admin Dashboard" simpleLabelMs="Pilih Papan Pemuka Pentadbir" codeLabelEn="[data-dropdown-action=&quot;admin&quot;]" codeLabelMs="[data-dropdown-action=&quot;admin&quot;]">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=8;exitX=1;exitY=0.015544;exitPerimeter=0;entryX=0;entryY=0.015544;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-administrator" target="admin-manage-ai-configuration-activation-ui">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Open the administrator dashboard" id="admin-manage-ai-configuration-message-02" petakerjaKey="admin-manage-ai-configuration-sequence/message-02" simpleLabelEn="Open the administrator dashboard" simpleLabelMs="Buka papan pemuka pentadbir" codeLabelEn="AdminDashboardManager.open(true)" codeLabelMs="AdminDashboardManager.open(true)">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=8;exitX=1;exitY=0.036269;exitPerimeter=0;entryX=0;entryY=0.036269;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-ui" target="admin-manage-ai-configuration-activation-manager">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Request provider configuration" id="admin-manage-ai-configuration-message-03" petakerjaKey="admin-manage-ai-configuration-sequence/message-03" simpleLabelEn="Request provider configuration" simpleLabelMs="Minta konfigurasi penyedia" codeLabelEn="loadAdminData(); listAdminAIProviders()" codeLabelMs="loadAdminData(); listAdminAIProviders()">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=8;exitX=1;exitY=0.056995;exitPerimeter=0;entryX=0;entryY=0.056995;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-manager" target="admin-manage-ai-configuration-activation-client">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Send the provider-list request" id="admin-manage-ai-configuration-message-04" petakerjaKey="admin-manage-ai-configuration-sequence/message-04" simpleLabelEn="Send the provider-list request" simpleLabelMs="Hantar permintaan senarai penyedia" codeLabelEn="authenticatedFetch(&quot;/api/admin/ai/providers&quot;)" codeLabelMs="authenticatedFetch(&quot;/api/admin/ai/providers&quot;)">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=8;exitX=1;exitY=0.077720;exitPerimeter=0;entryX=0;entryY=0.077720;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-client" target="admin-manage-ai-configuration-activation-api">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Verify the active sign-in session" id="admin-manage-ai-configuration-message-05" petakerjaKey="admin-manage-ai-configuration-sequence/message-05" simpleLabelEn="Verify the active sign-in session" simpleLabelMs="Sahkan sesi log masuk aktif" codeLabelEn="requireAuth(); getAppSessionFromHeaders()" codeLabelMs="requireAuth(); getAppSessionFromHeaders()">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=8;exitX=1;exitY=0.098446;exitPerimeter=0;entryX=0;entryY=0.098446;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-api" target="admin-manage-ai-configuration-activation-session">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Return the verified user" id="admin-manage-ai-configuration-message-06" petakerjaKey="admin-manage-ai-configuration-sequence/message-06" simpleLabelEn="Return the verified user" simpleLabelMs="Pulangkan pengguna yang disahkan" codeLabelEn="req.user = session.user" codeLabelMs="req.user = session.user">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.119171;exitPerimeter=0;entryX=1;entryY=0.119171;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-session" target="admin-manage-ai-configuration-activation-api">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Check the administrator role" id="admin-manage-ai-configuration-message-07" petakerjaKey="admin-manage-ai-configuration-sequence/message-07" simpleLabelEn="Check the administrator role" simpleLabelMs="Semak peranan pentadbir" codeLabelEn="requireAdmin(); SELECT role FROM public.users" codeLabelMs="requireAdmin(); SELECT role FROM public.users">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=8;exitX=1;exitY=0.150259;exitPerimeter=0;entryX=0;entryY=0.150259;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-api" target="admin-manage-ai-configuration-activation-database">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Return the assigned role" id="admin-manage-ai-configuration-message-08" petakerjaKey="admin-manage-ai-configuration-sequence/message-08" simpleLabelEn="Return the assigned role" simpleLabelMs="Pulangkan peranan yang ditetapkan" codeLabelEn="{ role: admin | owner }" codeLabelMs="{ role: admin | owner }">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.170984;exitPerimeter=0;entryX=1;entryY=0.170984;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-database" target="admin-manage-ai-configuration-activation-api">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Retrieve platform provider configuration" id="admin-manage-ai-configuration-message-09" petakerjaKey="admin-manage-ai-configuration-sequence/message-09" simpleLabelEn="Retrieve platform provider configuration" simpleLabelMs="Dapatkan konfigurasi penyedia platform" codeLabelEn="SELECT platform credentials FROM ai_provider_credentials" codeLabelMs="SELECT platform credentials FROM ai_provider_credentials">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=8;exitX=1;exitY=0.191710;exitPerimeter=0;entryX=0;entryY=0.191710;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-api" target="admin-manage-ai-configuration-activation-database">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Return the saved provider configuration" id="admin-manage-ai-configuration-message-10" petakerjaKey="admin-manage-ai-configuration-sequence/message-10" simpleLabelEn="Return the saved provider configuration" simpleLabelMs="Pulangkan konfigurasi penyedia yang disimpan" codeLabelEn="platform credentials" codeLabelMs="platform credentials">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.212435;exitPerimeter=0;entryX=1;entryY=0.212435;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-database" target="admin-manage-ai-configuration-activation-api">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Prepare the provider status list" id="admin-manage-ai-configuration-message-11" petakerjaKey="admin-manage-ai-configuration-sequence/message-11" simpleLabelEn="Prepare the provider status list" simpleLabelMs="Sediakan senarai status penyedia" codeLabelEn="AI_PROVIDER_REGISTRY.map(provider =&gt; mergeCredential(provider))" codeLabelMs="AI_PROVIDER_REGISTRY.map(provider =&gt; mergeCredential(provider))">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.233161;exitPerimeter=0;entryX=1;entryY=0.233161;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-api" target="admin-manage-ai-configuration-activation-client">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Return provider information" id="admin-manage-ai-configuration-message-12" petakerjaKey="admin-manage-ai-configuration-sequence/message-12" simpleLabelEn="Return provider information" simpleLabelMs="Pulangkan maklumat penyedia" codeLabelEn="AdminProvidersResponse { providers }" codeLabelMs="AdminProvidersResponse { providers }">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.253886;exitPerimeter=0;entryX=1;entryY=0.253886;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-client" target="admin-manage-ai-configuration-activation-manager">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Provide configuration to the dashboard" id="admin-manage-ai-configuration-message-13" petakerjaKey="admin-manage-ai-configuration-sequence/message-13" simpleLabelEn="Provide configuration to the dashboard" simpleLabelMs="Berikan konfigurasi kepada papan pemuka" codeLabelEn="state.adminDashboard.providers = providers.providers" codeLabelMs="state.adminDashboard.providers = providers.providers">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.274611;exitPerimeter=0;entryX=1;entryY=0.274611;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-manager" target="admin-manage-ai-configuration-activation-ui">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Select the AI Providers section" id="admin-manage-ai-configuration-message-14" petakerjaKey="admin-manage-ai-configuration-sequence/message-14" simpleLabelEn="Select the AI Providers section" simpleLabelMs="Pilih bahagian Penyedia AI" codeLabelEn="[data-admin-action=&quot;tab&quot;][data-tab=&quot;providers&quot;]" codeLabelMs="[data-admin-action=&quot;tab&quot;][data-tab=&quot;providers&quot;]">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=8;exitX=1;exitY=0.295337;exitPerimeter=0;entryX=0;entryY=0.295337;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-administrator" target="admin-manage-ai-configuration-activation-ui">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Open the AI Providers section" id="admin-manage-ai-configuration-message-15" petakerjaKey="admin-manage-ai-configuration-sequence/message-15" simpleLabelEn="Open the AI Providers section" simpleLabelMs="Buka bahagian Penyedia AI" codeLabelEn="activeTab = &quot;providers&quot;; renderProviders(user)" codeLabelMs="activeTab = &quot;providers&quot;; renderProviders(user)">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=8;exitX=1;exitY=0.316062;exitPerimeter=0;entryX=0;entryY=0.316062;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-ui" target="admin-manage-ai-configuration-activation-manager">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Display providers, keys and model status" id="admin-manage-ai-configuration-message-16" petakerjaKey="admin-manage-ai-configuration-sequence/message-16" simpleLabelEn="Display providers, keys and model status" simpleLabelMs="Paparkan penyedia, kunci dan status model" codeLabelEn=".admin-provider-table" codeLabelMs=".admin-provider-table">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.336788;exitPerimeter=0;entryX=1;entryY=0.336788;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-ui" target="admin-manage-ai-configuration-activation-administrator">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Request sign-in" id="admin-manage-ai-configuration-message-17" petakerjaKey="admin-manage-ai-configuration-sequence/message-17" simpleLabelEn="Request sign-in" simpleLabelMs="Minta pengguna log masuk" codeLabelEn="HTTP 401; requireAuth()" codeLabelMs="HTTP 401; requireAuth()">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.368912;exitPerimeter=0;entryX=1;entryY=0.368912;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-api" target="admin-manage-ai-configuration-activation-ui">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Display the sign-in prompt" id="admin-manage-ai-configuration-message-18" petakerjaKey="admin-manage-ai-configuration-sequence/message-18" simpleLabelEn="Display the sign-in prompt" simpleLabelMs="Paparkan prompt log masuk" codeLabelEn="AuthModalManager.openAuthPrompt()" codeLabelMs="AuthModalManager.openAuthPrompt()">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.385492;exitPerimeter=0;entryX=1;entryY=0.385492;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-ui" target="admin-manage-ai-configuration-activation-administrator">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Return administrator access required" id="admin-manage-ai-configuration-message-19" petakerjaKey="admin-manage-ai-configuration-sequence/message-19" simpleLabelEn="Return administrator access required" simpleLabelMs="Pulangkan keperluan akses pentadbir" codeLabelEn="HTTP 403; requireAdmin()" codeLabelMs="HTTP 403; requireAdmin()">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.415544;exitPerimeter=0;entryX=1;entryY=0.415544;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-api" target="admin-manage-ai-configuration-activation-ui">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Display administrator access required" id="admin-manage-ai-configuration-message-20" petakerjaKey="admin-manage-ai-configuration-sequence/message-20" simpleLabelEn="Display administrator access required" simpleLabelMs="Paparkan keperluan akses pentadbir" codeLabelEn="renderError(ADMIN_REQUIRED)" codeLabelMs="renderError(ADMIN_REQUIRED)">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.432124;exitPerimeter=0;entryX=1;entryY=0.432124;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-ui" target="admin-manage-ai-configuration-activation-administrator">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Select Save platform key" id="admin-manage-ai-configuration-message-21" petakerjaKey="admin-manage-ai-configuration-sequence/message-21" simpleLabelEn="Select Save platform key" simpleLabelMs="Pilih Simpan kunci platform" codeLabelEn="[data-admin-action=&quot;platform-key&quot;]" codeLabelMs="[data-admin-action=&quot;platform-key&quot;]">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=8;exitX=1;exitY=0.529534;exitPerimeter=0;entryX=0;entryY=0.529534;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-administrator" target="admin-manage-ai-configuration-activation-ui">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Open the platform-key form" id="admin-manage-ai-configuration-message-22" petakerjaKey="admin-manage-ai-configuration-sequence/message-22" simpleLabelEn="Open the platform-key form" simpleLabelMs="Buka borang kunci platform" codeLabelEn="openPlatformKeyModal(provider)" codeLabelMs="openPlatformKeyModal(provider)">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=8;exitX=1;exitY=0.547150;exitPerimeter=0;entryX=0;entryY=0.547150;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-ui" target="admin-manage-ai-configuration-activation-manager">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Enter and submit the platform key" id="admin-manage-ai-configuration-message-23" petakerjaKey="admin-manage-ai-configuration-sequence/message-23" simpleLabelEn="Enter and submit the platform key" simpleLabelMs="Masukkan dan hantar kunci platform" codeLabelEn="#admin-platform-key-form submit" codeLabelMs="#admin-platform-key-form submit">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=8;exitX=1;exitY=0.564767;exitPerimeter=0;entryX=0;entryY=0.564767;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-administrator" target="admin-manage-ai-configuration-activation-ui">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Process the platform key" id="admin-manage-ai-configuration-message-24" petakerjaKey="admin-manage-ai-configuration-sequence/message-24" simpleLabelEn="Process the platform key" simpleLabelMs="Proses kunci platform" codeLabelEn="form submit handler" codeLabelMs="form submit handler">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=8;exitX=1;exitY=0.582383;exitPerimeter=0;entryX=0;entryY=0.582383;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-ui" target="admin-manage-ai-configuration-activation-manager">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Save the shared platform key" id="admin-manage-ai-configuration-message-25" petakerjaKey="admin-manage-ai-configuration-sequence/message-25" simpleLabelEn="Save the shared platform key" simpleLabelMs="Simpan kunci platform dikongsi" codeLabelEn="saveAdminPlatformKey(provider.id, apiKey)" codeLabelMs="saveAdminPlatformKey(provider.id, apiKey)">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=8;exitX=1;exitY=0.600000;exitPerimeter=0;entryX=0;entryY=0.600000;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-manager" target="admin-manage-ai-configuration-activation-client">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Send the key-save request" id="admin-manage-ai-configuration-message-26" petakerjaKey="admin-manage-ai-configuration-sequence/message-26" simpleLabelEn="Send the key-save request" simpleLabelMs="Hantar permintaan simpan kunci" codeLabelEn="POST /api/admin/ai/providers/:providerId/platform-key" codeLabelMs="POST /api/admin/ai/providers/:providerId/platform-key">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=8;exitX=1;exitY=0.617617;exitPerimeter=0;entryX=0;entryY=0.617617;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-client" target="admin-manage-ai-configuration-activation-api">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Verify ownership, encrypt and store the key" id="admin-manage-ai-configuration-message-27" petakerjaKey="admin-manage-ai-configuration-sequence/message-27" simpleLabelEn="Verify ownership, encrypt and store the key" simpleLabelMs="Sahkan pemilik, enkripsi dan simpan kunci" codeLabelEn="req.adminRole === &quot;owner&quot;; encryptSecret(apiKey); upsert ai_provider_credentials; insert ai_admin_audit_logs" codeLabelMs="req.adminRole === &quot;owner&quot;; encryptSecret(apiKey); upsert ai_provider_credentials; insert ai_admin_audit_logs">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=8;exitX=1;exitY=0.635233;exitPerimeter=0;entryX=0;entryY=0.635233;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-api" target="admin-manage-ai-configuration-activation-database">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Confirm the credential and audit record" id="admin-manage-ai-configuration-message-28" petakerjaKey="admin-manage-ai-configuration-sequence/message-28" simpleLabelEn="Confirm the credential and audit record" simpleLabelMs="Sahkan kelayakan dan rekod audit" codeLabelEn="credential + platform_key_saved audit stored" codeLabelMs="credential + platform_key_saved audit stored">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.652850;exitPerimeter=0;entryX=1;entryY=0.652850;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-database" target="admin-manage-ai-configuration-activation-api">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Return key saved" id="admin-manage-ai-configuration-message-29" petakerjaKey="admin-manage-ai-configuration-sequence/message-29" simpleLabelEn="Return key saved" simpleLabelMs="Pulangkan kunci yang disimpan" codeLabelEn="{ ok: true }" codeLabelMs="{ ok: true }">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.668394;exitPerimeter=0;entryX=1;entryY=0.668394;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-api" target="admin-manage-ai-configuration-activation-client">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Provide the save success" id="admin-manage-ai-configuration-message-30" petakerjaKey="admin-manage-ai-configuration-sequence/message-30" simpleLabelEn="Provide the save success" simpleLabelMs="Berikan kejayaan simpanan" codeLabelEn="saveAdminPlatformKey() resolved" codeLabelMs="saveAdminPlatformKey() resolved">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.683938;exitPerimeter=0;entryX=1;entryY=0.683938;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-client" target="admin-manage-ai-configuration-activation-manager">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Return the validation or request error" id="admin-manage-ai-configuration-message-31" petakerjaKey="admin-manage-ai-configuration-sequence/message-31" simpleLabelEn="Return the validation or request error" simpleLabelMs="Pulangkan ralat pengesahan atau permintaan" codeLabelEn="HTTP 400 | 403 | 500" codeLabelMs="HTTP 400 | 403 | 500">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.709845;exitPerimeter=0;entryX=1;entryY=0.709845;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-api" target="admin-manage-ai-configuration-activation-client">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Provide the save error" id="admin-manage-ai-configuration-message-32" petakerjaKey="admin-manage-ai-configuration-sequence/message-32" simpleLabelEn="Provide the save error" simpleLabelMs="Berikan ralat simpanan" codeLabelEn="saveAdminPlatformKey() rejected" codeLabelMs="saveAdminPlatformKey() rejected">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.725389;exitPerimeter=0;entryX=1;entryY=0.725389;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-client" target="admin-manage-ai-configuration-activation-manager">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Refresh the displayed provider information" id="admin-manage-ai-configuration-message-33" petakerjaKey="admin-manage-ai-configuration-sequence/message-33" simpleLabelEn="Refresh the displayed provider information" simpleLabelMs="Segarkan maklumat penyedia yang dipaparkan" codeLabelEn="loadAdminData(); render(statusMessage)" codeLabelMs="loadAdminData(); render(statusMessage)">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.739896;exitPerimeter=0;entryX=1;entryY=0.739896;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-manager" target="admin-manage-ai-configuration-activation-ui">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Display the save outcome" id="admin-manage-ai-configuration-message-34" petakerjaKey="admin-manage-ai-configuration-sequence/message-34" simpleLabelEn="Display the save outcome" simpleLabelMs="Paparkan hasil simpanan" codeLabelEn="Platform key saved. | setFormStatus(error)" codeLabelMs="Platform key saved. | setFormStatus(error)">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.754404;exitPerimeter=0;entryX=1;entryY=0.754404;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-ui" target="admin-manage-ai-configuration-activation-administrator">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Select Refresh all models" id="admin-manage-ai-configuration-message-35" petakerjaKey="admin-manage-ai-configuration-sequence/message-35" simpleLabelEn="Select Refresh all models" simpleLabelMs="Pilih Segarkan semua model" codeLabelEn="[data-admin-action=&quot;refresh-models&quot;]" codeLabelMs="[data-admin-action=&quot;refresh-models&quot;]">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=8;exitX=1;exitY=0.766839;exitPerimeter=0;entryX=0;entryY=0.766839;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-administrator" target="admin-manage-ai-configuration-activation-ui">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Start the model refresh" id="admin-manage-ai-configuration-message-36" petakerjaKey="admin-manage-ai-configuration-sequence/message-36" simpleLabelEn="Start the model refresh" simpleLabelMs="Mulakan penyegaran model" codeLabelEn="handleRefreshAllModels()" codeLabelMs="handleRefreshAllModels()">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=8;exitX=1;exitY=0.781347;exitPerimeter=0;entryX=0;entryY=0.781347;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-ui" target="admin-manage-ai-configuration-activation-manager">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Request all provider model lists" id="admin-manage-ai-configuration-message-37" petakerjaKey="admin-manage-ai-configuration-sequence/message-37" simpleLabelEn="Request all provider model lists" simpleLabelMs="Minta semua senarai model penyedia" codeLabelEn="adminRefreshAllModels()" codeLabelMs="adminRefreshAllModels()">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=8;exitX=1;exitY=0.795855;exitPerimeter=0;entryX=0;entryY=0.795855;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-manager" target="admin-manage-ai-configuration-activation-client">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Send the refresh request" id="admin-manage-ai-configuration-message-38" petakerjaKey="admin-manage-ai-configuration-sequence/message-38" simpleLabelEn="Send the refresh request" simpleLabelMs="Hantar permintaan penyegaran" codeLabelEn="POST /api/admin/ai/providers/refresh-models" codeLabelMs="POST /api/admin/ai/providers/refresh-models">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=8;exitX=1;exitY=0.810363;exitPerimeter=0;entryX=0;entryY=0.810363;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-client" target="admin-manage-ai-configuration-activation-api">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Verify ownership and read provider credentials" id="admin-manage-ai-configuration-message-39" petakerjaKey="admin-manage-ai-configuration-sequence/message-39" simpleLabelEn="Verify ownership and read provider credentials" simpleLabelMs="Sahkan pemilik dan baca kelayakan penyedia" codeLabelEn="req.adminRole === &quot;owner&quot;; SELECT platform credentials" codeLabelMs="req.adminRole === &quot;owner&quot;; SELECT platform credentials">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=8;exitX=1;exitY=0.824870;exitPerimeter=0;entryX=0;entryY=0.824870;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-api" target="admin-manage-ai-configuration-activation-database">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Return the provider credentials" id="admin-manage-ai-configuration-message-40" petakerjaKey="admin-manage-ai-configuration-sequence/message-40" simpleLabelEn="Return the provider credentials" simpleLabelMs="Pulangkan kelayakan penyedia" codeLabelEn="encrypted_api_key + custom_headers" codeLabelMs="encrypted_api_key + custom_headers">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.839378;exitPerimeter=0;entryX=1;entryY=0.839378;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-database" target="admin-manage-ai-configuration-activation-api">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Request a provider model list" id="admin-manage-ai-configuration-message-41" petakerjaKey="admin-manage-ai-configuration-sequence/message-41" simpleLabelEn="Request a provider model list" simpleLabelMs="Minta senarai model penyedia" codeLabelEn="fetchOpenAIModels(getProviderFetchConfig(provider.id))" codeLabelMs="fetchOpenAIModels(getProviderFetchConfig(provider.id))">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=8;exitX=1;exitY=0.853886;exitPerimeter=0;entryX=0;entryY=0.853886;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-api" target="admin-manage-ai-configuration-activation-external">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Return the model list" id="admin-manage-ai-configuration-message-42" petakerjaKey="admin-manage-ai-configuration-sequence/message-42" simpleLabelEn="Return the model list" simpleLabelMs="Pulangkan senarai model" codeLabelEn="models[]" codeLabelMs="models[]">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.868394;exitPerimeter=0;entryX=1;entryY=0.868394;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-external" target="admin-manage-ai-configuration-activation-api">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Store refreshed model information" id="admin-manage-ai-configuration-message-43" petakerjaKey="admin-manage-ai-configuration-sequence/message-43" simpleLabelEn="Store refreshed model information" simpleLabelMs="Simpan maklumat model yang disegarkan" codeLabelEn="upsert fetched_models/models_fetched_at; ModelCache.invalidate(...)" codeLabelMs="upsert fetched_models/models_fetched_at; ModelCache.invalidate(...)">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=8;exitX=1;exitY=0.882902;exitPerimeter=0;entryX=0;entryY=0.882902;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-api" target="admin-manage-ai-configuration-activation-database">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Return a provider error" id="admin-manage-ai-configuration-message-44" petakerjaKey="admin-manage-ai-configuration-sequence/message-44" simpleLabelEn="Return a provider error" simpleLabelMs="Pulangkan ralat penyedia" codeLabelEn="provider API error" codeLabelMs="ralat API penyedia">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.897409;exitPerimeter=0;entryX=1;entryY=0.897409;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-external" target="admin-manage-ai-configuration-activation-api">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Record the provider fetch error" id="admin-manage-ai-configuration-message-45" petakerjaKey="admin-manage-ai-configuration-sequence/message-45" simpleLabelEn="Record the provider fetch error" simpleLabelMs="Rekod ralat pengambilan penyedia" codeLabelEn="UPDATE ai_provider_credentials SET fetch_error = errMsg" codeLabelMs="UPDATE ai_provider_credentials SET fetch_error = errMsg">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=8;exitX=1;exitY=0.911917;exitPerimeter=0;entryX=0;entryY=0.911917;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-api" target="admin-manage-ai-configuration-activation-database">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Return the refresh results" id="admin-manage-ai-configuration-message-46" petakerjaKey="admin-manage-ai-configuration-sequence/message-46" simpleLabelEn="Return the refresh results" simpleLabelMs="Pulangkan hasil penyegaran" codeLabelEn="AdminRefreshModelsResult { results }" codeLabelMs="AdminRefreshModelsResult { results }">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.925389;exitPerimeter=0;entryX=1;entryY=0.925389;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-api" target="admin-manage-ai-configuration-activation-client">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Provide the refresh summary" id="admin-manage-ai-configuration-message-47" petakerjaKey="admin-manage-ai-configuration-sequence/message-47" simpleLabelEn="Provide the refresh summary" simpleLabelMs="Berikan ringkasan penyegaran" codeLabelEn="succeeded + failed counts" codeLabelMs="bilangan berjaya + gagal">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.937824;exitPerimeter=0;entryX=1;entryY=0.937824;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-client" target="admin-manage-ai-configuration-activation-manager">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Update the provider table" id="admin-manage-ai-configuration-message-48" petakerjaKey="admin-manage-ai-configuration-sequence/message-48" simpleLabelEn="Update the provider table" simpleLabelMs="Kemas kini jadual penyedia" codeLabelEn="loadAdminData(); render(msg)" codeLabelMs="loadAdminData(); render(msg)">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.950259;exitPerimeter=0;entryX=1;entryY=0.950259;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-manager" target="admin-manage-ai-configuration-activation-ui">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Display successful refresh" id="admin-manage-ai-configuration-message-49" petakerjaKey="admin-manage-ai-configuration-sequence/message-49" simpleLabelEn="Display successful refresh" simpleLabelMs="Paparkan penyegaran berjaya" codeLabelEn="all results.ok === true" codeLabelMs="all results.ok === true">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.962694;exitPerimeter=0;entryX=1;entryY=0.962694;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-ui" target="admin-manage-ai-configuration-activation-administrator">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Display provider failures" id="admin-manage-ai-configuration-message-50" petakerjaKey="admin-manage-ai-configuration-sequence/message-50" simpleLabelEn="Display provider failures" simpleLabelMs="Paparkan kegagalan penyedia" codeLabelEn="some results.ok === false" codeLabelMs="some results.ok === false">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.977202;exitPerimeter=0;entryX=1;entryY=0.977202;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-ui" target="admin-manage-ai-configuration-activation-administrator">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="Display the refresh request error" id="admin-manage-ai-configuration-message-51" petakerjaKey="admin-manage-ai-configuration-sequence/message-51" simpleLabelEn="Display the refresh request error" simpleLabelMs="Paparkan ralat permintaan penyegaran" codeLabelEn="adminRefreshAllModels() catch" codeLabelMs="adminRefreshAllModels() catch">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=8;exitX=0;exitY=0.991710;exitPerimeter=0;entryX=1;entryY=0.991710;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-ai-configuration-activation-ui" target="admin-manage-ai-configuration-activation-administrator">
+            <mxGeometry as="geometry" relative="1" />
+          </mxCell>
+        </object>
+        <object label="&lt;b&gt;Implementation note:&lt;/b&gt; admin and owner may view providers; only owner may save shared keys or refresh models. The refresh path expects &lt;i&gt;custom_headers, fetched_models, models_fetched_at&lt;/i&gt; and &lt;i&gt;fetch_error&lt;/i&gt;, which are absent from the current live &lt;i&gt;ai_provider_credentials&lt;/i&gt; snapshot. Individual user model preferences are outside this use case." id="admin-manage-ai-configuration-implementation-note" petakerjaKey="admin-manage-ai-configuration-sequence/implementation-note">
+          <mxCell parent="admin-manage-ai-configuration-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=8;fontStyle=2;" vertex="1">
+            <mxGeometry as="geometry" x="220" y="52" width="1320" height="16" />
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
