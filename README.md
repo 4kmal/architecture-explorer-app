@@ -9,7 +9,7 @@ Dokumentasi seni bina offline-first yang dibina dengan vanilla HTML, CSS dan Jav
 ## Cara membuka / How to open
 
 1. Dwiklik `Start-Explorer.cmd` untuk mod editor penuh. / Double-click `Start-Explorer.cmd` for the full editor mode.
-2. The launcher uses the first free loopback port from `8080` to `8089`, records runtime metadata under the ignored `.runtime/` folder, and opens the correct URL automatically.
+2. The launcher uses loopback port `8082` by default, records runtime metadata under the ignored `.runtime/` folder, and opens the correct URL automatically. Set `PETAKERJA_EXPLORER_PORT` to use another port.
 3. Atau jalankan pelayan statik dari folder ini: / Or run a static server from this folder:
 
    ```powershell
@@ -33,6 +33,7 @@ Jika butang `Edit` dibuka dalam mod `file://`, Explorer kini memaparkan arahan p
 - Pada tablet dan telefon, gunakan tab `Rajah/Diagram`, `UI` dan `Butiran/Details`. / On tablets and phones, use the Diagram, UI and Details tabs.
 - Pilih `Edit` untuk membuka editor Draw.io penuh. Perubahan dihantar kepada validator selepas kira-kira 300 ms; perubahan geometri tidak dianggap sebagai ralat logik. / Choose `Edit` to open the full Draw.io editor. Changes reach the validator after about 300 ms; geometry-only changes are not treated as logical errors.
 - Returning to `View` commits the active text edit, exports the current Draw.io page as SVG, sanitises it, and immediately replaces the bundled canvas. The latest valid SVG remains visible if a later export fails.
+- Registered canonical diagrams also provide **Save to workspace** in Edit or Agent mode. The local host writes the current XML and SVG atomically, keeps ignored backups, and uses SHA-256 revisions to prevent one browser from silently overwriting a newer save. Reloading Chrome or Edge hydrates the same saved workspace layout.
 - Seret fail `.drawio` atau `.xml` ke Explorer untuk preflight halaman dan pemetaan semantik. Fail asal tidak diubah; gunakan `Simpan sebagai / Save as` untuk memuat turun salinan. / Drag a `.drawio` or `.xml` file onto the Explorer for page and semantic-mapping preflight. The original is untouched; use Save as to download a copy.
 - Padanan menggunakan `petakerjaKey`, ID sel, nama teknikal/stereotaip dan konteks hubungan. Isu UML memberi amaran tetapi tidak menyekat editor kecuali XML tidak boleh dibaca. / Matching uses `petakerjaKey`, cell IDs, technical names/stereotypes and relationship context. UML issues warn without blocking the editor unless the XML cannot be read.
 - Import preflight detects canonical PetaKerja Use Case, Domain, Implementation, Supabase and Flow Chart pages, or safely classifies generic class, use-case, ERD, activity, sequence and flow-chart pages. Ambiguous results require confirmation; unrelated pages remain session-only and receive no false PetaKerja UI mappings.
@@ -130,13 +131,13 @@ python .\scripts\build-admin-dashboard-sequences.py
 python .\scripts\build-diagram-assets.py
 ```
 
-Sumber / Sources:
+Portable sources / Sumber mudah alih:
 
-- `TTTM4172 Usulan Projek\Akmal\Diagrams\Class Diagram PetaKerja.drawio`: unchanged reorganized and corrected Core Domain source used by the Original view. `Class Diagram PetaKerja - Polished.drawio` is the canonical presentation source.
-- `codex\Class Diagram PetaKerja.drawio`: implementation page 2 and full Supabase page 3.
-- `Rajah_Kes_Guna_PetaKerja.drawio`: use-case page 1 only.
-- `TTTM4172 Usulan Projek\Akmal\Diagrams\Flow Chart PetaKerja - Sign in with Google.drawio`: unchanged corrected/reorganized source used by the Original view. `Flow Chart PetaKerja - Sign in with Google - Polished.drawio` applies the shared semantic flowchart palette without changing its geometry or logic.
-- `TTTM4172 Usulan Projek\Akmal\Diagrams\Flow Chart Template.drawio`: read-only visual source for the Administrator Manage Users flow chart. The generated diagram uses a `980×1200` page, separates empty and failure outcomes into outer lanes, and preserves the current read-only behavior.
+- `assets/editor/` contains every registered canonical Draw.io source used by Edit mode and workspace saving. No active generator depends on a Desktop, Semester or user-profile directory.
+- `assets/diagrams/` contains generated interactive SVG assets used by View mode.
+- `templates/Flow Chart Template.drawio` and `templates/Sequence Diagram Template.drawio` are the bundled visual templates used by the generators.
+- `exports/diagrams/` is the ignored local destination for report-ready Draw.io, SVG and PNG exports.
+- `workspace-manifest.json` is the single allowlist mapping writable diagram IDs to their repository-relative XML and SVG paths. Arbitrary imports remain session-only and download-only until deliberately registered.
 - `scripts\build-admin-manage-users-flowchart.py` and `scripts\build-admin-flowcharts.py`: generate the five verified original Administrator flow charts from the read-only template, validate branch coverage and reachability, and preserve their editor copies with the `-original.drawio` suffix.
 - `scripts\build-polished-admin-flowcharts.py`: applies the shared semantic palette and tidy presentation rules to all five Administrator flows without changing their labels, branches, stable keys or endpoints. It validates each graph, runs `drawio-ai validate --strict` and `drawio-ai audit`, exports report-ready Draw.io/SVG/PNG files beside the template, and makes the polished sources canonical in Edit mode.
 - `scripts\build-polished-core-variants.py`: creates the polished Core Domain and Google sign-in variants, preserves Original hashes, resolves only audited connector fan-ins, produces light report PNGs plus theme-aware Draw.io/SVG files, and publishes matching Original/Polished editor assets.
@@ -145,14 +146,14 @@ Sumber / Sources:
 - `assets\editor\class-domain-petakerja*.drawio` and `flowchart-user-google-sign-in*.drawio`: canonical polished sources and their unchanged Original copies. Both variants retain the same stable keys, UI hotspots and relationship manifests.
 - `assets\editor\flowchart-user-search-jobs*.drawio`, `flowchart-user-explore-3d-map*.drawio`, `flowchart-user-sign-out*.drawio`, `architecture-layered*.drawio` and `module-hierarchy*.drawio`: editable Original/Polished sources for the new User and Design variant folders. The older D2 SVGs remain reference artifacts and are not modified.
 - The optional development CLI is pinned to `drawio-ai-kit` v1.0.0: `npm.cmd install -g "github:sparklabx/drawio-ai-kit#v1.0.0"`. Its generic workflow and diagram-principle rules are used; cloud-provider and BPMN-specific rules are deliberately not applied to these UML-style flow charts.
-- `TTTM4172 Usulan Projek\Akmal\Diagrams\Sequence Diagram Template.drawio`: read-only visual source for all dedicated Google OAuth, Search Jobs, administrator-dashboard, map-exploration and Sign Out sequence generators.
+- `templates/Sequence Diagram Template.drawio`: read-only visual source for all dedicated Google OAuth, Search Jobs, administrator-dashboard, map-exploration and Sign Out sequence generators.
 - `assets\editor\sequence-google-oauth.drawio`: generated English editor source with stable participant, message and fragment keys; the asset builder produces the BM and EN View variants.
 - `assets\editor\sequence-job-search.drawio`: generated English Daily Index editor source with stable participant, activation, message, operand and fragment keys; the asset builder produces the BM and EN View variants.
 - `assets\editor\sequence-admin-manage-users.drawio`: generated simplified-English editor source with stable keys and non-visual bilingual Simple/Code message labels.
 - `assets\editor\sequence-admin-manage-ai-configuration.drawio`: generated simplified-English editor source for provider visibility, owner-only shared-key management and model refresh, with stable keys and bilingual Simple/Code message labels.
 - `assets\editor\sequence-admin-access-dashboard.drawio`, `sequence-admin-monitor-activity.drawio` and `sequence-admin-sign-out.drawio`: generated administrator sequence sources with stable participant, activation, message, operand and fragment keys.
 - `assets\editor\sequence-user-explore-3d-map.drawio` and `sequence-user-sign-out.drawio`: generated user sequence sources for the public map workspace and Better Auth sign-out cleanup.
-- Report SVGs in `laporan\D3-D5-PetaKerja\diagrams\`.
+- Local report exports are written under the ignored `exports/diagrams/` directory.
 
 The generator reads the corrected Domain source and copies it into the local editor bundle; it does not rewrite any source diagram. / Penjana membaca sumber Domain yang telah dibetulkan dan menyalinnya ke bundle editor lokal tanpa menulis semula mana-mana rajah sumber.
 
@@ -164,8 +165,19 @@ The generator reads the corrected Domain source and copies it into the local edi
 - `scripts/sync-drawio-runtime.ps1` boleh menyalin semula runtime daripada repo rujukan. Selepas penyegerakan, daftarkan semula plugin `pkx` seperti diterangkan oleh skrip.
 - The vendored runtime lives in `vendor/drawio/`, adds about 143 MB, and remains fully local.
 - `Start-Explorer.ps1 -NoOpen` starts or reuses the Node host and prints the selected URL without opening a browser, which is useful for local tests.
-- Imported and edited documents remain in memory until **Save as**; reloading never silently writes or restores a user file.
+- Registered canonical diagrams can be persisted with **Save to workspace** and are restored from their repository-relative workspace files after reload. Unknown imports remain in memory until **Save as** and are never silently registered.
 - Theme changes finish the active text edit and reload Draw.io with the current in-memory XML, page and selection, so unsaved diagram work is preserved.
+
+## PetaKerja mini-app integration
+
+When this repository is checked out as `apps/architecture-explorer` inside PetaKerja, use the parent commands:
+
+```powershell
+npm run explorer:setup
+npm run dev:explorer
+```
+
+PetaKerja serves the mini-app at `http://localhost:3000/architecture-explorer/` and proxies its local APIs to the Explorer host. The standalone host remains available through `npm start` in this directory. Workspace persistence is local development functionality; Explorer assets and the bundled Draw.io runtime are excluded from the PetaKerja production build.
 
 ## Snapshot dan batasan / Snapshot and limitations
 

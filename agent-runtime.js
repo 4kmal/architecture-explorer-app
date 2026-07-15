@@ -8,6 +8,7 @@
   const RELATION_KINDS = new Set(['association', 'dependency', 'aggregation', 'composition', 'logical', 'include', 'extend', 'sequence-sync', 'sequence-async', 'sequence-return', 'sequence-self']);
   const LAYOUTS = new Set(['hierarchical', 'circle', 'sequence']);
   const PROVIDERS = new Set(['openai', 'compatible', 'codex']);
+  const localAPI = (path) => window.PETAKERJA_EXPLORER_RUNTIME?.api(path) || `/api/${String(path || '').replace(/^\/+/, '')}`;
 
   function endpoint(baseURL, path) {
     const clean = String(baseURL || '').trim().replace(/\/+$/, '');
@@ -200,7 +201,7 @@
       this.setState('testing');
       try {
         if (this.credentials.provider === 'codex') {
-          const response = await fetch('/api/bridge/status', { cache: 'no-store' });
+          const response = await fetch(localAPI('bridge/status'), { cache: 'no-store' });
           if (!response.ok) throw new Error('The local Codex bridge host is unavailable.');
           this.log('success', 'Codex bridge host is ready.'); this.emitProviderStatus('bridge'); this.setState('idle'); return true;
         }
@@ -208,7 +209,7 @@
         if (!this.credentials.apiKey) throw new Error('Enter an API key for this session before testing the provider.');
         this.assertOpenAIModelAllowed();
         const response = this.credentials.provider === 'openai'
-          ? await fetch('/api/agent/openai/models', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ apiKey: this.credentials.apiKey }) })
+          ? await fetch(localAPI('agent/openai/models'), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ apiKey: this.credentials.apiKey }) })
           : await fetch(endpoint(this.credentials.baseURL, '/models'), { headers: this.headers() });
         if (!response.ok) throw await responseError(response, 'Connection failed');
         const payload = await response.json();
@@ -249,7 +250,7 @@
       const userContent = `Current diagram context:\n${JSON.stringify(context)}\n\nUser request:\n${String(prompt).trim()}`;
       let payload;
       if (this.credentials.provider === 'openai') {
-        const response = await fetch('/api/agent/openai/responses', {
+        const response = await fetch(localAPI('agent/openai/responses'), {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             apiKey: this.credentials.apiKey,

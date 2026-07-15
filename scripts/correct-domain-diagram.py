@@ -12,12 +12,10 @@ from __future__ import annotations
 import shutil
 import xml.etree.ElementTree as ET
 from pathlib import Path
+from paths import EDITOR, EXPORTS
 
-
-SOURCE = Path(
-    r"C:\Users\iamal\Desktop\Semester 8\TTTM4172 Usulan Projek\Akmal\Diagrams"
-) / "Class Diagram PetaKerja.drawio"
-BACKUP = SOURCE.with_name("Class Diagram PetaKerja - Before Corrections.drawio")
+SOURCE = EDITOR / "class-domain-petakerja-original.drawio"
+BACKUP = EXPORTS / "Class Diagram PetaKerja - Before Corrections.drawio"
 REVISION = "2026-07-14-core-domain-v1"
 
 PAGE_WIDTH = 2650

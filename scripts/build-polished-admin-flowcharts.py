@@ -22,12 +22,10 @@ import xml.etree.ElementTree as ET
 from collections import Counter, defaultdict, deque
 from dataclasses import dataclass
 from pathlib import Path
+from paths import DIAGRAMS, DRAWIO
 
-
-DIAGRAMS = Path(r"C:\Users\iamal\Desktop\Semester 8\TTTM4172 Usulan Projek\Akmal\Diagrams")
 EXPLORER = Path(__file__).resolve().parents[1]
 EDITOR = EXPLORER / "assets" / "editor"
-DRAWIO = Path(r"C:\Program Files\draw.io\draw.io.exe")
 DRAWIO_AI = shutil.which("drawio-ai")
 
 

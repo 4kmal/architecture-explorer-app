@@ -1,6 +1,8 @@
-param(
-    [string]$Source = 'C:\Users\iamal\Desktop\Semester 8\codex\repo-reference\drawio'
-)
+param([string]$Source = $env:DRAWIO_SOURCE)
+
+if ([string]::IsNullOrWhiteSpace($Source)) {
+    throw 'Provide -Source or set DRAWIO_SOURCE to a local draw.io source checkout.'
+}
 
 $ErrorActionPreference = 'Stop'
 $explorer = Split-Path -Parent $PSScriptRoot

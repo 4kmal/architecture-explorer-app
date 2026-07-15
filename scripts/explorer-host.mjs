@@ -1,7 +1,7 @@
 import { createServer } from 'node:http';
-import { createReadStream, existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
-import { extname, join, normalize, resolve } from 'node:path';
-import { randomBytes, randomUUID } from 'node:crypto';
+import { copyFileSync, createReadStream, existsSync, mkdirSync, readFileSync, renameSync, statSync, writeFileSync } from 'node:fs';
+import { extname, isAbsolute, join, normalize, relative, resolve, sep } from 'node:path';
+import { createHash, randomBytes, randomUUID } from 'node:crypto';
 
 await import('../openai-model-policy.js');
 
@@ -15,6 +15,10 @@ let sequence = 0;
 let mcpLastSeen = 0;
 const openAIBaseURL = String(process.env.PETAKERJA_OPENAI_BASE_URL || 'https://api.openai.com/v1').replace(/\/+$/, '');
 const openAIPolicy = globalThis.PETAKERJA_OPENAI_POLICY;
+const workspaceManifest = JSON.parse(readFileSync(join(root, 'workspace-manifest.json'), 'utf8'));
+const allowedOrigins = new Set(String(process.env.PETAKERJA_EXPLORER_ALLOWED_ORIGINS || 'http://127.0.0.1:3000,http://localhost:3000')
+  .split(',').map((entry) => entry.trim()).filter(Boolean));
+const deniedStaticSegments = new Set(['.git', '.runtime', 'bridge', 'node_modules', 'scripts']);
 
 const contentTypes = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8',
@@ -43,7 +47,80 @@ function authorized(request) { return request.headers.authorization === `Bearer 
 
 function sameOrigin(request, port) {
   const origin = request.headers.origin;
-  return !origin || origin === `http://127.0.0.1:${port}` || origin === `http://localhost:${port}`;
+  return !origin || origin === `http://127.0.0.1:${port}` || origin === `http://localhost:${port}` || allowedOrigins.has(origin);
+}
+
+function workspaceAuthorized(request) {
+  return request.headers['x-petakerja-workspace-token'] === token;
+}
+
+function sha256(xml, svg) {
+  return createHash('sha256').update(xml).update('\0').update(svg).digest('hex');
+}
+
+function safeWorkspacePath(entry, field) {
+  const path = resolve(root, entry[field]);
+  const location = relative(root, path);
+  if (!location || location.startsWith(`..${sep}`) || location === '..' || isAbsolute(location)) {
+    throw new Error(`Unsafe workspace ${field} path.`);
+  }
+  return path;
+}
+
+function diagramPattern(pageId) {
+  const escaped = String(pageId).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`<diagram\\b(?=[^>]*\\bid=["']${escaped}["'])[^>]*>[\\s\\S]*?<\\/diagram>`, 'i');
+}
+
+function extractWorkspacePage(xml, entry) {
+  if (!entry.sharedSource) return xml;
+  const match = xml.match(diagramPattern(entry.pageId));
+  if (!match) throw new Error(`Page ${entry.pageId} was not found in the shared Draw.io source.`);
+  const mxfile = xml.match(/<mxfile\b([^>]*)>/i);
+  return `<mxfile${mxfile?.[1] || ''}>${match[0]}</mxfile>`;
+}
+
+function mergeWorkspacePage(currentXml, incomingXml, entry) {
+  if (!entry.sharedSource) return incomingXml;
+  const incoming = incomingXml.match(diagramPattern(entry.pageId));
+  if (!incoming) throw new Error(`Saved XML does not contain page ${entry.pageId}.`);
+  const pattern = diagramPattern(entry.pageId);
+  if (!pattern.test(currentXml)) throw new Error(`Canonical source does not contain page ${entry.pageId}.`);
+  return currentXml.replace(pattern, incoming[0]);
+}
+
+function workspaceDocument(diagramId) {
+  const entry = workspaceManifest.diagrams?.[diagramId];
+  if (!entry) return null;
+  const xmlPath = safeWorkspacePath(entry, 'xml');
+  const svgPath = safeWorkspacePath(entry, 'svg');
+  if (!existsSync(xmlPath) || !existsSync(svgPath)) throw new Error(`Workspace files for ${diagramId} are unavailable.`);
+  const fullXml = readFileSync(xmlPath, 'utf8');
+  const xml = extractWorkspacePage(fullXml, entry);
+  const svg = readFileSync(svgPath, 'utf8');
+  const modifiedAt = new Date(Math.max(statSync(xmlPath).mtimeMs, statSync(svgPath).mtimeMs)).toISOString();
+  return { entry, xmlPath, svgPath, xml, svg, revision: sha256(xml, svg), modifiedAt };
+}
+
+function atomicWrite(path, value) {
+  const temporary = `${path}.${process.pid}.${randomUUID()}.tmp`;
+  writeFileSync(temporary, value, 'utf8');
+  renameSync(temporary, path);
+}
+
+function backupWorkspaceDocument(diagramId, document) {
+  const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+  const directory = join(runtimeDirectory, 'backups', diagramId);
+  mkdirSync(directory, { recursive: true });
+  copyFileSync(document.xmlPath, join(directory, `${stamp}.drawio`));
+  copyFileSync(document.svgPath, join(directory, `${stamp}.svg`));
+}
+
+function staticPathAllowed(path) {
+  const location = relative(root, path);
+  if (!location || location.startsWith(`..${sep}`) || location === '..' || isAbsolute(location)) return false;
+  const segments = location.split(/[\\/]+/).map((segment) => segment.toLocaleLowerCase());
+  return !segments.some((segment) => deniedStaticSegments.has(segment) || segment.startsWith('.env'));
 }
 
 async function forwardOpenAI(response, path, apiKey, body, timeout = 120000) {
@@ -79,7 +156,46 @@ function createRequestHandler(port) {
     try {
       const url = new URL(request.url, `http://127.0.0.1:${port}`);
       if (url.pathname === '/api/bridge/status' && request.method === 'GET') {
-        json(response, 200, { port, sequence, mcpConnected: Date.now() - mcpLastSeen < 5000, configSnippet: configSnippet(port) });
+        json(response, 200, { port, sequence, mcpConnected: Date.now() - mcpLastSeen < 5000, configSnippet: configSnippet(port), workspace: { writable: true, diagrams: Object.keys(workspaceManifest.diagrams || {}).length } });
+        return;
+      }
+      if (url.pathname === '/api/workspace/session' && request.method === 'GET') {
+        if (!sameOrigin(request, port)) { json(response, 403, { error: { message: 'Origin rejected.' } }); return; }
+        json(response, 200, { token, diagrams: Object.keys(workspaceManifest.diagrams || {}) });
+        return;
+      }
+      if (url.pathname.startsWith('/api/workspace/diagrams/') && request.method === 'GET') {
+        if (!sameOrigin(request, port)) { json(response, 403, { error: { message: 'Origin rejected.' } }); return; }
+        const diagramId = decodeURIComponent(url.pathname.slice('/api/workspace/diagrams/'.length));
+        const document = workspaceDocument(diagramId);
+        if (!document) { json(response, 404, { error: { message: 'Diagram is not registered for workspace persistence.' } }); return; }
+        json(response, 200, { diagramId, xml: document.xml, svg: document.svg, revision: document.revision, modifiedAt: document.modifiedAt });
+        return;
+      }
+      if (url.pathname.startsWith('/api/workspace/diagrams/') && request.method === 'PUT') {
+        if (!sameOrigin(request, port)) { json(response, 403, { error: { message: 'Origin rejected.' } }); return; }
+        if (!workspaceAuthorized(request)) { json(response, 401, { error: { message: 'Workspace token rejected.' } }); return; }
+        const diagramId = decodeURIComponent(url.pathname.slice('/api/workspace/diagrams/'.length));
+        const current = workspaceDocument(diagramId);
+        if (!current) { json(response, 404, { error: { message: 'Diagram is not registered for workspace persistence.' } }); return; }
+        const body = await readJSON(request);
+        if (body.revision !== current.revision) {
+          json(response, 409, { error: { message: 'A newer workspace revision exists. Reload before saving.' }, revision: current.revision, modifiedAt: current.modifiedAt });
+          return;
+        }
+        const xml = String(body.xml || '');
+        const svg = String(body.svg || '');
+        if (!xml.includes('<mxfile') || !svg.includes('<svg')) { json(response, 400, { error: { message: 'Valid Draw.io XML and SVG are required.' } }); return; }
+        if (Buffer.byteLength(xml) > 20 * 1024 * 1024 || Buffer.byteLength(svg) > 20 * 1024 * 1024) {
+          json(response, 413, { error: { message: 'Workspace diagram exceeds the 20 MB per-file limit.' } }); return;
+        }
+        const fullXml = readFileSync(current.xmlPath, 'utf8');
+        const mergedXml = mergeWorkspacePage(fullXml, xml, current.entry);
+        backupWorkspaceDocument(diagramId, current);
+        atomicWrite(current.xmlPath, mergedXml);
+        atomicWrite(current.svgPath, svg);
+        const saved = workspaceDocument(diagramId);
+        json(response, 200, { diagramId, revision: saved.revision, modifiedAt: saved.modifiedAt });
         return;
       }
       if (url.pathname === '/api/agent/openai/models' && request.method === 'POST') {
@@ -136,7 +252,7 @@ function createRequestHandler(port) {
       if (request.method !== 'GET' && request.method !== 'HEAD') { json(response, 405, { error: 'Method not allowed.' }); return; }
       const relative = decodeURIComponent(url.pathname === '/' ? 'index.html' : url.pathname.slice(1));
       const path = normalize(resolve(root, relative));
-      if (!path.startsWith(root) || !existsSync(path) || !statSync(path).isFile()) { json(response, 404, { error: 'Not found.' }); return; }
+      if (!staticPathAllowed(path) || !existsSync(path) || !statSync(path).isFile()) { json(response, 404, { error: 'Not found.' }); return; }
       const headers = { 'Content-Type': contentTypes[extname(path).toLocaleLowerCase()] || 'application/octet-stream', 'Cache-Control': 'no-store' };
       response.writeHead(200, headers);
       if (request.method === 'HEAD') response.end(); else createReadStream(path).pipe(response);
@@ -156,8 +272,9 @@ function listen(port) {
 
 let server;
 let port;
-const portStart = Number(process.env.PETAKERJA_EXPLORER_PORT_START || 8080);
-const portEnd = Number(process.env.PETAKERJA_EXPLORER_PORT_END || 8089);
+const configuredPort = Number(process.env.PETAKERJA_EXPLORER_PORT || 8082);
+const portStart = Number(process.env.PETAKERJA_EXPLORER_PORT_START || configuredPort);
+const portEnd = Number(process.env.PETAKERJA_EXPLORER_PORT_END || process.env.PETAKERJA_EXPLORER_PORT_START || configuredPort);
 for (let candidate = portStart; candidate <= portEnd; candidate += 1) {
   try { server = await listen(candidate); port = candidate; break; } catch (error) { if (error.code !== 'EADDRINUSE') throw error; }
 }

@@ -110,17 +110,7 @@ def apply_label_modes_to_file(path: Path) -> int:
 
 
 def canonical_sources(root: Path) -> list[Path]:
-    diagrams = Path(r"C:\Users\iamal\Desktop\Semester 8\TTTM4172 Usulan Projek\Akmal\Diagrams")
     return [
-        diagrams / "Sequence Diagram PetaKerja - Search Jobs.drawio",
-        diagrams / "Sequence Diagram PetaKerja - Sign in Google OAuth.drawio",
-        diagrams / "Sequence Diagram PetaKerja - Manage Users.drawio",
-        diagrams / "Sequence Diagram PetaKerja - Manage AI Chatbot Configuration.drawio",
-        diagrams / "Sequence Diagram PetaKerja - Access Administrator Dashboard.drawio",
-        diagrams / "Sequence Diagram PetaKerja - Monitor System Activity Logs.drawio",
-        diagrams / "Sequence Diagram PetaKerja - Administrator Sign Out.drawio",
-        diagrams / "Sequence Diagram PetaKerja - Explore the 3D Map.drawio",
-        diagrams / "Sequence Diagram PetaKerja - User Sign Out.drawio",
         root / "assets" / "editor" / "sequence-job-search.drawio",
         root / "assets" / "editor" / "sequence-google-oauth.drawio",
         root / "assets" / "editor" / "sequence-admin-manage-users.drawio",

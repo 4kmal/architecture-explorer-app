@@ -26,6 +26,8 @@
         searchResults: 'Search results', noResults: 'No matching classes, routes, tables or UI components.',
         table: 'Table', primaryKey: 'Primary key', foreignKeyLinks: 'Foreign-key links', rlsOn: 'RLS enabled', rlsOff: 'RLS disabled',
         viewMode: 'View', editMode: 'Edit', importDiagram: 'Import .drawio', validateDiagram: 'Validate', saveAs: 'Save as',
+        saveWorkspace: 'Save to workspace', workspaceSaved: 'Saved to workspace', workspaceSaving: 'Saving...',
+        workspaceConflict: 'A newer workspace revision exists. Reload this diagram before saving.',
         editorLoading: 'Loading the local editor…', editorHttpRequired: 'The full editor requires the local HTTP server. file:// remains read-only.',
         editorRuntimeTitle: 'Start the local editor', editorRuntimeSubtitle: 'This copy is open in read-only file mode.',
         editorRuntimeDescription: 'The embedded Draw.io editor needs a same-origin local HTTP server. All files are still processed on this computer.',

@@ -1036,6 +1036,12 @@
       return true;
     }
 
+    markClean() {
+      this.dirty = false;
+      this.callbacks.onDirtyChange?.(false);
+      this.callbacks.onWorkingDocument?.(this.documentSnapshot());
+    }
+
     dispose() {
       window.removeEventListener('message', this.boundMessage);
       window.clearTimeout(this.validationTimer);

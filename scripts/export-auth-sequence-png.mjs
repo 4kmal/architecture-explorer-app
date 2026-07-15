@@ -2,9 +2,11 @@ import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { spawn } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 
-const source = 'C:\\Users\\iamal\\Desktop\\Semester 8\\codex\\Sequence Diagram - PetaKerja User Login Logout.svg';
-const output = 'C:\\Users\\iamal\\Desktop\\Semester 8\\codex\\Sequence Diagram - PetaKerja User Login Logout.png';
+const root = new URL('..', import.meta.url);
+const source = new URL('assets/diagrams/auth-sequence.svg', root);
+const output = new URL('exports/diagrams/Sequence Diagram - PetaKerja User Login Logout.png', root);
 const edge = 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe';
 const folder = await mkdtemp(join(tmpdir(), 'petakerja-sequence-'));
 const htmlPath = join(folder, 'render.html');
@@ -25,7 +27,7 @@ try {
       '--headless=new', '--hide-scrollbars', '--disable-gpu',
       `--user-data-dir=${join(folder, 'profile')}`,
       `--window-size=${width},${height}`,
-      `--screenshot=${output}`,
+      `--screenshot=${fileURLToPath(output)}`,
       new URL(`file:///${htmlPath.replace(/\\/g, '/')}`).href,
     ], { stdio: ['ignore', 'pipe', 'pipe'] });
     let stderr = '';
@@ -33,7 +35,7 @@ try {
     child.once('error', reject);
     child.once('exit', (code) => code === 0 ? resolve() : reject(new Error(stderr || `Edge exited with ${code}.`)));
   });
-  console.log(JSON.stringify({ output, width, height }, null, 2));
+  console.log(JSON.stringify({ output: fileURLToPath(output), width, height }, null, 2));
 } finally {
   await rm(folder, { recursive: true, force: true });
 }

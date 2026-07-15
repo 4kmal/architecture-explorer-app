@@ -6,6 +6,7 @@
   const translations = window.PETAKERJA_TRANSLATIONS || {};
   const editorAPI = window.PETAKERJA_EDITOR;
   const agentAPI = window.PETAKERJA_AGENT;
+  const localAPI = (path) => window.PETAKERJA_EXPLORER_RUNTIME?.api(path) || `/api/${String(path || '').replace(/^\/+/, '')}`;
   if (!data) throw new Error('PETAKERJA_ARCHITECTURE is not loaded.');
   if (!editorAPI) throw new Error('PETAKERJA_EDITOR is not loaded.');
 
@@ -131,6 +132,7 @@
     pointer: null, suppressClick: false,
     workspaceMode: 'view', editorAnalysis: null, pendingImport: null, dropDepth: 0,
     runtimeDocuments: new Map(), importedDiagrams: [], runtimeExporting: false, editorDocumentKey: null, agentProviderStatus: null,
+    workspaceToken: null, workspaceDiagramIds: new Set(), workspaceLoaded: new Set(), workspaceSessionPromise: null,
     sequenceFolders: storedSequenceFolders(), flowchartFolders: storedFlowchartFolders(),
     diagramVariantFolders: storedDiagramVariantFolders(), sequenceLabelMode: storedSequenceLabelMode(),
   };
@@ -148,7 +150,7 @@
     referenceButton: byId('open-reference'), referenceDialog: byId('reference-dialog'), referenceImage: byId('reference-image'),
     referenceTitle: byId('reference-title'), statusMessage: byId('status-message'),
     workspaceModeControl: byId('workspace-mode-control'), workspaceView: byId('workspace-view'), workspaceEdit: byId('workspace-edit'), workspaceAgent: byId('workspace-agent'),
-    importButton: byId('import-diagram'), validateButton: byId('validate-diagram'), saveButton: byId('save-diagram'), fileInput: byId('diagram-file-input'),
+    importButton: byId('import-diagram'), validateButton: byId('validate-diagram'), workspaceSaveButton: byId('save-workspace-diagram'), saveButton: byId('save-diagram'), fileInput: byId('diagram-file-input'),
     editorSurface: byId('editor-surface'), editorFrame: byId('drawio-editor'), editorLoading: byId('editor-loading'), dropOverlay: byId('diagram-drop-overlay'),
     validationPanel: byId('validation-panel'), validationTitle: byId('validation-title'), validationChangeKind: byId('validation-change-kind'),
     validationSummary: byId('validation-summary'), validationIssues: byId('validation-issues'),
@@ -233,6 +235,8 @@
       'ui.searchResults': 'Hasil carian', 'ui.noResults': 'Tiada kelas, route, jadual atau UI yang sepadan.',
       'ui.table': 'Jadual', 'ui.primaryKey': 'Primary key', 'ui.foreignKeyLinks': 'Hubungan foreign key', 'ui.rlsOn': 'RLS aktif', 'ui.rlsOff': 'RLS tidak aktif',
       'ui.viewMode': 'Lihat', 'ui.editMode': 'Edit', 'ui.importDiagram': 'Import .drawio', 'ui.validateDiagram': 'Semak', 'ui.saveAs': 'Simpan sebagai',
+      'ui.saveWorkspace': 'Simpan ke ruang kerja', 'ui.workspaceSaved': 'Disimpan ke ruang kerja', 'ui.workspaceSaving': 'Menyimpan...',
+      'ui.workspaceConflict': 'Versi ruang kerja yang lebih baharu wujud. Muat semula rajah ini sebelum menyimpan.',
       'ui.editorLoading': 'Memuatkan editor lokal…', 'ui.editorHttpRequired': 'Editor penuh memerlukan pelayan HTTP lokal. Mod file:// kekal baca sahaja.',
       'ui.editorRuntimeTitle': 'Mulakan editor lokal', 'ui.editorRuntimeSubtitle': 'Salinan ini dibuka dalam mod fail baca sahaja.',
       'ui.editorRuntimeDescription': 'Editor Draw.io terbina dalam memerlukan pelayan HTTP lokal dengan origin yang sama. Semua fail masih diproses pada komputer ini.',
@@ -319,6 +323,105 @@
   function allDiagrams() { return [...data.diagrams, ...state.importedDiagrams]; }
   function activeDiagram() { return allDiagrams().find((diagram) => diagram.id === state.diagramId) || data.diagrams[0]; }
   function runtimeDocument(id = state.diagramId) { return state.runtimeDocuments.get(id) || null; }
+  async function ensureWorkspaceSession() {
+    if (!editorController?.available) return null;
+    if (state.workspaceToken) return { token: state.workspaceToken, diagrams: [...state.workspaceDiagramIds] };
+    if (state.workspaceSessionPromise) return state.workspaceSessionPromise;
+    state.workspaceSessionPromise = fetch(localAPI('workspace/session'), { cache: 'no-store' })
+      .then(async (response) => {
+        if (!response.ok) throw new Error(`Workspace session is unavailable (${response.status}).`);
+        const payload = await response.json();
+        state.workspaceToken = payload.token;
+        state.workspaceDiagramIds = new Set(payload.diagrams || []);
+        renderWorkspaceControls();
+        return payload;
+      })
+      .catch(() => null)
+      .finally(() => { state.workspaceSessionPromise = null; });
+    return state.workspaceSessionPromise;
+  }
+
+  async function hydrateWorkspaceDocument(diagramId = state.diagramId, options = {}) {
+    if (!editorController?.available || activeDiagram()?.sessionOnly) return null;
+    if (!options.force && state.workspaceLoaded.has(diagramId)) return runtimeDocument(diagramId);
+    const session = await ensureWorkspaceSession();
+    if (!session || !state.workspaceDiagramIds.has(diagramId)) return null;
+    try {
+      const response = await fetch(localAPI(`workspace/diagrams/${encodeURIComponent(diagramId)}`), { cache: 'no-store' });
+      if (!response.ok) throw new Error(`Workspace diagram is unavailable (${response.status}).`);
+      const payload = await response.json();
+      const analysis = editorController.preflight(payload.xml);
+      if (analysis.fatal) throw new Error('The saved workspace XML could not be analysed.');
+      const sanitized = sanitizeRuntimeSVG(payload.svg);
+      const asset = runtimeAssetFromAnalysis(sanitized, analysis);
+      const source = editorAPI.SOURCE_FILES[diagramId];
+      state.runtimeDocuments.set(diagramId, {
+        workingXml: payload.xml,
+        pageId: analysis.selectedPage?.id || source?.pageId || null,
+        filename: source?.filename || `${diagramId}.drawio`,
+        analysis,
+        dirty: false,
+        diagramType: diagramId,
+        runtimeSvg: sanitized,
+        asset,
+        lastValidAsset: asset,
+        revision: payload.revision,
+        modifiedAt: payload.modifiedAt,
+        workspace: true,
+      });
+      state.workspaceLoaded.add(diagramId);
+      if (state.diagramId === diagramId && state.workspaceMode === 'view') renderDiagram();
+      return state.runtimeDocuments.get(diagramId);
+    } catch (error) {
+      els.statusMessage.textContent = `${state.language === 'en' ? 'Workspace load failed' : 'Ruang kerja gagal dimuatkan'}: ${error.message}`;
+      return null;
+    }
+  }
+
+  async function saveActiveDiagramToWorkspace() {
+    const diagramId = state.editorDocumentKey || state.diagramId;
+    const session = await ensureWorkspaceSession();
+    if (!session || !state.workspaceDiagramIds.has(diagramId)) {
+      els.statusMessage.textContent = state.language === 'en' ? 'This diagram is not registered for workspace saving.' : 'Rajah ini belum didaftarkan untuk simpanan ruang kerja.';
+      return false;
+    }
+    let runtime = runtimeDocument(diagramId) || await hydrateWorkspaceDocument(diagramId);
+    if (!runtime?.revision) return false;
+    els.workspaceSaveButton.disabled = true;
+    els.workspaceSaveButton.textContent = t('ui.workspaceSaving');
+    try {
+      const exported = await editorController.exportRuntimeSVG();
+      const svg = sanitizeRuntimeSVG(exported.svg);
+      const xml = exported.xml || editorController.workingXml;
+      const response = await fetch(localAPI(`workspace/diagrams/${encodeURIComponent(diagramId)}`), {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', 'X-PetaKerja-Workspace-Token': state.workspaceToken },
+        body: JSON.stringify({ revision: runtime.revision, xml, svg }),
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (response.status === 409) {
+        const message = t('ui.workspaceConflict');
+        els.statusMessage.textContent = message;
+        window.alert(message);
+        return false;
+      }
+      if (!response.ok) throw new Error(payload.error?.message || `Workspace save failed (${response.status}).`);
+      const analysis = editorController.analysis || editorController.preflight(xml);
+      const asset = runtimeAssetFromAnalysis(svg, analysis);
+      runtime = { ...runtime, workingXml: xml, runtimeSvg: svg, asset, lastValidAsset: asset, analysis, dirty: false, revision: payload.revision, modifiedAt: payload.modifiedAt, workspace: true };
+      state.runtimeDocuments.set(diagramId, runtime);
+      editorController.markClean();
+      els.workspaceSaveButton.textContent = t('ui.workspaceSaved');
+      els.statusMessage.textContent = t('ui.workspaceSaved');
+      window.setTimeout(() => { if (els.workspaceSaveButton.isConnected) els.workspaceSaveButton.textContent = t('ui.saveWorkspace'); }, 1400);
+      return true;
+    } catch (error) {
+      els.statusMessage.textContent = `${state.language === 'en' ? 'Workspace save failed' : 'Simpanan ruang kerja gagal'}: ${error.message}`;
+      return false;
+    } finally {
+      els.workspaceSaveButton.disabled = false;
+    }
+  }
   function activeAsset() { const runtime = runtimeDocument(); return runtime?.asset || runtime?.lastValidAsset || assets[state.diagramId] || null; }
   function effectiveMode() { return state.renderMode === 'actual' && (activeAsset() || runtimeDocument()?.workingXml) ? 'actual' : 'map'; }
   function currentFocus() { return state.hovered || state.selected; }
@@ -515,7 +618,8 @@
     els.workspaceView.textContent = t('ui.viewMode'); els.workspaceEdit.textContent = t('ui.editMode'); els.workspaceAgent.textContent = state.language === 'en' ? 'Agent' : 'Ejen';
     els.sequenceSimple.textContent = t('ui.sequenceSimple'); els.sequenceCode.textContent = t('ui.sequenceCode');
     els.sequenceLabelControl.setAttribute('aria-label', t('ui.sequenceLabelMode'));
-    els.importButton.textContent = t('ui.importDiagram'); els.validateButton.textContent = t('ui.validateDiagram'); els.saveButton.textContent = t('ui.saveAs');
+    els.importButton.textContent = t('ui.importDiagram'); els.validateButton.textContent = t('ui.validateDiagram');
+    els.workspaceSaveButton.textContent = t('ui.saveWorkspace'); els.saveButton.textContent = t('ui.saveAs');
     els.editorLoading.textContent = t('ui.editorLoading'); els.validationTitle.textContent = t('ui.validation');
     els.importTitle.textContent = t('ui.importTitle'); els.importSubtitle.textContent = t('ui.importSubtitle'); els.confirmImport.textContent = t('ui.openEditor');
     byId('cancel-import').textContent = t('ui.cancel'); els.dropOverlay.querySelector('strong').textContent = t('ui.dropTitle'); els.dropOverlay.querySelector('span').textContent = t('ui.dropBody');
@@ -983,6 +1087,7 @@
     els.importButton.dataset.runtimeRequired = String(!editorController?.available);
     els.importButton.title = editorController?.available ? '' : t('ui.editorHttpRequired');
     els.validateButton.hidden = state.workspaceMode === 'view'; els.saveButton.hidden = state.workspaceMode === 'view';
+    els.workspaceSaveButton.hidden = state.workspaceMode === 'view' || !state.workspaceDiagramIds.has(state.diagramId);
     byId('zoom-out').parentElement.hidden = state.workspaceMode !== 'view';
     els.referenceButton.hidden = state.workspaceMode !== 'view' || !activeDiagram().reference;
     const showSequenceLabels = state.workspaceMode === 'view' && effectiveMode() === 'actual' && Boolean(activeAsset()?.supportsSequenceLabels);
@@ -1472,6 +1577,7 @@
     renderAll();
     if (previousWorkspaceMode !== 'view' && isEditableDiagram(id)) setWorkspaceMode(previousWorkspaceMode);
     else if (state.workspaceMode === 'view') setWorkspaceMode('view', { loadCanonical: false });
+    hydrateWorkspaceDocument(id);
   }
 
   function openExplorerExample(detail = {}) {
@@ -1641,9 +1747,9 @@
       else if (command.tool === 'export_active_diagram') {
         const exported = await editorController.exportRuntimeSVG(); result = { svg: sanitizeRuntimeSVG(exported.svg), xml: exported.xml, pageId: exported.pageId };
       } else throw new Error(`Unknown bridge tool: ${command.tool}`);
-      await fetch('/api/bridge/result', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: command.id, ok: true, result }) });
+      await fetch(localAPI('bridge/result'), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: command.id, ok: true, result }) });
     } catch (error) {
-      await fetch('/api/bridge/result', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: command.id, ok: false, error: error.message }) }).catch(() => {});
+      await fetch(localAPI('bridge/result'), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: command.id, ok: false, error: error.message }) }).catch(() => {});
     }
   }
 
@@ -1652,7 +1758,7 @@
   async function pollBridge() {
     if (!editorController.available) return;
     try {
-      const status = await fetch('/api/bridge/status', { cache: 'no-store' });
+      const status = await fetch(localAPI('bridge/status'), { cache: 'no-store' });
       if (!status.ok) throw new Error('Bridge host unavailable');
       const payload = await status.json();
       els.bridgeStatus.textContent = payload.mcpConnected
@@ -1665,7 +1771,7 @@
         return;
       }
       if (state.workspaceMode !== 'agent' || !editorController.ready) return;
-      const response = await fetch(`/api/bridge/commands?since=${bridgeCursor}`, { cache: 'no-store' });
+      const response = await fetch(`${localAPI('bridge/commands')}?since=${bridgeCursor}`, { cache: 'no-store' });
       if (response.ok) {
         const queue = await response.json();
         for (const command of queue.commands || []) { bridgeCursor = Math.max(bridgeCursor, command.sequence || 0); await handleBridgeCommand(command); }
@@ -1711,6 +1817,7 @@
       },
       onDirtyChange(dirty) {
         els.saveButton.textContent = `${t('ui.saveAs')}${dirty ? ' *' : ''}`;
+        els.workspaceSaveButton.textContent = `${t('ui.saveWorkspace')}${dirty ? ' *' : ''}`;
       },
       onWorkingDocument(snapshot) {
         updateRuntimeDocument(snapshot);
@@ -1772,6 +1879,7 @@
   });
   els.fileInput.addEventListener('change', () => { if (els.fileInput.files?.[0]) processImportFile(els.fileInput.files[0]); els.fileInput.value = ''; });
   els.validateButton.addEventListener('click', () => renderValidation(editorController.validateNow(), { changeKind: 'logic' }));
+  els.workspaceSaveButton.addEventListener('click', saveActiveDiagramToWorkspace);
   els.saveButton.addEventListener('click', () => editorController.saveAs());
   els.agentTest.addEventListener('click', async () => {
     diagramAgent.configure(agentCredentials());
@@ -1960,6 +2068,7 @@
 
   applyThemePreference(state.themePreference, { persist: false, syncEditor: false });
   renderAll();
+  ensureWorkspaceSession().then(() => hydrateWorkspaceDocument(state.diagramId));
   setAgentState('idle');
   renderAgentPlan(null);
   pollBridge();

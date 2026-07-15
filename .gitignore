@@ -1,4 +1,5 @@
 .runtime/
+exports/
 bridge/node_modules/
 __pycache__/
 *.py[cod]

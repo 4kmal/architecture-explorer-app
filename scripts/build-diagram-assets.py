@@ -20,16 +20,11 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from sequence_label_catalog import apply_all
+from paths import ASSET_DIAGRAMS, DRAWIO, EDITOR, ROOT
 
-
-ROOT = Path(__file__).resolve().parents[1]
-CODEX = ROOT.parent
-DRAWIO = Path(r"C:\Program Files\draw.io\draw.io.exe")
-CLASS_SOURCE = CODEX / "Class Diagram PetaKerja.drawio"
-DOMAIN_SOURCE = Path(
-    r"C:\Users\iamal\Desktop\Semester 8\TTTM4172 Usulan Projek\Akmal\Diagrams"
-) / "Class Diagram PetaKerja.drawio"
-USECASE_SOURCE = CODEX / "Rajah_Kes_Guna_PetaKerja.drawio"
+CLASS_SOURCE = EDITOR / "class-diagram-petakerja.drawio"
+DOMAIN_SOURCE = EDITOR / "class-domain-petakerja.drawio"
+USECASE_SOURCE = EDITOR / "use-case-petakerja.drawio"
 GOOGLE_OAUTH_SEQUENCE_SOURCE = ROOT / "assets" / "editor" / "sequence-google-oauth.drawio"
 GOOGLE_SIGN_IN_FLOWCHART_SOURCE = ROOT / "assets" / "editor" / "flowchart-user-google-sign-in.drawio"
 GOOGLE_SIGN_IN_FLOWCHART_ORIGINAL_SOURCE = ROOT / "assets" / "editor" / "flowchart-user-google-sign-in-original.drawio"
@@ -57,7 +52,7 @@ ADMIN_MONITOR_ACTIVITY_SEQUENCE_SOURCE = ROOT / "assets" / "editor" / "sequence-
 ADMIN_SIGN_OUT_SEQUENCE_SOURCE = ROOT / "assets" / "editor" / "sequence-admin-sign-out.drawio"
 USER_EXPLORE_3D_MAP_SEQUENCE_SOURCE = ROOT / "assets" / "editor" / "sequence-user-explore-3d-map.drawio"
 USER_SIGN_OUT_SEQUENCE_SOURCE = ROOT / "assets" / "editor" / "sequence-user-sign-out.drawio"
-REPORT_DIAGRAMS = CODEX / "laporan" / "D3-D5-PetaKerja" / "diagrams"
+REPORT_DIAGRAMS = ASSET_DIAGRAMS
 OUTPUT = ROOT / "diagram-assets.js"
 DOMAIN_EDITOR_ASSET = ROOT / "assets" / "editor" / "class-domain-petakerja.drawio"
 DOMAIN_ORIGINAL_SOURCE = ROOT / "assets" / "editor" / "class-domain-petakerja-original.drawio"

@@ -16,12 +16,10 @@ import xml.etree.ElementTree as ET
 from collections import Counter, defaultdict, deque
 from dataclasses import dataclass, field
 from pathlib import Path
+from paths import DIAGRAMS, DRAWIO, TEMPLATES
 
-
-DIAGRAMS = Path(r"C:\Users\iamal\Desktop\Semester 8\TTTM4172 Usulan Projek\Akmal\Diagrams")
-TEMPLATE = DIAGRAMS / "Flow Chart Template.drawio"
+TEMPLATE = TEMPLATES / "Flow Chart Template.drawio"
 EXPLORER = Path(__file__).resolve().parents[1]
-DRAWIO = Path(r"C:\Program Files\draw.io\draw.io.exe")
 
 
 def template_style(predicate) -> str:

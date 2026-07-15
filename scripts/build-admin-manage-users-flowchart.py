@@ -14,17 +14,15 @@ import subprocess
 import xml.etree.ElementTree as ET
 from collections import Counter, defaultdict, deque
 from pathlib import Path
+from paths import DIAGRAMS, DRAWIO, TEMPLATES
 
-
-DIAGRAMS = Path(r"C:\Users\iamal\Desktop\Semester 8\TTTM4172 Usulan Projek\Akmal\Diagrams")
-TEMPLATE = DIAGRAMS / "Flow Chart Template.drawio"
+TEMPLATE = TEMPLATES / "Flow Chart Template.drawio"
 OUTPUT = DIAGRAMS / "Flow Chart PetaKerja - Manage Users.drawio"
 SVG_OUTPUT = DIAGRAMS / "Flow Chart PetaKerja - Manage Users.svg"
 PNG_OUTPUT = DIAGRAMS / "Flow Chart PetaKerja - Manage Users.png"
 
 EXPLORER = Path(__file__).resolve().parents[1]
 EDITOR_OUTPUT = EXPLORER / "assets" / "editor" / "flowchart-admin-manage-users-original.drawio"
-DRAWIO = Path(r"C:\Program Files\draw.io\draw.io.exe")
 
 PAGE_ID = "petakerja_flow_admin_manage_users"
 ROOT_ID = "admin-manage-users-flow-root"

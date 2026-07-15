@@ -20,9 +20,8 @@ import tempfile
 import xml.etree.ElementTree as ET
 from collections import Counter, defaultdict, deque
 from pathlib import Path
+from paths import DIAGRAMS
 
-
-DIAGRAMS = Path(r"C:\Users\iamal\Desktop\Semester 8\TTTM4172 Usulan Projek\Akmal\Diagrams")
 EXPLORER = Path(__file__).resolve().parents[1]
 EDITOR = EXPLORER / "assets" / "editor"
 ADMIN_POLISHER_PATH = Path(__file__).with_name("build-polished-admin-flowcharts.py")

@@ -15,10 +15,9 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from sequence_label_catalog import apply_label_modes_to_file
+from paths import DIAGRAMS, TEMPLATES
 
-
-DIAGRAMS = Path(r"C:\Users\iamal\Desktop\Semester 8\TTTM4172 Usulan Projek\Akmal\Diagrams")
-TEMPLATE = DIAGRAMS / "Sequence Diagram Template.drawio"
+TEMPLATE = TEMPLATES / "Sequence Diagram Template.drawio"
 EXPLORER = Path(__file__).resolve().parents[1]
 ACTIVATION_Y = 130.0
 ACTIVATION_HEIGHT = 915.0

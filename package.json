@@ -1,0 +1,9 @@
+{
+  "name": "architecture-explorer-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/explorer-host.mjs",
+    "test": "node --check app.js && node --check editor-core.js && node --check agent-runtime.js && node --check scripts/explorer-host.mjs && node scripts/test-learning-page.mjs && node scripts/test-agent-glow.mjs && node scripts/test-openai-agent.mjs && node scripts/test-workspace-host.mjs"
+  }
+}

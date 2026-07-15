@@ -50,7 +50,7 @@ if (-not $runtime) {
 }
 
 if (-not $runtime.port) {
-    throw 'The Explorer host did not start. Check whether ports 8080 through 8089 are available.'
+    throw 'The Explorer host did not start. Check whether PETAKERJA_EXPLORER_PORT (8082 by default) is available.'
 }
 
 $url = "http://127.0.0.1:$($runtime.port)/"

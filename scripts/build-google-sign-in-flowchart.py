@@ -14,10 +14,9 @@ import subprocess
 import xml.etree.ElementTree as ET
 from collections import Counter, defaultdict, deque
 from pathlib import Path
+from paths import DIAGRAMS, DRAWIO, EDITOR
 
-
-DIAGRAMS = Path(r"C:\Users\iamal\Desktop\Semester 8\TTTM4172 Usulan Projek\Akmal\Diagrams")
-REORGANIZED_SOURCE = DIAGRAMS / "Flow Chart PetaKerja - Sign in with Google REORGANIZED.drawio"
+REORGANIZED_SOURCE = EDITOR / "flowchart-user-google-sign-in-original.drawio"
 OUTPUT = DIAGRAMS / "Flow Chart PetaKerja - Sign in with Google.drawio"
 BACKUP = DIAGRAMS / "Flow Chart PetaKerja - Sign in with Google - Before Reorganized Layout.drawio"
 SVG_OUTPUT = DIAGRAMS / "Flow Chart PetaKerja - Sign in with Google.svg"
@@ -25,7 +24,6 @@ PNG_OUTPUT = DIAGRAMS / "Flow Chart PetaKerja - Sign in with Google.png"
 
 EXPLORER = Path(__file__).resolve().parents[1]
 EDITOR_OUTPUT = EXPLORER / "assets" / "editor" / "flowchart-user-google-sign-in.drawio"
-DRAWIO = Path(r"C:\Program Files\draw.io\draw.io.exe")
 
 PAGE_ID = "petakerja_flow_google_sign_in"
 ROOT_ID = "google-sign-in-flow-root"

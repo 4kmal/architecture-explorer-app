@@ -18,11 +18,10 @@ import xml.etree.ElementTree as ET
 from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
+from paths import DIAGRAMS, DRAWIO
 
 
 EXPLORER = Path(__file__).resolve().parents[1]
-DIAGRAMS = Path(r"C:\Users\iamal\Desktop\Semester 8\TTTM4172 Usulan Projek\Akmal\Diagrams")
-DRAWIO = Path(r"C:\Program Files\draw.io\draw.io.exe")
 EDITOR = EXPLORER / "assets" / "editor"
 
 
