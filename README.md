@@ -63,6 +63,43 @@ Pada paparan kecil, pilih topik melalui pemilih pelajaran kemudian tukar tab `Be
 
 Run the dependency-free contract check with `node .\scripts\test-learning-page.mjs`.
 
+## Slides Studio / Studio Slaid
+
+Open `#slides` (or use the **Slides / Slaid** header button) to create a
+PetaKerja presentation without leaving the Explorer. The fixed 16:9 workspace
+includes a slide filmstrip, Fabric.js canvas, layouts/elements/diagram panels,
+speaker notes, timing, a presentation checker and fullscreen rehearsal mode.
+
+- **UKM FYP Presentation 2026** creates 12 Bahasa Melayu slides with suggested
+  timings totalling 9 minutes 15 seconds.
+- Every registered Explorer diagram can be filtered and inserted as a
+  sanitised SVG snapshot. Linked objects keep their diagram ID, language,
+  variant, label mode and SHA-256 source revision.
+- **Save** writes the deck atomically under ignored `.runtime/presentations/`;
+  **Save as copy** creates a separate deck ID; `.slides.json` remains the
+  portable source format.
+- Local revisions return `409` rather than overwriting a newer browser save.
+  Local presentation assets are stored under ignored
+  `.runtime/presentation-assets/`.
+- Through the integrated PetaKerja origin, **Sync** uses Better Auth-protected
+  Express routes and private Supabase storage. Unsigned-in or offline work
+  remains safe locally and is queued in IndexedDB for retry.
+- Export options include editable `.pptx`, source JSON, one PNG, a PNG ZIP and
+  browser Print/Save as PDF. Speaker notes are included in PowerPoint exports.
+
+Cloud sync requires migration
+`supabase/migrations/20260716061519_architecture_slides_studio.sql` to be applied
+to the linked project. The browser never receives a Supabase secret key. The
+Slides Studio remains a local-development mini-app; direct Google Slides API
+editing and simultaneous collaboration are intentionally out of scope.
+
+Run the Slides Studio contract and local persistence checks with:
+
+```powershell
+node .\scripts\test-slides-studio.mjs
+node .\scripts\test-workspace-host.mjs
+```
+
 ## Agent Mode
 
 `Agent` keeps Draw.io visible beside a compact plan and activity panel. It is a constrained diagram agent, not a generic browser operator:

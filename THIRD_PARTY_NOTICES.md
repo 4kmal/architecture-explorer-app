@@ -47,3 +47,30 @@ Copyright (c) 2026 sparklabx
 
 The complete MIT licence is included at
 `licenses/DRAWIO_AI_KIT_LICENSE.txt`.
+
+## Fabric.js
+
+Slides Studio uses Fabric.js 7.4.0 for the editable 16:9 slide canvas, object
+transforms, selection, serialization, and raster rendering. Fabric.js is
+distributed under the MIT License; a copy is included at
+`licenses/FABRIC_LICENSE.txt`.
+
+## PptxGenJS
+
+Slides Studio uses PptxGenJS 4.0.1 to generate editable PowerPoint files,
+including speaker notes and SVG diagram images. PptxGenJS is distributed under
+the MIT License; a copy is included at `licenses/PPTXGENJS_LICENSE.txt`.
+
+## JSZip
+
+Slides Studio uses JSZip 3.10.1 to package all-slide PNG exports. JSZip is
+distributed under the MIT License; a copy is included at
+`licenses/JSZIP_LICENSE.md`.
+
+## Canva clone reference patterns
+
+The Slides Studio layout and editor workflow were informed by generic canvas
+editing patterns studied in the Apache-2.0-licensed `canva-clone` reference
+checkout. The reference Next.js/SaaS application is not embedded or copied as
+a runtime dependency. A copy of its license is included at
+`licenses/CANVA_CLONE_REFERENCE_LICENSE.txt`.

@@ -1,5 +1,5 @@
 import { createServer } from 'node:http';
-import { copyFileSync, createReadStream, existsSync, mkdirSync, readFileSync, renameSync, statSync, writeFileSync } from 'node:fs';
+import { copyFileSync, createReadStream, existsSync, mkdirSync, readFileSync, readdirSync, renameSync, statSync, unlinkSync, writeFileSync } from 'node:fs';
 import { extname, isAbsolute, join, normalize, relative, resolve, sep } from 'node:path';
 import { createHash, randomBytes, randomUUID } from 'node:crypto';
 
@@ -8,6 +8,8 @@ await import('../openai-model-policy.js');
 const root = resolve(import.meta.dirname, '..');
 const runtimeDirectory = join(root, '.runtime');
 const runtimeFile = process.env.PETAKERJA_EXPLORER_RUNTIME_FILE || join(runtimeDirectory, 'host.json');
+const presentationsDirectory = join(runtimeDirectory, 'presentations');
+const presentationAssetsDirectory = join(runtimeDirectory, 'presentation-assets');
 const token = randomBytes(24).toString('hex');
 const commands = [];
 const results = new Map();
@@ -23,7 +25,7 @@ const deniedStaticSegments = new Set(['.git', '.runtime', 'bridge', 'node_module
 const contentTypes = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8',
   '.json': 'application/json; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg',
-  '.drawio': 'application/xml; charset=utf-8', '.xml': 'application/xml; charset=utf-8', '.woff2': 'font/woff2',
+  '.drawio': 'application/xml; charset=utf-8', '.xml': 'application/xml; charset=utf-8', '.webp': 'image/webp', '.woff2': 'font/woff2',
 };
 
 function json(response, status, value) {
@@ -56,6 +58,65 @@ function workspaceAuthorized(request) {
 
 function sha256(xml, svg) {
   return createHash('sha256').update(xml).update('\0').update(svg).digest('hex');
+}
+
+function documentRevision(document) {
+  return createHash('sha256').update(JSON.stringify(document)).digest('hex');
+}
+
+function presentationPath(id) {
+  if (!/^[a-z0-9][a-z0-9-]{7,127}$/i.test(String(id || ''))) throw new Error('Invalid presentation ID.');
+  return join(presentationsDirectory, `${id}.slides.json`);
+}
+
+function readPresentation(id) {
+  const path = presentationPath(id);
+  if (!existsSync(path)) return null;
+  const document = JSON.parse(readFileSync(path, 'utf8'));
+  return { document, revision: documentRevision(document), modifiedAt: new Date(statSync(path).mtimeMs).toISOString(), path };
+}
+
+function presentationSummary(item) {
+  return {
+    id: item.document.id,
+    title: item.document.title,
+    language: item.document.language,
+    slideCount: Array.isArray(item.document.slides) ? item.document.slides.length : 0,
+    updatedAt: item.document.updatedAt || item.modifiedAt,
+    revision: item.revision,
+  };
+}
+
+function listPresentations() {
+  mkdirSync(presentationsDirectory, { recursive: true });
+  return readdirSync(presentationsDirectory).filter((name) => name.endsWith('.slides.json')).map((name) => readPresentation(name.slice(0, -'.slides.json'.length))).filter(Boolean).map(presentationSummary).sort((a, b) => String(b.updatedAt).localeCompare(String(a.updatedAt)));
+}
+
+function validatePresentation(document) {
+  if (!document || document.schemaVersion !== 1 || !document.id || !document.title || !Array.isArray(document.slides)) throw new Error('A valid Slides Studio document is required.');
+  if (document.slides.length > 200) throw new Error('A presentation cannot contain more than 200 slides.');
+  const body = JSON.stringify(document);
+  if (Buffer.byteLength(body) > 24 * 1024 * 1024) throw new Error('Presentation exceeds the 24 MB local document limit.');
+  return body;
+}
+
+function backupPresentation(id, current) {
+  if (!current?.path || !existsSync(current.path)) return;
+  const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+  const directory = join(runtimeDirectory, 'backups', 'presentations', id);
+  mkdirSync(directory, { recursive: true });
+  copyFileSync(current.path, join(directory, `${stamp}.slides.json`));
+}
+
+async function readBuffer(request, limit = 12 * 1024 * 1024) {
+  const chunks = [];
+  let size = 0;
+  for await (const chunk of request) {
+    size += chunk.length;
+    if (size > limit) throw new Error('Asset exceeds the local upload limit.');
+    chunks.push(chunk);
+  }
+  return Buffer.concat(chunks);
 }
 
 function safeWorkspacePath(entry, field) {
@@ -197,6 +258,88 @@ function createRequestHandler(port) {
         const saved = workspaceDocument(diagramId);
         json(response, 200, { diagramId, revision: saved.revision, modifiedAt: saved.modifiedAt });
         return;
+      }
+      if (url.pathname === '/api/workspace/presentations' && request.method === 'GET') {
+        if (!sameOrigin(request, port)) { json(response, 403, { error: { message: 'Origin rejected.' } }); return; }
+        json(response, 200, { presentations: listPresentations() });
+        return;
+      }
+      if (url.pathname === '/api/workspace/presentations' && request.method === 'POST') {
+        if (!sameOrigin(request, port)) { json(response, 403, { error: { message: 'Origin rejected.' } }); return; }
+        if (!workspaceAuthorized(request)) { json(response, 401, { error: { message: 'Workspace token rejected.' } }); return; }
+        const body = await readJSON(request);
+        const document = body.document;
+        const serialized = validatePresentation(document);
+        const existing = readPresentation(document.id);
+        if (existing) { json(response, 409, { error: { message: 'This presentation ID already exists.' }, revision: existing.revision, modifiedAt: existing.modifiedAt }); return; }
+        mkdirSync(presentationsDirectory, { recursive: true });
+        atomicWrite(presentationPath(document.id), serialized);
+        const saved = readPresentation(document.id);
+        json(response, 201, { presentation: presentationSummary(saved), revision: saved.revision, modifiedAt: saved.modifiedAt });
+        return;
+      }
+      const presentationMatch = url.pathname.match(/^\/api\/workspace\/presentations\/([^/]+)$/);
+      if (presentationMatch && request.method === 'GET') {
+        if (!sameOrigin(request, port)) { json(response, 403, { error: { message: 'Origin rejected.' } }); return; }
+        const id = decodeURIComponent(presentationMatch[1]);
+        const current = readPresentation(id);
+        if (!current) { json(response, 404, { error: { message: 'Presentation not found.' } }); return; }
+        json(response, 200, { document: current.document, revision: current.revision, modifiedAt: current.modifiedAt });
+        return;
+      }
+      if (presentationMatch && request.method === 'PUT') {
+        if (!sameOrigin(request, port)) { json(response, 403, { error: { message: 'Origin rejected.' } }); return; }
+        if (!workspaceAuthorized(request)) { json(response, 401, { error: { message: 'Workspace token rejected.' } }); return; }
+        const id = decodeURIComponent(presentationMatch[1]);
+        const current = readPresentation(id);
+        if (!current) { json(response, 404, { error: { message: 'Presentation not found.' } }); return; }
+        const body = await readJSON(request);
+        if (body.revision !== current.revision) { json(response, 409, { error: { message: 'A newer local presentation revision exists.' }, revision: current.revision, modifiedAt: current.modifiedAt }); return; }
+        if (body.document?.id !== id) throw new Error('Presentation ID cannot change during an update.');
+        const serialized = validatePresentation(body.document);
+        backupPresentation(id, current);
+        atomicWrite(current.path, serialized);
+        const saved = readPresentation(id);
+        json(response, 200, { presentation: presentationSummary(saved), revision: saved.revision, modifiedAt: saved.modifiedAt });
+        return;
+      }
+      if (presentationMatch && request.method === 'DELETE') {
+        if (!sameOrigin(request, port)) { json(response, 403, { error: { message: 'Origin rejected.' } }); return; }
+        if (!workspaceAuthorized(request)) { json(response, 401, { error: { message: 'Workspace token rejected.' } }); return; }
+        const id = decodeURIComponent(presentationMatch[1]);
+        const current = readPresentation(id);
+        if (!current) { json(response, 404, { error: { message: 'Presentation not found.' } }); return; }
+        backupPresentation(id, current); unlinkSync(current.path); json(response, 200, { deleted: true, id });
+        return;
+      }
+      const assetMatch = url.pathname.match(/^\/api\/workspace\/presentations\/([^/]+)\/assets\/([^/]+)$/);
+      if (assetMatch && request.method === 'PUT') {
+        if (!sameOrigin(request, port)) { json(response, 403, { error: { message: 'Origin rejected.' } }); return; }
+        if (!workspaceAuthorized(request)) { json(response, 401, { error: { message: 'Workspace token rejected.' } }); return; }
+        const [id, assetId] = assetMatch.slice(1).map(decodeURIComponent);
+        if (!readPresentation(id) || !/^[a-z0-9][a-z0-9-]{7,127}$/i.test(assetId)) { json(response, 404, { error: { message: 'Presentation or asset is not registered.' } }); return; }
+        const mime = String(request.headers['content-type'] || 'application/octet-stream').split(';')[0];
+        const extensions = { 'image/svg+xml': '.svg', 'image/png': '.png', 'image/jpeg': '.jpg', 'image/webp': '.webp' };
+        if (!extensions[mime]) { json(response, 415, { error: { message: 'Only SVG, PNG, JPEG and WebP assets are accepted.' } }); return; }
+        const directory = join(presentationAssetsDirectory, id); mkdirSync(directory, { recursive: true });
+        const path = join(directory, `${assetId}${extensions[mime]}`); const content = await readBuffer(request); atomicWrite(path, content);
+        json(response, 201, { id: assetId, mimeType: mime, sha256: createHash('sha256').update(content).digest('hex'), path: `/api/workspace/presentations/${id}/assets/${assetId}` });
+        return;
+      }
+      if (assetMatch && request.method === 'GET') {
+        if (!sameOrigin(request, port)) { json(response, 403, { error: { message: 'Origin rejected.' } }); return; }
+        const [id, assetId] = assetMatch.slice(1).map(decodeURIComponent); const directory = join(presentationAssetsDirectory, id);
+        const file = existsSync(directory) ? readdirSync(directory).find((name) => name.startsWith(`${assetId}.`)) : null;
+        if (!file) { json(response, 404, { error: { message: 'Asset not found.' } }); return; }
+        const path = join(directory, file); response.writeHead(200, { 'Content-Type': contentTypes[extname(path)] || 'application/octet-stream', 'Content-Length': statSync(path).size, 'Cache-Control': 'private, no-store' }); createReadStream(path).pipe(response); return;
+      }
+      if (assetMatch && request.method === 'DELETE') {
+        if (!sameOrigin(request, port)) { json(response, 403, { error: { message: 'Origin rejected.' } }); return; }
+        if (!workspaceAuthorized(request)) { json(response, 401, { error: { message: 'Workspace token rejected.' } }); return; }
+        const [id, assetId] = assetMatch.slice(1).map(decodeURIComponent); const directory = join(presentationAssetsDirectory, id);
+        const file = existsSync(directory) ? readdirSync(directory).find((name) => name.startsWith(`${assetId}.`)) : null;
+        if (!file) { json(response, 404, { error: { message: 'Asset not found.' } }); return; }
+        unlinkSync(join(directory, file)); json(response, 200, { deleted: true, id: assetId }); return;
       }
       if (url.pathname === '/api/agent/openai/models' && request.method === 'POST') {
         if (!sameOrigin(request, port)) { json(response, 403, { error: { message: 'Origin rejected.' } }); return; }

@@ -46,6 +46,61 @@ try {
   });
   assert.equal(conflictResponse.status, 409);
 
+  const deckId = `deck-test-${Date.now()}`;
+  const deck = {
+    schemaVersion: 1,
+    id: deckId,
+    title: 'Workspace host test deck',
+    language: 'ms',
+    aspectRatio: '16:9',
+    presetId: 'ukm-fyp-2026',
+    themeId: 'ukm-neutral',
+    slides: [{ id: `slide-test-${Date.now()}`, name: 'Test', hidden: false, layoutId: 'blank', durationSeconds: 45, speakerNotes: 'Test notes', canvasJson: { version: '7.4.0', objects: [] } }],
+    assets: {},
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  };
+  const createDeckResponse = await fetch(`http://127.0.0.1:${port}/api/workspace/presentations`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-PetaKerja-Workspace-Token': session.token },
+    body: JSON.stringify({ document: deck }),
+  });
+  assert.equal(createDeckResponse.status, 201);
+  const createdDeck = await createDeckResponse.json();
+  assert.equal(createdDeck.revision.length, 64);
+
+  const staleDeckResponse = await fetch(`http://127.0.0.1:${port}/api/workspace/presentations/${deckId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', 'X-PetaKerja-Workspace-Token': session.token },
+    body: JSON.stringify({ document: { ...deck, title: 'Stale write' }, revision: 'stale' }),
+  });
+  assert.equal(staleDeckResponse.status, 409);
+
+  const updateDeckResponse = await fetch(`http://127.0.0.1:${port}/api/workspace/presentations/${deckId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', 'X-PetaKerja-Workspace-Token': session.token },
+    body: JSON.stringify({ document: { ...deck, title: 'Updated test deck', updatedAt: new Date().toISOString() }, revision: createdDeck.revision }),
+  });
+  assert.equal(updateDeckResponse.status, 200);
+  const updatedDeck = await updateDeckResponse.json();
+  assert.notEqual(updatedDeck.revision, createdDeck.revision);
+
+  const assetId = `asset-test-${Date.now()}`;
+  const assetResponse = await fetch(`http://127.0.0.1:${port}/api/workspace/presentations/${deckId}/assets/${assetId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'image/svg+xml', 'X-PetaKerja-Workspace-Token': session.token },
+    body: '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"/>',
+  });
+  assert.equal(assetResponse.status, 201);
+  const readAssetResponse = await fetch(`http://127.0.0.1:${port}/api/workspace/presentations/${deckId}/assets/${assetId}`);
+  assert.equal(readAssetResponse.status, 200);
+  assert.match(await readAssetResponse.text(), /<svg/);
+
+  const deleteDeckResponse = await fetch(`http://127.0.0.1:${port}/api/workspace/presentations/${deckId}`, {
+    method: 'DELETE', headers: { 'X-PetaKerja-Workspace-Token': session.token },
+  });
+  assert.equal(deleteDeckResponse.status, 200);
+
   for (const path of ['/.runtime/host.json', '/.git/config', '/bridge/package.json', '/scripts/explorer-host.mjs']) {
     const response = await fetch(`http://127.0.0.1:${port}${path}`);
     assert.equal(response.status, 404, `${path} must not be served`);

@@ -22,6 +22,7 @@
     }());
   </script>
   <link rel="stylesheet" href="styles.css?v=20260715-8">
+  <link rel="stylesheet" href="slides.css?v=20260716-1">
 </head>
 <body>
   <a id="skip-link" class="skip-link" href="#diagram-workspace">Skip to diagram</a>
@@ -29,6 +30,7 @@
     <div class="brand-block"><h1>PetaKerja Architecture Explorer</h1><p id="app-subtitle">Trace UI to class to route to table across current code, the FYP model and legacy modules.</p></div>
     <div class="header-controls">
       <a id="learning-link" class="header-learning-link" href="#learn"><i data-lucide="book-open" aria-hidden="true"></i><span>For Dummies</span></a>
+      <a id="slides-link" class="header-learning-link" href="#slides"><i data-lucide="presentation" aria-hidden="true"></i><span>Slides</span></a>
       <div id="render-mode-control" class="segmented" role="group" aria-label="Diagram mode">
         <button id="mode-actual" type="button" data-render-mode="actual" aria-pressed="true">Actual diagram</button>
         <button id="mode-map" type="button" data-render-mode="map" aria-pressed="false">Interactive map</button>
@@ -67,6 +69,47 @@
       <section id="learning-quiz-panel" class="learning-practice__section" data-learning-region="quiz" aria-labelledby="learning-quiz-title"></section>
     </aside>
     <p id="learning-live" class="sr-only" aria-live="polite"></p>
+  </section>
+  <section id="slides-shell" class="slides-shell" aria-labelledby="slides-title" hidden>
+    <header class="slides-toolbar">
+      <button id="slides-back" type="button" class="secondary-button" title="Back to Explorer"><i data-lucide="arrow-left" aria-hidden="true"></i><span>Explorer</span></button>
+      <div class="slides-document-title"><input id="slides-title" type="text" value="Pembentangan FYP PetaKerja" aria-label="Presentation title"><span id="slides-save-status" role="status" aria-live="polite">Saved locally</span></div>
+      <div class="slides-toolbar__actions">
+        <button id="slides-undo" type="button" class="secondary-button" title="Undo"><i data-lucide="undo-2" aria-hidden="true"></i><span class="slides-wide-label">Undo</span></button>
+        <button id="slides-redo" type="button" class="secondary-button" title="Redo"><i data-lucide="redo-2" aria-hidden="true"></i><span class="slides-wide-label">Redo</span></button>
+        <button id="slides-add" type="button"><i data-lucide="plus" aria-hidden="true"></i><span>Add slide</span></button>
+        <button id="slides-present" type="button" class="secondary-button"><i data-lucide="play" aria-hidden="true"></i><span>Present</span></button>
+        <button id="slides-save" type="button" class="secondary-button"><i data-lucide="save" aria-hidden="true"></i><span>Save</span></button>
+        <button id="slides-save-copy" type="button" class="secondary-button"><i data-lucide="copy-plus" aria-hidden="true"></i><span>Save as copy</span></button>
+        <button id="slides-cloud" type="button" class="secondary-button"><i data-lucide="cloud-upload" aria-hidden="true"></i><span>Sync</span></button>
+        <div class="slides-export-menu"><button id="slides-export" type="button" class="secondary-button"><i data-lucide="download" aria-hidden="true"></i><span>Export</span></button><div id="slides-export-options" hidden><button type="button" data-slides-export="pptx">PowerPoint (.pptx)</button><button type="button" data-slides-export="json">Source (.slides.json)</button><button type="button" data-slides-export="png">Current slide PNG</button><button type="button" data-slides-export="zip">All slide PNG ZIP</button><button type="button" data-slides-export="print">Print / PDF</button></div></div>
+      </div>
+    </header>
+    <div class="slides-editor">
+      <aside class="slides-filmstrip" aria-label="Slides">
+        <div class="slides-filmstrip__heading"><strong>Slides</strong><button id="slides-preset" type="button" class="text-button">New UKM deck</button></div>
+        <ol id="slides-thumbnails" aria-label="Slide thumbnails"></ol>
+      </aside>
+      <main class="slides-stage" aria-label="Slide canvas">
+        <div id="slides-canvas-wrap"><canvas id="slides-canvas" width="1600" height="900" aria-label="Editable slide"></canvas><div id="slides-guides" aria-hidden="true"></div></div>
+        <div class="slides-zoom"><button id="slides-zoom-out" type="button" aria-label="Zoom out">−</button><output id="slides-zoom-value">Fit</output><button id="slides-zoom-in" type="button" aria-label="Zoom in">+</button></div>
+      </main>
+      <aside class="slides-inspector" aria-label="Slide tools">
+        <div class="slides-inspector-tabs" role="tablist" aria-label="Tools"><button type="button" data-slides-panel="layouts" role="tab" aria-selected="true">Layouts</button><button type="button" data-slides-panel="elements" role="tab" aria-selected="false">Elements</button><button type="button" data-slides-panel="diagrams" role="tab" aria-selected="false">Diagrams</button><button type="button" data-slides-panel="properties" role="tab" aria-selected="false">Properties</button></div>
+        <section id="slides-panel-layouts" class="slides-tool-panel" data-slides-tool-panel="layouts"><h3>Layouts</h3><div id="slides-layouts" class="slides-layout-grid"></div></section>
+        <section id="slides-panel-elements" class="slides-tool-panel" data-slides-tool-panel="elements" hidden><h3>Elements</h3><div class="slides-element-grid"><button type="button" data-add-element="heading"><i data-lucide="heading" aria-hidden="true"></i>Heading</button><button type="button" data-add-element="body"><i data-lucide="type" aria-hidden="true"></i>Body text</button><button type="button" data-add-element="rectangle"><i data-lucide="square" aria-hidden="true"></i>Rectangle</button><button type="button" data-add-element="ellipse"><i data-lucide="circle" aria-hidden="true"></i>Ellipse</button><button type="button" data-add-element="image"><i data-lucide="image" aria-hidden="true"></i>Image</button></div><input id="slides-image-input" class="sr-only" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml"><h3>Layers</h3><div class="slides-layer-actions"><button type="button" data-layer-action="front">Bring forward</button><button type="button" data-layer-action="back">Send backward</button><button type="button" data-layer-action="duplicate">Duplicate</button><button type="button" data-layer-action="delete">Delete</button></div></section>
+        <section id="slides-panel-diagrams" class="slides-tool-panel" data-slides-tool-panel="diagrams" hidden><h3>Explorer diagrams</h3><div class="slides-diagram-filters"><input id="slides-diagram-search" type="search" placeholder="Search diagrams"><select id="slides-diagram-family"><option value="all">All families</option></select><select id="slides-diagram-audience"><option value="all">All audiences</option><option value="user">User</option><option value="administrator">Administrator</option></select><select id="slides-diagram-variant"><option value="all">All variants</option><option value="polished">Polished</option><option value="original">Original</option></select></div><button id="slides-insert-current-diagram" type="button" class="secondary-button">Insert current Explorer diagram</button><div id="slides-diagram-library" class="slides-diagram-library"></div></section>
+        <section id="slides-panel-properties" class="slides-tool-panel" data-slides-tool-panel="properties" hidden><h3>Properties</h3><div id="slides-properties"><p class="slides-muted">Select an object to edit its properties.</p></div></section>
+      </aside>
+      <footer class="slides-notes">
+        <div class="slides-notes__tabs"><button type="button" data-slides-bottom="notes" aria-pressed="true">Speaker notes</button><button type="button" data-slides-bottom="checker" aria-pressed="false">Presentation checker <span id="slides-issue-count">0</span></button></div>
+        <section id="slides-notes-panel"><textarea id="slides-speaker-notes" placeholder="Speaker notes are exported to PowerPoint and are not shown to the audience."></textarea><label>Time <input id="slides-duration" type="number" min="5" max="600" step="5" value="45"> seconds</label><span id="slides-total-time">0:00 total</span></section>
+        <section id="slides-checker-panel" hidden><div id="slides-checker-results"></div></section>
+      </footer>
+    </div>
+    <div class="slides-mobile-tabs" role="tablist" aria-label="Slides Studio panels"><button type="button" data-slides-mobile="slides" aria-selected="false">Slides</button><button type="button" data-slides-mobile="canvas" aria-selected="true">Canvas</button><button type="button" data-slides-mobile="tools" aria-selected="false">Tools</button><button type="button" data-slides-mobile="notes" aria-selected="false">Notes</button></div>
+    <input id="slides-import-input" class="sr-only" type="file" accept=".json,.slides.json,application/json">
+    <p id="slides-live" class="sr-only" aria-live="polite"></p>
   </section>
   <main class="app-shell">
     <aside class="navigation-panel" aria-label="Diagram list">
@@ -117,6 +160,6 @@
   <dialog id="import-dialog" class="import-dialog"><header><div><h2 id="import-title">Review Draw.io import</h2><p id="import-subtitle">Choose the page and confirm or override its detected type.</p></div><button id="close-import" type="button" aria-label="Close">×</button></header><div id="import-file-summary" class="import-file-summary"></div><div id="import-pages" class="import-pages"></div><footer><button id="cancel-import" type="button" class="secondary-button">Cancel</button><button id="confirm-import" type="button">Open in editor</button></footer></dialog>
   <dialog id="runtime-dialog" class="runtime-dialog" aria-labelledby="runtime-title" aria-describedby="runtime-description"><header><div><h2 id="runtime-title">Start the local editor</h2><p id="runtime-subtitle">This copy is open in read-only file mode.</p></div><button id="close-runtime" type="button" aria-label="Close">×</button></header><div class="runtime-dialog-body"><p id="runtime-description">The embedded Draw.io editor needs a same-origin local HTTP server. All files remain on this computer.</p><ol><li id="runtime-step-launcher">Close this tab and double-click <code>Start-Explorer.cmd</code> in the Explorer folder.</li><li id="runtime-step-command">Or run this command in PowerShell:</li></ol><div class="runtime-command-row"><code id="runtime-command"></code><button id="copy-runtime-command" type="button" class="secondary-button">Copy command</button></div></div><footer><button id="dismiss-runtime" type="button" class="secondary-button">Close</button></footer></dialog>
   <p id="status-message" class="sr-only" aria-live="polite"></p>
-  <script src="runtime-config.js?v=20260716-1"></script><script src="architecture-data.js?v=20260716-1"></script><script src="translations.js?v=20260716-1"></script><script src="diagram-assets.js?v=20260715-16"></script><script src="learning-data.js?v=20260715-13"></script><script src="auth-sequence-svg.js?v=20260714-3"></script><script src="auth-sequence-asset.js?v=20260714-4"></script><script src="vendor/drawio/js/deflate/pako.min.js?v=20260714-3"></script><script src="editor-core.js?v=20260716-1"></script><script src="openai-model-policy.js?v=20260714-1"></script><script src="agent-runtime.js?v=20260716-1"></script><script src="vendor/lucide/lucide.min.js?v=1.24.0"></script><script src="app.js?v=20260716-1"></script><script src="learning.js?v=20260715-13"></script>
+  <script src="runtime-config.js?v=20260716-1"></script><script src="architecture-data.js?v=20260716-1"></script><script src="translations.js?v=20260716-1"></script><script src="diagram-assets.js?v=20260715-16"></script><script src="learning-data.js?v=20260715-13"></script><script src="slides-data.js?v=20260716-1"></script><script src="auth-sequence-svg.js?v=20260714-3"></script><script src="auth-sequence-asset.js?v=20260714-4"></script><script src="vendor/drawio/js/deflate/pako.min.js?v=20260714-3"></script><script src="vendor/fabric/fabric.min.js?v=7.4.0"></script><script src="vendor/pptxgenjs/pptxgen.bundle.js?v=4.0.1"></script><script src="vendor/jszip/jszip.min.js?v=3.10.1"></script><script src="editor-core.js?v=20260716-1"></script><script src="openai-model-policy.js?v=20260714-1"></script><script src="agent-runtime.js?v=20260716-1"></script><script src="vendor/lucide/lucide.min.js?v=1.24.0"></script><script src="app.js?v=20260716-1"></script><script src="learning.js?v=20260715-13"></script><script src="slides.js?v=20260716-2"></script>
 </body>
 </html>

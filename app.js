@@ -1864,6 +1864,7 @@
   });
   document.querySelectorAll('[data-language]').forEach((button) => button.addEventListener('click', () => {
     state.language = button.dataset.language; state.fitMode = true; editorController.setLanguage(state.language); renderAll();
+    window.dispatchEvent(new CustomEvent('petakerja:languagechange', { detail: { language: state.language } }));
   }));
   els.themeSelect.addEventListener('change', () => applyThemePreference(els.themeSelect.value, { announce: true }));
   systemThemeQuery?.addEventListener?.('change', () => {
