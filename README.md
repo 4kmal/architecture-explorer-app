@@ -86,6 +86,12 @@ speaker notes, timing, a presentation checker and fullscreen rehearsal mode.
   remains safe locally and is queued in IndexedDB for retry.
 - Export options include editable `.pptx`, source JSON, one PNG, a PNG ZIP and
   browser Print/Save as PDF. Speaker notes are included in PowerPoint exports.
+- On desktop, scrolling vertically over the empty stage around the Fabric
+  canvas selects the previous or next slide. Wheel input over the canvas,
+  filmstrip, zoom controls, inspector or notes keeps its existing behaviour.
+  Trackpad deltas are normalised and throttled, navigation includes hidden
+  slides, stops at the deck boundaries, keeps the active thumbnail visible and
+  announces the selected slide to assistive technology.
 
 Cloud sync requires migration
 `supabase/migrations/20260716061519_architecture_slides_studio.sql` to be applied

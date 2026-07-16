@@ -27,9 +27,12 @@ const [html, script, css] = await Promise.all([
 for (const marker of ['id="slides-link"', 'id="slides-shell"', 'id="slides-save-copy"', 'vendor/fabric/fabric.min.js', 'vendor/pptxgenjs/pptxgen.bundle.js']) {
   assert.match(html, new RegExp(marker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
 }
-for (const marker of ['PETAKERJA_DIAGRAM_ASSETS', 'Fabric.FabricObject.customProperties', 'workspace/presentations', 'architecture-explorer/presentations', 'addNotes', 'IndexedDB', 'syncCloudAssets', 'saveAsCopy']) {
+for (const marker of ['PETAKERJA_DIAGRAM_ASSETS', 'Fabric.FabricObject.customProperties', 'workspace/presentations', 'architecture-explorer/presentations', 'addNotes', 'IndexedDB', 'syncCloudAssets', 'saveAsCopy', 'handleSlidesStageWheel', 'normalizeSlideWheelDelta', 'SLIDE_WHEEL_THRESHOLD', 'syncActiveThumbnail', 'scrollIntoView']) {
   assert.ok(script.toLowerCase().includes(marker.toLowerCase()), `slides.js must include ${marker}`);
 }
+assert.match(script, /\.slides-stage'\)\.addEventListener\('wheel',\s*handleSlidesStageWheel,\s*\{\s*passive:\s*false\s*\}\)/);
+assert.match(script, /Math\.max\(0,\s*Math\.min\(state\.deck\.slides\.length\s*-\s*1,\s*currentIndex\s*\+\s*direction\)\)/);
+assert.match(script, /#slides-canvas-wrap, \.slides-zoom/);
 assert.doesNotMatch(css, /linear-gradient|radial-gradient|conic-gradient/i);
 assert.doesNotMatch(css, /::before[^}]*height:\s*[1-9]px[^}]*background:/is);
 

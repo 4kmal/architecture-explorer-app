@@ -27,7 +27,15 @@
     checkerTimer: 0,
     diagramObjectURLs: [],
     mobilePanel: 'canvas',
+    slideWheelDelta: 0,
+    slideWheelDirection: 0,
+    slideWheelResetTimer: 0,
+    slideWheelLockedUntil: 0,
   };
+
+  const SLIDE_WHEEL_THRESHOLD = 64;
+  const SLIDE_WHEEL_COOLDOWN_MS = 260;
+  const SLIDE_WHEEL_IDLE_RESET_MS = 180;
 
   const customProps = ['elementId', 'elementType', 'assetId', 'diagramId', 'diagramHash', 'diagramVariant', 'diagramLanguage', 'diagramLabelMode', 'sourceRevision', 'sourceSvg', 'altText', 'caption', 'linkHash'];
   // Fabric 7 no longer reliably forwards Canvas#toJSON(propertiesToInclude)
@@ -268,8 +276,23 @@
     el('slides-duration').value = slide.durationSeconds || 45;
     updateHistoryButtons();
     renderThumbnails();
+    syncActiveThumbnail(slide);
     renderProperties();
     updateTotalTime();
+  }
+
+  function syncActiveThumbnail(slide) {
+    if (!slide) return;
+    requestAnimationFrame(() => {
+      const active = document.querySelector(`.slides-thumb[data-slide-id="${CSS.escape(slide.id)}"]`);
+      active?.scrollIntoView({
+        block: 'nearest',
+        inline: 'nearest',
+        behavior: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+      });
+    });
+    const index = state.deck.slides.findIndex((item) => item.id === slide.id);
+    announce(ui(`Slide ${index + 1} of ${state.deck.slides.length}: ${slide.name}`, `Slaid ${index + 1} daripada ${state.deck.slides.length}: ${slide.name}`));
   }
 
   function renderThumbnails() {
@@ -808,6 +831,7 @@
     shell.querySelectorAll('[data-slides-bottom]').forEach((button) => button.addEventListener('click', () => { shell.querySelectorAll('[data-slides-bottom]').forEach((item) => item.setAttribute('aria-pressed', String(item === button))); el('slides-notes-panel').hidden = button.dataset.slidesBottom !== 'notes'; el('slides-checker-panel').hidden = button.dataset.slidesBottom !== 'checker'; if (button.dataset.slidesBottom === 'checker') validateDeck(); }));
     shell.querySelectorAll('[data-slides-mobile]').forEach((button) => button.addEventListener('click', () => { state.mobilePanel = button.dataset.slidesMobile; editor.dataset.mobilePanel = state.mobilePanel; shell.querySelectorAll('[data-slides-mobile]').forEach((item) => item.setAttribute('aria-selected', String(item === button))); }));
     el('slides-zoom-out').addEventListener('click', () => setStageZoom(-0.1)); el('slides-zoom-in').addEventListener('click', () => setStageZoom(0.1));
+    shell.querySelector('.slides-stage').addEventListener('wheel', handleSlidesStageWheel, { passive: false });
     el('slides-import-input').addEventListener('change', (event) => { importDeck(event.target.files?.[0]); event.target.value = ''; });
     window.addEventListener('keydown', (event) => {
       if (!state.active || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target.tagName) || event.target.isContentEditable) return;
@@ -820,6 +844,57 @@
     });
     window.addEventListener('beforeunload', () => captureCurrentSlide({ persist: false, check: false }));
     window.addEventListener('resize', fitCanvasStage);
+  }
+
+  function normalizeSlideWheelDelta(event, stage) {
+    const multiplier = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? Math.max(stage.clientHeight, 1) : 1;
+    return event.deltaY * multiplier;
+  }
+
+  function resetSlideWheelGesture() {
+    state.slideWheelDelta = 0;
+    state.slideWheelDirection = 0;
+    clearTimeout(state.slideWheelResetTimer);
+    state.slideWheelResetTimer = 0;
+  }
+
+  function isSlidesStageWheelNavigation(event, stage) {
+    if (!state.active || !state.deck || state.deck.slides.length < 2 || event.ctrlKey || event.metaKey) return false;
+    if (window.matchMedia?.('(max-width: 980px)').matches) return false;
+    if (Math.abs(event.deltaY) <= Math.abs(event.deltaX) || event.deltaY === 0) return false;
+    const target = event.target instanceof Element ? event.target : null;
+    if (!target || !stage.contains(target)) return false;
+    return !target.closest('#slides-canvas-wrap, .slides-zoom, button, input, textarea, select, [contenteditable="true"], [role="button"]');
+  }
+
+  function handleSlidesStageWheel(event) {
+    const stage = event.currentTarget;
+    if (!isSlidesStageWheelNavigation(event, stage)) return;
+    const delta = normalizeSlideWheelDelta(event, stage);
+    if (!delta) return;
+    event.preventDefault();
+
+    const now = performance.now();
+    const direction = Math.sign(delta);
+    if (state.slideWheelDirection && state.slideWheelDirection !== direction) state.slideWheelDelta = 0;
+    state.slideWheelDirection = direction;
+    clearTimeout(state.slideWheelResetTimer);
+    state.slideWheelResetTimer = setTimeout(resetSlideWheelGesture, SLIDE_WHEEL_IDLE_RESET_MS);
+
+    if (now < state.slideWheelLockedUntil) {
+      state.slideWheelDelta = 0;
+      return;
+    }
+
+    state.slideWheelDelta += delta;
+    if (Math.abs(state.slideWheelDelta) < SLIDE_WHEEL_THRESHOLD) return;
+
+    const currentIndex = state.deck.slides.findIndex((slide) => slide.id === state.currentSlideId);
+    const nextIndex = Math.max(0, Math.min(state.deck.slides.length - 1, currentIndex + direction));
+    state.slideWheelLockedUntil = now + SLIDE_WHEEL_COOLDOWN_MS;
+    resetSlideWheelGesture();
+    if (nextIndex === currentIndex) return;
+    loadSlide(state.deck.slides[nextIndex].id);
   }
 
   function setStageZoom(delta) {
@@ -847,7 +922,7 @@
   }
 
   function leaveSlides() {
-    if (!state.active) return; captureCurrentSlide({ persist: false, check: false }); state.active = false; document.body.classList.remove('is-slides-mode'); shell.hidden = true; clearTimeout(state.saveTimer); saveLocal({ immediate: true });
+    if (!state.active) return; captureCurrentSlide({ persist: false, check: false }); state.active = false; resetSlideWheelGesture(); state.slideWheelLockedUntil = 0; document.body.classList.remove('is-slides-mode'); shell.hidden = true; clearTimeout(state.saveTimer); saveLocal({ immediate: true });
   }
 
   function populateDiagramFamilies() {
