@@ -20,6 +20,14 @@
     workspaceToken: '',
     localRevision: null,
     cloud: null,
+    cloudDeckId: null,
+    branch: null,
+    branches: [],
+    versions: [],
+    branchHeadHash: '',
+    library: [],
+    libraryLoading: false,
+    view: 'library',
     suppressHistory: false,
     history: [],
     historyIndex: -1,
@@ -64,6 +72,8 @@
   const hashText = async (text) => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text)))).map((byte) => byte.toString(16).padStart(2, '0')).join('');
   const announce = (message) => { const node = el('slides-live'); if (node) node.textContent = message; };
   const formatTime = (seconds) => `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
+  const activeVersionNumber = () => Number(state.versions.find((version) => version.id === state.branch?.head_version_id)?.version_number || 1);
+  const exportBaseName = () => `${state.deck?.title || 'PetaKerja Presentation'} — ${state.branch?.slug || 'main'} — v${activeVersionNumber()}`;
 
   async function loadCanvasJSON(canvas, json) {
     await canvas.loadFromJSON(json || emptyCanvasJSON());
@@ -129,6 +139,8 @@
   function translateSlidesUI() {
     replaceButtonText('#slides-link', 'Slides', 'Slaid');
     replaceButtonText('#slides-back', 'Explorer', 'Explorer');
+    replaceButtonText('#slides-library-button', 'Library', 'Pustaka');
+    replaceButtonText('#slides-history-button', 'History', 'Sejarah');
     replaceButtonText('#slides-undo', 'Undo', 'Undur');
     replaceButtonText('#slides-redo', 'Redo', 'Buat semula');
     replaceButtonText('#slides-add', 'Add slide', 'Tambah slaid');
@@ -138,6 +150,14 @@
     replaceButtonText('#slides-cloud', 'Sync', 'Segerak');
     replaceButtonText('#slides-export', 'Export', 'Eksport');
     const setText = (selector, en, ms) => { const node = document.querySelector(selector); if (node) node.textContent = ui(en, ms); };
+    setText('#slides-library-title', 'Recent Presentations', 'Pembentangan Terkini');
+    setText('.slides-library__header p', 'Stable deck titles with branches and immutable versions.', 'Tajuk dek kekal dengan cabang dan versi yang tidak berubah.');
+    replaceButtonText('#slides-library-new', 'New UKM deck', 'Dek UKM baharu');
+    setText('#slides-history-title', 'Version History', 'Sejarah Versi');
+    setText('.slides-history header p', 'Autosave updates the working copy. Versions are explicit checkpoints.', 'Autosimpan mengemas kini salinan kerja. Versi ialah titik semak yang dicipta secara jelas.');
+    replaceButtonText('#slides-new-branch', 'New branch', 'Cabang baharu');
+    replaceButtonText('#slides-branch-menu', 'Rename / archive', 'Namakan semula / arkib');
+    replaceButtonText('#slides-create-version', 'Create Version', 'Cipta Versi');
     setText('.slides-filmstrip__heading strong', 'Slides', 'Slaid');
     setText('#slides-preset', 'New UKM deck', 'Dek UKM baharu');
     [['layouts', 'Layouts', 'Susun atur'], ['elements', 'Elements', 'Elemen'], ['diagrams', 'Diagrams', 'Rajah'], ['properties', 'Properties', 'Sifat']].forEach(([id, en, ms]) => setText(`[data-slides-panel="${id}"]`, en, ms));
@@ -230,6 +250,16 @@
     slide.preview = state.canvas.toDataURL({ format: 'png', multiplier: 0.18, enableRetinaScaling: false });
     slide.updatedAt = nowISO();
     state.deck.updatedAt = nowISO();
+    if (state.branch) {
+      hashText(JSON.stringify(state.deck)).then((hash) => {
+        if (!state.deck || state.branch?.working_document?.id !== state.deck.id) return;
+        const dirty = hash !== state.branchHeadHash;
+        const indicator = el('slides-working-indicator');
+        if (indicator) indicator.textContent = dirty
+          ? ui('Working copy has changes since the branch head', 'Salinan kerja mempunyai perubahan selepas versi utama cabang')
+          : ui('Working copy matches branch head', 'Salinan kerja sepadan dengan versi utama cabang');
+      });
+    }
     if (history) pushHistory();
     renderThumbnails();
     if (persist) scheduleSave();
@@ -581,6 +611,12 @@
   async function saveLocal({ immediate = false } = {}) {
     if (!state.deck) return;
     captureCurrentSlide({ persist: false, check: false });
+    if (RUNTIME.lite) {
+      await cacheDeckWorkingCopy();
+      el('slides-save-status').textContent = ui('Saved in browser', 'Disimpan dalam pelayar');
+      await syncCloud({ silent: !immediate });
+      return;
+    }
     el('slides-save-status').textContent = 'Saving locally…';
     try {
       const token = await workspaceSession();
@@ -594,7 +630,7 @@
       if (!response.ok) throw new Error(payload.error?.message || 'Local save failed.');
       state.localRevision = payload.revision; el('slides-save-status').textContent = 'Saved locally'; announce('Presentation saved to the local workspace.');
       if (!immediate) syncCloud({ silent: true });
-      if (location.hash !== `#slides/${state.deck.id}`) history.replaceState(null, '', `#slides/${state.deck.id}`);
+      if (!state.cloudDeckId && location.hash !== `#slides/${state.deck.id}`) history.replaceState(null, '', `#slides/${state.deck.id}`);
     } catch (error) { el('slides-save-status').textContent = error.message; }
   }
 
@@ -639,33 +675,208 @@
   async function loadCloud(deckId = '') {
     if (!RUNTIME.integrated) return false;
     try {
-      const listResponse = await fetch('/api/architecture-explorer/presentations', { credentials: 'include' });
-      if (!listResponse.ok) return false;
-      const list = await listResponse.json();
-      const candidate = deckId
-        ? list.presentations?.find((item) => item.document_id === deckId || item.id === deckId)
-        : list.presentations?.[0];
-      if (!candidate) return false;
-      const response = await fetch(`/api/architecture-explorer/presentations/${encodeURIComponent(candidate.id)}`, { credentials: 'include' });
+      const candidateId = deckId || state.cloudDeckId;
+      if (!candidateId) return false;
+      const response = await fetch(`/api/architecture-explorer/presentations/${encodeURIComponent(candidateId)}`, { credentials: 'include' });
       if (!response.ok) return false;
       const payload = await response.json();
       state.deck = payload.presentation.document;
+      state.cloudDeckId = payload.presentation.id;
+      state.branch = payload.presentation.branch;
+      state.branchHeadHash = payload.presentation.branch?.content_sha256 || payload.presentation.content_sha256 || '';
       state.localRevision = null;
       const map = readSyncMap();
       map[state.deck.id] = { cloudId: payload.presentation.id, revision: payload.presentation.revision, updatedAt: payload.presentation.updated_at };
       writeSyncMap(map);
+      await loadBranchesAndVersions();
+      syncHistoryAvailability();
       return true;
     } catch (_error) { return false; }
+  }
+
+  async function loadBranchesAndVersions() {
+    if (!state.cloudDeckId) return;
+    const [branchesResponse, versionsResponse] = await Promise.all([
+      fetch(`/api/architecture-explorer/presentations/${encodeURIComponent(state.cloudDeckId)}/branches`, { credentials: 'include' }),
+      fetch(`/api/architecture-explorer/presentations/${encodeURIComponent(state.cloudDeckId)}/versions`, { credentials: 'include' }),
+    ]);
+    if (!branchesResponse.ok || !versionsResponse.ok) throw new Error(ui('Version history is unavailable.', 'Sejarah versi tidak tersedia.'));
+    state.branches = (await branchesResponse.json()).branches || [];
+    state.versions = (await versionsResponse.json()).versions || [];
+    if (!state.branch) state.branch = state.branches.find((branch) => branch.is_default) || state.branches[0] || null;
+    const head = state.versions.find((version) => version.id === state.branch?.head_version_id);
+    state.branchHeadHash = head?.content_sha256 || state.branch?.content_sha256 || '';
+    renderHistory();
+    cacheHistorySummary();
+  }
+
+  async function loadPresentationLibrary() {
+    if (!RUNTIME.integrated) {
+      el('slides-library-status').textContent = ui('The cloud library is available in the integrated PetaKerja app.', 'Pustaka awan tersedia dalam aplikasi PetaKerja bersepadu.');
+      return;
+    }
+    state.libraryLoading = true;
+    el('slides-library-retry').hidden = true;
+    el('slides-library-status').textContent = ui('Loading presentations…', 'Memuatkan pembentangan…');
+    try {
+      const query = new URLSearchParams({ limit: '100', sort: el('slides-library-sort')?.value || 'recent' });
+      const search = el('slides-library-search')?.value.trim();
+      if (search) query.set('q', search);
+      const response = await fetch(`/api/architecture-explorer/presentations?${query}`, { credentials: 'include' });
+      if (!response.ok) throw new Error(response.status === 403 ? ui('Administrator access is required.', 'Akses pentadbir diperlukan.') : ui('Could not load presentations.', 'Pembentangan tidak dapat dimuatkan.'));
+      state.library = (await response.json()).presentations || [];
+      renderLibrary();
+      el('slides-library-status').textContent = state.library.length
+        ? ui(`${state.library.length} presentation${state.library.length === 1 ? '' : 's'}`, `${state.library.length} pembentangan`)
+        : ui('No presentations yet. Create the first UKM FYP deck.', 'Belum ada pembentangan. Cipta dek FYP UKM pertama.');
+    } catch (error) {
+      state.library = [];
+      renderLibrary();
+      el('slides-library-status').textContent = error.message;
+      el('slides-library-retry').hidden = false;
+    } finally { state.libraryLoading = false; }
+  }
+
+  function renderLibrary() {
+    const grid = el('slides-library-grid');
+    if (!grid) return;
+    grid.replaceChildren(...state.library.map((presentation) => {
+      const button = document.createElement('button');
+      button.type = 'button'; button.className = 'slides-library-card';
+      const cover = document.createElement('span'); cover.className = 'slides-library-card__cover';
+      const fallback = document.createElement('span'); fallback.className = 'slides-library-card__fallback'; fallback.textContent = ui('Presentation cover', 'Kulit pembentangan'); cover.append(fallback);
+      fetch(`/api/architecture-explorer/presentations/${encodeURIComponent(presentation.id)}/thumbnail`, { credentials: 'include' })
+        .then((response) => response.ok ? response.json() : null)
+        .then((payload) => { if (!payload?.asset?.signedUrl || !button.isConnected) return; const image = document.createElement('img'); image.src = payload.asset.signedUrl; image.alt = ''; cover.replaceChildren(image); })
+        .catch(() => {});
+      const body = document.createElement('span'); body.className = 'slides-library-card__body';
+      const title = document.createElement('strong'); title.textContent = presentation.title;
+      const meta = document.createElement('span'); meta.className = 'slides-library-card__meta';
+      meta.textContent = `${presentation.branch?.slug || 'main'} · v${presentation.head_version || 1} · ${presentation.slide_count || 0} ${ui('slides', 'slaid')} · ${formatRelativeDate(presentation.updated_at)}`;
+      body.append(title, meta); button.append(cover, body);
+      button.addEventListener('click', () => { location.hash = `#slides/${encodeURIComponent(presentation.id)}`; });
+      return button;
+    }));
+  }
+
+  function formatRelativeDate(value) {
+    const elapsed = Math.max(0, Date.now() - new Date(value).getTime());
+    const minutes = Math.floor(elapsed / 60000);
+    if (minutes < 1) return ui('just now', 'baru sahaja');
+    if (minutes < 60) return ui(`${minutes}m ago`, `${minutes} min lalu`);
+    const hours = Math.floor(minutes / 60); if (hours < 24) return ui(`${hours}h ago`, `${hours} jam lalu`);
+    const days = Math.floor(hours / 24); return ui(`${days}d ago`, `${days} hari lalu`);
+  }
+
+  function showSlidesLibrary() {
+    state.view = 'library';
+    shell.dataset.view = 'library';
+    el('slides-library').hidden = false; el('slides-editor').hidden = true; el('slides-history').hidden = true;
+    el('slides-title').disabled = true; el('slides-history-button').disabled = true;
+    loadPresentationLibrary();
+  }
+
+  function syncHistoryAvailability() {
+    const historyButton = el('slides-history-button');
+    if (historyButton) historyButton.disabled = !state.cloudDeckId;
+  }
+
+  function showSlidesEditor() {
+    state.view = 'editor';
+    shell.dataset.view = 'editor';
+    el('slides-library').hidden = true; el('slides-editor').hidden = false;
+    el('slides-title').disabled = false; syncHistoryAvailability();
+  }
+
+  async function createNewCloudDeck() {
+    state.deck = createDeck(); state.localRevision = null; state.cloudDeckId = null; state.branch = null; state.branches = []; state.versions = []; state.branchHeadHash = '';
+    showSlidesEditor(); el('slides-title').value = state.deck.title;
+    await loadSlide(state.deck.slides[0].id, { savePrevious: false });
+    await saveLocal({ immediate: true }); await syncCloud({ silent: false });
+    if (state.cloudDeckId) history.replaceState(null, '', `#slides/${state.cloudDeckId}`);
+  }
+
+  function renderHistory() {
+    const select = el('slides-branch-select');
+    if (select) {
+      select.replaceChildren(...state.branches.map((branch) => { const option = document.createElement('option'); option.value = branch.id; option.textContent = `${branch.name}${branch.is_default ? ' (default)' : ''}`; option.selected = branch.id === state.branch?.id; return option; }));
+    }
+    const head = state.versions.find((version) => version.id === state.branch?.head_version_id);
+    el('slides-working-indicator').textContent = head && head.content_sha256 === state.branch?.content_sha256
+      ? ui(`Working copy matches v${head.version_number}`, `Salinan kerja sepadan dengan v${head.version_number}`)
+      : ui('Working copy has unversioned changes', 'Salinan kerja mempunyai perubahan tanpa versi');
+    const list = el('slides-version-list');
+    list.replaceChildren(...state.versions.filter((version) => version.branch_id === state.branch?.id).map((version) => {
+      const item = document.createElement('li'); item.className = 'slides-version-card';
+      item.innerHTML = `<div class="slides-version-card__heading"><strong>v${version.version_number} · ${escapeHTML(version.label)}</strong><time>${escapeHTML(formatRelativeDate(version.created_at))}</time></div><p>${escapeHTML(version.note || ui('No version note.', 'Tiada nota versi.'))}</p><div class="slides-version-card__actions"></div>`;
+      const actions = item.querySelector('.slides-version-card__actions');
+      [['preview', ui('Preview', 'Pratonton')], ['restore', ui('Restore', 'Pulihkan')], ['branch', ui('Branch from here', 'Cabang dari sini')]].forEach(([action, label]) => { const button = document.createElement('button'); button.type = 'button'; button.className = 'secondary-button'; button.textContent = label; button.addEventListener('click', () => versionAction(version, action)); actions.append(button); });
+      return item;
+    }));
+  }
+
+  async function switchBranch(branchId) {
+    if (!state.cloudDeckId || branchId === state.branch?.id) return;
+    captureCurrentSlide({ persist: false, check: false }); await syncCloud({ silent: true });
+    const response = await fetch(`/api/architecture-explorer/presentations/${encodeURIComponent(state.cloudDeckId)}/branches/${encodeURIComponent(branchId)}`, { credentials: 'include' });
+    const payload = await response.json(); if (!response.ok) throw new Error(payload.error || 'Unable to switch branch.');
+    state.branch = payload.branch; state.deck = payload.branch.document; state.localRevision = null; state.branchHeadHash = state.versions.find((version) => version.id === state.branch.head_version_id)?.content_sha256 || state.branch.content_sha256;
+    el('slides-title').value = state.deck.title; await loadSlide(state.deck.slides[0].id, { savePrevious: false }); renderHistory();
+  }
+
+  async function createBranch(name, { sourceVersionId = null, useCurrentDocument = false } = {}) {
+    if (!state.cloudDeckId || !name) return;
+    const response = await fetch(`/api/architecture-explorer/presentations/${encodeURIComponent(state.cloudDeckId)}/branches`, { method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, sourceVersionId, sourceBranchId: state.branch?.id }) });
+    const payload = await response.json(); if (!response.ok) throw new Error(payload.error || 'Unable to create branch.');
+    state.branch = payload.branch; state.branches.unshift(payload.branch);
+    if (useCurrentDocument) await syncCloud({ silent: false }); else { state.deck = payload.branch.document; await loadSlide(state.deck.slides[0].id, { savePrevious: false }); }
+    await loadBranchesAndVersions(); renderHistory();
+  }
+
+  async function createVersion() {
+    if (!state.cloudDeckId || !state.branch) return;
+    captureCurrentSlide({ persist: false, check: false }); await syncCloud({ silent: true });
+    const label = prompt(ui('Version label:', 'Label versi:'), ui(`Checkpoint ${state.versions.length + 1}`, `Titik semak ${state.versions.length + 1}`)); if (!label) return;
+    const note = prompt(ui('Optional version note:', 'Nota versi pilihan:'), '') || '';
+    const response = await fetch(`/api/architecture-explorer/presentations/${encodeURIComponent(state.cloudDeckId)}/versions`, { method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ branchId: state.branch.id, title: state.deck.title, label, note, document: state.deck, changeSummary: { slideCount: state.deck.slides.length } }) });
+    const payload = await response.json(); if (!response.ok) throw new Error(payload.error || 'Unable to create version.');
+    state.branch = payload.branch; state.versions.unshift(payload.version); state.branchHeadHash = payload.version.content_sha256; renderHistory(); announce(ui(`Created v${payload.version.version_number}.`, `v${payload.version.version_number} dicipta.`));
+  }
+
+  async function versionAction(version, action) {
+    if (action === 'branch') { const name = prompt(ui('New branch name:', 'Nama cabang baharu:'), `version-${version.version_number}`); if (name) await createBranch(name, { sourceVersionId: version.id }); return; }
+    const response = await fetch(`/api/architecture-explorer/presentations/${encodeURIComponent(state.cloudDeckId)}/versions/${encodeURIComponent(version.id)}`, { credentials: 'include' });
+    const payload = await response.json(); if (!response.ok) throw new Error(payload.error || 'Unable to load version.');
+    if (action === 'preview') {
+      const accepted = confirm(ui(`Preview v${version.version_number}: ${version.label}\n\nLoad this snapshot into the canvas without restoring it?`, `Pratonton v${version.version_number}: ${version.label}\n\nMuatkan petikan ini ke kanvas tanpa memulihkannya?`));
+      if (accepted) { state.deck = payload.version.document; await loadSlide(state.deck.slides[0].id, { savePrevious: false }); }
+      return;
+    }
+    if (action === 'restore' && confirm(ui(`Restore v${version.version_number} as a new head version?`, `Pulihkan v${version.version_number} sebagai versi utama baharu?`))) {
+      const restore = await fetch(`/api/architecture-explorer/presentations/${encodeURIComponent(state.cloudDeckId)}/versions/${encodeURIComponent(version.id)}/restore`, { method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ branchId: state.branch.id }) });
+      const restored = await restore.json(); if (!restore.ok) throw new Error(restored.error || 'Unable to restore version.');
+      state.deck = restored.branch.document; state.branch = restored.branch; state.versions.unshift(restored.version); state.branchHeadHash = restored.version.content_sha256; await loadSlide(state.deck.slides[0].id, { savePrevious: false }); renderHistory();
+    }
+  }
+
+  async function cacheHistorySummary() {
+    if (!state.cloudDeckId) return;
+    try { const db = await openQueue(); const tx = db.transaction('history', 'readwrite'); tx.objectStore('history').put({ id: state.cloudDeckId, branches: state.branches, versions: state.versions, updatedAt: nowISO() }); await new Promise((resolve) => { tx.oncomplete = resolve; }); db.close(); } catch (_error) { /* Offline history cache is best effort. */ }
   }
 
   async function syncCloud({ silent = false } = {}) {
     if (!RUNTIME.integrated || !state.deck) { if (!silent) announce('Cloud sync is available through the integrated PetaKerja mini-app.'); return; }
     captureCurrentSlide({ persist: false, check: false }); el('slides-save-status').textContent = 'Syncing...';
-    const syncMap = readSyncMap(); const existing = syncMap[state.deck.id];
+    const syncMap = readSyncMap(); const existing = state.cloudDeckId ? { cloudId: state.cloudDeckId, revision: state.branch?.revision } : syncMap[state.deck.id];
     try {
-      const response = await fetch(`/api/architecture-explorer/presentations${existing ? `/${existing.cloudId}` : ''}`, {
+      const target = existing
+        ? (state.branch?.id
+          ? `/api/architecture-explorer/presentations/${encodeURIComponent(existing.cloudId)}/branches/${encodeURIComponent(state.branch.id)}`
+          : `/api/architecture-explorer/presentations/${encodeURIComponent(existing.cloudId)}`)
+        : '/api/architecture-explorer/presentations';
+      const response = await fetch(target, {
         method: existing ? 'PUT' : 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(existing ? { title: state.deck.title, document: state.deck, revision: existing.revision } : { title: state.deck.title, document: state.deck }),
+        body: JSON.stringify(existing ? { title: state.deck.title, document: state.deck, revision: state.branch?.revision } : { title: state.deck.title, document: state.deck }),
       });
       const payload = await response.json().catch(() => ({}));
       if (response.status === 401) { el('slides-save-status').textContent = 'Saved locally · sign in to sync'; return; }
@@ -674,8 +885,16 @@
         await resolveCloudConflict(conflict, payload); return;
       }
       if (!response.ok) throw new Error(payload.error || 'Cloud sync failed.');
-      syncMap[state.deck.id] = { cloudId: payload.presentation.id, revision: payload.presentation.revision, updatedAt: payload.presentation.updated_at }; writeSyncMap(syncMap);
+      state.cloudDeckId = payload.presentation.id;
+      state.branch = payload.presentation.branch || payload.branch || state.branch;
+      state.branchHeadHash = state.branch?.head_version_id
+        ? (state.versions.find((version) => version.id === state.branch.head_version_id)?.content_sha256 || state.branchHeadHash)
+        : state.branchHeadHash;
+      syncMap[state.deck.id] = { cloudId: payload.presentation.id, revision: state.branch?.revision || payload.presentation.revision, updatedAt: payload.presentation.updated_at }; writeSyncMap(syncMap);
+      syncHistoryAvailability();
       const failedAssets = await syncCloudAssets(payload.presentation.id);
+      await uploadCover(payload.presentation.id);
+      if (!state.branches.length) await loadBranchesAndVersions();
       await removeQueued(state.deck.id);
       el('slides-save-status').textContent = failedAssets ? `Synced; ${failedAssets} asset(s) pending` : 'Saved locally and synced';
       if (!silent) announce(failedAssets ? 'The presentation synced, but some assets could not be uploaded.' : 'Presentation synced privately to PetaKerja.');
@@ -706,25 +925,44 @@
     return failed;
   }
 
+  async function uploadCover(cloudId) {
+    const first = state.deck?.slides?.find((slide) => !slide.hidden);
+    if (!first || !cloudId) return;
+    try {
+      const cover = await renderSlideToDataURL(first, 0.6);
+      const blob = await (await fetch(cover)).blob();
+      await fetch(`/api/architecture-explorer/presentations/${encodeURIComponent(cloudId)}/assets/deck-cover`, {
+        method: 'PUT', credentials: 'include', headers: { 'Content-Type': 'image/png' }, body: blob,
+      });
+    } catch (_error) { /* A cover is optional and may be regenerated on the next save. */ }
+  }
+
   function readSyncMap() { try { return JSON.parse(localStorage.getItem('petakerja-slides-cloud-map:v1') || '{}'); } catch (_error) { return {}; } }
   function writeSyncMap(value) { localStorage.setItem('petakerja-slides-cloud-map:v1', JSON.stringify(value)); }
 
   async function resolveCloudConflict(existing, payload) {
     const cloud = payload.presentation;
-    const choice = prompt('A newer cloud revision exists. Type LOCAL to overwrite it as a new copy, CLOUD to load it, or COPY to keep both.', 'COPY')?.toUpperCase();
+    const choice = prompt('A newer branch revision exists. Type BRANCH to save local work as a new branch, CLOUD to load it, or COPY for an independent deck.', 'BRANCH')?.toUpperCase();
     if (choice === 'CLOUD' && cloud?.document) {
       state.deck = cloud.document; state.localRevision = null; await loadSlide(state.deck.slides[0].id, { savePrevious: false }); await saveLocal({ immediate: true });
-    } else if (choice === 'LOCAL' || choice === 'COPY') {
+    } else if (choice === 'BRANCH') {
+      const name = prompt('Name the branch for this local work:', `recovered-${new Date().toISOString().slice(0, 10)}`);
+      if (name) await createBranch(name, { useCurrentDocument: true });
+    } else if (choice === 'COPY') {
       const map = readSyncMap(); delete map[state.deck.id]; writeSyncMap(map);
-      if (choice === 'COPY') { state.deck.id = uid('deck'); state.deck.title += ' copy'; state.localRevision = null; }
+      state.deck.id = uid('deck'); state.deck.title += ' copy'; state.localRevision = null; state.cloudDeckId = null; state.branch = null; state.branches = []; state.versions = [];
       await saveLocal({ immediate: true }); await syncCloud({ silent: false });
     } else if (existing && cloud?.revision) { existing.revision = cloud.revision; }
   }
 
   function openQueue() {
     return new Promise((resolve, reject) => {
-      const request = indexedDB.open('petakerja-slides-studio', 1);
-      request.onupgradeneeded = () => { if (!request.result.objectStoreNames.contains('cloudQueue')) request.result.createObjectStore('cloudQueue', { keyPath: 'id' }); };
+      const request = indexedDB.open('petakerja-slides-studio', 2);
+      request.onupgradeneeded = () => {
+        if (!request.result.objectStoreNames.contains('cloudQueue')) request.result.createObjectStore('cloudQueue', { keyPath: 'id' });
+        if (!request.result.objectStoreNames.contains('decks')) request.result.createObjectStore('decks', { keyPath: 'id' });
+        if (!request.result.objectStoreNames.contains('history')) request.result.createObjectStore('history', { keyPath: 'id' });
+      };
       request.onsuccess = () => resolve(request.result); request.onerror = () => reject(request.error);
     });
   }
@@ -737,6 +975,14 @@
     try { const db = await openQueue(); const tx = db.transaction('cloudQueue', 'readwrite'); tx.objectStore('cloudQueue').delete(deckId); await new Promise((resolve) => { tx.oncomplete = resolve; }); db.close(); } catch (_error) { /* Queue cleanup is best effort. */ }
   }
 
+  async function cacheDeckWorkingCopy() {
+    try {
+      const db = await openQueue(); const tx = db.transaction('decks', 'readwrite');
+      tx.objectStore('decks').put({ id: state.deck.id, deck: state.deck, cloudDeckId: state.cloudDeckId, branch: state.branch, updatedAt: nowISO() });
+      await new Promise((resolve) => { tx.oncomplete = resolve; }); db.close();
+    } catch (_error) { /* Cloud sync remains authoritative in Explorer Lite. */ }
+  }
+
   async function renderSlideToDataURL(slide, multiplier = 1) {
     const element = document.createElement('canvas');
     const canvas = new Fabric.StaticCanvas(element, { width: 1600, height: 900, enableRetinaScaling: false });
@@ -744,12 +990,12 @@
     const data = canvas.toDataURL({ format: 'png', multiplier, enableRetinaScaling: false }); canvas.dispose(); return data;
   }
 
-  async function exportJSON() { captureCurrentSlide({ persist: false, check: false }); download(new Blob([JSON.stringify(state.deck, null, 2)], { type: 'application/json' }), `${safeName(state.deck.title)}.slides.json`); }
+  async function exportJSON() { captureCurrentSlide({ persist: false, check: false }); download(new Blob([JSON.stringify(state.deck, null, 2)], { type: 'application/json' }), `${safeName(exportBaseName())}.slides.json`); }
   async function exportCurrentPNG() { captureCurrentSlide(); const data = await renderSlideToDataURL(currentSlide(), 2); download(await (await fetch(data)).blob(), `${safeName(currentSlide().name)}.png`); }
   async function exportPNGZip() {
     captureCurrentSlide(); const zip = new JSZip();
     for (let index = 0; index < state.deck.slides.length; index += 1) { const data = await renderSlideToDataURL(state.deck.slides[index], 2); zip.file(`${String(index + 1).padStart(2, '0')}-${safeName(state.deck.slides[index].name)}.png`, data.split(',')[1], { base64: true }); }
-    download(await zip.generateAsync({ type: 'blob' }), `${safeName(state.deck.title)}-slides.zip`);
+    download(await zip.generateAsync({ type: 'blob' }), `${safeName(exportBaseName())}-slides.zip`);
   }
 
   async function exportPPTX() {
@@ -768,7 +1014,7 @@
       }
       if (source.speakerNotes) slide.addNotes(source.speakerNotes);
     }
-    await pptx.writeFile({ fileName: `${safeName(state.deck.title)}.pptx` });
+    await pptx.writeFile({ fileName: `${safeName(exportBaseName())}.pptx` });
   }
 
   async function printDeck() {
@@ -811,9 +1057,32 @@
 
   function bindUI() {
     el('slides-back').addEventListener('click', () => { location.hash = state.previousHash || '#explorer'; });
+    el('slides-library-button').addEventListener('click', () => { location.hash = '#slides'; });
+    el('slides-history-button').addEventListener('click', () => { el('slides-history').hidden = false; loadBranchesAndVersions().catch((error) => { el('slides-history-status').textContent = error.message; }); });
+    el('slides-history-close').addEventListener('click', () => { el('slides-history').hidden = true; });
+    el('slides-library-new').addEventListener('click', () => createNewCloudDeck().catch((error) => announce(error.message)));
+    el('slides-library-retry').addEventListener('click', loadPresentationLibrary);
+    el('slides-library-search').addEventListener('input', () => { clearTimeout(state.librarySearchTimer); state.librarySearchTimer = setTimeout(loadPresentationLibrary, 250); });
+    el('slides-library-sort').addEventListener('change', loadPresentationLibrary);
+    el('slides-branch-select').addEventListener('change', (event) => switchBranch(event.target.value).catch((error) => announce(error.message)));
+    el('slides-new-branch').addEventListener('click', () => { const name = prompt(ui('New branch name:', 'Nama cabang baharu:'), 'alternative-pitch'); if (name) createBranch(name).catch((error) => announce(error.message)); });
+    el('slides-branch-menu').addEventListener('click', async () => {
+      if (!state.branch) return;
+      const action = prompt(ui('Type RENAME or ARCHIVE:', 'Taip RENAME atau ARCHIVE:'), 'RENAME')?.toUpperCase();
+      if (!action) return;
+      const body = action === 'ARCHIVE' ? { archived: true } : { name: prompt(ui('Branch name:', 'Nama cabang:'), state.branch.name) };
+      if (action !== 'ARCHIVE' && !body.name) return;
+      try {
+        const response = await fetch(`/api/architecture-explorer/presentations/${encodeURIComponent(state.cloudDeckId)}/branches/${encodeURIComponent(state.branch.id)}`, { method: 'PATCH', credentials: 'include', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+        const payload = await response.json(); if (!response.ok) throw new Error(payload.error || 'Unable to update branch.');
+        if (action === 'ARCHIVE') { await loadBranchesAndVersions(); await switchBranch(state.branches.find((branch) => branch.is_default)?.id); }
+        else { state.branch = payload.branch; await loadBranchesAndVersions(); }
+      } catch (error) { announce(error.message); }
+    });
+    el('slides-create-version').addEventListener('click', () => createVersion().catch((error) => announce(error.message)));
     el('slides-add').addEventListener('click', () => addSlide());
     el('slides-preset').addEventListener('click', async () => { if (!confirm('Create a new 12-slide UKM FYP deck? Unsaved changes remain in the current local deck.')) return; captureCurrentSlide(); state.deck = createDeck(); state.localRevision = null; el('slides-title').value = state.deck.title; await loadSlide(state.deck.slides[0].id, { savePrevious: false }); renderDiagramLibrary(); scheduleSave(); });
-    el('slides-title').addEventListener('input', (event) => { state.deck.title = event.target.value; scheduleSave(); });
+    el('slides-title').addEventListener('input', (event) => { if (!state.deck) return; state.deck.title = event.target.value; scheduleSave(); });
     el('slides-undo').addEventListener('click', () => restoreHistory(state.historyIndex - 1)); el('slides-redo').addEventListener('click', () => restoreHistory(state.historyIndex + 1));
     el('slides-save').addEventListener('click', () => saveLocal({ immediate: true }));
     el('slides-save-copy').addEventListener('click', saveAsCopy);
@@ -908,21 +1177,33 @@
       state.active = true; document.body.classList.add('is-slides-mode'); shell.hidden = false;
       if (!state.canvas) { bindCanvas(); bindUI(); renderLayouts(); populateDiagramFamilies(); }
       const routeId = location.hash.match(/^#slides\/([^/?]+)/)?.[1];
-      let loaded = Boolean(state.deck);
+      if (!routeId) {
+        translateSlidesUI(); showSlidesLibrary(); window.lucide?.createIcons?.({ nodes: [shell] }); return;
+      }
+      showSlidesEditor();
+      let loaded = Boolean(state.deck && (state.cloudDeckId === decodeURIComponent(routeId) || state.deck.id === decodeURIComponent(routeId)));
       if (routeId && (!state.deck || state.deck.id !== decodeURIComponent(routeId))) {
         const requested = decodeURIComponent(routeId);
         loaded = await loadLocal(requested) || await loadCloud(requested);
       }
-      if (!routeId && !state.deck) loaded = await loadMostRecentLocal() || await loadCloud();
       if (!loaded || !state.deck) state.deck = createDeck();
       translateSlidesUI();
       el('slides-title').value = state.deck.title; await loadSlide(state.deck.slides[0].id, { savePrevious: false }); renderDiagramLibrary(); validateDeck(); fitCanvasStage();
       window.lucide?.createIcons?.({ nodes: [shell] });
+    } else {
+      const routeId = location.hash.match(/^#slides\/([^/?]+)/)?.[1];
+      if (!routeId) { showSlidesLibrary(); return; }
+      showSlidesEditor();
+      const requested = decodeURIComponent(routeId);
+      if (state.cloudDeckId !== requested && state.deck?.id !== requested) {
+        const loaded = await loadLocal(requested) || await loadCloud(requested);
+        if (loaded && state.deck) { el('slides-title').value = state.deck.title; await loadSlide(state.deck.slides[0].id, { savePrevious: false }); renderDiagramLibrary(); validateDeck(); fitCanvasStage(); }
+      }
     }
   }
 
   function leaveSlides() {
-    if (!state.active) return; captureCurrentSlide({ persist: false, check: false }); state.active = false; resetSlideWheelGesture(); state.slideWheelLockedUntil = 0; document.body.classList.remove('is-slides-mode'); shell.hidden = true; clearTimeout(state.saveTimer); saveLocal({ immediate: true });
+    if (!state.active) return; if (state.deck && state.view === 'editor') captureCurrentSlide({ persist: false, check: false }); state.active = false; resetSlideWheelGesture(); state.slideWheelLockedUntil = 0; document.body.classList.remove('is-slides-mode'); shell.hidden = true; clearTimeout(state.saveTimer); if (state.deck) saveLocal({ immediate: true });
   }
 
   function populateDiagramFamilies() {

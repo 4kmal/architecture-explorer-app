@@ -701,7 +701,10 @@
       window.addEventListener('message', this.boundMessage);
     }
 
-    get available() { return window.location.protocol === 'http:' || window.location.protocol === 'https:'; }
+    get available() {
+      if (window.PETAKERJA_EXPLORER_RUNTIME?.lite) return false;
+      return window.location.protocol === 'http:' || window.location.protocol === 'https:';
+    }
 
     editorURL() {
       const params = new URLSearchParams({

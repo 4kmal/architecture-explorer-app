@@ -1066,9 +1066,10 @@
   }
 
   function renderWorkspaceControls() {
+    const lite = Boolean(window.PETAKERJA_EXPLORER_RUNTIME?.lite);
     const editable = isEditableDiagram();
     const canEdit = editable && editorController?.available;
-    els.workspaceModeControl.hidden = !editable;
+    els.workspaceModeControl.hidden = lite || !editable;
     els.workspaceView.setAttribute('aria-pressed', String(state.workspaceMode === 'view'));
     els.workspaceEdit.setAttribute('aria-pressed', String(state.workspaceMode === 'edit'));
     els.workspaceAgent.setAttribute('aria-pressed', String(state.workspaceMode === 'agent'));
@@ -1082,12 +1083,13 @@
     els.workspaceAgent.setAttribute('aria-disabled', String(!editable));
     els.workspaceAgent.dataset.runtimeRequired = String(editable && !canEdit);
     els.workspaceAgent.title = canEdit ? '' : t('ui.editorHttpRequired');
-    els.importButton.disabled = false;
+    els.importButton.hidden = lite;
+    els.importButton.disabled = lite;
     els.importButton.setAttribute('aria-disabled', 'false');
     els.importButton.dataset.runtimeRequired = String(!editorController?.available);
     els.importButton.title = editorController?.available ? '' : t('ui.editorHttpRequired');
-    els.validateButton.hidden = state.workspaceMode === 'view'; els.saveButton.hidden = state.workspaceMode === 'view';
-    els.workspaceSaveButton.hidden = state.workspaceMode === 'view' || !state.workspaceDiagramIds.has(state.diagramId);
+    els.validateButton.hidden = lite || state.workspaceMode === 'view'; els.saveButton.hidden = lite || state.workspaceMode === 'view';
+    els.workspaceSaveButton.hidden = lite || state.workspaceMode === 'view' || !state.workspaceDiagramIds.has(state.diagramId);
     byId('zoom-out').parentElement.hidden = state.workspaceMode !== 'view';
     els.referenceButton.hidden = state.workspaceMode !== 'view' || !activeDiagram().reference;
     const showSequenceLabels = state.workspaceMode === 'view' && effectiveMode() === 'actual' && Boolean(activeAsset()?.supportsSequenceLabels);

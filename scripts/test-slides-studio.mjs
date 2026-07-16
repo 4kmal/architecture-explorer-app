@@ -24,10 +24,10 @@ const [html, script, css] = await Promise.all([
   readFile(new URL('../slides.css', import.meta.url), 'utf8'),
 ]);
 
-for (const marker of ['id="slides-link"', 'id="slides-shell"', 'id="slides-save-copy"', 'vendor/fabric/fabric.min.js', 'vendor/pptxgenjs/pptxgen.bundle.js']) {
+for (const marker of ['id="slides-link"', 'id="slides-shell"', 'id="slides-save-copy"', 'id="slides-library"', 'id="slides-history"', 'id="slides-create-version"', 'id="slides-new-branch"', 'vendor/fabric/fabric.min.js', 'vendor/pptxgenjs/pptxgen.bundle.js']) {
   assert.match(html, new RegExp(marker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
 }
-for (const marker of ['PETAKERJA_DIAGRAM_ASSETS', 'Fabric.FabricObject.customProperties', 'workspace/presentations', 'architecture-explorer/presentations', 'addNotes', 'IndexedDB', 'syncCloudAssets', 'saveAsCopy', 'handleSlidesStageWheel', 'normalizeSlideWheelDelta', 'SLIDE_WHEEL_THRESHOLD', 'syncActiveThumbnail', 'scrollIntoView']) {
+for (const marker of ['PETAKERJA_DIAGRAM_ASSETS', 'Fabric.FabricObject.customProperties', 'workspace/presentations', 'architecture-explorer/presentations', 'addNotes', 'IndexedDB', 'syncCloudAssets', 'saveAsCopy', 'handleSlidesStageWheel', 'normalizeSlideWheelDelta', 'SLIDE_WHEEL_THRESHOLD', 'syncActiveThumbnail', 'scrollIntoView', 'loadPresentationLibrary', 'loadBranchesAndVersions', 'syncHistoryAvailability', 'createVersion', 'createBranch', '/restore', 'save local work as a new branch', 'branchHeadHash']) {
   assert.ok(script.toLowerCase().includes(marker.toLowerCase()), `slides.js must include ${marker}`);
 }
 assert.match(script, /\.slides-stage'\)\.addEventListener\('wheel',\s*handleSlidesStageWheel,\s*\{\s*passive:\s*false\s*\}\)/);

@@ -54,6 +54,19 @@
 }
 
 :root[data-theme="light"] { color-scheme: light; }
+
+:root[data-explorer-edition="lite"] #workspace-mode-control,
+:root[data-explorer-edition="lite"] #import-diagram,
+:root[data-explorer-edition="lite"] #validate-diagram,
+:root[data-explorer-edition="lite"] #save-workspace-diagram,
+:root[data-explorer-edition="lite"] #save-diagram,
+:root[data-explorer-edition="lite"] #diagram-file-input,
+:root[data-explorer-edition="lite"] #runtime-dialog,
+:root[data-explorer-edition="lite"] #editor-surface,
+:root[data-explorer-edition="lite"] #diagram-drop-overlay {
+  display: none !important;
+}
+
 :root[data-theme="dark"] {
   color-scheme: dark;
   --canvas: #0b1015;

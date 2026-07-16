@@ -75,6 +75,8 @@
       <button id="slides-back" type="button" class="secondary-button" title="Back to Explorer"><i data-lucide="arrow-left" aria-hidden="true"></i><span>Explorer</span></button>
       <div class="slides-document-title"><input id="slides-title" type="text" value="Pembentangan FYP PetaKerja" aria-label="Presentation title"><span id="slides-save-status" role="status" aria-live="polite">Saved locally</span></div>
       <div class="slides-toolbar__actions">
+        <button id="slides-library-button" type="button" class="secondary-button"><i data-lucide="layout-grid" aria-hidden="true"></i><span class="slides-wide-label">Library</span></button>
+        <button id="slides-history-button" type="button" class="secondary-button"><i data-lucide="git-branch" aria-hidden="true"></i><span class="slides-wide-label">History</span></button>
         <button id="slides-undo" type="button" class="secondary-button" title="Undo"><i data-lucide="undo-2" aria-hidden="true"></i><span class="slides-wide-label">Undo</span></button>
         <button id="slides-redo" type="button" class="secondary-button" title="Redo"><i data-lucide="redo-2" aria-hidden="true"></i><span class="slides-wide-label">Redo</span></button>
         <button id="slides-add" type="button"><i data-lucide="plus" aria-hidden="true"></i><span>Add slide</span></button>
@@ -85,7 +87,20 @@
         <div class="slides-export-menu"><button id="slides-export" type="button" class="secondary-button"><i data-lucide="download" aria-hidden="true"></i><span>Export</span></button><div id="slides-export-options" hidden><button type="button" data-slides-export="pptx">PowerPoint (.pptx)</button><button type="button" data-slides-export="json">Source (.slides.json)</button><button type="button" data-slides-export="png">Current slide PNG</button><button type="button" data-slides-export="zip">All slide PNG ZIP</button><button type="button" data-slides-export="print">Print / PDF</button></div></div>
       </div>
     </header>
-    <div class="slides-editor">
+    <section id="slides-library" class="slides-library" aria-labelledby="slides-library-title" hidden>
+      <header class="slides-library__header">
+        <div><h2 id="slides-library-title">Recent Presentations</h2><p>Stable deck titles with branches and immutable versions.</p></div>
+        <button id="slides-library-new" type="button"><i data-lucide="plus" aria-hidden="true"></i><span>New UKM deck</span></button>
+      </header>
+      <div class="slides-library__controls">
+        <label class="sr-only" for="slides-library-search">Search presentations</label><input id="slides-library-search" type="search" placeholder="Search presentations">
+        <label for="slides-library-sort">Sort</label><select id="slides-library-sort"><option value="recent">Recently edited</option><option value="title">Title</option></select>
+        <button id="slides-library-retry" type="button" class="secondary-button" hidden>Retry</button>
+      </div>
+      <div id="slides-library-status" class="slides-library__status" role="status" aria-live="polite">Loading presentations…</div>
+      <div id="slides-library-grid" class="slides-library__grid"></div>
+    </section>
+    <div id="slides-editor" class="slides-editor">
       <aside class="slides-filmstrip" aria-label="Slides">
         <div class="slides-filmstrip__heading"><strong>Slides</strong><button id="slides-preset" type="button" class="text-button">New UKM deck</button></div>
         <ol id="slides-thumbnails" aria-label="Slide thumbnails"></ol>
@@ -107,6 +122,17 @@
         <section id="slides-checker-panel" hidden><div id="slides-checker-results"></div></section>
       </footer>
     </div>
+    <aside id="slides-history" class="slides-history" aria-labelledby="slides-history-title" hidden>
+      <header><div><h2 id="slides-history-title">Version History</h2><p>Autosave updates the working copy. Versions are explicit checkpoints.</p></div><button id="slides-history-close" type="button" class="secondary-button" aria-label="Close history"><i data-lucide="x" aria-hidden="true"></i></button></header>
+      <div class="slides-history__branch-bar">
+        <label for="slides-branch-select">Branch</label><select id="slides-branch-select"></select>
+        <button id="slides-new-branch" type="button" class="secondary-button">New branch</button>
+        <button id="slides-branch-menu" type="button" class="secondary-button">Rename / archive</button>
+      </div>
+      <div class="slides-history__working"><span id="slides-working-indicator">Working copy matches branch head</span><button id="slides-create-version" type="button"><i data-lucide="git-commit-horizontal" aria-hidden="true"></i><span>Create Version</span></button></div>
+      <div id="slides-history-status" class="slides-library__status" role="status" aria-live="polite"></div>
+      <ol id="slides-version-list" class="slides-version-list"></ol>
+    </aside>
     <div class="slides-mobile-tabs" role="tablist" aria-label="Slides Studio panels"><button type="button" data-slides-mobile="slides" aria-selected="false">Slides</button><button type="button" data-slides-mobile="canvas" aria-selected="true">Canvas</button><button type="button" data-slides-mobile="tools" aria-selected="false">Tools</button><button type="button" data-slides-mobile="notes" aria-selected="false">Notes</button></div>
     <input id="slides-import-input" class="sr-only" type="file" accept=".json,.slides.json,application/json">
     <p id="slides-live" class="sr-only" aria-live="polite"></p>

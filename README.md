@@ -65,8 +65,9 @@ Run the dependency-free contract check with `node .\scripts\test-learning-page.m
 
 ## Slides Studio / Studio Slaid
 
-Open `#slides` (or use the **Slides / Slaid** header button) to create a
-PetaKerja presentation without leaving the Explorer. The fixed 16:9 workspace
+Open `#slides` (or use the **Slides / Slaid** header button) to browse recent
+private presentations, search or sort the library and create a UKM deck. Open
+`#slides/<deckId>` for the fixed 16:9 workspace
 includes a slide filmstrip, Fabric.js canvas, layouts/elements/diagram panels,
 speaker notes, timing, a presentation checker and fullscreen rehearsal mode.
 
@@ -81,8 +82,8 @@ speaker notes, timing, a presentation checker and fullscreen rehearsal mode.
 - Local revisions return `409` rather than overwriting a newer browser save.
   Local presentation assets are stored under ignored
   `.runtime/presentation-assets/`.
-- Through the integrated PetaKerja origin, **Sync** uses Better Auth-protected
-  Express routes and private Supabase storage. Unsigned-in or offline work
+- Through the integrated PetaKerja origin, **Sync** uses Better Auth-protected,
+  administrator-only Express routes and private Supabase storage. Unsigned-in or offline work
   remains safe locally and is queued in IndexedDB for retry.
 - Export options include editable `.pptx`, source JSON, one PNG, a PNG ZIP and
   browser Print/Save as PDF. Speaker notes are included in PowerPoint exports.
@@ -92,11 +93,22 @@ speaker notes, timing, a presentation checker and fullscreen rehearsal mode.
   Trackpad deltas are normalised and throttled, navigation includes hidden
   slides, stops at the deck boundaries, keeps the active thumbnail visible and
   announces the selected slide to assistive technology.
+- Every cloud deck has a stable title, a default `main` branch and immutable
+  numbered versions. Autosave changes only the branch working copy; use
+  **Create Version** for a named checkpoint. History can create, switch, rename
+  and archive lightweight branches, preview versions and restore an old version
+  as a new head without deleting later history.
+- Production Explorer Lite retains read-only diagrams, learning, the library,
+  history and cloud Slides Studio for `admin`/`owner` users. Edit, Agent, MCP,
+  imports, local workspace saving and the Draw.io runtime remain local-only.
+  The Lite build loads an inert compatibility shim instead of shipping the
+  Draw.io editor controller, OpenAI model policy or Agent runtime.
 
 Cloud sync requires migration
 `supabase/migrations/20260716061519_architecture_slides_studio.sql` to be applied
-to the linked project. The browser never receives a Supabase secret key. The
-Slides Studio remains a local-development mini-app; direct Google Slides API
+to the linked project, followed by
+`supabase/migrations/20260716171818_architecture_slides_version_history.sql`.
+The browser never receives a Supabase secret key. Direct Google Slides API
 editing and simultaneous collaboration are intentionally out of scope.
 
 Run the Slides Studio contract and local persistence checks with:
