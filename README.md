@@ -98,11 +98,15 @@ speaker notes, timing, a presentation checker and fullscreen rehearsal mode.
   **Create Version** for a named checkpoint. History can create, switch, rename
   and archive lightweight branches, preview versions and restore an old version
   as a new head without deleting later history.
-- Production Explorer Lite retains read-only diagrams, learning, the library,
-  history and cloud Slides Studio for `admin`/`owner` users. Edit, Agent, MCP,
-  imports, local workspace saving and the Draw.io runtime remain local-only.
-  The Lite build loads an inert compatibility shim instead of shipping the
-  Draw.io editor controller, OpenAI model policy or Agent runtime.
+- Production includes the browser Draw.io editor, imports, validation, private
+  cloud diagrams, branches, versions, collaborators, learning and Slides
+  Studio for every signed-in user. Administrators and owners additionally
+  maintain the canonical diagram library. Agent Mode, MCP, Draw.io Desktop and
+  direct local workspace saving remain local-only authority surfaces.
+- IndexedDB is written first. Cloud snapshots are revision checked and stored
+  through Better Auth-protected PetaKerja APIs in private Supabase Storage.
+  Stale saves return `409`, active-writer leases return `423`, and pending work
+  can be recovered on a new branch without overwriting the cloud head.
 
 Cloud sync requires migration
 `supabase/migrations/20260716061519_architecture_slides_studio.sql` to be applied
@@ -232,7 +236,7 @@ npm run explorer:setup
 npm run dev:explorer
 ```
 
-PetaKerja serves the mini-app at `http://localhost:3000/architecture-explorer/` and proxies its local APIs to the Explorer host. The standalone host remains available through `npm start` in this directory. Workspace persistence is local development functionality; Explorer assets and the bundled Draw.io runtime are excluded from the PetaKerja production build.
+PetaKerja serves the mini-app at `http://localhost:3000/architecture-explorer/` and proxies its local APIs to the Explorer host. The standalone host remains available through `npm start` in this directory. The production build includes the full browser Draw.io runtime and cloud diagram client, but excludes Agent Mode, MCP, Draw.io Desktop integration and filesystem workspace saving. Local canonical assets can still be updated explicitly with **Save to workspace** during development.
 
 ## Snapshot dan batasan / Snapshot and limitations
 

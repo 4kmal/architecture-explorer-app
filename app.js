@@ -6,9 +6,14 @@
   const translations = window.PETAKERJA_TRANSLATIONS || {};
   const editorAPI = window.PETAKERJA_EDITOR;
   const agentAPI = window.PETAKERJA_AGENT;
+  const runtimeCapabilities = window.PETAKERJA_EXPLORER_RUNTIME?.capabilities || {};
   const localAPI = (path) => window.PETAKERJA_EXPLORER_RUNTIME?.api(path) || `/api/${String(path || '').replace(/^\/+/, '')}`;
   if (!data) throw new Error('PETAKERJA_ARCHITECTURE is not loaded.');
   if (!editorAPI) throw new Error('PETAKERJA_EDITOR is not loaded.');
+
+  function isCanonicalEditable(id) {
+    return Array.isArray(editorAPI.EDITABLE_DIAGRAMS) && editorAPI.EDITABLE_DIAGRAMS.includes(id);
+  }
 
   const DIAGRAM_ICONS = Object.freeze({
     overview: 'panels-top-left',
@@ -167,6 +172,7 @@
   };
   let editorController = null;
   let diagramAgent = null;
+  let cloudManager = null;
   let pendingEditorThemePreference = null;
   const systemThemeQuery = window.matchMedia?.('(prefers-color-scheme: dark)') || null;
 
@@ -324,7 +330,7 @@
   function activeDiagram() { return allDiagrams().find((diagram) => diagram.id === state.diagramId) || data.diagrams[0]; }
   function runtimeDocument(id = state.diagramId) { return state.runtimeDocuments.get(id) || null; }
   async function ensureWorkspaceSession() {
-    if (!editorController?.available) return null;
+    if (!editorController?.available || runtimeCapabilities.localWorkspace === false) return null;
     if (state.workspaceToken) return { token: state.workspaceToken, diagrams: [...state.workspaceDiagramIds] };
     if (state.workspaceSessionPromise) return state.workspaceSessionPromise;
     state.workspaceSessionPromise = fetch(localAPI('workspace/session'), { cache: 'no-store' })
@@ -342,7 +348,7 @@
   }
 
   async function hydrateWorkspaceDocument(diagramId = state.diagramId, options = {}) {
-    if (!editorController?.available || activeDiagram()?.sessionOnly) return null;
+    if (!editorController?.available || runtimeCapabilities.localWorkspace === false || activeDiagram()?.sessionOnly) return null;
     if (!options.force && state.workspaceLoaded.has(diagramId)) return runtimeDocument(diagramId);
     const session = await ensureWorkspaceSession();
     if (!session || !state.workspaceDiagramIds.has(diagramId)) return null;
@@ -667,7 +673,8 @@
   }
 
   function isEditableDiagram(id = state.diagramId) {
-    return Boolean(runtimeDocument(id)) || (editorAPI.EDITABLE_DIAGRAMS.includes(id) && Boolean(assets[id]));
+    const runtime = runtimeDocument(id);
+    return Boolean(runtime && !runtime.readOnly) || (isCanonicalEditable(id) && Boolean(assets[id]));
   }
 
   function explorerFolderPath() {
@@ -751,7 +758,7 @@
     }
     const xml = await file.text();
     const pending = { filename: file.name, xml, analysis: editorController.preflight(xml) };
-    const recognized = pending.analysis.fatal ? [] : pending.analysis.pages.filter((page) => page.detection?.status === 'recognized' && editorAPI.EDITABLE_DIAGRAMS.includes(page.detection.diagramType));
+    const recognized = pending.analysis.fatal ? [] : pending.analysis.pages.filter((page) => page.detection?.status === 'recognized' && isCanonicalEditable(page.detection.diagramType));
     if (pending.analysis.pages.length === 1 && recognized.length === 1) {
       await openImportedPage(pending, recognized[0].id, recognized[0].detection.diagramType);
       return;
@@ -763,7 +770,7 @@
     if (!pending || pending.analysis.fatal) return;
     const page = pending.analysis.pages.find((item) => item.id === pageId) || pending.analysis.selectedPage;
     const detectedType = diagramOverride || page?.detection?.diagramType || page?.diagramId || 'unknown';
-    const canonical = editorAPI.EDITABLE_DIAGRAMS.includes(detectedType);
+    const canonical = isCanonicalEditable(detectedType);
     if (canonical && data.diagrams.some((item) => item.id === detectedType)) {
       state.diagramId = detectedType;
     } else {
@@ -777,6 +784,65 @@
     state.workspaceMode = 'edit'; renderAll();
     editorController.openXML(pending.analysis.xml, { filename: pending.filename, diagramHint: canonical ? detectedType : null, pageId, dirty: true });
     await setWorkspaceMode('edit', { loadCanonical: false });
+  }
+
+  function openCloudDocument(record) {
+    if (!record?.diagram?.id || !record.xml) return false;
+    const key = `cloud-${record.diagram.id}`;
+    const canonicalId = data.diagrams.some((item) => item.id === record.diagram.source_diagram_id)
+      ? record.diagram.source_diagram_id : null;
+    const base = canonicalId ? data.diagrams.find((item) => item.id === canonicalId) : null;
+    const descriptor = {
+      ...(base || {}),
+      id: key,
+      canonicalDiagramId: canonicalId,
+      title: record.diagram.title,
+      titleMs: record.diagram.title,
+      description: record.diagram.visibility === 'canonical' ? 'Cloud canonical diagram' : 'Private cloud diagram',
+      descriptionMs: record.diagram.visibility === 'canonical' ? 'Rajah awan kanonikal' : 'Rajah awan peribadi',
+      category: 'Cloud',
+      status: 'current',
+      layout: base?.layout || 'free',
+      columns: base?.columns || [],
+      sessionOnly: false,
+      cloud: true,
+      readOnly: !record.diagram.can_edit,
+    };
+    const existingIndex = state.importedDiagrams.findIndex((item) => item.id === key);
+    if (existingIndex >= 0) state.importedDiagrams.splice(existingIndex, 1, descriptor);
+    else state.importedDiagrams.push(descriptor);
+
+    const analysis = editorController.preflight(record.xml);
+    const svg = record.svg ? sanitizeRuntimeSVG(record.svg) : null;
+    const asset = svg ? runtimeAssetFromAnalysis(svg, analysis) : (canonicalId ? assets[canonicalId] : null);
+    state.runtimeDocuments.set(key, {
+      workingXml: record.xml,
+      pageId: analysis.selectedPage?.id || null,
+      filename: `${record.diagram.title}.drawio`,
+      analysis,
+      dirty: Boolean(record.dirty),
+      diagramType: canonicalId || record.diagram.diagram_type || 'unknown',
+      runtimeSvg: svg,
+      asset,
+      lastValidAsset: asset,
+      readOnly: !record.diagram.can_edit,
+      cloud: true,
+      cloudId: record.diagram.id,
+      cloudBranchId: record.branch?.id || null,
+      revision: record.branch?.revision || 0,
+    });
+    state.diagramId = key;
+    state.editorDocumentKey = key;
+    state.renderMode = 'actual';
+    state.workspaceMode = record.diagram.can_edit ? 'edit' : 'view';
+    renderAll();
+    if (record.diagram.can_edit) {
+      editorController.openXML(record.xml, { filename: `${record.diagram.title}.drawio`, diagramHint: canonicalId && isCanonicalEditable(canonicalId) ? canonicalId : null, pageId: analysis.selectedPage?.id || null, dirty: Boolean(record.dirty) });
+      setWorkspaceMode('edit', { loadCanonical: false });
+    } else {
+      setWorkspaceMode('view', { loadCanonical: false });
+    }
+    return true;
   }
 
   function sanitizeRuntimeSVG(svgText) {
@@ -1066,10 +1132,13 @@
   }
 
   function renderWorkspaceControls() {
-    const lite = Boolean(window.PETAKERJA_EXPLORER_RUNTIME?.lite);
+    const editorEnabled = runtimeCapabilities.editor !== false;
+    const importEnabled = runtimeCapabilities.import !== false;
+    const agentEnabled = runtimeCapabilities.agent !== false;
+    const localWorkspaceEnabled = runtimeCapabilities.localWorkspace !== false;
     const editable = isEditableDiagram();
-    const canEdit = editable && editorController?.available;
-    els.workspaceModeControl.hidden = lite || !editable;
+    const canEdit = editorEnabled && editable && editorController?.available;
+    els.workspaceModeControl.hidden = !editorEnabled || !editable;
     els.workspaceView.setAttribute('aria-pressed', String(state.workspaceMode === 'view'));
     els.workspaceEdit.setAttribute('aria-pressed', String(state.workspaceMode === 'edit'));
     els.workspaceAgent.setAttribute('aria-pressed', String(state.workspaceMode === 'agent'));
@@ -1079,26 +1148,32 @@
     els.workspaceEdit.setAttribute('aria-disabled', String(!editable));
     els.workspaceEdit.dataset.runtimeRequired = String(editable && !canEdit);
     els.workspaceEdit.title = canEdit ? '' : t('ui.editorHttpRequired');
-    els.workspaceAgent.disabled = !editable;
-    els.workspaceAgent.setAttribute('aria-disabled', String(!editable));
+    els.workspaceAgent.hidden = !agentEnabled;
+    els.workspaceAgent.disabled = !agentEnabled || !editable;
+    els.workspaceAgent.setAttribute('aria-disabled', String(!agentEnabled || !editable));
     els.workspaceAgent.dataset.runtimeRequired = String(editable && !canEdit);
     els.workspaceAgent.title = canEdit ? '' : t('ui.editorHttpRequired');
-    els.importButton.hidden = lite;
-    els.importButton.disabled = lite;
+    els.importButton.hidden = !importEnabled;
+    els.importButton.disabled = !importEnabled;
     els.importButton.setAttribute('aria-disabled', 'false');
     els.importButton.dataset.runtimeRequired = String(!editorController?.available);
     els.importButton.title = editorController?.available ? '' : t('ui.editorHttpRequired');
-    els.validateButton.hidden = lite || state.workspaceMode === 'view'; els.saveButton.hidden = lite || state.workspaceMode === 'view';
-    els.workspaceSaveButton.hidden = lite || state.workspaceMode === 'view' || !state.workspaceDiagramIds.has(state.diagramId);
+    els.validateButton.hidden = !editorEnabled || state.workspaceMode === 'view'; els.saveButton.hidden = !editorEnabled || state.workspaceMode === 'view';
+    els.workspaceSaveButton.hidden = !localWorkspaceEnabled || state.workspaceMode === 'view' || !state.workspaceDiagramIds.has(state.diagramId);
     byId('zoom-out').parentElement.hidden = state.workspaceMode !== 'view';
     els.referenceButton.hidden = state.workspaceMode !== 'view' || !activeDiagram().reference;
     const showSequenceLabels = state.workspaceMode === 'view' && effectiveMode() === 'actual' && Boolean(activeAsset()?.supportsSequenceLabels);
     els.sequenceLabelControl.hidden = !showSequenceLabels;
     els.sequenceSimple.setAttribute('aria-pressed', String(state.sequenceLabelMode === 'simple'));
     els.sequenceCode.setAttribute('aria-pressed', String(state.sequenceLabelMode === 'code'));
+    cloudManager?.updateControls();
   }
 
   async function setWorkspaceMode(mode, options = {}) {
+    if (mode === 'agent' && runtimeCapabilities.agent === false) {
+      els.statusMessage.textContent = state.language === 'en' ? 'Agent Mode is available only in the trusted local Explorer.' : 'Mod Ejen hanya tersedia dalam Explorer tempatan yang dipercayai.';
+      return;
+    }
     if ((mode === 'edit' || mode === 'agent') && (!isEditableDiagram() || !editorController.available)) {
       if (isEditableDiagram() && !editorController.available) showRuntimeDialog();
       else els.statusMessage.textContent = t('ui.editorHttpRequired');
@@ -1121,7 +1196,7 @@
       const runtime = runtimeDocument();
       if (runtime?.workingXml && state.editorDocumentKey !== state.diagramId) {
         state.editorDocumentKey = state.diagramId;
-        editorController.openXML(runtime.workingXml, { filename: runtime.filename, diagramHint: editorAPI.EDITABLE_DIAGRAMS.includes(runtime.diagramType) ? runtime.diagramType : null, pageId: runtime.pageId, dirty: runtime.dirty });
+        editorController.openXML(runtime.workingXml, { filename: runtime.filename, diagramHint: isCanonicalEditable(runtime.diagramType) ? runtime.diagramType : null, pageId: runtime.pageId, dirty: runtime.dirty });
       } else if (options.loadCanonical !== false && (editorController.diagramId !== state.diagramId || !editorController.workingXml || state.editorDocumentKey !== state.diagramId)) {
         try {
           state.editorDocumentKey = state.diagramId;
@@ -1575,6 +1650,7 @@
     if (!allDiagrams().some((diagram) => diagram.id === id)) return;
     const previousWorkspaceMode = state.workspaceMode;
     state.diagramId = id; state.selected = null; state.hovered = null; state.selectedComponentKey = null; state.hoveredComponentKey = null; state.selectedConnectionId = null; state.fitMode = true;
+    cloudManager?.setActiveFromDocumentKey(id);
     if (previousWorkspaceMode !== 'view' && !isEditableDiagram(id)) state.workspaceMode = 'view';
     renderAll();
     if (previousWorkspaceMode !== 'view' && isEditableDiagram(id)) setWorkspaceMode(previousWorkspaceMode);
@@ -1758,7 +1834,10 @@
   let bridgeCursor = 0;
   let bridgeInitialized = false;
   async function pollBridge() {
-    if (!editorController.available) return;
+    if (!editorController.available || runtimeCapabilities.mcp === false) {
+      els.bridgeStatus.textContent = state.language === 'en' ? 'Localhost only' : 'Localhost sahaja';
+      return;
+    }
     try {
       const status = await fetch(localAPI('bridge/status'), { cache: 'no-store' });
       if (!status.ok) throw new Error('Bridge host unavailable');
@@ -1823,9 +1902,23 @@
       },
       onWorkingDocument(snapshot) {
         updateRuntimeDocument(snapshot);
+        cloudManager?.notifyWorking(snapshot);
       },
     },
   });
+
+  cloudManager = window.PETAKERJA_CLOUD?.createManager({
+    getLanguage: () => state.language,
+    isEditorAvailable: () => Boolean(editorController?.available),
+    getSnapshot: () => editorController?.documentSnapshot?.() || null,
+    exportPreview: async () => {
+      const exported = await editorController.exportRuntimeSVG();
+      return { xml: exported.xml || editorController.workingXml, svg: sanitizeRuntimeSVG(exported.svg) };
+    },
+    markClean: () => editorController.markClean(),
+    openDocument: openCloudDocument,
+    onStatus(message) { els.statusMessage.textContent = message; },
+  }) || null;
 
   diagramAgent = new agentAPI.DiagramAgent({
     editor: editorController,
@@ -1865,7 +1958,7 @@
     renderDiagram(); renderDetails();
   });
   document.querySelectorAll('[data-language]').forEach((button) => button.addEventListener('click', () => {
-    state.language = button.dataset.language; state.fitMode = true; editorController.setLanguage(state.language); renderAll();
+    state.language = button.dataset.language; state.fitMode = true; editorController.setLanguage(state.language); cloudManager?.applyLanguage(); renderAll();
     window.dispatchEvent(new CustomEvent('petakerja:languagechange', { detail: { language: state.language } }));
   }));
   els.themeSelect.addEventListener('change', () => applyThemePreference(els.themeSelect.value, { announce: true }));
@@ -2074,5 +2167,5 @@
   ensureWorkspaceSession().then(() => hydrateWorkspaceDocument(state.diagramId));
   setAgentState('idle');
   renderAgentPlan(null);
-  pollBridge();
+  if (runtimeCapabilities.mcp !== false) pollBridge();
 }());
