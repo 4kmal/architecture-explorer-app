@@ -681,13 +681,25 @@
     return `${prefix}Label${validLanguage(language) === 'ms' ? 'Ms' : 'En'}`;
   }
 
-  function isBilingualWrapper(wrapper) {
-    return wrapper?.hasAttribute('labelEn') || wrapper?.hasAttribute('labelMs')
-      || wrapper?.hasAttribute('simpleLabelEn') || wrapper?.hasAttribute('simpleLabelMs');
+  function isBilingualElement(element) {
+    return element?.hasAttribute('labelEn') || element?.hasAttribute('labelMs')
+      || element?.hasAttribute('simpleLabelEn') || element?.hasAttribute('simpleLabelMs');
+  }
+
+  function bilingualElements(documentNode) {
+    const wrappers = [...documentNode.querySelectorAll('object')].filter(isBilingualElement);
+    const directCells = [...documentNode.querySelectorAll('mxCell')].filter((cell) => (
+      cell.parentElement?.tagName !== 'object' && isBilingualElement(cell)
+    ));
+    return [...wrappers, ...directCells];
+  }
+
+  function visibleLabelAttribute(element) {
+    return element.tagName === 'mxCell' ? 'value' : 'label';
   }
 
   function hasBilingualMetadata(documentNode) {
-    return [...documentNode.querySelectorAll('object')].some(isBilingualWrapper);
+    return bilingualElements(documentNode).length > 0;
   }
 
   function projectLocalizedXML(xml, language = 'en', labelMode = 'simple') {
@@ -697,12 +709,11 @@
     const activeMode = validSequenceLabelMode(labelMode);
     documentNode.documentElement.setAttribute(PROJECTION_LANGUAGE_ATTR, activeLanguage);
     documentNode.documentElement.setAttribute(PROJECTION_LABEL_MODE_ATTR, activeMode);
-    [...documentNode.querySelectorAll('object')].forEach((wrapper) => {
-      if (!isBilingualWrapper(wrapper)) return;
+    bilingualElements(documentNode).forEach((element) => {
       const messageField = projectedMessageField(activeLanguage, activeMode);
       const genericField = activeLanguage === 'ms' ? 'labelMs' : 'labelEn';
-      const visible = wrapper.getAttribute(messageField) ?? wrapper.getAttribute(genericField);
-      if (visible != null) wrapper.setAttribute('label', visible);
+      const visible = element.getAttribute(messageField) ?? element.getAttribute(genericField);
+      if (visible != null) element.setAttribute(visibleLabelAttribute(element), visible);
     });
     return serializer.serializeToString(documentNode);
   }
@@ -718,22 +729,22 @@
     );
     let translationChanged = false;
     if (bilingual) {
-      [...documentNode.querySelectorAll('object')].forEach((wrapper) => {
-        if (!isBilingualWrapper(wrapper)) return;
-        const isMessage = wrapper.hasAttribute('simpleLabelEn') || wrapper.hasAttribute('codeLabelEn');
+      bilingualElements(documentNode).forEach((element) => {
+        const isMessage = element.hasAttribute('simpleLabelEn') || element.hasAttribute('codeLabelEn');
         const activeField = isMessage
           ? projectedMessageField(language, labelMode)
           : (language === 'ms' ? 'labelMs' : 'labelEn');
-        const visible = wrapper.getAttribute('label');
-        const expected = wrapper.getAttribute(activeField);
+        const visibleAttribute = visibleLabelAttribute(element);
+        const visible = element.getAttribute(visibleAttribute);
+        const expected = element.getAttribute(activeField);
         if (options.captureEdits !== false && visible != null && expected != null && visible !== expected) {
-          wrapper.setAttribute(activeField, visible);
+          element.setAttribute(activeField, visible);
           translationChanged = true;
         }
         const canonicalLabel = isMessage
-          ? (wrapper.getAttribute('simpleLabelEn') ?? wrapper.getAttribute('codeLabelEn'))
-          : wrapper.getAttribute('labelEn');
-        if (canonicalLabel != null) wrapper.setAttribute('label', canonicalLabel);
+          ? (element.getAttribute('simpleLabelEn') ?? element.getAttribute('codeLabelEn'))
+          : element.getAttribute('labelEn');
+        if (canonicalLabel != null) element.setAttribute(visibleAttribute, canonicalLabel);
       });
     }
     root.removeAttribute(PROJECTION_LANGUAGE_ATTR);

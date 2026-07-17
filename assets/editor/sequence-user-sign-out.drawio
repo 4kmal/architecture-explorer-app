@@ -32,7 +32,7 @@
             <mxGeometry as="geometry" x="285" y="130" width="10" height="915" />
           </mxCell>
         </object>
-        <object label="&lt;font style=&quot;font-size: 9px;&quot;&gt;UserMenu&lt;br&gt;Manager&lt;/font&gt;" id="user-sign-out-sequence-participant-menu-manager" petakerjaKey="user-sign-out-sequence/participant-menu-manager">
+        <object label="&lt;font style=&quot;font-size: 9px;&quot;&gt;UserMenu&lt;br&gt;Manager&lt;/font&gt;" id="user-sign-out-sequence-participant-menu-manager" petakerjaKey="user-sign-out-sequence/participant-menu-manager" labelEn="&lt;font style=&quot;font-size: 9px;&quot;&gt;UserMenu&lt;br&gt;Manager&lt;/font&gt;" labelMs="&lt;font style=&quot;font-size: 9px;&quot;&gt;PenggunaMenu&lt;br&gt;Manager&lt;/font&gt;">
           <mxCell parent="user-sign-out-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
             <mxGeometry as="geometry" x="440" y="70" width="100" height="60" />
           </mxCell>
@@ -42,7 +42,7 @@
             <mxGeometry as="geometry" x="485" y="130" width="10" height="915" />
           </mxCell>
         </object>
-        <object label="AuthManager" id="user-sign-out-sequence-participant-auth" petakerjaKey="user-sign-out-sequence/participant-auth">
+        <object label="AuthManager" id="user-sign-out-sequence-participant-auth" petakerjaKey="user-sign-out-sequence/participant-auth" labelEn="AuthManager" labelMs="AuthManager">
           <mxCell parent="user-sign-out-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
             <mxGeometry as="geometry" x="640" y="70" width="100" height="60" />
           </mxCell>
@@ -52,7 +52,7 @@
             <mxGeometry as="geometry" x="685" y="130" width="10" height="915" />
           </mxCell>
         </object>
-        <object label="authClient" id="user-sign-out-sequence-participant-client" petakerjaKey="user-sign-out-sequence/participant-client">
+        <object label="authClient" id="user-sign-out-sequence-participant-client" petakerjaKey="user-sign-out-sequence/participant-client" labelEn="authClient" labelMs="authClient">
           <mxCell parent="user-sign-out-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
             <mxGeometry as="geometry" x="840" y="70" width="100" height="60" />
           </mxCell>
@@ -82,7 +82,7 @@
             <mxGeometry as="geometry" x="1285" y="130" width="10" height="915" />
           </mxCell>
         </object>
-        <object label="&lt;font style=&quot;font-size: 9px;&quot;&gt;UserDashboard&lt;br&gt;Manager&lt;/font&gt;" id="user-sign-out-sequence-participant-user-dashboard" petakerjaKey="user-sign-out-sequence/participant-user-dashboard">
+        <object label="&lt;font style=&quot;font-size: 9px;&quot;&gt;UserDashboard&lt;br&gt;Manager&lt;/font&gt;" id="user-sign-out-sequence-participant-user-dashboard" petakerjaKey="user-sign-out-sequence/participant-user-dashboard" labelEn="&lt;font style=&quot;font-size: 9px;&quot;&gt;UserDashboard&lt;br&gt;Manager&lt;/font&gt;" labelMs="&lt;font style=&quot;font-size: 9px;&quot;&gt;PenggunaDashboard&lt;br&gt;Manager&lt;/font&gt;">
           <mxCell parent="user-sign-out-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
             <mxGeometry as="geometry" x="1440" y="70" width="100" height="60" />
           </mxCell>
@@ -92,7 +92,7 @@
             <mxGeometry as="geometry" x="1485" y="130" width="10" height="915" />
           </mxCell>
         </object>
-        <object label="alt" id="user-sign-out-sequence-fragment-result" petakerjaKey="user-sign-out-sequence/fragment-result">
+        <object label="alt" id="user-sign-out-sequence-fragment-result" petakerjaKey="user-sign-out-sequence/fragment-result" labelEn="alt" labelMs="alt">
           <mxCell parent="user-sign-out-sequence-layer" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);" vertex="1">
             <mxGeometry as="geometry" x="40" y="350" width="1500" height="435" />
           </mxCell>
@@ -115,92 +115,92 @@
             <mxGeometry as="geometry" x="110" y="642" width="250" height="18" />
           </mxCell>
         </object>
-        <object label="Select Sign Out" id="user-sign-out-sequence-message-01" petakerjaKey="user-sign-out-sequence/message-01" simpleLabelEn="Select Sign Out" simpleLabelMs="Pilih Log Keluar" codeLabelEn="[data-dropdown-action=&quot;signout&quot;]" codeLabelMs="[data-dropdown-action=&quot;signout&quot;]">
+        <object label="Select Sign Out" id="user-sign-out-sequence-message-01" petakerjaKey="user-sign-out-sequence/message-01" simpleLabelEn="Select Sign Out" simpleLabelMs="Pilih Log Keluar" codeLabelEn="[data-dropdown-action=&quot;signout&quot;]" codeLabelMs="[data-dropdown-action=&quot;signout&quot;]" labelEn="Select Sign Out" labelMs="Pilih Log Keluar">
           <mxCell parent="user-sign-out-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.027322;exitPerimeter=0;entryX=0;entryY=0.027322;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-sign-out-sequence-activation-user" target="user-sign-out-sequence-activation-ui">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Start the sign-out process" id="user-sign-out-sequence-message-02" petakerjaKey="user-sign-out-sequence/message-02" simpleLabelEn="Start the sign-out process" simpleLabelMs="Mulakan proses log keluar" codeLabelEn="UserMenuManager.handleSignOut()" codeLabelMs="UserMenuManager.handleSignOut()">
+        <object label="Start the sign-out process" id="user-sign-out-sequence-message-02" petakerjaKey="user-sign-out-sequence/message-02" simpleLabelEn="Start the sign-out process" simpleLabelMs="Mulakan proses log keluar" codeLabelEn="UserMenuManager.handleSignOut()" codeLabelMs="UserMenuManager.handleSignOut()" labelEn="Start the sign-out process" labelMs="Mulakan proses log keluar">
           <mxCell parent="user-sign-out-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.060109;exitPerimeter=0;entryX=0;entryY=0.060109;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-sign-out-sequence-activation-ui" target="user-sign-out-sequence-activation-menu-manager">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Request sign-out" id="user-sign-out-sequence-message-03" petakerjaKey="user-sign-out-sequence/message-03" simpleLabelEn="Request sign-out" simpleLabelMs="Minta log keluar" codeLabelEn="AuthManager.signOut()" codeLabelMs="AuthManager.signOut()">
+        <object label="Request sign-out" id="user-sign-out-sequence-message-03" petakerjaKey="user-sign-out-sequence/message-03" simpleLabelEn="Request sign-out" simpleLabelMs="Minta log keluar" codeLabelEn="AuthManager.signOut()" codeLabelMs="AuthManager.signOut()" labelEn="Request sign-out" labelMs="Minta log keluar">
           <mxCell parent="user-sign-out-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.092896;exitPerimeter=0;entryX=0;entryY=0.092896;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-sign-out-sequence-activation-menu-manager" target="user-sign-out-sequence-activation-auth">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Send the sign-out request" id="user-sign-out-sequence-message-04" petakerjaKey="user-sign-out-sequence/message-04" simpleLabelEn="Send the sign-out request" simpleLabelMs="Hantar permintaan log keluar" codeLabelEn="authClient.signOut()" codeLabelMs="authClient.signOut()">
+        <object label="Send the sign-out request" id="user-sign-out-sequence-message-04" petakerjaKey="user-sign-out-sequence/message-04" simpleLabelEn="Send the sign-out request" simpleLabelMs="Hantar permintaan log keluar" codeLabelEn="authClient.signOut()" codeLabelMs="authClient.signOut()" labelEn="Send the sign-out request" labelMs="Hantar permintaan log keluar">
           <mxCell parent="user-sign-out-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.125683;exitPerimeter=0;entryX=0;entryY=0.125683;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-sign-out-sequence-activation-auth" target="user-sign-out-sequence-activation-client">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="End the Better Auth session" id="user-sign-out-sequence-message-05" petakerjaKey="user-sign-out-sequence/message-05" simpleLabelEn="End the Better Auth session" simpleLabelMs="Tamatkan sesi Better Auth" codeLabelEn="POST /api/auth/sign-out" codeLabelMs="POST /api/auth/sign-out">
+        <object label="End the Better Auth session" id="user-sign-out-sequence-message-05" petakerjaKey="user-sign-out-sequence/message-05" simpleLabelEn="End the Better Auth session" simpleLabelMs="Tamatkan sesi Better Auth" codeLabelEn="POST /api/auth/sign-out" codeLabelMs="POST /api/auth/sign-out" labelEn="End the Better Auth session" labelMs="Tamatkan sesi Better Auth">
           <mxCell parent="user-sign-out-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.158470;exitPerimeter=0;entryX=0;entryY=0.158470;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-sign-out-sequence-activation-client" target="user-sign-out-sequence-activation-api">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Invalidate the active session" id="user-sign-out-sequence-message-06" petakerjaKey="user-sign-out-sequence/message-06" simpleLabelEn="Invalidate the active session" simpleLabelMs="Batalkan sesi aktif" codeLabelEn="delete session; clear session cookie" codeLabelMs="padam sesi; kosongkan kuki sesi">
+        <object label="Invalidate the active session" id="user-sign-out-sequence-message-06" petakerjaKey="user-sign-out-sequence/message-06" simpleLabelEn="Invalidate the active session" simpleLabelMs="Batalkan sesi aktif" codeLabelEn="delete session; clear session cookie" codeLabelMs="padam sesi; kosongkan kuki sesi" labelEn="Invalidate the active session" labelMs="Batalkan sesi aktif">
           <mxCell parent="user-sign-out-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.191257;exitPerimeter=0;entryX=0;entryY=0.191257;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-sign-out-sequence-activation-api" target="user-sign-out-sequence-activation-session">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Confirm that the session ended" id="user-sign-out-sequence-message-07" petakerjaKey="user-sign-out-sequence/message-07" simpleLabelEn="Confirm that the session ended" simpleLabelMs="Sahkan bahawa sesi telah tamat" codeLabelEn="session invalidated" codeLabelMs="sesi dibatalkan">
+        <object label="Confirm that the session ended" id="user-sign-out-sequence-message-07" petakerjaKey="user-sign-out-sequence/message-07" simpleLabelEn="Confirm that the session ended" simpleLabelMs="Sahkan bahawa sesi telah tamat" codeLabelEn="session invalidated" codeLabelMs="sesi dibatalkan" labelEn="Confirm that the session ended" labelMs="Sahkan bahawa sesi telah tamat">
           <mxCell parent="user-sign-out-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.224044;exitPerimeter=0;entryX=1;entryY=0.224044;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-sign-out-sequence-activation-session" target="user-sign-out-sequence-activation-api">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Return sign-out success" id="user-sign-out-sequence-message-08" petakerjaKey="user-sign-out-sequence/message-08" simpleLabelEn="Return sign-out success" simpleLabelMs="Pulangkan kejayaan log keluar" codeLabelEn="HTTP 200; Set-Cookie expired" codeLabelMs="HTTP 200; Set-Cookie tamat">
+        <object label="Return sign-out success" id="user-sign-out-sequence-message-08" petakerjaKey="user-sign-out-sequence/message-08" simpleLabelEn="Return sign-out success" simpleLabelMs="Pulangkan kejayaan log keluar" codeLabelEn="HTTP 200; Set-Cookie expired" codeLabelMs="HTTP 200; Set-Cookie tamat" labelEn="Return sign-out success" labelMs="Pulangkan kejayaan log keluar">
           <mxCell parent="user-sign-out-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.256831;exitPerimeter=0;entryX=1;entryY=0.256831;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-sign-out-sequence-activation-api" target="user-sign-out-sequence-activation-client">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Confirm sign-out" id="user-sign-out-sequence-message-09" petakerjaKey="user-sign-out-sequence/message-09" simpleLabelEn="Confirm sign-out" simpleLabelMs="Sahkan log keluar" codeLabelEn="{ error: null }" codeLabelMs="{ error: null }">
+        <object label="Confirm sign-out" id="user-sign-out-sequence-message-09" petakerjaKey="user-sign-out-sequence/message-09" simpleLabelEn="Confirm sign-out" simpleLabelMs="Sahkan log keluar" codeLabelEn="{ error: null }" codeLabelMs="{ error: null }" labelEn="Confirm sign-out" labelMs="Sahkan log keluar">
           <mxCell parent="user-sign-out-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.289617;exitPerimeter=0;entryX=1;entryY=0.289617;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-sign-out-sequence-activation-client" target="user-sign-out-sequence-activation-auth">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Clear the current user" id="user-sign-out-sequence-message-10" petakerjaKey="user-sign-out-sequence/message-10" simpleLabelEn="Clear the current user" simpleLabelMs="Kosongkan pengguna semasa" codeLabelEn="AuthManager.setUser(null)" codeLabelMs="AuthManager.setUser(null)">
+        <object label="Clear the current user" id="user-sign-out-sequence-message-10" petakerjaKey="user-sign-out-sequence/message-10" simpleLabelEn="Clear the current user" simpleLabelMs="Kosongkan pengguna semasa" codeLabelEn="AuthManager.setUser(null)" codeLabelMs="AuthManager.setUser(null)" labelEn="Clear the current user" labelMs="Kosongkan pengguna semasa">
           <mxCell parent="user-sign-out-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.322404;exitPerimeter=0;entryX=1;entryY=0.322404;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-sign-out-sequence-activation-auth" target="user-sign-out-sequence-activation-menu-manager">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Display the guest sign-in control" id="user-sign-out-sequence-message-11" petakerjaKey="user-sign-out-sequence/message-11" simpleLabelEn="Display the guest sign-in control" simpleLabelMs="Paparkan kawalan log masuk tetamu" codeLabelEn="closeProfile(); renderGuest()" codeLabelMs="closeProfile(); renderGuest()">
+        <object label="Display the guest sign-in control" id="user-sign-out-sequence-message-11" petakerjaKey="user-sign-out-sequence/message-11" simpleLabelEn="Display the guest sign-in control" simpleLabelMs="Paparkan kawalan log masuk tetamu" codeLabelEn="closeProfile(); renderGuest()" codeLabelMs="closeProfile(); renderGuest()" labelEn="Display the guest sign-in control" labelMs="Paparkan kawalan log masuk tetamu">
           <mxCell parent="user-sign-out-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.355191;exitPerimeter=0;entryX=1;entryY=0.355191;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-sign-out-sequence-activation-menu-manager" target="user-sign-out-sequence-activation-ui">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Notify the protected dashboard" id="user-sign-out-sequence-message-12" petakerjaKey="user-sign-out-sequence/message-12" simpleLabelEn="Notify the protected dashboard" simpleLabelMs="Maklumkan papan pemuka terlindung" codeLabelEn="onAuthChange(null)" codeLabelMs="onAuthChange(null)">
+        <object label="Notify the protected dashboard" id="user-sign-out-sequence-message-12" petakerjaKey="user-sign-out-sequence/message-12" simpleLabelEn="Notify the protected dashboard" simpleLabelMs="Maklumkan papan pemuka terlindung" codeLabelEn="onAuthChange(null)" codeLabelMs="onAuthChange(null)" labelEn="Notify the protected dashboard" labelMs="Maklumkan papan pemuka terlindung">
           <mxCell parent="user-sign-out-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.387978;exitPerimeter=0;entryX=0;entryY=0.387978;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-sign-out-sequence-activation-auth" target="user-sign-out-sequence-activation-user-dashboard">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Close the user dashboard and clear its cached data" id="user-sign-out-sequence-message-13" petakerjaKey="user-sign-out-sequence/message-13" simpleLabelEn="Close the user dashboard and clear its cached data" simpleLabelMs="Tutup papan pemuka pengguna dan kosongkan data cachenya" codeLabelEn="UserDashboardManager.onAuthChange(); resetCaches(); close(true)" codeLabelMs="UserDashboardManager.onAuthChange(); resetCaches(); close(true)">
+        <object label="Close the user dashboard and clear its cached data" id="user-sign-out-sequence-message-13" petakerjaKey="user-sign-out-sequence/message-13" simpleLabelEn="Close the user dashboard and clear its cached data" simpleLabelMs="Tutup papan pemuka pengguna dan kosongkan data cachenya" codeLabelEn="UserDashboardManager.onAuthChange(); resetCaches(); close(true)" codeLabelMs="UserDashboardManager.onAuthChange(); resetCaches(); close(true)" labelEn="Close the user dashboard and clear its cached data" labelMs="Tutup papan pemuka pengguna dan kosongkan data cachenya">
           <mxCell parent="user-sign-out-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.420765;exitPerimeter=0;entryX=1;entryY=0.420765;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-sign-out-sequence-activation-user-dashboard" target="user-sign-out-sequence-activation-ui">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Display the signed-out interface" id="user-sign-out-sequence-message-14" petakerjaKey="user-sign-out-sequence/message-14" simpleLabelEn="Display the signed-out interface" simpleLabelMs="Paparkan antara muka yang telah log keluar" codeLabelEn="render signed-out state" codeLabelMs="paparkan keadaan log keluar">
+        <object label="Display the signed-out interface" id="user-sign-out-sequence-message-14" petakerjaKey="user-sign-out-sequence/message-14" simpleLabelEn="Display the signed-out interface" simpleLabelMs="Paparkan antara muka yang telah log keluar" codeLabelEn="render signed-out state" codeLabelMs="paparkan keadaan log keluar" labelEn="Display the signed-out interface" labelMs="Paparkan antara muka yang telah log keluar">
           <mxCell parent="user-sign-out-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.453552;exitPerimeter=0;entryX=1;entryY=0.453552;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-sign-out-sequence-activation-ui" target="user-sign-out-sequence-activation-user">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Return the sign-out error" id="user-sign-out-sequence-message-15" petakerjaKey="user-sign-out-sequence/message-15" simpleLabelEn="Return the sign-out error" simpleLabelMs="Pulangkan ralat log keluar" codeLabelEn="Better Auth signOut error" codeLabelMs="Ralat Better Auth signOut">
+        <object label="Return the sign-out error" id="user-sign-out-sequence-message-15" petakerjaKey="user-sign-out-sequence/message-15" simpleLabelEn="Return the sign-out error" simpleLabelMs="Pulangkan ralat log keluar" codeLabelEn="Better Auth signOut error" codeLabelMs="Ralat Better Auth signOut" labelEn="Return the sign-out error" labelMs="Pulangkan ralat log keluar">
           <mxCell parent="user-sign-out-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.595628;exitPerimeter=0;entryX=1;entryY=0.595628;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-sign-out-sequence-activation-client" target="user-sign-out-sequence-activation-auth">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Report that sign-out failed" id="user-sign-out-sequence-message-16" petakerjaKey="user-sign-out-sequence/message-16" simpleLabelEn="Report that sign-out failed" simpleLabelMs="Laporkan bahawa log keluar gagal" codeLabelEn="throw error" codeLabelMs="lemparkan ralat">
+        <object label="Report that sign-out failed" id="user-sign-out-sequence-message-16" petakerjaKey="user-sign-out-sequence/message-16" simpleLabelEn="Report that sign-out failed" simpleLabelMs="Laporkan bahawa log keluar gagal" codeLabelEn="throw error" codeLabelMs="lemparkan ralat" labelEn="Report that sign-out failed" labelMs="Laporkan bahawa log keluar gagal">
           <mxCell parent="user-sign-out-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.628415;exitPerimeter=0;entryX=1;entryY=0.628415;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-sign-out-sequence-activation-auth" target="user-sign-out-sequence-activation-menu-manager">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Keep the current session and re-enable Sign Out" id="user-sign-out-sequence-message-17" petakerjaKey="user-sign-out-sequence/message-17" simpleLabelEn="Keep the current session and re-enable Sign Out" simpleLabelMs="Kekalkan sesi semasa dan aktifkan semula Log Keluar" codeLabelEn="catch; button.disabled = false" codeLabelMs="catch; button.disabled = false">
+        <object label="Keep the current session and re-enable Sign Out" id="user-sign-out-sequence-message-17" petakerjaKey="user-sign-out-sequence/message-17" simpleLabelEn="Keep the current session and re-enable Sign Out" simpleLabelMs="Kekalkan sesi semasa dan aktifkan semula Log Keluar" codeLabelEn="catch; button.disabled = false" codeLabelMs="catch; button.disabled = false" labelEn="Keep the current session and re-enable Sign Out" labelMs="Kekalkan sesi semasa dan aktifkan semula Log Keluar">
           <mxCell parent="user-sign-out-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.661202;exitPerimeter=0;entryX=1;entryY=0.661202;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-sign-out-sequence-activation-menu-manager" target="user-sign-out-sequence-activation-ui">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Display the still-signed-in interface" id="user-sign-out-sequence-message-18" petakerjaKey="user-sign-out-sequence/message-18" simpleLabelEn="Display the still-signed-in interface" simpleLabelMs="Paparkan antara muka yang masih log masuk" codeLabelEn="preserve AuthUser" codeLabelMs="kekalkan AuthUser">
+        <object label="Display the still-signed-in interface" id="user-sign-out-sequence-message-18" petakerjaKey="user-sign-out-sequence/message-18" simpleLabelEn="Display the still-signed-in interface" simpleLabelMs="Paparkan antara muka yang masih log masuk" codeLabelEn="preserve AuthUser" codeLabelMs="kekalkan AuthUser" labelEn="Display the still-signed-in interface" labelMs="Paparkan antara muka yang masih log masuk">
           <mxCell parent="user-sign-out-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.693989;exitPerimeter=0;entryX=1;entryY=0.693989;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="user-sign-out-sequence-activation-ui" target="user-sign-out-sequence-activation-user">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>

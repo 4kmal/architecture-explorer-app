@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Export, slim and bundle PetaKerja diagrams for offline interactive use.
 
-The script uses only the Python standard library. Draw.io Desktop is invoked for
-the four source pages that originate in .drawio files. Existing report SVGs are
-bundled directly. Source diagrams are never modified.
+The script uses only the Python standard library. Draw.io Desktop exports the
+registered source pages, while the generator also keeps their non-visual BM/EN
+editor metadata aligned with the View dictionaries. Geometry and relationships
+are not rewritten by the localization pass.
 """
 
 from __future__ import annotations
@@ -1312,7 +1313,14 @@ def component_name(label: str, schema: bool) -> str | None:
 def translate_label(value: str, replacements: dict[str, str]) -> str:
     translated = value
     for source, target in sorted(replacements.items(), key=lambda item: len(item[0]), reverse=True):
-        translated = translated.replace(clean_label(source), clean_label(target))
+        source_text = clean_label(source)
+        target_text = clean_label(target)
+        translated = translated.replace(source, target)
+        translated = translated.replace(source_text, target_text)
+        translated = translated.replace(
+            html.escape(source_text, quote=False),
+            html.escape(target_text, quote=False),
+        )
     return translated
 
 
@@ -1619,6 +1627,144 @@ def sequence_source_translations(source: Path, base: dict[str, str]) -> dict[str
     return replacements
 
 
+AUTH_SEQUENCE_MS = {
+    **GOOGLE_OAUTH_SEQUENCE_MS,
+    **SIGN_OUT_SEQUENCE_MS,
+    "PetaKerja User Login and Logout Sequence": "Jujukan Log Masuk dan Log Keluar Pengguna PetaKerja",
+    "alt [sign-out]": "alt [log keluar]",
+    "alt [profile]": "alt [profil]",
+    "PetaKerja UI": "Antara Muka PetaKerja",
+    "Better Auth API": "API Better Auth",
+    "PetaKerja Profile API": "API Profil PetaKerja",
+    "Account selection / consent": "Pemilihan akaun / persetujuan",
+    "Account + session persisted": "Akaun dan sesi disimpan",
+    "Application profile": "Profil aplikasi",
+    "AuthUser profile": "Profil AuthUser",
+    "Session invalidated": "Sesi dibatalkan",
+    "Clear session cookie": "Kosongkan kuki sesi",
+    "Sign-out error response": "Respons ralat log keluar",
+    "keep current session state": "kekalkan keadaan sesi semasa",
+    "Close authenticated views; render guest sign-in": "Tutup paparan pengguna dan paparkan log masuk tetamu",
+}
+
+
+def bilingual_translation_spec(diagram_id: str, source: Path) -> tuple[str, dict[str, str]] | None:
+    """Return the source language and BM/EN dictionary for an editor page."""
+    if diagram_id == "usecase":
+        return "ms", USECASE_EN
+    if diagram_id in {"domain", "domain-original", "implementation", "supabase"}:
+        return "ms", CLASS_EN
+    if diagram_id in {"user-google-sign-in-flowchart", "user-google-sign-in-flowchart-original"}:
+        return "en", GOOGLE_SIGN_IN_FLOWCHART_MS
+    if diagram_id in USER_FLOWCHART_SPECS:
+        return "en", USER_FLOWCHART_SPECS[diagram_id][1]
+    if diagram_id in ADMIN_FLOWCHART_SPECS:
+        return "en", ADMIN_FLOWCHART_SPECS[diagram_id][1]
+    if diagram_id in DESIGN_SPECS:
+        return "en", DESIGN_SPECS[diagram_id][1]
+    sequence_maps = {
+        "sequence": JOB_SEARCH_SEQUENCE_MS,
+        "auth-sequence": AUTH_SEQUENCE_MS,
+        "google-oauth-sequence": GOOGLE_OAUTH_SEQUENCE_MS,
+        "admin-manage-users-sequence": ADMIN_MANAGE_USERS_SEQUENCE_MS,
+        "admin-manage-ai-configuration-sequence": ADMIN_MANAGE_AI_CONFIGURATION_SEQUENCE_MS,
+        "admin-access-dashboard-sequence": ADMIN_ACCESS_DASHBOARD_SEQUENCE_MS,
+        "admin-monitor-activity-sequence": ADMIN_MONITOR_ACTIVITY_SEQUENCE_MS,
+        "admin-sign-out-sequence": SIGN_OUT_SEQUENCE_MS,
+        "user-explore-3d-map-sequence": USER_EXPLORE_3D_MAP_SEQUENCE_MS,
+        "user-sign-out-sequence": SIGN_OUT_SEQUENCE_MS,
+    }
+    if diagram_id in sequence_maps:
+        return "en", sequence_source_translations(source, sequence_maps[diagram_id])
+    return None
+
+
+def annotate_bilingual_page(diagram: ET.Element, source_language: str,
+                            replacements: dict[str, str]) -> int:
+    """Attach BM/EN labels without wrapping or restructuring existing cells."""
+    changed = 0
+    wrappers = diagram.findall(".//object")
+    wrapped_cell_ids = {
+        cell.get("id", "")
+        for wrapper in wrappers
+        for cell in [wrapper.find("mxCell")]
+        if cell is not None
+    }
+    elements: list[tuple[ET.Element, str]] = [(wrapper, "label") for wrapper in wrappers]
+    elements.extend(
+        (cell, "value")
+        for cell in diagram.findall(".//mxCell")
+        if cell.get("id", "") not in wrapped_cell_ids
+    )
+    for element, visible_attribute in elements:
+        visible = element.get(visible_attribute, "")
+        if not visible:
+            continue
+        if source_language == "ms":
+            label_ms = element.get("labelMs") or visible
+            label_en = element.get("labelEn") or translate_label(label_ms, replacements)
+        else:
+            label_en = element.get("labelEn") or visible
+            label_ms = element.get("labelMs") or translate_label(label_en, replacements)
+        for attribute, value in (("labelEn", label_en), ("labelMs", label_ms)):
+            if element.get(attribute) != value:
+                element.set(attribute, value)
+                changed += 1
+        key = element.get("petakerjaKey", "")
+        if element.tag == "object" and "/message-" in key and not element.get("simpleLabelEn"):
+            simple_en = re.sub(r"^\s*\d+\.\s*", "", label_en).strip()
+            simple_ms = re.sub(r"^\s*\d+\.\s*", "", label_ms).strip()
+            for attribute, value in (
+                ("simpleLabelEn", simple_en),
+                ("simpleLabelMs", simple_ms),
+                ("codeLabelEn", simple_en),
+                ("codeLabelMs", simple_en),
+            ):
+                element.set(attribute, value)
+                changed += 1
+        canonical = element.get("simpleLabelEn") or label_en
+        if element.get(visible_attribute) != canonical:
+            element.set(visible_attribute, canonical)
+            changed += 1
+    return changed
+
+
+def apply_all_bilingual_metadata(root: Path) -> int:
+    """Annotate every registered editable page using its existing View dictionary."""
+    manifest_path = root / "workspace-manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    grouped: dict[Path, list[tuple[str, str, str, dict[str, str]]]] = {}
+    for diagram_id, entry in manifest.get("diagrams", {}).items():
+        source = root / entry["xml"]
+        spec = bilingual_translation_spec(diagram_id, source)
+        if not spec:
+            continue
+        source_language, replacements = spec
+        grouped.setdefault(source, []).append(
+            (diagram_id, entry["pageId"], source_language, replacements)
+        )
+
+    total_changed = 0
+    for source, page_specs in grouped.items():
+        tree = ET.parse(source)
+        pages = {page.get("id", ""): page for page in tree.getroot().findall("diagram")}
+        file_changed = 0
+        annotated_pages: set[str] = set()
+        for diagram_id, page_id, source_language, replacements in page_specs:
+            if page_id in annotated_pages:
+                continue
+            diagram = pages.get(page_id)
+            if diagram is None:
+                raise ValueError(f"Missing page {page_id!r} for {diagram_id!r} in {source}")
+            file_changed += annotate_bilingual_page(diagram, source_language, replacements)
+            annotated_pages.add(page_id)
+        if file_changed:
+            ET.indent(tree, space="  ")
+            tree.write(source, encoding="utf-8", xml_declaration=False)
+            total_changed += file_changed
+    return total_changed
+
+
 def google_sign_in_flowchart_components(source: Path = GOOGLE_SIGN_IN_FLOWCHART_SOURCE) -> tuple[list[dict], list[dict]]:
     """Build the interactive manifest from stable flow-chart metadata."""
     diagram = ET.parse(source).getroot().findall("diagram")[0]
@@ -1829,6 +1975,9 @@ def main() -> None:
     if not DRAWIO.exists():
         raise FileNotFoundError(f"Draw.io Desktop not found: {DRAWIO}")
     apply_all(ROOT)
+    annotated = apply_all_bilingual_metadata(ROOT)
+    if annotated:
+        print(f"Updated {annotated} bilingual editor labels")
     assets = {}
     output_dir = ROOT / "assets" / "diagrams"
     output_dir.mkdir(parents=True, exist_ok=True)

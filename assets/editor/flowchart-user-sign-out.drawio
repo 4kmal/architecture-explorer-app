@@ -1,4 +1,3 @@
-<?xml version='1.0' encoding='utf-8'?>
 <mxfile host="Electron" agent="PetaKerja Architecture Explorer" version="27.0.2">
   <diagram name="PetaKerja User Sign Out - Polished" id="petakerja_flow_user_sign_out">
     <mxGraphModel dx="980" dy="1150" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="980" pageHeight="1150" math="0" shadow="0" background="light-dark(#fbfcfe,#0b1118)">
@@ -10,87 +9,87 @@
             <mxGeometry as="geometry" x="0" y="0" width="980" height="1150" />
           </mxCell>
         </object>
-        <object id="user-sign-out-flowchart-title" label="PetaKerja User Sign Out Flow Chart">
+        <object id="user-sign-out-flowchart-title" label="PetaKerja User Sign Out Flow Chart" labelEn="PetaKerja User Sign Out Flow Chart" labelMs="Carta Alir Pengguna PetaKerja Log Keluar">
           <mxCell parent="user-sign-out-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=light-dark(#172033,#f3f6fb);fontSize=14;fontStyle=1;fontFamily=Arial;">
             <mxGeometry as="geometry" x="120" y="18" width="740" height="38" />
           </mxCell>
         </object>
-        <object id="user-sign-out-flowchart-subtitle" label="Better Auth sign-out followed by application-state and dashboard cleanup.">
+        <object id="user-sign-out-flowchart-subtitle" label="Better Auth sign-out followed by application-state and dashboard cleanup." labelEn="Better Auth sign-out followed by application-state and dashboard cleanup." labelMs="Log keluar Better Auth diikuti pembersihan keadaan aplikasi dan Dashboard.">
           <mxCell parent="user-sign-out-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=light-dark(#172033,#f3f6fb);fontSize=14;fontStyle=1;fontFamily=Arial;">
             <mxGeometry as="geometry" x="100" y="58" width="780" height="30" />
           </mxCell>
         </object>
-        <object id="user-sign-out-flowchart-precondition" label="Precondition: The User is signed in and the authenticated user menu is available.">
+        <object id="user-sign-out-flowchart-precondition" label="Precondition: The User is signed in and the authenticated user menu is available." labelEn="Precondition: The User is signed in and the authenticated user menu is available." labelMs="Precondition: The User is signed in and the authenticated user menu is available.">
           <mxCell parent="user-sign-out-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=light-dark(#475467,#c5cedb);fontSize=11;fontStyle=2;fontFamily=Arial;">
             <mxGeometry as="geometry" x="100" y="92" width="780" height="32" />
           </mxCell>
         </object>
-        <object id="user-sign-out-flowchart-start" label="Start" petakerjaKey="user-sign-out-flowchart/start">
+        <object id="user-sign-out-flowchart-start" label="Start" petakerjaKey="user-sign-out-flowchart/start" labelEn="Start" labelMs="Mula">
           <mxCell parent="user-sign-out-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;fillColor=light-dark(#ecfdf3,#133221);strokeColor=light-dark(#1f7a4d,#72d6a1);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;fontStyle=1;">
             <mxGeometry as="geometry" x="456.665" y="115" width="66.67" height="40" />
           </mxCell>
         </object>
-        <object id="user-sign-out-flowchart-select-sign-out" label="User selects Sign Out" petakerjaKey="user-sign-out-flowchart/select-sign-out">
+        <object id="user-sign-out-flowchart-select-sign-out" label="User selects Sign Out" petakerjaKey="user-sign-out-flowchart/select-sign-out" labelEn="User selects Sign Out" labelMs="Pengguna memilih Sign Out">
           <mxCell parent="user-sign-out-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
             <mxGeometry as="geometry" x="390" y="190" width="200" height="50" />
           </mxCell>
         </object>
-        <object id="user-sign-out-flowchart-disable-control" label="Disable the Sign Out control" petakerjaKey="user-sign-out-flowchart/disable-control">
+        <object id="user-sign-out-flowchart-disable-control" label="Disable the Sign Out control" petakerjaKey="user-sign-out-flowchart/disable-control" labelEn="Disable the Sign Out control" labelMs="Nyahaktifkan kawalan Sign Out">
           <mxCell parent="user-sign-out-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
             <mxGeometry as="geometry" x="390" y="270" width="200" height="50" />
           </mxCell>
         </object>
-        <object id="user-sign-out-flowchart-request-sign-out" label="Submit the sign-out request" petakerjaKey="user-sign-out-flowchart/request-sign-out">
+        <object id="user-sign-out-flowchart-request-sign-out" label="Submit the sign-out request" petakerjaKey="user-sign-out-flowchart/request-sign-out" labelEn="Submit the sign-out request" labelMs="Hantar permintaan log keluar">
           <mxCell parent="user-sign-out-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
             <mxGeometry as="geometry" x="390" y="350" width="200" height="50" />
           </mxCell>
         </object>
-        <object id="user-sign-out-flowchart-sign-out-successful" label="Sign-out successful?" petakerjaKey="user-sign-out-flowchart/sign-out-successful">
+        <object id="user-sign-out-flowchart-sign-out-successful" label="Sign-out successful?" petakerjaKey="user-sign-out-flowchart/sign-out-successful" labelEn="Sign-out successful?" labelMs="Log keluar berjaya?">
           <mxCell parent="user-sign-out-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=light-dark(#fff7df,#3a2e16);strokeColor=light-dark(#9a6700,#f4c95d);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;fontStyle=1;">
             <mxGeometry as="geometry" x="430" y="445" width="120" height="70" />
           </mxCell>
         </object>
-        <object id="user-sign-out-flowchart-invalidate-session" label="Invalidate the session and clear its cookie" petakerjaKey="user-sign-out-flowchart/invalidate-session">
+        <object id="user-sign-out-flowchart-invalidate-session" label="Invalidate the session and clear its cookie" petakerjaKey="user-sign-out-flowchart/invalidate-session" labelEn="Invalidate the session and clear its cookie" labelMs="Batalkan sesi dan kosongkan kukinya">
           <mxCell parent="user-sign-out-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
             <mxGeometry as="geometry" x="380" y="560" width="220" height="55" />
           </mxCell>
         </object>
-        <object id="user-sign-out-flowchart-clear-user" label="Clear the signed-in user state" petakerjaKey="user-sign-out-flowchart/clear-user">
+        <object id="user-sign-out-flowchart-clear-user" label="Clear the signed-in user state" petakerjaKey="user-sign-out-flowchart/clear-user" labelEn="Clear the signed-in user state" labelMs="Kosongkan keadaan pengguna yang log masuk">
           <mxCell parent="user-sign-out-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
             <mxGeometry as="geometry" x="390" y="645" width="200" height="50" />
           </mxCell>
         </object>
-        <object id="user-sign-out-flowchart-notify-subscribers" label="Notify authentication subscribers" petakerjaKey="user-sign-out-flowchart/notify-subscribers">
+        <object id="user-sign-out-flowchart-notify-subscribers" label="Notify authentication subscribers" petakerjaKey="user-sign-out-flowchart/notify-subscribers" labelEn="Notify authentication subscribers" labelMs="Maklumkan pelanggan pengesahan">
           <mxCell parent="user-sign-out-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
             <mxGeometry as="geometry" x="380" y="725" width="220" height="50" />
           </mxCell>
         </object>
-        <object id="user-sign-out-flowchart-dashboard-open" label="User Dashboard open?" petakerjaKey="user-sign-out-flowchart/dashboard-open">
+        <object id="user-sign-out-flowchart-dashboard-open" label="User Dashboard open?" petakerjaKey="user-sign-out-flowchart/dashboard-open" labelEn="User Dashboard open?" labelMs="User Dashboard terbuka?">
           <mxCell parent="user-sign-out-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=light-dark(#fff7df,#3a2e16);strokeColor=light-dark(#9a6700,#f4c95d);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;fontStyle=1;">
             <mxGeometry as="geometry" x="430" y="815" width="120" height="70" />
           </mxCell>
         </object>
-        <object id="user-sign-out-flowchart-close-dashboard" label="Close the dashboard and clear per-user caches" petakerjaKey="user-sign-out-flowchart/close-dashboard">
+        <object id="user-sign-out-flowchart-close-dashboard" label="Close the dashboard and clear per-user caches" petakerjaKey="user-sign-out-flowchart/close-dashboard" labelEn="Close the dashboard and clear per-user caches" labelMs="Tutup Dashboard dan kosongkan cache khusus pengguna">
           <mxCell parent="user-sign-out-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
             <mxGeometry as="geometry" x="90" y="820" width="250" height="60" />
           </mxCell>
         </object>
-        <object id="user-sign-out-flowchart-display-guest" label="Display the guest Sign in control" petakerjaKey="user-sign-out-flowchart/display-guest">
+        <object id="user-sign-out-flowchart-display-guest" label="Display the guest Sign in control" petakerjaKey="user-sign-out-flowchart/display-guest" labelEn="Display the guest Sign in control" labelMs="Paparkan kawalan Log Masuk tetamu">
           <mxCell parent="user-sign-out-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
             <mxGeometry as="geometry" x="390" y="925" width="200" height="55" />
           </mxCell>
         </object>
-        <object id="user-sign-out-flowchart-keep-session" label="Keep the current session" petakerjaKey="user-sign-out-flowchart/keep-session">
+        <object id="user-sign-out-flowchart-keep-session" label="Keep the current session" petakerjaKey="user-sign-out-flowchart/keep-session" labelEn="Keep the current session" labelMs="Kekalkan sesi semasa">
           <mxCell parent="user-sign-out-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
             <mxGeometry as="geometry" x="690" y="450" width="200" height="50" />
           </mxCell>
         </object>
-        <object id="user-sign-out-flowchart-display-error" label="Re-enable Sign Out and display the error" petakerjaKey="user-sign-out-flowchart/display-error">
+        <object id="user-sign-out-flowchart-display-error" label="Re-enable Sign Out and display the error" petakerjaKey="user-sign-out-flowchart/display-error" labelEn="Re-enable Sign Out and display the error" labelMs="Aktifkan semula Sign Out dan paparkan ralat">
           <mxCell parent="user-sign-out-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#fff1f2,#3b1d22);strokeColor=light-dark(#b42318,#ff9b92);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
             <mxGeometry as="geometry" x="680" y="535" width="220" height="55" />
           </mxCell>
         </object>
-        <object id="user-sign-out-flowchart-end" label="End" petakerjaKey="user-sign-out-flowchart/end">
+        <object id="user-sign-out-flowchart-end" label="End" petakerjaKey="user-sign-out-flowchart/end" labelEn="End" labelMs="Tamat">
           <mxCell parent="user-sign-out-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;fillColor=light-dark(#ecfdf3,#133221);strokeColor=light-dark(#1f7a4d,#72d6a1);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;fontStyle=1;">
             <mxGeometry as="geometry" x="456.665" y="1030" width="66.67" height="40" />
           </mxCell>
@@ -115,7 +114,7 @@
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object id="user-sign-out-flowchart-result-yes" label="Yes" petakerjaKey="user-sign-out-flowchart/result-yes">
+        <object id="user-sign-out-flowchart-result-yes" label="Yes" petakerjaKey="user-sign-out-flowchart/result-yes" labelEn="Yes" labelMs="Ya">
           <mxCell parent="user-sign-out-flowchart-layer" edge="1" source="user-sign-out-flowchart-sign-out-successful" target="user-sign-out-flowchart-invalidate-session" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
@@ -135,7 +134,7 @@
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object id="user-sign-out-flowchart-dashboard-yes" label="Yes" petakerjaKey="user-sign-out-flowchart/dashboard-yes">
+        <object id="user-sign-out-flowchart-dashboard-yes" label="Yes" petakerjaKey="user-sign-out-flowchart/dashboard-yes" labelEn="Yes" labelMs="Ya">
           <mxCell parent="user-sign-out-flowchart-layer" edge="1" source="user-sign-out-flowchart-dashboard-open" target="user-sign-out-flowchart-close-dashboard" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0;exitY=0.5;entryX=1;entryY=0.5;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
@@ -150,7 +149,7 @@
             </mxGeometry>
           </mxCell>
         </object>
-        <object id="user-sign-out-flowchart-dashboard-no" label="No" petakerjaKey="user-sign-out-flowchart/dashboard-no">
+        <object id="user-sign-out-flowchart-dashboard-no" label="No" petakerjaKey="user-sign-out-flowchart/dashboard-no" labelEn="No" labelMs="Tidak">
           <mxCell parent="user-sign-out-flowchart-layer" edge="1" source="user-sign-out-flowchart-dashboard-open" target="user-sign-out-flowchart-display-guest" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
@@ -160,7 +159,7 @@
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object id="user-sign-out-flowchart-result-no" label="No" petakerjaKey="user-sign-out-flowchart/result-no">
+        <object id="user-sign-out-flowchart-result-no" label="No" petakerjaKey="user-sign-out-flowchart/result-no" labelEn="No" labelMs="Tidak">
           <mxCell parent="user-sign-out-flowchart-layer" edge="1" source="user-sign-out-flowchart-sign-out-successful" target="user-sign-out-flowchart-keep-session" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
@@ -180,12 +179,12 @@
             </mxGeometry>
           </mxCell>
         </object>
-        <object id="user-sign-out-flowchart-note-1" label="If sign-out fails, PetaKerja preserves the current session and re-enables the Sign Out control.">
+        <object id="user-sign-out-flowchart-note-1" label="If sign-out fails, PetaKerja preserves the current session and re-enables the Sign Out control." labelEn="If sign-out fails, PetaKerja preserves the current session and re-enables the Sign Out control." labelMs="If sign-out fails, PetaKerja preserves the current session and re-enables the Sign Out control.">
           <mxCell parent="user-sign-out-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=light-dark(#475467,#c5cedb);fontSize=11;fontStyle=2;fontFamily=Arial;">
             <mxGeometry as="geometry" x="80" y="1068" width="820" height="24" />
           </mxCell>
         </object>
-        <object id="user-sign-out-flowchart-note-2" label="A successful sign-out closes an open User Dashboard, clears its per-user caches and renders guest controls.">
+        <object id="user-sign-out-flowchart-note-2" label="A successful sign-out closes an open User Dashboard, clears its per-user caches and renders guest controls." labelEn="A successful sign-out closes an open User Dashboard, clears its per-user caches and renders guest controls." labelMs="A successful sign-out closes an open User Dashboard, clears its per-user caches and renders guest controls.">
           <mxCell parent="user-sign-out-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=light-dark(#475467,#c5cedb);fontSize=11;fontStyle=2;fontFamily=Arial;">
             <mxGeometry as="geometry" x="80" y="1092" width="820" height="24" />
           </mxCell>

@@ -7,7 +7,7 @@
         <mxCell id="admin-manage-users-background" parent="admin-manage-users-sequence-layer" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;locked=1;pointerEvents=0;">
           <mxGeometry as="geometry" x="0" y="0" width="1600" height="1100" />
         </mxCell>
-        <object label="PetaKerja Administrator Manage Users Sequence" id="admin-manage-users-title" petakerjaKey="admin-manage-users-sequence/title">
+        <object label="PetaKerja Administrator Manage Users Sequence" id="admin-manage-users-title" petakerjaKey="admin-manage-users-sequence/title" labelEn="PetaKerja Administrator Manage Users Sequence" labelMs="Jujukan Pentadbir Mengurus Pengguna PetaKerja">
           <mxCell parent="admin-manage-users-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=18;fontStyle=1;" vertex="1">
             <mxGeometry as="geometry" x="450" y="20" width="700" height="30" />
           </mxCell>
@@ -17,7 +17,7 @@
             <mxGeometry as="geometry" x="100" y="72" width="20" height="40" />
           </mxCell>
         </object>
-        <object label="Administrator" id="admin-manage-users-participant-administrator-label">
+        <object label="Administrator" id="admin-manage-users-participant-administrator-label" labelEn="Administrator" labelMs="Pentadbir">
           <mxCell parent="admin-manage-users-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" vertex="1">
             <mxGeometry as="geometry" x="65" y="110" width="90" height="20" />
           </mxCell>
@@ -27,7 +27,7 @@
             <mxGeometry as="geometry" x="105" y="130" width="10" height="915" />
           </mxCell>
         </object>
-        <object label="PetaKerja Admin UI" id="admin-manage-users-participant-ui" petakerjaKey="admin-manage-users-sequence/participant-ui">
+        <object label="PetaKerja Admin UI" id="admin-manage-users-participant-ui" petakerjaKey="admin-manage-users-sequence/participant-ui" labelEn="PetaKerja Admin UI" labelMs="UI Pentadbir PetaKerja">
           <mxCell parent="admin-manage-users-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
             <mxGeometry as="geometry" x="280" y="70" width="100" height="60" />
           </mxCell>
@@ -37,7 +37,7 @@
             <mxGeometry as="geometry" x="325" y="130" width="10" height="915" />
           </mxCell>
         </object>
-        <object label="&lt;font style=&quot;font-size: 9px;&quot;&gt;AdminDashboard&lt;br&gt;Manager&lt;/font&gt;" id="admin-manage-users-participant-manager" petakerjaKey="admin-manage-users-sequence/participant-manager">
+        <object label="&lt;font style=&quot;font-size: 9px;&quot;&gt;AdminDashboard&lt;br&gt;Manager&lt;/font&gt;" id="admin-manage-users-participant-manager" petakerjaKey="admin-manage-users-sequence/participant-manager" labelEn="&lt;font style=&quot;font-size: 9px;&quot;&gt;AdminDashboard&lt;br&gt;Manager&lt;/font&gt;" labelMs="&lt;font style=&quot;font-size: 9px;&quot;&gt;AdminDashboard&lt;br&gt;Manager&lt;/font&gt;">
           <mxCell parent="admin-manage-users-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
             <mxGeometry as="geometry" x="500" y="70" width="100" height="60" />
           </mxCell>
@@ -47,7 +47,7 @@
             <mxGeometry as="geometry" x="545" y="130" width="10" height="915" />
           </mxCell>
         </object>
-        <object label="Admin API Client&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;aiProviderApi.ts&lt;/font&gt;&lt;/div&gt;" id="admin-manage-users-participant-client" petakerjaKey="admin-manage-users-sequence/participant-client">
+        <object label="Admin API Client&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;aiProviderApi.ts&lt;/font&gt;&lt;/div&gt;" id="admin-manage-users-participant-client" petakerjaKey="admin-manage-users-sequence/participant-client" labelEn="Admin API Client&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;aiProviderApi.ts&lt;/font&gt;&lt;/div&gt;" labelMs="Klien API Pentadbir&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;aiProviderApi.ts&lt;/font&gt;&lt;/div&gt;">
           <mxCell parent="admin-manage-users-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
             <mxGeometry as="geometry" x="720" y="70" width="100" height="60" />
           </mxCell>
@@ -57,7 +57,7 @@
             <mxGeometry as="geometry" x="765" y="130" width="10" height="915" />
           </mxCell>
         </object>
-        <object label="Admin Users API&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;GET /api/admin/users&lt;/font&gt;&lt;/div&gt;" id="admin-manage-users-participant-api" petakerjaKey="admin-manage-users-sequence/participant-api">
+        <object label="Admin Users API&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;GET /api/admin/users&lt;/font&gt;&lt;/div&gt;" id="admin-manage-users-participant-api" petakerjaKey="admin-manage-users-sequence/participant-api" labelEn="Admin Users API&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;GET /api/admin/users&lt;/font&gt;&lt;/div&gt;" labelMs="API Pengguna Pentadbir&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;GET /api/admin/users&lt;/font&gt;&lt;/div&gt;">
           <mxCell parent="admin-manage-users-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
             <mxGeometry as="geometry" x="940" y="70" width="100" height="60" />
           </mxCell>
@@ -67,7 +67,7 @@
             <mxGeometry as="geometry" x="985" y="130" width="10" height="915" />
           </mxCell>
         </object>
-        <object label="Better Auth Session" id="admin-manage-users-participant-session" petakerjaKey="admin-manage-users-sequence/participant-session">
+        <object label="Better Auth Session" id="admin-manage-users-participant-session" petakerjaKey="admin-manage-users-sequence/participant-session" labelEn="Better Auth Session" labelMs="Sesi Better Auth">
           <mxCell parent="admin-manage-users-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
             <mxGeometry as="geometry" x="1160" y="70" width="100" height="60" />
           </mxCell>
@@ -77,7 +77,7 @@
             <mxGeometry as="geometry" x="1205" y="130" width="10" height="915" />
           </mxCell>
         </object>
-        <object label="Supabase / PostgreSQL&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;public.users&lt;/font&gt;&lt;/div&gt;" id="admin-manage-users-participant-database" petakerjaKey="admin-manage-users-sequence/participant-database">
+        <object label="Supabase / PostgreSQL&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;public.users&lt;/font&gt;&lt;/div&gt;" id="admin-manage-users-participant-database" petakerjaKey="admin-manage-users-sequence/participant-database" labelEn="Supabase / PostgreSQL&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;public.users&lt;/font&gt;&lt;/div&gt;" labelMs="Supabase / PostgreSQL&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;public.users&lt;/font&gt;&lt;/div&gt;">
           <mxCell parent="admin-manage-users-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
             <mxGeometry as="geometry" x="1380" y="70" width="100" height="60" />
           </mxCell>
@@ -87,137 +87,137 @@
             <mxGeometry as="geometry" x="1425" y="130" width="10" height="915" />
           </mxCell>
         </object>
-        <object label="alt" id="admin-manage-users-fragment-access" petakerjaKey="admin-manage-users-sequence/fragment-access">
+        <object label="alt" id="admin-manage-users-fragment-access" petakerjaKey="admin-manage-users-sequence/fragment-access" labelEn="alt" labelMs="alt">
           <mxCell parent="admin-manage-users-sequence-layer" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);" vertex="1">
             <mxGeometry as="geometry" x="270" y="320" width="1220" height="410" />
           </mxCell>
         </object>
-        <object label="alt" id="admin-manage-users-fragment-results" petakerjaKey="admin-manage-users-sequence/fragment-results">
+        <object label="alt" id="admin-manage-users-fragment-results" petakerjaKey="admin-manage-users-sequence/fragment-results" labelEn="alt" labelMs="alt">
           <mxCell parent="admin-manage-users-sequence-layer" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);" vertex="1">
             <mxGeometry as="geometry" x="55" y="740" width="1435" height="300" />
           </mxCell>
         </object>
-        <object label="Select the Admin Dashboard" id="admin-manage-users-message-01" petakerjaKey="admin-manage-users-sequence/message-01" simpleLabelEn="Select the Admin Dashboard" simpleLabelMs="Pilih Papan Pemuka Pentadbir" codeLabelEn="[data-dropdown-action=&quot;admin&quot;]" codeLabelMs="[data-dropdown-action=&quot;admin&quot;]">
+        <object label="Select the Admin Dashboard" id="admin-manage-users-message-01" petakerjaKey="admin-manage-users-sequence/message-01" simpleLabelEn="Select the Admin Dashboard" simpleLabelMs="Pilih Papan Pemuka Pentadbir" codeLabelEn="[data-dropdown-action=&quot;admin&quot;]" codeLabelMs="[data-dropdown-action=&quot;admin&quot;]" labelEn="Select the Admin Dashboard" labelMs="Pilih Papan Pemuka Pentadbir">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.027322;exitPerimeter=0;entryX=0;entryY=0.027322;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-administrator" target="admin-manage-users-activation-ui">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Open the administrator dashboard" id="admin-manage-users-message-02" petakerjaKey="admin-manage-users-sequence/message-02" simpleLabelEn="Open the administrator dashboard" simpleLabelMs="Buka papan pemuka pentadbir" codeLabelEn="AdminDashboardManager.open(true)" codeLabelMs="AdminDashboardManager.open(true)">
+        <object label="Open the administrator dashboard" id="admin-manage-users-message-02" petakerjaKey="admin-manage-users-sequence/message-02" simpleLabelEn="Open the administrator dashboard" simpleLabelMs="Buka papan pemuka pentadbir" codeLabelEn="AdminDashboardManager.open(true)" codeLabelMs="AdminDashboardManager.open(true)" labelEn="Open the administrator dashboard" labelMs="Buka papan pemuka pentadbir">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.060109;exitPerimeter=0;entryX=0;entryY=0.060109;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-ui" target="admin-manage-users-activation-manager">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Request user information" id="admin-manage-users-message-03" petakerjaKey="admin-manage-users-sequence/message-03" simpleLabelEn="Request user information" simpleLabelMs="Minta maklumat pengguna" codeLabelEn="loadAdminData(); listAdminUsers()" codeLabelMs="loadAdminData(); listAdminUsers()">
+        <object label="Request user information" id="admin-manage-users-message-03" petakerjaKey="admin-manage-users-sequence/message-03" simpleLabelEn="Request user information" simpleLabelMs="Minta maklumat pengguna" codeLabelEn="loadAdminData(); listAdminUsers()" codeLabelMs="loadAdminData(); listAdminUsers()" labelEn="Request user information" labelMs="Minta maklumat pengguna">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.092896;exitPerimeter=0;entryX=0;entryY=0.092896;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-manager" target="admin-manage-users-activation-client">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Send the user-list request" id="admin-manage-users-message-04" petakerjaKey="admin-manage-users-sequence/message-04" simpleLabelEn="Send the user-list request" simpleLabelMs="Hantar permintaan senarai pengguna" codeLabelEn="authenticatedFetch(&quot;/api/admin/users&quot;)" codeLabelMs="authenticatedFetch(&quot;/api/admin/users&quot;)">
+        <object label="Send the user-list request" id="admin-manage-users-message-04" petakerjaKey="admin-manage-users-sequence/message-04" simpleLabelEn="Send the user-list request" simpleLabelMs="Hantar permintaan senarai pengguna" codeLabelEn="authenticatedFetch(&quot;/api/admin/users&quot;)" codeLabelMs="authenticatedFetch(&quot;/api/admin/users&quot;)" labelEn="Send the user-list request" labelMs="Hantar permintaan senarai pengguna">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.125683;exitPerimeter=0;entryX=0;entryY=0.125683;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-client" target="admin-manage-users-activation-api">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Verify the active sign-in session" id="admin-manage-users-message-05" petakerjaKey="admin-manage-users-sequence/message-05" simpleLabelEn="Verify the active sign-in session" simpleLabelMs="Sahkan sesi log masuk aktif" codeLabelEn="requireAuth(); getAppSessionFromHeaders()" codeLabelMs="requireAuth(); getAppSessionFromHeaders()">
+        <object label="Verify the active sign-in session" id="admin-manage-users-message-05" petakerjaKey="admin-manage-users-sequence/message-05" simpleLabelEn="Verify the active sign-in session" simpleLabelMs="Sahkan sesi log masuk aktif" codeLabelEn="requireAuth(); getAppSessionFromHeaders()" codeLabelMs="requireAuth(); getAppSessionFromHeaders()" labelEn="Verify the active sign-in session" labelMs="Sahkan sesi log masuk aktif">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.158470;exitPerimeter=0;entryX=0;entryY=0.158470;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-api" target="admin-manage-users-activation-session">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Return the verified user" id="admin-manage-users-message-06" petakerjaKey="admin-manage-users-sequence/message-06" simpleLabelEn="Return the verified user" simpleLabelMs="Pulangkan pengguna yang disahkan" codeLabelEn="req.auth = session" codeLabelMs="req.auth = session">
+        <object label="Return the verified user" id="admin-manage-users-message-06" petakerjaKey="admin-manage-users-sequence/message-06" simpleLabelEn="Return the verified user" simpleLabelMs="Pulangkan pengguna yang disahkan" codeLabelEn="req.auth = session" codeLabelMs="req.auth = session" labelEn="Return the verified user" labelMs="Pulangkan pengguna yang disahkan">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.191257;exitPerimeter=0;entryX=1;entryY=0.191257;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-session" target="admin-manage-users-activation-api">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Check the administrator role" id="admin-manage-users-message-07" petakerjaKey="admin-manage-users-sequence/message-07" simpleLabelEn="Check the administrator role" simpleLabelMs="Semak peranan pentadbir" codeLabelEn="requireAdmin(); SELECT role FROM public.users" codeLabelMs="requireAdmin(); SELECT role FROM public.users">
+        <object label="Check the administrator role" id="admin-manage-users-message-07" petakerjaKey="admin-manage-users-sequence/message-07" simpleLabelEn="Check the administrator role" simpleLabelMs="Semak peranan pentadbir" codeLabelEn="requireAdmin(); SELECT role FROM public.users" codeLabelMs="requireAdmin(); SELECT role FROM public.users" labelEn="Check the administrator role" labelMs="Semak peranan pentadbir">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.240437;exitPerimeter=0;entryX=0;entryY=0.240437;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-api" target="admin-manage-users-activation-database">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Return the assigned role" id="admin-manage-users-message-08" petakerjaKey="admin-manage-users-sequence/message-08" simpleLabelEn="Return the assigned role" simpleLabelMs="Pulangkan peranan yang ditetapkan" codeLabelEn="{ role }" codeLabelMs="{ role }">
+        <object label="Return the assigned role" id="admin-manage-users-message-08" petakerjaKey="admin-manage-users-sequence/message-08" simpleLabelEn="Return the assigned role" simpleLabelMs="Pulangkan peranan yang ditetapkan" codeLabelEn="{ role }" codeLabelMs="{ role }" labelEn="Return the assigned role" labelMs="Pulangkan peranan yang ditetapkan">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.273224;exitPerimeter=0;entryX=1;entryY=0.273224;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-database" target="admin-manage-users-activation-api">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Retrieve recent user profiles and roles" id="admin-manage-users-message-09" petakerjaKey="admin-manage-users-sequence/message-09" simpleLabelEn="Retrieve recent user profiles and roles" simpleLabelMs="Dapatkan profil dan peranan pengguna terkini" codeLabelEn="SELECT id, email, username, display_name, role, created_at, last_login FROM public.users ORDER BY created_at DESC LIMIT 100" codeLabelMs="SELECT id, email, username, display_name, role, created_at, last_login FROM public.users ORDER BY created_at DESC LIMIT 100">
+        <object label="Retrieve recent user profiles and roles" id="admin-manage-users-message-09" petakerjaKey="admin-manage-users-sequence/message-09" simpleLabelEn="Retrieve recent user profiles and roles" simpleLabelMs="Dapatkan profil dan peranan pengguna terkini" codeLabelEn="SELECT id, email, username, display_name, role, created_at, last_login FROM public.users ORDER BY created_at DESC LIMIT 100" codeLabelMs="SELECT id, email, username, display_name, role, created_at, last_login FROM public.users ORDER BY created_at DESC LIMIT 100" labelEn="Retrieve recent user profiles and roles" labelMs="Dapatkan profil dan peranan pengguna terkini">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.322404;exitPerimeter=0;entryX=0;entryY=0.322404;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-api" target="admin-manage-users-activation-database">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Return the user records" id="admin-manage-users-message-10" petakerjaKey="admin-manage-users-sequence/message-10" simpleLabelEn="Return the user records" simpleLabelMs="Pulangkan rekod pengguna" codeLabelEn="rows" codeLabelMs="rows">
+        <object label="Return the user records" id="admin-manage-users-message-10" petakerjaKey="admin-manage-users-sequence/message-10" simpleLabelEn="Return the user records" simpleLabelMs="Pulangkan rekod pengguna" codeLabelEn="rows" codeLabelMs="rows" labelEn="Return the user records" labelMs="Pulangkan rekod pengguna">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.355191;exitPerimeter=0;entryX=1;entryY=0.355191;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-database" target="admin-manage-users-activation-api">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Return the user list" id="admin-manage-users-message-11" petakerjaKey="admin-manage-users-sequence/message-11" simpleLabelEn="Return the user list" simpleLabelMs="Pulangkan senarai pengguna" codeLabelEn="AdminUsersResponse { users }" codeLabelMs="AdminUsersResponse { users }">
+        <object label="Return the user list" id="admin-manage-users-message-11" petakerjaKey="admin-manage-users-sequence/message-11" simpleLabelEn="Return the user list" simpleLabelMs="Pulangkan senarai pengguna" codeLabelEn="AdminUsersResponse { users }" codeLabelMs="AdminUsersResponse { users }" labelEn="Return the user list" labelMs="Pulangkan senarai pengguna">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.387978;exitPerimeter=0;entryX=1;entryY=0.387978;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-api" target="admin-manage-users-activation-client">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Provide users to the dashboard" id="admin-manage-users-message-12" petakerjaKey="admin-manage-users-sequence/message-12" simpleLabelEn="Provide users to the dashboard" simpleLabelMs="Berikan pengguna kepada papan pemuka" codeLabelEn="state.adminDashboard.users = users.users" codeLabelMs="state.adminDashboard.users = users.users">
+        <object label="Provide users to the dashboard" id="admin-manage-users-message-12" petakerjaKey="admin-manage-users-sequence/message-12" simpleLabelEn="Provide users to the dashboard" simpleLabelMs="Berikan pengguna kepada papan pemuka" codeLabelEn="state.adminDashboard.users = users.users" codeLabelMs="state.adminDashboard.users = users.users" labelEn="Provide users to the dashboard" labelMs="Berikan pengguna kepada papan pemuka">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.420765;exitPerimeter=0;entryX=1;entryY=0.420765;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-client" target="admin-manage-users-activation-manager">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Request sign-in" id="admin-manage-users-message-22" petakerjaKey="admin-manage-users-sequence/message-22" simpleLabelEn="Request sign-in" simpleLabelMs="Minta pengguna log masuk" codeLabelEn="HTTP 401; requireAuth()" codeLabelMs="HTTP 401; requireAuth()">
+        <object label="Request sign-in" id="admin-manage-users-message-22" petakerjaKey="admin-manage-users-sequence/message-22" simpleLabelEn="Request sign-in" simpleLabelMs="Minta pengguna log masuk" codeLabelEn="HTTP 401; requireAuth()" codeLabelMs="HTTP 401; requireAuth()" labelEn="Request sign-in" labelMs="Minta pengguna log masuk">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.508197;exitPerimeter=0;entryX=1;entryY=0.508197;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-api" target="admin-manage-users-activation-ui">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Display the sign-in prompt" id="admin-manage-users-message-23" petakerjaKey="admin-manage-users-sequence/message-23" simpleLabelEn="Display the sign-in prompt" simpleLabelMs="Paparkan prompt log masuk" codeLabelEn="AuthModalManager.openAuthPrompt()" codeLabelMs="AuthModalManager.openAuthPrompt()">
+        <object label="Display the sign-in prompt" id="admin-manage-users-message-23" petakerjaKey="admin-manage-users-sequence/message-23" simpleLabelEn="Display the sign-in prompt" simpleLabelMs="Paparkan prompt log masuk" codeLabelEn="AuthModalManager.openAuthPrompt()" codeLabelMs="AuthModalManager.openAuthPrompt()" labelEn="Display the sign-in prompt" labelMs="Paparkan prompt log masuk">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.535519;exitPerimeter=0;entryX=1;entryY=0.535519;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-ui" target="admin-manage-users-activation-administrator">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Return administrator access required" id="admin-manage-users-message-24" petakerjaKey="admin-manage-users-sequence/message-24" simpleLabelEn="Return administrator access required" simpleLabelMs="Pulangkan keperluan akses pentadbir" codeLabelEn="HTTP 403; requireAdmin()" codeLabelMs="HTTP 403; requireAdmin()">
+        <object label="Return administrator access required" id="admin-manage-users-message-24" petakerjaKey="admin-manage-users-sequence/message-24" simpleLabelEn="Return administrator access required" simpleLabelMs="Pulangkan keperluan akses pentadbir" codeLabelEn="HTTP 403; requireAdmin()" codeLabelMs="HTTP 403; requireAdmin()" labelEn="Return administrator access required" labelMs="Pulangkan keperluan akses pentadbir">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.601093;exitPerimeter=0;entryX=1;entryY=0.601093;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-api" target="admin-manage-users-activation-ui">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Display administrator access required" id="admin-manage-users-message-25" petakerjaKey="admin-manage-users-sequence/message-25" simpleLabelEn="Display administrator access required" simpleLabelMs="Paparkan keperluan akses pentadbir" codeLabelEn="renderError(ADMIN_REQUIRED)" codeLabelMs="renderError(ADMIN_REQUIRED)">
+        <object label="Display administrator access required" id="admin-manage-users-message-25" petakerjaKey="admin-manage-users-sequence/message-25" simpleLabelEn="Display administrator access required" simpleLabelMs="Paparkan keperluan akses pentadbir" codeLabelEn="renderError(ADMIN_REQUIRED)" codeLabelMs="renderError(ADMIN_REQUIRED)" labelEn="Display administrator access required" labelMs="Paparkan keperluan akses pentadbir">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.628415;exitPerimeter=0;entryX=1;entryY=0.628415;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-ui" target="admin-manage-users-activation-administrator">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Select the Users section" id="admin-manage-users-message-13" petakerjaKey="admin-manage-users-sequence/message-13" simpleLabelEn="Select the Users section" simpleLabelMs="Pilih bahagian Pengguna" codeLabelEn="[data-admin-action=&quot;tab&quot;][data-tab=&quot;users&quot;]" codeLabelMs="[data-admin-action=&quot;tab&quot;][data-tab=&quot;users&quot;]">
+        <object label="Select the Users section" id="admin-manage-users-message-13" petakerjaKey="admin-manage-users-sequence/message-13" simpleLabelEn="Select the Users section" simpleLabelMs="Pilih bahagian Pengguna" codeLabelEn="[data-admin-action=&quot;tab&quot;][data-tab=&quot;users&quot;]" codeLabelMs="[data-admin-action=&quot;tab&quot;][data-tab=&quot;users&quot;]" labelEn="Select the Users section" labelMs="Pilih bahagian Pengguna">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.699454;exitPerimeter=0;entryX=0;entryY=0.699454;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-administrator" target="admin-manage-users-activation-ui">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Open the Users section" id="admin-manage-users-message-14" petakerjaKey="admin-manage-users-sequence/message-14" simpleLabelEn="Open the Users section" simpleLabelMs="Buka bahagian Pengguna" codeLabelEn="activeTab = &quot;users&quot;" codeLabelMs="activeTab = &quot;users&quot;">
+        <object label="Open the Users section" id="admin-manage-users-message-14" petakerjaKey="admin-manage-users-sequence/message-14" simpleLabelEn="Open the Users section" simpleLabelMs="Buka bahagian Pengguna" codeLabelEn="activeTab = &quot;users&quot;" codeLabelMs="activeTab = &quot;users&quot;" labelEn="Open the Users section" labelMs="Buka bahagian Pengguna">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;exitX=1;exitY=0.732240;exitPerimeter=0;entryX=0;entryY=0.732240;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-ui" target="admin-manage-users-activation-manager">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Prepare the user table" id="admin-manage-users-message-15" petakerjaKey="admin-manage-users-sequence/message-15" simpleLabelEn="Prepare the user table" simpleLabelMs="Sediakan jadual pengguna" codeLabelEn="renderUsers()" codeLabelMs="renderUsers()">
+        <object label="Prepare the user table" id="admin-manage-users-message-15" petakerjaKey="admin-manage-users-sequence/message-15" simpleLabelEn="Prepare the user table" simpleLabelMs="Sediakan jadual pengguna" codeLabelEn="renderUsers()" codeLabelMs="renderUsers()" labelEn="Prepare the user table" labelMs="Sediakan jadual pengguna">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.765027;exitPerimeter=0;entryX=1;entryY=0.765027;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-manager" target="admin-manage-users-activation-ui">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Display the user list and roles" id="admin-manage-users-message-16" petakerjaKey="admin-manage-users-sequence/message-16" simpleLabelEn="Display the user list and roles" simpleLabelMs="Paparkan senarai pengguna dan peranan" codeLabelEn=".admin-table" codeLabelMs=".admin-table">
+        <object label="Display the user list and roles" id="admin-manage-users-message-16" petakerjaKey="admin-manage-users-sequence/message-16" simpleLabelEn="Display the user list and roles" simpleLabelMs="Paparkan senarai pengguna dan peranan" codeLabelEn=".admin-table" codeLabelMs=".admin-table" labelEn="Display the user list and roles" labelMs="Paparkan senarai pengguna dan peranan">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.792350;exitPerimeter=0;entryX=1;entryY=0.792350;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-ui" target="admin-manage-users-activation-administrator">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Return an empty user list" id="admin-manage-users-message-17" petakerjaKey="admin-manage-users-sequence/message-17" simpleLabelEn="Return an empty user list" simpleLabelMs="Pulangkan senarai pengguna kosong" codeLabelEn="AdminUsersResponse { users: [] }" codeLabelMs="AdminUsersResponse { users: [] }">
+        <object label="Return an empty user list" id="admin-manage-users-message-17" petakerjaKey="admin-manage-users-sequence/message-17" simpleLabelEn="Return an empty user list" simpleLabelMs="Pulangkan senarai pengguna kosong" codeLabelEn="AdminUsersResponse { users: [] }" codeLabelMs="AdminUsersResponse { users: [] }" labelEn="Return an empty user list" labelMs="Pulangkan senarai pengguna kosong">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.841530;exitPerimeter=0;entryX=1;entryY=0.841530;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-client" target="admin-manage-users-activation-manager">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Display the empty state" id="admin-manage-users-message-18" petakerjaKey="admin-manage-users-sequence/message-18" simpleLabelEn="Display the empty state" simpleLabelMs="Paparkan keadaan kosong" codeLabelEn="renderUsers(); .empty-state" codeLabelMs="renderUsers(); .empty-state">
+        <object label="Display the empty state" id="admin-manage-users-message-18" petakerjaKey="admin-manage-users-sequence/message-18" simpleLabelEn="Display the empty state" simpleLabelMs="Paparkan keadaan kosong" codeLabelEn="renderUsers(); .empty-state" codeLabelMs="renderUsers(); .empty-state" labelEn="Display the empty state" labelMs="Paparkan keadaan kosong">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.868852;exitPerimeter=0;entryX=1;entryY=0.868852;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-ui" target="admin-manage-users-activation-administrator">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Return the request error" id="admin-manage-users-message-19" petakerjaKey="admin-manage-users-sequence/message-19" simpleLabelEn="Return the request error" simpleLabelMs="Pulangkan ralat permintaan" codeLabelEn="HTTP error" codeLabelMs="Ralat HTTP">
+        <object label="Return the request error" id="admin-manage-users-message-19" petakerjaKey="admin-manage-users-sequence/message-19" simpleLabelEn="Return the request error" simpleLabelMs="Pulangkan ralat permintaan" codeLabelEn="HTTP error" codeLabelMs="Ralat HTTP" labelEn="Return the request error" labelMs="Pulangkan ralat permintaan">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.918033;exitPerimeter=0;entryX=1;entryY=0.918033;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-api" target="admin-manage-users-activation-client">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Report the dashboard loading error" id="admin-manage-users-message-20" petakerjaKey="admin-manage-users-sequence/message-20" simpleLabelEn="Report the dashboard loading error" simpleLabelMs="Laporkan ralat pemuatan papan pemuka" codeLabelEn="loadAdminData() catch" codeLabelMs="loadAdminData() catch">
+        <object label="Report the dashboard loading error" id="admin-manage-users-message-20" petakerjaKey="admin-manage-users-sequence/message-20" simpleLabelEn="Report the dashboard loading error" simpleLabelMs="Laporkan ralat pemuatan papan pemuka" codeLabelEn="loadAdminData() catch" codeLabelMs="loadAdminData() catch" labelEn="Report the dashboard loading error" labelMs="Laporkan ralat pemuatan papan pemuka">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.945355;exitPerimeter=0;entryX=1;entryY=0.945355;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-client" target="admin-manage-users-activation-manager">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Display the dashboard loading error" id="admin-manage-users-message-21" petakerjaKey="admin-manage-users-sequence/message-21" simpleLabelEn="Display the dashboard loading error" simpleLabelMs="Paparkan ralat pemuatan papan pemuka" codeLabelEn="renderError()" codeLabelMs="renderError()">
+        <object label="Display the dashboard loading error" id="admin-manage-users-message-21" petakerjaKey="admin-manage-users-sequence/message-21" simpleLabelEn="Display the dashboard loading error" simpleLabelMs="Paparkan ralat pemuatan papan pemuka" codeLabelEn="renderError()" codeLabelMs="renderError()" labelEn="Display the dashboard loading error" labelMs="Paparkan ralat pemuatan papan pemuka">
           <mxCell parent="admin-manage-users-sequence-layer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;exitX=0;exitY=0.972678;exitPerimeter=0;entryX=1;entryY=0.972678;entryPerimeter=0;labelBackgroundColor=none;" edge="1" source="admin-manage-users-activation-manager" target="admin-manage-users-activation-ui">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
@@ -238,17 +238,17 @@
             </mxGeometry>
           </mxCell>
         </object>
-        <object label="[administrator or owner]" id="admin-manage-users-sequence-authorized" petakerjaKey="admin-manage-users-sequence/authorized">
+        <object label="[administrator or owner]" id="admin-manage-users-sequence-authorized" petakerjaKey="admin-manage-users-sequence/authorized" labelEn="[administrator or owner]" labelMs="[pentadbir atau owner]">
           <mxCell parent="admin-manage-users-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
             <mxGeometry as="geometry" x="350" y="323" width="250" height="20" />
           </mxCell>
         </object>
-        <object label="[no active session]" id="admin-manage-users-sequence-no-session" petakerjaKey="admin-manage-users-sequence/no-session">
+        <object label="[no active session]" id="admin-manage-users-sequence-no-session" petakerjaKey="admin-manage-users-sequence/no-session" labelEn="[no active session]" labelMs="[tiada sesi aktif]">
           <mxCell parent="admin-manage-users-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
             <mxGeometry as="geometry" x="350" y="562" width="250" height="20" />
           </mxCell>
         </object>
-        <object label="[role not allowed]" id="admin-manage-users-sequence-role-denied" petakerjaKey="admin-manage-users-sequence/role-denied">
+        <object label="[role not allowed]" id="admin-manage-users-sequence-role-denied" petakerjaKey="admin-manage-users-sequence/role-denied" labelEn="[role not allowed]" labelMs="[peranan tidak dibenarkan]">
           <mxCell parent="admin-manage-users-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
             <mxGeometry as="geometry" x="350" y="652" width="250" height="20" />
           </mxCell>
@@ -269,22 +269,22 @@
             </mxGeometry>
           </mxCell>
         </object>
-        <object label="[users available]" id="admin-manage-users-sequence-users-available" petakerjaKey="admin-manage-users-sequence/users-available">
+        <object label="[users available]" id="admin-manage-users-sequence-users-available" petakerjaKey="admin-manage-users-sequence/users-available" labelEn="[users available]" labelMs="[pengguna tersedia]">
           <mxCell parent="admin-manage-users-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
             <mxGeometry as="geometry" x="135" y="743" width="250" height="20" />
           </mxCell>
         </object>
-        <object label="[no users]" id="admin-manage-users-sequence-no-users" petakerjaKey="admin-manage-users-sequence/no-users">
+        <object label="[no users]" id="admin-manage-users-sequence-no-users" petakerjaKey="admin-manage-users-sequence/no-users" labelEn="[no users]" labelMs="[tiada pengguna]">
           <mxCell parent="admin-manage-users-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
             <mxGeometry as="geometry" x="135" y="877" width="250" height="20" />
           </mxCell>
         </object>
-        <object label="[request failed]" id="admin-manage-users-sequence-request-failed" petakerjaKey="admin-manage-users-sequence/request-failed">
+        <object label="[request failed]" id="admin-manage-users-sequence-request-failed" petakerjaKey="admin-manage-users-sequence/request-failed" labelEn="[request failed]" labelMs="[permintaan gagal]">
           <mxCell parent="admin-manage-users-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
             <mxGeometry as="geometry" x="135" y="947" width="250" height="20" />
           </mxCell>
         </object>
-        <object label="Current implementation displays the latest 100 users and their roles only. Account or role modification is not implemented." id="admin-manage-users-note" petakerjaKey="admin-manage-users-sequence/note">
+        <object label="Current implementation displays the latest 100 users and their roles only. Account or role modification is not implemented." id="admin-manage-users-note" petakerjaKey="admin-manage-users-sequence/note" labelEn="Current implementation displays the latest 100 users and their roles only. Account or role modification is not implemented." labelMs="Pelaksanaan semasa hanya memaparkan 100 pengguna terkini dan peranan mereka. Pengubahsuaian akaun atau peranan belum dilaksanakan.">
           <mxCell parent="admin-manage-users-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=10;fontStyle=2;fontColor=#555555;" vertex="1">
             <mxGeometry as="geometry" x="300" y="1070" width="1000" height="18" />
           </mxCell>

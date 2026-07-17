@@ -1,4 +1,3 @@
-<?xml version='1.0' encoding='utf-8'?>
 <mxfile host="Electron" agent="PetaKerja Architecture Explorer" version="27.0.2">
   <diagram name="PetaKerja Explore the 3D Map" id="petakerja_flow_user_explore_3d_map">
     <mxGraphModel dx="1100" dy="1500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="1500" math="0" shadow="0" background="light-dark(#ffffff,#0f131a)">
@@ -10,122 +9,122 @@
             <mxGeometry as="geometry" x="0" y="0" width="1100" height="1500" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-title" label="PetaKerja Explore the 3D Map Flow Chart">
+        <object id="user-explore-3d-map-flowchart-title" label="PetaKerja Explore the 3D Map Flow Chart" labelEn="PetaKerja Explore the 3D Map Flow Chart" labelMs="Carta Alir Meneroka Peta 3D PetaKerja">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=light-dark(#111827,#eef1f6);fontSize=22;fontStyle=1;">
             <mxGeometry as="geometry" x="120" y="18" width="860" height="38" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-subtitle" label="Public Malaysia workspace, POI loading, optional 3D terrain and building controls.">
+        <object id="user-explore-3d-map-flowchart-subtitle" label="Public Malaysia workspace, POI loading, optional 3D terrain and building controls." labelEn="Public Malaysia workspace, POI loading, optional 3D terrain and building controls." labelMs="Ruang kerja Malaysia awam dengan pemuatan POI serta kawalan terrain dan bangunan 3D pilihan.">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=light-dark(#111827,#eef1f6);fontSize=11;fontStyle=2;">
             <mxGeometry as="geometry" x="100" y="58" width="900" height="30" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-precondition" label="Precondition: The User has opened PetaKerja; authentication is not required for map exploration.">
+        <object id="user-explore-3d-map-flowchart-precondition" label="Precondition: The User has opened PetaKerja; authentication is not required for map exploration." labelEn="Precondition: The User has opened PetaKerja; authentication is not required for map exploration." labelMs="Precondition: The User has opened PetaKerja; authentication is not required for map exploration.">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=light-dark(#111827,#eef1f6);align=left;fontSize=11;fontStyle=2;">
             <mxGeometry as="geometry" x="100" y="92" width="900" height="32" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-start" label="Start" petakerjaKey="user-explore-3d-map-flowchart/start">
+        <object id="user-explore-3d-map-flowchart-start" label="Start" petakerjaKey="user-explore-3d-map-flowchart/start" labelEn="Start" labelMs="Mula">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
             <mxGeometry as="geometry" x="516.665" y="105" width="66.67" height="40" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-select-map" label="Select the Malaysia Map workspace" petakerjaKey="user-explore-3d-map-flowchart/select-map">
+        <object id="user-explore-3d-map-flowchart-select-map" label="Select the Malaysia Map workspace" petakerjaKey="user-explore-3d-map-flowchart/select-map" labelEn="Select the Malaysia Map workspace" labelMs="Pilih ruang kerja Peta Malaysia">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
             <mxGeometry as="geometry" x="425" y="175" width="250" height="55" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-open-workspace" label="Open the map workspace" petakerjaKey="user-explore-3d-map-flowchart/open-workspace">
+        <object id="user-explore-3d-map-flowchart-open-workspace" label="Open the map workspace" petakerjaKey="user-explore-3d-map-flowchart/open-workspace" labelEn="Open the map workspace" labelMs="Buka ruang kerja peta">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
             <mxGeometry as="geometry" x="445" y="255" width="210" height="50" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-wait-map" label="Wait for the base map to become ready" petakerjaKey="user-explore-3d-map-flowchart/wait-map">
+        <object id="user-explore-3d-map-flowchart-wait-map" label="Wait for the base map to become ready" petakerjaKey="user-explore-3d-map-flowchart/wait-map" labelEn="Wait for the base map to become ready" labelMs="Tunggu peta asas sedia digunakan">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
             <mxGeometry as="geometry" x="425" y="330" width="250" height="55" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-focus-malaysia" label="Move the camera to Malaysia" petakerjaKey="user-explore-3d-map-flowchart/focus-malaysia">
+        <object id="user-explore-3d-map-flowchart-focus-malaysia" label="Move the camera to Malaysia" petakerjaKey="user-explore-3d-map-flowchart/focus-malaysia" labelEn="Move the camera to Malaysia" labelMs="Gerakkan kamera ke Malaysia">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
             <mxGeometry as="geometry" x="445" y="410" width="210" height="50" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-start-exploration" label="Start map exploration" petakerjaKey="user-explore-3d-map-flowchart/start-exploration">
+        <object id="user-explore-3d-map-flowchart-start-exploration" label="Start map exploration" petakerjaKey="user-explore-3d-map-flowchart/start-exploration" labelEn="Start map exploration" labelMs="Mulakan penerokaan peta">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
             <mxGeometry as="geometry" x="455" y="485" width="190" height="50" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-request-pois" label="Request visible POIs and category counts" petakerjaKey="user-explore-3d-map-flowchart/request-pois">
+        <object id="user-explore-3d-map-flowchart-request-pois" label="Request visible POIs and category counts" petakerjaKey="user-explore-3d-map-flowchart/request-pois" labelEn="Request visible POIs and category counts" labelMs="Minta POI yang kelihatan dan bilangan kategori">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
             <mxGeometry as="geometry" x="420" y="560" width="260" height="55" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-data-available" label="POI data available?" petakerjaKey="user-explore-3d-map-flowchart/data-available">
+        <object id="user-explore-3d-map-flowchart-data-available" label="POI data available?" petakerjaKey="user-explore-3d-map-flowchart/data-available" labelEn="POI data available?" labelMs="Data POI tersedia?">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
             <mxGeometry as="geometry" x="490" y="650" width="120" height="70" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-render-pois" label="Render POIs and category counts" petakerjaKey="user-explore-3d-map-flowchart/render-pois">
+        <object id="user-explore-3d-map-flowchart-render-pois" label="Render POIs and category counts" petakerjaKey="user-explore-3d-map-flowchart/render-pois" labelEn="Render POIs and category counts" labelMs="Paparkan POI dan bilangan kategori">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
             <mxGeometry as="geometry" x="435" y="765" width="230" height="55" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-base-map-only" label="Continue with the base map without unavailable POIs" petakerjaKey="user-explore-3d-map-flowchart/base-map-only">
+        <object id="user-explore-3d-map-flowchart-base-map-only" label="Continue with the base map without unavailable POIs" petakerjaKey="user-explore-3d-map-flowchart/base-map-only" labelEn="Continue with the base map without unavailable POIs" labelMs="Teruskan dengan peta asas tanpa POI yang tidak tersedia">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
             <mxGeometry as="geometry" x="70" y="655" width="280" height="60" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-display-map" label="Display the interactive Malaysia map" petakerjaKey="user-explore-3d-map-flowchart/display-map">
+        <object id="user-explore-3d-map-flowchart-display-map" label="Display the interactive Malaysia map" petakerjaKey="user-explore-3d-map-flowchart/display-map" labelEn="Display the interactive Malaysia map" labelMs="Paparkan peta Malaysia interaktif">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
             <mxGeometry as="geometry" x="425" y="850" width="250" height="55" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-terrain-selected" label="3D Terrain selected?" petakerjaKey="user-explore-3d-map-flowchart/terrain-selected">
+        <object id="user-explore-3d-map-flowchart-terrain-selected" label="3D Terrain selected?" petakerjaKey="user-explore-3d-map-flowchart/terrain-selected" labelEn="3D Terrain selected?" labelMs="Terrain 3D dipilih?">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
             <mxGeometry as="geometry" x="490" y="945" width="120" height="70" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-wide-viewport" label="Viewport wider than 768px?" petakerjaKey="user-explore-3d-map-flowchart/wide-viewport">
+        <object id="user-explore-3d-map-flowchart-wide-viewport" label="Viewport wider than 768px?" petakerjaKey="user-explore-3d-map-flowchart/wide-viewport" labelEn="Viewport wider than 768px?" labelMs="Paparan lebih lebar daripada 768px?">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
             <mxGeometry as="geometry" x="490" y="1030" width="120" height="70" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-enable-terrain" label="Enable satellite imagery and 3D terrain" petakerjaKey="user-explore-3d-map-flowchart/enable-terrain">
+        <object id="user-explore-3d-map-flowchart-enable-terrain" label="Enable satellite imagery and 3D terrain" petakerjaKey="user-explore-3d-map-flowchart/enable-terrain" labelEn="Enable satellite imagery and 3D terrain" labelMs="Aktifkan imej satelit dan terrain 3D">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
             <mxGeometry as="geometry" x="420" y="1110" width="260" height="55" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-satellite-only" label="Use satellite imagery without terrain elevation" petakerjaKey="user-explore-3d-map-flowchart/satellite-only">
+        <object id="user-explore-3d-map-flowchart-satellite-only" label="Use satellite imagery without terrain elevation" petakerjaKey="user-explore-3d-map-flowchart/satellite-only" labelEn="Use satellite imagery without terrain elevation" labelMs="Gunakan imej satelit tanpa ketinggian terrain">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
             <mxGeometry as="geometry" x="760" y="1110" width="270" height="60" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-keep-basemap" label="Keep the selected standard basemap" petakerjaKey="user-explore-3d-map-flowchart/keep-basemap">
+        <object id="user-explore-3d-map-flowchart-keep-basemap" label="Keep the selected standard basemap" petakerjaKey="user-explore-3d-map-flowchart/keep-basemap" labelEn="Keep the selected standard basemap" labelMs="Kekalkan peta asas standard yang dipilih">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
             <mxGeometry as="geometry" x="70" y="1020" width="240" height="55" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-buildings-toggled" label="3D Buildings toggled?" petakerjaKey="user-explore-3d-map-flowchart/buildings-toggled">
+        <object id="user-explore-3d-map-flowchart-buildings-toggled" label="3D Buildings toggled?" petakerjaKey="user-explore-3d-map-flowchart/buildings-toggled" labelEn="3D Buildings toggled?" labelMs="Paparan Bangunan 3D ditukar?">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
             <mxGeometry as="geometry" x="490" y="1185" width="120" height="70" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-update-buildings" label="Update 3D building visibility" petakerjaKey="user-explore-3d-map-flowchart/update-buildings">
+        <object id="user-explore-3d-map-flowchart-update-buildings" label="Update 3D building visibility" petakerjaKey="user-explore-3d-map-flowchart/update-buildings" labelEn="Update 3D building visibility" labelMs="Kemas kini keterlihatan bangunan 3D">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
             <mxGeometry as="geometry" x="425" y="1280" width="250" height="55" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-keep-buildings" label="Keep the current building state" petakerjaKey="user-explore-3d-map-flowchart/keep-buildings">
+        <object id="user-explore-3d-map-flowchart-keep-buildings" label="Keep the current building state" petakerjaKey="user-explore-3d-map-flowchart/keep-buildings" labelEn="Keep the current building state" labelMs="Kekalkan keadaan bangunan semasa">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
             <mxGeometry as="geometry" x="70" y="1280" width="230" height="55" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-display-final-map" label="Display the updated interactive map" petakerjaKey="user-explore-3d-map-flowchart/display-final-map">
+        <object id="user-explore-3d-map-flowchart-display-final-map" label="Display the updated interactive map" petakerjaKey="user-explore-3d-map-flowchart/display-final-map" labelEn="Display the updated interactive map" labelMs="Paparkan peta interaktif yang dikemas kini">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
             <mxGeometry as="geometry" x="760" y="1370" width="250" height="55" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-end" label="End" petakerjaKey="user-explore-3d-map-flowchart/end">
+        <object id="user-explore-3d-map-flowchart-end" label="End" petakerjaKey="user-explore-3d-map-flowchart/end" labelEn="End" labelMs="Tamat">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;fillColor=light-dark(#ffffff,#151a22);strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);">
             <mxGeometry as="geometry" x="1010" y="1435" width="66.67" height="40" />
           </mxCell>
@@ -165,12 +164,12 @@
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-data-yes" label="Yes" petakerjaKey="user-explore-3d-map-flowchart/data-yes">
+        <object id="user-explore-3d-map-flowchart-data-yes" label="Yes" petakerjaKey="user-explore-3d-map-flowchart/data-yes" labelEn="Yes" labelMs="Ya">
           <mxCell parent="user-explore-3d-map-flowchart-layer" edge="1" source="user-explore-3d-map-flowchart-data-available" target="user-explore-3d-map-flowchart-render-pois" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-data-no" label="No" petakerjaKey="user-explore-3d-map-flowchart/data-no">
+        <object id="user-explore-3d-map-flowchart-data-no" label="No" petakerjaKey="user-explore-3d-map-flowchart/data-no" labelEn="No" labelMs="Tidak">
           <mxCell parent="user-explore-3d-map-flowchart-layer" edge="1" source="user-explore-3d-map-flowchart-data-available" target="user-explore-3d-map-flowchart-base-map-only" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0;exitY=0.5;entryX=1;entryY=0.5;exitPerimeter=0;entryPerimeter=0;">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
@@ -196,12 +195,12 @@
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-terrain-yes" label="Yes" petakerjaKey="user-explore-3d-map-flowchart/terrain-yes">
+        <object id="user-explore-3d-map-flowchart-terrain-yes" label="Yes" petakerjaKey="user-explore-3d-map-flowchart/terrain-yes" labelEn="Yes" labelMs="Ya">
           <mxCell parent="user-explore-3d-map-flowchart-layer" edge="1" source="user-explore-3d-map-flowchart-terrain-selected" target="user-explore-3d-map-flowchart-wide-viewport" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-terrain-no" label="No" petakerjaKey="user-explore-3d-map-flowchart/terrain-no">
+        <object id="user-explore-3d-map-flowchart-terrain-no" label="No" petakerjaKey="user-explore-3d-map-flowchart/terrain-no" labelEn="No" labelMs="Tidak">
           <mxCell parent="user-explore-3d-map-flowchart-layer" edge="1" source="user-explore-3d-map-flowchart-terrain-selected" target="user-explore-3d-map-flowchart-keep-basemap" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0;exitY=0.5;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
             <mxGeometry as="geometry" relative="1">
               <Array as="points">
@@ -212,12 +211,12 @@
             </mxGeometry>
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-viewport-yes" label="Yes" petakerjaKey="user-explore-3d-map-flowchart/viewport-yes">
+        <object id="user-explore-3d-map-flowchart-viewport-yes" label="Yes" petakerjaKey="user-explore-3d-map-flowchart/viewport-yes" labelEn="Yes" labelMs="Ya">
           <mxCell parent="user-explore-3d-map-flowchart-layer" edge="1" source="user-explore-3d-map-flowchart-wide-viewport" target="user-explore-3d-map-flowchart-enable-terrain" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-viewport-no" label="No" petakerjaKey="user-explore-3d-map-flowchart/viewport-no">
+        <object id="user-explore-3d-map-flowchart-viewport-no" label="No" petakerjaKey="user-explore-3d-map-flowchart/viewport-no" labelEn="No" labelMs="Tidak">
           <mxCell parent="user-explore-3d-map-flowchart-layer" edge="1" source="user-explore-3d-map-flowchart-wide-viewport" target="user-explore-3d-map-flowchart-satellite-only" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=1;exitY=0.5;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
             <mxGeometry as="geometry" relative="1">
               <Array as="points">
@@ -256,12 +255,12 @@
             </mxGeometry>
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-buildings-yes" label="Yes" petakerjaKey="user-explore-3d-map-flowchart/buildings-yes">
+        <object id="user-explore-3d-map-flowchart-buildings-yes" label="Yes" petakerjaKey="user-explore-3d-map-flowchart/buildings-yes" labelEn="Yes" labelMs="Ya">
           <mxCell parent="user-explore-3d-map-flowchart-layer" edge="1" source="user-explore-3d-map-flowchart-buildings-toggled" target="user-explore-3d-map-flowchart-update-buildings" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-buildings-no" label="No" petakerjaKey="user-explore-3d-map-flowchart/buildings-no">
+        <object id="user-explore-3d-map-flowchart-buildings-no" label="No" petakerjaKey="user-explore-3d-map-flowchart/buildings-no" labelEn="No" labelMs="Tidak">
           <mxCell parent="user-explore-3d-map-flowchart-layer" edge="1" source="user-explore-3d-map-flowchart-buildings-toggled" target="user-explore-3d-map-flowchart-keep-buildings" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#111827,#d8dde7);fontColor=light-dark(#111827,#eef1f6);labelBackgroundColor=none;exitX=0;exitY=0.5;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
             <mxGeometry as="geometry" relative="1">
               <Array as="points">
@@ -299,12 +298,12 @@
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-note-1" label="When POI data is unavailable, the base MapLibre workspace remains usable.">
+        <object id="user-explore-3d-map-flowchart-note-1" label="When POI data is unavailable, the base MapLibre workspace remains usable." labelEn="When POI data is unavailable, the base MapLibre workspace remains usable." labelMs="When POI data is unavailable, the base MapLibre workspace remains usable.">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=light-dark(#111827,#eef1f6);align=left;fontSize=11;fontStyle=2;">
             <mxGeometry as="geometry" x="80" y="1418" width="940" height="24" />
           </mxCell>
         </object>
-        <object id="user-explore-3d-map-flowchart-note-2" label="3D terrain elevation is enabled only on viewports wider than 768 pixels; satellite imagery remains available on smaller screens.">
+        <object id="user-explore-3d-map-flowchart-note-2" label="3D terrain elevation is enabled only on viewports wider than 768 pixels; satellite imagery remains available on smaller screens." labelEn="3D terrain elevation is enabled only on viewports wider than 768 pixels; satellite imagery remains available on smaller screens." labelMs="3D terrain elevation is enabled only on viewports wider than 768 pixels; satellite imagery remains available on smaller screens.">
           <mxCell parent="user-explore-3d-map-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=light-dark(#111827,#eef1f6);align=left;fontSize=11;fontStyle=2;">
             <mxGeometry as="geometry" x="80" y="1442" width="940" height="24" />
           </mxCell>

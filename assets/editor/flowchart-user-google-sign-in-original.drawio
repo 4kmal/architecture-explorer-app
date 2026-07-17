@@ -1,4 +1,3 @@
-<?xml version='1.0' encoding='utf-8'?>
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.2 Chrome/134.0.6998.205 Electron/35.3.0 Safari/537.36" version="27.0.2">
   <diagram id="petakerja_flow_google_sign_in" name="PetaKerja Google Sign-In">
     <mxGraphModel dx="980" dy="1540" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="980" pageHeight="1540" math="0" shadow="0">
@@ -10,57 +9,57 @@
             <mxGeometry as="geometry" x="0" y="0" width="980" height="1540" />
           </mxCell>
         </object>
-        <object label="PetaKerja Sign in with Google Flow Chart" petakerjaKey="user-google-sign-in-flowchart/title" id="google-sign-in-flow-title">
+        <object label="PetaKerja Sign in with Google Flow Chart" petakerjaKey="user-google-sign-in-flowchart/title" id="google-sign-in-flow-title" labelEn="PetaKerja Sign in with Google Flow Chart" labelMs="Carta Alir Log Masuk PetaKerja dengan Google">
           <mxCell style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=20;fontStyle=1;" parent="google-sign-in-flow-layer" vertex="1">
             <mxGeometry x="170" y="10" width="510" height="35" as="geometry" />
           </mxCell>
         </object>
-        <object label="Google-only authentication; password sign-in, registration and password reset are not part of this flow." petakerjaKey="user-google-sign-in-flowchart/scope-note" id="google-sign-in-flow-scope-note">
+        <object label="Google-only authentication; password sign-in, registration and password reset are not part of this flow." petakerjaKey="user-google-sign-in-flowchart/scope-note" id="google-sign-in-flow-scope-note" labelEn="Google-only authentication; password sign-in, registration and password reset are not part of this flow." labelMs="Pengesahan Google sahaja; log masuk kata laluan, pendaftaran dan tetapan semula kata laluan tidak termasuk dalam aliran ini.">
           <mxCell style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=10;fontStyle=2;fontColor=#505a66;" parent="google-sign-in-flow-layer" vertex="1">
             <mxGeometry x="165" y="45" width="520" height="24" as="geometry" />
           </mxCell>
         </object>
-        <object label="Start" petakerjaKey="user-google-sign-in-flowchart/start" id="google-sign-in-flow-start">
+        <object label="Start" petakerjaKey="user-google-sign-in-flowchart/start" id="google-sign-in-flow-start" labelEn="Start" labelMs="Mula">
           <mxCell style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" parent="google-sign-in-flow-layer" vertex="1">
             <mxGeometry x="391.665" y="75" width="66.67" height="40" as="geometry" />
           </mxCell>
         </object>
-        <object label="User selects Sign in" petakerjaKey="user-google-sign-in-flowchart/select-sign-in" id="google-sign-in-flow-select-sign-in">
+        <object label="User selects Sign in" petakerjaKey="user-google-sign-in-flowchart/select-sign-in" id="google-sign-in-flow-select-sign-in" labelEn="User selects Sign in" labelMs="Pengguna memilih Log Masuk">
           <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
             <mxGeometry x="350" y="140" width="150" height="40" as="geometry" />
           </mxCell>
         </object>
-        <object label="Display the Google sign-in prompt" petakerjaKey="user-google-sign-in-flowchart/show-google-prompt" id="google-sign-in-flow-show-google-prompt">
+        <object label="Display the Google sign-in prompt" petakerjaKey="user-google-sign-in-flowchart/show-google-prompt" id="google-sign-in-flow-show-google-prompt" labelEn="Display the Google sign-in prompt" labelMs="Paparkan prompt log masuk Google">
           <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
             <mxGeometry x="350" y="205" width="150" height="40" as="geometry" />
           </mxCell>
         </object>
-        <object label="User selects Continue with Google" petakerjaKey="user-google-sign-in-flowchart/select-google" id="google-sign-in-flow-select-google">
+        <object label="User selects Continue with Google" petakerjaKey="user-google-sign-in-flowchart/select-google" id="google-sign-in-flow-select-google" labelEn="User selects Continue with Google" labelMs="Pengguna memilih Teruskan dengan Google">
           <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
             <mxGeometry x="350" y="270" width="150" height="40" as="geometry" />
           </mxCell>
         </object>
-        <object label="Start Google OAuth" petakerjaKey="user-google-sign-in-flowchart/start-google-oauth" id="google-sign-in-flow-start-google-oauth">
+        <object label="Start Google OAuth" petakerjaKey="user-google-sign-in-flowchart/start-google-oauth" id="google-sign-in-flow-start-google-oauth" labelEn="Start Google OAuth" labelMs="Mulakan Google OAuth">
           <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
             <mxGeometry x="350" y="335" width="150" height="40" as="geometry" />
           </mxCell>
         </object>
-        <object label="Google authorization completed?" petakerjaKey="user-google-sign-in-flowchart/authorization-completed" id="google-sign-in-flow-authorization-completed">
+        <object label="Google authorization completed?" petakerjaKey="user-google-sign-in-flowchart/authorization-completed" id="google-sign-in-flow-authorization-completed" labelEn="Google authorization completed?" labelMs="Pengesahan Google selesai?">
           <mxCell style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="google-sign-in-flow-layer" vertex="1">
             <mxGeometry x="348.01" y="393" width="154.29" height="90" as="geometry" />
           </mxCell>
         </object>
-        <object label="Display cancellation or sign-in error" petakerjaKey="user-google-sign-in-flowchart/display-auth-error" id="google-sign-in-flow-display-auth-error">
+        <object label="Display cancellation or sign-in error" petakerjaKey="user-google-sign-in-flowchart/display-auth-error" id="google-sign-in-flow-display-auth-error" labelEn="Display cancellation or sign-in error" labelMs="Paparkan pembatalan atau ralat log masuk">
           <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
             <mxGeometry x="630" y="414" width="170" height="48" as="geometry" />
           </mxCell>
         </object>
-        <object label="Remain in guest state and display Sign in" petakerjaKey="user-google-sign-in-flowchart/guest-state" id="google-sign-in-flow-guest-state">
+        <object label="Remain in guest state and display Sign in" petakerjaKey="user-google-sign-in-flowchart/guest-state" id="google-sign-in-flow-guest-state" labelEn="Remain in guest state and display Sign in" labelMs="Kekal dalam keadaan tetamu dan paparkan Log Masuk">
           <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
             <mxGeometry x="625" y="533" width="180" height="52" as="geometry" />
           </mxCell>
         </object>
-        <object label="Create or update identity, account and session" petakerjaKey="user-google-sign-in-flowchart/save-auth-session" id="google-sign-in-flow-save-auth-session">
+        <object label="Create or update identity, account and session" petakerjaKey="user-google-sign-in-flowchart/save-auth-session" id="google-sign-in-flow-save-auth-session" labelEn="Create or update identity, account and session" labelMs="Cipta atau kemas kini identiti, akaun dan sesi">
           <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
             <mxGeometry x="340.15" y="510" width="170" height="50" as="geometry" />
           </mxCell>
@@ -68,57 +67,57 @@
         <mxCell id="MEvPa_66McuczyVfslhs-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="google-sign-in-flow-layer" source="google-sign-in-flow-redirect-petakerja" target="google-sign-in-flow-active-session-found">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <object label="Redirect to PetaKerja" petakerjaKey="user-google-sign-in-flowchart/redirect-petakerja" id="google-sign-in-flow-redirect-petakerja">
+        <object label="Redirect to PetaKerja" petakerjaKey="user-google-sign-in-flowchart/redirect-petakerja" id="google-sign-in-flow-redirect-petakerja" labelEn="Redirect to PetaKerja" labelMs="Ubah hala ke PetaKerja">
           <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
             <mxGeometry x="349.99" y="580" width="150" height="40" as="geometry" />
           </mxCell>
         </object>
-        <object label="Check the active session" petakerjaKey="user-google-sign-in-flowchart/check-active-session" id="google-sign-in-flow-check-active-session">
+        <object label="Check the active session" petakerjaKey="user-google-sign-in-flowchart/check-active-session" id="google-sign-in-flow-check-active-session" labelEn="Check the active session" labelMs="Semak sesi aktif">
           <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
             <mxGeometry x="350" y="640" width="150" height="40" as="geometry" />
           </mxCell>
         </object>
-        <object label="Request the PetaKerja profile" petakerjaKey="user-google-sign-in-flowchart/request-profile" id="google-sign-in-flow-request-profile">
+        <object label="Request the PetaKerja profile" petakerjaKey="user-google-sign-in-flowchart/request-profile" id="google-sign-in-flow-request-profile" labelEn="Request the PetaKerja profile" labelMs="Minta profil PetaKerja">
           <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
             <mxGeometry x="350.15" y="825" width="150" height="40" as="geometry" />
           </mxCell>
         </object>
-        <object label="Load the linked profile" petakerjaKey="user-google-sign-in-flowchart/load-linked-profile" id="google-sign-in-flow-load-linked-profile">
+        <object label="Load the linked profile" petakerjaKey="user-google-sign-in-flowchart/load-linked-profile" id="google-sign-in-flow-load-linked-profile" labelEn="Load the linked profile" labelMs="Muatkan profil terpaut">
           <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
             <mxGeometry x="105" y="915" width="145" height="40" as="geometry" />
           </mxCell>
         </object>
-        <object label="Matching email profile found?" petakerjaKey="user-google-sign-in-flowchart/matching-email-found" id="google-sign-in-flow-matching-email-found">
+        <object label="Matching email profile found?" petakerjaKey="user-google-sign-in-flowchart/matching-email-found" id="google-sign-in-flow-matching-email-found" labelEn="Matching email profile found?" labelMs="Profil dengan e-mel sepadan ditemui?">
           <mxCell style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="google-sign-in-flow-layer" vertex="1">
             <mxGeometry x="595" y="800" width="154.29" height="90" as="geometry" />
           </mxCell>
         </object>
-        <object label="Link the existing profile" petakerjaKey="user-google-sign-in-flowchart/link-existing-profile" id="google-sign-in-flow-link-existing-profile">
+        <object label="Link the existing profile" petakerjaKey="user-google-sign-in-flowchart/link-existing-profile" id="google-sign-in-flow-link-existing-profile" labelEn="Link the existing profile" labelMs="Pautkan profil sedia ada">
           <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
             <mxGeometry x="595" y="960" width="155" height="40" as="geometry" />
           </mxCell>
         </object>
-        <object label="Profile obtained successfully?" petakerjaKey="user-google-sign-in-flowchart/profile-obtained" id="google-sign-in-flow-profile-obtained">
+        <object label="Profile obtained successfully?" petakerjaKey="user-google-sign-in-flowchart/profile-obtained" id="google-sign-in-flow-profile-obtained" labelEn="Profile obtained successfully?" labelMs="Profil berjaya diperoleh?">
           <mxCell style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="google-sign-in-flow-layer" vertex="1">
             <mxGeometry x="356.58" y="1090" width="137.14" height="80" as="geometry" />
           </mxCell>
         </object>
-        <object label="Return the profile to the application" petakerjaKey="user-google-sign-in-flowchart/return-profile" id="google-sign-in-flow-return-profile">
+        <object label="Return the profile to the application" petakerjaKey="user-google-sign-in-flowchart/return-profile" id="google-sign-in-flow-return-profile" labelEn="Return the profile to the application" labelMs="Pulangkan profil kepada aplikasi">
           <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
             <mxGeometry x="339.99" y="1220" width="170" height="44" as="geometry" />
           </mxCell>
         </object>
-        <object label="Update the signed-in user state" petakerjaKey="user-google-sign-in-flowchart/update-user-state" id="google-sign-in-flow-update-user-state">
+        <object label="Update the signed-in user state" petakerjaKey="user-google-sign-in-flowchart/update-user-state" id="google-sign-in-flow-update-user-state" labelEn="Update the signed-in user state" labelMs="Kemas kini keadaan pengguna yang log masuk">
           <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
             <mxGeometry x="349.99" y="1300" width="150" height="44" as="geometry" />
           </mxCell>
         </object>
-        <object label="Display the authenticated user menu" petakerjaKey="user-google-sign-in-flowchart/display-authenticated-menu" id="google-sign-in-flow-display-authenticated-menu">
+        <object label="Display the authenticated user menu" petakerjaKey="user-google-sign-in-flowchart/display-authenticated-menu" id="google-sign-in-flow-display-authenticated-menu" labelEn="Display the authenticated user menu" labelMs="Paparkan menu pengguna yang disahkan">
           <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="google-sign-in-flow-layer" vertex="1">
             <mxGeometry x="345" y="1380" width="160" height="44" as="geometry" />
           </mxCell>
         </object>
-        <object label="End" petakerjaKey="user-google-sign-in-flowchart/end" id="google-sign-in-flow-end">
+        <object label="End" petakerjaKey="user-google-sign-in-flowchart/end" id="google-sign-in-flow-end" labelEn="End" labelMs="Tamat">
           <mxCell style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" parent="google-sign-in-flow-layer" vertex="1">
             <mxGeometry x="391.815" y="1460" width="66.67" height="40" as="geometry" />
           </mxCell>
@@ -148,7 +147,7 @@
             <mxGeometry relative="1" as="geometry" />
           </mxCell>
         </object>
-        <object label="Yes" petakerjaKey="user-google-sign-in-flowchart/authorization-yes" id="google-sign-in-flow-authorization-yes">
+        <object label="Yes" petakerjaKey="user-google-sign-in-flowchart/authorization-yes" id="google-sign-in-flow-authorization-yes" labelEn="Yes" labelMs="Ya">
           <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-authorization-completed" target="google-sign-in-flow-save-auth-session" edge="1">
             <mxGeometry x="-0.4817" y="15" relative="1" as="geometry">
               <mxPoint x="425.145" y="533" as="sourcePoint" />
@@ -156,7 +155,7 @@
             </mxGeometry>
           </mxCell>
         </object>
-        <object label="No" petakerjaKey="user-google-sign-in-flowchart/authorization-no" id="google-sign-in-flow-authorization-no">
+        <object label="No" petakerjaKey="user-google-sign-in-flowchart/authorization-no" id="google-sign-in-flow-authorization-no" labelEn="No" labelMs="Tidak">
           <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-authorization-completed" target="google-sign-in-flow-display-auth-error" edge="1">
             <mxGeometry x="-0.5662" y="8" relative="1" as="geometry">
               <mxPoint x="635" y="439.0000000000002" as="targetPoint" />
@@ -188,7 +187,7 @@
             </mxGeometry>
           </mxCell>
         </object>
-        <object label="Yes" petakerjaKey="user-google-sign-in-flowchart/session-yes" id="google-sign-in-flow-session-yes">
+        <object label="Yes" petakerjaKey="user-google-sign-in-flowchart/session-yes" id="google-sign-in-flow-session-yes" labelEn="Yes" labelMs="Ya">
           <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="google-sign-in-flow-layer" target="google-sign-in-flow-request-profile" edge="1" source="google-sign-in-flow-active-session-found">
             <mxGeometry x="-0.0002" y="-25" relative="1" as="geometry">
               <mxPoint x="424.9949999999999" y="785" as="sourcePoint" />
@@ -197,7 +196,7 @@
             </mxGeometry>
           </mxCell>
         </object>
-        <object label="No" petakerjaKey="user-google-sign-in-flowchart/session-no" id="google-sign-in-flow-session-no">
+        <object label="No" petakerjaKey="user-google-sign-in-flowchart/session-no" id="google-sign-in-flow-session-no" labelEn="No" labelMs="Tidak">
           <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;edgeStyle=orthogonalEdgeStyle;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-active-session-found" target="google-sign-in-flow-guest-state" edge="1">
             <mxGeometry x="-0.8196" y="-15" relative="1" as="geometry">
               <mxPoint x="485" y="730" as="sourcePoint" />
@@ -212,7 +211,7 @@
             </mxGeometry>
           </mxCell>
         </object>
-        <object label="Yes" petakerjaKey="user-google-sign-in-flowchart/linked-yes" id="google-sign-in-flow-linked-yes">
+        <object label="Yes" petakerjaKey="user-google-sign-in-flowchart/linked-yes" id="google-sign-in-flow-linked-yes" labelEn="Yes" labelMs="Ya">
           <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-linked-profile-found" target="google-sign-in-flow-load-linked-profile" edge="1">
             <mxGeometry relative="1" as="geometry">
               <mxPoint x="365" y="919.9999999999998" as="sourcePoint" />
@@ -220,19 +219,19 @@
             </mxGeometry>
           </mxCell>
         </object>
-        <object label="No" petakerjaKey="user-google-sign-in-flowchart/linked-no" id="google-sign-in-flow-linked-no">
+        <object label="No" petakerjaKey="user-google-sign-in-flowchart/linked-no" id="google-sign-in-flow-linked-no" labelEn="No" labelMs="Tidak">
           <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;edgeStyle=orthogonalEdgeStyle;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-linked-profile-found" target="google-sign-in-flow-matching-email-found" edge="1">
             <mxGeometry relative="1" as="geometry">
               <mxPoint x="485" y="919.9999999999998" as="sourcePoint" />
             </mxGeometry>
           </mxCell>
         </object>
-        <object label="Yes" petakerjaKey="user-google-sign-in-flowchart/email-yes" id="google-sign-in-flow-email-yes">
+        <object label="Yes" petakerjaKey="user-google-sign-in-flowchart/email-yes" id="google-sign-in-flow-email-yes" labelEn="Yes" labelMs="Ya">
           <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-matching-email-found" target="google-sign-in-flow-link-existing-profile" edge="1">
             <mxGeometry relative="1" as="geometry" />
           </mxCell>
         </object>
-        <object label="No" petakerjaKey="user-google-sign-in-flowchart/email-no" id="google-sign-in-flow-email-no">
+        <object label="No" petakerjaKey="user-google-sign-in-flowchart/email-no" id="google-sign-in-flow-email-no" labelEn="No" labelMs="Tidak">
           <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-matching-email-found" target="google-sign-in-flow-create-new-profile" edge="1">
             <mxGeometry x="-0.6509" relative="1" as="geometry">
               <mxPoint x="925" y="956" as="targetPoint" />
@@ -266,14 +265,14 @@
             </mxGeometry>
           </mxCell>
         </object>
-        <object label="Yes" petakerjaKey="user-google-sign-in-flowchart/profile-success" id="google-sign-in-flow-profile-success">
+        <object label="Yes" petakerjaKey="user-google-sign-in-flowchart/profile-success" id="google-sign-in-flow-profile-success" labelEn="Yes" labelMs="Ya">
           <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-profile-obtained" target="google-sign-in-flow-return-profile" edge="1">
             <mxGeometry x="-0.3311" y="-25" relative="1" as="geometry">
               <mxPoint as="offset" />
             </mxGeometry>
           </mxCell>
         </object>
-        <object label="No" petakerjaKey="user-google-sign-in-flowchart/profile-failure" id="google-sign-in-flow-profile-failure">
+        <object label="No" petakerjaKey="user-google-sign-in-flowchart/profile-failure" id="google-sign-in-flow-profile-failure" labelEn="No" labelMs="Tidak">
           <mxCell style="orthogonalLoop=1;jettySize=auto;endArrow=classic;endFill=1;html=1;rounded=0;strokeWidth=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.561;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;edgeStyle=orthogonalEdgeStyle;" parent="google-sign-in-flow-layer" source="google-sign-in-flow-profile-obtained" target="google-sign-in-flow-guest-state" edge="1">
             <mxGeometry x="-0.9615" y="-20" relative="1" as="geometry">
               <mxPoint as="offset" />
@@ -311,17 +310,17 @@
             </mxGeometry>
           </mxCell>
         </object>
-        <object label="Active session found?" petakerjaKey="user-google-sign-in-flowchart/active-session-found" id="google-sign-in-flow-active-session-found">
+        <object label="Active session found?" petakerjaKey="user-google-sign-in-flowchart/active-session-found" id="google-sign-in-flow-active-session-found" labelEn="Active session found?" labelMs="Sesi aktif ditemui?">
           <mxCell style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="google-sign-in-flow-layer">
             <mxGeometry x="347.85" y="700" width="154.29" height="90" as="geometry" />
           </mxCell>
         </object>
-        <object label="Linked profile found?" petakerjaKey="user-google-sign-in-flowchart/linked-profile-found" id="google-sign-in-flow-linked-profile-found">
+        <object label="Linked profile found?" petakerjaKey="user-google-sign-in-flowchart/linked-profile-found" id="google-sign-in-flow-linked-profile-found" labelEn="Linked profile found?" labelMs="Profil terpaut ditemui?">
           <mxCell style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="google-sign-in-flow-layer">
             <mxGeometry x="347.85" y="890" width="154.29" height="90" as="geometry" />
           </mxCell>
         </object>
-        <object label="Create a new PetaKerja profile" petakerjaKey="user-google-sign-in-flowchart/create-new-profile" id="google-sign-in-flow-create-new-profile">
+        <object label="Create a new PetaKerja profile" petakerjaKey="user-google-sign-in-flowchart/create-new-profile" id="google-sign-in-flow-create-new-profile" labelEn="Create a new PetaKerja profile" labelMs="Cipta profil PetaKerja baharu">
           <mxCell style="whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="google-sign-in-flow-layer">
             <mxGeometry x="790" y="960" width="155" height="40" as="geometry" />
           </mxCell>

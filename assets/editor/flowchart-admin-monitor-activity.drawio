@@ -1,4 +1,3 @@
-<?xml version='1.0' encoding='utf-8'?>
 <mxfile host="Electron" agent="PetaKerja Architecture Explorer" version="27.0.2">
   <diagram name="PetaKerja Monitor System Activity Logs - Polished" id="petakerja_flow_admin_monitor_activity">
     <mxGraphModel dx="980" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="980" pageHeight="1200" math="0" shadow="0" background="light-dark(#fbfcfe,#0b1118)">
@@ -10,77 +9,77 @@
             <mxGeometry as="geometry" x="0" y="0" width="980" height="1200" />
           </mxCell>
         </object>
-        <object id="admin-monitor-activity-flowchart-title" label="PetaKerja Administrator Monitor System Activity Logs Flow Chart">
+        <object id="admin-monitor-activity-flowchart-title" label="PetaKerja Administrator Monitor System Activity Logs Flow Chart" labelEn="PetaKerja Administrator Monitor System Activity Logs Flow Chart" labelMs="Carta Alir Pentadbir PetaKerja Memantau Aktiviti Sistem">
           <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=light-dark(#172033,#f3f6fb);fontSize=14;fontStyle=1;fontFamily=Arial;">
             <mxGeometry as="geometry" x="120" y="18" width="740" height="38" />
           </mxCell>
         </object>
-        <object id="admin-monitor-activity-flowchart-subtitle" label="Current implementation: the latest 100 AI assistant usage events, not general server logs.">
+        <object id="admin-monitor-activity-flowchart-subtitle" label="Current implementation: the latest 100 AI assistant usage events, not general server logs." labelEn="Current implementation: the latest 100 AI assistant usage events, not general server logs." labelMs="Pelaksanaan semasa: 100 peristiwa penggunaan pembantu AI terkini, bukan log pelayan umum.">
           <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontColor=light-dark(#172033,#f3f6fb);fontSize=14;fontStyle=1;fontFamily=Arial;">
             <mxGeometry as="geometry" x="100" y="58" width="780" height="30" />
           </mxCell>
         </object>
-        <object id="admin-monitor-activity-flowchart-precondition" label="Precondition: The Administrator is signed in, has the admin or owner role, and the Admin Dashboard is open.">
+        <object id="admin-monitor-activity-flowchart-precondition" label="Precondition: The Administrator is signed in, has the admin or owner role, and the Admin Dashboard is open." labelEn="Precondition: The Administrator is signed in, has the admin or owner role, and the Admin Dashboard is open." labelMs="Prasyarat: Pentadbir telah log masuk, mempunyai peranan admin atau owner, dan Papan Pemuka Pentadbir telah dibuka.">
           <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=light-dark(#475467,#c5cedb);fontSize=11;fontStyle=2;fontFamily=Arial;">
             <mxGeometry as="geometry" x="100" y="92" width="780" height="32" />
           </mxCell>
         </object>
-        <object id="admin-monitor-activity-flowchart-start" label="Start" petakerjaKey="admin-monitor-activity-flowchart/start">
+        <object id="admin-monitor-activity-flowchart-start" label="Start" petakerjaKey="admin-monitor-activity-flowchart/start" labelEn="Start" labelMs="Mula">
           <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;fillColor=light-dark(#ecfdf3,#133221);strokeColor=light-dark(#1f7a4d,#72d6a1);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;fontStyle=1;">
             <mxGeometry as="geometry" x="456.665" y="145" width="66.67" height="40" />
           </mxCell>
         </object>
-        <object id="admin-monitor-activity-flowchart-select-usage" label="Administrator selects the Usage section" petakerjaKey="admin-monitor-activity-flowchart/select-usage">
+        <object id="admin-monitor-activity-flowchart-select-usage" label="Administrator selects the Usage section" petakerjaKey="admin-monitor-activity-flowchart/select-usage" labelEn="Administrator selects the Usage section" labelMs="Pentadbir memilih bahagian Usage">
           <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
             <mxGeometry as="geometry" x="390" y="220" width="200" height="50" />
           </mxCell>
         </object>
-        <object id="admin-monitor-activity-flowchart-loading-state" label="Display the loading state" petakerjaKey="admin-monitor-activity-flowchart/loading-state">
+        <object id="admin-monitor-activity-flowchart-loading-state" label="Display the loading state" petakerjaKey="admin-monitor-activity-flowchart/loading-state" labelEn="Display the loading state" labelMs="Paparkan keadaan pemuatan">
           <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
             <mxGeometry as="geometry" x="400" y="305" width="180" height="50" />
           </mxCell>
         </object>
-        <object id="admin-monitor-activity-flowchart-request-activity" label="Request recent AI activity information" petakerjaKey="admin-monitor-activity-flowchart/request-activity">
+        <object id="admin-monitor-activity-flowchart-request-activity" label="Request recent AI activity information" petakerjaKey="admin-monitor-activity-flowchart/request-activity" labelEn="Request recent AI activity information" labelMs="Minta maklumat aktiviti AI terkini">
           <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
             <mxGeometry as="geometry" x="380" y="390" width="220" height="50" />
           </mxCell>
         </object>
-        <object id="admin-monitor-activity-flowchart-retrieve-activity" label="Retrieve up to 100 recent AI usage events and calculate totals" petakerjaKey="admin-monitor-activity-flowchart/retrieve-activity">
+        <object id="admin-monitor-activity-flowchart-retrieve-activity" label="Retrieve up to 100 recent AI usage events and calculate totals" petakerjaKey="admin-monitor-activity-flowchart/retrieve-activity" labelEn="Retrieve up to 100 recent AI usage events and calculate totals" labelMs="Dapatkan sehingga 100 peristiwa penggunaan AI terkini dan kira jumlah">
           <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
             <mxGeometry as="geometry" x="360" y="475" width="260" height="65" />
           </mxCell>
         </object>
-        <object id="admin-monitor-activity-flowchart-request-successful" label="Request successful?" petakerjaKey="admin-monitor-activity-flowchart/request-successful">
+        <object id="admin-monitor-activity-flowchart-request-successful" label="Request successful?" petakerjaKey="admin-monitor-activity-flowchart/request-successful" labelEn="Request successful?" labelMs="Permintaan berjaya?">
           <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=light-dark(#fff7df,#3a2e16);strokeColor=light-dark(#9a6700,#f4c95d);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;fontStyle=1;">
             <mxGeometry as="geometry" x="430" y="580" width="120" height="70" />
           </mxCell>
         </object>
-        <object id="admin-monitor-activity-flowchart-request-error" label="Clear loading and display the dashboard loading error" petakerjaKey="admin-monitor-activity-flowchart/request-error">
+        <object id="admin-monitor-activity-flowchart-request-error" label="Clear loading and display the dashboard loading error" petakerjaKey="admin-monitor-activity-flowchart/request-error" labelEn="Clear loading and display the dashboard loading error" labelMs="Tamatkan pemuatan dan paparkan ralat pemuatan papan pemuka">
           <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#fff1f2,#3b1d22);strokeColor=light-dark(#b42318,#ff9b92);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
             <mxGeometry as="geometry" x="680" y="585" width="220" height="60" />
           </mxCell>
         </object>
-        <object id="admin-monitor-activity-flowchart-store-activity" label="Store the activity rows and totals, then clear loading" petakerjaKey="admin-monitor-activity-flowchart/store-activity">
+        <object id="admin-monitor-activity-flowchart-store-activity" label="Store the activity rows and totals, then clear loading" petakerjaKey="admin-monitor-activity-flowchart/store-activity" labelEn="Store the activity rows and totals, then clear loading" labelMs="Simpan baris aktiviti dan jumlah, kemudian tamatkan pemuatan">
           <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
             <mxGeometry as="geometry" x="365" y="700" width="250" height="60" />
           </mxCell>
         </object>
-        <object id="admin-monitor-activity-flowchart-events-returned" label="Activity events returned?" petakerjaKey="admin-monitor-activity-flowchart/events-returned">
+        <object id="admin-monitor-activity-flowchart-events-returned" label="Activity events returned?" petakerjaKey="admin-monitor-activity-flowchart/events-returned" labelEn="Activity events returned?" labelMs="Peristiwa aktiviti dipulangkan?">
           <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;fillColor=light-dark(#fff7df,#3a2e16);strokeColor=light-dark(#9a6700,#f4c95d);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;fontStyle=1;">
             <mxGeometry as="geometry" x="430" y="800" width="120" height="70" />
           </mxCell>
         </object>
-        <object id="admin-monitor-activity-flowchart-empty-state" label="Display No usage events yet" petakerjaKey="admin-monitor-activity-flowchart/empty-state">
+        <object id="admin-monitor-activity-flowchart-empty-state" label="Display No usage events yet" petakerjaKey="admin-monitor-activity-flowchart/empty-state" labelEn="Display No usage events yet" labelMs="Paparkan Belum ada peristiwa penggunaan">
           <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#f3f4f6,#242933);strokeColor=light-dark(#667085,#aeb7c7);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;">
             <mxGeometry as="geometry" x="90" y="805" width="200" height="60" />
           </mxCell>
         </object>
-        <object id="admin-monitor-activity-flowchart-display-activity" label="Display usage totals and the activity table" petakerjaKey="admin-monitor-activity-flowchart/display-activity">
+        <object id="admin-monitor-activity-flowchart-display-activity" label="Display usage totals and the activity table" petakerjaKey="admin-monitor-activity-flowchart/display-activity" labelEn="Display usage totals and the activity table" labelMs="Paparkan jumlah penggunaan dan jadual aktiviti">
           <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=2;fillColor=light-dark(#ecfdf3,#133221);strokeColor=light-dark(#1f7a4d,#72d6a1);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;fontStyle=1;">
             <mxGeometry as="geometry" x="375" y="900" width="230" height="60" />
           </mxCell>
         </object>
-        <object id="admin-monitor-activity-flowchart-end" label="End" petakerjaKey="admin-monitor-activity-flowchart/end">
+        <object id="admin-monitor-activity-flowchart-end" label="End" petakerjaKey="admin-monitor-activity-flowchart/end" labelEn="End" labelMs="Tamat">
           <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;fillColor=light-dark(#ecfdf3,#133221);strokeColor=light-dark(#1f7a4d,#72d6a1);fontColor=light-dark(#172033,#f3f6fb);fontSize=12;fontFamily=Arial;spacing=7;shadow=1;rounded=1;arcSize=8;fontStyle=1;">
             <mxGeometry as="geometry" x="456.665" y="1035" width="66.67" height="40" />
           </mxCell>
@@ -110,7 +109,7 @@
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object id="admin-monitor-activity-flowchart-request-no" label="No" petakerjaKey="admin-monitor-activity-flowchart/request-no">
+        <object id="admin-monitor-activity-flowchart-request-no" label="No" petakerjaKey="admin-monitor-activity-flowchart/request-no" labelEn="No" labelMs="Tidak">
           <mxCell parent="admin-monitor-activity-flowchart-layer" edge="1" source="admin-monitor-activity-flowchart-request-successful" target="admin-monitor-activity-flowchart-request-error" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#b42318,#ff9b92);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
@@ -125,7 +124,7 @@
             </mxGeometry>
           </mxCell>
         </object>
-        <object id="admin-monitor-activity-flowchart-request-yes" label="Yes" petakerjaKey="admin-monitor-activity-flowchart/request-yes">
+        <object id="admin-monitor-activity-flowchart-request-yes" label="Yes" petakerjaKey="admin-monitor-activity-flowchart/request-yes" labelEn="Yes" labelMs="Ya">
           <mxCell parent="admin-monitor-activity-flowchart-layer" edge="1" source="admin-monitor-activity-flowchart-request-successful" target="admin-monitor-activity-flowchart-store-activity" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
@@ -135,7 +134,7 @@
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object id="admin-monitor-activity-flowchart-events-no" label="No" petakerjaKey="admin-monitor-activity-flowchart/events-no">
+        <object id="admin-monitor-activity-flowchart-events-no" label="No" petakerjaKey="admin-monitor-activity-flowchart/events-no" labelEn="No" labelMs="Tidak">
           <mxCell parent="admin-monitor-activity-flowchart-layer" edge="1" source="admin-monitor-activity-flowchart-events-returned" target="admin-monitor-activity-flowchart-empty-state" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#667085,#aeb7c7);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0;exitY=0.5;entryX=1;entryY=0.5;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
@@ -150,7 +149,7 @@
             </mxGeometry>
           </mxCell>
         </object>
-        <object id="admin-monitor-activity-flowchart-events-yes" label="Yes" petakerjaKey="admin-monitor-activity-flowchart/events-yes">
+        <object id="admin-monitor-activity-flowchart-events-yes" label="Yes" petakerjaKey="admin-monitor-activity-flowchart/events-yes" labelEn="Yes" labelMs="Ya">
           <mxCell parent="admin-monitor-activity-flowchart-layer" edge="1" source="admin-monitor-activity-flowchart-events-returned" target="admin-monitor-activity-flowchart-display-activity" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#1f7a4d,#72d6a1);fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;fontSize=11;fontFamily=Arial;">
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
@@ -160,12 +159,12 @@
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object id="admin-monitor-activity-flowchart-note-1" label="The Usage section reads public.ai_usage_events and calculates request, error, token and estimated-cost totals.">
+        <object id="admin-monitor-activity-flowchart-note-1" label="The Usage section reads public.ai_usage_events and calculates request, error, token and estimated-cost totals." labelEn="The Usage section reads public.ai_usage_events and calculates request, error, token and estimated-cost totals." labelMs="Bahagian Usage membaca public.ai_usage_events dan mengira jumlah permintaan, ralat, token serta anggaran kos.">
           <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=light-dark(#475467,#c5cedb);fontSize=11;fontStyle=2;fontFamily=Arial;">
             <mxGeometry as="geometry" x="80" y="1118" width="820" height="24" />
           </mxCell>
         </object>
-        <object id="admin-monitor-activity-flowchart-note-2" label="General server logs and public.ai_admin_audit_logs are not displayed by this use case.">
+        <object id="admin-monitor-activity-flowchart-note-2" label="General server logs and public.ai_admin_audit_logs are not displayed by this use case." labelEn="General server logs and public.ai_admin_audit_logs are not displayed by this use case." labelMs="Log pelayan umum dan public.ai_admin_audit_logs tidak dipaparkan oleh kes guna ini.">
           <mxCell parent="admin-monitor-activity-flowchart-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=light-dark(#475467,#c5cedb);fontSize=11;fontStyle=2;fontFamily=Arial;">
             <mxGeometry as="geometry" x="80" y="1142" width="820" height="24" />
           </mxCell>
