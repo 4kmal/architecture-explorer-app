@@ -21,8 +21,9 @@
       document.documentElement.style.colorScheme = effective;
     }());
   </script>
-  <link rel="stylesheet" href="styles.css?v=20260717-3">
-  <link rel="stylesheet" href="slides.css?v=20260717-2">
+  <link rel="stylesheet" href="styles.css?v=20260718-2">
+  <link rel="stylesheet" href="slides.css?v=20260718-1">
+  <link rel="stylesheet" href="enterprise.css?v=20260718-1">
 </head>
 <body>
   <a id="skip-link" class="skip-link" href="#diagram-workspace">Skip to diagram</a>
@@ -30,14 +31,26 @@
     <div class="brand-block"><h1>PetaKerja Architecture Explorer</h1><p id="app-subtitle">Trace UI to class to route to table across current code, the FYP model and legacy modules.</p></div>
     <div class="header-controls">
       <div class="header-primary-controls">
-        <a id="learning-link" class="header-learning-link" href="#learn" aria-label="Open Diagrams for Dummies" title="Open Diagrams for Dummies"><i data-lucide="book-open" aria-hidden="true"></i><span>For Dummies</span></a>
-        <a id="slides-link" class="header-learning-link" href="#slides" aria-label="Open Slides Studio" title="Open Slides Studio"><i data-lucide="presentation" aria-hidden="true"></i><span>Slides</span></a>
+        <a id="learning-link" class="header-learning-link" href="#learn" aria-label="Open Diagrams for Dummies" title="Open Diagrams for Dummies"><i data-bp-icon="book-open" aria-hidden="true"></i><span class="sr-only">For Dummies</span></a>
+        <a id="slides-link" class="header-learning-link" href="#slides" aria-label="Open Slides Studio" title="Open Slides Studio"><i data-bp-icon="presentation" aria-hidden="true"></i><span class="sr-only">Slides</span></a>
       <div id="render-mode-control" class="segmented" role="group" aria-label="Diagram mode">
         <button id="mode-actual" type="button" data-render-mode="actual" aria-pressed="true">Actual diagram</button>
         <button id="mode-map" type="button" data-render-mode="map" aria-pressed="false">Interactive map</button>
       </div>
-      <label class="theme-field" for="theme-select"><span id="theme-label" class="sr-only">Theme</span><select id="theme-select" aria-labelledby="theme-label"><option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option></select></label>
-      <div class="segmented language-control" role="group" aria-label="Language"><button type="button" data-language="ms" aria-pressed="false">BM</button><button type="button" data-language="en" aria-pressed="true">EN</button></div>
+      <label class="header-choice-control theme-field" for="theme-select">
+        <span class="header-choice-icons" aria-hidden="true"><i data-theme-icon="system" data-bp-icon="monitor"></i><i data-theme-icon="light" data-bp-icon="sun"></i><i data-theme-icon="dark" data-bp-icon="moon"></i></span>
+        <span id="theme-value" class="header-choice-value" aria-hidden="true">System</span>
+        <i class="header-choice-chevron" data-bp-icon="chevron-down" aria-hidden="true"></i>
+        <span id="theme-label" class="sr-only">Theme</span>
+        <select id="theme-select" aria-labelledby="theme-label"><option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option></select>
+      </label>
+      <label class="header-choice-control language-control" for="language-select">
+        <i class="header-choice-icon" data-bp-icon="languages" aria-hidden="true"></i>
+        <span id="language-value" class="header-choice-value" aria-hidden="true">EN</span>
+        <i class="header-choice-chevron" data-bp-icon="chevron-down" aria-hidden="true"></i>
+        <span id="language-label" class="sr-only">Language</span>
+        <select id="language-select" aria-labelledby="language-label"><option value="ms">BM</option><option value="en" selected>EN</option></select>
+      </label>
       </div>
       <div class="header-context-controls">
       <label class="compact-field diagram-picker-field" for="diagram-picker"><span class="sr-only">Diagram</span><select id="diagram-picker" aria-label="Choose diagram"></select></label>
@@ -50,7 +63,7 @@
   <div class="mobile-tabs" role="tablist" aria-label="Explorer panels"><button type="button" class="is-active" data-mobile-panel="diagram" role="tab" aria-selected="true">Diagram</button><button type="button" data-mobile-panel="ui" role="tab" aria-selected="false">UI</button><button type="button" data-mobile-panel="details" role="tab" aria-selected="false">Details</button></div>
   <section id="learning-shell" class="learning-shell" aria-labelledby="learning-title" hidden>
     <header class="learning-mobile-header">
-      <button id="learning-back" type="button" class="secondary-button"><i data-lucide="arrow-left" aria-hidden="true"></i><span>Back to Explorer</span></button>
+      <button id="learning-back" type="button" class="secondary-button"><i data-bp-icon="arrow-left" aria-hidden="true"></i><span>Back to Explorer</span></button>
       <label class="learning-mobile-topic-field" for="learning-mobile-topic"><span class="sr-only">Choose lesson</span><select id="learning-mobile-topic" aria-label="Choose lesson"></select></label>
       <div class="learning-mobile-tabs" role="tablist" aria-label="Learning panels">
         <button type="button" class="is-active" data-learning-panel="lesson" role="tab" aria-selected="true">Learn</button>
@@ -61,9 +74,9 @@
     <aside class="learning-navigation" aria-label="Learning chapters">
       <div class="learning-navigation__heading">
         <div><p class="eyebrow">Diagram literacy</p><h2 id="learning-title">Diagrams for Dummies</h2></div>
-        <button id="learning-nav-back" type="button" class="icon-button" aria-label="Back to Explorer"><i data-lucide="x" aria-hidden="true"></i></button>
+        <button id="learning-nav-back" type="button" class="icon-button" aria-label="Back to Explorer"><i data-bp-icon="x" aria-hidden="true"></i></button>
       </div>
-      <label class="learning-search"><span class="sr-only">Search lessons</span><i data-lucide="search" aria-hidden="true"></i><input id="learning-search" type="search" autocomplete="off" placeholder="Search notation..."></label>
+      <label class="learning-search"><span class="sr-only">Search lessons</span><i data-bp-icon="search" aria-hidden="true"></i><input id="learning-search" type="search" autocomplete="off" placeholder="Search notation..."></label>
       <nav id="learning-nav"></nav>
       <div class="learning-progress-summary"><strong id="learning-progress-label">Progress</strong><div class="learning-progress-track" aria-hidden="true"><span id="learning-progress-bar"></span></div><span id="learning-progress-text">0 of 0 topics</span><button id="learning-reset" type="button" class="text-button">Reset progress</button></div>
     </aside>
@@ -76,25 +89,25 @@
   </section>
   <section id="slides-shell" class="slides-shell" aria-labelledby="slides-title" hidden>
     <header class="slides-toolbar">
-      <button id="slides-back" type="button" class="secondary-button" title="Back to Explorer"><i data-lucide="arrow-left" aria-hidden="true"></i><span>Explorer</span></button>
+      <button id="slides-back" type="button" class="secondary-button" title="Back to Explorer"><i data-bp-icon="arrow-left" aria-hidden="true"></i><span>Explorer</span></button>
       <div class="slides-document-title"><input id="slides-title" type="text" value="Pembentangan FYP PetaKerja" aria-label="Presentation title"><span id="slides-save-status" role="status" aria-live="polite">Saved locally</span></div>
       <div class="slides-toolbar__actions">
-        <button id="slides-library-button" type="button" class="secondary-button"><i data-lucide="layout-grid" aria-hidden="true"></i><span class="slides-wide-label">Library</span></button>
-        <button id="slides-history-button" type="button" class="secondary-button"><i data-lucide="git-branch" aria-hidden="true"></i><span class="slides-wide-label">History</span></button>
-        <button id="slides-undo" type="button" class="secondary-button" title="Undo"><i data-lucide="undo-2" aria-hidden="true"></i><span class="slides-wide-label">Undo</span></button>
-        <button id="slides-redo" type="button" class="secondary-button" title="Redo"><i data-lucide="redo-2" aria-hidden="true"></i><span class="slides-wide-label">Redo</span></button>
-        <button id="slides-add" type="button"><i data-lucide="plus" aria-hidden="true"></i><span>Add slide</span></button>
-        <button id="slides-present" type="button" class="secondary-button"><i data-lucide="play" aria-hidden="true"></i><span>Present</span></button>
-        <button id="slides-save" type="button" class="secondary-button"><i data-lucide="save" aria-hidden="true"></i><span>Save</span></button>
-        <button id="slides-save-copy" type="button" class="secondary-button"><i data-lucide="copy-plus" aria-hidden="true"></i><span>Save as copy</span></button>
-        <button id="slides-cloud" type="button" class="secondary-button"><i data-lucide="cloud-upload" aria-hidden="true"></i><span>Sync</span></button>
-        <div class="slides-export-menu"><button id="slides-export" type="button" class="secondary-button"><i data-lucide="download" aria-hidden="true"></i><span>Export</span></button><div id="slides-export-options" hidden><button type="button" data-slides-export="pptx">PowerPoint (.pptx)</button><button type="button" data-slides-export="json">Source (.slides.json)</button><button type="button" data-slides-export="png">Current slide PNG</button><button type="button" data-slides-export="zip">All slide PNG ZIP</button><button type="button" data-slides-export="print">Print / PDF</button></div></div>
+        <button id="slides-library-button" type="button" class="secondary-button"><i data-bp-icon="layout-grid" aria-hidden="true"></i><span class="slides-wide-label">Library</span></button>
+        <button id="slides-history-button" type="button" class="secondary-button"><i data-bp-icon="git-branch" aria-hidden="true"></i><span class="slides-wide-label">History</span></button>
+        <button id="slides-undo" type="button" class="secondary-button" title="Undo"><i data-bp-icon="undo-2" aria-hidden="true"></i><span class="slides-wide-label">Undo</span></button>
+        <button id="slides-redo" type="button" class="secondary-button" title="Redo"><i data-bp-icon="redo-2" aria-hidden="true"></i><span class="slides-wide-label">Redo</span></button>
+        <button id="slides-add" type="button"><i data-bp-icon="plus" aria-hidden="true"></i><span>Add slide</span></button>
+        <button id="slides-present" type="button" class="secondary-button"><i data-bp-icon="play" aria-hidden="true"></i><span>Present</span></button>
+        <button id="slides-save" type="button" class="secondary-button"><i data-bp-icon="save" aria-hidden="true"></i><span>Save</span></button>
+        <button id="slides-save-copy" type="button" class="secondary-button"><i data-bp-icon="copy-plus" aria-hidden="true"></i><span>Save as copy</span></button>
+        <button id="slides-cloud" type="button" class="secondary-button"><i data-bp-icon="cloud-upload" aria-hidden="true"></i><span>Sync</span></button>
+        <div class="slides-export-menu"><button id="slides-export" type="button" class="secondary-button"><i data-bp-icon="download" aria-hidden="true"></i><span>Export</span></button><div id="slides-export-options" hidden><button type="button" data-slides-export="pptx">PowerPoint (.pptx)</button><button type="button" data-slides-export="json">Source (.slides.json)</button><button type="button" data-slides-export="png">Current slide PNG</button><button type="button" data-slides-export="zip">All slide PNG ZIP</button><button type="button" data-slides-export="print">Print / PDF</button></div></div>
       </div>
     </header>
     <section id="slides-library" class="slides-library" aria-labelledby="slides-library-title" hidden>
       <header class="slides-library__header">
         <div><h2 id="slides-library-title">Recent Presentations</h2><p>Stable deck titles with branches and immutable versions.</p></div>
-        <button id="slides-library-new" type="button"><i data-lucide="plus" aria-hidden="true"></i><span>New UKM deck</span></button>
+        <button id="slides-library-new" type="button"><i data-bp-icon="plus" aria-hidden="true"></i><span>New UKM deck</span></button>
       </header>
       <div class="slides-library__controls">
         <label class="sr-only" for="slides-library-search">Search presentations</label><input id="slides-library-search" type="search" placeholder="Search presentations">
@@ -116,7 +129,7 @@
       <aside class="slides-inspector" aria-label="Slide tools">
         <div class="slides-inspector-tabs" role="tablist" aria-label="Tools"><button type="button" data-slides-panel="layouts" role="tab" aria-selected="true">Layouts</button><button type="button" data-slides-panel="elements" role="tab" aria-selected="false">Elements</button><button type="button" data-slides-panel="diagrams" role="tab" aria-selected="false">Diagrams</button><button type="button" data-slides-panel="properties" role="tab" aria-selected="false">Properties</button></div>
         <section id="slides-panel-layouts" class="slides-tool-panel" data-slides-tool-panel="layouts"><h3>Layouts</h3><div id="slides-layouts" class="slides-layout-grid"></div></section>
-        <section id="slides-panel-elements" class="slides-tool-panel" data-slides-tool-panel="elements" hidden><h3>Elements</h3><div class="slides-element-grid"><button type="button" data-add-element="heading"><i data-lucide="heading" aria-hidden="true"></i>Heading</button><button type="button" data-add-element="body"><i data-lucide="type" aria-hidden="true"></i>Body text</button><button type="button" data-add-element="rectangle"><i data-lucide="square" aria-hidden="true"></i>Rectangle</button><button type="button" data-add-element="ellipse"><i data-lucide="circle" aria-hidden="true"></i>Ellipse</button><button type="button" data-add-element="image"><i data-lucide="image" aria-hidden="true"></i>Image</button></div><input id="slides-image-input" class="sr-only" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml"><h3>Layers</h3><div class="slides-layer-actions"><button type="button" data-layer-action="front">Bring forward</button><button type="button" data-layer-action="back">Send backward</button><button type="button" data-layer-action="duplicate">Duplicate</button><button type="button" data-layer-action="delete">Delete</button></div></section>
+        <section id="slides-panel-elements" class="slides-tool-panel" data-slides-tool-panel="elements" hidden><h3>Elements</h3><div class="slides-element-grid"><button type="button" data-add-element="heading"><i data-bp-icon="heading" aria-hidden="true"></i>Heading</button><button type="button" data-add-element="body"><i data-bp-icon="type" aria-hidden="true"></i>Body text</button><button type="button" data-add-element="rectangle"><i data-bp-icon="square" aria-hidden="true"></i>Rectangle</button><button type="button" data-add-element="ellipse"><i data-bp-icon="circle" aria-hidden="true"></i>Ellipse</button><button type="button" data-add-element="image"><i data-bp-icon="image" aria-hidden="true"></i>Image</button></div><input id="slides-image-input" class="sr-only" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml"><h3>Layers</h3><div class="slides-layer-actions"><button type="button" data-layer-action="front">Bring forward</button><button type="button" data-layer-action="back">Send backward</button><button type="button" data-layer-action="duplicate">Duplicate</button><button type="button" data-layer-action="delete">Delete</button></div></section>
         <section id="slides-panel-diagrams" class="slides-tool-panel" data-slides-tool-panel="diagrams" hidden><h3>Explorer diagrams</h3><div class="slides-diagram-filters"><input id="slides-diagram-search" type="search" placeholder="Search diagrams"><select id="slides-diagram-family"><option value="all">All families</option></select><select id="slides-diagram-audience"><option value="all">All audiences</option><option value="user">User</option><option value="administrator">Administrator</option></select><select id="slides-diagram-variant"><option value="all">All variants</option><option value="polished">Polished</option><option value="original">Original</option></select></div><button id="slides-insert-current-diagram" type="button" class="secondary-button">Insert current Explorer diagram</button><div id="slides-diagram-library" class="slides-diagram-library"></div></section>
         <section id="slides-panel-properties" class="slides-tool-panel" data-slides-tool-panel="properties" hidden><h3>Properties</h3><div id="slides-properties"><p class="slides-muted">Select an object to edit its properties.</p></div></section>
       </aside>
@@ -127,13 +140,13 @@
       </footer>
     </div>
     <aside id="slides-history" class="slides-history" aria-labelledby="slides-history-title" hidden>
-      <header><div><h2 id="slides-history-title">Version History</h2><p>Autosave updates the working copy. Versions are explicit checkpoints.</p></div><button id="slides-history-close" type="button" class="secondary-button" aria-label="Close history"><i data-lucide="x" aria-hidden="true"></i></button></header>
+      <header><div><h2 id="slides-history-title">Version History</h2><p>Autosave updates the working copy. Versions are explicit checkpoints.</p></div><button id="slides-history-close" type="button" class="secondary-button" aria-label="Close history"><i data-bp-icon="x" aria-hidden="true"></i></button></header>
       <div class="slides-history__branch-bar">
         <label for="slides-branch-select">Branch</label><select id="slides-branch-select"></select>
         <button id="slides-new-branch" type="button" class="secondary-button">New branch</button>
         <button id="slides-branch-menu" type="button" class="secondary-button">Rename / archive</button>
       </div>
-      <div class="slides-history__working"><span id="slides-working-indicator">Working copy matches branch head</span><button id="slides-create-version" type="button"><i data-lucide="git-commit-horizontal" aria-hidden="true"></i><span>Create Version</span></button></div>
+      <div class="slides-history__working"><span id="slides-working-indicator">Working copy matches branch head</span><button id="slides-create-version" type="button"><i data-bp-icon="git-commit-horizontal" aria-hidden="true"></i><span>Create Version</span></button></div>
       <div id="slides-history-status" class="slides-library__status" role="status" aria-live="polite"></div>
       <ol id="slides-version-list" class="slides-version-list"></ol>
     </aside>
@@ -152,7 +165,7 @@
         <div class="diagram-actions" aria-label="Diagram controls">
           <div id="sequence-label-control" class="segmented sequence-label-mode" role="group" aria-label="Sequence message detail" hidden><button id="sequence-label-simple" type="button" data-sequence-label-mode="simple" aria-pressed="true">Simple</button><button id="sequence-label-code" type="button" data-sequence-label-mode="code" aria-pressed="false">Code</button></div>
           <div id="workspace-mode-control" class="segmented workspace-mode" role="group" aria-label="Workspace mode"><button id="workspace-view" type="button" data-workspace-mode="view" aria-pressed="true">View</button><button id="workspace-edit" type="button" data-workspace-mode="edit" aria-pressed="false">Edit</button><button id="workspace-agent" type="button" data-workspace-mode="agent" aria-pressed="false">Agent</button></div>
-          <button id="cloud-diagram-library" type="button" class="secondary-button"><i data-lucide="cloud" aria-hidden="true"></i><span>Cloud</span></button><button id="cloud-diagram-new" type="button" class="secondary-button"><i data-lucide="file-plus-2" aria-hidden="true"></i><span>New</span></button><button id="cloud-diagram-save" type="button" class="secondary-button" hidden><i data-lucide="cloud-upload" aria-hidden="true"></i><span>Save to cloud</span></button><button id="cloud-diagram-version" type="button" class="secondary-button" hidden><i data-lucide="git-commit-horizontal" aria-hidden="true"></i><span>Version</span></button><button id="cloud-diagram-share" type="button" class="secondary-button" hidden><i data-lucide="user-plus" aria-hidden="true"></i><span>Share</span></button>
+          <button id="cloud-diagram-library" type="button" class="secondary-button"><i data-bp-icon="cloud" aria-hidden="true"></i><span>Cloud</span></button><button id="cloud-diagram-new" type="button" class="secondary-button"><i data-bp-icon="file-plus-2" aria-hidden="true"></i><span>New</span></button><button id="cloud-diagram-save" type="button" class="secondary-button" hidden><i data-bp-icon="cloud-upload" aria-hidden="true"></i><span>Save to cloud</span></button><button id="cloud-diagram-version" type="button" class="secondary-button" hidden><i data-bp-icon="git-commit-horizontal" aria-hidden="true"></i><span>Version</span></button><button id="cloud-diagram-share" type="button" class="secondary-button" hidden><i data-bp-icon="user-plus" aria-hidden="true"></i><span>Share</span></button>
           <button id="import-diagram" type="button" class="secondary-button">Import .drawio</button><button id="validate-diagram" type="button" class="secondary-button" hidden>Validate</button><button id="save-workspace-diagram" type="button" class="secondary-button" hidden>Save to workspace</button><button id="save-diagram" type="button" class="secondary-button" hidden>Save as</button>
           <input id="diagram-file-input" class="sr-only" type="file" accept=".drawio,.xml,application/xml,text/xml"><button id="open-reference" type="button" class="secondary-button">Reference asset</button>
           <div class="zoom-controls" aria-label="Diagram zoom"><button id="zoom-out" type="button" aria-label="Zoom out">−</button><button id="zoom-fit" type="button">Fit</button><button id="zoom-in" type="button" aria-label="Zoom in">+</button></div>
@@ -190,8 +203,8 @@
   <dialog id="reference-dialog" class="reference-dialog"><header><h2 id="reference-title">Reference asset</h2><button id="close-reference" type="button" aria-label="Close">×</button></header><div><img id="reference-image" alt=""></div></dialog>
   <dialog id="import-dialog" class="import-dialog"><header><div><h2 id="import-title">Review Draw.io import</h2><p id="import-subtitle">Choose the page and confirm or override its detected type.</p></div><button id="close-import" type="button" aria-label="Close">×</button></header><div id="import-file-summary" class="import-file-summary"></div><div id="import-pages" class="import-pages"></div><footer><button id="cancel-import" type="button" class="secondary-button">Cancel</button><button id="confirm-import" type="button">Open in editor</button></footer></dialog>
   <dialog id="runtime-dialog" class="runtime-dialog" aria-labelledby="runtime-title" aria-describedby="runtime-description"><header><div><h2 id="runtime-title">Start the local editor</h2><p id="runtime-subtitle">This copy is open in read-only file mode.</p></div><button id="close-runtime" type="button" aria-label="Close">×</button></header><div class="runtime-dialog-body"><p id="runtime-description">The embedded Draw.io editor needs a same-origin local HTTP server. All files remain on this computer.</p><ol><li id="runtime-step-launcher">Close this tab and double-click <code>Start-Explorer.cmd</code> in the Explorer folder.</li><li id="runtime-step-command">Or run this command in PowerShell:</li></ol><div class="runtime-command-row"><code id="runtime-command"></code><button id="copy-runtime-command" type="button" class="secondary-button">Copy command</button></div></div><footer><button id="dismiss-runtime" type="button" class="secondary-button">Close</button></footer></dialog>
-  <dialog id="cloud-diagram-dialog" class="cloud-diagram-dialog" aria-labelledby="cloud-diagram-title"><header><div><h2 id="cloud-diagram-title">Cloud diagrams</h2><p id="cloud-diagram-subtitle">Private diagrams and canonical PetaKerja references available to this account.</p></div><button id="cloud-diagram-close" type="button" aria-label="Close">×</button></header><div class="cloud-diagram-toolbar"><label><span class="sr-only">Search cloud diagrams</span><input id="cloud-diagram-search" type="search" placeholder="Search diagrams"></label><button id="cloud-diagram-refresh" type="button" class="secondary-button"><i data-lucide="refresh-cw" aria-hidden="true"></i><span>Refresh</span></button></div><div id="cloud-diagram-status" class="cloud-diagram-status" role="status" aria-live="polite"></div><div id="cloud-diagram-list" class="cloud-diagram-list"></div><footer><small>Edits are saved to this browser first, then synchronized to the private cloud workspace.</small><button id="cloud-diagram-close-footer" type="button" class="secondary-button">Close</button></footer></dialog>
+  <dialog id="cloud-diagram-dialog" class="cloud-diagram-dialog" aria-labelledby="cloud-diagram-title"><header><div><h2 id="cloud-diagram-title">Cloud diagrams</h2><p id="cloud-diagram-subtitle">Private diagrams and canonical PetaKerja references available to this account.</p></div><button id="cloud-diagram-close" type="button" aria-label="Close">×</button></header><div class="cloud-diagram-toolbar"><label><span class="sr-only">Search cloud diagrams</span><input id="cloud-diagram-search" type="search" placeholder="Search diagrams"></label><button id="cloud-diagram-refresh" type="button" class="secondary-button"><i data-bp-icon="refresh-cw" aria-hidden="true"></i><span>Refresh</span></button></div><div id="cloud-diagram-status" class="cloud-diagram-status" role="status" aria-live="polite"></div><div id="cloud-diagram-list" class="cloud-diagram-list"></div><footer><small>Edits are saved to this browser first, then synchronized to the private cloud workspace.</small><button id="cloud-diagram-close-footer" type="button" class="secondary-button">Close</button></footer></dialog>
   <p id="status-message" class="sr-only" aria-live="polite"></p>
-  <script src="runtime-config.js?v=20260717-1"></script><script src="architecture-data.js?v=20260716-1"></script><script src="translations.js?v=20260716-1"></script><script src="diagram-assets.js?v=20260715-16"></script><script src="learning-data.js?v=20260715-13"></script><script src="slides-data.js?v=20260716-1"></script><script src="auth-sequence-svg.js?v=20260714-3"></script><script src="auth-sequence-asset.js?v=20260714-4"></script><script src="vendor/drawio/js/deflate/pako.min.js?v=20260714-3"></script><script src="vendor/fabric/fabric.min.js?v=7.4.0"></script><script src="vendor/pptxgenjs/pptxgen.bundle.js?v=4.0.1"></script><script src="vendor/jszip/jszip.min.js?v=3.10.1"></script><script src="vendor/yjs/yjs.min.js?v=13.6.27"></script><script src="editor-core.js?v=20260717-8"></script><script src="openai-model-policy.js?v=20260714-1"></script><script src="agent-runtime.js?v=20260716-1"></script><script src="cloud-diagrams.js?v=20260717-1"></script><script src="vendor/lucide/lucide.min.js?v=1.24.0"></script><script src="app.js?v=20260717-4"></script><script src="learning.js?v=20260717-2"></script><script src="slides.js?v=20260717-3"></script>
+  <script src="runtime-config.js?v=20260717-1"></script><script src="architecture-data.js?v=20260716-1"></script><script src="translations.js?v=20260716-1"></script><script src="diagram-assets.js?v=20260715-16"></script><script src="learning-data.js?v=20260715-13"></script><script src="slides-data.js?v=20260716-1"></script><script src="auth-sequence-svg.js?v=20260714-3"></script><script src="auth-sequence-asset.js?v=20260714-4"></script><script src="vendor/drawio/js/deflate/pako.min.js?v=20260714-3"></script><script src="vendor/fabric/fabric.min.js?v=7.4.0"></script><script src="vendor/pptxgenjs/pptxgen.bundle.js?v=4.0.1"></script><script src="vendor/jszip/jszip.min.js?v=3.10.1"></script><script src="vendor/yjs/yjs.min.js?v=13.6.27"></script><script src="editor-core.js?v=20260717-8"></script><script src="openai-model-policy.js?v=20260714-1"></script><script src="agent-runtime.js?v=20260716-1"></script><script src="cloud-diagrams.js?v=20260717-1"></script><script src="vendor/blueprint-icons/blueprint-icons.js?v=20260718-1"></script><script src="app.js?v=20260718-2"></script><script src="learning.js?v=20260718-1"></script><script src="slides.js?v=20260718-1"></script>
 </body>
 </html>

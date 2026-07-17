@@ -600,8 +600,8 @@
     });
     el('slides-issue-count').textContent = String(issues.length);
     const results = el('slides-checker-results');
-    results.innerHTML = issues.length ? `<ul class="slides-check-list">${issues.map((issue) => `<li class="slides-check-item" data-severity="${issue.severity}"><i data-lucide="${issue.severity === 'error' ? 'circle-x' : 'triangle-alert'}" aria-hidden="true"></i><span>${escapeHTML(issue.text)}</span></li>`).join('')}</ul>` : '<p class="slides-check-item"><i data-lucide="circle-check" aria-hidden="true"></i><span>No presentation issues found.</span></p>';
-    window.lucide?.createIcons?.({ nodes: [results] });
+    results.innerHTML = issues.length ? `<ul class="slides-check-list">${issues.map((issue) => `<li class="slides-check-item" data-severity="${issue.severity}"><i data-bp-icon="${issue.severity === 'error' ? 'circle-x' : 'triangle-alert'}" aria-hidden="true"></i><span>${escapeHTML(issue.text)}</span></li>`).join('')}</ul>` : '<p class="slides-check-item"><i data-bp-icon="circle-check" aria-hidden="true"></i><span>No presentation issues found.</span></p>';
+    window.renderBlueprintIcons?.(results);
     return issues;
   }
 
@@ -1184,7 +1184,7 @@
       if (!state.canvas) { bindCanvas(); bindUI(); renderLayouts(); populateDiagramFamilies(); }
       const routeId = location.hash.match(/^#slides\/([^/?]+)/)?.[1];
       if (!routeId) {
-        translateSlidesUI(); showSlidesLibrary(); window.lucide?.createIcons?.({ nodes: [shell] }); return;
+        translateSlidesUI(); showSlidesLibrary(); window.renderBlueprintIcons?.(shell); return;
       }
       showSlidesEditor();
       let loaded = Boolean(state.deck && (state.cloudDeckId === decodeURIComponent(routeId) || state.deck.id === decodeURIComponent(routeId)));
@@ -1195,7 +1195,7 @@
       if (!loaded || !state.deck) state.deck = createDeck();
       translateSlidesUI();
       el('slides-title').value = state.deck.title; await loadSlide(state.deck.slides[0].id, { savePrevious: false }); renderDiagramLibrary(); validateDeck(); fitCanvasStage();
-      window.lucide?.createIcons?.({ nodes: [shell] });
+      window.renderBlueprintIcons?.(shell);
     } else {
       const routeId = location.hash.match(/^#slides\/([^/?]+)/)?.[1];
       if (!routeId) { showSlidesLibrary(); return; }

@@ -1,11 +1,17 @@
 # Third-party notices
 
-## Lucide
+## Palantir Blueprint icons and design reference
 
-The Explorer uses the locally bundled Lucide icon library, version 1.24.0, to
-render consistent SVG icons in the diagram navigation. No CDN or network call
-is required at runtime. Lucide is distributed under the ISC License; a copy is
-included at `licenses/LUCIDE_LICENSE.txt`.
+The Explorer bundles a purpose-built subset of 16px solid SVG paths derived
+from `@blueprintjs/icons`. The subset is rendered by the local vanilla
+`data-bp-icon` runtime; the Blueprint React component runtime is not bundled.
+The Explorer's dense spacing, typography, control sizing, neutral palette and
+interaction patterns are also informed by the Blueprint design system.
+
+Blueprint is distributed under the Apache License 2.0. A copy is included at
+`licenses/BLUEPRINT_LICENSE.txt`.
+
+Copyright 2014 Palantir Technologies, Inc.
 
 ## draw.io
 
@@ -25,7 +31,7 @@ The draw.io name and trademarks remain the property of their respective owner.
 The Explorer-specific Agent Mode adapts design patterns studied from the
 MIT-licensed Page Agent project, including reflection before action,
 activity/history events, bounded retries, cancellation and a visible simulator
-cursor. Its running-only canvas status glow is conceptually based on Page
+cursor. Its running-only canvas activity outline is conceptually based on Page
 Agent's `MotionOverlay`, but is independently implemented with local CSS. The
 Explorer does not bundle `ai-motion`, embed Page Agent's generic DOM-clicking
 interface or permit arbitrary JavaScript execution.

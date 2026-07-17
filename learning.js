@@ -30,7 +30,7 @@
   function chapterById(id) { return data.chapters.find((item) => item.id === id); }
   function activeTopic() { return topicById(state.topicId) || data.topics[0]; }
   function activeChapter() { return chapterById(state.chapterId) || data.chapters[0]; }
-  function icon(name) { return `<i data-lucide="${escapeAttr(name)}" aria-hidden="true"></i>`; }
+  function icon(name) { return `<i data-bp-icon="${escapeAttr(name)}" aria-hidden="true"></i>`; }
 
   function loadProgress() {
     try {
@@ -83,7 +83,7 @@
   }
 
   function announce(message) { els.live.textContent = ''; requestAnimationFrame(() => { els.live.textContent = message; }); }
-  function refreshIcons() { window.lucide?.createIcons?.({ attrs: { 'aria-hidden': 'true', focusable: 'false', 'stroke-width': '1.8' } }); }
+  function refreshIcons(root = els.shell) { window.renderBlueprintIcons?.(root); }
 
   function part(label, body) {
     return `<g class="notation-part" tabindex="0" role="button" data-learning-part="${escapeAttr(label)}" aria-label="${escapeAttr(label)}"><title>${escapeHTML(label)}</title>${body}</g>`;

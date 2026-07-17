@@ -144,7 +144,8 @@
 
   const els = {
     skip: byId('skip-link'), subtitle: byId('app-subtitle'), scope: byId('scope-filter'), diagramPicker: byId('diagram-picker'),
-    themeSelect: byId('theme-select'), themeLabel: byId('theme-label'),
+    themeSelect: byId('theme-select'), themeLabel: byId('theme-label'), themeValue: byId('theme-value'),
+    languageSelect: byId('language-select'), languageLabel: byId('language-label'), languageValue: byId('language-value'),
     search: byId('global-search'), searchLabel: byId('search-label'), searchResults: byId('search-results'), snapshot: byId('snapshot-status'),
     diagramNav: byId('diagram-nav'), navTitle: byId('nav-title'), navDescription: byId('nav-description'),
     diagramTitle: byId('diagram-title'), diagramDescription: byId('diagram-description'), diagramStatus: byId('diagram-status'),
@@ -195,6 +196,7 @@
     document.documentElement.style.colorScheme = nextEffective;
     document.querySelector('meta[name="color-scheme"]')?.setAttribute('content', 'light dark');
     if (els.themeSelect) els.themeSelect.value = nextPreference;
+    syncHeaderChoiceControls();
     if (options.persist !== false) storeThemePreference(nextPreference);
     if (options.syncEditor !== false && editorController) {
       if (diagramAgent?.running) {
@@ -302,6 +304,42 @@
     if (!select) return;
     const selected = select.selectedOptions?.[0];
     select.title = selected?.textContent?.trim() || select.getAttribute('aria-label') || '';
+  }
+
+  function syncHeaderChoiceControls() {
+    if (els.themeSelect) {
+      const themeLabels = { system: t('ui.themeSystem'), light: t('ui.themeLight'), dark: t('ui.themeDark') };
+      const preferenceLabel = themeLabels[state.themePreference] || themeLabels.system;
+      const effectiveLabel = themeLabels[state.effectiveTheme] || state.effectiveTheme;
+      const themeTooltip = state.themePreference === 'system'
+        ? `${t('ui.theme')}: ${preferenceLabel} (${effectiveLabel})`
+        : `${t('ui.theme')}: ${preferenceLabel}`;
+      els.themeSelect.value = state.themePreference;
+      els.themeSelect.setAttribute('aria-label', themeTooltip);
+      els.themeSelect.title = themeTooltip;
+      els.themeSelect.closest('.header-choice-control')?.setAttribute('title', themeTooltip);
+      if (els.themeValue) els.themeValue.textContent = preferenceLabel;
+    }
+    if (els.languageSelect) {
+      const compactLanguage = state.language === 'ms' ? 'BM' : 'EN';
+      const languageName = state.language === 'ms' ? 'Bahasa Melayu' : 'English';
+      const languageTooltip = `${t('ui.language')}: ${languageName}`;
+      els.languageSelect.value = state.language;
+      els.languageSelect.setAttribute('aria-label', languageTooltip);
+      els.languageSelect.title = languageTooltip;
+      els.languageSelect.closest('.header-choice-control')?.setAttribute('title', languageTooltip);
+      if (els.languageValue) els.languageValue.textContent = compactLanguage;
+    }
+  }
+
+  function applyLanguagePreference(language) {
+    const nextLanguage = language === 'ms' ? 'ms' : 'en';
+    state.language = nextLanguage;
+    state.fitMode = true;
+    editorController?.setLanguage(nextLanguage);
+    cloudManager?.applyLanguage();
+    renderAll();
+    window.dispatchEvent(new CustomEvent('petakerja:languagechange', { detail: { language: nextLanguage } }));
   }
   function categoryLabel(category) { return state.language === 'en' ? translations.en.categories[category] || category : category; }
   function viewText(view) { const x = state.language === 'en' && translations.en.views[view.id]; return x ? { label: x[0], description: x[1] } : view; }
@@ -530,7 +568,7 @@
       const text = options.text || diagramText(diagram);
       const icon = options.icon || (diagram.variantKind === 'polished' ? 'sparkles' : diagram.variantKind === 'original' ? 'history' : DIAGRAM_ICONS[diagram.id]) || 'file-question-mark';
       const meta = options.meta || labelStatus(diagram.status);
-      return `<button class="nav-item${options.variant ? ' nav-item--variant' : ''}${diagram.id === state.diagramId ? ' is-active' : ''}" type="button" data-diagram="${diagram.id}" aria-current="${diagram.id === state.diagramId ? 'page' : 'false'}"><span class="nav-item__icon" aria-hidden="true"><i data-lucide="${icon}"></i></span><span class="nav-item__copy"><span class="nav-item__title">${escapeHTML(text.title)}</span><small>${escapeHTML(meta)}</small></span></button>`;
+      return `<button class="nav-item${options.variant ? ' nav-item--variant' : ''}${diagram.id === state.diagramId ? ' is-active' : ''}" type="button" data-diagram="${diagram.id}" aria-current="${diagram.id === state.diagramId ? 'page' : 'false'}"><span class="nav-item__icon" aria-hidden="true"><i data-bp-icon="${icon}"></i></span><span class="nav-item__copy"><span class="nav-item__title">${escapeHTML(text.title)}</span><small>${escapeHTML(meta)}</small></span></button>`;
     };
     const variantFolder = (familyKey, diagrams) => {
       const ordered = [...diagrams].sort((a, b) => (a.variantOrder || 99) - (b.variantOrder || 99));
@@ -539,7 +577,7 @@
       const active = ordered.some((item) => item.id === state.diagramId);
       if (active) state.diagramVariantFolders[familyKey] = true;
       const open = state.diagramVariantFolders[familyKey] === true;
-      return `<details class="nav-variant-group" data-diagram-variant-family="${escapeHTML(familyKey)}"${open ? ' open' : ''}><summary><span class="nav-variant-group__icon" aria-hidden="true"><i data-lucide="folder"></i></span><span>${escapeHTML(title)}</span><i class="nav-variant-group__chevron" data-lucide="chevron-right" aria-hidden="true"></i></summary><div class="nav-variant-group__items">${ordered.map((diagram) => diagramButton(diagram, {
+      return `<details class="nav-variant-group" data-diagram-variant-family="${escapeHTML(familyKey)}"${open ? ' open' : ''}><summary><span class="nav-variant-group__icon" aria-hidden="true"><i data-bp-icon="folder"></i></span><span>${escapeHTML(title)}</span><i class="nav-variant-group__chevron" data-bp-icon="chevron-right" aria-hidden="true"></i></summary><div class="nav-variant-group__items">${ordered.map((diagram) => diagramButton(diagram, {
         variant: true,
         text: { title: diagram.variantKind === 'polished' ? t('ui.variantPolished') : t('ui.variantOriginal') },
         meta: diagram.variantKind === 'polished' ? t('ui.variantRecommended') : t('ui.variantReference'),
@@ -564,7 +602,7 @@
     const audienceGroup = (family, audience, diagrams, icon, open) => {
       const labelKey = family === 'flowchart' ? `ui.flowchart${audience === 'user' ? 'User' : 'Administrator'}` : `ui.sequence${audience === 'user' ? 'User' : 'Administrator'}`;
       const emptyKey = family === 'flowchart' ? 'ui.flowchartEmpty' : 'ui.sequenceEmpty';
-      return `<details class="nav-subgroup" data-nav-family="${family}" data-nav-audience="${audience}"${open ? ' open' : ''}><summary><span class="nav-subgroup__icon" aria-hidden="true"><i data-lucide="${icon}"></i></span><span>${escapeHTML(t(labelKey))}</span><i class="nav-subgroup__chevron" data-lucide="chevron-right" aria-hidden="true"></i></summary><div class="nav-subgroup__items">${diagrams.length ? audienceItems(family, audience, diagrams) : `<p class="nav-subgroup__empty">${escapeHTML(t(emptyKey))}</p>`}</div></details>`;
+      return `<details class="nav-subgroup" data-nav-family="${family}" data-nav-audience="${audience}"${open ? ' open' : ''}><summary><span class="nav-subgroup__icon" aria-hidden="true"><i data-bp-icon="${icon}"></i></span><span>${escapeHTML(t(labelKey))}</span><i class="nav-subgroup__chevron" data-bp-icon="chevron-right" aria-hidden="true"></i></summary><div class="nav-subgroup__items">${diagrams.length ? audienceItems(family, audience, diagrams) : `<p class="nav-subgroup__empty">${escapeHTML(t(emptyKey))}</p>`}</div></details>`;
     };
     els.diagramNav.innerHTML = categories.map((category) => {
       const categoryDiagrams = visible.filter((diagram) => diagram.category === category);
@@ -579,7 +617,7 @@
       const active = categoryDiagrams.find((diagram) => diagram.id === state.diagramId);
       if (active?.[audienceField] === 'administrator') folderState.administrator = true;
       else if (active) folderState.user = true;
-      const categoryIcon = isFlowchart ? '<i data-lucide="workflow" aria-hidden="true"></i>' : '';
+      const categoryIcon = isFlowchart ? '<i data-bp-icon="workflow" aria-hidden="true"></i>' : '';
       return `<section class="nav-group nav-group--sequence nav-group--${family}"><h2>${categoryIcon}${escapeHTML(categoryLabel(category))}</h2>${audienceGroup(family, 'user', userDiagrams, 'user-round', folderState.user)}${audienceGroup(family, 'administrator', administratorDiagrams, 'shield-user', folderState.administrator)}</section>`;
     }).join('');
     els.diagramNav.querySelectorAll('.nav-subgroup').forEach((folder) => folder.addEventListener('toggle', () => {
@@ -592,11 +630,7 @@
       state.diagramVariantFolders[folder.dataset.diagramVariantFamily] = folder.open;
       storeDiagramVariantFolders(state.diagramVariantFolders);
     }));
-    if (window.lucide?.createIcons) {
-      window.lucide.createIcons({
-        attrs: { 'aria-hidden': 'true', focusable: 'false', 'stroke-width': '1.8' },
-      });
-    }
+    window.renderBlueprintIcons?.(els.diagramNav);
     els.diagramPicker.innerHTML = visible.map((diagram) => `<option value="${diagram.id}">${escapeHTML(diagramText(diagram).title)}</option>`).join('');
     els.diagramPicker.value = state.diagramId;
     syncSelectTitle(els.diagramPicker);
@@ -618,11 +652,11 @@
     els.mapMode.textContent = t('ui.map'); els.mapMode.dataset.short = state.language === 'en' ? 'Map' : 'Peta';
     els.actualMode.title = t('ui.actual'); els.mapMode.title = t('ui.map');
     els.themeLabel.textContent = t('ui.theme');
-    els.themeSelect.setAttribute('aria-label', t('ui.theme'));
+    els.languageLabel.textContent = t('ui.language');
     const themeLabels = { system: t('ui.themeSystem'), light: t('ui.themeLight'), dark: t('ui.themeDark') };
     [...els.themeSelect.options].forEach((option) => { option.textContent = themeLabels[option.value] || option.value; });
     els.themeSelect.value = state.themePreference;
-    syncSelectTitle(els.themeSelect);
+    syncHeaderChoiceControls();
     els.navTitle.textContent = t('ui.diagrams'); els.navDescription.textContent = t('ui.chooseView');
     byId('legend-title').textContent = state.language === 'en' ? 'Content status' : 'Status kandungan';
     byId('legend-current').textContent = labelStatus('current'); byId('legend-concept').textContent = labelStatus('concept'); byId('legend-legacy').textContent = labelStatus('legacy');
@@ -668,7 +702,6 @@
     if (state.agentProviderStatus) renderAgentProviderStatus(state.agentProviderStatus);
     const runtime = editorController?.available ? 'HTTP · editor' : 'file:// · read-only';
     els.snapshot.textContent = `73 ${state.language === 'en' ? 'tables' : 'jadual'} · 86 FK · ${runtime}`;
-    document.querySelectorAll('[data-language]').forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.language === state.language)));
     document.querySelectorAll('[data-mobile-panel]').forEach((button) => {
       button.textContent = button.dataset.mobilePanel === 'diagram' ? t('ui.diagram') : button.dataset.mobilePanel === 'ui' ? t('ui.uiTab') : t('ui.detailsTab');
     });
@@ -1970,10 +2003,7 @@
     editorController.setSequenceLabelMode(state.sequenceLabelMode);
     renderDiagram(); renderDetails();
   });
-  document.querySelectorAll('[data-language]').forEach((button) => button.addEventListener('click', () => {
-    state.language = button.dataset.language; state.fitMode = true; editorController.setLanguage(state.language); cloudManager?.applyLanguage(); renderAll();
-    window.dispatchEvent(new CustomEvent('petakerja:languagechange', { detail: { language: state.language } }));
-  }));
+  els.languageSelect.addEventListener('change', () => applyLanguagePreference(els.languageSelect.value));
   els.themeSelect.addEventListener('change', () => applyThemePreference(els.themeSelect.value, { announce: true }));
   systemThemeQuery?.addEventListener?.('change', () => {
     if (state.themePreference === 'system') applyThemePreference('system', { persist: false, syncEditor: false });
@@ -2177,6 +2207,7 @@
 
   applyThemePreference(state.themePreference, { persist: false, syncEditor: false });
   renderAll();
+  window.renderBlueprintIcons?.(document);
   ensureWorkspaceSession().then(() => hydrateWorkspaceDocument(state.diagramId));
   setAgentState('idle');
   renderAgentPlan(null);

@@ -2,7 +2,7 @@
 
 Offline-first architecture documentation built with vanilla HTML, CSS and JavaScript. The actual Draw.io page is the default view, with the generated interactive map available as a second mode. English is the default for a browser with no saved preference; an explicit BM or EN choice remains stored in `localStorage`.
 
-The diagram sidebar uses a locally bundled Lucide SVG icon set. Icons are decorative and keep each button's complete bilingual accessible name; the Explorer makes no CDN or runtime network request for them.
+The native Explorer shell uses a locally bundled Blueprint-derived 16px solid SVG icon subset. Icons keep each control's complete bilingual accessible name, and the Explorer makes no CDN or runtime network request for them.
 
 Dokumentasi seni bina offline-first yang dibina dengan vanilla HTML, CSS dan JavaScript. Rajah Draw.io sebenar ialah paparan lalai, manakala peta interaktif yang dijana kekal sebagai mod kedua. English ialah bahasa lalai bagi browser tanpa pilihan tersimpan; pilihan BM atau EN yang dibuat pengguna terus disimpan dalam `localStorage`.
 
@@ -136,9 +136,9 @@ node .\scripts\test-workspace-host.mjs
 7. Review the operation count, affected keys and warnings, then choose **Run plan**.
 8. Each operation focuses or creates its target in Draw.io, refreshes validation and appears in the activity log. **Stop** preserves completed work; **Revert run** restores the pre-run XML snapshot.
 
-While operations are being applied, a restrained blue, violet and pink perimeter glow surrounds only the Draw.io canvas. It remains visible while a safe stop is finishing, then fades when the run completes, stops or fails. Reduced-motion mode replaces the pulse with a static status outline. This behavior is inspired by Page Agent's running-only `MotionOverlay`, but is implemented locally with dependency-free CSS and does not bundle `ai-motion`.
+While operations are being applied, a solid 2px activity outline surrounds only the Draw.io canvas. It remains visible while a safe stop is finishing, then clears when the run completes, stops or fails. The same state is announced through the Agent status region, so activity is never communicated by colour alone. This behavior is inspired by Page Agent's running-only `MotionOverlay`, but is implemented locally with dependency-free CSS and does not bundle `ai-motion`.
 
-Run the dependency-free glow regression check with `node .\scripts\test-agent-glow.mjs`.
+Run the dependency-free activity regression check with `node .\scripts\test-agent-activity.mjs`.
 
 Allowed operations are `createPage`, `createComponent`, `updateComponent`, `moveResize`, `connect`, `delete` and `applyLayout`. Native sequence support includes lifelines, actor/boundary/control/entity/object participants, activation bars, combined fragments, synchronous/asynchronous/return/self messages, and sequence layout. The runtime rejects generic clicks, navigation and arbitrary JavaScript. Credentials exist only in page memory, are redacted from activity messages and disappear on reload.
 
