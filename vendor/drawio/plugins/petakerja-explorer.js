@@ -27,7 +27,8 @@ Draw.loadPlugin(function(editorUi)
 		post({
 			event: 'petakerja-selection',
 			cellIds: graph.getSelectionCells().map(function(cell) { return cell.id; }),
-			pageId: currentPageId()
+			pageId: currentPageId(),
+			scale: graph.view.scale
 		});
 	}
 
@@ -113,6 +114,26 @@ Draw.loadPlugin(function(editorUi)
 				postSelection();
 				break;
 			}
+		}
+	}
+
+	function restoreView(data)
+	{
+		if (data.pageId != null)
+		{
+			focusPage(data.pageId);
+		}
+
+		var scale = Number(data.scale);
+
+		if (isFinite(scale) && scale > 0)
+		{
+			graph.zoomTo(scale, false);
+		}
+
+		if (data.cellId != null)
+		{
+			focusCell(data.cellId);
 		}
 	}
 
@@ -448,6 +469,10 @@ Draw.loadPlugin(function(editorUi)
 		{
 			focusPage(data.pageId);
 		}
+		else if (data.action == 'petakerja-restore-view')
+		{
+			restoreView(data);
+		}
 		else if (data.action == 'petakerja-validation')
 		{
 			applyIssues(data.issues || []);
@@ -460,7 +485,12 @@ Draw.loadPlugin(function(editorUi)
 		else if (data.action == 'petakerja-prepare-reload')
 		{
 			if (graph.isEditing()) graph.stopEditing(false);
-			post({event: 'petakerja-reload-ready', xml: editorUi.getFileData(true), pageId: currentPageId()});
+			post({
+				event: 'petakerja-reload-ready',
+				xml: editorUi.getFileData(true),
+				pageId: currentPageId(),
+				scale: graph.view.scale
+			});
 		}
 		else if (data.action == 'petakerja-apply-operation')
 		{

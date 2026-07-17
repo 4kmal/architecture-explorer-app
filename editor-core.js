@@ -8,9 +8,9 @@
     'domain-original': { url: 'assets/editor/class-domain-petakerja-original.drawio?v=20260715-3', pageId: 'petakerja_domain', filename: 'Class Diagram PetaKerja.drawio' },
     implementation: { url: 'assets/editor/class-diagram-petakerja.drawio', pageId: 'petakerja_implementation', filename: 'Kebergantungan Kelas PetaKerja.drawio' },
     supabase: { url: 'assets/editor/class-diagram-petakerja.drawio', pageId: 'petakerja_supabase', filename: 'Peta Entiti Supabase PetaKerja.drawio' },
-    sequence: { url: 'assets/editor/sequence-job-search.drawio', pageId: 'petakerja_job_search_sequence', filename: 'Sequence Diagram PetaKerja - Search Jobs.drawio' },
+    sequence: { url: 'assets/editor/sequence-job-search.drawio?v=20260717-1', pageId: 'petakerja_job_search_sequence', filename: 'Sequence Diagram PetaKerja - Search Jobs.drawio' },
     'auth-sequence': { url: 'assets/editor/auth-sequence.drawio', pageId: 'petakerja_auth_sequence', filename: 'Sequence Diagram - PetaKerja User Login Logout.drawio' },
-    'google-oauth-sequence': { url: 'assets/editor/sequence-google-oauth.drawio', pageId: 'petakerja_google_oauth_sequence', filename: 'Sequence Diagram PetaKerja - Sign in Google OAuth.drawio' },
+    'google-oauth-sequence': { url: 'assets/editor/sequence-google-oauth.drawio?v=20260717-1', pageId: 'petakerja_google_oauth_sequence', filename: 'Sequence Diagram PetaKerja - Sign in Google OAuth.drawio' },
     'user-google-sign-in-flowchart': { url: 'assets/editor/flowchart-user-google-sign-in.drawio?v=20260715-3', pageId: 'petakerja_flow_google_sign_in', filename: 'Flow Chart PetaKerja - Sign in with Google - Polished.drawio' },
     'user-google-sign-in-flowchart-original': { url: 'assets/editor/flowchart-user-google-sign-in-original.drawio?v=20260715-3', pageId: 'petakerja_flow_google_sign_in', filename: 'Flow Chart PetaKerja - Sign in with Google.drawio' },
     'user-search-jobs-flowchart': { url: 'assets/editor/flowchart-user-search-jobs.drawio?v=20260715-1', pageId: 'petakerja_flow_user_search_jobs', filename: 'Flow Chart PetaKerja - Search Jobs - Polished.drawio' },
@@ -34,8 +34,8 @@
     'admin-access-dashboard-sequence': { url: 'assets/editor/sequence-admin-access-dashboard.drawio', pageId: 'petakerja_admin_access_dashboard_sequence', filename: 'Sequence Diagram PetaKerja - Access Administrator Dashboard.drawio' },
     'admin-monitor-activity-sequence': { url: 'assets/editor/sequence-admin-monitor-activity.drawio', pageId: 'petakerja_admin_monitor_activity_sequence', filename: 'Sequence Diagram PetaKerja - Monitor System Activity Logs.drawio' },
     'admin-sign-out-sequence': { url: 'assets/editor/sequence-admin-sign-out.drawio', pageId: 'petakerja_administrator_sign_out_sequence', filename: 'Sequence Diagram PetaKerja - Administrator Sign Out.drawio' },
-    'user-explore-3d-map-sequence': { url: 'assets/editor/sequence-user-explore-3d-map.drawio', pageId: 'petakerja_user_explore_3d_map_sequence', filename: 'Sequence Diagram PetaKerja - Explore the 3D Map.drawio' },
-    'user-sign-out-sequence': { url: 'assets/editor/sequence-user-sign-out.drawio', pageId: 'petakerja_user_sign_out_sequence', filename: 'Sequence Diagram PetaKerja - User Sign Out.drawio' },
+    'user-explore-3d-map-sequence': { url: 'assets/editor/sequence-user-explore-3d-map.drawio?v=20260717-1', pageId: 'petakerja_user_explore_3d_map_sequence', filename: 'Sequence Diagram PetaKerja - Explore the 3D Map.drawio' },
+    'user-sign-out-sequence': { url: 'assets/editor/sequence-user-sign-out.drawio?v=20260717-1', pageId: 'petakerja_user_sign_out_sequence', filename: 'Sequence Diagram PetaKerja - User Sign Out.drawio' },
     architecture: { url: 'assets/editor/architecture-layered.drawio?v=20260715-1', pageId: 'petakerja_layered_architecture', filename: 'PetaKerja Layered Architecture - Polished.drawio' },
     'architecture-original': { url: 'assets/editor/architecture-layered-original.drawio?v=20260715-1', pageId: 'petakerja_layered_architecture', filename: 'PetaKerja Layered Architecture - Original.drawio' },
     modules: { url: 'assets/editor/module-hierarchy.drawio?v=20260715-1', pageId: 'petakerja_module_hierarchy', filename: 'PetaKerja Module Hierarchy - Polished.drawio' },
@@ -670,6 +670,116 @@
     return serializer.serializeToString(documentNode);
   }
 
+  const PROJECTION_LANGUAGE_ATTR = 'petakerjaProjectionLanguage';
+  const PROJECTION_LABEL_MODE_ATTR = 'petakerjaSequenceLabelMode';
+
+  function validLanguage(value, fallback = 'en') { return value === 'ms' ? 'ms' : value === 'en' ? 'en' : fallback; }
+  function validSequenceLabelMode(value, fallback = 'simple') { return value === 'code' ? 'code' : value === 'simple' ? 'simple' : fallback; }
+
+  function projectedMessageField(language, labelMode) {
+    const prefix = validSequenceLabelMode(labelMode) === 'code' ? 'code' : 'simple';
+    return `${prefix}Label${validLanguage(language) === 'ms' ? 'Ms' : 'En'}`;
+  }
+
+  function isBilingualWrapper(wrapper) {
+    return wrapper?.hasAttribute('labelEn') || wrapper?.hasAttribute('labelMs')
+      || wrapper?.hasAttribute('simpleLabelEn') || wrapper?.hasAttribute('simpleLabelMs');
+  }
+
+  function hasBilingualMetadata(documentNode) {
+    return [...documentNode.querySelectorAll('object')].some(isBilingualWrapper);
+  }
+
+  function projectLocalizedXML(xml, language = 'en', labelMode = 'simple') {
+    const documentNode = normaliseDocument(xml);
+    if (!hasBilingualMetadata(documentNode)) return serializer.serializeToString(documentNode);
+    const activeLanguage = validLanguage(language);
+    const activeMode = validSequenceLabelMode(labelMode);
+    documentNode.documentElement.setAttribute(PROJECTION_LANGUAGE_ATTR, activeLanguage);
+    documentNode.documentElement.setAttribute(PROJECTION_LABEL_MODE_ATTR, activeMode);
+    [...documentNode.querySelectorAll('object')].forEach((wrapper) => {
+      if (!isBilingualWrapper(wrapper)) return;
+      const messageField = projectedMessageField(activeLanguage, activeMode);
+      const genericField = activeLanguage === 'ms' ? 'labelMs' : 'labelEn';
+      const visible = wrapper.getAttribute(messageField) ?? wrapper.getAttribute(genericField);
+      if (visible != null) wrapper.setAttribute('label', visible);
+    });
+    return serializer.serializeToString(documentNode);
+  }
+
+  function canonicalizeLocalizedXML(xml, options = {}) {
+    const documentNode = normaliseDocument(xml);
+    const root = documentNode.documentElement;
+    const bilingual = hasBilingualMetadata(documentNode);
+    const language = validLanguage(root.getAttribute(PROJECTION_LANGUAGE_ATTR), validLanguage(options.fallbackLanguage || 'en'));
+    const labelMode = validSequenceLabelMode(
+      root.getAttribute(PROJECTION_LABEL_MODE_ATTR),
+      validSequenceLabelMode(options.fallbackLabelMode || 'simple'),
+    );
+    let translationChanged = false;
+    if (bilingual) {
+      [...documentNode.querySelectorAll('object')].forEach((wrapper) => {
+        if (!isBilingualWrapper(wrapper)) return;
+        const isMessage = wrapper.hasAttribute('simpleLabelEn') || wrapper.hasAttribute('codeLabelEn');
+        const activeField = isMessage
+          ? projectedMessageField(language, labelMode)
+          : (language === 'ms' ? 'labelMs' : 'labelEn');
+        const visible = wrapper.getAttribute('label');
+        const expected = wrapper.getAttribute(activeField);
+        if (options.captureEdits !== false && visible != null && expected != null && visible !== expected) {
+          wrapper.setAttribute(activeField, visible);
+          translationChanged = true;
+        }
+        const canonicalLabel = isMessage
+          ? (wrapper.getAttribute('simpleLabelEn') ?? wrapper.getAttribute('codeLabelEn'))
+          : wrapper.getAttribute('labelEn');
+        if (canonicalLabel != null) wrapper.setAttribute('label', canonicalLabel);
+      });
+    }
+    root.removeAttribute(PROJECTION_LANGUAGE_ATTR);
+    root.removeAttribute(PROJECTION_LABEL_MODE_ATTR);
+    return {
+      xml: serializer.serializeToString(documentNode), bilingual, language, labelMode, translationChanged,
+    };
+  }
+
+  function canonicalDocumentFingerprint(xml) {
+    const documentNode = normaliseDocument(xml);
+    // Draw.io rewrites host/version metadata, XML whitespace and attribute order
+    // when a document is loaded, even when the user changed nothing. Those
+    // serialization details must not turn a language projection into a content
+    // edit or a cloud revision.
+    [...documentNode.documentElement.attributes].forEach((attribute) => {
+      documentNode.documentElement.removeAttribute(attribute.name);
+    });
+    documentNode.querySelectorAll('mxGraphModel').forEach((model) => {
+      // Draw.io derives these from the current editor viewport, not from the
+      // diagram's page or cell geometry.
+      model.removeAttribute('dx');
+      model.removeAttribute('dy');
+    });
+    documentNode.querySelectorAll('mxGeometry').forEach((geometry) => {
+      // Draw.io omits explicit zero origins when it serializes a loaded cell.
+      // Missing x/y and x="0"/y="0" are the same mxGeometry value.
+      if (Number(geometry.getAttribute('x')) === 0) geometry.removeAttribute('x');
+      if (Number(geometry.getAttribute('y')) === 0) geometry.removeAttribute('y');
+    });
+    [...documentNode.querySelectorAll('*')].forEach((element) => {
+      const attributes = [...element.attributes]
+        .map((attribute) => [attribute.name, attribute.value])
+        .sort(([left], [right]) => left.localeCompare(right));
+      [...element.attributes].forEach((attribute) => element.removeAttribute(attribute.name));
+      attributes.forEach(([name, value]) => element.setAttribute(name, value));
+    });
+    const walker = document.createTreeWalker(documentNode, NodeFilter.SHOW_TEXT);
+    const whitespace = [];
+    while (walker.nextNode()) {
+      if (!walker.currentNode.nodeValue?.trim()) whitespace.push(walker.currentNode);
+    }
+    whitespace.forEach((node) => node.remove());
+    return serializer.serializeToString(documentNode);
+  }
+
   function localizedIssue(entry, language) { return entry.message?.[language] || entry.message?.ms || entry.ruleId; }
 
   class EditorController {
@@ -680,6 +790,7 @@
       this.translations = options.translations;
       this.manifests = buildCanonicalManifests(this.data, this.assets, this.translations);
       this.language = options.language || 'en';
+      this.sequenceLabelMode = validSequenceLabelMode(options.sequenceLabelMode || 'simple');
       this.themePreference = ['light', 'dark', 'system'].includes(options.themePreference) ? options.themePreference : 'system';
       this.callbacks = options.callbacks || {};
       this.workingXml = '';
@@ -696,7 +807,9 @@
       this.reloadRequest = null;
       this.operationRequests = new Map();
       this.selectedCellIds = [];
+      this.editorScale = null;
       this.lastLogicFingerprint = null;
+      this.lastDocumentFingerprint = null;
       this.boundMessage = (event) => this.onMessage(event);
       window.addEventListener('message', this.boundMessage);
     }
@@ -751,7 +864,10 @@
     }
 
     openXML(xml, options = {}) {
-      const analysis = analyseXML(xml, this.manifests, { diagramHint: options.diagramHint, pageId: options.pageId });
+      const localized = canonicalizeLocalizedXML(xml, {
+        fallbackLanguage: 'en', fallbackLabelMode: 'simple', captureEdits: true,
+      });
+      const analysis = analyseXML(localized.xml, this.manifests, { diagramHint: options.diagramHint, pageId: options.pageId });
       if (analysis.fatal) return analysis;
       this.analysis = analysis;
       this.workingXml = analysis.xml;
@@ -761,6 +877,7 @@
         ? options.pageId : (analysis.selectedPage?.id || null);
       this.dirty = Boolean(options.dirty);
       this.lastLogicFingerprint = analysis.selectedPage?.logicFingerprint || null;
+      this.lastDocumentFingerprint = canonicalDocumentFingerprint(this.workingXml);
       this.pendingLoad = true;
       this.startFrame();
       this.callbacks.onAnalysis?.(analysis, { changeKind: 'load' });
@@ -773,8 +890,31 @@
 
     loadIntoEditor() {
       if (!this.ready || !this.workingXml) return;
-      this.post({ action: 'load', xml: this.workingXml, autosave: 1, modified: '0', saveAndExit: 0, noSaveBtn: 1 });
+      const visibleXml = projectLocalizedXML(this.workingXml, this.language, this.sequenceLabelMode);
+      this.post({ action: 'load', xml: visibleXml, autosave: 1, modified: '0', saveAndExit: 0, noSaveBtn: 1 });
       this.pendingLoad = false;
+    }
+
+    captureWorkingXML(xml, options = {}) {
+      if (!xml) return false;
+      const localized = canonicalizeLocalizedXML(xml, {
+        fallbackLanguage: this.language,
+        fallbackLabelMode: this.sequenceLabelMode,
+        captureEdits: options.captureEdits !== false,
+      });
+      const nextFingerprint = canonicalDocumentFingerprint(localized.xml);
+      const previousFingerprint = this.lastDocumentFingerprint || canonicalDocumentFingerprint(this.workingXml);
+      const changed = nextFingerprint !== previousFingerprint;
+      this.workingXml = localized.xml;
+      this.lastDocumentFingerprint = nextFingerprint;
+      if (!changed) return false;
+      if (options.markDirty !== false) {
+        this.dirty = true;
+        this.callbacks.onDirtyChange?.(true);
+      }
+      this.scheduleValidation();
+      this.callbacks.onWorkingDocument?.(this.documentSnapshot());
+      return true;
     }
 
     post(message) {
@@ -783,8 +923,12 @@
     }
 
     restoreEditorFocus() {
-      if (this.pageId) this.post({ action: 'petakerja-focus-page', pageId: this.pageId });
-      if (this.selectedCellIds[0]) this.post({ action: 'petakerja-focus-cell', cellId: this.selectedCellIds[0] });
+      this.post({
+        action: 'petakerja-restore-view',
+        pageId: this.pageId,
+        cellId: this.selectedCellIds[0] || null,
+        scale: this.editorScale,
+      });
     }
 
     onMessage(event) {
@@ -803,18 +947,12 @@
         this.restoreEditorFocus();
         this.sendIssues();
       } else if (message.event === 'autosave' || message.event === 'save') {
-        if (message.xml) {
-          this.workingXml = message.xml;
-          this.dirty = true;
-          this.scheduleValidation();
-          this.callbacks.onDirtyChange?.(true);
-          this.callbacks.onWorkingDocument?.(this.documentSnapshot());
-        }
+        if (message.xml) this.captureWorkingXML(message.xml);
         if (message.event === 'save') this.saveAs();
       } else if (message.event === 'export') {
         if (message.xml) {
-          this.workingXml = message.xml;
-          this.validateNow();
+          this.captureWorkingXML(message.xml);
+          this.validateNow({ notifyDocument: false });
         }
         if (this.exportRequest) {
           const request = this.exportRequest;
@@ -833,10 +971,10 @@
         if (!request) return;
         this.reloadRequest = null;
         window.clearTimeout(request.timer);
-        if (message.xml) this.workingXml = message.xml;
+        if (message.xml) this.captureWorkingXML(message.xml);
         if (message.pageId) this.pageId = message.pageId;
-        this.callbacks.onWorkingDocument?.(this.documentSnapshot());
-        this.startFrame(true);
+        if (Number.isFinite(Number(message.scale)) && Number(message.scale) > 0) this.editorScale = Number(message.scale);
+        if (request.reload) this.startFrame(true);
         request.resolve();
       } else if (message.event === 'petakerja-operation-result') {
         const request = this.operationRequests.get(message.requestId);
@@ -844,7 +982,7 @@
           this.operationRequests.delete(message.requestId);
           window.clearTimeout(request.timer);
           if (message.ok) {
-            if (message.xml) this.workingXml = message.xml;
+            if (message.xml) this.captureWorkingXML(message.xml);
             if (request.operation?.type === 'createPage' && message.pageId) {
               this.pageId = message.pageId;
               this.diagramId = request.operation.diagramType || null;
@@ -858,6 +996,7 @@
         this.restoreEditorFocus();
         this.sendIssues();
       } else if (message.event === 'petakerja-selection') {
+        if (Number.isFinite(Number(message.scale)) && Number(message.scale) > 0) this.editorScale = Number(message.scale);
         const page = this.analysis?.pages.find((item) => item.id === (message.pageId || this.pageId)) || this.analysis?.selectedPage;
         const selectedIds = message.cellIds || [];
         this.selectedCellIds = selectedIds.slice();
@@ -884,7 +1023,7 @@
       this.validationTimer = window.setTimeout(() => this.validateNow(), 300);
     }
 
-    validateNow() {
+    validateNow(options = {}) {
       const previous = this.analysis?.selectedPage;
       const analysis = analyseXML(this.workingXml, this.manifests, { diagramHint: this.diagramId, pageId: this.pageId });
       const current = analysis.selectedPage;
@@ -894,7 +1033,7 @@
       this.workingXml = analysis.xml;
       this.lastLogicFingerprint = current?.logicFingerprint || null;
       this.callbacks.onAnalysis?.(analysis, { changeKind });
-      this.callbacks.onWorkingDocument?.(this.documentSnapshot());
+      if (options.notifyDocument !== false) this.callbacks.onWorkingDocument?.(this.documentSnapshot());
       this.sendIssues();
       return analysis;
     }
@@ -985,10 +1124,10 @@
       this.callbacks.onDirtyChange?.(true);
     }
 
-    restartFrameSafely() {
+    captureLatestEditorXML(options = {}) {
       if (!this.frameStarted) return Promise.resolve();
       if (!this.ready) {
-        this.startFrame(true);
+        if (options.reload) this.startFrame(true);
         return Promise.resolve();
       }
       if (this.reloadRequest) return this.reloadRequest.promise;
@@ -999,17 +1138,28 @@
         const pending = this.reloadRequest;
         if (!pending) return;
         this.reloadRequest = null;
-        this.startFrame(true);
-        pending.reject(new Error('The editor did not confirm its latest document before the theme reload.'));
+        if (pending.reload) this.startFrame(true);
+        pending.reject(new Error('The editor did not confirm its latest document before reloading or exporting.'));
       }, 5000);
-      this.reloadRequest = { promise, resolve: resolveRequest, reject: rejectRequest, timer };
+      this.reloadRequest = {
+        promise, resolve: resolveRequest, reject: rejectRequest, timer, reload: Boolean(options.reload),
+      };
       this.post({ action: 'petakerja-prepare-reload' });
       return promise;
     }
 
+    restartFrameSafely() { return this.captureLatestEditorXML({ reload: true }); }
+
     setLanguage(language) {
-      if (language === this.language) return;
+      if (language === this.language) return Promise.resolve();
       this.language = language;
+      return this.restartFrameSafely();
+    }
+
+    setSequenceLabelMode(labelMode) {
+      const next = validSequenceLabelMode(labelMode);
+      if (next === this.sequenceLabelMode) return Promise.resolve();
+      this.sequenceLabelMode = next;
       return this.restartFrameSafely();
     }
 
@@ -1020,10 +1170,12 @@
       return this.restartFrameSafely();
     }
 
-    saveAs() {
+    async saveAs() {
+      await this.captureLatestEditorXML({ reload: false });
       const analysis = this.validateNow();
       if (analysis.fatal) return false;
-      const blob = new Blob([analysis.xml], { type: 'application/vnd.jgraph.mxfile' });
+      const visibleXml = projectLocalizedXML(analysis.xml, this.language, this.sequenceLabelMode);
+      const blob = new Blob([visibleXml], { type: 'application/vnd.jgraph.mxfile' });
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       const base = (this.filename || 'PetaKerja Diagram.drawio').replace(/\.(?:drawio|xml)$/i, '');
@@ -1056,6 +1208,7 @@
 
   window.PETAKERJA_EDITOR = {
     EDITABLE_DIAGRAMS, SOURCE_FILES, buildCanonicalManifests, analyseXML, extractSinglePage, createBlankDocument,
+    projectLocalizedXML, canonicalizeLocalizedXML, canonicalDocumentFingerprint,
     createController(options) { return new EditorController(options); },
   };
 }());

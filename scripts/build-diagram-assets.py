@@ -1608,6 +1608,10 @@ def user_explore_3d_map_sequence_components() -> tuple[list[dict], list[dict]]:
 def sequence_source_translations(source: Path, base: dict[str, str]) -> dict[str, str]:
     replacements = dict(base)
     for wrapper in ET.parse(source).getroot().findall(".//object"):
+        label_en = clean_label(wrapper.get("labelEn", ""))
+        label_ms = clean_label(wrapper.get("labelMs", ""))
+        if label_en and label_ms:
+            replacements[label_en] = label_ms
         simple_en = clean_label(wrapper.get("simpleLabelEn", ""))
         simple_ms = clean_label(wrapper.get("simpleLabelMs", ""))
         if simple_en and simple_ms:

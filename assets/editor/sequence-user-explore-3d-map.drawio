@@ -7,12 +7,12 @@
         <mxCell id="user-explore-3d-map-sequence-background" parent="user-explore-3d-map-sequence-layer" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;locked=1;pointerEvents=0;">
           <mxGeometry as="geometry" x="0" y="0" width="1600" height="1100" />
         </mxCell>
-        <object label="PetaKerja User Explore the 3D Map Sequence" id="user-explore-3d-map-sequence-title" petakerjaKey="user-explore-3d-map-sequence/title">
+        <object label="PetaKerja User Explore the 3D Map Sequence" id="user-explore-3d-map-sequence-title" petakerjaKey="user-explore-3d-map-sequence/title" labelEn="PetaKerja User Explore the 3D Map Sequence" labelMs="Jujukan Pengguna Meneroka Peta 3D PetaKerja">
           <mxCell parent="user-explore-3d-map-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=18;fontStyle=1;" vertex="1">
             <mxGeometry as="geometry" x="330" y="20" width="940" height="30" />
           </mxCell>
         </object>
-        <object label="User" id="user-explore-3d-map-sequence-participant-user" petakerjaKey="user-explore-3d-map-sequence/participant-user">
+        <object label="User" id="user-explore-3d-map-sequence-participant-user" petakerjaKey="user-explore-3d-map-sequence/participant-user" labelEn="User" labelMs="Pengguna">
           <mxCell parent="user-explore-3d-map-sequence-layer" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeColor=light-dark(#467dfe, #ededed);gradientColor=light-dark(#447af9, #ededed);" vertex="1">
             <mxGeometry as="geometry" x="80" y="72" width="20" height="40" />
           </mxCell>
@@ -22,7 +22,7 @@
             <mxGeometry as="geometry" x="85" y="130" width="10" height="915" />
           </mxCell>
         </object>
-        <object label="PetaKerja Workspace UI" id="user-explore-3d-map-sequence-participant-ui" petakerjaKey="user-explore-3d-map-sequence/participant-ui">
+        <object label="PetaKerja Workspace UI" id="user-explore-3d-map-sequence-participant-ui" petakerjaKey="user-explore-3d-map-sequence/participant-ui" labelEn="PetaKerja Workspace UI" labelMs="Antara Muka Ruang Kerja PetaKerja">
           <mxCell parent="user-explore-3d-map-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
             <mxGeometry as="geometry" x="240" y="70" width="100" height="60" />
           </mxCell>
@@ -62,7 +62,7 @@
             <mxGeometry as="geometry" x="885" y="130" width="10" height="915" />
           </mxCell>
         </object>
-        <object label="PetaKerja Data API&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;supabase.ts&lt;/font&gt;&lt;/div&gt;" id="user-explore-3d-map-sequence-participant-data-api" petakerjaKey="user-explore-3d-map-sequence/participant-data-api">
+        <object label="PetaKerja Data API&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;supabase.ts&lt;/font&gt;&lt;/div&gt;" id="user-explore-3d-map-sequence-participant-data-api" petakerjaKey="user-explore-3d-map-sequence/participant-data-api" labelEn="PetaKerja Data API&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;supabase.ts&lt;/font&gt;&lt;/div&gt;" labelMs="API Data PetaKerja&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;supabase.ts&lt;/font&gt;&lt;/div&gt;">
           <mxCell parent="user-explore-3d-map-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
             <mxGeometry as="geometry" x="1040" y="70" width="100" height="60" />
           </mxCell>
@@ -72,7 +72,7 @@
             <mxGeometry as="geometry" x="1085" y="130" width="10" height="915" />
           </mxCell>
         </object>
-        <object label="Supabase / PostgreSQL&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;POI data&lt;/font&gt;&lt;/div&gt;" id="user-explore-3d-map-sequence-participant-database" petakerjaKey="user-explore-3d-map-sequence/participant-database">
+        <object label="Supabase / PostgreSQL&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;POI data&lt;/font&gt;&lt;/div&gt;" id="user-explore-3d-map-sequence-participant-database" petakerjaKey="user-explore-3d-map-sequence/participant-database" labelEn="Supabase / PostgreSQL&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;POI data&lt;/font&gt;&lt;/div&gt;" labelMs="Supabase / PostgreSQL&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;data POI&lt;/font&gt;&lt;/div&gt;">
           <mxCell parent="user-explore-3d-map-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
             <mxGeometry as="geometry" x="1240" y="70" width="100" height="60" />
           </mxCell>
@@ -115,22 +115,22 @@
             </mxGeometry>
           </mxCell>
         </object>
-        <object label="[map data available]" id="user-explore-3d-map-sequence-data-available" petakerjaKey="user-explore-3d-map-sequence/data-available">
+        <object label="[map data available]" id="user-explore-3d-map-sequence-data-available" petakerjaKey="user-explore-3d-map-sequence/data-available" labelEn="[map data available]" labelMs="[data peta tersedia]">
           <mxCell parent="user-explore-3d-map-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
             <mxGeometry as="geometry" x="310" y="413" width="250" height="18" />
           </mxCell>
         </object>
-        <object label="[data request fails]" id="user-explore-3d-map-sequence-data-unavailable" petakerjaKey="user-explore-3d-map-sequence/data-unavailable">
+        <object label="[data request fails]" id="user-explore-3d-map-sequence-data-unavailable" petakerjaKey="user-explore-3d-map-sequence/data-unavailable" labelEn="[data request fails]" labelMs="[permintaan data gagal]">
           <mxCell parent="user-explore-3d-map-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
             <mxGeometry as="geometry" x="310" y="592" width="250" height="18" />
           </mxCell>
         </object>
-        <object label="[user enables 3D terrain]" id="user-explore-3d-map-sequence-terrain-selected" petakerjaKey="user-explore-3d-map-sequence/terrain-selected">
+        <object label="[user enables 3D terrain]" id="user-explore-3d-map-sequence-terrain-selected" petakerjaKey="user-explore-3d-map-sequence/terrain-selected" labelEn="[user enables 3D terrain]" labelMs="[pengguna mengaktifkan rupa bumi 3D]">
           <mxCell parent="user-explore-3d-map-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
             <mxGeometry as="geometry" x="110" y="658" width="250" height="18" />
           </mxCell>
         </object>
-        <object label="[user toggles 3D buildings]" id="user-explore-3d-map-sequence-buildings-selected" petakerjaKey="user-explore-3d-map-sequence/buildings-selected">
+        <object label="[user toggles 3D buildings]" id="user-explore-3d-map-sequence-buildings-selected" petakerjaKey="user-explore-3d-map-sequence/buildings-selected" labelEn="[user toggles 3D buildings]" labelMs="[pengguna menukar paparan bangunan 3D]">
           <mxCell parent="user-explore-3d-map-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
             <mxGeometry as="geometry" x="110" y="828" width="250" height="18" />
           </mxCell>
@@ -255,7 +255,7 @@
             <mxGeometry as="geometry" relative="1" />
           </mxCell>
         </object>
-        <object label="Implementation note: map exploration is public. 3D terrain uses satellite imagery plus a DEM on screens wider than 768px; building extrusions appear within their configured zoom range." id="user-explore-3d-map-sequence-implementation-note" petakerjaKey="user-explore-3d-map-sequence/implementation-note">
+        <object label="Implementation note: map exploration is public. 3D terrain uses satellite imagery plus a DEM on screens wider than 768px; building extrusions appear within their configured zoom range." id="user-explore-3d-map-sequence-implementation-note" petakerjaKey="user-explore-3d-map-sequence/implementation-note" labelEn="Implementation note: map exploration is public. 3D terrain uses satellite imagery plus a DEM on screens wider than 768px; building extrusions appear within their configured zoom range." labelMs="Nota pelaksanaan: penerokaan peta ialah fungsi awam. Rupa bumi 3D menggunakan imej satelit bersama DEM pada skrin yang lebih lebar daripada 768px; bentuk bangunan 3D dipaparkan dalam julat zum yang ditetapkan.">
           <mxCell parent="user-explore-3d-map-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=9;fontStyle=2;fontColor=#555555;" vertex="1">
             <mxGeometry as="geometry" x="220" y="1065" width="1160" height="20" />
           </mxCell>

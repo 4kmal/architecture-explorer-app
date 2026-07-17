@@ -7,7 +7,7 @@
         <mxCell id="job-search-page-background" parent="job-search-sequence-layer" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;locked=1;pointerEvents=0;">
           <mxGeometry as="geometry" x="0" y="0" width="1600" height="1100" />
         </mxCell>
-        <object label="PetaKerja Search Jobs Sequence" id="job-search-title" petakerjaKey="sequence/title">
+        <object label="PetaKerja Search Jobs Sequence" id="job-search-title" petakerjaKey="sequence/title" labelEn="PetaKerja Search Jobs Sequence" labelMs="Jujukan Carian Pekerjaan PetaKerja">
           <mxCell parent="job-search-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=18;fontStyle=1;" vertex="1">
             <mxGeometry as="geometry" x="500" y="20" width="600" height="30" />
           </mxCell>
@@ -17,7 +17,7 @@
             <mxGeometry as="geometry" x="80" y="72" width="20" height="40" />
           </mxCell>
         </object>
-        <object label="User" id="job-search-participant-user-label">
+        <object label="User" id="job-search-participant-user-label" petakerjaKey="sequence/participant-user-label" labelEn="User" labelMs="Pengguna">
           <mxCell parent="job-search-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" vertex="1">
             <mxGeometry as="geometry" x="55" y="110" width="70" height="20" />
           </mxCell>
@@ -27,7 +27,7 @@
             <mxGeometry as="geometry" x="85" y="130" width="10" height="925" />
           </mxCell>
         </object>
-        <object label="PetaKerja Job Finder UI" id="job-search-participant-ui" petakerjaKey="sequence/participant-ui">
+        <object label="PetaKerja Job Finder UI" id="job-search-participant-ui" petakerjaKey="sequence/participant-ui" labelEn="PetaKerja Job Finder UI" labelMs="Antara Muka Pencari Kerja PetaKerja">
           <mxCell parent="job-search-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
             <mxGeometry as="geometry" x="230" y="70" width="100" height="60" />
           </mxCell>
@@ -57,7 +57,7 @@
             <mxGeometry as="geometry" x="675" y="130" width="10" height="925" />
           </mxCell>
         </object>
-        <object label="Supa Jobs Route&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;GET /api/jobs/supa&lt;/font&gt;&lt;/div&gt;" id="job-search-participant-route" petakerjaKey="sequence/participant-route">
+        <object label="Supa Jobs Route&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;GET /api/jobs/supa&lt;/font&gt;&lt;/div&gt;" id="job-search-participant-route" petakerjaKey="sequence/participant-route" labelEn="Supa Jobs Route&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;GET /api/jobs/supa&lt;/font&gt;&lt;/div&gt;" labelMs="Laluan Supa Jobs&lt;div&gt;&lt;font style=&quot;font-size: 8px;&quot;&gt;GET /api/jobs/supa&lt;/font&gt;&lt;/div&gt;">
           <mxCell parent="job-search-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
             <mxGeometry as="geometry" x="830" y="70" width="100" height="60" />
           </mxCell>
@@ -87,7 +87,7 @@
             <mxGeometry as="geometry" x="1275" y="130" width="10" height="925" />
           </mxCell>
         </object>
-        <object label="Job Results / MapLibre" id="job-search-participant-results" petakerjaKey="sequence/participant-results">
+        <object label="Job Results / MapLibre" id="job-search-participant-results" petakerjaKey="sequence/participant-results" labelEn="Job Results / MapLibre" labelMs="Hasil Pekerjaan / MapLibre">
           <mxCell parent="job-search-sequence-layer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;" vertex="1">
             <mxGeometry as="geometry" x="1430" y="70" width="100" height="60" />
           </mxCell>
@@ -313,22 +313,22 @@
             </mxGeometry>
           </mxCell>
         </object>
-        <object label="[fresh 60-second cache]" id="sequence-cache-hit" petakerjaKey="sequence/cache-hit">
+        <object label="[fresh 60-second cache]" id="sequence-cache-hit" petakerjaKey="sequence/cache-hit" labelEn="[fresh 60-second cache]" labelMs="[cache baharu dalam tempoh 60 saat]">
           <mxCell parent="job-search-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
             <mxGeometry as="geometry" x="690" y="315" width="250" height="20" />
           </mxCell>
         </object>
-        <object label="[cache miss or refresh]" id="sequence-cache-miss" petakerjaKey="sequence/cache-miss">
+        <object label="[cache miss or refresh]" id="sequence-cache-miss" petakerjaKey="sequence/cache-miss" labelEn="[cache miss or refresh]" labelMs="[cache tiada atau perlu disegar semula]">
           <mxCell parent="job-search-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
             <mxGeometry as="geometry" x="635" y="392" width="250" height="20" />
           </mxCell>
         </object>
-        <object label="[fetch failure and stale cache exists]" id="sequence-cache-stale" petakerjaKey="sequence/cache-stale">
+        <object label="[fetch failure and stale cache exists]" id="sequence-cache-stale" petakerjaKey="sequence/cache-stale" labelEn="[fetch failure and stale cache exists]" labelMs="[pengambilan gagal dan cache lama tersedia]">
           <mxCell parent="job-search-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
             <mxGeometry as="geometry" x="635" y="602" width="300" height="20" />
           </mxCell>
         </object>
-        <object label="[query supplied]" id="sequence-query-present" petakerjaKey="sequence/query-present">
+        <object label="[query supplied]" id="sequence-query-present" petakerjaKey="sequence/query-present" labelEn="[query supplied]" labelMs="[kata carian diberikan]">
           <mxCell parent="job-search-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
             <mxGeometry as="geometry" x="880" y="487" width="190" height="20" />
           </mxCell>
@@ -349,22 +349,22 @@
             </mxGeometry>
           </mxCell>
         </object>
-        <object label="[jobs returned]" id="sequence-results-found" petakerjaKey="sequence/results-found">
+        <object label="[jobs returned]" id="sequence-results-found" petakerjaKey="sequence/results-found" labelEn="[jobs returned]" labelMs="[pekerjaan dipulangkan]">
           <mxCell parent="job-search-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
             <mxGeometry as="geometry" x="125" y="710" width="250" height="20" />
           </mxCell>
         </object>
-        <object label="[no matching jobs]" id="sequence-results-empty" petakerjaKey="sequence/results-empty">
+        <object label="[no matching jobs]" id="sequence-results-empty" petakerjaKey="sequence/results-empty" labelEn="[no matching jobs]" labelMs="[tiada pekerjaan yang sepadan]">
           <mxCell parent="job-search-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
             <mxGeometry as="geometry" x="70" y="862" width="250" height="20" />
           </mxCell>
         </object>
-        <object label="[request fails without usable cache]" id="sequence-results-error" petakerjaKey="sequence/results-error">
+        <object label="[request fails without usable cache]" id="sequence-results-error" petakerjaKey="sequence/results-error" labelEn="[request fails without usable cache]" labelMs="[permintaan gagal tanpa cache yang boleh digunakan]">
           <mxCell parent="job-search-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;align=left;fontStyle=2;fontSize=10;" vertex="1">
             <mxGeometry as="geometry" x="70" y="952" width="300" height="20" />
           </mxCell>
         </object>
-        <object label="Daily Index is public. Google sign-in is not required for this search path." id="job-search-note" petakerjaKey="sequence/note">
+        <object label="Daily Index is public. Google sign-in is not required for this search path." id="job-search-note" petakerjaKey="sequence/note" labelEn="Daily Index is public. Google sign-in is not required for this search path." labelMs="Daily Index boleh digunakan oleh orang awam. Log masuk Google tidak diperlukan untuk aliran carian ini.">
           <mxCell parent="job-search-sequence-layer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=10;fontStyle=2;fontColor=#555555;" vertex="1">
             <mxGeometry as="geometry" x="400" y="1072" width="800" height="18" />
           </mxCell>

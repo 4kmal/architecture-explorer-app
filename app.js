@@ -1172,7 +1172,8 @@
     els.workspaceSaveButton.hidden = !localWorkspaceEnabled || state.workspaceMode === 'view' || !state.workspaceDiagramIds.has(state.diagramId);
     byId('zoom-out').parentElement.hidden = state.workspaceMode !== 'view';
     els.referenceButton.hidden = state.workspaceMode !== 'view' || !activeDiagram().reference;
-    const showSequenceLabels = state.workspaceMode === 'view' && effectiveMode() === 'actual' && Boolean(activeAsset()?.supportsSequenceLabels);
+    const showSequenceLabels = (state.workspaceMode === 'view' || state.workspaceMode === 'edit')
+      && effectiveMode() === 'actual' && Boolean(activeAsset()?.supportsSequenceLabels);
     els.sequenceLabelControl.hidden = !showSequenceLabels;
     els.sequenceSimple.setAttribute('aria-pressed', String(state.sequenceLabelMode === 'simple'));
     els.sequenceCode.setAttribute('aria-pressed', String(state.sequenceLabelMode === 'code'));
@@ -1875,7 +1876,8 @@
   }
 
   editorController = editorAPI.createController({
-    iframe: els.editorFrame, data, assets, translations, language: state.language, themePreference: state.themePreference,
+    iframe: els.editorFrame, data, assets, translations, language: state.language,
+    sequenceLabelMode: state.sequenceLabelMode, themePreference: state.themePreference,
     callbacks: {
       onFrameReload() { els.editorSurface.classList.remove('is-ready'); },
       onReady() { els.editorSurface.classList.add('is-ready'); },
@@ -1965,6 +1967,7 @@
     if (!button) return;
     state.sequenceLabelMode = button.dataset.sequenceLabelMode === 'code' ? 'code' : 'simple';
     storeSequenceLabelMode(state.sequenceLabelMode);
+    editorController.setSequenceLabelMode(state.sequenceLabelMode);
     renderDiagram(); renderDetails();
   });
   document.querySelectorAll('[data-language]').forEach((button) => button.addEventListener('click', () => {

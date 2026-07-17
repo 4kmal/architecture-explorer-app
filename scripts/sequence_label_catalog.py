@@ -73,6 +73,131 @@ SIMPLE_MS = {
 }
 
 
+# Non-message labels for the four active User sequence diagrams. Technical
+# identifiers intentionally use the same value in both languages and therefore
+# do not need metadata here. The Draw.io label remains the English projection;
+# editor-core.js derives the visible BM/EN value at runtime.
+NON_MESSAGE_LABELS = {
+    "google-oauth-sequence/title": (
+        "PetaKerja Sign in with Google OAuth Sequence",
+        "Jujukan Log Masuk PetaKerja dengan Google OAuth",
+    ),
+    "google-oauth-sequence/participant-user-label": ("User", "Pengguna"),
+    "google-oauth-sequence/participant-ui": (
+        'PetaKerja UI<div><font style="font-size: 8px;">UserMenuManager / AuthModalManager</font></div>',
+        'Antara Muka PetaKerja<div><font style="font-size: 8px;">UserMenuManager / AuthModalManager</font></div>',
+    ),
+    "google-oauth-sequence/participant-better-auth": (
+        'Better Auth API<div><font style="font-size: 8px;">Express /api/auth/*</font></div>',
+        'API Better Auth<div><font style="font-size: 8px;">Express /api/auth/*</font></div>',
+    ),
+    "google-oauth-sequence/participant-profile-api": (
+        'PetaKerja Profile API<div><font style="font-size: 8px;">/api/me/auth-profile</font></div>',
+        'API Profil PetaKerja<div><font style="font-size: 8px;">/api/me/auth-profile</font></div>',
+    ),
+    "google-oauth-sequence/oauth-success": ("[OAuth authorized]", "[OAuth dibenarkan]"),
+    "google-oauth-sequence/oauth-failure": (
+        "[else: rejected / cancelled / error]",
+        "[selainnya: ditolak / dibatalkan / ralat]",
+    ),
+    "google-oauth-sequence/session-success": ("[session user exists]", "[pengguna sesi wujud]"),
+    "google-oauth-sequence/session-empty": ("[else: no session]", "[selainnya: tiada sesi]"),
+    "google-oauth-sequence/profile-found": (
+        "[better_auth_user_id found]",
+        "[better_auth_user_id ditemui]",
+    ),
+    "google-oauth-sequence/profile-email": ("[else: email match]", "[selainnya: e-mel sepadan]"),
+    "google-oauth-sequence/profile-create": ("[else: no profile]", "[selainnya: tiada profil]"),
+    "google-oauth-sequence/note": (
+        "Google OAuth only. Password sign-in is intentionally unavailable in PetaKerja.",
+        "Google OAuth sahaja. Log masuk dengan kata laluan memang tidak disediakan dalam PetaKerja.",
+    ),
+    "sequence/title": ("PetaKerja Search Jobs Sequence", "Jujukan Carian Pekerjaan PetaKerja"),
+    "sequence/participant-user-label": ("User", "Pengguna"),
+    "sequence/participant-ui": ("PetaKerja Job Finder UI", "Antara Muka Pencari Kerja PetaKerja"),
+    "sequence/participant-route": (
+        'Supa Jobs Route<div><font style="font-size: 8px;">GET /api/jobs/supa</font></div>',
+        'Laluan Supa Jobs<div><font style="font-size: 8px;">GET /api/jobs/supa</font></div>',
+    ),
+    "sequence/participant-results": ("Job Results / MapLibre", "Hasil Pekerjaan / MapLibre"),
+    "sequence/cache-hit": ("[fresh 60-second cache]", "[cache baharu dalam tempoh 60 saat]"),
+    "sequence/cache-miss": ("[cache miss or refresh]", "[cache tiada atau perlu disegar semula]"),
+    "sequence/cache-stale": (
+        "[fetch failure and stale cache exists]",
+        "[pengambilan gagal dan cache lama tersedia]",
+    ),
+    "sequence/query-present": ("[query supplied]", "[kata carian diberikan]"),
+    "sequence/results-found": ("[jobs returned]", "[pekerjaan dipulangkan]"),
+    "sequence/results-empty": ("[no matching jobs]", "[tiada pekerjaan yang sepadan]"),
+    "sequence/results-error": (
+        "[request fails without usable cache]",
+        "[permintaan gagal tanpa cache yang boleh digunakan]",
+    ),
+    "sequence/note": (
+        "Daily Index is public. Google sign-in is not required for this search path.",
+        "Daily Index boleh digunakan oleh orang awam. Log masuk Google tidak diperlukan untuk aliran carian ini.",
+    ),
+    "user-explore-3d-map-sequence/title": (
+        "PetaKerja User Explore the 3D Map Sequence",
+        "Jujukan Pengguna Meneroka Peta 3D PetaKerja",
+    ),
+    "user-explore-3d-map-sequence/participant-user": ("User", "Pengguna"),
+    "user-explore-3d-map-sequence/participant-ui": (
+        "PetaKerja Workspace UI",
+        "Antara Muka Ruang Kerja PetaKerja",
+    ),
+    "user-explore-3d-map-sequence/participant-data-api": (
+        'PetaKerja Data API<div><font style="font-size: 8px;">supabase.ts</font></div>',
+        'API Data PetaKerja<div><font style="font-size: 8px;">supabase.ts</font></div>',
+    ),
+    "user-explore-3d-map-sequence/participant-database": (
+        'Supabase / PostgreSQL<div><font style="font-size: 8px;">POI data</font></div>',
+        'Supabase / PostgreSQL<div><font style="font-size: 8px;">data POI</font></div>',
+    ),
+    "user-explore-3d-map-sequence/data-available": (
+        "[map data available]",
+        "[data peta tersedia]",
+    ),
+    "user-explore-3d-map-sequence/data-unavailable": (
+        "[data request fails]",
+        "[permintaan data gagal]",
+    ),
+    "user-explore-3d-map-sequence/terrain-selected": (
+        "[user enables 3D terrain]",
+        "[pengguna mengaktifkan rupa bumi 3D]",
+    ),
+    "user-explore-3d-map-sequence/buildings-selected": (
+        "[user toggles 3D buildings]",
+        "[pengguna menukar paparan bangunan 3D]",
+    ),
+    "user-explore-3d-map-sequence/implementation-note": (
+        "Implementation note: map exploration is public. 3D terrain uses satellite imagery plus a DEM on screens wider than 768px; building extrusions appear within their configured zoom range.",
+        "Nota pelaksanaan: penerokaan peta ialah fungsi awam. Rupa bumi 3D menggunakan imej satelit bersama DEM pada skrin yang lebih lebar daripada 768px; bentuk bangunan 3D dipaparkan dalam julat zum yang ditetapkan.",
+    ),
+    "user-sign-out-sequence/title": (
+        "PetaKerja User Sign Out Sequence",
+        "Jujukan Pengguna Log Keluar PetaKerja",
+    ),
+    "user-sign-out-sequence/participant-user": ("User", "Pengguna"),
+    "user-sign-out-sequence/participant-ui": ("PetaKerja User Menu", "Menu Pengguna PetaKerja"),
+    "user-sign-out-sequence/participant-api": (
+        'Better Auth API<div><font style="font-size: 8px;">POST /api/auth/sign-out</font></div>',
+        'API Better Auth<div><font style="font-size: 8px;">POST /api/auth/sign-out</font></div>',
+    ),
+    "user-sign-out-sequence/participant-session": ("Better Auth Session", "Sesi Better Auth"),
+    "user-sign-out-sequence/sign-out-success": ("[sign-out succeeds]", "[log keluar berjaya]"),
+    "user-sign-out-sequence/sign-out-failed": ("[sign-out fails]", "[log keluar gagal]"),
+    "user-sign-out-sequence/implementation-note": (
+        "Implementation note: on successful sign-out, UserDashboardManager closes and clears per-user caches. AdminDashboardManager currently remains on screen but re-renders its signed-out access state.",
+        "Nota pelaksanaan: selepas log keluar berjaya, UserDashboardManager ditutup dan cache khusus pengguna dikosongkan. AdminDashboardManager masih kekal pada skrin tetapi memaparkan semula keadaan akses selepas log keluar.",
+    ),
+}
+
+MISSING_STABLE_KEYS = {
+    "job-search-participant-user-label": "sequence/participant-user-label",
+}
+
+
 def message_index(key: str) -> int | None:
     match = re.search(r"/message-(\d+)$", key)
     return int(match.group(1)) if match else None
@@ -88,7 +213,15 @@ def apply_label_modes_to_file(path: Path) -> int:
     tree = ET.parse(path)
     changed = 0
     for wrapper in tree.getroot().findall(".//object"):
+        if not wrapper.get("petakerjaKey") and wrapper.get("id") in MISSING_STABLE_KEYS:
+            wrapper.set("petakerjaKey", MISSING_STABLE_KEYS[wrapper.get("id", "")])
         key = wrapper.get("petakerjaKey", "")
+        if key in NON_MESSAGE_LABELS:
+            label_en, label_ms = NON_MESSAGE_LABELS[key]
+            wrapper.set("labelEn", label_en)
+            wrapper.set("labelMs", label_ms)
+            wrapper.set("label", label_en)
+            changed += 1
         index = message_index(key)
         if index is None:
             continue
