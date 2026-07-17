@@ -340,7 +340,9 @@
     els.search.placeholder = language() === 'en' ? 'Search notation...' : 'Cari notasi...';
     byId('learning-title').textContent = language() === 'en' ? 'Diagrams for Dummies' : 'Panduan Rajah untuk Pemula';
     els.link.querySelector('span').textContent = language() === 'en' ? 'For Dummies' : 'Panduan Pemula';
-    els.link.setAttribute('aria-label', language() === 'en' ? 'Open Diagrams for Dummies' : 'Buka Panduan Rajah untuk Pemula');
+    const linkLabel = language() === 'en' ? 'Open Diagrams for Dummies' : 'Buka Panduan Rajah untuk Pemula';
+    els.link.setAttribute('aria-label', linkLabel);
+    els.link.title = linkLabel;
     if (els.mobileTopic) {
       els.mobileTopic.setAttribute('aria-label', language() === 'en' ? 'Choose lesson' : 'Pilih pelajaran');
       els.mobileTopic.innerHTML = data.chapters.map((chapter) => `<optgroup label="${escapeAttr(local(chapter.title))}">${chapter.topicIds.map((id) => {

@@ -21,26 +21,30 @@
       document.documentElement.style.colorScheme = effective;
     }());
   </script>
-  <link rel="stylesheet" href="styles.css?v=20260715-8">
-  <link rel="stylesheet" href="slides.css?v=20260716-1">
+  <link rel="stylesheet" href="styles.css?v=20260717-3">
+  <link rel="stylesheet" href="slides.css?v=20260717-2">
 </head>
 <body>
   <a id="skip-link" class="skip-link" href="#diagram-workspace">Skip to diagram</a>
   <header class="app-header">
     <div class="brand-block"><h1>PetaKerja Architecture Explorer</h1><p id="app-subtitle">Trace UI to class to route to table across current code, the FYP model and legacy modules.</p></div>
     <div class="header-controls">
-      <a id="learning-link" class="header-learning-link" href="#learn"><i data-lucide="book-open" aria-hidden="true"></i><span>For Dummies</span></a>
-      <a id="slides-link" class="header-learning-link" href="#slides"><i data-lucide="presentation" aria-hidden="true"></i><span>Slides</span></a>
+      <div class="header-primary-controls">
+        <a id="learning-link" class="header-learning-link" href="#learn" aria-label="Open Diagrams for Dummies" title="Open Diagrams for Dummies"><i data-lucide="book-open" aria-hidden="true"></i><span>For Dummies</span></a>
+        <a id="slides-link" class="header-learning-link" href="#slides" aria-label="Open Slides Studio" title="Open Slides Studio"><i data-lucide="presentation" aria-hidden="true"></i><span>Slides</span></a>
       <div id="render-mode-control" class="segmented" role="group" aria-label="Diagram mode">
         <button id="mode-actual" type="button" data-render-mode="actual" aria-pressed="true">Actual diagram</button>
         <button id="mode-map" type="button" data-render-mode="map" aria-pressed="false">Interactive map</button>
       </div>
       <label class="theme-field" for="theme-select"><span id="theme-label" class="sr-only">Theme</span><select id="theme-select" aria-labelledby="theme-label"><option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option></select></label>
-      <div class="segmented" role="group" aria-label="Language"><button type="button" data-language="ms" aria-pressed="false">BM</button><button type="button" data-language="en" aria-pressed="true">EN</button></div>
+      <div class="segmented language-control" role="group" aria-label="Language"><button type="button" data-language="ms" aria-pressed="false">BM</button><button type="button" data-language="en" aria-pressed="true">EN</button></div>
+      </div>
+      <div class="header-context-controls">
       <label class="compact-field diagram-picker-field" for="diagram-picker"><span class="sr-only">Diagram</span><select id="diagram-picker" aria-label="Choose diagram"></select></label>
-      <label class="compact-field" for="scope-filter"><span id="scope-label" class="sr-only">System scope</span><select id="scope-filter" aria-label="Choose system scope"></select></label>
+      <label class="compact-field scope-field" for="scope-filter"><span id="scope-label" class="sr-only">System scope</span><select id="scope-filter" aria-label="Choose system scope"></select></label>
       <div class="search-shell"><label id="search-label" class="sr-only" for="global-search">Global search</label><input id="global-search" type="search" autocomplete="off" placeholder="Class, route, table or UI..." aria-controls="search-results"><div id="search-results" class="search-results" role="listbox" aria-label="Search results" hidden></div></div>
       <span id="snapshot-status" class="snapshot-status">73 tables · 86 FK · file://</span>
+      </div>
     </div>
   </header>
   <div class="mobile-tabs" role="tablist" aria-label="Explorer panels"><button type="button" class="is-active" data-mobile-panel="diagram" role="tab" aria-selected="true">Diagram</button><button type="button" data-mobile-panel="ui" role="tab" aria-selected="false">UI</button><button type="button" data-mobile-panel="details" role="tab" aria-selected="false">Details</button></div>
@@ -188,6 +192,6 @@
   <dialog id="runtime-dialog" class="runtime-dialog" aria-labelledby="runtime-title" aria-describedby="runtime-description"><header><div><h2 id="runtime-title">Start the local editor</h2><p id="runtime-subtitle">This copy is open in read-only file mode.</p></div><button id="close-runtime" type="button" aria-label="Close">×</button></header><div class="runtime-dialog-body"><p id="runtime-description">The embedded Draw.io editor needs a same-origin local HTTP server. All files remain on this computer.</p><ol><li id="runtime-step-launcher">Close this tab and double-click <code>Start-Explorer.cmd</code> in the Explorer folder.</li><li id="runtime-step-command">Or run this command in PowerShell:</li></ol><div class="runtime-command-row"><code id="runtime-command"></code><button id="copy-runtime-command" type="button" class="secondary-button">Copy command</button></div></div><footer><button id="dismiss-runtime" type="button" class="secondary-button">Close</button></footer></dialog>
   <dialog id="cloud-diagram-dialog" class="cloud-diagram-dialog" aria-labelledby="cloud-diagram-title"><header><div><h2 id="cloud-diagram-title">Cloud diagrams</h2><p id="cloud-diagram-subtitle">Private diagrams and canonical PetaKerja references available to this account.</p></div><button id="cloud-diagram-close" type="button" aria-label="Close">×</button></header><div class="cloud-diagram-toolbar"><label><span class="sr-only">Search cloud diagrams</span><input id="cloud-diagram-search" type="search" placeholder="Search diagrams"></label><button id="cloud-diagram-refresh" type="button" class="secondary-button"><i data-lucide="refresh-cw" aria-hidden="true"></i><span>Refresh</span></button></div><div id="cloud-diagram-status" class="cloud-diagram-status" role="status" aria-live="polite"></div><div id="cloud-diagram-list" class="cloud-diagram-list"></div><footer><small>Edits are saved to this browser first, then synchronized to the private cloud workspace.</small><button id="cloud-diagram-close-footer" type="button" class="secondary-button">Close</button></footer></dialog>
   <p id="status-message" class="sr-only" aria-live="polite"></p>
-  <script src="runtime-config.js?v=20260717-1"></script><script src="architecture-data.js?v=20260716-1"></script><script src="translations.js?v=20260716-1"></script><script src="diagram-assets.js?v=20260715-16"></script><script src="learning-data.js?v=20260715-13"></script><script src="slides-data.js?v=20260716-1"></script><script src="auth-sequence-svg.js?v=20260714-3"></script><script src="auth-sequence-asset.js?v=20260714-4"></script><script src="vendor/drawio/js/deflate/pako.min.js?v=20260714-3"></script><script src="vendor/fabric/fabric.min.js?v=7.4.0"></script><script src="vendor/pptxgenjs/pptxgen.bundle.js?v=4.0.1"></script><script src="vendor/jszip/jszip.min.js?v=3.10.1"></script><script src="vendor/yjs/yjs.min.js?v=13.6.27"></script><script src="editor-core.js?v=20260717-1"></script><script src="openai-model-policy.js?v=20260714-1"></script><script src="agent-runtime.js?v=20260716-1"></script><script src="cloud-diagrams.js?v=20260717-1"></script><script src="vendor/lucide/lucide.min.js?v=1.24.0"></script><script src="app.js?v=20260717-1"></script><script src="learning.js?v=20260715-13"></script><script src="slides.js?v=20260716-2"></script>
+  <script src="runtime-config.js?v=20260717-1"></script><script src="architecture-data.js?v=20260716-1"></script><script src="translations.js?v=20260716-1"></script><script src="diagram-assets.js?v=20260715-16"></script><script src="learning-data.js?v=20260715-13"></script><script src="slides-data.js?v=20260716-1"></script><script src="auth-sequence-svg.js?v=20260714-3"></script><script src="auth-sequence-asset.js?v=20260714-4"></script><script src="vendor/drawio/js/deflate/pako.min.js?v=20260714-3"></script><script src="vendor/fabric/fabric.min.js?v=7.4.0"></script><script src="vendor/pptxgenjs/pptxgen.bundle.js?v=4.0.1"></script><script src="vendor/jszip/jszip.min.js?v=3.10.1"></script><script src="vendor/yjs/yjs.min.js?v=13.6.27"></script><script src="editor-core.js?v=20260717-1"></script><script src="openai-model-policy.js?v=20260714-1"></script><script src="agent-runtime.js?v=20260716-1"></script><script src="cloud-diagrams.js?v=20260717-1"></script><script src="vendor/lucide/lucide.min.js?v=1.24.0"></script><script src="app.js?v=20260717-2"></script><script src="learning.js?v=20260717-2"></script><script src="slides.js?v=20260717-3"></script>
 </body>
 </html>

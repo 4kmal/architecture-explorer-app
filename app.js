@@ -297,6 +297,12 @@
   }
 
   function scopeLabel(scope) { return state.language === 'en' ? translations.en.scopes[scope.id] || scope.label : scope.label; }
+
+  function syncSelectTitle(select) {
+    if (!select) return;
+    const selected = select.selectedOptions?.[0];
+    select.title = selected?.textContent?.trim() || select.getAttribute('aria-label') || '';
+  }
   function categoryLabel(category) { return state.language === 'en' ? translations.en.categories[category] || category : category; }
   function viewText(view) { const x = state.language === 'en' && translations.en.views[view.id]; return x ? { label: x[0], description: x[1] } : view; }
   function hotspotLabel(hotspot) { return state.language === 'en' ? translations.en.hotspots[hotspot.id] || hotspot.label : hotspot.label; }
@@ -512,6 +518,7 @@
   function populateControls() {
     els.scope.innerHTML = data.scopeGroups.map((scope) => `<option value="${scope.id}">${escapeHTML(scopeLabel(scope))}</option>`).join('');
     els.scope.value = state.scopeId;
+    syncSelectTitle(els.scope);
     renderDiagramNav();
     renderUIViewOptions();
   }
@@ -592,6 +599,7 @@
     }
     els.diagramPicker.innerHTML = visible.map((diagram) => `<option value="${diagram.id}">${escapeHTML(diagramText(diagram).title)}</option>`).join('');
     els.diagramPicker.value = state.diagramId;
+    syncSelectTitle(els.diagramPicker);
   }
 
   function renderUIViewOptions() {
@@ -608,11 +616,13 @@
     els.search.placeholder = t('ui.searchPlaceholder'); els.searchLabel.textContent = t('ui.search');
     els.actualMode.textContent = t('ui.actual'); els.actualMode.dataset.short = state.language === 'en' ? 'Actual' : 'Sebenar';
     els.mapMode.textContent = t('ui.map'); els.mapMode.dataset.short = state.language === 'en' ? 'Map' : 'Peta';
+    els.actualMode.title = t('ui.actual'); els.mapMode.title = t('ui.map');
     els.themeLabel.textContent = t('ui.theme');
     els.themeSelect.setAttribute('aria-label', t('ui.theme'));
     const themeLabels = { system: t('ui.themeSystem'), light: t('ui.themeLight'), dark: t('ui.themeDark') };
     [...els.themeSelect.options].forEach((option) => { option.textContent = themeLabels[option.value] || option.value; });
     els.themeSelect.value = state.themePreference;
+    syncSelectTitle(els.themeSelect);
     els.navTitle.textContent = t('ui.diagrams'); els.navDescription.textContent = t('ui.chooseView');
     byId('legend-title').textContent = state.language === 'en' ? 'Content status' : 'Status kandungan';
     byId('legend-current').textContent = labelStatus('current'); byId('legend-concept').textContent = labelStatus('concept'); byId('legend-legacy').textContent = labelStatus('legacy');

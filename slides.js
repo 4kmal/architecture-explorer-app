@@ -138,6 +138,12 @@
 
   function translateSlidesUI() {
     replaceButtonText('#slides-link', 'Slides', 'Slaid');
+    const slidesLink = el('slides-link');
+    if (slidesLink) {
+      const linkLabel = ui('Open Slides Studio', 'Buka Studio Slaid');
+      slidesLink.setAttribute('aria-label', linkLabel);
+      slidesLink.title = linkLabel;
+    }
     replaceButtonText('#slides-back', 'Explorer', 'Explorer');
     replaceButtonText('#slides-library-button', 'Library', 'Pustaka');
     replaceButtonText('#slides-history-button', 'History', 'Sejarah');
