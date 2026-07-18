@@ -1,0 +1,211 @@
+<mxfile host="app.diagrams.net" modified="2026-07-18T08:00:00.000Z" agent="Codex" version="24.7.17" type="device">
+  <diagram id="petakerja_map_routing_stack" name="PetaKerja Map Routing Responsibilities">
+    <mxGraphModel dx="1900" dy="1180" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1180" math="0" shadow="0" background="#F7F9FC">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <object id="diagram-title" label="&lt;b&gt;PetaKerja A-to-B Navigation: Who Does What?&lt;/b&gt;" petakerjaKey="routing-diagram-title" labelEn="&lt;b&gt;PetaKerja A-to-B Navigation: Who Does What?&lt;/b&gt;" labelMs="&lt;b&gt;Navigasi A-ke-B PetaKerja: Siapa Melakukan Apa?&lt;/b&gt;">
+          <mxCell style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=26;fontStyle=1;fontColor=#172033;" vertex="1" parent="1">
+            <mxGeometry x="80" y="35" width="1200" height="45" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="diagram-subtitle" label="MapLibre renders. GeoGateway orchestrates. Valhalla routes. Nominatim searches." petakerjaKey="routing-diagram-subtitle" labelEn="MapLibre renders. GeoGateway orchestrates. Valhalla routes. Nominatim searches." labelMs="MapLibre memapar. GeoGateway mengatur. Valhalla menghala. Nominatim mencari.">
+          <mxCell style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=15;fontColor=#475467;" vertex="1" parent="1">
+            <mxGeometry x="80" y="78" width="1200" height="32" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="layer1-depth" value="" style="shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;size=54;whiteSpace=wrap;html=1;fillColor=#B7C3D0;strokeColor=#66758A;strokeWidth=2;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="312" y="162" width="720" height="135" as="geometry" />
+        </mxCell>
+        <object id="layer1-inputs" label="&lt;b&gt;LAYER 1 · INPUTS&lt;/b&gt;" petakerjaKey="routing-layer-inputs" labelEn="&lt;b&gt;LAYER 1 · INPUTS&lt;/b&gt;" labelMs="&lt;b&gt;LAPISAN 1 · INPUT&lt;/b&gt;">
+          <mxCell style="shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;size=54;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=13;fontFamily=Arial;fontSize=17;fontStyle=1;fontColor=#172033;fillColor=#E8EEF5;strokeColor=#66758A;strokeWidth=2;" vertex="1" parent="1">
+            <mxGeometry x="300" y="150" width="720" height="135" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="input-search" label="&lt;b&gt;Place / address&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Search text&lt;/font&gt;" petakerjaKey="routing-input-search" labelEn="&lt;b&gt;Place / address&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Search text&lt;/font&gt;" labelMs="&lt;b&gt;Tempat / alamat&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Teks carian&lt;/font&gt;">
+          <mxCell style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#172033;fillColor=#FFFFFF;strokeColor=#A7B2C1;strokeWidth=1;" vertex="1" parent="1">
+            <mxGeometry x="370" y="198" width="185" height="56" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="input-ab" label="&lt;b&gt;A and B&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Map click / selected place&lt;/font&gt;" petakerjaKey="routing-input-ab" labelEn="&lt;b&gt;A and B&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Map click / selected place&lt;/font&gt;" labelMs="&lt;b&gt;A dan B&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Klik peta / tempat dipilih&lt;/font&gt;">
+          <mxCell style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#172033;fillColor=#FFFFFF;strokeColor=#A7B2C1;strokeWidth=1;" vertex="1" parent="1">
+            <mxGeometry x="575" y="198" width="210" height="56" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="input-gps" label="&lt;b&gt;Browser GPS&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Current coordinates&lt;/font&gt;" petakerjaKey="routing-input-gps" labelEn="&lt;b&gt;Browser GPS&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Current coordinates&lt;/font&gt;" labelMs="&lt;b&gt;GPS pelayar&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Koordinat semasa&lt;/font&gt;">
+          <mxCell style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#172033;fillColor=#FFFFFF;strokeColor=#A7B2C1;strokeWidth=1;" vertex="1" parent="1">
+            <mxGeometry x="805" y="198" width="165" height="56" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="layer2-depth" value="" style="shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;size=58;whiteSpace=wrap;html=1;fillColor=#9CBFE4;strokeColor=#2D72D2;strokeWidth=2;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="257" y="322" width="830" height="150" as="geometry" />
+        </mxCell>
+        <object id="layer2-maplibre" label="&lt;b&gt;LAYER 2 · RENDERING — MAPLIBRE GL JS&lt;/b&gt;" petakerjaKey="routing-layer-maplibre" labelEn="&lt;b&gt;LAYER 2 · RENDERING — MAPLIBRE GL JS&lt;/b&gt;" labelMs="&lt;b&gt;LAPISAN 2 · PAPARAN — MAPLIBRE GL JS&lt;/b&gt;">
+          <mxCell style="shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;size=58;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=13;fontFamily=Arial;fontSize=17;fontStyle=1;fontColor=#172033;fillColor=#DCEBFA;strokeColor=#2D72D2;strokeWidth=2;" vertex="1" parent="1">
+            <mxGeometry x="245" y="310" width="830" height="150" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="maplibre-current" label="&lt;b&gt;Current PetaKerja rendering&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;A/B markers · GPS · primary + alternative lines&lt;/font&gt;" petakerjaKey="routing-maplibre-current" labelEn="&lt;b&gt;Current PetaKerja rendering&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;A/B markers · GPS · primary + alternative lines&lt;/font&gt;" labelMs="&lt;b&gt;Paparan PetaKerja semasa&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Penanda A/B · GPS · garisan utama + alternatif&lt;/font&gt;">
+          <mxCell style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#172033;fillColor=#FFFFFF;strokeColor=#78A9DA;strokeWidth=1;" vertex="1" parent="1">
+            <mxGeometry x="335" y="362" width="310" height="62" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="maplibre-capability" label="&lt;b&gt;Rendering capabilities&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Direction graphics · marker animation · camera fit&lt;/font&gt;" petakerjaKey="routing-maplibre-capability" labelEn="&lt;b&gt;Rendering capabilities&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Direction graphics · marker animation · camera fit&lt;/font&gt;" labelMs="&lt;b&gt;Keupayaan paparan&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Grafik arah · animasi penanda · muat kamera&lt;/font&gt;">
+          <mxCell style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#172033;fillColor=#FFFFFF;strokeColor=#78A9DA;strokeWidth=1;" vertex="1" parent="1">
+            <mxGeometry x="675" y="362" width="300" height="62" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="layer3-depth" value="" style="shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;size=62;whiteSpace=wrap;html=1;fillColor=#C4AEE3;strokeColor=#7E57C2;strokeWidth=2;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="202" y="502" width="940" height="155" as="geometry" />
+        </mxCell>
+        <object id="layer3-browser" label="&lt;b&gt;LAYER 3 · PETAKERJA BROWSER ORCHESTRATION&lt;/b&gt;" petakerjaKey="routing-layer-browser" labelEn="&lt;b&gt;LAYER 3 · PETAKERJA BROWSER ORCHESTRATION&lt;/b&gt;" labelMs="&lt;b&gt;LAPISAN 3 · ORKESTRASI PELAYAR PETAKERJA&lt;/b&gt;">
+          <mxCell style="shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;size=62;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=13;fontFamily=Arial;fontSize=17;fontStyle=1;fontColor=#172033;fillColor=#EEE5FA;strokeColor=#7E57C2;strokeWidth=2;" vertex="1" parent="1">
+            <mxGeometry x="190" y="490" width="940" height="155" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="browser-search-manager" label="&lt;b&gt;SearchManager&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Hybrid POI + place search&lt;/font&gt;" petakerjaKey="routing-browser-search-manager" labelEn="&lt;b&gt;SearchManager&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Hybrid POI + place search&lt;/font&gt;" labelMs="&lt;b&gt;SearchManager&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Carian hibrid POI + tempat&lt;/font&gt;">
+          <mxCell style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#172033;fillColor=#FFFFFF;strokeColor=#A184CF;strokeWidth=1;" vertex="1" parent="1">
+            <mxGeometry x="300" y="545" width="235" height="62" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="browser-navigation-manager" label="&lt;b&gt;GeoNavigationManager&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;A/B · profiles · alternatives · maneuvers&lt;/font&gt;" petakerjaKey="routing-browser-navigation-manager" labelEn="&lt;b&gt;GeoNavigationManager&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;A/B · profiles · alternatives · maneuvers&lt;/font&gt;" labelMs="&lt;b&gt;GeoNavigationManager&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;A/B · profil · alternatif · manuver&lt;/font&gt;">
+          <mxCell style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#172033;fillColor=#FFFFFF;strokeColor=#A184CF;strokeWidth=1;" vertex="1" parent="1">
+            <mxGeometry x="555" y="545" width="270" height="62" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="browser-geo-service" label="&lt;b&gt;src/services/geo.ts&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Same-origin /api/geo requests&lt;/font&gt;" petakerjaKey="routing-browser-geo-service" labelEn="&lt;b&gt;src/services/geo.ts&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Same-origin /api/geo requests&lt;/font&gt;" labelMs="&lt;b&gt;src/services/geo.ts&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Permintaan /api/geo asal sama&lt;/font&gt;">
+          <mxCell style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#172033;fillColor=#FFFFFF;strokeColor=#A184CF;strokeWidth=1;" vertex="1" parent="1">
+            <mxGeometry x="845" y="545" width="220" height="62" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="layer4-depth" value="" style="shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;size=66;whiteSpace=wrap;html=1;fillColor=#E6C27E;strokeColor=#C87600;strokeWidth=2;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="147" y="687" width="1050" height="155" as="geometry" />
+        </mxCell>
+        <object id="layer4-gateway" label="&lt;b&gt;LAYER 4 · PETAKERJA GEOGATEWAY&lt;/b&gt;" petakerjaKey="routing-layer-gateway" labelEn="&lt;b&gt;LAYER 4 · PETAKERJA GEOGATEWAY&lt;/b&gt;" labelMs="&lt;b&gt;LAPISAN 4 · GEOGATEWAY PETAKERJA&lt;/b&gt;">
+          <mxCell style="shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;size=66;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=13;fontFamily=Arial;fontSize=17;fontStyle=1;fontColor=#172033;fillColor=#FFF1D6;strokeColor=#C87600;strokeWidth=2;" vertex="1" parent="1">
+            <mxGeometry x="135" y="675" width="1050" height="155" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="gateway-express" label="&lt;b&gt;Express /api/geo/*&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Same-origin API surface&lt;/font&gt;" petakerjaKey="routing-gateway-express" labelEn="&lt;b&gt;Express /api/geo/*&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Same-origin API surface&lt;/font&gt;" labelMs="&lt;b&gt;Express /api/geo/*&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Permukaan API asal sama&lt;/font&gt;">
+          <mxCell style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#172033;fillColor=#FFFFFF;strokeColor=#D89A39;strokeWidth=1;" vertex="1" parent="1">
+            <mxGeometry x="255" y="730" width="230" height="62" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="gateway-core" label="&lt;b&gt;GeoGateway&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Provider-neutral orchestration&lt;/font&gt;" petakerjaKey="routing-gateway-core" labelEn="&lt;b&gt;GeoGateway&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Provider-neutral orchestration&lt;/font&gt;" labelMs="&lt;b&gt;GeoGateway&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Orkestrasi neutral penyedia&lt;/font&gt;">
+          <mxCell style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#172033;fillColor=#FFFFFF;strokeColor=#D89A39;strokeWidth=1;" vertex="1" parent="1">
+            <mxGeometry x="510" y="730" width="245" height="62" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="gateway-guards" label="&lt;b&gt;Safety + normalization&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Malaysia validation · timeouts · rate limits · cache&lt;/font&gt;" petakerjaKey="routing-gateway-guards" labelEn="&lt;b&gt;Safety + normalization&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Malaysia validation · timeouts · rate limits · cache&lt;/font&gt;" labelMs="&lt;b&gt;Keselamatan + penormalan&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Pengesahan Malaysia · had masa · had kadar · cache&lt;/font&gt;">
+          <mxCell style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#172033;fillColor=#FFFFFF;strokeColor=#D89A39;strokeWidth=1;" vertex="1" parent="1">
+            <mxGeometry x="780" y="730" width="300" height="62" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="layer5-depth" value="" style="shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;size=70;whiteSpace=wrap;html=1;fillColor=#97C9AA;strokeColor=#238551;strokeWidth=2;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="92" y="872" width="1160" height="180" as="geometry" />
+        </mxCell>
+        <object id="layer5-providers" label="&lt;b&gt;LAYER 5 · PROVIDERS + REUSABLE DATA&lt;/b&gt;" petakerjaKey="routing-layer-providers" labelEn="&lt;b&gt;LAYER 5 · PROVIDERS + REUSABLE DATA&lt;/b&gt;" labelMs="&lt;b&gt;LAPISAN 5 · PENYEDIA + DATA BOLEH GUNA SEMULA&lt;/b&gt;">
+          <mxCell style="shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;size=70;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=13;fontFamily=Arial;fontSize=17;fontStyle=1;fontColor=#172033;fillColor=#E1F4E8;strokeColor=#238551;strokeWidth=2;" vertex="1" parent="1">
+            <mxGeometry x="80" y="860" width="1160" height="180" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="provider-nominatim" label="&lt;b&gt;Nominatim&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Search · reverse · lookup&lt;br&gt;place/address ↔ coordinates&lt;/font&gt;" petakerjaKey="routing-provider-nominatim" labelEn="&lt;b&gt;Nominatim&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Search · reverse · lookup&lt;br&gt;place/address ↔ coordinates&lt;/font&gt;" labelMs="&lt;b&gt;Nominatim&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Cari · songsang · semak&lt;br&gt;tempat/alamat ↔ koordinat&lt;/font&gt;">
+          <mxCell style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#172033;fillColor=#FFFFFF;strokeColor=#58A777;strokeWidth=1;" vertex="1" parent="1">
+            <mxGeometry x="210" y="920" width="250" height="82" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="provider-valhalla" label="&lt;b&gt;Valhalla&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Road geometry · distance · traffic-independent ETA&lt;br&gt;maneuvers · alternatives · matrices · isochrones&lt;/font&gt;" petakerjaKey="routing-provider-valhalla" labelEn="&lt;b&gt;Valhalla&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Road geometry · distance · traffic-independent ETA&lt;br&gt;maneuvers · alternatives · matrices · isochrones&lt;/font&gt;" labelMs="&lt;b&gt;Valhalla&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Geometri jalan · jarak · ETA tanpa trafik&lt;br&gt;manuver · alternatif · matriks · isokron&lt;/font&gt;">
+          <mxCell style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#172033;fillColor=#FFFFFF;strokeColor=#58A777;strokeWidth=1;" vertex="1" parent="1">
+            <mxGeometry x="485" y="920" width="360" height="82" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="provider-supabase" label="&lt;b&gt;Supabase / PostGIS&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;geo_geocode_cache&lt;br&gt;geo_route_cache&lt;/font&gt;" petakerjaKey="routing-provider-supabase" labelEn="&lt;b&gt;Supabase / PostGIS&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;geo_geocode_cache&lt;br&gt;geo_route_cache&lt;/font&gt;" labelMs="&lt;b&gt;Supabase / PostGIS&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;geo_geocode_cache&lt;br&gt;geo_route_cache&lt;/font&gt;">
+          <mxCell style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#172033;fillColor=#FFFFFF;strokeColor=#58A777;strokeWidth=1;" vertex="1" parent="1">
+            <mxGeometry x="870" y="920" width="245" height="82" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="takeaway" label="&lt;b&gt;THE BOTTOM LINE&lt;/b&gt;&lt;br&gt;&lt;br&gt;MapLibre = visualizer&lt;br&gt;Valhalla = route calculator&lt;br&gt;Nominatim = place/address search" petakerjaKey="routing-takeaway" labelEn="&lt;b&gt;THE BOTTOM LINE&lt;/b&gt;&lt;br&gt;&lt;br&gt;MapLibre = visualizer&lt;br&gt;Valhalla = route calculator&lt;br&gt;Nominatim = place/address search" labelMs="&lt;b&gt;RINGKASANNYA&lt;/b&gt;&lt;br&gt;&lt;br&gt;MapLibre = pemapar&lt;br&gt;Valhalla = pengira laluan&lt;br&gt;Nominatim = carian tempat/alamat">
+          <mxCell style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=18;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#FFFFFF;fillColor=#172033;strokeColor=#172033;strokeWidth=2;shadow=1;" vertex="1" parent="1">
+            <mxGeometry x="1330" y="145" width="480" height="125" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="maplibre-boundary" label="&lt;b&gt;MAPLIBRE IS NOT A ROUTING ENGINE&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:13px&quot;&gt;It receives already-calculated GeoJSON and renders it. It does not follow roads, calculate driving distance, produce ETA, or generate turn instructions.&lt;/font&gt;" petakerjaKey="routing-maplibre-boundary" labelEn="&lt;b&gt;MAPLIBRE IS NOT A ROUTING ENGINE&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:13px&quot;&gt;It receives already-calculated GeoJSON and renders it. It does not follow roads, calculate driving distance, produce ETA, or generate turn instructions.&lt;/font&gt;" labelMs="&lt;b&gt;MAPLIBRE BUKAN ENJIN PENGHALAAN&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:13px&quot;&gt;Ia menerima GeoJSON yang telah dikira lalu memaparkannya. Ia tidak mengekori jalan, mengira jarak pemanduan, menghasilkan ETA atau menjana arahan membelok.&lt;/font&gt;">
+          <mxCell style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=16;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#7A271A;fillColor=#FDECEC;strokeColor=#CD4246;strokeWidth=2;" vertex="1" parent="1">
+            <mxGeometry x="1330" y="295" width="480" height="150" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="navigation-control-note" label="&lt;b&gt;NavigationControl&lt;/b&gt; = zoom buttons + compass only&lt;br&gt;&lt;font color=&quot;#2D72D2&quot;&gt;Official MapLibre documentation ↗&lt;/font&gt;" link="https://maplibre.org/maplibre-gl-js/docs/API/classes/NavigationControl/" petakerjaKey="routing-navigation-control-note" labelEn="&lt;b&gt;NavigationControl&lt;/b&gt; = zoom buttons + compass only&lt;br&gt;&lt;font color=&quot;#2D72D2&quot;&gt;Official MapLibre documentation ↗&lt;/font&gt;" labelMs="&lt;b&gt;NavigationControl&lt;/b&gt; = butang zum + kompas sahaja&lt;br&gt;&lt;font color=&quot;#2D72D2&quot;&gt;Dokumentasi rasmi MapLibre ↗&lt;/font&gt;">
+          <mxCell style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=14;fontFamily=Arial;fontSize=13;fontColor=#172033;fillColor=#FFFFFF;strokeColor=#B8C2CF;strokeWidth=1;" vertex="1" parent="1">
+            <mxGeometry x="1330" y="465" width="480" height="70" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="directions-plugin-note" label="&lt;b&gt;maplibre-gl-directions&lt;/b&gt; sends requests to a configured external routing API. PetaKerja currently uses GeoNavigationManager instead of this plugin.&lt;br&gt;&lt;font color=&quot;#2D72D2&quot;&gt;Plugin configuration ↗&lt;/font&gt;" link="https://maplibre.org/maplibre-gl-directions/api/interfaces/MapLibreGlDirectionsConfiguration.html" petakerjaKey="routing-directions-plugin-note" labelEn="&lt;b&gt;maplibre-gl-directions&lt;/b&gt; sends requests to a configured external routing API. PetaKerja currently uses GeoNavigationManager instead of this plugin.&lt;br&gt;&lt;font color=&quot;#2D72D2&quot;&gt;Plugin configuration ↗&lt;/font&gt;" labelMs="&lt;b&gt;maplibre-gl-directions&lt;/b&gt; menghantar permintaan kepada API penghalaan luar yang dikonfigurasi. PetaKerja kini menggunakan GeoNavigationManager dan bukan pemalam ini.&lt;br&gt;&lt;font color=&quot;#2D72D2&quot;&gt;Konfigurasi pemalam ↗&lt;/font&gt;">
+          <mxCell style="shape=note;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=14;fontFamily=Arial;fontSize=13;fontColor=#172033;fillColor=#EEF4FB;strokeColor=#5C87B2;strokeWidth=1;size=20;" vertex="1" parent="1">
+            <mxGeometry x="1330" y="555" width="480" height="105" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="side-flows" label="&lt;b&gt;SEPARATE INPUT FLOWS&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:13px&quot;&gt;Place/address → GeoGateway → Nominatim → coordinates&lt;br&gt;Browser GPS → current coordinates → MapLibre&lt;br&gt;GPS coordinate → Nominatim reverse lookup → readable label&lt;/font&gt;" petakerjaKey="routing-side-flows" labelEn="&lt;b&gt;SEPARATE INPUT FLOWS&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:13px&quot;&gt;Place/address → GeoGateway → Nominatim → coordinates&lt;br&gt;Browser GPS → current coordinates → MapLibre&lt;br&gt;GPS coordinate → Nominatim reverse lookup → readable label&lt;/font&gt;" labelMs="&lt;b&gt;ALIRAN INPUT BERASINGAN&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:13px&quot;&gt;Tempat/alamat → GeoGateway → Nominatim → koordinat&lt;br&gt;GPS pelayar → koordinat semasa → MapLibre&lt;br&gt;Koordinat GPS → carian songsang Nominatim → label boleh dibaca&lt;/font&gt;">
+          <mxCell style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=15;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#172033;fillColor=#FFFFFF;strokeColor=#7C8CA1;strokeWidth=1;" vertex="1" parent="1">
+            <mxGeometry x="1330" y="680" width="480" height="120" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="fallback-note" label="&lt;b&gt;ROUTING FALLBACK&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:13px&quot;&gt;Valhalla unavailable or disabled&lt;br&gt;↓&lt;br&gt;Haversine straight-line estimate&lt;br&gt;&lt;b&gt;No ETA · no maneuvers · not navigable&lt;/b&gt;&lt;/font&gt;" petakerjaKey="routing-fallback" labelEn="&lt;b&gt;ROUTING FALLBACK&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:13px&quot;&gt;Valhalla unavailable or disabled&lt;br&gt;↓&lt;br&gt;Haversine straight-line estimate&lt;br&gt;&lt;b&gt;No ETA · no maneuvers · not navigable&lt;/b&gt;&lt;/font&gt;" labelMs="&lt;b&gt;SANDARAN PENGHALAAN&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font style=&quot;font-size:13px&quot;&gt;Valhalla tidak tersedia atau dilumpuhkan&lt;br&gt;↓&lt;br&gt;Anggaran garis lurus Haversine&lt;br&gt;&lt;b&gt;Tiada ETA · tiada manuver · tidak boleh dinavigasi&lt;/b&gt;&lt;/font&gt;">
+          <mxCell style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=14;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#7A4B00;fillColor=#FFF4D6;strokeColor=#C87600;strokeWidth=2;" vertex="1" parent="1">
+            <mxGeometry x="1330" y="825" width="480" height="150" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="rollout-status" label="&lt;b&gt;ROLLOUT STATUS&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;Implementation is present. GEO_PROVIDER_ENABLED and VITE_GEO_* flags remain opt-in until staging import, health, route-generation, and failover checks pass.&lt;/font&gt;" petakerjaKey="routing-rollout-status" labelEn="&lt;b&gt;ROLLOUT STATUS&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;Implementation is present. GEO_PROVIDER_ENABLED and VITE_GEO_* flags remain opt-in until staging import, health, route-generation, and failover checks pass.&lt;/font&gt;" labelMs="&lt;b&gt;STATUS PELAKSANAAN&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:12px&quot;&gt;Pelaksanaan telah tersedia. Bendera GEO_PROVIDER_ENABLED dan VITE_GEO_* kekal ikut serta sehingga semakan import staging, kesihatan, penjanaan laluan dan failover lulus.&lt;/font&gt;">
+          <mxCell style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=14;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=#344054;fillColor=#EEF1F5;strokeColor=#98A2B3;strokeWidth=1;" vertex="1" parent="1">
+            <mxGeometry x="1330" y="995" width="480" height="90" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="source-footer" label="Source-grounded in GeoNavigationManager, src/services/geo.ts, Express /api/geo, and server GeoGateway. Current ETA is traffic-independent." petakerjaKey="routing-source-footer" labelEn="Source-grounded in GeoNavigationManager, src/services/geo.ts, Express /api/geo, and server GeoGateway. Current ETA is traffic-independent." labelMs="Berasaskan sumber GeoNavigationManager, src/services/geo.ts, Express /api/geo dan GeoGateway pelayan. ETA semasa tidak mengambil kira trafik.">
+          <mxCell style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=11;fontColor=#667085;" vertex="1" parent="1">
+            <mxGeometry x="80" y="1090" width="1730" height="40" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="request-start" value="" style="ellipse;html=1;opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="205" width="10" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="request-end" value="" style="ellipse;html=1;opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="1">
+          <mxGeometry x="45" y="955" width="10" height="10" as="geometry" />
+        </mxCell>
+        <object id="request-flow" label="" petakerjaKey="routing-request-flow">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2D72D2;strokeWidth=3;endArrow=block;endFill=1;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#1D4E89;labelBackgroundColor=#F7F9FC;" edge="1" parent="1" source="request-start" target="request-end">
+            <mxGeometry x="0.05" y="-16" relative="1" as="geometry">
+              <mxPoint as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="request-flow-label" label="&lt;b&gt;REQUEST ↓&lt;/b&gt;&lt;br&gt;A/B + profile&lt;br&gt;POST /api/geo/route" petakerjaKey="routing-request-flow-label" labelEn="&lt;b&gt;REQUEST ↓&lt;/b&gt;&lt;br&gt;A/B + profile&lt;br&gt;POST /api/geo/route" labelMs="&lt;b&gt;PERMINTAAN ↓&lt;/b&gt;&lt;br&gt;A/B + profil&lt;br&gt;POST /api/geo/route">
+          <mxCell style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=#F7F9FC;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#1D4E89;" vertex="1" parent="1">
+            <mxGeometry x="0" y="500" width="180" height="75" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="response-start" value="" style="ellipse;html=1;opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="1">
+          <mxGeometry x="1270" y="955" width="10" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="response-end" value="" style="ellipse;html=1;opacity=0;fillOpacity=0;strokeOpacity=0;" vertex="1" parent="1">
+          <mxGeometry x="1270" y="355" width="10" height="10" as="geometry" />
+        </mxCell>
+        <object id="response-flow" label="" petakerjaKey="routing-response-flow">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#238551;strokeWidth=3;endArrow=block;endFill=1;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#18663E;labelBackgroundColor=#F7F9FC;" edge="1" parent="1" source="response-start" target="response-end">
+            <mxGeometry x="0.05" y="-18" relative="1" as="geometry">
+              <mxPoint as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="response-flow-label" label="&lt;b&gt;RESPONSE ↑&lt;/b&gt;&lt;br&gt;GeoJSON&lt;br&gt;distance + ETA&lt;br&gt;maneuvers + alternatives" petakerjaKey="routing-response-flow-label" labelEn="&lt;b&gt;RESPONSE ↑&lt;/b&gt;&lt;br&gt;GeoJSON&lt;br&gt;distance + ETA&lt;br&gt;maneuvers + alternatives" labelMs="&lt;b&gt;RESPONS ↑&lt;/b&gt;&lt;br&gt;GeoJSON&lt;br&gt;jarak + ETA&lt;br&gt;manuver + alternatif">
+          <mxCell style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=#F7F9FC;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=#18663E;" vertex="1" parent="1">
+            <mxGeometry x="1195" y="515" width="130" height="95" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="gateway-fallback-branch" label="provider unavailable / disabled" petakerjaKey="routing-gateway-fallback-branch" labelEn="provider unavailable / disabled" labelMs="penyedia tidak tersedia / dilumpuhkan">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=6 4;strokeColor=#C87600;strokeWidth=2;endArrow=open;endFill=0;fontFamily=Arial;fontSize=11;fontColor=#7A4B00;labelBackgroundColor=#F7F9FC;exitX=1;exitY=0.65;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="layer4-gateway" target="fallback-note">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

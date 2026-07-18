@@ -37,6 +37,7 @@
     "architecture": { "xml": "assets/editor/architecture-layered.drawio", "svg": "assets/diagrams/architecture-layered.svg", "pageId": "petakerja_layered_architecture" },
     "architecture-original": { "xml": "assets/editor/architecture-layered-original.drawio", "svg": "assets/diagrams/architecture-layered-original.svg", "pageId": "petakerja_layered_architecture" },
     "modules": { "xml": "assets/editor/module-hierarchy.drawio", "svg": "assets/diagrams/module-hierarchy.svg", "pageId": "petakerja_module_hierarchy" },
-    "modules-original": { "xml": "assets/editor/module-hierarchy-original.drawio", "svg": "assets/diagrams/module-hierarchy-original.svg", "pageId": "petakerja_module_hierarchy" }
+    "modules-original": { "xml": "assets/editor/module-hierarchy-original.drawio", "svg": "assets/diagrams/module-hierarchy-original.svg", "pageId": "petakerja_module_hierarchy" },
+    "map-routing-responsibility-stack": { "xml": "assets/editor/petakerja-map-routing-responsibility-stack.drawio", "svg": "assets/diagrams/petakerja-map-routing-responsibility-stack.svg", "pageId": "petakerja_map_routing_stack", "title": "A-to-B routing responsibilities", "diagramType": "architecture" }
   }
 }

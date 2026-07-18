@@ -820,6 +820,15 @@
       ],
     },
     {
+      id: 'map-routing-responsibility-stack', title: 'Tanggungjawab penghalaan A-ke-B', category: 'Peta & Penghalaan', status: 'current', reference: 'assets/diagrams/petakerja-map-routing-responsibility-stack.svg',
+      description: 'Pembahagian tanggungjawab semasa antara input pelayar, MapLibre, orkestrasi pelayar, GeoGateway, penyedia geo dan cache.',
+      columns: [
+        ['browser', 'search-manager', 'maplibre-gl'],
+        ['express-app'],
+        ['supabase-db'],
+      ],
+    },
+    {
       id: 'erd', title: 'ERD teras', category: 'Data', status: 'current', reference: 'assets/diagrams/erd-core.svg',
       description: 'Hubungan identiti, profil, POI, pekerjaan dan modul pengguna. public.job_listings ditanda tidak tersedia.',
       columns: [

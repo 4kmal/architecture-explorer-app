@@ -55,7 +55,7 @@
       },
       categories: {
         Sistem: 'System', Keperluan: 'Requirements', 'Tingkah laku': 'Behaviour', Jujukan: 'Sequence', 'Carta Alir': 'Flow Chart', Kelas: 'Classes', 'Reka bentuk': 'Design',
-        Data: 'Data', 'Modul lanjutan': 'Extended modules',
+        'Peta & Penghalaan': 'Map & Routing', Data: 'Data', 'Modul lanjutan': 'Extended modules',
       },
       scopes: {
         core: 'FYP Core', jobops: 'JobOps', blog: 'Blog & Newsletter', community: 'Community & Intel', infra: 'Infrastructure', all: 'All modules',
@@ -87,6 +87,7 @@
         implementation: ['Implementation class dependencies', 'MyPetaApp composition, constructor associations and dependencies from the current code.'],
         architecture: ['Layered architecture', 'Browser frontend, managers, services, Express backend and data stores.'],
         modules: ['Module hierarchy', 'Application core and extended modules that can be filtered by scope.'],
+        'map-routing-responsibility-stack': ['A-to-B routing responsibilities', 'Current responsibility split across browser inputs, MapLibre, browser orchestration, GeoGateway, geo providers and caches.'],
         erd: ['Core ERD', 'Identity, profile, POI, job and user-module relationships. public.job_listings is marked unavailable.'],
         'data-flow': ['Data flow', 'Sources, ingestion/query, storage and presentation for POIs, jobs, AI and extended modules.'],
         jobops: ['JobOps, Gmail & Watchlist', 'Saved-job pipeline, Gmail integration, company watchlists, extractors and notifications.'],

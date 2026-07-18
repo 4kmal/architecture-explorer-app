@@ -61,6 +61,7 @@ LAYERED_ARCHITECTURE_SOURCE = ROOT / "assets" / "editor" / "architecture-layered
 LAYERED_ARCHITECTURE_ORIGINAL_SOURCE = ROOT / "assets" / "editor" / "architecture-layered-original.drawio"
 MODULE_HIERARCHY_SOURCE = ROOT / "assets" / "editor" / "module-hierarchy.drawio"
 MODULE_HIERARCHY_ORIGINAL_SOURCE = ROOT / "assets" / "editor" / "module-hierarchy-original.drawio"
+MAP_ROUTING_STACK_SOURCE = ROOT / "assets" / "editor" / "petakerja-map-routing-responsibility-stack.drawio"
 
 
 DRAWIO_EXPORTS = {
@@ -100,6 +101,7 @@ DRAWIO_EXPORTS = {
     "architecture-original": (LAYERED_ARCHITECTURE_ORIGINAL_SOURCE, 1, "architecture-layered-original.svg"),
     "modules": (MODULE_HIERARCHY_SOURCE, 1, "module-hierarchy.svg"),
     "modules-original": (MODULE_HIERARCHY_ORIGINAL_SOURCE, 1, "module-hierarchy-original.svg"),
+    "map-routing-responsibility-stack": (MAP_ROUTING_STACK_SOURCE, 1, "petakerja-map-routing-responsibility-stack.svg"),
 }
 
 REPORT_EXPORTS = {
@@ -1647,6 +1649,65 @@ AUTH_SEQUENCE_MS = {
     "Close authenticated views; render guest sign-in": "Tutup paparan pengguna dan paparkan log masuk tetamu",
 }
 
+MAP_ROUTING_STACK_MS = {
+    "PetaKerja A-to-B Navigation: Who Does What?": "Navigasi A-ke-B PetaKerja: Siapa Melakukan Apa?",
+    "MapLibre renders. GeoGateway orchestrates. Valhalla routes. Nominatim searches.": "MapLibre memapar. GeoGateway mengatur. Valhalla menghala. Nominatim mencari.",
+    "LAYER 1 · INPUTS": "LAPISAN 1 · INPUT",
+    "Place / address": "Tempat / alamat", "Search text": "Teks carian",
+    "A and B": "A dan B", "Map click / selected place": "Klik peta / tempat dipilih",
+    "Browser GPS": "GPS pelayar", "Current coordinates": "Koordinat semasa",
+    "LAYER 2 · RENDERING — MAPLIBRE GL JS": "LAPISAN 2 · PAPARAN — MAPLIBRE GL JS",
+    "Current PetaKerja rendering": "Paparan PetaKerja semasa",
+    "A/B markers · GPS · primary + alternative lines": "Penanda A/B · GPS · garisan utama + alternatif",
+    "Rendering capabilities": "Keupayaan paparan",
+    "Direction graphics · marker animation · camera fit": "Grafik arah · animasi penanda · muat kamera",
+    "LAYER 3 · PETAKERJA BROWSER ORCHESTRATION": "LAPISAN 3 · ORKESTRASI PELAYAR PETAKERJA",
+    "Hybrid POI + place search": "Carian hibrid POI + tempat",
+    "profiles · alternatives · maneuvers": "profil · alternatif · manuver",
+    "Same-origin /api/geo requests": "Permintaan /api/geo asal sama",
+    "LAYER 4 · PETAKERJA GEOGATEWAY": "LAPISAN 4 · GEOGATEWAY PETAKERJA",
+    "Same-origin API surface": "Permukaan API asal sama",
+    "Provider-neutral orchestration": "Orkestrasi neutral penyedia",
+    "Safety + normalization": "Keselamatan + penormalan",
+    "Malaysia validation · timeouts · rate limits · cache": "Pengesahan Malaysia · had masa · had kadar · cache",
+    "LAYER 5 · PROVIDERS + REUSABLE DATA": "LAPISAN 5 · PENYEDIA + DATA BOLEH GUNA SEMULA",
+    "Search · reverse · lookup": "Cari · songsang · semak",
+    "place/address ↔ coordinates": "tempat/alamat ↔ koordinat",
+    "Road geometry · distance · traffic-independent ETA": "Geometri jalan · jarak · ETA tanpa trafik",
+    "maneuvers · alternatives · matrices · isochrones": "manuver · alternatif · matriks · isokron",
+    "THE BOTTOM LINE": "RINGKASANNYA",
+    "visualizer": "pemapar", "route calculator": "pengira laluan", "place/address search": "carian tempat/alamat",
+    "MAPLIBRE IS NOT A ROUTING ENGINE": "MAPLIBRE BUKAN ENJIN PENGHALAAN",
+    "It receives already-calculated GeoJSON and renders it. It does not follow roads, calculate driving distance, produce ETA, or generate turn instructions.": "Ia menerima GeoJSON yang telah dikira lalu memaparkannya. Ia tidak mengekori jalan, mengira jarak pemanduan, menghasilkan ETA atau menjana arahan membelok.",
+    "zoom buttons + compass only": "butang zum + kompas sahaja",
+    "Official MapLibre documentation ↗": "Dokumentasi rasmi MapLibre ↗",
+    "sends requests to a configured external routing API. PetaKerja currently uses GeoNavigationManager instead of this plugin.": "menghantar permintaan kepada API penghalaan luar yang dikonfigurasi. PetaKerja kini menggunakan GeoNavigationManager dan bukan pemalam ini.",
+    "Plugin configuration ↗": "Konfigurasi pemalam ↗",
+    "SEPARATE INPUT FLOWS": "ALIRAN INPUT BERASINGAN",
+    "Place/address → GeoGateway → Nominatim → coordinates": "Tempat/alamat → GeoGateway → Nominatim → koordinat",
+    "Browser GPS → current coordinates → MapLibre": "GPS pelayar → koordinat semasa → MapLibre",
+    "GPS coordinate → Nominatim reverse lookup → readable label": "Koordinat GPS → carian songsang Nominatim → label boleh dibaca",
+    "ROUTING FALLBACK": "SANDARAN PENGHALAAN",
+    "Valhalla unavailable or disabled": "Valhalla tidak tersedia atau dilumpuhkan",
+    "Haversine straight-line estimate": "Anggaran garis lurus Haversine",
+    "No ETA · no maneuvers · not navigable": "Tiada ETA · tiada manuver · tidak boleh dinavigasi",
+    "ROLLOUT STATUS": "STATUS PELAKSANAAN",
+    "Implementation is present. GEO_PROVIDER_ENABLED and VITE_GEO_* flags remain opt-in until staging import, health, route-generation, and failover checks pass.": "Pelaksanaan telah tersedia. Bendera GEO_PROVIDER_ENABLED dan VITE_GEO_* kekal ikut serta sehingga semakan import staging, kesihatan, penjanaan laluan dan failover lulus.",
+    "Source-grounded in GeoNavigationManager, src/services/geo.ts, Express /api/geo, and server GeoGateway. Current ETA is traffic-independent.": "Berasaskan sumber GeoNavigationManager, src/services/geo.ts, Express /api/geo dan GeoGateway pelayan. ETA semasa tidak mengambil kira trafik.",
+    "REQUEST ↓": "PERMINTAAN ↓", "A/B + profile": "A/B + profil",
+    "RESPONSE ↑": "RESPONS ↑", "distance + ETA": "jarak + ETA",
+    "maneuvers + alternatives": "manuver + alternatif",
+    "provider unavailable / disabled": "penyedia tidak tersedia / dilumpuhkan",
+}
+
+MAP_ROUTING_STACK_COMPONENTS = {
+    "input-gps": ("browser", ["browser"]),
+    "browser-search-manager": ("search-manager", ["search-manager"]),
+    "maplibre-current": ("maplibre-gl", ["maplibre-gl"]),
+    "gateway-express": ("express-app", ["express-app"]),
+    "provider-supabase": ("supabase-db", ["supabase-db"]),
+}
+
 
 def bilingual_translation_spec(diagram_id: str, source: Path) -> tuple[str, dict[str, str]] | None:
     """Return the source language and BM/EN dictionary for an editor page."""
@@ -1662,6 +1723,8 @@ def bilingual_translation_spec(diagram_id: str, source: Path) -> tuple[str, dict
         return "en", ADMIN_FLOWCHART_SPECS[diagram_id][1]
     if diagram_id in DESIGN_SPECS:
         return "en", DESIGN_SPECS[diagram_id][1]
+    if diagram_id == "map-routing-responsibility-stack":
+        return "en", MAP_ROUTING_STACK_MS
     sequence_maps = {
         "sequence": JOB_SEARCH_SEQUENCE_MS,
         "auth-sequence": AUTH_SEQUENCE_MS,
@@ -1954,6 +2017,32 @@ def design_components(diagram_id: str) -> tuple[list[dict], list[dict]]:
     return keyed_drawio_components(diagram_id, DESIGN_SPECS, "dependency")
 
 
+def map_routing_stack_components() -> tuple[list[dict], list[dict]]:
+    """Map only canonical Explorer entities represented by the routing stack."""
+    diagram = ET.parse(MAP_ROUTING_STACK_SOURCE).getroot().findall("diagram")[0]
+    wrappers = {wrapper.get("id", ""): wrapper for wrapper in diagram.findall(".//object")}
+    components: list[dict] = []
+    for wrapper_id, (component_key, node_ids) in MAP_ROUTING_STACK_COMPONENTS.items():
+        wrapper = wrappers.get(wrapper_id)
+        if wrapper is None:
+            raise ValueError(f"Missing routing-stack component {wrapper_id!r}")
+        label_en = clean_label(wrapper.get("label", ""))
+        label_ms = clean_label(translate_label(wrapper.get("label", ""), MAP_ROUTING_STACK_MS))
+        components.append({
+            "componentKey": component_key,
+            "id": node_ids[0],
+            "cellIds": [wrapper_id],
+            "relationCellIds": [],
+            "nodeIds": list(node_ids),
+            "tableName": None,
+            "uiHotspots": list(HOTSPOTS.get(node_ids[0], [])),
+            "matchTexts": [label_en],
+            "label": label_ms,
+            "labelEn": label_en,
+        })
+    return components, []
+
+
 def report_components(diagram_id: str) -> list[dict]:
     result = []
     for index, (node_id, labels) in enumerate(REPORT_COMPONENTS.get(diagram_id, [])):
@@ -2005,6 +2094,9 @@ def main() -> None:
             elif diagram_id in DESIGN_SPECS:
                 en = exported_svg
                 ms = translate_svg(en, DESIGN_SPECS[diagram_id][1])
+            elif diagram_id == "map-routing-responsibility-stack":
+                en = exported_svg
+                ms = translate_svg(en, MAP_ROUTING_STACK_MS)
             elif diagram_id in (
                 "google-oauth-sequence", "sequence", "admin-manage-users-sequence",
                 "admin-manage-ai-configuration-sequence", "admin-access-dashboard-sequence",
@@ -2052,6 +2144,8 @@ def main() -> None:
                 components, connections = admin_flowchart_components(diagram_id)
             elif diagram_id in DESIGN_SPECS:
                 components, connections = design_components(diagram_id)
+            elif diagram_id == "map-routing-responsibility-stack":
+                components, connections = map_routing_stack_components()
             elif diagram_id == "admin-manage-users-sequence":
                 components, connections = admin_manage_users_sequence_components()
             elif diagram_id == "admin-manage-ai-configuration-sequence":
