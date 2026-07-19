@@ -232,6 +232,33 @@ html[data-theme-preference="dark"] .header-choice-icons > [data-theme-icon="dark
 .nav-variant-group__chevron { width: 12px; height: 12px; transition: transform 140ms ease; }
 .nav-variant-group[open] > summary .nav-variant-group__chevron { transform: rotate(90deg); }
 .nav-variant-group__items { padding: 1px 3px 4px 13px; }
+.nav-group--collection { padding-top: 3px; }
+.nav-collection { overflow: hidden; background: var(--surface-subtle); border: 1px solid var(--line); border-radius: 5px; box-shadow: 0 1px 2px color-mix(in srgb, var(--text) 6%, transparent); }
+.nav-collection > summary { display: grid; grid-template-columns: 20px minmax(0, 1fr) 14px; align-items: center; gap: 7px; min-height: 42px; padding: 6px 7px; color: var(--text); cursor: pointer; list-style: none; }
+.nav-collection > summary::-webkit-details-marker { display: none; }
+.nav-collection > summary:hover, .nav-collection > summary:focus-visible { background: var(--surface-raised); }
+.nav-collection__icon, .nav-collection__chevron { display: grid; place-items: center; color: var(--muted); }
+.nav-collection__icon svg { width: 16px; height: 16px; }
+.nav-collection__copy { display: grid; gap: 1px; min-width: 0; }
+.nav-collection__copy strong { font-size: 0.68rem; }
+.nav-collection__copy small { color: var(--muted); font-size: 0.56rem; font-weight: 500; }
+.nav-collection__chevron { width: 13px; height: 13px; transition: transform 140ms ease; }
+.nav-collection[open] > summary .nav-collection__chevron { transform: rotate(90deg); }
+.nav-collection__items { display: grid; gap: 4px; padding: 5px 4px 6px 10px; border-top: 1px solid var(--line); }
+.nav-collection-group { overflow: hidden; border: 1px solid transparent; border-radius: 4px; }
+.nav-collection-group[open] { border-color: var(--line); background: var(--surface); }
+.nav-collection-group > summary { display: grid; grid-template-columns: 18px minmax(0, 1fr) 13px; align-items: center; gap: 6px; min-height: 34px; padding: 5px 6px; color: var(--text); cursor: pointer; list-style: none; }
+.nav-collection-group > summary::-webkit-details-marker { display: none; }
+.nav-collection-group > summary:hover, .nav-collection-group > summary:focus-visible { background: var(--surface-raised); }
+.nav-collection-group__icon, .nav-collection-group__chevron { display: grid; place-items: center; color: var(--muted); }
+.nav-collection-group__icon svg { width: 14px; height: 14px; }
+.nav-collection-group__copy { display: grid; gap: 1px; min-width: 0; }
+.nav-collection-group__copy strong { overflow: hidden; font-size: 0.63rem; text-overflow: ellipsis; white-space: nowrap; }
+.nav-collection-group__copy small { color: var(--muted); font-size: 0.54rem; font-weight: 500; }
+.nav-collection-group__chevron { width: 12px; height: 12px; transition: transform 140ms ease; }
+.nav-collection-group[open] > summary .nav-collection-group__chevron { transform: rotate(90deg); }
+.nav-collection-group__items { display: grid; gap: 1px; padding: 1px 3px 4px 13px; }
+.nav-collection-group__items .nav-item { padding-block: 5px; }
 .nav-item--variant .nav-item__title { font-size: 0.68rem; }
 .nav-item--variant small { font-size: 0.56rem; }
 .status-legend { margin: 10px 5px 0; padding-top: 8px; border-top: 1px solid var(--line); }
@@ -428,6 +455,11 @@ kbd { padding: 1px 4px; background: var(--surface-subtle); border: 1px solid var
 .report-explanation__heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .report-explanation h3 { margin: 0; font-size: 0.72rem; }
 .report-explanation p { margin: 7px 0 0; color: var(--detail-text); font-size: 0.66rem; line-height: 1.5; }
+.diagram-comparison { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 9px; padding: 8px 9px; background: var(--surface-subtle); border: 1px solid var(--line); border-radius: 4px; }
+.diagram-comparison > span { display: grid; gap: 2px; min-width: 0; }
+.diagram-comparison strong { font-size: 0.68rem; }
+.diagram-comparison small { overflow: hidden; color: var(--muted); font-size: 0.59rem; text-overflow: ellipsis; white-space: nowrap; }
+.diagram-comparison button { flex: 0 0 auto; }
 .compact-button { min-height: 27px; padding: 3px 6px; font-size: 0.59rem; }
 .validation-panel { flex: 0 0 auto; max-height: 48%; overflow: hidden; border-bottom: 1px solid var(--line); }
 .validation-panel > header { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 7px 9px 3px; }

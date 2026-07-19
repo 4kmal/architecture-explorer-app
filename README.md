@@ -48,6 +48,24 @@ Jika butang `Edit` dibuka dalam mod `file://`, Explorer kini memaparkan arahan p
 - Access Administrator Dashboard documents the real parallel load of provider, AI-usage and user overview data after Better Auth and `admin|owner` authorization. Monitor System Activity Logs is deliberately scoped to the latest AI-assistant usage events from `public.ai_usage_events`; it does not imply a general server-log or `ai_admin_audit_logs` viewer.
 - The User Explore the 3D Map sequence follows the Malaysia preset through `MyPetaApp`, `MapManager`, MapLibre, POI/category RPCs, terrain and the 3D-building toggle. Separate User and Administrator Sign Out sequences show Better Auth invalidation and the actual protected-view cleanup behavior.
 
+### V2 Georouting collection
+
+The persisted **V2 Georouting** sidebar folder contains 13 independent, bilingual and editable Draw.io diagrams. Six nested subcategories separate Use Case Diagrams, Flowcharts, Sequence Diagrams, Class Diagrams, Architecture & Modules, and Data Diagrams. Only the subgroup containing the active diagram opens on a fresh load; subgroup choices then persist independently under `petakerja-explorer-diagram-collection-groups`. Paired views expose **Open vanilla / Open V2** in Details; the three additive sequences remain standalone. The historical Draw.io and SVG assets outside `v2-georouting/` are comparison references and must not be rewritten by this collection.
+
+The three V2 sequence diagrams extract their actor, participant, activation, fragment, call, return, divider and actor-stem styles directly from `templates/Sequence Diagram Template.drawio`. They retain nine 200-pixel-pitch lanes, use one 20x40 human actor plus eight 100x60 system participants, and place messages on a 50-pixel row grid. Template `alt` and `opt` frames distinguish cache, provider, geocoder, remote-work, confidence and fallback behavior instead of presenting mutually exclusive paths as one linear exchange.
+
+The runtime note is dated **19 July 2026**: Valhalla routing and shared geo cache were enabled and available, while Nominatim geocoding was disabled and unavailable. Nominatim-dependent boundary and POI-within flows are therefore marked feature-gated. The Haversine fallback is documented only as a straight-line result with no ETA, maneuvers or navigable-route claim. The Supabase snapshot records 87 public tables and 119 foreign keys and identifies `geo_geocode_cache`, `geo_route_cache`, `job_location_resolutions`, `geo_workspaces` and `geo_workspace_assets`.
+
+To regenerate only the owned source collection and then rebuild Explorer previews:
+
+```powershell
+python .\scripts\generate-v2-georouting-diagrams.py
+python .\scripts\build-diagram-assets.py
+python .\scripts\test-v2-georouting-collection.py
+```
+
+Update the date and counts only after a fresh runtime/status and schema verification. The generator writes solely to `assets/editor/v2-georouting/`; generated previews are published under `assets/diagrams/v2-georouting/` by the shared asset builder.
+
 ## For Dummies / Panduan Pemula
 
 Choose the locally bundled `book-open` button in the header, or open `#learn` directly. The learning workspace is a bilingual, interactive diagram textbook with ten chapters: orientation, connector notation, Use Case, Sequence, sequence fragments, Activity, Class, ERD/data, architecture/data flow, and State Diagram essentials.
@@ -188,6 +206,7 @@ python .\scripts\build-job-search-sequence.py
 python .\scripts\build-admin-manage-users-sequence.py
 python .\scripts\build-admin-manage-ai-configuration-sequence.py
 python .\scripts\build-admin-dashboard-sequences.py
+python .\scripts\generate-v2-georouting-diagrams.py
 python .\scripts\build-diagram-assets.py
 ```
 
@@ -195,7 +214,8 @@ Portable sources / Sumber mudah alih:
 
 - `assets/editor/` contains every registered canonical Draw.io source used by Edit mode and workspace saving. No active generator depends on a Desktop, Semester or user-profile directory.
 - `assets/diagrams/` contains generated interactive SVG assets used by View mode.
-- `templates/Flow Chart Template.drawio` and `templates/Sequence Diagram Template.drawio` are the bundled visual templates used by the generators.
+- `assets/editor/v2-georouting/` and `assets/diagrams/v2-georouting/` isolate the 13 V2 georouting sources and previews from all historical vanilla assets.
+- `templates/Flow Chart Template.drawio`, `templates/Sequence Diagram Template.drawio` and `templates/Use Case Template.drawio` are the visual authorities for the V2 layout system. The generator keeps their 10-pixel grid, 70x140 use-case actors, 62-pixel use cases, 20x40 sequence actors, 100x60 system participants, separate 10-pixel lifelines, blue UML fragments and template arrow styles.
 - `exports/diagrams/` is the ignored local destination for report-ready Draw.io, SVG and PNG exports.
 - `workspace-manifest.json` is the single allowlist mapping writable diagram IDs to their repository-relative XML and SVG paths. Arbitrary imports remain session-only and download-only until deliberately registered.
 - `scripts\build-admin-manage-users-flowchart.py` and `scripts\build-admin-flowcharts.py`: generate the five verified original Administrator flow charts from the read-only template, validate branch coverage and reachability, and preserve their editor copies with the `-original.drawio` suffix.
@@ -228,7 +248,8 @@ The generator reads the corrected Domain source and copies it into the local edi
 - Theme changes finish the active text edit and reload Draw.io with the current in-memory XML, page and selection, so unsaved diagram work is preserved.
 - BM/EN and Ringkas/Kod changes use the same safe reload handshake. Before reload, the bridge commits active text editing and returns the latest XML, page, selection and scale. The controller canonicalises bilingual wrapper labels and native `mxCell value` labels, then reloads the requested projection and restores the editor view.
 - Canonical XML and hashes do not contain a transient visible-language projection. Therefore a presentation-only language or label-mode switch does not mark the diagram dirty or advance cloud history. **Save as** projects the selected language into the visible `label` values while retaining the hidden bilingual metadata for Draw.io Desktop.
-- `scripts/test-bilingual-diagram-editor.py` inventories the workspace manifest and protects the all-diagram contract: 37 editor entries, 36 source files, complete BM/EN fields and unchanged geometry, styles and connector endpoints.
+- `scripts/test-bilingual-diagram-editor.py` inventories the workspace manifest and protects the all-diagram contract: 51 registered diagrams, 50 source files, complete BM/EN fields and unchanged geometry, styles and connector endpoints.
+- `scripts/test-v2-georouting-collection.py` verifies nested paths, six subgroup counts, bilingual navigation labels, stable keys, connected edges, sequence label metadata, exact template-derived sequence styles, the 200-pixel lane and 50-pixel row grids, UML fragments, ordered collection metadata, comparison links, runtime claims and the 87-table/119-FK snapshot.
 
 ## PetaKerja mini-app integration
 

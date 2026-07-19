@@ -1,0 +1,60 @@
+<mxfile host="PetaKerja Architecture Explorer" agent="PetaKerja V2 Georouting Generator" version="27.0.2" compressed="false" pages="1" petakerjaProjectionLanguage="en" petakerjaSequenceLabelMode="simple" petakerjaLayoutStandard="project-template-v2">
+  <diagram id="v2_geo_erd" name="V2 Georouting ERD">
+    <mxGraphModel dx="1500" dy="980" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="980" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <object id="v2_geo_erd-title" label="Routing Data Model — V2 Georouting" labelEn="Routing Data Model — V2 Georouting" labelMs="Model Data Penghalaan — Georouting V2" petakerjaKey="title">
+          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=24;fontStyle=1;fontColor=light-dark(#172033,#e8edf7);">
+            <mxGeometry x="50" y="25" width="1400" height="38" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="v2_geo_erd-subtitle" label="Four compact entity tables; only the real scraped-job relationship is connected." labelEn="Four compact entity tables; only the real scraped-job relationship is connected." labelMs="Empat jadual entiti padat; hanya hubungan kerja tersauk sebenar disambungkan." petakerjaKey="subtitle">
+          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontColor=light-dark(#596579,#aeb8c8);">
+            <mxGeometry x="50" y="65" width="1400" height="42" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="erd-jobs" label="public.scraped_jobs&#10;PK id : text&#10;location : text?&#10;remote_type : text?" labelEn="public.scraped_jobs&#10;PK id : text&#10;location : text?&#10;remote_type : text?" labelMs="public.scraped_jobs&#10;PK id : text&#10;lokasi : text?&#10;remote_type : text?" petakerjaKey="erd/jobs" nodeIds="job-entity" component="1" tableName="scraped_jobs">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eee8fb,#2d2140);strokeColor=light-dark(#815ebc,#a989de);fontColor=light-dark(#402665,#f2e9ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="120" y="210" width="330" height="210" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="erd-resolution" label="public.job_location_resolutions&#10;PK id : uuid&#10;FK scraped_job_id : text&#10;latitude / longitude / geom&#10;confidence / routable / is_remote&#10;resolved_at / expires_at" labelEn="public.job_location_resolutions&#10;PK id : uuid&#10;FK scraped_job_id : text&#10;latitude / longitude / geom&#10;confidence / routable / is_remote&#10;resolved_at / expires_at" labelMs="public.job_location_resolutions&#10;PK id : uuid&#10;FK scraped_job_id : text&#10;latitude / longitude / geom&#10;keyakinan / boleh_dihala / jarak_jauh&#10;resolved_at / expires_at" petakerjaKey="erd/resolution" nodeIds="job-location-resolution" component="1" tableName="job_location_resolutions">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eee8fb,#2d2140);strokeColor=light-dark(#815ebc,#a989de);fontColor=light-dark(#402665,#f2e9ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="560" y="175" width="380" height="280" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="erd-route-cache" label="public.geo_route_cache&#10;PK cache_key : text&#10;operation : route | matrix | isochrone&#10;provider / payload / expires_at&#10;hit_count / last_accessed_at" labelEn="public.geo_route_cache&#10;PK cache_key : text&#10;operation : route | matrix | isochrone&#10;provider / payload / expires_at&#10;hit_count / last_accessed_at" labelMs="public.geo_route_cache&#10;PK cache_key : text&#10;operasi : route | matrix | isochrone&#10;penyedia / payload / expires_at&#10;hit_count / last_accessed_at" petakerjaKey="erd/route-cache" nodeIds="geo-route-cache" component="1" tableName="geo_route_cache">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eee8fb,#2d2140);strokeColor=light-dark(#815ebc,#a989de);fontColor=light-dark(#402665,#f2e9ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="1050" y="175" width="330" height="250" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="erd-geocode-cache" label="public.geo_geocode_cache&#10;PK cache_key : text&#10;operation : search | reverse | lookup&#10;provider / payload / expires_at&#10;hit_count / last_accessed_at" labelEn="public.geo_geocode_cache&#10;PK cache_key : text&#10;operation : search | reverse | lookup&#10;provider / payload / expires_at&#10;hit_count / last_accessed_at" labelMs="public.geo_geocode_cache&#10;PK cache_key : text&#10;operasi : search | reverse | lookup&#10;penyedia / payload / expires_at&#10;hit_count / last_accessed_at" petakerjaKey="erd/geocode-cache" nodeIds="geo-geocode-cache" component="1" tableName="geo_geocode_cache">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eee8fb,#2d2140);strokeColor=light-dark(#815ebc,#a989de);fontColor=light-dark(#402665,#f2e9ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="1050" y="540" width="330" height="250" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="erd-jobs-resolution" label="1 job : 0..* derived resolutions" labelEn="1 job : 0..* derived resolutions" labelMs="1 kerja : 0..* penyelesaian terbitan" petakerjaKey="erd/jobs-resolution">
+          <mxCell parent="1" edge="1" source="erd-jobs" target="erd-resolution" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="erd-security" label="Geo tables use RLS, revoke browser roles and grant server service_role access only." labelEn="Geo tables use RLS, revoke browser roles and grant server service_role access only." labelMs="Jadual geo menggunakan RLS, menarik akses peranan pelayar dan memberi akses service_role pelayan sahaja." petakerjaKey="erd/security">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#fff8df,#3d3418);strokeColor=light-dark(#d9a928,#bd8b16);fontColor=light-dark(#5f4700,#ffe8a3);fontFamily=Arial;fontSize=11;align=left;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="120" y="555" width="820" height="80" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="erd-no-history" label="Route cache does not persist raw user-location history." labelEn="Route cache does not persist raw user-location history." labelMs="Cache laluan tidak menyimpan sejarah lokasi mentah pengguna." petakerjaKey="erd/no-history">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#ebf8ef,#183324);strokeColor=light-dark(#48a868,#61cc83);fontColor=light-dark(#194a2c,#e4ffec);fontFamily=Arial;fontSize=12;spacing=6;">
+            <mxGeometry x="120" y="690" width="820" height="65" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="v2_geo_erd-runtime" label="Runtime verified 2026-07-19: Valhalla enabled and available; shared cache available; Nominatim disabled." labelEn="Runtime verified 2026-07-19: Valhalla enabled and available; shared cache available; Nominatim disabled." labelMs="Runtime disahkan 2026-07-19: Valhalla diaktifkan dan tersedia; cache bersama tersedia; Nominatim dinyahaktifkan." petakerjaKey="runtime-status">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#fff8df,#3d3418);strokeColor=light-dark(#d9a928,#bd8b16);fontColor=light-dark(#5f4700,#ffe8a3);fontFamily=Arial;fontSize=11;align=left;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="50" y="922" width="1400" height="36" as="geometry" />
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

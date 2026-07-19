@@ -1,0 +1,251 @@
+<mxfile host="PetaKerja Architecture Explorer" agent="PetaKerja V2 Georouting Generator" version="27.0.2" compressed="false" pages="1" petakerjaProjectionLanguage="en" petakerjaSequenceLabelMode="simple" petakerjaLayoutStandard="project-template-v2">
+  <diagram id="v2_geo_route_sequence" name="V2 A-to-B Route Sequence">
+    <mxGraphModel dx="1760" dy="1320" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1760" pageHeight="1320" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <object id="v2_geo_route_sequence-title" label="A-to-B Road Routing Sequence — V2" labelEn="A-to-B Road Routing Sequence — V2" labelMs="Jujukan Penghalaan Jalan A-ke-B — V2" petakerjaKey="title">
+          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=24;fontStyle=1;fontColor=light-dark(#172033,#e8edf7);">
+            <mxGeometry x="50" y="25" width="1660" height="38" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="v2_geo_route_sequence-subtitle" label="Cache hit, provider success and explicit straight-line fallback on separate message rows." labelEn="Cache hit, provider success and explicit straight-line fallback on separate message rows." labelMs="Cache ditemui, kejayaan penyedia dan sandaran garis lurus yang jelas pada baris mesej berasingan." petakerjaKey="subtitle">
+          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontColor=light-dark(#596579,#aeb8c8);">
+            <mxGeometry x="50" y="65" width="1660" height="42" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-participant-user" label="" labelEn="" labelMs="" petakerjaKey="route/participant-user" nodeIds="pengguna" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeColor=light-dark(#467dfe, #ededed);gradientColor=light-dark(#447af9, #ededed);">
+            <mxGeometry x="80" y="127" width="20" height="40" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-participant-user-label" label="User" labelEn="User" labelMs="Pengguna" petakerjaKey="route/participant-user-label">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=10;fontColor=light-dark(#172033,#ededed);">
+            <mxGeometry x="20" y="166" width="140" height="18" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-participant-user-stem" label="" labelEn="" labelMs="" petakerjaKey="route/participant-user-stem">
+          <mxCell parent="1" vertex="1" style="line;strokeWidth=1;direction=south;html=1;">
+            <mxGeometry x="85" y="167" width="10" height="18" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-lifeline-user" label="" labelEn="" labelMs="" petakerjaKey="route/lifeline-user" nodeIds="pengguna" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="85.0" y="185" width="10" height="850" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-participant-tools" label="Map Tools UI" labelEn="Map Tools UI" labelMs="UI Alat Peta" petakerjaKey="route/participant-tools" nodeIds="map-tools-manager" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;">
+            <mxGeometry x="240.0" y="125" width="100" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-lifeline-tools" label="" labelEn="" labelMs="" petakerjaKey="route/lifeline-tools" nodeIds="map-tools-manager" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="285.0" y="185" width="10" height="850" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-participant-nav" label="GeoNavigation Manager" labelEn="GeoNavigation Manager" labelMs="Pengurus Navigasi Geo" petakerjaKey="route/participant-nav" nodeIds="geo-navigation-manager" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;">
+            <mxGeometry x="440.0" y="125" width="100" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-lifeline-nav" label="" labelEn="" labelMs="" petakerjaKey="route/lifeline-nav" nodeIds="geo-navigation-manager" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="485.0" y="185" width="10" height="850" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-participant-client" label="Geo client" labelEn="Geo client" labelMs="Klien Geo" petakerjaKey="route/participant-client" nodeIds="geo-service" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;">
+            <mxGeometry x="640.0" y="125" width="100" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-lifeline-client" label="" labelEn="" labelMs="" petakerjaKey="route/lifeline-client" nodeIds="geo-service" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="685.0" y="185" width="10" height="850" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-participant-api" label="Express Geo API" labelEn="Express Geo API" labelMs="API Geo Express" petakerjaKey="route/participant-api" nodeIds="geo-api" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;">
+            <mxGeometry x="840.0" y="125" width="100" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-lifeline-api" label="" labelEn="" labelMs="" petakerjaKey="route/lifeline-api" nodeIds="geo-api" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="885.0" y="185" width="10" height="850" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-participant-gateway" label="GeoGateway" labelEn="GeoGateway" labelMs="GeoGateway" petakerjaKey="route/participant-gateway" nodeIds="geo-gateway" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;">
+            <mxGeometry x="1040.0" y="125" width="100" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-lifeline-gateway" label="" labelEn="" labelMs="" petakerjaKey="route/lifeline-gateway" nodeIds="geo-gateway" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="1085.0" y="185" width="10" height="850" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-participant-cache" label="Route cache" labelEn="Route cache" labelMs="Cache laluan" petakerjaKey="route/participant-cache" nodeIds="geo-route-cache" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;">
+            <mxGeometry x="1240.0" y="125" width="100" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-lifeline-cache" label="" labelEn="" labelMs="" petakerjaKey="route/lifeline-cache" nodeIds="geo-route-cache" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="1285.0" y="185" width="10" height="850" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-participant-valhalla" label="Valhalla" labelEn="Valhalla" labelMs="Valhalla" petakerjaKey="route/participant-valhalla" nodeIds="valhalla" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;">
+            <mxGeometry x="1440.0" y="125" width="100" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-lifeline-valhalla" label="" labelEn="" labelMs="" petakerjaKey="route/lifeline-valhalla" nodeIds="valhalla" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="1485.0" y="185" width="10" height="850" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-participant-renderer" label="MapLibre renderer" labelEn="MapLibre renderer" labelMs="Pemapar MapLibre" petakerjaKey="route/participant-renderer" nodeIds="geo-route-renderer,maplibre-gl" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;">
+            <mxGeometry x="1640.0" y="125" width="100" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-lifeline-renderer" label="" labelEn="" labelMs="" petakerjaKey="route/lifeline-renderer" nodeIds="geo-route-renderer,maplibre-gl" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="1685.0" y="185" width="10" height="850" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-fragment-cache" label="alt" labelEn="alt" labelMs="alt" petakerjaKey="route/fragment-cache">
+          <mxCell parent="1" vertex="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);">
+            <mxGeometry x="630" y="515" width="920" height="345" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-operand-cache-hit" label="Cached route exists" labelEn="Cached route exists" labelMs="Laluan cache wujud" petakerjaKey="route/operand-cache-hit">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=10;fontColor=light-dark(#172033,#ededed);align=left;fontStyle=2;">
+            <mxGeometry x="645" y="530" width="230" height="18" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-divider-cache" label="" labelEn="" labelMs="" petakerjaKey="route/divider-cache" fragmentDivider="1">
+          <mxCell parent="1" edge="1" style="endArrow=none;dashed=1;html=1;rounded=0;exitPerimeter=0;entryPerimeter=0;strokeWidth=1;">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="630" y="580" as="sourcePoint" />
+              <mxPoint x="1550" y="580" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="route-operand-cache-miss" label="Cache miss" labelEn="Cache miss" labelMs="Cache tiada" petakerjaKey="route/operand-cache-miss">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=10;fontColor=light-dark(#172033,#ededed);align=left;fontStyle=2;">
+            <mxGeometry x="645" y="585" width="180" height="18" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-fragment-provider" label="alt" labelEn="alt" labelMs="alt" petakerjaKey="route/fragment-provider">
+          <mxCell parent="1" vertex="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);">
+            <mxGeometry x="630" y="630" width="920" height="225" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-operand-provider-success" label="Valhalla route succeeds" labelEn="Valhalla route succeeds" labelMs="Laluan Valhalla berjaya" petakerjaKey="route/operand-provider-success">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=10;fontColor=light-dark(#172033,#ededed);align=left;fontStyle=2;">
+            <mxGeometry x="645" y="645" width="260" height="18" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-divider-provider" label="" labelEn="" labelMs="" petakerjaKey="route/divider-provider" fragmentDivider="1">
+          <mxCell parent="1" edge="1" style="endArrow=none;dashed=1;html=1;rounded=0;exitPerimeter=0;entryPerimeter=0;strokeWidth=1;">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="630" y="800" as="sourcePoint" />
+              <mxPoint x="1550" y="800" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="route-operand-provider-failure" label="Provider unavailable or fails" labelEn="Provider unavailable or fails" labelMs="Penyedia tidak tersedia atau gagal" petakerjaKey="route/operand-provider-failure">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=10;fontColor=light-dark(#172033,#ededed);align=left;fontStyle=2;">
+            <mxGeometry x="645" y="805" width="300" height="18" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-message-1" label="Choose A, B and profile" labelEn="Choose A, B and profile" labelMs="Pilih A, B dan profil" petakerjaKey="route/message-1" simpleLabelEn="Choose A, B and profile" simpleLabelMs="Pilih A, B dan profil" codeLabelEn="selectEndpoints(); setProfile()" codeLabelMs="selectEndpoints(); setProfile()" message="1">
+          <mxCell parent="1" edge="1" source="route-lifeline-user" target="route-lifeline-tools" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.0706;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.0706;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-message-2" label="Recalculate route" labelEn="Recalculate route" labelMs="Kira semula laluan" petakerjaKey="route/message-2" simpleLabelEn="Recalculate route" simpleLabelMs="Kira semula laluan" codeLabelEn="recalculate()" codeLabelMs="recalculate()" message="1">
+          <mxCell parent="1" edge="1" source="route-lifeline-tools" target="route-lifeline-nav" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.1294;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.1294;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-message-3" label="Request route alternatives" labelEn="Request route alternatives" labelMs="Minta alternatif laluan" petakerjaKey="route/message-3" simpleLabelEn="Request route alternatives" simpleLabelMs="Minta alternatif laluan" codeLabelEn="calculateGeoRoute(...) " codeLabelMs="calculateGeoRoute(...)" message="1">
+          <mxCell parent="1" edge="1" source="route-lifeline-nav" target="route-lifeline-client" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.1882;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.1882;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-message-4" label="POST route request" labelEn="POST route request" labelMs="POST permintaan laluan" petakerjaKey="route/message-4" simpleLabelEn="POST route request" simpleLabelMs="POST permintaan laluan" codeLabelEn="POST /api/geo/route" codeLabelMs="POST /api/geo/route" message="1">
+          <mxCell parent="1" edge="1" source="route-lifeline-client" target="route-lifeline-api" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.2471;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.2471;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-message-5" label="Validate coordinates and profile" labelEn="Validate coordinates and profile" labelMs="Sahkan koordinat dan profil" petakerjaKey="route/message-5" simpleLabelEn="Validate coordinates and profile" simpleLabelMs="Sahkan koordinat dan profil" codeLabelEn="assertMalaysiaLocation(); assertRouteProfile()" codeLabelMs="assertMalaysiaLocation(); assertRouteProfile()" message="1">
+          <mxCell parent="1" edge="1" source="route-lifeline-api" target="route-lifeline-gateway" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.3059;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.3059;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-message-6" label="Read normalized route cache" labelEn="Read normalized route cache" labelMs="Baca cache laluan ternormal" petakerjaKey="route/message-6" simpleLabelEn="Read normalized route cache" simpleLabelMs="Baca cache laluan ternormal" codeLabelEn="readCache('geo_route_cache')" codeLabelMs="readCache('geo_route_cache')" message="1">
+          <mxCell parent="1" edge="1" source="route-lifeline-gateway" target="route-lifeline-cache" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.3647;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.3647;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-message-7" label="Reuse cache hit" labelEn="Reuse cache hit" labelMs="Guna semula cache ditemui" petakerjaKey="route/message-7" simpleLabelEn="Reuse cache hit" simpleLabelMs="Guna semula cache ditemui" codeLabelEn="geo_touch_cache()" codeLabelMs="geo_touch_cache()" message="1">
+          <mxCell parent="1" edge="1" source="route-lifeline-cache" target="route-lifeline-gateway" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=0;exitY=0.4235;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.4235;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-message-8" label="Request route on cache miss" labelEn="Request route on cache miss" labelMs="Minta laluan apabila cache tiada" petakerjaKey="route/message-8" simpleLabelEn="Request route on cache miss" simpleLabelMs="Minta laluan apabila cache tiada" codeLabelEn="POST /route" codeLabelMs="POST /route" message="1">
+          <mxCell parent="1" edge="1" source="route-lifeline-gateway" target="route-lifeline-valhalla" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.4824;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.4824;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-message-9" label="Return geometry, ETA and maneuvers" labelEn="Return geometry, ETA and maneuvers" labelMs="Pulangkan geometri, ETA dan arahan" petakerjaKey="route/message-9" simpleLabelEn="Return geometry, ETA and maneuvers" simpleLabelMs="Pulangkan geometri, ETA dan arahan" codeLabelEn="trip + alternates" codeLabelMs="trip + alternates" message="1">
+          <mxCell parent="1" edge="1" source="route-lifeline-valhalla" target="route-lifeline-gateway" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=0;exitY=0.5412;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5412;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-message-10" label="Write normalized route" labelEn="Write normalized route" labelMs="Simpan laluan ternormal" petakerjaKey="route/message-10" simpleLabelEn="Write normalized route" simpleLabelMs="Simpan laluan ternormal" codeLabelEn="writeCache('geo_route_cache')" codeLabelMs="writeCache('geo_route_cache')" message="1">
+          <mxCell parent="1" edge="1" source="route-lifeline-gateway" target="route-lifeline-cache" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.6000;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.6000;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-message-11" label="Return routed response" labelEn="Return routed response" labelMs="Pulangkan respons laluan" petakerjaKey="route/message-11" simpleLabelEn="Return routed response" simpleLabelMs="Pulangkan respons laluan" codeLabelEn="estimateKind: 'routed'" codeLabelMs="estimateKind: 'routed'" message="1">
+          <mxCell parent="1" edge="1" source="route-lifeline-gateway" target="route-lifeline-api" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=0;exitY=0.6588;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.6588;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-message-12" label="Return fallback when provider fails" labelEn="Return fallback when provider fails" labelMs="Pulangkan sandaran apabila penyedia gagal" petakerjaKey="route/message-12" simpleLabelEn="Return fallback when provider fails" simpleLabelMs="Pulangkan sandaran apabila penyedia gagal" codeLabelEn="estimateKind: 'straight-line'" codeLabelMs="estimateKind: 'straight-line'" message="1">
+          <mxCell parent="1" edge="1" source="route-lifeline-api" target="route-lifeline-client" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=0;exitY=0.7176;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.7176;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-message-13" label="Return route and warning" labelEn="Return route and warning" labelMs="Pulangkan laluan dan amaran" petakerjaKey="route/message-13" simpleLabelEn="Return route and warning" simpleLabelMs="Pulangkan laluan dan amaran" codeLabelEn="{ route, warning? }" codeLabelMs="{ route, warning? }" message="1">
+          <mxCell parent="1" edge="1" source="route-lifeline-client" target="route-lifeline-nav" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=0;exitY=0.7765;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.7765;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-message-14" label="Render deterministic layer order" labelEn="Render deterministic layer order" labelMs="Papar susunan lapisan deterministik" petakerjaKey="route/message-14" simpleLabelEn="Render deterministic layer order" simpleLabelMs="Papar susunan lapisan deterministik" codeLabelEn="setRoute(); fitBounds()" codeLabelMs="setRoute(); fitBounds()" message="1">
+          <mxCell parent="1" edge="1" source="route-lifeline-nav" target="route-lifeline-renderer" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.8353;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.8353;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-message-15" label="Display route or labelled estimate" labelEn="Display route or labelled estimate" labelMs="Paparkan laluan atau anggaran berlabel" petakerjaKey="route/message-15" simpleLabelEn="Display route or labelled estimate" simpleLabelMs="Paparkan laluan atau anggaran berlabel" codeLabelEn="MapLibre layers + status" codeLabelMs="Lapisan MapLibre + status" message="1">
+          <mxCell parent="1" edge="1" source="route-lifeline-renderer" target="route-lifeline-user" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=0;exitY=0.8941;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.8941;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="route-fallback-note" label="Fallback has no driving ETA, maneuvers or navigable-route claim." labelEn="Fallback has no driving ETA, maneuvers or navigable-route claim." labelMs="Sandaran tiada ETA pemanduan, arahan atau dakwaan laluan navigasi." petakerjaKey="route/fallback-note">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#fff8df,#3d3418);strokeColor=light-dark(#d9a928,#bd8b16);fontColor=light-dark(#5f4700,#ffe8a3);fontFamily=Arial;fontSize=11;align=left;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="960" y="1080" width="700" height="55" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="v2_geo_route_sequence-runtime" label="Runtime verified 2026-07-19: Valhalla enabled and available; shared cache available; Nominatim disabled." labelEn="Runtime verified 2026-07-19: Valhalla enabled and available; shared cache available; Nominatim disabled." labelMs="Runtime disahkan 2026-07-19: Valhalla diaktifkan dan tersedia; cache bersama tersedia; Nominatim dinyahaktifkan." petakerjaKey="runtime-status">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#fff8df,#3d3418);strokeColor=light-dark(#d9a928,#bd8b16);fontColor=light-dark(#5f4700,#ffe8a3);fontFamily=Arial;fontSize=11;align=left;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="50" y="1262" width="1660" height="36" as="geometry" />
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

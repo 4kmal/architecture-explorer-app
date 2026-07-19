@@ -1,0 +1,268 @@
+<mxfile host="PetaKerja Architecture Explorer" agent="PetaKerja V2 Georouting Generator" version="27.0.2" compressed="false" pages="1" petakerjaProjectionLanguage="en" petakerjaSequenceLabelMode="simple" petakerjaLayoutStandard="project-template-v2">
+  <diagram id="v2_geo_travel_analysis_sequence" name="V2 Travel Analysis Sequence">
+    <mxGraphModel dx="1760" dy="1450" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1760" pageHeight="1450" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <object id="v2_geo_travel_analysis_sequence-title" label="Travel Analysis Sequence — V2" labelEn="Travel Analysis Sequence — V2" labelMs="Jujukan Analisis Perjalanan — V2" petakerjaKey="title">
+          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=24;fontStyle=1;fontColor=light-dark(#172033,#e8edf7);">
+            <mxGeometry x="50" y="25" width="1660" height="38" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="v2_geo_travel_analysis_sequence-subtitle" label="Matrix, isochrone and feature-gated boundary search use a consistent lifeline grid." labelEn="Matrix, isochrone and feature-gated boundary search use a consistent lifeline grid." labelMs="Matriks, isokron dan carian sempadan berpagar ciri menggunakan grid talian hayat yang konsisten." petakerjaKey="subtitle">
+          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontColor=light-dark(#596579,#aeb8c8);">
+            <mxGeometry x="50" y="65" width="1660" height="42" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-participant-user" label="" labelEn="" labelMs="" petakerjaKey="travel/participant-user" nodeIds="pengguna" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeColor=light-dark(#467dfe, #ededed);gradientColor=light-dark(#447af9, #ededed);">
+            <mxGeometry x="80" y="127" width="20" height="40" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-participant-user-label" label="User" labelEn="User" labelMs="Pengguna" petakerjaKey="travel/participant-user-label">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=10;fontColor=light-dark(#172033,#ededed);">
+            <mxGeometry x="20" y="166" width="140" height="18" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-participant-user-stem" label="" labelEn="" labelMs="" petakerjaKey="travel/participant-user-stem">
+          <mxCell parent="1" vertex="1" style="line;strokeWidth=1;direction=south;html=1;">
+            <mxGeometry x="85" y="167" width="10" height="18" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-lifeline-user" label="" labelEn="" labelMs="" petakerjaKey="travel/lifeline-user" nodeIds="pengguna" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="85.0" y="185" width="10" height="1045" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-participant-nav" label="GeoNavigation Manager" labelEn="GeoNavigation Manager" labelMs="Pengurus Navigasi Geo" petakerjaKey="travel/participant-nav" nodeIds="geo-navigation-manager" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;">
+            <mxGeometry x="240.0" y="125" width="100" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-lifeline-nav" label="" labelEn="" labelMs="" petakerjaKey="travel/lifeline-nav" nodeIds="geo-navigation-manager" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="285.0" y="185" width="10" height="1045" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-participant-client" label="Geo client" labelEn="Geo client" labelMs="Klien Geo" petakerjaKey="travel/participant-client" nodeIds="geo-service" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;">
+            <mxGeometry x="440.0" y="125" width="100" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-lifeline-client" label="" labelEn="" labelMs="" petakerjaKey="travel/lifeline-client" nodeIds="geo-service" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="485.0" y="185" width="10" height="1045" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-participant-api" label="Express Geo API" labelEn="Express Geo API" labelMs="API Geo Express" petakerjaKey="travel/participant-api" nodeIds="geo-api" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;">
+            <mxGeometry x="640.0" y="125" width="100" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-lifeline-api" label="" labelEn="" labelMs="" petakerjaKey="travel/lifeline-api" nodeIds="geo-api" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="685.0" y="185" width="10" height="1045" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-participant-data" label="Supabase / PostGIS" labelEn="Supabase / PostGIS" labelMs="Supabase / PostGIS" petakerjaKey="travel/participant-data" nodeIds="supabase-db,job-location-resolution" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;">
+            <mxGeometry x="840.0" y="125" width="100" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-lifeline-data" label="" labelEn="" labelMs="" petakerjaKey="travel/lifeline-data" nodeIds="supabase-db,job-location-resolution" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="885.0" y="185" width="10" height="1045" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-participant-gateway" label="GeoGateway" labelEn="GeoGateway" labelMs="GeoGateway" petakerjaKey="travel/participant-gateway" nodeIds="geo-gateway" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;">
+            <mxGeometry x="1040.0" y="125" width="100" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-lifeline-gateway" label="" labelEn="" labelMs="" petakerjaKey="travel/lifeline-gateway" nodeIds="geo-gateway" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="1085.0" y="185" width="10" height="1045" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-participant-valhalla" label="Valhalla" labelEn="Valhalla" labelMs="Valhalla" petakerjaKey="travel/participant-valhalla" nodeIds="valhalla" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;">
+            <mxGeometry x="1240.0" y="125" width="100" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-lifeline-valhalla" label="" labelEn="" labelMs="" petakerjaKey="travel/lifeline-valhalla" nodeIds="valhalla" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="1285.0" y="185" width="10" height="1045" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-participant-nominatim" label="Nominatim (gated)" labelEn="Nominatim (gated)" labelMs="Nominatim (berpagar)" petakerjaKey="travel/participant-nominatim" nodeIds="nominatim" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;">
+            <mxGeometry x="1440.0" y="125" width="100" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-lifeline-nominatim" label="" labelEn="" labelMs="" petakerjaKey="travel/lifeline-nominatim" nodeIds="nominatim" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="1485.0" y="185" width="10" height="1045" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-participant-map" label="MapLibre" labelEn="MapLibre" labelMs="MapLibre" petakerjaKey="travel/participant-map" nodeIds="maplibre-gl" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;">
+            <mxGeometry x="1640.0" y="125" width="100" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-lifeline-map" label="" labelEn="" labelMs="" petakerjaKey="travel/lifeline-map" nodeIds="maplibre-gl" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="1685.0" y="185" width="10" height="1045" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-fragment-matrix" label="opt" labelEn="opt" labelMs="opt" petakerjaKey="travel/fragment-matrix">
+          <mxCell parent="1" vertex="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);">
+            <mxGeometry x="30" y="215" width="1700" height="485" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-operand-matrix" label="Compare visible destinations" labelEn="Compare visible destinations" labelMs="Bandingkan destinasi kelihatan" petakerjaKey="travel/operand-matrix">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=10;fontColor=light-dark(#172033,#ededed);align=left;fontStyle=2;">
+            <mxGeometry x="45" y="235" width="300" height="18" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-fragment-isochrone" label="opt" labelEn="opt" labelMs="opt" petakerjaKey="travel/fragment-isochrone">
+          <mxCell parent="1" vertex="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);">
+            <mxGeometry x="30" y="720" width="1700" height="225" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-operand-isochrone" label="Show reachable-time area" labelEn="Show reachable-time area" labelMs="Paparkan kawasan masa boleh dicapai" petakerjaKey="travel/operand-isochrone">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=10;fontColor=light-dark(#172033,#ededed);align=left;fontStyle=2;">
+            <mxGeometry x="45" y="740" width="320" height="18" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-fragment-boundary" label="opt" labelEn="opt" labelMs="opt" petakerjaKey="travel/fragment-boundary">
+          <mxCell parent="1" vertex="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);">
+            <mxGeometry x="30" y="965" width="1700" height="315" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-operand-boundary" label="Search within boundary" labelEn="Search within boundary" labelMs="Cari dalam sempadan" petakerjaKey="travel/operand-boundary">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=10;fontColor=light-dark(#172033,#ededed);align=left;fontStyle=2;">
+            <mxGeometry x="45" y="985" width="250" height="18" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-fragment-geocoder" label="alt" labelEn="alt" labelMs="alt" petakerjaKey="travel/fragment-geocoder">
+          <mxCell parent="1" vertex="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);">
+            <mxGeometry x="230" y="1040" width="1500" height="225" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-operand-geocoder-enabled" label="Nominatim enabled" labelEn="Nominatim enabled" labelMs="Nominatim diaktifkan" petakerjaKey="travel/operand-geocoder-enabled">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=10;fontColor=light-dark(#172033,#ededed);align=left;fontStyle=2;">
+            <mxGeometry x="245" y="1060" width="220" height="18" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-divider-geocoder" label="" labelEn="" labelMs="" petakerjaKey="travel/divider-geocoder" fragmentDivider="1">
+          <mxCell parent="1" edge="1" style="endArrow=none;dashed=1;html=1;rounded=0;exitPerimeter=0;entryPerimeter=0;strokeWidth=1;">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="230" y="1225" as="sourcePoint" />
+              <mxPoint x="1730" y="1225" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="travel-operand-geocoder-disabled" label="Nominatim disabled — no provider or boundary query" labelEn="Nominatim disabled — no provider or boundary query" labelMs="Nominatim dinyahaktifkan — tiada pertanyaan penyedia atau sempadan" petakerjaKey="travel/operand-geocoder-disabled">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=10;fontColor=light-dark(#172033,#ededed);align=left;fontStyle=2;">
+            <mxGeometry x="245" y="1230" width="520" height="18" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-message-1" label="Compare visible POIs or jobs" labelEn="Compare visible POIs or jobs" labelMs="Bandingkan POI atau kerja kelihatan" petakerjaKey="travel/message-1" simpleLabelEn="Compare visible POIs or jobs" simpleLabelMs="Bandingkan POI atau kerja kelihatan" codeLabelEn="compareVisibleDestinations()" codeLabelMs="compareVisibleDestinations()" message="1">
+          <mxCell parent="1" edge="1" source="travel-lifeline-user" target="travel-lifeline-nav" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.0813;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.0813;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-message-2" label="Load bounded destinations" labelEn="Load bounded destinations" labelMs="Muat destinasi terbatas" petakerjaKey="travel/message-2" simpleLabelEn="Load bounded destinations" simpleLabelMs="Muat destinasi terbatas" codeLabelEn="loadGeoDataset(name, bounds)" codeLabelMs="loadGeoDataset(name, bounds)" message="1">
+          <mxCell parent="1" edge="1" source="travel-lifeline-nav" target="travel-lifeline-client" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.1292;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.1292;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-message-3" label="GET bounded dataset" labelEn="GET bounded dataset" labelMs="GET set data terbatas" petakerjaKey="travel/message-3" simpleLabelEn="GET bounded dataset" simpleLabelMs="GET set data terbatas" codeLabelEn="GET /api/geo/datasets/:name" codeLabelMs="GET /api/geo/datasets/:name" message="1">
+          <mxCell parent="1" edge="1" source="travel-lifeline-client" target="travel-lifeline-api" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.1770;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.1770;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-message-4" label="Read routable coordinates" labelEn="Read routable coordinates" labelMs="Baca koordinat yang boleh dihala" petakerjaKey="travel/message-4" simpleLabelEn="Read routable coordinates" simpleLabelMs="Baca koordinat yang boleh dihala" codeLabelEn="pois | job_location_resolutions" codeLabelMs="pois | job_location_resolutions" message="1">
+          <mxCell parent="1" edge="1" source="travel-lifeline-api" target="travel-lifeline-data" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.2249;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.2249;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-message-5" label="Return bounded candidates" labelEn="Return bounded candidates" labelMs="Pulangkan calon terbatas" petakerjaKey="travel/message-5" simpleLabelEn="Return bounded candidates" simpleLabelMs="Pulangkan calon terbatas" codeLabelEn="rows[]" codeLabelMs="rows[]" message="1">
+          <mxCell parent="1" edge="1" source="travel-lifeline-data" target="travel-lifeline-nav" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=0;exitY=0.2727;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.2727;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-message-6" label="Calculate 1-to-many matrix" labelEn="Calculate 1-to-many matrix" labelMs="Kira matriks 1-ke-banyak" petakerjaKey="travel/message-6" simpleLabelEn="Calculate 1-to-many matrix" simpleLabelMs="Kira matriks 1-ke-banyak" codeLabelEn="POST /api/geo/matrix" codeLabelMs="POST /api/geo/matrix" message="1">
+          <mxCell parent="1" edge="1" source="travel-lifeline-nav" target="travel-lifeline-gateway" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.3206;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.3206;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-message-7" label="Request sources_to_targets" labelEn="Request sources_to_targets" labelMs="Minta sources_to_targets" petakerjaKey="travel/message-7" simpleLabelEn="Request sources_to_targets" simpleLabelMs="Minta sources_to_targets" codeLabelEn="POST /sources_to_targets" codeLabelMs="POST /sources_to_targets" message="1">
+          <mxCell parent="1" edge="1" source="travel-lifeline-gateway" target="travel-lifeline-valhalla" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.3684;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.3684;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-message-8" label="Return distance and duration" labelEn="Return distance and duration" labelMs="Pulangkan jarak dan tempoh" petakerjaKey="travel/message-8" simpleLabelEn="Return distance and duration" simpleLabelMs="Pulangkan jarak dan tempoh" codeLabelEn="distancesMeters; durationsSeconds" codeLabelMs="distancesMeters; durationsSeconds" message="1">
+          <mxCell parent="1" edge="1" source="travel-lifeline-valhalla" target="travel-lifeline-nav" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=0;exitY=0.4163;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.4163;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-message-9" label="Render ranked destinations" labelEn="Render ranked destinations" labelMs="Papar destinasi tersusun" petakerjaKey="travel/message-9" simpleLabelEn="Render ranked destinations" simpleLabelMs="Papar destinasi tersusun" codeLabelEn="render results" codeLabelMs="papar hasil" message="1">
+          <mxCell parent="1" edge="1" source="travel-lifeline-nav" target="travel-lifeline-map" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.4641;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.4641;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-message-10" label="Choose reachable-time area" labelEn="Choose reachable-time area" labelMs="Pilih kawasan masa boleh dicapai" petakerjaKey="travel/message-10" simpleLabelEn="Choose reachable-time area" simpleLabelMs="Pilih kawasan masa boleh dicapai" codeLabelEn="showIsochrone(minutes)" codeLabelMs="showIsochrone(minutes)" message="1">
+          <mxCell parent="1" edge="1" source="travel-lifeline-user" target="travel-lifeline-nav" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.5120;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5120;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-message-11" label="Calculate isochrone" labelEn="Calculate isochrone" labelMs="Kira isokron" petakerjaKey="travel/message-11" simpleLabelEn="Calculate isochrone" simpleLabelMs="Kira isokron" codeLabelEn="POST /api/geo/isochrone" codeLabelMs="POST /api/geo/isochrone" message="1">
+          <mxCell parent="1" edge="1" source="travel-lifeline-nav" target="travel-lifeline-gateway" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.5598;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5598;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-message-12" label="Request reachable polygons" labelEn="Request reachable polygons" labelMs="Minta poligon boleh dicapai" petakerjaKey="travel/message-12" simpleLabelEn="Request reachable polygons" simpleLabelMs="Minta poligon boleh dicapai" codeLabelEn="POST /isochrone" codeLabelMs="POST /isochrone" message="1">
+          <mxCell parent="1" edge="1" source="travel-lifeline-gateway" target="travel-lifeline-valhalla" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.6077;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.6077;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-message-13" label="Render returned polygons" labelEn="Render returned polygons" labelMs="Papar poligon dipulangkan" petakerjaKey="travel/message-13" simpleLabelEn="Render returned polygons" simpleLabelMs="Papar poligon dipulangkan" codeLabelEn="FeatureCollection" codeLabelMs="FeatureCollection" message="1">
+          <mxCell parent="1" edge="1" source="travel-lifeline-valhalla" target="travel-lifeline-map" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.6555;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.6555;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-message-14" label="Search within boundary" labelEn="Search within boundary" labelMs="Cari dalam sempadan" petakerjaKey="travel/message-14" simpleLabelEn="Search within boundary" simpleLabelMs="Cari dalam sempadan" codeLabelEn="showBoundary(place)" codeLabelMs="showBoundary(place)" message="1">
+          <mxCell parent="1" edge="1" source="travel-lifeline-user" target="travel-lifeline-nav" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.7033;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.7033;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-message-15" label="Lookup boundary when enabled" labelEn="Lookup boundary when enabled" labelMs="Cari sempadan apabila diaktifkan" petakerjaKey="travel/message-15" simpleLabelEn="Lookup boundary when enabled" simpleLabelMs="Cari sempadan apabila diaktifkan" codeLabelEn="GET /api/geo/lookup" codeLabelMs="GET /api/geo/lookup" message="1">
+          <mxCell parent="1" edge="1" source="travel-lifeline-nav" target="travel-lifeline-nominatim" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.7512;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.7512;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-message-16" label="Query POIs within boundary" labelEn="Query POIs within boundary" labelMs="Tanya POI dalam sempadan" petakerjaKey="travel/message-16" simpleLabelEn="Query POIs within boundary" simpleLabelMs="Tanya POI dalam sempadan" codeLabelEn="geo_search_pois_within()" codeLabelMs="geo_search_pois_within()" message="1">
+          <mxCell parent="1" edge="1" source="travel-lifeline-nominatim" target="travel-lifeline-data" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=0;exitY=0.7990;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.7990;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-message-17" label="Render matching POIs" labelEn="Render matching POIs" labelMs="Papar POI sepadan" petakerjaKey="travel/message-17" simpleLabelEn="Render matching POIs" simpleLabelMs="Papar POI sepadan" codeLabelEn="FeatureCollection&lt;Point&gt;" codeLabelMs="FeatureCollection&lt;Point&gt;" message="1">
+          <mxCell parent="1" edge="1" source="travel-lifeline-data" target="travel-lifeline-map" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.8469;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.8469;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="travel-gate-note" label="Matrix and isochrone are available; Nominatim boundary lookup is disabled." labelEn="Matrix and isochrone are available; Nominatim boundary lookup is disabled." labelMs="Matriks dan isokron tersedia; carian sempadan Nominatim dinyahaktifkan." petakerjaKey="travel/gate-note">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#fff8df,#3d3418);strokeColor=light-dark(#d9a928,#bd8b16);fontColor=light-dark(#5f4700,#ffe8a3);fontFamily=Arial;fontSize=11;align=left;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="980" y="1310" width="680" height="52" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="v2_geo_travel_analysis_sequence-runtime" label="Runtime verified 2026-07-19: Valhalla enabled and available; shared cache available; Nominatim disabled." labelEn="Runtime verified 2026-07-19: Valhalla enabled and available; shared cache available; Nominatim disabled." labelMs="Runtime disahkan 2026-07-19: Valhalla diaktifkan dan tersedia; cache bersama tersedia; Nominatim dinyahaktifkan." petakerjaKey="runtime-status">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#fff8df,#3d3418);strokeColor=light-dark(#d9a928,#bd8b16);fontColor=light-dark(#5f4700,#ffe8a3);fontFamily=Arial;fontSize=11;align=left;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="50" y="1392" width="1660" height="36" as="geometry" />
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,175 @@
+<mxfile host="PetaKerja Architecture Explorer" agent="PetaKerja V2 Georouting Generator" version="27.0.2" compressed="false" pages="1" petakerjaProjectionLanguage="en" petakerjaSequenceLabelMode="simple" petakerjaLayoutStandard="project-template-v2">
+  <diagram id="v2_geo_architecture" name="V2 Georouting Layered Architecture">
+    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <object id="v2_geo_architecture-title" label="Layered Architecture — V2 Georouting" labelEn="Layered Architecture — V2 Georouting" labelMs="Seni Bina Berlapis — Georouting V2" petakerjaKey="title">
+          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=24;fontStyle=1;fontColor=light-dark(#172033,#e8edf7);">
+            <mxGeometry x="50" y="25" width="1500" height="38" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="v2_geo_architecture-subtitle" label="A centered stacked-responsibility view with three evenly spaced components per layer." labelEn="A centered stacked-responsibility view with three evenly spaced components per layer." labelMs="Paparan tanggungjawab bertindan berpusat dengan tiga komponen berjarak sekata setiap lapisan." petakerjaKey="subtitle">
+          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontColor=light-dark(#596579,#aeb8c8);">
+            <mxGeometry x="50" y="65" width="1500" height="42" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-layer-inputs" label="1 · Inputs and user intent" labelEn="1 · Inputs and user intent" labelMs="1 · Input dan niat pengguna" petakerjaKey="architecture/layer-inputs">
+          <mxCell parent="1" vertex="1" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;direction=south;fillColor=light-dark(#e8eef5,#20252d);strokeColor=light-dark(#66758a,#66758a);strokeWidth=2;fontFamily=Arial;fontSize=15;fontStyle=1;verticalAlign=top;align=left;spacingTop=10;spacingLeft=28;fontColor=light-dark(#172033,#e8edf7);">
+            <mxGeometry x="250" y="130" width="1100" height="160" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-layer-render" label="2 · MapLibre rendering" labelEn="2 · MapLibre rendering" labelMs="2 · Pemaparan MapLibre" petakerjaKey="architecture/layer-render">
+          <mxCell parent="1" vertex="1" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;direction=south;fillColor=light-dark(#dcebfa,#20252d);strokeColor=light-dark(#2d72d2,#2d72d2);strokeWidth=2;fontFamily=Arial;fontSize=15;fontStyle=1;verticalAlign=top;align=left;spacingTop=10;spacingLeft=28;fontColor=light-dark(#172033,#e8edf7);">
+            <mxGeometry x="200" y="330" width="1200" height="160" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-layer-browser" label="3 · Browser orchestration" labelEn="3 · Browser orchestration" labelMs="3 · Orkestrasi pelayar" petakerjaKey="architecture/layer-browser">
+          <mxCell parent="1" vertex="1" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;direction=south;fillColor=light-dark(#eee5fa,#20252d);strokeColor=light-dark(#7e57c2,#7e57c2);strokeWidth=2;fontFamily=Arial;fontSize=15;fontStyle=1;verticalAlign=top;align=left;spacingTop=10;spacingLeft=28;fontColor=light-dark(#172033,#e8edf7);">
+            <mxGeometry x="150" y="530" width="1300" height="175" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-layer-gateway" label="4 · Same-origin GeoGateway" labelEn="4 · Same-origin GeoGateway" labelMs="4 · GeoGateway asal sama" petakerjaKey="architecture/layer-gateway">
+          <mxCell parent="1" vertex="1" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;direction=south;fillColor=light-dark(#fff1d6,#20252d);strokeColor=light-dark(#c87600,#c87600);strokeWidth=2;fontFamily=Arial;fontSize=15;fontStyle=1;verticalAlign=top;align=left;spacingTop=10;spacingLeft=28;fontColor=light-dark(#172033,#e8edf7);">
+            <mxGeometry x="100" y="745" width="1400" height="175" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-layer-providers" label="5 · Providers and reusable data" labelEn="5 · Providers and reusable data" labelMs="5 · Penyedia dan data boleh guna semula" petakerjaKey="architecture/layer-providers">
+          <mxCell parent="1" vertex="1" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;direction=south;fillColor=light-dark(#e9f6ed,#20252d);strokeColor=light-dark(#3d965b,#3d965b);strokeWidth=2;fontFamily=Arial;fontSize=15;fontStyle=1;verticalAlign=top;align=left;spacingTop=10;spacingLeft=28;fontColor=light-dark(#172033,#e8edf7);">
+            <mxGeometry x="50" y="960" width="1500" height="150" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-search" label="Place or address" labelEn="Place or address" labelMs="Tempat atau alamat" petakerjaKey="architecture/search" nodeIds="search-manager" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#f4f6f8,#242932);strokeColor=light-dark(#8a96a8,#727f92);fontColor=light-dark(#283345,#edf1f7);fontFamily=Arial;fontSize=12;spacing=6;">
+            <mxGeometry x="390" y="205" width="240" height="58" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-ab" label="A/B, map click or GPS" labelEn="A/B, map click or GPS" labelMs="A/B, klik peta atau GPS" petakerjaKey="architecture/ab" nodeIds="geo-navigation-manager" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#f4f6f8,#242932);strokeColor=light-dark(#8a96a8,#727f92);fontColor=light-dark(#283345,#edf1f7);fontFamily=Arial;fontSize=12;spacing=6;">
+            <mxGeometry x="680" y="205" width="240" height="58" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-job" label="Workplace destination" labelEn="Workplace destination" labelMs="Destinasi tempat kerja" petakerjaKey="architecture/job" nodeIds="job-manager" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#f4f6f8,#242932);strokeColor=light-dark(#8a96a8,#727f92);fontColor=light-dark(#283345,#edf1f7);fontFamily=Arial;fontSize=12;spacing=6;">
+            <mxGeometry x="970" y="205" width="240" height="58" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-maplibre" label="MapLibre route and polygon layers" labelEn="MapLibre route and polygon layers" labelMs="Lapisan laluan dan poligon MapLibre" petakerjaKey="architecture/maplibre" nodeIds="maplibre-gl" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#eaf3ff,#17293f);strokeColor=light-dark(#4d8dd8,#69a8ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=12;spacing=6;">
+            <mxGeometry x="680" y="405" width="240" height="58" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-renderer" label="GeoRouteRenderer interactions" labelEn="GeoRouteRenderer interactions" labelMs="Interaksi GeoRouteRenderer" petakerjaKey="architecture/renderer" nodeIds="geo-route-renderer" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#eaf3ff,#17293f);strokeColor=light-dark(#4d8dd8,#69a8ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=12;spacing=6;">
+            <mxGeometry x="970" y="405" width="240" height="58" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-tools" label="Map Tools UI" labelEn="Map Tools UI" labelMs="UI Alat Peta" petakerjaKey="architecture/tools" nodeIds="map-tools-manager" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#f1eafe,#302242);strokeColor=light-dark(#8c68c8,#ae8ae8);fontColor=light-dark(#43276a,#f2e8ff);fontFamily=Arial;fontSize=12;spacing=6;">
+            <mxGeometry x="390" y="610" width="240" height="58" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-nav" label="GeoNavigationManager" labelEn="GeoNavigationManager" labelMs="GeoNavigationManager" petakerjaKey="architecture/nav" nodeIds="geo-navigation-manager" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#f1eafe,#302242);strokeColor=light-dark(#8c68c8,#ae8ae8);fontColor=light-dark(#43276a,#f2e8ff);fontFamily=Arial;fontSize=12;spacing=6;">
+            <mxGeometry x="680" y="610" width="240" height="58" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-client" label="Geo client contracts" labelEn="Geo client contracts" labelMs="Kontrak klien Geo" petakerjaKey="architecture/client" nodeIds="geo-service" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#f1eafe,#302242);strokeColor=light-dark(#8c68c8,#ae8ae8);fontColor=light-dark(#43276a,#f2e8ff);fontFamily=Arial;fontSize=12;spacing=6;">
+            <mxGeometry x="970" y="610" width="240" height="58" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-api" label="Express /api/geo/*" labelEn="Express /api/geo/*" labelMs="Express /api/geo/*" petakerjaKey="architecture/api" nodeIds="geo-api" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#fff2df,#3a2a16);strokeColor=light-dark(#d28b2e,#e0a24e);fontColor=light-dark(#633d0f,#fff0d4);fontFamily=Arial;fontSize=12;spacing=6;">
+            <mxGeometry x="970" y="825" width="240" height="58" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-gateway" label="GeoGateway normalization" labelEn="GeoGateway normalization" labelMs="Normalisasi GeoGateway" petakerjaKey="architecture/gateway" nodeIds="geo-gateway" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#fff2df,#3a2a16);strokeColor=light-dark(#d28b2e,#e0a24e);fontColor=light-dark(#633d0f,#fff0d4);fontFamily=Arial;fontSize=12;spacing=6;">
+            <mxGeometry x="680" y="825" width="240" height="58" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-fallback" label="Haversine fallback" labelEn="Haversine fallback" labelMs="Sandaran Haversine" petakerjaKey="architecture/fallback" nodeIds="geo-gateway" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#fff2df,#3a2a16);strokeColor=light-dark(#d28b2e,#e0a24e);fontColor=light-dark(#633d0f,#fff0d4);fontFamily=Arial;fontSize=12;spacing=6;">
+            <mxGeometry x="390" y="825" width="240" height="58" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-cache" label="Supabase cache" labelEn="Supabase cache" labelMs="Cache Supabase" petakerjaKey="architecture/cache" nodeIds="supabase-db,geo-route-cache" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#ebf8ef,#183324);strokeColor=light-dark(#48a868,#61cc83);fontColor=light-dark(#194a2c,#e4ffec);fontFamily=Arial;fontSize=12;spacing=6;">
+            <mxGeometry x="390" y="1020" width="240" height="58" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-valhalla" label="Valhalla · enabled" labelEn="Valhalla · enabled" labelMs="Valhalla · diaktifkan" petakerjaKey="architecture/valhalla" nodeIds="valhalla" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#ebf8ef,#183324);strokeColor=light-dark(#48a868,#61cc83);fontColor=light-dark(#194a2c,#e4ffec);fontFamily=Arial;fontSize=12;spacing=6;">
+            <mxGeometry x="680" y="1020" width="240" height="58" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-nominatim" label="Nominatim · disabled" labelEn="Nominatim · disabled" labelMs="Nominatim · dinyahaktifkan" petakerjaKey="architecture/nominatim" nodeIds="nominatim" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#f4f6f8,#242932);strokeColor=light-dark(#8a96a8,#727f92);fontColor=light-dark(#283345,#edf1f7);fontFamily=Arial;fontSize=12;spacing=6;">
+            <mxGeometry x="970" y="1020" width="240" height="58" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-edge-1" label="" labelEn="" labelMs="" petakerjaKey="architecture/edge-1">
+          <mxCell parent="1" edge="1" source="arch-ab" target="arch-maplibre" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-edge-2" label="" labelEn="" labelMs="" petakerjaKey="architecture/edge-2">
+          <mxCell parent="1" edge="1" source="arch-maplibre" target="arch-nav" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-edge-3" label="" labelEn="" labelMs="" petakerjaKey="architecture/edge-3">
+          <mxCell parent="1" edge="1" source="arch-tools" target="arch-nav" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-edge-4" label="" labelEn="" labelMs="" petakerjaKey="architecture/edge-4">
+          <mxCell parent="1" edge="1" source="arch-nav" target="arch-renderer" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-edge-5" label="" labelEn="" labelMs="" petakerjaKey="architecture/edge-5">
+          <mxCell parent="1" edge="1" source="arch-nav" target="arch-client" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-edge-6" label="" labelEn="" labelMs="" petakerjaKey="architecture/edge-6">
+          <mxCell parent="1" edge="1" source="arch-client" target="arch-api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-edge-7" label="" labelEn="" labelMs="" petakerjaKey="architecture/edge-7">
+          <mxCell parent="1" edge="1" source="arch-api" target="arch-gateway" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-edge-8" label="" labelEn="" labelMs="" petakerjaKey="architecture/edge-8">
+          <mxCell parent="1" edge="1" source="arch-gateway" target="arch-cache" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-edge-9" label="" labelEn="" labelMs="" petakerjaKey="architecture/edge-9">
+          <mxCell parent="1" edge="1" source="arch-gateway" target="arch-valhalla" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-edge-10" label="" labelEn="" labelMs="" petakerjaKey="architecture/edge-10">
+          <mxCell parent="1" edge="1" source="arch-gateway" target="arch-nominatim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="arch-edge-11" label="" labelEn="" labelMs="" petakerjaKey="architecture/edge-11">
+          <mxCell parent="1" edge="1" source="arch-gateway" target="arch-fallback" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="v2_geo_architecture-runtime" label="Runtime verified 2026-07-19: Valhalla enabled and available; shared cache available; Nominatim disabled." labelEn="Runtime verified 2026-07-19: Valhalla enabled and available; shared cache available; Nominatim disabled." labelMs="Runtime disahkan 2026-07-19: Valhalla diaktifkan dan tersedia; cache bersama tersedia; Nominatim dinyahaktifkan." petakerjaKey="runtime-status">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#fff8df,#3d3418);strokeColor=light-dark(#d9a928,#bd8b16);fontColor=light-dark(#5f4700,#ffe8a3);fontFamily=Arial;fontSize=11;align=left;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="50" y="1142" width="1500" height="36" as="geometry" />
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

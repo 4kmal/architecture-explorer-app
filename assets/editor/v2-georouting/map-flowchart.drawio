@@ -1,0 +1,175 @@
+<mxfile host="PetaKerja Architecture Explorer" agent="PetaKerja V2 Georouting Generator" version="27.0.2" compressed="false" pages="1" petakerjaProjectionLanguage="en" petakerjaSequenceLabelMode="simple" petakerjaLayoutStandard="project-template-v2">
+  <diagram id="v2_geo_map_flowchart" name="V2 Explore and Navigate Map">
+    <mxGraphModel dx="1480" dy="1340" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1480" pageHeight="1340" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <object id="v2_geo_map_flowchart-title" label="Explore and Navigate the Map — V2 Georouting" labelEn="Explore and Navigate the Map — V2 Georouting" labelMs="Teroka dan Navigasi Peta — Georouting V2" petakerjaKey="title">
+          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=24;fontStyle=1;fontColor=light-dark(#172033,#e8edf7);">
+            <mxGeometry x="50" y="25" width="1380" height="38" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="v2_geo_map_flowchart-subtitle" label="A template-aligned flow from map readiness to route rendering and optional analysis." labelEn="A template-aligned flow from map readiness to route rendering and optional analysis." labelMs="Aliran sejajar templat daripada kesediaan peta kepada pemaparan laluan dan analisis pilihan." petakerjaKey="subtitle">
+          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontColor=light-dark(#596579,#aeb8c8);">
+            <mxGeometry x="50" y="65" width="1380" height="42" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-start" label="Start" labelEn="Start" labelMs="Mula" petakerjaKey="flow/start">
+          <mxCell parent="1" vertex="1" style="shape=mxgraph.flowchart.start_1;whiteSpace=wrap;html=1;strokeWidth=1.5;fillColor=light-dark(#e9f8ef,#193427);strokeColor=light-dark(#3f9b62,#61cf87);fontColor=light-dark(#18482b,#e4ffec);fontFamily=Arial;fontSize=12;fontStyle=1;">
+            <mxGeometry x="650" y="125" width="180" height="50" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-open" label="Open Malaysia map workspace" labelEn="Open Malaysia map workspace" labelMs="Buka ruang kerja peta Malaysia" petakerjaKey="flow/open" nodeIds="mypeta-app" component="1">
+          <mxCell parent="1" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=1.5;rounded=0;fillColor=light-dark(#edf4ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=12;spacing=6;">
+            <mxGeometry x="630" y="215" width="220" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-ready" label="MapLibre style ready?" labelEn="MapLibre style ready?" labelMs="Gaya MapLibre sedia?" petakerjaKey="flow/ready" nodeIds="maplibre-gl" component="1">
+          <mxCell parent="1" vertex="1" style="shape=mxgraph.flowchart.decision;whiteSpace=wrap;html=1;strokeWidth=1.5;fillColor=light-dark(#fff2df,#392a18);strokeColor=light-dark(#d18a2b,#e5a651);fontColor=light-dark(#59370f,#ffefd0);fontFamily=Arial;fontSize=11;">
+            <mxGeometry x="650" y="325" width="180" height="100" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-tools" label="Mount Map Tools and A–B Navigator" labelEn="Mount Map Tools and A–B Navigator" labelMs="Pasang Alat Peta dan Navigasi A–B" petakerjaKey="flow/tools" nodeIds="map-tools-manager" component="1">
+          <mxCell parent="1" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=1.5;rounded=0;fillColor=light-dark(#edf4ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=12;spacing=6;">
+            <mxGeometry x="630" y="485" width="220" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-endpoints" label="Choose A and B" labelEn="Choose A and B" labelMs="Pilih A dan B" petakerjaKey="flow/endpoints" nodeIds="geo-navigation-manager" component="1">
+          <mxCell parent="1" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=1.5;rounded=0;fillColor=light-dark(#edf4ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=12;spacing=6;">
+            <mxGeometry x="630" y="585" width="220" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-both" label="Both endpoints available?" labelEn="Both endpoints available?" labelMs="Kedua-dua titik tersedia?" petakerjaKey="flow/both" nodeIds="geo-navigation-manager" component="1">
+          <mxCell parent="1" vertex="1" style="shape=mxgraph.flowchart.decision;whiteSpace=wrap;html=1;strokeWidth=1.5;fillColor=light-dark(#fff2df,#392a18);strokeColor=light-dark(#d18a2b,#e5a651);fontColor=light-dark(#59370f,#ffefd0);fontFamily=Arial;fontSize=11;">
+            <mxGeometry x="650" y="700" width="180" height="100" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-route" label="POST /api/geo/route" labelEn="POST /api/geo/route" labelMs="POST /api/geo/route" petakerjaKey="flow/route" nodeIds="geo-api" component="1">
+          <mxCell parent="1" vertex="1" style="whiteSpace=wrap;html=1;strokeWidth=1.5;rounded=0;fillColor=light-dark(#edf4ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=12;spacing=6;">
+            <mxGeometry x="630" y="860" width="220" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-provider" label="Valhalla route available?" labelEn="Valhalla route available?" labelMs="Laluan Valhalla tersedia?" petakerjaKey="flow/provider" nodeIds="geo-gateway" component="1">
+          <mxCell parent="1" vertex="1" style="shape=mxgraph.flowchart.decision;whiteSpace=wrap;html=1;strokeWidth=1.5;fillColor=light-dark(#fff2df,#392a18);strokeColor=light-dark(#d18a2b,#e5a651);fontColor=light-dark(#59370f,#ffefd0);fontFamily=Arial;fontSize=11;">
+            <mxGeometry x="650" y="975" width="180" height="100" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-render" label="Render route, ETA, alternatives and maneuvers" labelEn="Render route, ETA, alternatives and maneuvers" labelMs="Papar laluan, ETA, alternatif dan arahan" petakerjaKey="flow/render" nodeIds="geo-route-renderer,maplibre-gl" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#ebf8ef,#183324);strokeColor=light-dark(#48a868,#61cc83);fontColor=light-dark(#194a2c,#e4ffec);fontFamily=Arial;fontSize=12;spacing=6;">
+            <mxGeometry x="370" y="1135" width="280" height="70" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-fallback" label="Show straight-line warning; no ETA or maneuvers" labelEn="Show straight-line warning; no ETA or maneuvers" labelMs="Papar amaran garis lurus; tiada ETA atau arahan" petakerjaKey="flow/fallback" nodeIds="geo-gateway" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#fff2df,#3a2a16);strokeColor=light-dark(#d28b2e,#e0a24e);fontColor=light-dark(#633d0f,#fff0d4);fontFamily=Arial;fontSize=12;spacing=6;">
+            <mxGeometry x="830" y="1135" width="280" height="70" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-finish" label="Interactive route" labelEn="Interactive route" labelMs="Laluan interaktif" petakerjaKey="flow/finish" nodeIds="geo-navigation-manager" component="1">
+          <mxCell parent="1" vertex="1" style="shape=mxgraph.flowchart.start_1;whiteSpace=wrap;html=1;strokeWidth=1.5;fillColor=light-dark(#e9f8ef,#193427);strokeColor=light-dark(#3f9b62,#61cf87);fontColor=light-dark(#18482b,#e4ffec);fontFamily=Arial;fontSize=12;fontStyle=1;">
+            <mxGeometry x="650" y="1240" width="180" height="50" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-wait" label="Keep base map usable; await style.load" labelEn="Keep base map usable; await style.load" labelMs="Kekalkan peta asas; tunggu style.load" petakerjaKey="flow/wait" nodeIds="map-manager" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#f4f6f8,#242932);strokeColor=light-dark(#8a96a8,#727f92);fontColor=light-dark(#283345,#edf1f7);fontFamily=Arial;fontSize=12;spacing=6;">
+            <mxGeometry x="1000" y="340" width="280" height="70" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-idle" label="Keep Navigator open" labelEn="Keep Navigator open" labelMs="Kekalkan Navigator terbuka" petakerjaKey="flow/idle" nodeIds="map-tools-manager" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#f4f6f8,#242932);strokeColor=light-dark(#8a96a8,#727f92);fontColor=light-dark(#283345,#edf1f7);fontFamily=Arial;fontSize=12;spacing=6;">
+            <mxGeometry x="200" y="715" width="250" height="70" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-analysis" label="Optional matrix, isochrone, boundary or Geo Studio" labelEn="Optional matrix, isochrone, boundary or Geo Studio" labelMs="Matriks, isokron, sempadan atau Studio Geo pilihan" petakerjaKey="flow/analysis" nodeIds="geo-navigation-manager" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#f1eafe,#302242);strokeColor=light-dark(#8c68c8,#ae8ae8);fontColor=light-dark(#43276a,#f2e8ff);fontFamily=Arial;fontSize=12;spacing=6;">
+            <mxGeometry x="1010" y="560" width="300" height="90" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-edge-1" label="" labelEn="" labelMs="" petakerjaKey="flow/edge-1">
+          <mxCell parent="1" edge="1" source="flow-start" target="flow-open" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-edge-2" label="" labelEn="" labelMs="" petakerjaKey="flow/edge-2">
+          <mxCell parent="1" edge="1" source="flow-open" target="flow-ready" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-edge-3" label="Yes" labelEn="Yes" labelMs="Ya" petakerjaKey="flow/edge-3">
+          <mxCell parent="1" edge="1" source="flow-ready" target="flow-tools" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-edge-4" label="No" labelEn="No" labelMs="Tidak" petakerjaKey="flow/edge-4">
+          <mxCell parent="1" edge="1" source="flow-ready" target="flow-wait" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-edge-5" label="style.load" labelEn="style.load" labelMs="style.load" petakerjaKey="flow/edge-5">
+          <mxCell parent="1" edge="1" source="flow-wait" target="flow-ready" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-edge-6" label="" labelEn="" labelMs="" petakerjaKey="flow/edge-6">
+          <mxCell parent="1" edge="1" source="flow-tools" target="flow-endpoints" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-edge-7" label="optional" labelEn="optional" labelMs="pilihan" petakerjaKey="flow/edge-7">
+          <mxCell parent="1" edge="1" source="flow-tools" target="flow-analysis" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;dashPattern=8 4;endArrow=open;endFill=0;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-edge-8" label="" labelEn="" labelMs="" petakerjaKey="flow/edge-8">
+          <mxCell parent="1" edge="1" source="flow-endpoints" target="flow-both" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-edge-9" label="Yes" labelEn="Yes" labelMs="Ya" petakerjaKey="flow/edge-9">
+          <mxCell parent="1" edge="1" source="flow-both" target="flow-route" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-edge-10" label="No" labelEn="No" labelMs="Tidak" petakerjaKey="flow/edge-10">
+          <mxCell parent="1" edge="1" source="flow-both" target="flow-idle" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-edge-11" label="select" labelEn="select" labelMs="pilih" petakerjaKey="flow/edge-11">
+          <mxCell parent="1" edge="1" source="flow-idle" target="flow-endpoints" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-edge-12" label="" labelEn="" labelMs="" petakerjaKey="flow/edge-12">
+          <mxCell parent="1" edge="1" source="flow-route" target="flow-provider" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-edge-13" label="Yes" labelEn="Yes" labelMs="Ya" petakerjaKey="flow/edge-13">
+          <mxCell parent="1" edge="1" source="flow-provider" target="flow-render" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-edge-14" label="No" labelEn="No" labelMs="Tidak" petakerjaKey="flow/edge-14">
+          <mxCell parent="1" edge="1" source="flow-provider" target="flow-fallback" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-edge-15" label="" labelEn="" labelMs="" petakerjaKey="flow/edge-15">
+          <mxCell parent="1" edge="1" source="flow-render" target="flow-finish" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="flow-edge-16" label="" labelEn="" labelMs="" petakerjaKey="flow/edge-16">
+          <mxCell parent="1" edge="1" source="flow-fallback" target="flow-finish" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="v2_geo_map_flowchart-runtime" label="Runtime verified 2026-07-19: Valhalla enabled and available; shared cache available; Nominatim disabled." labelEn="Runtime verified 2026-07-19: Valhalla enabled and available; shared cache available; Nominatim disabled." labelMs="Runtime disahkan 2026-07-19: Valhalla diaktifkan dan tersedia; cache bersama tersedia; Nominatim dinyahaktifkan." petakerjaKey="runtime-status">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#fff8df,#3d3418);strokeColor=light-dark(#d9a928,#bd8b16);fontColor=light-dark(#5f4700,#ffe8a3);fontFamily=Arial;fontSize=11;align=left;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="50" y="1282" width="1380" height="36" as="geometry" />
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

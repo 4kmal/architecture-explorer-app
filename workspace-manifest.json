@@ -38,6 +38,19 @@
     "architecture-original": { "xml": "assets/editor/architecture-layered-original.drawio", "svg": "assets/diagrams/architecture-layered-original.svg", "pageId": "petakerja_layered_architecture" },
     "modules": { "xml": "assets/editor/module-hierarchy.drawio", "svg": "assets/diagrams/module-hierarchy.svg", "pageId": "petakerja_module_hierarchy" },
     "modules-original": { "xml": "assets/editor/module-hierarchy-original.drawio", "svg": "assets/diagrams/module-hierarchy-original.svg", "pageId": "petakerja_module_hierarchy" },
-    "map-routing-responsibility-stack": { "xml": "assets/editor/petakerja-map-routing-responsibility-stack.drawio", "svg": "assets/diagrams/petakerja-map-routing-responsibility-stack.svg", "pageId": "petakerja_map_routing_stack", "title": "A-to-B routing responsibilities", "diagramType": "architecture" }
+    "map-routing-responsibility-stack": { "xml": "assets/editor/petakerja-map-routing-responsibility-stack.drawio", "svg": "assets/diagrams/petakerja-map-routing-responsibility-stack.svg", "pageId": "petakerja_map_routing_stack", "title": "A-to-B routing responsibilities", "diagramType": "architecture" },
+    "v2-geo-usecase": { "xml": "assets/editor/v2-georouting/usecase.drawio", "svg": "assets/diagrams/v2-georouting/usecase.svg", "pageId": "v2_geo_usecase" },
+    "v2-geo-map-flowchart": { "xml": "assets/editor/v2-georouting/map-flowchart.drawio", "svg": "assets/diagrams/v2-georouting/map-flowchart.svg", "pageId": "v2_geo_map_flowchart" },
+    "v2-geo-route-sequence": { "xml": "assets/editor/v2-georouting/route-sequence.drawio", "svg": "assets/diagrams/v2-georouting/route-sequence.svg", "pageId": "v2_geo_route_sequence" },
+    "v2-geo-travel-analysis-sequence": { "xml": "assets/editor/v2-georouting/travel-analysis-sequence.drawio", "svg": "assets/diagrams/v2-georouting/travel-analysis-sequence.svg", "pageId": "v2_geo_travel_analysis_sequence" },
+    "v2-geo-job-route-sequence": { "xml": "assets/editor/v2-georouting/job-route-sequence.drawio", "svg": "assets/diagrams/v2-georouting/job-route-sequence.svg", "pageId": "v2_geo_job_route_sequence" },
+    "v2-geo-domain": { "xml": "assets/editor/v2-georouting/domain.drawio", "svg": "assets/diagrams/v2-georouting/domain.svg", "pageId": "v2_geo_domain" },
+    "v2-geo-implementation": { "xml": "assets/editor/v2-georouting/implementation.drawio", "svg": "assets/diagrams/v2-georouting/implementation.svg", "pageId": "v2_geo_implementation" },
+    "v2-geo-architecture": { "xml": "assets/editor/v2-georouting/architecture.drawio", "svg": "assets/diagrams/v2-georouting/architecture.svg", "pageId": "v2_geo_architecture" },
+    "v2-geo-modules": { "xml": "assets/editor/v2-georouting/modules.drawio", "svg": "assets/diagrams/v2-georouting/modules.svg", "pageId": "v2_geo_modules" },
+    "v2-geo-data-flow": { "xml": "assets/editor/v2-georouting/data-flow.drawio", "svg": "assets/diagrams/v2-georouting/data-flow.svg", "pageId": "v2_geo_data_flow" },
+    "v2-geo-erd": { "xml": "assets/editor/v2-georouting/erd.drawio", "svg": "assets/diagrams/v2-georouting/erd.svg", "pageId": "v2_geo_erd" },
+    "v2-geo-routing-stack": { "xml": "assets/editor/v2-georouting/routing-stack.drawio", "svg": "assets/diagrams/v2-georouting/routing-stack.svg", "pageId": "v2_geo_routing_stack" },
+    "v2-geo-supabase": { "xml": "assets/editor/v2-georouting/supabase.drawio", "svg": "assets/diagrams/v2-georouting/supabase.svg", "pageId": "v2_geo_supabase" }
   }
 }

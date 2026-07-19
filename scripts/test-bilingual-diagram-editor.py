@@ -22,9 +22,9 @@ TRANSLATION_ATTRIBUTES = {
     "codeLabelMs",
 }
 VOLATILE_ATTRIBUTES = {"modified", "etag", "agent"}
-EXPECTED_DIAGRAMS = 38
-EXPECTED_SOURCES = 37
-EXPECTED_STRUCTURE = "9586fa59f1e3af7cffa0f2c0ec2ed1ac1c0fd3369d23a7b5ad458b200474909b"
+EXPECTED_DIAGRAMS = 51
+EXPECTED_SOURCES = 50
+EXPECTED_STRUCTURE = "92f1f9f1d49ac4dbc9089cd8f60048d1b1d6898cdf16c739d86a376393ed832a"
 
 
 def structural_node(element: ET.Element) -> dict[str, object]:

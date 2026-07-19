@@ -1,0 +1,200 @@
+<mxfile host="PetaKerja Architecture Explorer" agent="PetaKerja V2 Georouting Generator" version="27.0.2" compressed="false" pages="1" petakerjaProjectionLanguage="en" petakerjaSequenceLabelMode="simple" petakerjaLayoutStandard="project-template-v2">
+  <diagram id="v2_geo_usecase" name="V2 Georouting Use Cases">
+    <mxGraphModel dx="1600" dy="1120" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1120" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <object id="v2_geo_usecase-title" label="PetaKerja V2 Georouting Use Case Diagram" labelEn="PetaKerja V2 Georouting Use Case Diagram" labelMs="Rajah Kes Guna Georouting V2 PetaKerja" petakerjaKey="title">
+          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=24;fontStyle=1;fontColor=light-dark(#172033,#e8edf7);">
+            <mxGeometry x="50" y="25" width="1500" height="38" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="v2_geo_usecase-subtitle" label="Road routing, analytical travel tools, workplace navigation and explicit fallback behaviour." labelEn="Road routing, analytical travel tools, workplace navigation and explicit fallback behaviour." labelMs="Penghalaan jalan, alat analisis perjalanan, navigasi tempat kerja dan tingkah laku sandaran yang jelas." petakerjaKey="subtitle">
+          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontColor=light-dark(#596579,#aeb8c8);">
+            <mxGeometry x="50" y="65" width="1500" height="42" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-user" label="User" labelEn="User" labelMs="Pengguna" petakerjaKey="actor-user" nodeIds="pengguna" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeColor=light-dark(#2d72d2,#7ab7ff);fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=12;fontStyle=1;">
+            <mxGeometry x="55" y="265" width="70" height="140" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-seeker" label="Signed-in&#10;job seeker" labelEn="Signed-in&#10;job seeker" labelMs="Pencari kerja&#10;yang log masuk" petakerjaKey="actor-seeker" nodeIds="pengguna" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeColor=light-dark(#2d72d2,#7ab7ff);fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=12;fontStyle=1;">
+            <mxGeometry x="55" y="690" width="70" height="140" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-valhalla" label="Valhalla&#10;(enabled)" labelEn="Valhalla&#10;(enabled)" labelMs="Valhalla&#10;(diaktifkan)" petakerjaKey="actor-valhalla" nodeIds="valhalla" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeColor=light-dark(#2d72d2,#7ab7ff);fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=12;fontStyle=1;">
+            <mxGeometry x="1475" y="265" width="70" height="140" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-nominatim" label="Nominatim&#10;(disabled)" labelEn="Nominatim&#10;(disabled)" labelMs="Nominatim&#10;(dinyahaktifkan)" petakerjaKey="actor-nominatim" nodeIds="nominatim" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeColor=light-dark(#687385,#9aa6b8);fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=12;fontStyle=1;">
+            <mxGeometry x="1475" y="650" width="70" height="140" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-boundary" label="PetaKerja georouting" labelEn="PetaKerja georouting" labelMs="Georouting PetaKerja" petakerjaKey="system-boundary">
+          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#7f8a9a,#566173);strokeWidth=1.5;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=13;fontStyle=1;verticalAlign=top;align=left;spacingTop=8;spacingLeft=10;">
+            <mxGeometry x="165" y="125" width="1270" height="900" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-set-endpoints" label="Set A and B" labelEn="Set A and B" labelMs="Tetapkan A dan B" petakerjaKey="usecase/set-endpoints" nodeIds="geo-navigation-manager" component="1">
+          <mxCell parent="1" vertex="1" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#e8edf7);fillColor=light-dark(#ffffff,#17293f);strokeColor=light-dark(#4b5563,#69a8ef);strokeWidth=1.25;">
+            <mxGeometry x="235" y="190" width="250" height="62" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-gps" label="Use current GPS location" labelEn="Use current GPS location" labelMs="Guna lokasi GPS semasa" petakerjaKey="usecase/gps" nodeIds="geo-navigation-manager" component="1">
+          <mxCell parent="1" vertex="1" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#e8edf7);fillColor=light-dark(#ffffff,#17293f);strokeColor=light-dark(#4b5563,#69a8ef);strokeWidth=1.25;">
+            <mxGeometry x="535" y="190" width="250" height="62" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-profile" label="Choose drive, walk or cycle" labelEn="Choose drive, walk or cycle" labelMs="Pilih pandu, jalan atau basikal" petakerjaKey="usecase/profile" nodeIds="geo-navigation-manager" component="1">
+          <mxCell parent="1" vertex="1" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#e8edf7);fillColor=light-dark(#ffffff,#17293f);strokeColor=light-dark(#4b5563,#69a8ef);strokeWidth=1.25;">
+            <mxGeometry x="835" y="190" width="250" height="62" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-route" label="Calculate road route" labelEn="Calculate road route" labelMs="Kira laluan jalan" petakerjaKey="usecase/route" nodeIds="geo-gateway" component="1">
+          <mxCell parent="1" vertex="1" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#e8edf7);fillColor=light-dark(#ffffff,#17293f);strokeColor=light-dark(#4b5563,#69a8ef);strokeWidth=1.25;">
+            <mxGeometry x="1135" y="190" width="250" height="62" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-alternatives" label="Review route alternatives" labelEn="Review route alternatives" labelMs="Semak alternatif laluan" petakerjaKey="usecase/alternatives" nodeIds="geo-route-renderer" component="1">
+          <mxCell parent="1" vertex="1" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#e8edf7);fillColor=light-dark(#ffffff,#17293f);strokeColor=light-dark(#4b5563,#69a8ef);strokeWidth=1.25;">
+            <mxGeometry x="235" y="350" width="250" height="62" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-appearance" label="Adjust route appearance" labelEn="Adjust route appearance" labelMs="Laraskan rupa laluan" petakerjaKey="usecase/appearance" nodeIds="route-appearance-manager" component="1">
+          <mxCell parent="1" vertex="1" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#e8edf7);fillColor=light-dark(#ffffff,#17293f);strokeColor=light-dark(#4b5563,#69a8ef);strokeWidth=1.25;">
+            <mxGeometry x="535" y="350" width="250" height="62" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-preview" label="Preview journey and maneuvers" labelEn="Preview journey and maneuvers" labelMs="Pratonton perjalanan dan arahan" petakerjaKey="usecase/preview" nodeIds="geo-route-renderer" component="1">
+          <mxCell parent="1" vertex="1" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#e8edf7);fillColor=light-dark(#ffffff,#17293f);strokeColor=light-dark(#4b5563,#69a8ef);strokeWidth=1.25;">
+            <mxGeometry x="835" y="350" width="250" height="62" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-cache" label="Reuse normalized cached result" labelEn="Reuse normalized cached result" labelMs="Guna semula hasil cache ternormal" petakerjaKey="usecase/cache" nodeIds="geo-route-cache" component="1">
+          <mxCell parent="1" vertex="1" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#e8edf7);fillColor=light-dark(#ffffff,#17293f);strokeColor=light-dark(#4b5563,#69a8ef);strokeWidth=1.25;">
+            <mxGeometry x="1135" y="350" width="250" height="62" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-matrix" label="Compare travel times" labelEn="Compare travel times" labelMs="Bandingkan masa perjalanan" petakerjaKey="usecase/matrix" nodeIds="geo-navigation-manager" component="1">
+          <mxCell parent="1" vertex="1" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#e8edf7);fillColor=light-dark(#ffffff,#17293f);strokeColor=light-dark(#4b5563,#69a8ef);strokeWidth=1.25;">
+            <mxGeometry x="235" y="535" width="250" height="62" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-isochrone" label="Show reachable area" labelEn="Show reachable area" labelMs="Paparkan kawasan boleh dicapai" petakerjaKey="usecase/isochrone" nodeIds="geo-navigation-manager" component="1">
+          <mxCell parent="1" vertex="1" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#e8edf7);fillColor=light-dark(#ffffff,#17293f);strokeColor=light-dark(#4b5563,#69a8ef);strokeWidth=1.25;">
+            <mxGeometry x="535" y="535" width="250" height="62" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-boundary-search" label="Search within boundary" labelEn="Search within boundary" labelMs="Cari dalam sempadan" petakerjaKey="usecase/boundary-search" nodeIds="geo-navigation-manager" component="1">
+          <mxCell parent="1" vertex="1" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#e8edf7);fillColor=light-dark(#ffffff,#17293f);strokeColor=light-dark(#4b5563,#69a8ef);strokeWidth=1.25;">
+            <mxGeometry x="835" y="535" width="250" height="62" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-studio" label="Open context in Geo Studio" labelEn="Open context in Geo Studio" labelMs="Buka konteks dalam Studio Geo" petakerjaKey="usecase/studio" nodeIds="geo-studio" component="1">
+          <mxCell parent="1" vertex="1" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#e8edf7);fillColor=light-dark(#ffffff,#17293f);strokeColor=light-dark(#4b5563,#69a8ef);strokeWidth=1.25;">
+            <mxGeometry x="1135" y="535" width="250" height="62" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-workplace" label="Route to workplace" labelEn="Route to workplace" labelMs="Halakan ke tempat kerja" petakerjaKey="usecase/workplace" nodeIds="job-manager" component="1">
+          <mxCell parent="1" vertex="1" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#e8edf7);fillColor=light-dark(#ffffff,#17293f);strokeColor=light-dark(#4b5563,#69a8ef);strokeWidth=1.25;">
+            <mxGeometry x="465" y="760" width="280" height="62" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-fallback" label="Show labelled straight-line fallback" labelEn="Show labelled straight-line fallback" labelMs="Paparkan sandaran garis lurus berlabel" petakerjaKey="usecase/fallback" nodeIds="geo-gateway" component="1">
+          <mxCell parent="1" vertex="1" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#e8edf7);fillColor=light-dark(#ffffff,#17293f);strokeColor=light-dark(#4b5563,#69a8ef);strokeWidth=1.25;">
+            <mxGeometry x="855" y="760" width="280" height="62" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-user-1" label="" labelEn="" labelMs="" petakerjaKey="relation/user-set-endpoints">
+          <mxCell parent="1" edge="1" source="uc-user" target="uc-set-endpoints" style="rounded=0;html=1;endArrow=none;startArrow=none;strokeColor=light-dark(#596579,#aeb8c8);strokeWidth=1.25;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-user-2" label="" labelEn="" labelMs="" petakerjaKey="relation/user-alternatives">
+          <mxCell parent="1" edge="1" source="uc-user" target="uc-alternatives" style="rounded=0;html=1;endArrow=none;startArrow=none;strokeColor=light-dark(#596579,#aeb8c8);strokeWidth=1.25;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-user-3" label="" labelEn="" labelMs="" petakerjaKey="relation/user-matrix">
+          <mxCell parent="1" edge="1" source="uc-user" target="uc-matrix" style="rounded=0;html=1;endArrow=none;startArrow=none;strokeColor=light-dark(#596579,#aeb8c8);strokeWidth=1.25;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-seeker-workplace" label="" labelEn="" labelMs="" petakerjaKey="relation/seeker-workplace">
+          <mxCell parent="1" edge="1" source="uc-seeker" target="uc-workplace" style="rounded=0;html=1;endArrow=none;startArrow=none;strokeColor=light-dark(#596579,#aeb8c8);strokeWidth=1.25;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-route-valhalla" label="" labelEn="" labelMs="" petakerjaKey="relation/route-valhalla">
+          <mxCell parent="1" edge="1" source="uc-route" target="uc-valhalla" style="rounded=0;html=1;endArrow=none;startArrow=none;strokeColor=light-dark(#596579,#aeb8c8);strokeWidth=1.25;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-boundary-nominatim" label="" labelEn="" labelMs="" petakerjaKey="relation/boundary-nominatim">
+          <mxCell parent="1" edge="1" source="uc-boundary-search" target="uc-nominatim" style="rounded=0;html=1;endArrow=none;startArrow=none;strokeColor=light-dark(#596579,#aeb8c8);strokeWidth=1.25;dashed=1;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-rel-1" label="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" labelEn="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" labelMs="&amp;lt;&amp;lt;lanjutan&amp;gt;&amp;gt;" petakerjaKey="relation/gps-set-endpoints">
+          <mxCell parent="1" edge="1" source="uc-gps" target="uc-set-endpoints" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;dashPattern=8 4;endArrow=open;endFill=0;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-rel-2" label="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" labelEn="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" labelMs="&amp;lt;&amp;lt;termasuk&amp;gt;&amp;gt;" petakerjaKey="relation/route-set-endpoints">
+          <mxCell parent="1" edge="1" source="uc-route" target="uc-set-endpoints" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;dashPattern=8 4;endArrow=open;endFill=0;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-rel-3" label="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" labelEn="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" labelMs="&amp;lt;&amp;lt;termasuk&amp;gt;&amp;gt;" petakerjaKey="relation/route-profile">
+          <mxCell parent="1" edge="1" source="uc-route" target="uc-profile" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;dashPattern=8 4;endArrow=open;endFill=0;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-rel-4" label="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" labelEn="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" labelMs="&amp;lt;&amp;lt;lanjutan&amp;gt;&amp;gt;" petakerjaKey="relation/alternatives-route">
+          <mxCell parent="1" edge="1" source="uc-alternatives" target="uc-route" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;dashPattern=8 4;endArrow=open;endFill=0;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-rel-5" label="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" labelEn="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" labelMs="&amp;lt;&amp;lt;lanjutan&amp;gt;&amp;gt;" petakerjaKey="relation/appearance-route">
+          <mxCell parent="1" edge="1" source="uc-appearance" target="uc-route" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;dashPattern=8 4;endArrow=open;endFill=0;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-rel-6" label="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" labelEn="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" labelMs="&amp;lt;&amp;lt;lanjutan&amp;gt;&amp;gt;" petakerjaKey="relation/preview-route">
+          <mxCell parent="1" edge="1" source="uc-preview" target="uc-route" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;dashPattern=8 4;endArrow=open;endFill=0;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-rel-7" label="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" labelEn="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" labelMs="&amp;lt;&amp;lt;termasuk&amp;gt;&amp;gt;" petakerjaKey="relation/route-cache">
+          <mxCell parent="1" edge="1" source="uc-route" target="uc-cache" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;dashPattern=8 4;endArrow=open;endFill=0;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-rel-8" label="&amp;lt;&amp;lt;include when routable&amp;gt;&amp;gt;" labelEn="&amp;lt;&amp;lt;include when routable&amp;gt;&amp;gt;" labelMs="&amp;lt;&amp;lt;termasuk apabila boleh dihala&amp;gt;&amp;gt;" petakerjaKey="relation/workplace-route">
+          <mxCell parent="1" edge="1" source="uc-workplace" target="uc-route" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;dashPattern=8 4;endArrow=open;endFill=0;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-rel-9" label="&amp;lt;&amp;lt;extend on failure&amp;gt;&amp;gt;" labelEn="&amp;lt;&amp;lt;extend on failure&amp;gt;&amp;gt;" labelMs="&amp;lt;&amp;lt;lanjutan apabila gagal&amp;gt;&amp;gt;" petakerjaKey="relation/fallback-route">
+          <mxCell parent="1" edge="1" source="uc-fallback" target="uc-route" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;dashPattern=8 4;endArrow=open;endFill=0;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="uc-rel-10" label="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" labelEn="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" labelMs="&amp;lt;&amp;lt;lanjutan&amp;gt;&amp;gt;" petakerjaKey="relation/studio-boundary-search">
+          <mxCell parent="1" edge="1" source="uc-studio" target="uc-boundary-search" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;dashPattern=8 4;endArrow=open;endFill=0;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="v2_geo_usecase-runtime" label="Runtime verified 2026-07-19: Valhalla enabled and available; shared cache available; Nominatim disabled." labelEn="Runtime verified 2026-07-19: Valhalla enabled and available; shared cache available; Nominatim disabled." labelMs="Runtime disahkan 2026-07-19: Valhalla diaktifkan dan tersedia; cache bersama tersedia; Nominatim dinyahaktifkan." petakerjaKey="runtime-status">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#fff8df,#3d3418);strokeColor=light-dark(#d9a928,#bd8b16);fontColor=light-dark(#5f4700,#ffe8a3);fontFamily=Arial;fontSize=11;align=left;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="50" y="1062" width="1500" height="36" as="geometry" />
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

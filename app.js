@@ -48,6 +48,19 @@
     jobops: 'briefcase-business',
     blog: 'newspaper',
     community: 'users-round',
+    'v2-geo-usecase': 'users-round',
+    'v2-geo-map-flowchart': 'map',
+    'v2-geo-route-sequence': 'map',
+    'v2-geo-travel-analysis-sequence': 'waypoints',
+    'v2-geo-job-route-sequence': 'briefcase-business',
+    'v2-geo-domain': 'boxes',
+    'v2-geo-implementation': 'network',
+    'v2-geo-architecture': 'layers-2',
+    'v2-geo-modules': 'folder-tree',
+    'v2-geo-data-flow': 'waypoints',
+    'v2-geo-erd': 'database',
+    'v2-geo-routing-stack': 'layers-2',
+    'v2-geo-supabase': 'table-properties',
   });
 
   function storedLanguage() {
@@ -117,6 +130,30 @@
     catch (_error) { /* Some file:// browser policies disable storage. */ }
   }
 
+  function storedDiagramCollections() {
+    try {
+      const value = JSON.parse(localStorage.getItem('petakerja-explorer-diagram-collections') || '{}');
+      return value && typeof value === 'object' && Object.keys(value).length ? value : { 'v2-georouting': true };
+    } catch (_error) { return { 'v2-georouting': true }; }
+  }
+
+  function storeDiagramCollections(value) {
+    try { localStorage.setItem('petakerja-explorer-diagram-collections', JSON.stringify(value)); }
+    catch (_error) { /* Some file:// browser policies disable storage. */ }
+  }
+
+  function storedDiagramCollectionGroups() {
+    try {
+      const value = JSON.parse(localStorage.getItem('petakerja-explorer-diagram-collection-groups') || '{}');
+      return value && typeof value === 'object' ? value : {};
+    } catch (_error) { return {}; }
+  }
+
+  function storeDiagramCollectionGroups(value) {
+    try { localStorage.setItem('petakerja-explorer-diagram-collection-groups', JSON.stringify(value)); }
+    catch (_error) { /* Some file:// browser policies disable storage. */ }
+  }
+
   function storedSequenceLabelMode() {
     try { return localStorage.getItem('petakerja-explorer-sequence-label-mode') === 'code' ? 'code' : 'simple'; }
     catch (_error) { return 'simple'; }
@@ -139,8 +176,20 @@
     runtimeDocuments: new Map(), importedDiagrams: [], runtimeExporting: false, editorDocumentKey: null, agentProviderStatus: null,
     workspaceToken: null, workspaceDiagramIds: new Set(), workspaceLoaded: new Set(), workspaceSessionPromise: null,
     sequenceFolders: storedSequenceFolders(), flowchartFolders: storedFlowchartFolders(),
-    diagramVariantFolders: storedDiagramVariantFolders(), sequenceLabelMode: storedSequenceLabelMode(),
+    diagramVariantFolders: storedDiagramVariantFolders(), diagramCollections: storedDiagramCollections(),
+    diagramCollectionGroups: storedDiagramCollectionGroups(), sequenceLabelMode: storedSequenceLabelMode(),
   };
+
+  const DIAGRAM_COLLECTION_GROUPS = Object.freeze({
+    'v2-georouting': Object.freeze([
+      { id: 'use-cases', labelKey: 'ui.collectionUseCases', icon: 'users-round' },
+      { id: 'flowcharts', labelKey: 'ui.collectionFlowcharts', icon: 'workflow' },
+      { id: 'sequences', labelKey: 'ui.collectionSequences', icon: 'waypoints' },
+      { id: 'classes', labelKey: 'ui.collectionClasses', icon: 'boxes' },
+      { id: 'architecture-modules', labelKey: 'ui.collectionArchitectureModules', icon: 'layers-2' },
+      { id: 'data', labelKey: 'ui.collectionData', icon: 'database' },
+    ]),
+  });
 
   const els = {
     skip: byId('skip-link'), subtitle: byId('app-subtitle'), scope: byId('scope-filter'), diagramPicker: byId('diagram-picker'),
@@ -235,6 +284,10 @@
       'ui.sequenceSimple': 'Ringkas', 'ui.sequenceCode': 'Kod', 'ui.sequenceLabelMode': 'Butiran mesej jujukan',
       'ui.flowchartUser': 'Pengguna', 'ui.flowchartAdministrator': 'Pentadbir', 'ui.flowchartEmpty': 'Tiada rajah lagi',
       'ui.variantPolished': 'Dikemas', 'ui.variantOriginal': 'Asal', 'ui.variantRecommended': 'Disyorkan', 'ui.variantReference': 'Rujukan asal',
+      'ui.openVanilla': 'Buka vanilla', 'ui.openV2': 'Buka V2', 'ui.collectionCollapse': 'Tutup koleksi', 'ui.collectionExpand': 'Buka koleksi',
+      'ui.collectionUseCases': 'Rajah Kes Guna', 'ui.collectionFlowcharts': 'Carta Alir', 'ui.collectionSequences': 'Rajah Jujukan',
+      'ui.collectionClasses': 'Rajah Kelas', 'ui.collectionArchitectureModules': 'Seni Bina & Modul', 'ui.collectionData': 'Rajah Data',
+      'ui.collectionDiagram': 'rajah', 'ui.collectionDiagrams': 'rajah',
       'ui.reportExplanation': 'Penerangan laporan', 'ui.copyReportParagraph': 'Salin perenggan', 'ui.reportParagraphCopied': 'Perenggan disalin',
       'ui.flow': 'Aliran hujung ke hujung', 'ui.sourceFiles': 'Fail sumber', 'ui.routes': 'Route / RPC', 'ui.tables': 'Jadual Supabase',
       'ui.uiComponents': 'Komponen UI', 'ui.auth': 'Syarat akses', 'ui.related': 'Nod berhubung', 'ui.reference': 'Aset rujukan', 'ui.close': 'Tutup',
@@ -263,14 +316,14 @@
 
   function labelStatus(status) {
     if (state.language === 'en') return translations.en.status[status] || status;
-    return { current: 'Kod semasa', concept: 'Model konseptual FYP', legacy: 'Legacy / tidak tersedia', warning: 'Perhatian' }[status] || status;
+    return { current: 'Kod semasa', concept: 'Model konseptual FYP', legacy: 'Legacy / tidak tersedia', warning: 'Perhatian', gated: 'Berpagar ciri' }[status] || status;
   }
 
   function labelKind(kind) {
     if (state.language === 'en') return translations.en.kind[kind] || kind;
     return ({ actor: 'Aktor', runtime: 'Runtime', entry: 'Entry point', class: 'Kelas', interface: 'Antara muka', module: 'Modul',
       service: 'Servis', api: 'API', database: 'Pangkalan data', entity: 'Entiti', external: 'Perkhidmatan luar', middleware: 'Middleware',
-      data: 'Kumpulan data', warning: 'Amaran', missing: 'Tidak tersedia', 'system-table': 'Jadual sistem' })[kind] || kind;
+      data: 'Kumpulan data', warning: 'Amaran', missing: 'Tidak tersedia', 'system-table': 'Jadual sistem', application: 'Aplikasi' })[kind] || kind;
   }
 
   function canonicalDiagram(diagram = activeDiagram()) {
@@ -604,8 +657,31 @@
       const emptyKey = family === 'flowchart' ? 'ui.flowchartEmpty' : 'ui.sequenceEmpty';
       return `<details class="nav-subgroup" data-nav-family="${family}" data-nav-audience="${audience}"${open ? ' open' : ''}><summary><span class="nav-subgroup__icon" aria-hidden="true"><i data-bp-icon="${icon}"></i></span><span>${escapeHTML(t(labelKey))}</span><i class="nav-subgroup__chevron" data-bp-icon="chevron-right" aria-hidden="true"></i></summary><div class="nav-subgroup__items">${diagrams.length ? audienceItems(family, audience, diagrams) : `<p class="nav-subgroup__empty">${escapeHTML(t(emptyKey))}</p>`}</div></details>`;
     };
+    const collectionFolder = (collectionId, diagrams) => {
+      const ordered = [...diagrams].sort((a, b) => (a.collectionOrder || 99) - (b.collectionOrder || 99));
+      const open = state.diagramCollections[collectionId] !== false;
+      const groupSpecs = DIAGRAM_COLLECTION_GROUPS[collectionId] || [];
+      const grouped = groupSpecs.map((spec) => ({
+        ...spec,
+        diagrams: ordered.filter((diagram) => diagram.collectionGroupId === spec.id),
+      })).filter((group) => group.diagrams.length);
+      const ungrouped = ordered.filter((diagram) => !groupSpecs.some((spec) => spec.id === diagram.collectionGroupId));
+      if (ungrouped.length) grouped.push({ id: 'other', labelKey: null, icon: 'folder', diagrams: ungrouped });
+      const groupMarkup = grouped.map((group) => {
+        const storageKey = `${collectionId}:${group.id}`;
+        const active = group.diagrams.some((diagram) => diagram.id === state.diagramId);
+        const hasStoredState = Object.prototype.hasOwnProperty.call(state.diagramCollectionGroups, storageKey);
+        const groupOpen = hasStoredState ? state.diagramCollectionGroups[storageKey] === true : active;
+        const label = group.labelKey ? t(group.labelKey) : (state.language === 'en' ? 'Other diagrams' : 'Rajah lain');
+        const countLabel = group.diagrams.length === 1 ? t('ui.collectionDiagram') : t('ui.collectionDiagrams');
+        return `<details class="nav-collection-group" data-diagram-collection-group="${escapeHTML(storageKey)}"${groupOpen ? ' open' : ''}><summary><span class="nav-collection-group__icon" aria-hidden="true"><i data-bp-icon="${escapeHTML(group.icon)}"></i></span><span class="nav-collection-group__copy"><strong>${escapeHTML(label)}</strong><small>${group.diagrams.length} ${escapeHTML(countLabel)}</small></span><i class="nav-collection-group__chevron" data-bp-icon="chevron-right" aria-hidden="true"></i></summary><div class="nav-collection-group__items">${group.diagrams.map((diagram) => diagramButton(diagram, { meta: diagram.versionTag || labelStatus(diagram.status) })).join('')}</div></details>`;
+      }).join('');
+      return `<section class="nav-group nav-group--collection"><details class="nav-collection" data-diagram-collection="${escapeHTML(collectionId)}"${open ? ' open' : ''}><summary><span class="nav-collection__icon" aria-hidden="true"><i data-bp-icon="folder-tree"></i></span><span class="nav-collection__copy"><strong>${escapeHTML(categoryLabel('V2 Georouting'))}</strong><small>${ordered.length} ${state.language === 'en' ? 'editable diagrams' : 'rajah boleh sunting'}</small></span><i class="nav-collection__chevron" data-bp-icon="chevron-right" aria-hidden="true"></i></summary><div class="nav-collection__items">${groupMarkup}</div></details></section>`;
+    };
     els.diagramNav.innerHTML = categories.map((category) => {
       const categoryDiagrams = visible.filter((diagram) => diagram.category === category);
+      const collectionId = categoryDiagrams[0]?.collectionId;
+      if (collectionId && categoryDiagrams.every((diagram) => diagram.collectionId === collectionId)) return collectionFolder(collectionId, categoryDiagrams);
       if (category !== 'Jujukan' && category !== 'Carta Alir') return `<section class="nav-group"><h2>${escapeHTML(categoryLabel(category))}</h2>${variantItems(categoryDiagrams)}</section>`;
       const isFlowchart = category === 'Carta Alir';
       const family = isFlowchart ? 'flowchart' : 'sequence';
@@ -629,6 +705,14 @@
     els.diagramNav.querySelectorAll('.nav-variant-group').forEach((folder) => folder.addEventListener('toggle', () => {
       state.diagramVariantFolders[folder.dataset.diagramVariantFamily] = folder.open;
       storeDiagramVariantFolders(state.diagramVariantFolders);
+    }));
+    els.diagramNav.querySelectorAll('.nav-collection').forEach((folder) => folder.addEventListener('toggle', () => {
+      state.diagramCollections[folder.dataset.diagramCollection] = folder.open;
+      storeDiagramCollections(state.diagramCollections);
+    }));
+    els.diagramNav.querySelectorAll('.nav-collection-group').forEach((folder) => folder.addEventListener('toggle', () => {
+      state.diagramCollectionGroups[folder.dataset.diagramCollectionGroup] = folder.open;
+      storeDiagramCollectionGroups(state.diagramCollectionGroups);
     }));
     window.renderBlueprintIcons?.(els.diagramNav);
     els.diagramPicker.innerHTML = visible.map((diagram) => `<option value="${diagram.id}">${escapeHTML(diagramText(diagram).title)}</option>`).join('');
@@ -1545,17 +1629,30 @@
     return reportExplanation ? `<section class="report-explanation" aria-labelledby="report-explanation-title"><div class="report-explanation__heading"><h3 id="report-explanation-title">${escapeHTML(t('ui.reportExplanation'))}</h3><button class="secondary-button compact-button" type="button" data-copy-report-paragraph>${escapeHTML(t('ui.copyReportParagraph'))}</button></div><p>${escapeHTML(reportExplanation)}</p></section>` : '';
   }
 
+  function diagramComparisonBlock(diagram = activeDiagram()) {
+    const targetId = diagram.basedOnDiagramId
+      || allDiagrams().find((candidate) => candidate.basedOnDiagramId === diagram.id)?.id;
+    const target = targetId && allDiagrams().find((candidate) => candidate.id === targetId);
+    if (!target) return '';
+    const label = diagram.basedOnDiagramId ? t('ui.openVanilla') : t('ui.openV2');
+    return `<section class="diagram-comparison" aria-label="${escapeHTML(label)}"><span><strong>${escapeHTML(diagram.versionTag || 'Vanilla')}</strong><small>${escapeHTML(diagramText(target).title)}</small></span><button class="secondary-button compact-button" type="button" data-open-comparison="${escapeHTML(target.id)}">${escapeHTML(label)}</button></section>`;
+  }
+
   function renderDetails() {
     const selected = currentFocus(); const diagram = activeDiagram();
     const reportBlock = reportExplanationBlock(diagram);
+    const comparisonBlock = diagramComparisonBlock(diagram);
+    const schemaSnapshot = diagram.collectionId === 'v2-georouting'
+      ? { tables: 87, foreignKeys: 119, logicalLinks: data.meta.schema.logicalLinks }
+      : data.meta.schema;
     if (!selected) {
-      els.details.innerHTML = `${reportBlock}<div class="detail-empty"><p><strong>${escapeHTML(t('ui.chooseItem'))}</strong></p><p>${escapeHTML(t('ui.chooseItemBody'))}</p><dl class="snapshot-list"><div><dt>${escapeHTML(t('ui.publicTables'))}</dt><dd>${data.meta.schema.tables}</dd></div><div><dt>${escapeHTML(t('ui.foreignKeys'))}</dt><dd>${data.meta.schema.foreignKeys}</dd></div><div><dt>${escapeHTML(t('ui.authLinks'))}</dt><dd>${data.meta.schema.logicalLinks}</dd></div></dl><p class="detail-note">${escapeHTML(diagramText(diagram).description)}</p></div>`;
+      els.details.innerHTML = `${comparisonBlock}${reportBlock}<div class="detail-empty"><p><strong>${escapeHTML(t('ui.chooseItem'))}</strong></p><p>${escapeHTML(t('ui.chooseItemBody'))}</p><dl class="snapshot-list"><div><dt>${escapeHTML(t('ui.publicTables'))}</dt><dd>${schemaSnapshot.tables}</dd></div><div><dt>${escapeHTML(t('ui.foreignKeys'))}</dt><dd>${schemaSnapshot.foreignKeys}</dd></div><div><dt>${escapeHTML(t('ui.authLinks'))}</dt><dd>${schemaSnapshot.logicalLinks}</dd></div></dl><p class="detail-note">${escapeHTML(diagramText(diagram).description)}</p></div>`;
       return;
     }
     if (selected.startsWith('table:')) { renderTableDetails(selected.slice(6)); return; }
     const node = data.nodes[selected]; if (!node) return;
     const hotspotLabels = (data.mappings[node.id]?.hotspots || []).map((id) => data.hotspots.find((hotspot) => hotspot.id === id)).filter(Boolean).map(hotspotLabel);
-    els.details.innerHTML = `${reportBlock}<article class="detail-card"><header><div><p class="eyebrow">${escapeHTML(labelKind(node.kind))}</p><h3>${escapeHTML(nodeLabel(node))}</h3></div><span class="status-chip" data-status="${escapeHTML(node.status)}">${escapeHTML(labelStatus(node.status))}</span></header><p>${escapeHTML(nodeDescription(node))}</p>${relationshipSections(node.id)}${listSection(t('ui.flow'), nodeFlow(node), true)}${listSection(t('ui.sourceFiles'), node.files, false, 'code')}${listSection(t('ui.routes'), node.routes, false, 'code')}${listSection(t('ui.tables'), node.tables, false, 'code')}${listSection(t('ui.uiComponents'), hotspotLabels)}${node.auth ? `<section><h4>${escapeHTML(t('ui.auth'))}</h4><p>${escapeHTML(authLabel(node.auth))}</p></section>` : ''}</article>`;
+    els.details.innerHTML = `${comparisonBlock}${reportBlock}<article class="detail-card"><header><div><p class="eyebrow">${escapeHTML(labelKind(node.kind))}</p><h3>${escapeHTML(nodeLabel(node))}</h3></div><span class="status-chip" data-status="${escapeHTML(node.status)}">${escapeHTML(labelStatus(node.status))}</span></header><p>${escapeHTML(nodeDescription(node))}</p>${relationshipSections(node.id)}${listSection(t('ui.flow'), nodeFlow(node), true)}${listSection(t('ui.sourceFiles'), node.files, false, 'code')}${listSection(t('ui.routes'), node.routes, false, 'code')}${listSection(t('ui.tables'), node.tables, false, 'code')}${listSection(t('ui.uiComponents'), hotspotLabels)}${node.auth ? `<section><h4>${escapeHTML(t('ui.auth'))}</h4><p>${escapeHTML(authLabel(node.auth))}</p></section>` : ''}</article>`;
   }
 
   function renderTableDetails(name) {
@@ -1563,7 +1660,7 @@
     const relations = tableRelations(name); const links = relations.map((fk) => `${fk.sourceTable}.${fk.sourceColumn} → ${fk.targetTable}.${fk.targetColumn}`);
     data.logicalLinks.filter((link) => link.sourceTable === name || link.targetTable === name).forEach((link) => links.push(`${link.sourceTable}.${link.sourceColumn} ⇢ ${link.targetTable}.${link.targetColumn} (${t('ui.logicalLink')})`));
     const nodeId = Object.keys(data.nodes).find((id) => data.nodes[id].tables?.includes(name)); const node = nodeId && data.nodes[nodeId];
-    els.details.innerHTML = `${reportExplanationBlock()}<article class="detail-card"><header><div><p class="eyebrow">${escapeHTML(t('ui.table'))}</p><h3>public.${escapeHTML(name)}</h3></div><span class="status-chip" data-status="${table.rls ? 'current' : 'warning'}">${escapeHTML(table.rls ? t('ui.rlsOn') : t('ui.rlsOff'))}</span></header><p>${node ? escapeHTML(nodeDescription(node)) : (state.language === 'en' ? 'Supabase public-schema table from the current live metadata snapshot.' : 'Jadual skema public daripada snapshot metadata Supabase langsung semasa.')}</p>${relationshipSections(nodeId)}${listSection(t('ui.primaryKey'), table.pk, false, 'code')}${listSection(state.language === 'en' ? 'Key columns' : 'Lajur penting', table.columns, false, 'code')}${listSection(t('ui.foreignKeyLinks'), links, false, 'code')}${name === 'spatial_ref_sys' ? `<p class="warning-box">${escapeHTML(nodeDescription(data.nodes['spatial-ref']))} <a href="https://supabase.com/docs/guides/database/postgres/row-level-security" target="_blank" rel="noreferrer">${state.language === 'en' ? 'Supabase RLS guide' : 'Panduan RLS Supabase'}</a>.</p>` : ''}</article>`;
+    els.details.innerHTML = `${diagramComparisonBlock()}${reportExplanationBlock()}<article class="detail-card"><header><div><p class="eyebrow">${escapeHTML(t('ui.table'))}</p><h3>public.${escapeHTML(name)}</h3></div><span class="status-chip" data-status="${table.rls ? 'current' : 'warning'}">${escapeHTML(table.rls ? t('ui.rlsOn') : t('ui.rlsOff'))}</span></header><p>${node ? escapeHTML(nodeDescription(node)) : (state.language === 'en' ? 'Supabase public-schema table from the current live metadata snapshot.' : 'Jadual skema public daripada snapshot metadata Supabase langsung semasa.')}</p>${relationshipSections(nodeId)}${listSection(t('ui.primaryKey'), table.pk, false, 'code')}${listSection(state.language === 'en' ? 'Key columns' : 'Lajur penting', table.columns, false, 'code')}${listSection(t('ui.foreignKeyLinks'), links, false, 'code')}${name === 'spatial_ref_sys' ? `<p class="warning-box">${escapeHTML(nodeDescription(data.nodes['spatial-ref']))} <a href="https://supabase.com/docs/guides/database/postgres/row-level-security" target="_blank" rel="noreferrer">${state.language === 'en' ? 'Supabase RLS guide' : 'Panduan RLS Supabase'}</a>.</p>` : ''}</article>`;
   }
 
   function setHover(target, componentKey = null) {
@@ -1691,8 +1788,17 @@
   }
 
   function chooseDiagram(id) {
-    if (!allDiagrams().some((diagram) => diagram.id === id)) return;
+    const nextDiagram = allDiagrams().find((diagram) => diagram.id === id);
+    if (!nextDiagram) return;
     const previousWorkspaceMode = state.workspaceMode;
+    if (nextDiagram.collectionId) {
+      state.diagramCollections[nextDiagram.collectionId] = true;
+      storeDiagramCollections(state.diagramCollections);
+      if (nextDiagram.collectionGroupId) {
+        state.diagramCollectionGroups[`${nextDiagram.collectionId}:${nextDiagram.collectionGroupId}`] = true;
+        storeDiagramCollectionGroups(state.diagramCollectionGroups);
+      }
+    }
     state.diagramId = id; state.selected = null; state.hovered = null; state.selectedComponentKey = null; state.hoveredComponentKey = null; state.selectedConnectionId = null; state.fitMode = true;
     cloudManager?.setActiveFromDocumentKey(id);
     if (previousWorkspaceMode !== 'view' && !isEditableDiagram(id)) state.workspaceMode = 'view';
@@ -2062,6 +2168,8 @@
   els.uiHotspots.addEventListener('mouseout', (event) => { if (event.target.closest('[data-hotspot]')) clearHover(); });
   els.uiHotspots.addEventListener('click', (event) => { const button = event.target.closest('[data-hotspot]'); const hotspot = button && data.hotspots.find((item) => item.id === button.dataset.hotspot); if (hotspot?.nodes[0]) pinSelection(hotspot.nodes[0]); });
   els.details.addEventListener('click', (event) => {
+    const comparison = event.target.closest('[data-open-comparison]');
+    if (comparison) { chooseDiagram(comparison.dataset.openComparison); return; }
     const button = event.target.closest('[data-related-target]');
     if (button) pinSelection(button.dataset.relatedTarget, button.dataset.relatedComponent || null);
   });

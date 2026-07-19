@@ -62,6 +62,27 @@ LAYERED_ARCHITECTURE_ORIGINAL_SOURCE = ROOT / "assets" / "editor" / "architectur
 MODULE_HIERARCHY_SOURCE = ROOT / "assets" / "editor" / "module-hierarchy.drawio"
 MODULE_HIERARCHY_ORIGINAL_SOURCE = ROOT / "assets" / "editor" / "module-hierarchy-original.drawio"
 MAP_ROUTING_STACK_SOURCE = ROOT / "assets" / "editor" / "petakerja-map-routing-responsibility-stack.drawio"
+V2_GEOROUTING_EDITOR = EDITOR / "v2-georouting"
+
+V2_GEOROUTING_EXPORTS = {
+    "v2-geo-usecase": ("usecase.drawio", "v2_geo_usecase", "usecase.svg"),
+    "v2-geo-map-flowchart": ("map-flowchart.drawio", "v2_geo_map_flowchart", "map-flowchart.svg"),
+    "v2-geo-route-sequence": ("route-sequence.drawio", "v2_geo_route_sequence", "route-sequence.svg"),
+    "v2-geo-travel-analysis-sequence": ("travel-analysis-sequence.drawio", "v2_geo_travel_analysis_sequence", "travel-analysis-sequence.svg"),
+    "v2-geo-job-route-sequence": ("job-route-sequence.drawio", "v2_geo_job_route_sequence", "job-route-sequence.svg"),
+    "v2-geo-domain": ("domain.drawio", "v2_geo_domain", "domain.svg"),
+    "v2-geo-implementation": ("implementation.drawio", "v2_geo_implementation", "implementation.svg"),
+    "v2-geo-architecture": ("architecture.drawio", "v2_geo_architecture", "architecture.svg"),
+    "v2-geo-modules": ("modules.drawio", "v2_geo_modules", "modules.svg"),
+    "v2-geo-data-flow": ("data-flow.drawio", "v2_geo_data_flow", "data-flow.svg"),
+    "v2-geo-erd": ("erd.drawio", "v2_geo_erd", "erd.svg"),
+    "v2-geo-routing-stack": ("routing-stack.drawio", "v2_geo_routing_stack", "routing-stack.svg"),
+    "v2-geo-supabase": ("supabase.drawio", "v2_geo_supabase", "supabase.svg"),
+}
+V2_GEOROUTING_IDS = frozenset(V2_GEOROUTING_EXPORTS)
+V2_GEOROUTING_SEQUENCE_IDS = frozenset({
+    "v2-geo-route-sequence", "v2-geo-travel-analysis-sequence", "v2-geo-job-route-sequence",
+})
 
 
 DRAWIO_EXPORTS = {
@@ -102,6 +123,10 @@ DRAWIO_EXPORTS = {
     "modules": (MODULE_HIERARCHY_SOURCE, 1, "module-hierarchy.svg"),
     "modules-original": (MODULE_HIERARCHY_ORIGINAL_SOURCE, 1, "module-hierarchy-original.svg"),
     "map-routing-responsibility-stack": (MAP_ROUTING_STACK_SOURCE, 1, "petakerja-map-routing-responsibility-stack.svg"),
+    **{
+        diagram_id: (V2_GEOROUTING_EDITOR / source_name, 1, f"v2-georouting/{svg_name}")
+        for diagram_id, (source_name, _page_id, svg_name) in V2_GEOROUTING_EXPORTS.items()
+    },
 }
 
 REPORT_EXPORTS = {
@@ -1709,8 +1734,24 @@ MAP_ROUTING_STACK_COMPONENTS = {
 }
 
 
+def v2_georouting_translations(source: Path) -> dict[str, str]:
+    """Read the bilingual labels embedded by the V2 source generator."""
+    replacements: dict[str, str] = {}
+    diagram = ET.parse(source).getroot().find("diagram")
+    if diagram is None:
+        return replacements
+    for element in [*diagram.findall(".//object"), *diagram.findall(".//mxCell")]:
+        label_en = clean_label(element.get("labelEn") or element.get("label") or element.get("value") or "")
+        label_ms = clean_label(element.get("labelMs") or "")
+        if label_en and label_ms and label_en != label_ms:
+            replacements[label_en] = label_ms
+    return replacements
+
+
 def bilingual_translation_spec(diagram_id: str, source: Path) -> tuple[str, dict[str, str]] | None:
     """Return the source language and BM/EN dictionary for an editor page."""
+    if diagram_id in V2_GEOROUTING_IDS:
+        return "en", v2_georouting_translations(source)
     if diagram_id == "usecase":
         return "ms", USECASE_EN
     if diagram_id in {"domain", "domain-original", "implementation", "supabase"}:
@@ -2009,6 +2050,77 @@ def keyed_drawio_components(
     return components, connections
 
 
+def v2_georouting_components(source: Path) -> tuple[list[dict], list[dict]]:
+    """Build Explorer interaction metadata directly from generated stable keys."""
+    diagram = ET.parse(source).getroot().find("diagram")
+    if diagram is None:
+        return [], []
+    wrappers = {wrapper.get("id", ""): wrapper for wrapper in diagram.findall(".//object")}
+    components: list[dict] = []
+    owner: dict[str, dict] = {}
+    for wrapper_id, wrapper in wrappers.items():
+        cell = wrapper.find("mxCell")
+        node_ids = [value for value in wrapper.get("nodeIds", "").split(",") if value]
+        if cell is None or cell.get("vertex") != "1" or not node_ids:
+            continue
+        component = {
+            "componentKey": wrapper.get("petakerjaKey") or wrapper_id,
+            "id": node_ids[0],
+            "cellIds": [wrapper_id],
+            "relationCellIds": [],
+            "nodeIds": node_ids,
+            "tableName": wrapper.get("tableName") or None,
+            "uiHotspots": [value for value in wrapper.get("uiHotspots", "").split(",") if value],
+            "label": clean_label(wrapper.get("labelMs") or wrapper.get("label") or ""),
+            "labelEn": clean_label(wrapper.get("labelEn") or wrapper.get("label") or ""),
+        }
+        components.append(component)
+        owner[wrapper_id] = component
+
+    connections: list[dict] = []
+    for wrapper_id, wrapper in wrappers.items():
+        cell = wrapper.find("mxCell")
+        if cell is None or cell.get("edge") != "1":
+            continue
+        source = owner.get(cell.get("source", ""))
+        target = owner.get(cell.get("target", ""))
+        if not source or not target:
+            continue
+        source["relationCellIds"].append(wrapper_id)
+        target["relationCellIds"].append(wrapper_id)
+        label_en = clean_label(wrapper.get("labelEn") or wrapper.get("label") or "")
+        label_ms = clean_label(wrapper.get("labelMs") or label_en)
+        is_message = wrapper.get("message") == "1"
+        if is_message and source is target:
+            connection_kind = "sequence-self"
+        elif is_message and "dashed=1" in cell.get("style", ""):
+            connection_kind = "sequence-return"
+        elif is_message:
+            connection_kind = "sequence-sync"
+        else:
+            connection_kind = "flow"
+        connection = {
+            "id": wrapper_id,
+            "sourceComponentKey": source["componentKey"],
+            "targetComponentKey": target["componentKey"],
+            "kind": connection_kind,
+            "label": {"ms": label_ms, "en": label_en},
+        }
+        if is_message:
+            connection["labels"] = {
+                "simple": {
+                    "en": clean_label(wrapper.get("simpleLabelEn") or label_en),
+                    "ms": clean_label(wrapper.get("simpleLabelMs") or label_ms),
+                },
+                "code": {
+                    "en": clean_label(wrapper.get("codeLabelEn") or label_en),
+                    "ms": clean_label(wrapper.get("codeLabelMs") or label_ms),
+                },
+            }
+        connections.append(connection)
+    return components, connections
+
+
 def user_flowchart_components(diagram_id: str) -> tuple[list[dict], list[dict]]:
     return keyed_drawio_components(diagram_id, USER_FLOWCHART_SPECS, "flow")
 
@@ -2082,7 +2194,10 @@ def main() -> None:
             if exported != existing_export:
                 export_drawio(source, page, exported)
             exported_svg = slim_svg(exported.read_text(encoding="utf-8"))
-            if diagram_id in ("user-google-sign-in-flowchart", "user-google-sign-in-flowchart-original"):
+            if diagram_id in V2_GEOROUTING_IDS:
+                en = exported_svg
+                ms = translate_svg(en, v2_georouting_translations(source))
+            elif diagram_id in ("user-google-sign-in-flowchart", "user-google-sign-in-flowchart-original"):
                 en = exported_svg
                 ms = translate_svg(en, GOOGLE_SIGN_IN_FLOWCHART_MS)
             elif diagram_id in USER_FLOWCHART_SPECS:
@@ -2127,8 +2242,12 @@ def main() -> None:
                 ms = exported_svg
                 replacements = USECASE_EN if diagram_id == "usecase" else CLASS_EN
                 en = translate_svg(ms, replacements)
-            (output_dir / filename).write_text(exported_svg, encoding="utf-8")
-            if diagram_id == "usecase":
+            output_path = output_dir / filename
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+            output_path.write_text(exported_svg, encoding="utf-8")
+            if diagram_id in V2_GEOROUTING_IDS:
+                components, connections = v2_georouting_components(source)
+            elif diagram_id == "usecase":
                 components, connections = usecase_components()
             elif diagram_id == "sequence":
                 components, connections = job_search_sequence_components()
@@ -2174,7 +2293,7 @@ def main() -> None:
                 "svg": {"ms": ms, "en": en},
                 "components": components,
                 "connections": connections,
-                "supportsSequenceLabels": diagram_id in (
+                "supportsSequenceLabels": diagram_id in V2_GEOROUTING_SEQUENCE_IDS or diagram_id in (
                     "google-oauth-sequence", "sequence", "admin-manage-users-sequence",
                     "admin-manage-ai-configuration-sequence", "admin-access-dashboard-sequence",
                     "admin-monitor-activity-sequence", "admin-sign-out-sequence",

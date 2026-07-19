@@ -1,0 +1,146 @@
+<mxfile host="PetaKerja Architecture Explorer" agent="PetaKerja V2 Georouting Generator" version="27.0.2" compressed="false" pages="1" petakerjaProjectionLanguage="en" petakerjaSequenceLabelMode="simple" petakerjaLayoutStandard="project-template-v2">
+  <diagram id="v2_geo_domain" name="V2 Georouting Domain">
+    <mxGraphModel dx="1600" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <object id="v2_geo_domain-title" label="PetaKerja Domain Classes — V2 Georouting" labelEn="PetaKerja Domain Classes — V2 Georouting" labelMs="Kelas Domain PetaKerja — Georouting V2" petakerjaKey="title">
+          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=24;fontStyle=1;fontColor=light-dark(#172033,#e8edf7);">
+            <mxGeometry x="50" y="25" width="1500" height="38" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="v2_geo_domain-subtitle" label="Compact class cards follow the class proportions in the supplied template." labelEn="Compact class cards follow the class proportions in the supplied template." labelMs="Kad kelas padat mengikut perkadaran kelas dalam templat yang dibekalkan." petakerjaKey="subtitle">
+          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontColor=light-dark(#596579,#aeb8c8);">
+            <mxGeometry x="50" y="65" width="1500" height="42" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-group-core" label="Existing core domain" labelEn="Existing core domain" labelMs="Domain teras sedia ada" petakerjaKey="domain/group-core">
+          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#7f8a9a,#566173);strokeWidth=1.5;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=13;fontStyle=1;verticalAlign=top;align=left;spacingTop=8;spacingLeft=10;">
+            <mxGeometry x="50" y="130" width="400" height="840" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-group-geo" label="Geospatial contracts" labelEn="Geospatial contracts" labelMs="Kontrak geospatial" petakerjaKey="domain/group-geo">
+          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#7f8a9a,#566173);strokeWidth=1.5;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=13;fontStyle=1;verticalAlign=top;align=left;spacingTop=8;spacingLeft=10;">
+            <mxGeometry x="480" y="130" width="700" height="840" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-group-derived" label="Derived routing data" labelEn="Derived routing data" labelMs="Data penghalaan terbitan" petakerjaKey="domain/group-derived">
+          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#7f8a9a,#566173);strokeWidth=1.5;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=13;fontStyle=1;verticalAlign=top;align=left;spacingTop=8;spacingLeft=10;">
+            <mxGeometry x="1210" y="130" width="340" height="840" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-user" label="UserProfile&#10;id, role, selected_state" labelEn="UserProfile&#10;id, role, selected_state" labelMs="ProfilPengguna&#10;id, peranan, selected_state" petakerjaKey="domain/user" nodeIds="user-profile" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="100" y="215" width="300" height="120" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-poi" label="POI&#10;id, category, geom, address" labelEn="POI&#10;id, category, geom, address" labelMs="POI&#10;id, kategori, geom, alamat" petakerjaKey="domain/poi" nodeIds="poi-entity" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="100" y="400" width="300" height="120" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-job" label="JobListing&#10;id, title, company, location" labelEn="JobListing&#10;id, title, company, location" labelMs="SenaraiKerja&#10;id, tajuk, syarikat, lokasi" petakerjaKey="domain/job" nodeIds="job-entity" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="100" y="585" width="300" height="120" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-state" label="UserJobState&#10;user_id, job_key, state" labelEn="UserJobState&#10;user_id, job_key, state" labelMs="StatusKerjaPengguna&#10;user_id, job_key, status" petakerjaKey="domain/state" nodeIds="job-state-entity" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="100" y="770" width="300" height="120" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-location" label="GeoLocation&#10;lat, lng, label?" labelEn="GeoLocation&#10;lat, lng, label?" labelMs="LokasiGeo&#10;lat, lng, label?" petakerjaKey="domain/location" nodeIds="geo-location" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="520" y="215" width="290" height="120" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-place" label="GeoPlace&#10;source, confidence, boundary?" labelEn="GeoPlace&#10;source, confidence, boundary?" labelMs="TempatGeo&#10;sumber, keyakinan, sempadan?" petakerjaKey="domain/place" nodeIds="geo-place" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="850" y="215" width="290" height="120" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-route" label="GeoRoute&#10;profile, geometry, distance, duration?" labelEn="GeoRoute&#10;profile, geometry, distance, duration?" labelMs="LaluanGeo&#10;profil, geometri, jarak, tempoh?" petakerjaKey="domain/route" nodeIds="geo-route" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="520" y="400" width="290" height="120" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-alternative" label="GeoRouteAlternative&#10;geometry, duration, maneuvers" labelEn="GeoRouteAlternative&#10;geometry, duration, maneuvers" labelMs="AlternatifLaluanGeo&#10;geometri, tempoh, arahan" petakerjaKey="domain/alternative" nodeIds="geo-route-alternative" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="850" y="400" width="290" height="120" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-maneuver" label="GeoManeuver&#10;instruction, shape indexes" labelEn="GeoManeuver&#10;instruction, shape indexes" labelMs="ArahanGeo&#10;arahan, indeks bentuk" petakerjaKey="domain/maneuver" nodeIds="geo-maneuver" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="520" y="585" width="290" height="120" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-matrix" label="GeoMatrixResult&#10;sources, targets, distances, durations" labelEn="GeoMatrixResult&#10;sources, targets, distances, durations" labelMs="HasilMatriksGeo&#10;sumber, sasaran, jarak, tempoh" petakerjaKey="domain/matrix" nodeIds="geo-matrix" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="850" y="585" width="290" height="120" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-isochrone" label="GeoIsochroneResult&#10;origin, contours, FeatureCollection" labelEn="GeoIsochroneResult&#10;origin, contours, FeatureCollection" labelMs="HasilIsokronGeo&#10;asal, kontur, FeatureCollection" petakerjaKey="domain/isochrone" nodeIds="geo-isochrone" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="685" y="770" width="290" height="120" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-resolution" label="JobLocationResolution&#10;scraped_job_id&#10;coordinates, confidence&#10;routable, is_remote" labelEn="JobLocationResolution&#10;scraped_job_id&#10;coordinates, confidence&#10;routable, is_remote" labelMs="PenyelesaianLokasiKerja&#10;scraped_job_id&#10;koordinat, keyakinan&#10;boleh_dihala, jarak_jauh" petakerjaKey="domain/resolution" nodeIds="job-location-resolution" component="1" tableName="job_location_resolutions">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eee8fb,#2d2140);strokeColor=light-dark(#815ebc,#a989de);fontColor=light-dark(#402665,#f2e9ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="1260" y="235" width="240" height="170" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-route-cache" label="GeoRouteCache&#10;operation, provider&#10;payload, expires_at" labelEn="GeoRouteCache&#10;operation, provider&#10;payload, expires_at" labelMs="CacheLaluanGeo&#10;operasi, penyedia&#10;payload, expires_at" petakerjaKey="domain/route-cache" nodeIds="geo-route-cache" component="1" tableName="geo_route_cache">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eee8fb,#2d2140);strokeColor=light-dark(#815ebc,#a989de);fontColor=light-dark(#402665,#f2e9ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="1260" y="505" width="240" height="140" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-geocode-cache" label="GeoGeocodeCache&#10;operation, provider&#10;payload, expires_at" labelEn="GeoGeocodeCache&#10;operation, provider&#10;payload, expires_at" labelMs="CacheGeokodGeo&#10;operasi, penyedia&#10;payload, expires_at" petakerjaKey="domain/geocode-cache" nodeIds="geo-geocode-cache" component="1" tableName="geo_geocode_cache">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eee8fb,#2d2140);strokeColor=light-dark(#815ebc,#a989de);fontColor=light-dark(#402665,#f2e9ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="1260" y="745" width="240" height="140" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-edge-1" label="has" labelEn="has" labelMs="mempunyai" petakerjaKey="domain/edge-1">
+          <mxCell parent="1" edge="1" source="domain-place" target="domain-location" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-edge-2" label="origin + destination" labelEn="origin + destination" labelMs="asal + destinasi" petakerjaKey="domain/edge-2">
+          <mxCell parent="1" edge="1" source="domain-route" target="domain-location" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-edge-3" label="0..*" labelEn="0..*" labelMs="0..*" petakerjaKey="domain/edge-3">
+          <mxCell parent="1" edge="1" source="domain-route" target="domain-alternative" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-edge-4" label="0..*" labelEn="0..*" labelMs="0..*" petakerjaKey="domain/edge-4">
+          <mxCell parent="1" edge="1" source="domain-alternative" target="domain-maneuver" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-edge-5" label="resolved as" labelEn="resolved as" labelMs="diselesaikan sebagai" petakerjaKey="domain/edge-5">
+          <mxCell parent="1" edge="1" source="domain-resolution" target="domain-place" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-edge-job-resolution" label="derived from" labelEn="derived from" labelMs="diterbitkan daripada" petakerjaKey="domain/edge-job-resolution">
+          <mxCell parent="1" edge="1" source="domain-resolution" target="domain-job" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1190" y="925" />
+                <mxPoint x="455" y="925" />
+                <mxPoint x="455" y="645" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="v2_geo_domain-runtime" label="Runtime verified 2026-07-19: Valhalla enabled and available; shared cache available; Nominatim disabled." labelEn="Runtime verified 2026-07-19: Valhalla enabled and available; shared cache available; Nominatim disabled." labelMs="Runtime disahkan 2026-07-19: Valhalla diaktifkan dan tersedia; cache bersama tersedia; Nominatim dinyahaktifkan." petakerjaKey="runtime-status">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#fff8df,#3d3418);strokeColor=light-dark(#d9a928,#bd8b16);fontColor=light-dark(#5f4700,#ffe8a3);fontFamily=Arial;fontSize=11;align=left;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="50" y="1042" width="1500" height="36" as="geometry" />
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

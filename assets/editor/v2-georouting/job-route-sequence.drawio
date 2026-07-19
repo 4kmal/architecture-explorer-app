@@ -1,0 +1,292 @@
+<mxfile host="PetaKerja Architecture Explorer" agent="PetaKerja V2 Georouting Generator" version="27.0.2" compressed="false" pages="1" petakerjaProjectionLanguage="en" petakerjaSequenceLabelMode="simple" petakerjaLayoutStandard="project-template-v2">
+  <diagram id="v2_geo_job_route_sequence" name="V2 Route to Workplace Sequence">
+    <mxGraphModel dx="1760" dy="1500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1760" pageHeight="1500" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <object id="v2_geo_job_route_sequence-title" label="Route to Workplace Sequence — V2" labelEn="Route to Workplace Sequence — V2" labelMs="Jujukan Laluan ke Tempat Kerja — V2" petakerjaKey="title">
+          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=24;fontStyle=1;fontColor=light-dark(#172033,#e8edf7);">
+            <mxGeometry x="50" y="25" width="1660" height="38" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="v2_geo_job_route_sequence-subtitle" label="Authentication, confidence, remote-work and geocoder gates remain visually distinct." labelEn="Authentication, confidence, remote-work and geocoder gates remain visually distinct." labelMs="Pengesahan, keyakinan, kerja jarak jauh dan pagar geokod kekal berbeza secara visual." petakerjaKey="subtitle">
+          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontColor=light-dark(#596579,#aeb8c8);">
+            <mxGeometry x="50" y="65" width="1660" height="42" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-participant-user" label="" labelEn="" labelMs="" petakerjaKey="jobroute/participant-user" nodeIds="pengguna" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeColor=light-dark(#467dfe, #ededed);gradientColor=light-dark(#447af9, #ededed);">
+            <mxGeometry x="80" y="127" width="20" height="40" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-participant-user-label" label="Job seeker" labelEn="Job seeker" labelMs="Pencari kerja" petakerjaKey="jobroute/participant-user-label">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=10;fontColor=light-dark(#172033,#ededed);">
+            <mxGeometry x="20" y="166" width="140" height="18" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-participant-user-stem" label="" labelEn="" labelMs="" petakerjaKey="jobroute/participant-user-stem">
+          <mxCell parent="1" vertex="1" style="line;strokeWidth=1;direction=south;html=1;">
+            <mxGeometry x="85" y="167" width="10" height="18" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-lifeline-user" label="" labelEn="" labelMs="" petakerjaKey="jobroute/lifeline-user" nodeIds="pengguna" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="85.0" y="185" width="10" height="1115" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-participant-job" label="JobFinder Manager" labelEn="JobFinder Manager" labelMs="Pengurus Pencari Kerja" petakerjaKey="jobroute/participant-job" nodeIds="job-manager" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;">
+            <mxGeometry x="240.0" y="125" width="100" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-lifeline-job" label="" labelEn="" labelMs="" petakerjaKey="jobroute/lifeline-job" nodeIds="job-manager" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="285.0" y="185" width="10" height="1115" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-participant-client" label="Geo client" labelEn="Geo client" labelMs="Klien Geo" petakerjaKey="jobroute/participant-client" nodeIds="geo-service" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;">
+            <mxGeometry x="440.0" y="125" width="100" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-lifeline-client" label="" labelEn="" labelMs="" petakerjaKey="jobroute/lifeline-client" nodeIds="geo-service" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="485.0" y="185" width="10" height="1115" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-participant-api" label="Authenticated API" labelEn="Authenticated API" labelMs="API disahkan" petakerjaKey="jobroute/participant-api" nodeIds="geo-api" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;">
+            <mxGeometry x="640.0" y="125" width="100" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-lifeline-api" label="" labelEn="" labelMs="" petakerjaKey="jobroute/lifeline-api" nodeIds="geo-api" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="685.0" y="185" width="10" height="1115" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-participant-resolver" label="Location resolver" labelEn="Location resolver" labelMs="Penyelesai lokasi" petakerjaKey="jobroute/participant-resolver" nodeIds="job-location-resolver" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;">
+            <mxGeometry x="840.0" y="125" width="100" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-lifeline-resolver" label="" labelEn="" labelMs="" petakerjaKey="jobroute/lifeline-resolver" nodeIds="job-location-resolver" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="885.0" y="185" width="10" height="1115" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-participant-jobs" label="scraped_jobs" labelEn="scraped_jobs" labelMs="scraped_jobs" petakerjaKey="jobroute/participant-jobs" nodeIds="job-entity" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;">
+            <mxGeometry x="1040.0" y="125" width="100" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-lifeline-jobs" label="" labelEn="" labelMs="" petakerjaKey="jobroute/lifeline-jobs" nodeIds="job-entity" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="1085.0" y="185" width="10" height="1115" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-participant-resolution" label="Location resolutions" labelEn="Location resolutions" labelMs="Penyelesaian lokasi" petakerjaKey="jobroute/participant-resolution" nodeIds="job-location-resolution" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;">
+            <mxGeometry x="1240.0" y="125" width="100" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-lifeline-resolution" label="" labelEn="" labelMs="" petakerjaKey="jobroute/lifeline-resolution" nodeIds="job-location-resolution" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="1285.0" y="185" width="10" height="1115" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-participant-nominatim" label="Nominatim (gated)" labelEn="Nominatim (gated)" labelMs="Nominatim (berpagar)" petakerjaKey="jobroute/participant-nominatim" nodeIds="nominatim" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;">
+            <mxGeometry x="1440.0" y="125" width="100" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-lifeline-nominatim" label="" labelEn="" labelMs="" petakerjaKey="jobroute/lifeline-nominatim" nodeIds="nominatim" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="1485.0" y="185" width="10" height="1115" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-participant-nav" label="GeoNavigation Manager" labelEn="GeoNavigation Manager" labelMs="Pengurus Navigasi Geo" petakerjaKey="jobroute/participant-nav" nodeIds="geo-navigation-manager" component="1">
+          <mxCell parent="1" vertex="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};gradientColor=light-dark(#82a6fc, #ededed);gradientDirection=south;">
+            <mxGeometry x="1640.0" y="125" width="100" height="60" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-lifeline-nav" label="" labelEn="" labelMs="" petakerjaKey="jobroute/lifeline-nav" nodeIds="geo-navigation-manager" component="1">
+          <mxCell parent="1" vertex="1" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=light-dark(#8cbffe, #ededed);">
+            <mxGeometry x="1685.0" y="185" width="10" height="1115" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-fragment-resolution" label="alt" labelEn="alt" labelMs="alt" petakerjaKey="jobroute/fragment-resolution">
+          <mxCell parent="1" vertex="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);">
+            <mxGeometry x="830" y="430" width="720" height="540" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-operand-resolution-cache" label="Unexpired cached resolution" labelEn="Unexpired cached resolution" labelMs="Penyelesaian cache belum luput" petakerjaKey="jobroute/operand-resolution-cache">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=10;fontColor=light-dark(#172033,#ededed);align=left;fontStyle=2;">
+            <mxGeometry x="845" y="450" width="280" height="18" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-divider-resolution" label="" labelEn="" labelMs="" petakerjaKey="jobroute/divider-resolution" fragmentDivider="1">
+          <mxCell parent="1" edge="1" style="endArrow=none;dashed=1;html=1;rounded=0;exitPerimeter=0;entryPerimeter=0;strokeWidth=1;">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="830" y="575" as="sourcePoint" />
+              <mxPoint x="1550" y="575" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="jobroute-operand-resolution-required" label="Resolution required" labelEn="Resolution required" labelMs="Penyelesaian diperlukan" petakerjaKey="jobroute/operand-resolution-required">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=10;fontColor=light-dark(#172033,#ededed);align=left;fontStyle=2;">
+            <mxGeometry x="845" y="580" width="220" height="18" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-fragment-remote" label="alt" labelEn="alt" labelMs="alt" petakerjaKey="jobroute/fragment-remote">
+          <mxCell parent="1" vertex="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);">
+            <mxGeometry x="830" y="675" width="320" height="80" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-operand-remote-job" label="Remote job" labelEn="Remote job" labelMs="Kerja jarak jauh" petakerjaKey="jobroute/operand-remote-job">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=10;fontColor=light-dark(#172033,#ededed);align=left;fontStyle=2;">
+            <mxGeometry x="845" y="690" width="130" height="18" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-divider-remote" label="" labelEn="" labelMs="" petakerjaKey="jobroute/divider-remote" fragmentDivider="1">
+          <mxCell parent="1" edge="1" style="endArrow=none;dashed=1;html=1;rounded=0;exitPerimeter=0;entryPerimeter=0;strokeWidth=1;">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="830" y="715" as="sourcePoint" />
+              <mxPoint x="1150" y="715" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="jobroute-operand-onsite-job" label="On-site or hybrid" labelEn="On-site or hybrid" labelMs="Di lokasi atau hibrid" petakerjaKey="jobroute/operand-onsite-job">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=10;fontColor=light-dark(#172033,#ededed);align=left;fontStyle=2;">
+            <mxGeometry x="845" y="720" width="180" height="18" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-fragment-geocoder" label="alt" labelEn="alt" labelMs="alt" petakerjaKey="jobroute/fragment-geocoder">
+          <mxCell parent="1" vertex="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);">
+            <mxGeometry x="830" y="760" width="720" height="195" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-operand-geocoder-enabled" label="Nominatim enabled" labelEn="Nominatim enabled" labelMs="Nominatim diaktifkan" petakerjaKey="jobroute/operand-geocoder-enabled">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=10;fontColor=light-dark(#172033,#ededed);align=left;fontStyle=2;">
+            <mxGeometry x="845" y="775" width="190" height="18" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-divider-geocoder" label="" labelEn="" labelMs="" petakerjaKey="jobroute/divider-geocoder" fragmentDivider="1">
+          <mxCell parent="1" edge="1" style="endArrow=none;dashed=1;html=1;rounded=0;exitPerimeter=0;entryPerimeter=0;strokeWidth=1;">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="830" y="925" as="sourcePoint" />
+              <mxPoint x="1550" y="925" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="jobroute-operand-geocoder-disabled" label="Nominatim disabled — new resolution remains gated" labelEn="Nominatim disabled — new resolution remains gated" labelMs="Nominatim dinyahaktifkan — penyelesaian baharu kekal berpagar" petakerjaKey="jobroute/operand-geocoder-disabled">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=10;fontColor=light-dark(#172033,#ededed);align=left;fontStyle=2;">
+            <mxGeometry x="845" y="930" width="430" height="18" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-fragment-routable" label="alt" labelEn="alt" labelMs="alt" petakerjaKey="jobroute/fragment-routable">
+          <mxCell parent="1" vertex="1" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;fillColor=light-dark(#488df5, #ededed);strokeColor=light-dark(#5fcdf6, #ededed);">
+            <mxGeometry x="30" y="990" width="1700" height="300" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-operand-routable-yes" label="Routable with sufficient confidence" labelEn="Routable with sufficient confidence" labelMs="Boleh dihala dengan keyakinan mencukupi" petakerjaKey="jobroute/operand-routable-yes">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=10;fontColor=light-dark(#172033,#ededed);align=left;fontStyle=2;">
+            <mxGeometry x="45" y="1010" width="330" height="18" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-divider-routable" label="" labelEn="" labelMs="" petakerjaKey="jobroute/divider-routable" fragmentDivider="1">
+          <mxCell parent="1" edge="1" style="endArrow=none;dashed=1;html=1;rounded=0;exitPerimeter=0;entryPerimeter=0;strokeWidth=1;">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="30" y="1180" as="sourcePoint" />
+              <mxPoint x="1730" y="1180" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="jobroute-operand-routable-no" label="Remote, unresolved or low confidence" labelEn="Remote, unresolved or low confidence" labelMs="Jarak jauh, tidak selesai atau keyakinan rendah" petakerjaKey="jobroute/operand-routable-no">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=10;fontColor=light-dark(#172033,#ededed);align=left;fontStyle=2;">
+            <mxGeometry x="45" y="1190" width="360" height="18" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-message-1" label="Select Route to workplace" labelEn="Select Route to workplace" labelMs="Pilih Halakan ke tempat kerja" petakerjaKey="jobroute/message-1" simpleLabelEn="Select Route to workplace" simpleLabelMs="Pilih Halakan ke tempat kerja" codeLabelEn="data-jf-action='route-job'" codeLabelMs="data-jf-action='route-job'" message="1">
+          <mxCell parent="1" edge="1" source="jobroute-lifeline-user" target="jobroute-lifeline-job" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.0583;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.0583;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-message-2" label="Resolve selected job" labelEn="Resolve selected job" labelMs="Selesaikan kerja dipilih" petakerjaKey="jobroute/message-2" simpleLabelEn="Resolve selected job" simpleLabelMs="Selesaikan kerja dipilih" codeLabelEn="resolveGeoJobLocation(job.id)" codeLabelMs="resolveGeoJobLocation(job.id)" message="1">
+          <mxCell parent="1" edge="1" source="jobroute-lifeline-job" target="jobroute-lifeline-client" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.1031;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.1031;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-message-3" label="POST authenticated request" labelEn="POST authenticated request" labelMs="POST permintaan disahkan" petakerjaKey="jobroute/message-3" simpleLabelEn="POST authenticated request" simpleLabelMs="POST permintaan disahkan" codeLabelEn="POST /api/geo/jobs/:id/resolve" codeLabelMs="POST /api/geo/jobs/:id/resolve" message="1">
+          <mxCell parent="1" edge="1" source="jobroute-lifeline-client" target="jobroute-lifeline-api" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.1480;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.1480;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-message-4" label="Require session; keep source immutable" labelEn="Require session; keep source immutable" labelMs="Wajibkan sesi; kekalkan sumber" petakerjaKey="jobroute/message-4" simpleLabelEn="Require session; keep source immutable" simpleLabelMs="Wajibkan sesi; kekalkan sumber" codeLabelEn="requireAuth; resolveJobLocation()" codeLabelMs="requireAuth; resolveJobLocation()" message="1">
+          <mxCell parent="1" edge="1" source="jobroute-lifeline-api" target="jobroute-lifeline-resolver" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.1928;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.1928;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-message-5" label="Read unexpired resolution" labelEn="Read unexpired resolution" labelMs="Baca penyelesaian belum luput" petakerjaKey="jobroute/message-5" simpleLabelEn="Read unexpired resolution" simpleLabelMs="Baca penyelesaian belum luput" codeLabelEn="getJobLocationResolution()" codeLabelMs="getJobLocationResolution()" message="1">
+          <mxCell parent="1" edge="1" source="jobroute-lifeline-resolver" target="jobroute-lifeline-resolution" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.2825;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.2825;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-message-6" label="Reuse confidence result" labelEn="Reuse confidence result" labelMs="Guna semula hasil keyakinan" petakerjaKey="jobroute/message-6" simpleLabelEn="Reuse confidence result" simpleLabelMs="Guna semula hasil keyakinan" codeLabelEn="expires_at &gt; now()" codeLabelMs="expires_at &gt; now()" message="1">
+          <mxCell parent="1" edge="1" source="jobroute-lifeline-resolution" target="jobroute-lifeline-resolver" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=0;exitY=0.3274;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.3274;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-message-7" label="Read location and remote type" labelEn="Read location and remote type" labelMs="Baca lokasi dan jenis jarak jauh" petakerjaKey="jobroute/message-7" simpleLabelEn="Read location and remote type" simpleLabelMs="Baca lokasi dan jenis jarak jauh" codeLabelEn="select location, remote_type" codeLabelMs="select location, remote_type" message="1">
+          <mxCell parent="1" edge="1" source="jobroute-lifeline-resolver" target="jobroute-lifeline-jobs" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.4170;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.4170;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-message-8" label="Search only when enabled" labelEn="Search only when enabled" labelMs="Cari hanya apabila diaktifkan" petakerjaKey="jobroute/message-8" simpleLabelEn="Search only when enabled" simpleLabelMs="Cari hanya apabila diaktifkan" codeLabelEn="GeoGateway.search()" codeLabelMs="GeoGateway.search()" message="1">
+          <mxCell parent="1" edge="1" source="jobroute-lifeline-resolver" target="jobroute-lifeline-nominatim" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.5516;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5516;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-message-9" label="Return place and confidence" labelEn="Return place and confidence" labelMs="Pulangkan tempat dan keyakinan" petakerjaKey="jobroute/message-9" simpleLabelEn="Return place and confidence" simpleLabelMs="Pulangkan tempat dan keyakinan" codeLabelEn="exact | street | locality" codeLabelMs="exact | street | locality" message="1">
+          <mxCell parent="1" edge="1" source="jobroute-lifeline-nominatim" target="jobroute-lifeline-resolver" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=0;exitY=0.5964;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5964;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-message-10" label="Store derived coordinate" labelEn="Store derived coordinate" labelMs="Simpan koordinat terbitan" petakerjaKey="jobroute/message-10" simpleLabelEn="Store derived coordinate" simpleLabelMs="Simpan koordinat terbitan" codeLabelEn="upsert job_location_resolutions" codeLabelMs="upsert job_location_resolutions" message="1">
+          <mxCell parent="1" edge="1" source="jobroute-lifeline-resolver" target="jobroute-lifeline-resolution" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.6413;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.6413;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-message-11" label="Return routable state" labelEn="Return routable state" labelMs="Pulangkan keadaan boleh dihala" petakerjaKey="jobroute/message-11" simpleLabelEn="Return routable state" simpleLabelMs="Pulangkan keadaan boleh dihala" codeLabelEn="JobGeoResolution" codeLabelMs="JobGeoResolution" message="1">
+          <mxCell parent="1" edge="1" source="jobroute-lifeline-resolution" target="jobroute-lifeline-job" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=0;exitY=0.7758;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.7758;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-message-12" label="Set routable destination" labelEn="Set routable destination" labelMs="Tetapkan destinasi boleh dihala" petakerjaKey="jobroute/message-12" simpleLabelEn="Set routable destination" simpleLabelMs="Tetapkan destinasi boleh dihala" codeLabelEn="petakerja:geo-job-destination" codeLabelMs="petakerja:geo-job-destination" message="1">
+          <mxCell parent="1" edge="1" source="jobroute-lifeline-job" target="jobroute-lifeline-nav" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=1;exitY=0.8206;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.8206;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-message-13" label="Open Navigator and route" labelEn="Open Navigator and route" labelMs="Buka Navigator dan hala" petakerjaKey="jobroute/message-13" simpleLabelEn="Open Navigator and route" simpleLabelMs="Buka Navigator dan hala" codeLabelEn="setEndpoint(); recalculate()" codeLabelMs="setEndpoint(); recalculate()" message="1">
+          <mxCell parent="1" edge="1" source="jobroute-lifeline-nav" target="jobroute-lifeline-user" style="html=1;verticalAlign=bottom;curved=0;rounded=0;endArrow=classic;endFill=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=0;exitY=0.8655;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.8655;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-message-14" label="Explain remote or low confidence" labelEn="Explain remote or low confidence" labelMs="Jelaskan jarak jauh atau keyakinan rendah" petakerjaKey="jobroute/message-14" simpleLabelEn="Explain remote or low confidence" simpleLabelMs="Jelaskan jarak jauh atau keyakinan rendah" codeLabelEn="routable === false" codeLabelMs="routable === false" message="1">
+          <mxCell parent="1" edge="1" source="jobroute-lifeline-job" target="jobroute-lifeline-user" style="html=1;verticalAlign=bottom;endArrow=open;curved=0;rounded=0;startArrow=none;startFill=0;endFill=0;dashed=1;strokeWidth=1;fontSize=10;labelBackgroundColor=none;exitX=0;exitY=0.9552;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.9552;entryDx=0;entryDy=0;entryPerimeter=0;">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="jobroute-note" label="With Nominatim off, new workplace resolutions remain gated while Valhalla routing stays live." labelEn="With Nominatim off, new workplace resolutions remain gated while Valhalla routing stays live." labelMs="Apabila Nominatim dimatikan, penyelesaian tempat kerja baharu kekal berpagar sementara Valhalla aktif." petakerjaKey="jobroute/note">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#fff8df,#3d3418);strokeColor=light-dark(#d9a928,#bd8b16);fontColor=light-dark(#5f4700,#ffe8a3);fontFamily=Arial;fontSize=11;align=left;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="930" y="1330" width="730" height="55" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="v2_geo_job_route_sequence-runtime" label="Runtime verified 2026-07-19: Valhalla enabled and available; shared cache available; Nominatim disabled." labelEn="Runtime verified 2026-07-19: Valhalla enabled and available; shared cache available; Nominatim disabled." labelMs="Runtime disahkan 2026-07-19: Valhalla diaktifkan dan tersedia; cache bersama tersedia; Nominatim dinyahaktifkan." petakerjaKey="runtime-status">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#fff8df,#3d3418);strokeColor=light-dark(#d9a928,#bd8b16);fontColor=light-dark(#5f4700,#ffe8a3);fontFamily=Arial;fontSize=11;align=left;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="50" y="1442" width="1660" height="36" as="geometry" />
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

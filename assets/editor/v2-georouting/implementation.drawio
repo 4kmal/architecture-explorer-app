@@ -1,0 +1,180 @@
+<mxfile host="PetaKerja Architecture Explorer" agent="PetaKerja V2 Georouting Generator" version="27.0.2" compressed="false" pages="1" petakerjaProjectionLanguage="en" petakerjaSequenceLabelMode="simple" petakerjaLayoutStandard="project-template-v2">
+  <diagram id="v2_geo_implementation" name="V2 Georouting Implementation">
+    <mxGraphModel dx="1680" dy="1180" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1680" pageHeight="1180" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <object id="v2_geo_implementation-title" label="Implementation Dependencies — V2 Georouting" labelEn="Implementation Dependencies — V2 Georouting" labelMs="Kebergantungan Pelaksanaan — Georouting V2" petakerjaKey="title">
+          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=24;fontStyle=1;fontColor=light-dark(#172033,#e8edf7);">
+            <mxGeometry x="50" y="25" width="1580" height="38" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="v2_geo_implementation-subtitle" label="Aligned responsibility lanes replace the previous free-form dependency field." labelEn="Aligned responsibility lanes replace the previous free-form dependency field." labelMs="Lorong tanggungjawab sejajar menggantikan medan kebergantungan bebas sebelumnya." petakerjaKey="subtitle">
+          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontColor=light-dark(#596579,#aeb8c8);">
+            <mxGeometry x="50" y="65" width="1580" height="42" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-group-app" label="Application composition" labelEn="Application composition" labelMs="Komposisi aplikasi" petakerjaKey="implementation/group-app">
+          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#7f8a9a,#566173);strokeWidth=1.5;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=13;fontStyle=1;verticalAlign=top;align=left;spacingTop=8;spacingLeft=10;">
+            <mxGeometry x="50" y="130" width="1580" height="175" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-group-browser" label="Browser managers and rendering" labelEn="Browser managers and rendering" labelMs="Pengurus pelayar dan pemaparan" petakerjaKey="implementation/group-browser">
+          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#7f8a9a,#566173);strokeWidth=1.5;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=13;fontStyle=1;verticalAlign=top;align=left;spacingTop=8;spacingLeft=10;">
+            <mxGeometry x="50" y="335" width="1580" height="300" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-group-service" label="Client and server boundary" labelEn="Client and server boundary" labelMs="Sempadan klien dan pelayan" petakerjaKey="implementation/group-service">
+          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#7f8a9a,#566173);strokeWidth=1.5;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=13;fontStyle=1;verticalAlign=top;align=left;spacingTop=8;spacingLeft=10;">
+            <mxGeometry x="50" y="665" width="1580" height="190" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-group-provider" label="Providers and persistent data" labelEn="Providers and persistent data" labelMs="Penyedia dan data kekal" petakerjaKey="implementation/group-provider">
+          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#7f8a9a,#566173);strokeWidth=1.5;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=13;fontStyle=1;verticalAlign=top;align=left;spacingTop=8;spacingLeft=10;">
+            <mxGeometry x="50" y="885" width="1580" height="190" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-state" label="AppState&#10;map, userLocation, jobFinder" labelEn="AppState&#10;map, userLocation, jobFinder" labelMs="AppState&#10;map, userLocation, jobFinder" petakerjaKey="implementation/state" nodeIds="app-state" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="290" y="195" width="260" height="80" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-app" label="MyPetaApp&#10;creates and binds managers" labelEn="MyPetaApp&#10;creates and binds managers" labelMs="MyPetaApp&#10;mencipta dan mengikat pengurus" petakerjaKey="implementation/app" nodeIds="mypeta-app" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="710" y="185" width="260" height="100" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-map" label="MapManager&#10;style lifecycle and camera" labelEn="MapManager&#10;style lifecycle and camera" labelMs="MapManager&#10;kitar gaya dan kamera" petakerjaKey="implementation/map" nodeIds="map-manager" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="105" y="420" width="220" height="90" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-tools" label="MapToolsPanelManager&#10;rail, drawer and fit padding" labelEn="MapToolsPanelManager&#10;rail, drawer and fit padding" labelMs="MapToolsPanelManager&#10;rel, laci dan ruang fit" petakerjaKey="implementation/tools" nodeIds="map-tools-manager" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="360" y="420" width="220" height="90" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-nav" label="GeoNavigationManager&#10;A/B, route, matrix, isochrone" labelEn="GeoNavigationManager&#10;A/B, route, matrix, isochrone" labelMs="GeoNavigationManager&#10;A/B, laluan, matriks, isokron" petakerjaKey="implementation/nav" nodeIds="geo-navigation-manager" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="615" y="405" width="260" height="120" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-renderer" label="GeoRouteRenderer&#10;ordered MapLibre layers" labelEn="GeoRouteRenderer&#10;ordered MapLibre layers" labelMs="GeoRouteRenderer&#10;lapisan MapLibre tersusun" petakerjaKey="implementation/renderer" nodeIds="geo-route-renderer" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="910" y="420" width="220" height="90" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-appearance" label="RouteAppearanceManager&#10;versioned visual settings" labelEn="RouteAppearanceManager&#10;versioned visual settings" labelMs="RouteAppearanceManager&#10;tetapan visual berversi" petakerjaKey="implementation/appearance" nodeIds="route-appearance-manager" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="1165" y="420" width="220" height="90" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-job" label="JobFinderManager&#10;workplace destination event" labelEn="JobFinderManager&#10;workplace destination event" labelMs="JobFinderManager&#10;peristiwa destinasi kerja" petakerjaKey="implementation/job" nodeIds="job-manager" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="615" y="545" width="260" height="65" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-client" label="src/services/geo.ts&#10;typed same-origin fetches" labelEn="src/services/geo.ts&#10;typed same-origin fetches" labelMs="src/services/geo.ts&#10;fetch asal sama berjenis" petakerjaKey="implementation/client" nodeIds="geo-service" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="500" y="725" width="280" height="90" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-api" label="server/routes/geo.ts&#10;validation, auth and rate limits" labelEn="server/routes/geo.ts&#10;validation, auth and rate limits" labelMs="server/routes/geo.ts&#10;pengesahan, auth dan had kadar" petakerjaKey="implementation/api" nodeIds="geo-api" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="820" y="725" width="280" height="90" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-gateway" label="server/geo/gateway.ts&#10;normalization, cache and fallback" labelEn="server/geo/gateway.ts&#10;normalization, cache and fallback" labelMs="server/geo/gateway.ts&#10;normalisasi, cache dan sandaran" petakerjaKey="implementation/gateway" nodeIds="geo-gateway" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="1140" y="715" width="300" height="110" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-supabase" label="Supabase / PostGIS&#10;cache and job resolution" labelEn="Supabase / PostGIS&#10;cache and job resolution" labelMs="Supabase / PostGIS&#10;cache dan penyelesaian kerja" petakerjaKey="implementation/supabase" nodeIds="supabase-db" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="500" y="950" width="300" height="80" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-valhalla" label="Valhalla&#10;route, matrix and isochrone" labelEn="Valhalla&#10;route, matrix and isochrone" labelMs="Valhalla&#10;laluan, matriks dan isokron" petakerjaKey="implementation/valhalla" nodeIds="valhalla" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="820" y="950" width="300" height="80" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-nominatim" label="Nominatim (disabled)&#10;search, reverse and lookup" labelEn="Nominatim (disabled)&#10;search, reverse and lookup" labelMs="Nominatim (dinyahaktifkan)&#10;carian, songsang dan lookup" petakerjaKey="implementation/nominatim" nodeIds="nominatim" component="1">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
+            <mxGeometry x="1140" y="950" width="300" height="80" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-edge-1" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-1">
+          <mxCell parent="1" edge="1" source="impl-app" target="impl-state" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-edge-2" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-2">
+          <mxCell parent="1" edge="1" source="impl-app" target="impl-nav" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-edge-3" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-3">
+          <mxCell parent="1" edge="1" source="impl-nav" target="impl-tools" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-edge-4" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-4">
+          <mxCell parent="1" edge="1" source="impl-nav" target="impl-map" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-edge-5" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-5">
+          <mxCell parent="1" edge="1" source="impl-nav" target="impl-renderer" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-edge-6" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-6">
+          <mxCell parent="1" edge="1" source="impl-nav" target="impl-appearance" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-edge-7" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-7">
+          <mxCell parent="1" edge="1" source="impl-job" target="impl-nav" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-edge-8" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-8">
+          <mxCell parent="1" edge="1" source="impl-nav" target="impl-client" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-edge-9" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-9">
+          <mxCell parent="1" edge="1" source="impl-client" target="impl-api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-edge-10" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-10">
+          <mxCell parent="1" edge="1" source="impl-api" target="impl-gateway" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-edge-11" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-11">
+          <mxCell parent="1" edge="1" source="impl-gateway" target="impl-supabase" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-edge-12" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-12">
+          <mxCell parent="1" edge="1" source="impl-gateway" target="impl-valhalla" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="impl-edge-13" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-13">
+          <mxCell parent="1" edge="1" source="impl-gateway" target="impl-nominatim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="v2_geo_implementation-runtime" label="Runtime verified 2026-07-19: Valhalla enabled and available; shared cache available; Nominatim disabled." labelEn="Runtime verified 2026-07-19: Valhalla enabled and available; shared cache available; Nominatim disabled." labelMs="Runtime disahkan 2026-07-19: Valhalla diaktifkan dan tersedia; cache bersama tersedia; Nominatim dinyahaktifkan." petakerjaKey="runtime-status">
+          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#fff8df,#3d3418);strokeColor=light-dark(#d9a928,#bd8b16);fontColor=light-dark(#5f4700,#ffe8a3);fontFamily=Arial;fontSize=11;align=left;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="50" y="1122" width="1580" height="36" as="geometry" />
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
