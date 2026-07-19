@@ -1,132 +1,343 @@
 <mxfile host="PetaKerja Architecture Explorer" agent="PetaKerja V2 Georouting Generator" version="27.0.2" compressed="false" pages="1" petakerjaProjectionLanguage="en" petakerjaSequenceLabelMode="simple" petakerjaLayoutStandard="project-template-v2">
   <diagram id="v2_geo_routing_stack" name="V2 Routing Responsibility Stack">
-    <mxGraphModel dx="1600" dy="1120" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1120" math="0" shadow="0">
+    <mxGraphModel dx="1900" dy="1180" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1180" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <object id="v2_geo_routing_stack-title" label="A-to-B Routing Responsibilities — V2" labelEn="A-to-B Routing Responsibilities — V2" labelMs="Tanggungjawab Penghalaan A-ke-B — V2" petakerjaKey="title">
-          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=24;fontStyle=1;fontColor=light-dark(#172033,#e8edf7);">
-            <mxGeometry x="50" y="25" width="1500" height="38" as="geometry" />
+        <object id="v2_geo_routing_stack-title" label="A-to-B Routing Responsibilities — V2" labelEn="A-to-B Routing Responsibilities — V2" labelMs="Tanggungjawab Penghalaan A-ke-B — V2" petakerjaKey="title" stackRole="title" templateSlot="diagram-title">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=26;fontStyle=1;fontColor=light-dark(#172033,#E8EDF7);">
+            <mxGeometry x="80.0" y="35.0" width="1200.0" height="45.0" as="geometry" />
           </mxCell>
         </object>
-        <object id="v2_geo_routing_stack-subtitle" label="The established stacked-Doritos view, re-centered on a regular spacing grid." labelEn="The established stacked-Doritos view, re-centered on a regular spacing grid." labelMs="Paparan Doritos bertindan yang ditetapkan, dipusatkan semula pada grid jarak seragam." petakerjaKey="subtitle">
-          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontColor=light-dark(#596579,#aeb8c8);">
-            <mxGeometry x="50" y="65" width="1500" height="42" as="geometry" />
+        <object id="v2_geo_routing_stack-subtitle" label="Focused request and normalized-response ownership on the supplied five-layer stack." labelEn="Focused request and normalized-response ownership on the supplied five-layer stack." labelMs="Pemilikan permintaan dan respons ternormal yang berfokus pada tindanan lima lapisan yang dibekalkan." petakerjaKey="subtitle" stackRole="subtitle" templateSlot="diagram-subtitle">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=15;fontColor=light-dark(#475467,#AEB8C8);">
+            <mxGeometry x="80.0" y="78.0" width="1200.0" height="32.0" as="geometry" />
           </mxCell>
         </object>
-        <object id="stack-layer-inputs" label="1 · Inputs" labelEn="1 · Inputs" labelMs="1 · Input" petakerjaKey="routing-stack/layer-inputs">
-          <mxCell parent="1" vertex="1" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;direction=south;fillColor=light-dark(#e8eef5,#20252d);strokeColor=light-dark(#66758a,#66758a);strokeWidth=2;fontFamily=Arial;fontSize=15;fontStyle=1;verticalAlign=top;align=left;spacingTop=10;spacingLeft=28;fontColor=light-dark(#172033,#e8edf7);">
-            <mxGeometry x="250" y="125" width="1100" height="150" as="geometry" />
+        <object id="stack-layer-inputs-depth" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/layer-inputs-depth" stackRole="depth" templateSlot="layer1-depth" stackLayer="inputs">
+          <mxCell parent="1" vertex="1" style="shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;size=54;whiteSpace=wrap;html=1;fillColor=light-dark(#B7C3D0,#111923);strokeColor=light-dark(#66758A,#8493A8);strokeWidth=2;shadow=1;">
+            <mxGeometry x="312.0" y="162.0" width="720.0" height="135.0" as="geometry" />
           </mxCell>
         </object>
-        <object id="stack-layer-render" label="2 · MapLibre rendering" labelEn="2 · MapLibre rendering" labelMs="2 · Pemaparan MapLibre" petakerjaKey="routing-stack/layer-render">
-          <mxCell parent="1" vertex="1" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;direction=south;fillColor=light-dark(#dcebfa,#20252d);strokeColor=light-dark(#2d72d2,#2d72d2);strokeWidth=2;fontFamily=Arial;fontSize=15;fontStyle=1;verticalAlign=top;align=left;spacingTop=10;spacingLeft=28;fontColor=light-dark(#172033,#e8edf7);">
-            <mxGeometry x="200" y="315" width="1200" height="150" as="geometry" />
+        <object id="stack-layer-render-depth" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/layer-render-depth" stackRole="depth" templateSlot="layer2-depth" stackLayer="render">
+          <mxCell parent="1" vertex="1" style="shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;size=58;whiteSpace=wrap;html=1;fillColor=light-dark(#9CBFE4,#0E1A29);strokeColor=light-dark(#2D72D2,#69A8EF);strokeWidth=2;shadow=1;">
+            <mxGeometry x="257.0" y="322.0" width="830.0" height="150.0" as="geometry" />
           </mxCell>
         </object>
-        <object id="stack-layer-browser" label="3 · Browser orchestration" labelEn="3 · Browser orchestration" labelMs="3 · Orkestrasi pelayar" petakerjaKey="routing-stack/layer-browser">
-          <mxCell parent="1" vertex="1" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;direction=south;fillColor=light-dark(#eee5fa,#20252d);strokeColor=light-dark(#7e57c2,#7e57c2);strokeWidth=2;fontFamily=Arial;fontSize=15;fontStyle=1;verticalAlign=top;align=left;spacingTop=10;spacingLeft=28;fontColor=light-dark(#172033,#e8edf7);">
-            <mxGeometry x="150" y="505" width="1300" height="160" as="geometry" />
+        <object id="stack-layer-browser-depth" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/layer-browser-depth" stackRole="depth" templateSlot="layer3-depth" stackLayer="browser">
+          <mxCell parent="1" vertex="1" style="shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;size=62;whiteSpace=wrap;html=1;fillColor=light-dark(#C4AEE3,#171121);strokeColor=light-dark(#7E57C2,#AE8AE8);strokeWidth=2;shadow=1;">
+            <mxGeometry x="202.0" y="502.0" width="940.0" height="155.0" as="geometry" />
           </mxCell>
         </object>
-        <object id="stack-layer-gateway" label="4 · GeoGateway boundary" labelEn="4 · GeoGateway boundary" labelMs="4 · Sempadan GeoGateway" petakerjaKey="routing-stack/layer-gateway">
-          <mxCell parent="1" vertex="1" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;direction=south;fillColor=light-dark(#fff1d6,#20252d);strokeColor=light-dark(#c87600,#c87600);strokeWidth=2;fontFamily=Arial;fontSize=15;fontStyle=1;verticalAlign=top;align=left;spacingTop=10;spacingLeft=28;fontColor=light-dark(#172033,#e8edf7);">
-            <mxGeometry x="100" y="705" width="1400" height="160" as="geometry" />
+        <object id="stack-layer-gateway-depth" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/layer-gateway-depth" stackRole="depth" templateSlot="layer4-depth" stackLayer="gateway">
+          <mxCell parent="1" vertex="1" style="shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;size=66;whiteSpace=wrap;html=1;fillColor=light-dark(#E6C27E,#21170C);strokeColor=light-dark(#C87600,#E0A24E);strokeWidth=2;shadow=1;">
+            <mxGeometry x="147.0" y="687.0" width="1050.0" height="155.0" as="geometry" />
           </mxCell>
         </object>
-        <object id="stack-layer-providers" label="5 · Providers and cache" labelEn="5 · Providers and cache" labelMs="5 · Penyedia dan cache" petakerjaKey="routing-stack/layer-providers">
-          <mxCell parent="1" vertex="1" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;direction=south;fillColor=light-dark(#e9f6ed,#20252d);strokeColor=light-dark(#3d965b,#3d965b);strokeWidth=2;fontFamily=Arial;fontSize=15;fontStyle=1;verticalAlign=top;align=left;spacingTop=10;spacingLeft=28;fontColor=light-dark(#172033,#e8edf7);">
-            <mxGeometry x="50" y="905" width="1500" height="145" as="geometry" />
+        <object id="stack-layer-providers-depth" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/layer-providers-depth" stackRole="depth" templateSlot="layer5-depth" stackLayer="providers">
+          <mxCell parent="1" vertex="1" style="shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;size=70;whiteSpace=wrap;html=1;fillColor=light-dark(#97C9AA,#0E1D16);strokeColor=light-dark(#238551,#61CC83);strokeWidth=2;shadow=1;">
+            <mxGeometry x="92.0" y="872.0" width="1160.0" height="180.0" as="geometry" />
           </mxCell>
         </object>
-        <object id="stack-input" label="A/B + GPS + profile" labelEn="A/B + GPS + profile" labelMs="A/B + GPS + profil" petakerjaKey="routing-stack/input" nodeIds="geo-location" component="1">
-          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#f4f6f8,#242932);strokeColor=light-dark(#8a96a8,#727f92);fontColor=light-dark(#283345,#edf1f7);fontFamily=Arial;fontSize=12;spacing=6;">
-            <mxGeometry x="650" y="195" width="300" height="55" as="geometry" />
+        <object id="stack-layer-inputs" label="&lt;b&gt;LAYER 1 · ROUTE INPUTS&lt;/b&gt;" labelEn="&lt;b&gt;LAYER 1 · ROUTE INPUTS&lt;/b&gt;" labelMs="&lt;b&gt;LAPISAN 1 · INPUT LALUAN&lt;/b&gt;" petakerjaKey="routing-stack/layer-inputs" stackRole="layer" templateSlot="layer1-inputs" stackLayer="inputs">
+          <mxCell parent="1" vertex="1" style="shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;size=54;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=13;fontFamily=Arial;fontSize=17;fontStyle=1;fontColor=light-dark(#172033,#E8EDF7);fillColor=light-dark(#E8EEF5,#202B39);strokeColor=light-dark(#66758A,#8493A8);strokeWidth=2;">
+            <mxGeometry x="300.0" y="150.0" width="720.0" height="135.0" as="geometry" />
           </mxCell>
         </object>
-        <object id="stack-map" label="MapLibre · renderer and interaction only" labelEn="MapLibre · renderer and interaction only" labelMs="MapLibre · pemapar dan interaksi sahaja" petakerjaKey="routing-stack/map" nodeIds="maplibre-gl" component="1">
-          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#eaf3ff,#17293f);strokeColor=light-dark(#4d8dd8,#69a8ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=12;spacing=6;">
-            <mxGeometry x="560" y="385" width="480" height="55" as="geometry" />
+        <object id="stack-origin" label="&lt;b&gt;Origin A&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Map click · selected place&lt;/font&gt;" labelEn="&lt;b&gt;Origin A&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Map click · selected place&lt;/font&gt;" labelMs="&lt;b&gt;Asal A&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Klik peta · tempat dipilih&lt;/font&gt;" petakerjaKey="routing-stack/origin" nodeIds="geo-location,geo-navigation-manager" component="1" stackRole="card" templateSlot="input-search" stackLayer="inputs" tone="neutral">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#E8EDF7);fillColor=light-dark(#FFFFFF,#171C23);strokeColor=light-dark(#A7B2C1,#727F92);strokeWidth=1;">
+            <mxGeometry x="370.0" y="198.0" width="185.0" height="56.0" as="geometry" />
           </mxCell>
         </object>
-        <object id="stack-nav" label="GeoNavigationManager + GeoRouteRenderer" labelEn="GeoNavigationManager + GeoRouteRenderer" labelMs="GeoNavigationManager + GeoRouteRenderer" petakerjaKey="routing-stack/nav" nodeIds="geo-navigation-manager,geo-route-renderer" component="1">
-          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#f1eafe,#302242);strokeColor=light-dark(#8c68c8,#ae8ae8);fontColor=light-dark(#43276a,#f2e8ff);fontFamily=Arial;fontSize=12;spacing=6;">
-            <mxGeometry x="390" y="575" width="390" height="55" as="geometry" />
+        <object id="stack-input" label="&lt;b&gt;Destination B&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Map click · selected workplace&lt;/font&gt;" labelEn="&lt;b&gt;Destination B&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Map click · selected workplace&lt;/font&gt;" labelMs="&lt;b&gt;Destinasi B&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Klik peta · tempat kerja dipilih&lt;/font&gt;" petakerjaKey="routing-stack/input" nodeIds="geo-location,job-manager" component="1" stackRole="card" templateSlot="input-ab" stackLayer="inputs" tone="neutral">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#E8EDF7);fillColor=light-dark(#FFFFFF,#171C23);strokeColor=light-dark(#A7B2C1,#727F92);strokeWidth=1;">
+            <mxGeometry x="575.0" y="198.0" width="210.0" height="56.0" as="geometry" />
           </mxCell>
         </object>
-        <object id="stack-client" label="src/services/geo.ts" labelEn="src/services/geo.ts" labelMs="src/services/geo.ts" petakerjaKey="routing-stack/client" nodeIds="geo-service" component="1">
-          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#f1eafe,#302242);strokeColor=light-dark(#8c68c8,#ae8ae8);fontColor=light-dark(#43276a,#f2e8ff);fontFamily=Arial;fontSize=12;spacing=6;">
-            <mxGeometry x="900" y="575" width="300" height="55" as="geometry" />
+        <object id="stack-profile" label="&lt;b&gt;GPS + profile&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Current location · drive/walk/cycle&lt;/font&gt;" labelEn="&lt;b&gt;GPS + profile&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Current location · drive/walk/cycle&lt;/font&gt;" labelMs="&lt;b&gt;GPS + profil&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Lokasi semasa · pandu/jalan/basikal&lt;/font&gt;" petakerjaKey="routing-stack/profile" nodeIds="geo-location,geo-navigation-manager" component="1" stackRole="card" templateSlot="input-gps" stackLayer="inputs" tone="neutral">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#E8EDF7);fillColor=light-dark(#FFFFFF,#171C23);strokeColor=light-dark(#A7B2C1,#727F92);strokeWidth=1;">
+            <mxGeometry x="805.0" y="198.0" width="165.0" height="56.0" as="geometry" />
           </mxCell>
         </object>
-        <object id="stack-api" label="Express /api/geo + safety checks" labelEn="Express /api/geo + safety checks" labelMs="Express /api/geo + semakan keselamatan" petakerjaKey="routing-stack/api" nodeIds="geo-api" component="1">
-          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#fff2df,#3a2a16);strokeColor=light-dark(#d28b2e,#e0a24e);fontColor=light-dark(#633d0f,#fff0d4);fontFamily=Arial;fontSize=12;spacing=6;">
-            <mxGeometry x="900" y="775" width="390" height="55" as="geometry" />
+        <object id="stack-layer-render" label="&lt;b&gt;LAYER 2 · MAPLIBRE RENDERING&lt;/b&gt;" labelEn="&lt;b&gt;LAYER 2 · MAPLIBRE RENDERING&lt;/b&gt;" labelMs="&lt;b&gt;LAPISAN 2 · PEMAPARAN MAPLIBRE&lt;/b&gt;" petakerjaKey="routing-stack/layer-render" stackRole="layer" templateSlot="layer2-maplibre" stackLayer="render">
+          <mxCell parent="1" vertex="1" style="shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;size=58;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=13;fontFamily=Arial;fontSize=17;fontStyle=1;fontColor=light-dark(#172033,#E8EDF7);fillColor=light-dark(#DCEBFA,#152A42);strokeColor=light-dark(#2D72D2,#69A8EF);strokeWidth=2;">
+            <mxGeometry x="245.0" y="310.0" width="830.0" height="150.0" as="geometry" />
           </mxCell>
         </object>
-        <object id="stack-gateway" label="GeoGateway normalization + fallback" labelEn="GeoGateway normalization + fallback" labelMs="Normalisasi + sandaran GeoGateway" petakerjaKey="routing-stack/gateway" nodeIds="geo-gateway" component="1">
-          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#fff2df,#3a2a16);strokeColor=light-dark(#d28b2e,#e0a24e);fontColor=light-dark(#633d0f,#fff0d4);fontFamily=Arial;fontSize=12;spacing=6;">
-            <mxGeometry x="330" y="775" width="420" height="55" as="geometry" />
+        <object id="stack-map" label="&lt;b&gt;MapLibre route rendering&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Primary + alternatives · A/B markers&lt;/font&gt;" labelEn="&lt;b&gt;MapLibre route rendering&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Primary + alternatives · A/B markers&lt;/font&gt;" labelMs="&lt;b&gt;Pemaparan laluan MapLibre&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Utama + alternatif · penanda A/B&lt;/font&gt;" petakerjaKey="routing-stack/map" nodeIds="maplibre-gl" component="1" stackRole="card" templateSlot="maplibre-current" stackLayer="render" tone="render">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#E8EDF7);fillColor=light-dark(#FFFFFF,#171C23);strokeColor=light-dark(#78A9DA,#69A8EF);strokeWidth=1;">
+            <mxGeometry x="335.0" y="362.0" width="310.0" height="62.0" as="geometry" />
           </mxCell>
         </object>
-        <object id="stack-cache" label="Supabase cache · available" labelEn="Supabase cache · available" labelMs="Cache Supabase · tersedia" petakerjaKey="routing-stack/cache" nodeIds="supabase-db,geo-route-cache" component="1">
-          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#ebf8ef,#183324);strokeColor=light-dark(#48a868,#61cc83);fontColor=light-dark(#194a2c,#e4ffec);fontFamily=Arial;fontSize=12;spacing=6;">
-            <mxGeometry x="250" y="970" width="310" height="55" as="geometry" />
+        <object id="stack-rendering" label="&lt;b&gt;Route interaction&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Selection · maneuvers · camera fit&lt;/font&gt;" labelEn="&lt;b&gt;Route interaction&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Selection · maneuvers · camera fit&lt;/font&gt;" labelMs="&lt;b&gt;Interaksi laluan&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Pemilihan · arahan · pelarasan kamera&lt;/font&gt;" petakerjaKey="routing-stack/rendering" nodeIds="geo-route-renderer,maplibre-gl" component="1" stackRole="card" templateSlot="maplibre-capability" stackLayer="render" tone="render">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#E8EDF7);fillColor=light-dark(#FFFFFF,#171C23);strokeColor=light-dark(#78A9DA,#69A8EF);strokeWidth=1;">
+            <mxGeometry x="675.0" y="362.0" width="300.0" height="62.0" as="geometry" />
           </mxCell>
         </object>
-        <object id="stack-valhalla" label="Valhalla · enabled" labelEn="Valhalla · enabled" labelMs="Valhalla · diaktifkan" petakerjaKey="routing-stack/valhalla" nodeIds="valhalla" component="1">
-          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#ebf8ef,#183324);strokeColor=light-dark(#48a868,#61cc83);fontColor=light-dark(#194a2c,#e4ffec);fontFamily=Arial;fontSize=12;spacing=6;">
-            <mxGeometry x="645" y="970" width="310" height="55" as="geometry" />
+        <object id="stack-layer-browser" label="&lt;b&gt;LAYER 3 · BROWSER ORCHESTRATION&lt;/b&gt;" labelEn="&lt;b&gt;LAYER 3 · BROWSER ORCHESTRATION&lt;/b&gt;" labelMs="&lt;b&gt;LAPISAN 3 · ORKESTRASI PELAYAR&lt;/b&gt;" petakerjaKey="routing-stack/layer-browser" stackRole="layer" templateSlot="layer3-browser" stackLayer="browser">
+          <mxCell parent="1" vertex="1" style="shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;size=62;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=13;fontFamily=Arial;fontSize=17;fontStyle=1;fontColor=light-dark(#172033,#E8EDF7);fillColor=light-dark(#EEE5FA,#2A1F3B);strokeColor=light-dark(#7E57C2,#AE8AE8);strokeWidth=2;">
+            <mxGeometry x="190.0" y="490.0" width="940.0" height="155.0" as="geometry" />
           </mxCell>
         </object>
-        <object id="stack-nominatim" label="Nominatim · disabled" labelEn="Nominatim · disabled" labelMs="Nominatim · dinyahaktifkan" petakerjaKey="routing-stack/nominatim" nodeIds="nominatim" component="1">
-          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#f4f6f8,#242932);strokeColor=light-dark(#8a96a8,#727f92);fontColor=light-dark(#283345,#edf1f7);fontFamily=Arial;fontSize=12;spacing=6;">
-            <mxGeometry x="1040" y="970" width="310" height="55" as="geometry" />
+        <object id="stack-nav" label="&lt;b&gt;GeoNavigationManager&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;A/B state · profile · alternatives&lt;/font&gt;" labelEn="&lt;b&gt;GeoNavigationManager&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;A/B state · profile · alternatives&lt;/font&gt;" labelMs="&lt;b&gt;GeoNavigationManager&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Keadaan A/B · profil · alternatif&lt;/font&gt;" petakerjaKey="routing-stack/nav" nodeIds="geo-navigation-manager" component="1" stackRole="card" templateSlot="browser-search-manager" stackLayer="browser" tone="browser">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#E8EDF7);fillColor=light-dark(#FFFFFF,#171C23);strokeColor=light-dark(#A184CF,#AE8AE8);strokeWidth=1;">
+            <mxGeometry x="300.0" y="545.0" width="235.0" height="62.0" as="geometry" />
           </mxCell>
         </object>
-        <object id="stack-edge-1" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/edge-1">
-          <mxCell parent="1" edge="1" source="stack-input" target="stack-nav" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
-            <mxGeometry relative="1" as="geometry" />
+        <object id="stack-renderer" label="&lt;b&gt;GeoRouteRenderer&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Ordered sources · layers · selection&lt;/font&gt;" labelEn="&lt;b&gt;GeoRouteRenderer&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Ordered sources · layers · selection&lt;/font&gt;" labelMs="&lt;b&gt;GeoRouteRenderer&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Sumber tersusun · lapisan · pemilihan&lt;/font&gt;" petakerjaKey="routing-stack/renderer" nodeIds="geo-route-renderer" component="1" stackRole="card" templateSlot="browser-navigation-manager" stackLayer="browser" tone="browser">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#E8EDF7);fillColor=light-dark(#FFFFFF,#171C23);strokeColor=light-dark(#A184CF,#AE8AE8);strokeWidth=1;">
+            <mxGeometry x="555.0" y="545.0" width="270.0" height="62.0" as="geometry" />
           </mxCell>
         </object>
-        <object id="stack-edge-2" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/edge-2">
-          <mxCell parent="1" edge="1" source="stack-nav" target="stack-map" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
-            <mxGeometry relative="1" as="geometry" />
+        <object id="stack-client" label="&lt;b&gt;src/services/geo.ts&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Typed same-origin route request&lt;/font&gt;" labelEn="&lt;b&gt;src/services/geo.ts&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Typed same-origin route request&lt;/font&gt;" labelMs="&lt;b&gt;src/services/geo.ts&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Permintaan laluan asal sama berjenis&lt;/font&gt;" petakerjaKey="routing-stack/client" nodeIds="geo-service" component="1" stackRole="card" templateSlot="browser-geo-service" stackLayer="browser" tone="browser">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#E8EDF7);fillColor=light-dark(#FFFFFF,#171C23);strokeColor=light-dark(#A184CF,#AE8AE8);strokeWidth=1;">
+            <mxGeometry x="845.0" y="545.0" width="220.0" height="62.0" as="geometry" />
           </mxCell>
         </object>
-        <object id="stack-edge-3" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/edge-3">
-          <mxCell parent="1" edge="1" source="stack-nav" target="stack-client" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
-            <mxGeometry relative="1" as="geometry" />
+        <object id="stack-layer-gateway" label="&lt;b&gt;LAYER 4 · API &amp;amp; GEOGATEWAY&lt;/b&gt;" labelEn="&lt;b&gt;LAYER 4 · API &amp;amp; GEOGATEWAY&lt;/b&gt;" labelMs="&lt;b&gt;LAPISAN 4 · API &amp;amp; GEOGATEWAY&lt;/b&gt;" petakerjaKey="routing-stack/layer-gateway" stackRole="layer" templateSlot="layer4-gateway" stackLayer="gateway">
+          <mxCell parent="1" vertex="1" style="shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;size=66;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=13;fontFamily=Arial;fontSize=17;fontStyle=1;fontColor=light-dark(#172033,#E8EDF7);fillColor=light-dark(#FFF1D6,#382914);strokeColor=light-dark(#C87600,#E0A24E);strokeWidth=2;">
+            <mxGeometry x="135.0" y="675.0" width="1050.0" height="155.0" as="geometry" />
           </mxCell>
         </object>
-        <object id="stack-edge-4" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/edge-4">
-          <mxCell parent="1" edge="1" source="stack-client" target="stack-api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
-            <mxGeometry relative="1" as="geometry" />
+        <object id="stack-safety" label="&lt;b&gt;Safety + fallback&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Malaysia bounds · limits · explicit label&lt;/font&gt;" labelEn="&lt;b&gt;Safety + fallback&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Malaysia bounds · limits · explicit label&lt;/font&gt;" labelMs="&lt;b&gt;Keselamatan + sandaran&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Had Malaysia · had kadar · label jelas&lt;/font&gt;" petakerjaKey="routing-stack/safety" nodeIds="geo-gateway" component="1" stackRole="card" templateSlot="gateway-express" stackLayer="gateway" tone="gateway">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#E8EDF7);fillColor=light-dark(#FFFFFF,#171C23);strokeColor=light-dark(#D89A39,#E0A24E);strokeWidth=1;">
+            <mxGeometry x="255.0" y="730.0" width="230.0" height="62.0" as="geometry" />
           </mxCell>
         </object>
-        <object id="stack-edge-5" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/edge-5">
-          <mxCell parent="1" edge="1" source="stack-api" target="stack-gateway" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
-            <mxGeometry relative="1" as="geometry" />
+        <object id="stack-gateway" label="&lt;b&gt;GeoGateway&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Cache key · dispatch · normalize&lt;/font&gt;" labelEn="&lt;b&gt;GeoGateway&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Cache key · dispatch · normalize&lt;/font&gt;" labelMs="&lt;b&gt;GeoGateway&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Kunci cache · agihan · normalisasi&lt;/font&gt;" petakerjaKey="routing-stack/gateway" nodeIds="geo-gateway" component="1" stackRole="card" templateSlot="gateway-core" stackLayer="gateway" tone="gateway">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#E8EDF7);fillColor=light-dark(#FFFFFF,#171C23);strokeColor=light-dark(#D89A39,#E0A24E);strokeWidth=1;">
+            <mxGeometry x="510.0" y="730.0" width="245.0" height="62.0" as="geometry" />
           </mxCell>
         </object>
-        <object id="stack-edge-6" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/edge-6">
-          <mxCell parent="1" edge="1" source="stack-gateway" target="stack-cache" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
-            <mxGeometry relative="1" as="geometry" />
+        <object id="stack-api" label="&lt;b&gt;Express /api/geo/route&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Validate · authenticate · rate-limit&lt;/font&gt;" labelEn="&lt;b&gt;Express /api/geo/route&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Validate · authenticate · rate-limit&lt;/font&gt;" labelMs="&lt;b&gt;Express /api/geo/route&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Sah · pengesahan · had kadar&lt;/font&gt;" petakerjaKey="routing-stack/api" nodeIds="geo-api" component="1" stackRole="card" templateSlot="gateway-guards" stackLayer="gateway" tone="gateway">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#E8EDF7);fillColor=light-dark(#FFFFFF,#171C23);strokeColor=light-dark(#D89A39,#E0A24E);strokeWidth=1;">
+            <mxGeometry x="780.0" y="730.0" width="300.0" height="62.0" as="geometry" />
           </mxCell>
         </object>
-        <object id="stack-edge-7" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/edge-7">
-          <mxCell parent="1" edge="1" source="stack-gateway" target="stack-valhalla" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
-            <mxGeometry relative="1" as="geometry" />
+        <object id="stack-layer-providers" label="&lt;b&gt;LAYER 5 · CACHE &amp;amp; PROVIDERS&lt;/b&gt;" labelEn="&lt;b&gt;LAYER 5 · CACHE &amp;amp; PROVIDERS&lt;/b&gt;" labelMs="&lt;b&gt;LAPISAN 5 · CACHE &amp;amp; PENYEDIA&lt;/b&gt;" petakerjaKey="routing-stack/layer-providers" stackRole="layer" templateSlot="layer5-providers" stackLayer="providers">
+          <mxCell parent="1" vertex="1" style="shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;size=70;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=13;fontFamily=Arial;fontSize=17;fontStyle=1;fontColor=light-dark(#172033,#E8EDF7);fillColor=light-dark(#E1F4E8,#173125);strokeColor=light-dark(#238551,#61CC83);strokeWidth=2;">
+            <mxGeometry x="80.0" y="860.0" width="1160.0" height="180.0" as="geometry" />
           </mxCell>
         </object>
-        <object id="stack-edge-8" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/edge-8">
-          <mxCell parent="1" edge="1" source="stack-gateway" target="stack-nominatim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
-            <mxGeometry relative="1" as="geometry" />
+        <object id="stack-nominatim" label="&lt;b&gt;Nominatim · disabled&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Not used for A-to-B calculations&lt;/font&gt;" labelEn="&lt;b&gt;Nominatim · disabled&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Not used for A-to-B calculations&lt;/font&gt;" labelMs="&lt;b&gt;Nominatim · dinyahaktifkan&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Tidak digunakan untuk pengiraan A-ke-B&lt;/font&gt;" petakerjaKey="routing-stack/nominatim" nodeIds="nominatim" component="1" stackRole="card" templateSlot="provider-nominatim" stackLayer="providers" tone="neutral">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#E8EDF7);fillColor=light-dark(#FFFFFF,#171C23);strokeColor=light-dark(#58A777,#61CC83);strokeWidth=1;">
+            <mxGeometry x="210.0" y="920.0" width="250.0" height="82.0" as="geometry" />
           </mxCell>
         </object>
-        <object id="stack-fallback" label="Provider failure → Haversine straight line → no ETA, maneuvers or navigable claim" labelEn="Provider failure → Haversine straight line → no ETA, maneuvers or navigable claim" labelMs="Kegagalan penyedia → garis lurus Haversine → tiada ETA, arahan atau dakwaan navigasi" petakerjaKey="routing-stack/fallback">
-          <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#fff8df,#3d3418);strokeColor=light-dark(#d9a928,#bd8b16);fontColor=light-dark(#5f4700,#ffe8a3);fontFamily=Arial;fontSize=11;align=left;verticalAlign=middle;spacing=8;">
-            <mxGeometry x="360" y="1055" width="880" height="35" as="geometry" />
+        <object id="stack-valhalla" label="&lt;b&gt;Valhalla · enabled&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Road route · alternatives · maneuvers&lt;/font&gt;" labelEn="&lt;b&gt;Valhalla · enabled&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Road route · alternatives · maneuvers&lt;/font&gt;" labelMs="&lt;b&gt;Valhalla · diaktifkan&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Laluan jalan · alternatif · arahan&lt;/font&gt;" petakerjaKey="routing-stack/valhalla" nodeIds="valhalla" component="1" stackRole="card" templateSlot="provider-valhalla" stackLayer="providers" tone="provider">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#E8EDF7);fillColor=light-dark(#FFFFFF,#171C23);strokeColor=light-dark(#58A777,#61CC83);strokeWidth=1;">
+            <mxGeometry x="485.0" y="920.0" width="360.0" height="82.0" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="stack-cache" label="&lt;b&gt;Supabase cache · available&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Stable normalized route results&lt;/font&gt;" labelEn="&lt;b&gt;Supabase cache · available&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Stable normalized route results&lt;/font&gt;" labelMs="&lt;b&gt;Cache Supabase · tersedia&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Hasil laluan ternormal stabil&lt;/font&gt;" petakerjaKey="routing-stack/cache" nodeIds="supabase-db,geo-route-cache" component="1" stackRole="card" templateSlot="provider-supabase" stackLayer="providers" tone="provider">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#E8EDF7);fillColor=light-dark(#FFFFFF,#171C23);strokeColor=light-dark(#58A777,#61CC83);strokeWidth=1;">
+            <mxGeometry x="870.0" y="920.0" width="245.0" height="82.0" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="routing-stack-flow-destination-to-navigation" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/flow-destination-to-navigation" stackRole="flow" templateSlot="internal-flow">
+          <mxCell parent="1" edge="1" source="stack-input" target="stack-nav" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Arial;fontSize=12;rounded=0;strokeColor=light-dark(#596579,#AEB8C8);strokeWidth=1.25;endArrow=classic;endFill=1;">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="680" y="300" />
+                <mxPoint x="170" y="300" />
+                <mxPoint x="170" y="576" />
+                <mxPoint x="300" y="576" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="routing-stack-flow-navigation-to-renderer" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/flow-navigation-to-renderer" stackRole="flow" templateSlot="internal-flow">
+          <mxCell parent="1" edge="1" source="stack-nav" target="stack-renderer" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Arial;fontSize=12;rounded=0;strokeColor=light-dark(#596579,#AEB8C8);strokeWidth=1.25;endArrow=classic;endFill=1;">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="545" y="576" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="routing-stack-flow-renderer-to-client" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/flow-renderer-to-client" stackRole="flow" templateSlot="internal-flow">
+          <mxCell parent="1" edge="1" source="stack-renderer" target="stack-client" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Arial;fontSize=12;rounded=0;strokeColor=light-dark(#596579,#AEB8C8);strokeWidth=1.25;endArrow=classic;endFill=1;">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="835" y="576" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="routing-stack-flow-renderer-to-map" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/flow-renderer-to-map" stackRole="flow" templateSlot="internal-flow">
+          <mxCell parent="1" edge="1" source="stack-renderer" target="stack-map" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Arial;fontSize=12;rounded=0;strokeColor=light-dark(#596579,#AEB8C8);strokeWidth=1.25;endArrow=classic;endFill=1;">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="690" y="655" />
+                <mxPoint x="170" y="655" />
+                <mxPoint x="170" y="393" />
+                <mxPoint x="335" y="393" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="routing-stack-flow-map-to-interaction" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/flow-map-to-interaction" stackRole="flow" templateSlot="internal-flow">
+          <mxCell parent="1" edge="1" source="stack-map" target="stack-rendering" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Arial;fontSize=12;rounded=0;strokeColor=light-dark(#596579,#AEB8C8);strokeWidth=1.25;endArrow=classic;endFill=1;">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="660" y="393" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="routing-stack-flow-client-to-api" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/flow-client-to-api" stackRole="flow" templateSlot="internal-flow">
+          <mxCell parent="1" edge="1" source="stack-client" target="stack-api" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Arial;fontSize=12;rounded=0;strokeColor=light-dark(#596579,#AEB8C8);strokeWidth=1.25;endArrow=classic;endFill=1;">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="955" y="680" />
+                <mxPoint x="930" y="680" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="routing-stack-flow-api-to-gateway" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/flow-api-to-gateway" stackRole="flow" templateSlot="internal-flow">
+          <mxCell parent="1" edge="1" source="stack-api" target="stack-gateway" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Arial;fontSize=12;rounded=0;strokeColor=light-dark(#596579,#AEB8C8);strokeWidth=1.25;endArrow=classic;endFill=1;">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="768" y="761" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="routing-stack-flow-gateway-to-safety" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/flow-gateway-to-safety" stackRole="flow" templateSlot="internal-flow">
+          <mxCell parent="1" edge="1" source="stack-gateway" target="stack-safety" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Arial;fontSize=12;rounded=0;strokeColor=light-dark(#596579,#AEB8C8);strokeWidth=1.25;endArrow=classic;endFill=1;">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="498" y="761" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="routing-stack-flow-gateway-to-valhalla" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/flow-gateway-to-valhalla" stackRole="flow" templateSlot="internal-flow">
+          <mxCell parent="1" edge="1" source="stack-gateway" target="stack-valhalla" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Arial;fontSize=12;rounded=0;strokeColor=light-dark(#596579,#AEB8C8);strokeWidth=1.25;endArrow=classic;endFill=1;">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="632.5" y="865" />
+                <mxPoint x="665" y="865" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="routing-stack-flow-gateway-to-nominatim" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/flow-gateway-to-nominatim" stackRole="flow" templateSlot="internal-flow">
+          <mxCell parent="1" edge="1" source="stack-gateway" target="stack-nominatim" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Arial;fontSize=12;rounded=0;strokeColor=light-dark(#596579,#AEB8C8);strokeWidth=1.25;endArrow=classic;endFill=1;">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="632.5" y="850" />
+                <mxPoint x="180" y="850" />
+                <mxPoint x="180" y="961" />
+                <mxPoint x="210" y="961" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="routing-stack-flow-safety-to-cache" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/flow-safety-to-cache" stackRole="flow" templateSlot="internal-flow">
+          <mxCell parent="1" edge="1" source="stack-safety" target="stack-cache" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Arial;fontSize=12;rounded=0;strokeColor=light-dark(#596579,#AEB8C8);strokeWidth=1.25;endArrow=classic;endFill=1;">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="370" y="845" />
+                <mxPoint x="1180" y="845" />
+                <mxPoint x="1180" y="961" />
+                <mxPoint x="1115" y="961" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="routing-stack-flow-fallback-constraint" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/flow-fallback-constraint" stackRole="flow" templateSlot="gateway-fallback-branch">
+          <mxCell parent="1" edge="1" source="stack-safety" target="stack-fallback" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=6 4;strokeColor=light-dark(#C87600,#E0A24E);strokeWidth=2;endArrow=open;endFill=0;fontFamily=Arial;fontSize=11;fontColor=light-dark(#7A4B00,#FFE0A3);labelBackgroundColor=light-dark(#F7F9FC,#10151B);exitX=1;exitY=0.65;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="370" y="840" />
+                <mxPoint x="1250" y="840" />
+                <mxPoint x="1250" y="980" />
+                <mxPoint x="1570" y="980" />
+                <mxPoint x="1570" y="975" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="stack-callout-takeaway" label="&lt;b&gt;THE BOTTOM LINE&lt;/b&gt;&lt;br&gt;&lt;br&gt;MapLibre = visualizer&lt;br&gt;GeoGateway = orchestrator&lt;br&gt;Valhalla = route calculator" labelEn="&lt;b&gt;THE BOTTOM LINE&lt;/b&gt;&lt;br&gt;&lt;br&gt;MapLibre = visualizer&lt;br&gt;GeoGateway = orchestrator&lt;br&gt;Valhalla = route calculator" labelMs="&lt;b&gt;RINGKASANNYA&lt;/b&gt;&lt;br&gt;&lt;br&gt;MapLibre = pemapar&lt;br&gt;GeoGateway = pengatur&lt;br&gt;Valhalla = pengira laluan" petakerjaKey="routing-stack/callout-takeaway" stackRole="callout" templateSlot="takeaway">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=18;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=light-dark(#FFFFFF,#F5F7FA);fillColor=light-dark(#172033,#0B1016);strokeColor=light-dark(#172033,#596579);strokeWidth=2;shadow=1;">
+            <mxGeometry x="1330.0" y="145.0" width="480.0" height="125.0" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="stack-callout-maplibre" label="&lt;b&gt;MAPLIBRE DOES NOT ROUTE&lt;/b&gt;&lt;br&gt;&lt;br&gt;It draws normalized route GeoJSON and handles interaction.&lt;br&gt;Road calculations remain outside the renderer." labelEn="&lt;b&gt;MAPLIBRE DOES NOT ROUTE&lt;/b&gt;&lt;br&gt;&lt;br&gt;It draws normalized route GeoJSON and handles interaction.&lt;br&gt;Road calculations remain outside the renderer." labelMs="&lt;b&gt;MAPLIBRE TIDAK MENGHALA&lt;/b&gt;&lt;br&gt;&lt;br&gt;Ia melukis GeoJSON laluan ternormal dan mengurus interaksi.&lt;br&gt;Pengiraan jalan kekal di luar pemapar." petakerjaKey="routing-stack/callout-maplibre" nodeIds="maplibre-gl" component="1" stackRole="callout" templateSlot="maplibre-boundary">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=16;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=light-dark(#7A271A,#FFD4CE);fillColor=light-dark(#FDECEC,#3A1C1C);strokeColor=light-dark(#CD4246,#EF7377);strokeWidth=2;">
+            <mxGeometry x="1330.0" y="295.0" width="480.0" height="150.0" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="stack-callout-eta" label="&lt;b&gt;ETA&lt;/b&gt;&lt;br&gt;&lt;br&gt;Duration is provider-derived and traffic-independent." labelEn="&lt;b&gt;ETA&lt;/b&gt;&lt;br&gt;&lt;br&gt;Duration is provider-derived and traffic-independent." labelMs="&lt;b&gt;ETA&lt;/b&gt;&lt;br&gt;&lt;br&gt;Tempoh diperoleh daripada penyedia dan bebas trafik." petakerjaKey="routing-stack/callout-eta" nodeIds="geo-gateway" component="1" stackRole="callout" templateSlot="navigation-control-note">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=14;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#E8EDF7);fillColor=light-dark(#FFFFFF,#171C23);strokeColor=light-dark(#B8C2CF,#727F92);strokeWidth=1;">
+            <mxGeometry x="1330.0" y="465.0" width="480.0" height="70.0" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="stack-callout-response" label="&lt;b&gt;NORMALIZED RESPONSE&lt;/b&gt;&lt;br&gt;&lt;br&gt;Route geometry, alternatives, distance, duration and maneuvers share one contract." labelEn="&lt;b&gt;NORMALIZED RESPONSE&lt;/b&gt;&lt;br&gt;&lt;br&gt;Route geometry, alternatives, distance, duration and maneuvers share one contract." labelMs="&lt;b&gt;RESPONS TERNORMAL&lt;/b&gt;&lt;br&gt;&lt;br&gt;Geometri laluan, alternatif, jarak, tempoh dan arahan berkongsi satu kontrak." petakerjaKey="routing-stack/callout-response" nodeIds="geo-service,geo-gateway" component="1" stackRole="callout" templateSlot="directions-plugin-note">
+          <mxCell parent="1" vertex="1" style="shape=note;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=14;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#E8EDF7);fillColor=light-dark(#EEF4FB,#17283F);strokeColor=light-dark(#5C87B2,#78A9DA);strokeWidth=1;size=20;">
+            <mxGeometry x="1330.0" y="555.0" width="480.0" height="105.0" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="stack-callout-dispatch" label="&lt;b&gt;CACHE + PROVIDER DISPATCH&lt;/b&gt;&lt;br&gt;&lt;br&gt;Stable keys can return cached output before Valhalla is called." labelEn="&lt;b&gt;CACHE + PROVIDER DISPATCH&lt;/b&gt;&lt;br&gt;&lt;br&gt;Stable keys can return cached output before Valhalla is called." labelMs="&lt;b&gt;CACHE + AGIHAN PENYEDIA&lt;/b&gt;&lt;br&gt;&lt;br&gt;Kunci stabil boleh memulangkan output cache sebelum Valhalla dipanggil." petakerjaKey="routing-stack/callout-dispatch" nodeIds="geo-gateway,geo-route-cache" component="1" stackRole="callout" templateSlot="side-flows">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=15;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=light-dark(#172033,#E8EDF7);fillColor=light-dark(#FFFFFF,#171C23);strokeColor=light-dark(#7C8CA1,#7F8DA1);strokeWidth=1;">
+            <mxGeometry x="1330.0" y="680.0" width="480.0" height="120.0" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="stack-fallback" label="&lt;b&gt;LABELLED FALLBACK ONLY&lt;/b&gt;&lt;br&gt;&lt;br&gt;Provider failure → Haversine straight line&lt;br&gt;No ETA · no maneuvers&lt;br&gt;No navigable-route claim" labelEn="&lt;b&gt;LABELLED FALLBACK ONLY&lt;/b&gt;&lt;br&gt;&lt;br&gt;Provider failure → Haversine straight line&lt;br&gt;No ETA · no maneuvers&lt;br&gt;No navigable-route claim" labelMs="&lt;b&gt;SANDARAN BERLABEL SAHAJA&lt;/b&gt;&lt;br&gt;&lt;br&gt;Kegagalan penyedia → garis lurus Haversine&lt;br&gt;Tiada ETA · tiada arahan&lt;br&gt;Tiada dakwaan laluan boleh dinavigasi" petakerjaKey="routing-stack/callout-fallback" nodeIds="geo-gateway" component="1" stackRole="callout" templateSlot="fallback-note">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=14;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=light-dark(#7A4B00,#FFE0A3);fillColor=light-dark(#FFF4D6,#3B2D14);strokeColor=light-dark(#C87600,#E0A24E);strokeWidth=2;">
+            <mxGeometry x="1330.0" y="825.0" width="480.0" height="150.0" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="stack-callout-status" label="&lt;b&gt;RUNTIME · 2026-07-19&lt;/b&gt;&lt;br&gt;&lt;br&gt;Valhalla + shared cache available&lt;br&gt;Nominatim disabled · ETA traffic-independent" labelEn="&lt;b&gt;RUNTIME · 2026-07-19&lt;/b&gt;&lt;br&gt;&lt;br&gt;Valhalla + shared cache available&lt;br&gt;Nominatim disabled · ETA traffic-independent" labelMs="&lt;b&gt;MASA JALAN · 2026-07-19&lt;/b&gt;&lt;br&gt;&lt;br&gt;Valhalla + cache bersama tersedia&lt;br&gt;Nominatim dinyahaktifkan · ETA bebas trafik" petakerjaKey="routing-stack/callout-status" stackRole="callout" templateSlot="rollout-status">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=14;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=light-dark(#344054,#D7DEEA);fillColor=light-dark(#EEF1F5,#222832);strokeColor=light-dark(#98A2B3,#727F92);strokeWidth=1;">
+            <mxGeometry x="1330.0" y="995.0" width="480.0" height="90.0" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="routing-stack-request-start" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/request-start" stackRole="anchor" templateSlot="request-start" stackDirection="request">
+          <mxCell parent="1" vertex="1" style="ellipse;html=1;opacity=0;fillOpacity=0;strokeOpacity=0;">
+            <mxGeometry x="45.0" y="205.0" width="10.0" height="10.0" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="routing-stack-request-end" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/request-end" stackRole="anchor" templateSlot="request-end" stackDirection="request">
+          <mxCell parent="1" vertex="1" style="ellipse;html=1;opacity=0;fillOpacity=0;strokeOpacity=0;">
+            <mxGeometry x="45.0" y="955.0" width="10.0" height="10.0" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="routing-stack-request-flow" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/request-flow" stackRole="rail" templateSlot="request-flow">
+          <mxCell parent="1" edge="1" source="routing-stack-request-start" target="routing-stack-request-end" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#2D72D2,#69A8EF);strokeWidth=3;endArrow=block;endFill=1;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=light-dark(#1D4E89,#BBD8FF);labelBackgroundColor=light-dark(#F7F9FC,#10151B);">
+            <mxGeometry relative="1" as="geometry" x="0.05" y="-16" />
+          </mxCell>
+        </object>
+        <object id="routing-stack-request-flow-label" label="REQUEST ↓&lt;br&gt;A + B + profile&lt;br&gt;POST /api/geo/route" labelEn="REQUEST ↓&lt;br&gt;A + B + profile&lt;br&gt;POST /api/geo/route" labelMs="PERMINTAAN ↓&lt;br&gt;A + B + profil&lt;br&gt;POST /api/geo/route" petakerjaKey="routing-stack/request-flow-label" stackRole="rail-label" templateSlot="request-flow-label" stackDirection="request">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=light-dark(#F7F9FC,#10151B);align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=light-dark(#1D4E89,#BBD8FF);">
+            <mxGeometry x="0.0" y="500.0" width="180.0" height="75.0" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="routing-stack-response-start" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/response-start" stackRole="anchor" templateSlot="response-start" stackDirection="response">
+          <mxCell parent="1" vertex="1" style="ellipse;html=1;opacity=0;fillOpacity=0;strokeOpacity=0;">
+            <mxGeometry x="1270.0" y="955.0" width="10.0" height="10.0" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="routing-stack-response-end" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/response-end" stackRole="anchor" templateSlot="response-end" stackDirection="response">
+          <mxCell parent="1" vertex="1" style="ellipse;html=1;opacity=0;fillOpacity=0;strokeOpacity=0;">
+            <mxGeometry x="1270.0" y="355.0" width="10.0" height="10.0" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="routing-stack-response-flow" label="" labelEn="" labelMs="" petakerjaKey="routing-stack/response-flow" stackRole="rail" templateSlot="response-flow">
+          <mxCell parent="1" edge="1" source="routing-stack-response-start" target="routing-stack-response-end" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#238551,#61CC83);strokeWidth=3;endArrow=block;endFill=1;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=light-dark(#18663E,#BBF2CC);labelBackgroundColor=light-dark(#F7F9FC,#10151B);">
+            <mxGeometry relative="1" as="geometry" x="0.05" y="-18" />
+          </mxCell>
+        </object>
+        <object id="routing-stack-response-flow-label" label="RESPONSE ↑&lt;br&gt;normalized route&lt;br&gt;distance · duration" labelEn="RESPONSE ↑&lt;br&gt;normalized route&lt;br&gt;distance · duration" labelMs="RESPONS ↑&lt;br&gt;laluan ternormal&lt;br&gt;jarak · tempoh" petakerjaKey="routing-stack/response-flow-label" stackRole="rail-label" templateSlot="response-flow-label" stackDirection="response">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=light-dark(#F7F9FC,#10151B);align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=1;fontColor=light-dark(#18663E,#BBF2CC);">
+            <mxGeometry x="1195.0" y="515.0" width="130.0" height="95.0" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="routing-stack-source-footer" label="Source-grounded in GeoNavigationManager, GeoRouteRenderer, src/services/geo.ts, Express /api/geo/route and GeoGateway. Current ETA is traffic-independent." labelEn="Source-grounded in GeoNavigationManager, GeoRouteRenderer, src/services/geo.ts, Express /api/geo/route and GeoGateway. Current ETA is traffic-independent." labelMs="Berasaskan sumber GeoNavigationManager, GeoRouteRenderer, src/services/geo.ts, Express /api/geo/route dan GeoGateway. ETA semasa tidak mengambil kira trafik." petakerjaKey="routing-stack/source-footer" stackRole="footer" templateSlot="source-footer">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=11;fontColor=light-dark(#667085,#AEB8C8);">
+            <mxGeometry x="80.0" y="1090.0" width="1730.0" height="40.0" as="geometry" />
           </mxCell>
         </object>
       </root>

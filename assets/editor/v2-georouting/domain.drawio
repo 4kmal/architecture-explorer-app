@@ -1,143 +1,543 @@
 <mxfile host="PetaKerja Architecture Explorer" agent="PetaKerja V2 Georouting Generator" version="27.0.2" compressed="false" pages="1" petakerjaProjectionLanguage="en" petakerjaSequenceLabelMode="simple" petakerjaLayoutStandard="project-template-v2">
   <diagram id="v2_geo_domain" name="V2 Georouting Domain">
-    <mxGraphModel dx="1600" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2400" dy="1800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1800" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <object id="v2_geo_domain-title" label="PetaKerja Domain Classes — V2 Georouting" labelEn="PetaKerja Domain Classes — V2 Georouting" labelMs="Kelas Domain PetaKerja — Georouting V2" petakerjaKey="title">
           <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=24;fontStyle=1;fontColor=light-dark(#172033,#e8edf7);">
-            <mxGeometry x="50" y="25" width="1500" height="38" as="geometry" />
+            <mxGeometry x="50" y="25" width="2300" height="38" as="geometry" />
           </mxCell>
         </object>
-        <object id="v2_geo_domain-subtitle" label="Compact class cards follow the class proportions in the supplied template." labelEn="Compact class cards follow the class proportions in the supplied template." labelMs="Kad kelas padat mengikut perkadaran kelas dalam templat yang dibekalkan." petakerjaKey="subtitle">
+        <object id="v2_geo_domain-subtitle" label="Full UML contracts, entities and multiplicities derived from the supplied class template." labelEn="Full UML contracts, entities and multiplicities derived from the supplied class template." labelMs="Kontrak, entiti dan kardinaliti UML penuh berdasarkan templat kelas yang dibekalkan." petakerjaKey="subtitle">
           <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontColor=light-dark(#596579,#aeb8c8);">
-            <mxGeometry x="50" y="65" width="1500" height="42" as="geometry" />
+            <mxGeometry x="50" y="65" width="2300" height="42" as="geometry" />
           </mxCell>
         </object>
-        <object id="domain-group-core" label="Existing core domain" labelEn="Existing core domain" labelMs="Domain teras sedia ada" petakerjaKey="domain/group-core">
-          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#7f8a9a,#566173);strokeWidth=1.5;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=13;fontStyle=1;verticalAlign=top;align=left;spacingTop=8;spacingLeft=10;">
-            <mxGeometry x="50" y="130" width="400" height="840" as="geometry" />
+        <object id="domain-package-identity" label="&lt;b&gt;IDENTITY &amp;amp; APPLICATION CONTEXT&lt;/b&gt;" labelEn="&lt;b&gt;IDENTITY &amp;amp; APPLICATION CONTEXT&lt;/b&gt;" labelMs="&lt;b&gt;IDENTITI &amp;amp; KONTEKS APLIKASI&lt;/b&gt;" petakerjaKey="domain/package-identity" umlPackage="1" tone="identity">
+          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#f7fbff,#0f1b29);strokeColor=light-dark(#3975a6,#86b9e6);dashed=1;align=left;verticalAlign=top;spacingTop=10;spacingLeft=12;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=light-dark(#344054,#d8e0eb);dashPattern=6 4;shadow=0;">
+            <mxGeometry x="50" y="130" width="500" height="410" as="geometry" />
           </mxCell>
         </object>
-        <object id="domain-group-geo" label="Geospatial contracts" labelEn="Geospatial contracts" labelMs="Kontrak geospatial" petakerjaKey="domain/group-geo">
-          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#7f8a9a,#566173);strokeWidth=1.5;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=13;fontStyle=1;verticalAlign=top;align=left;spacingTop=8;spacingLeft=10;">
-            <mxGeometry x="480" y="130" width="700" height="840" as="geometry" />
+        <object id="domain-package-jobs" label="&lt;b&gt;JOBS &amp;amp; USER STATUS&lt;/b&gt;" labelEn="&lt;b&gt;JOBS &amp;amp; USER STATUS&lt;/b&gt;" labelMs="&lt;b&gt;KERJA &amp;amp; STATUS PENGGUNA&lt;/b&gt;" petakerjaKey="domain/package-jobs" umlPackage="1" tone="jobs">
+          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#fffcf4,#211b11);strokeColor=light-dark(#9a6700,#edc35b);dashed=1;align=left;verticalAlign=top;spacingTop=10;spacingLeft=12;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=light-dark(#344054,#d8e0eb);dashPattern=6 4;shadow=0;">
+            <mxGeometry x="50" y="570" width="500" height="1110" as="geometry" />
           </mxCell>
         </object>
-        <object id="domain-group-derived" label="Derived routing data" labelEn="Derived routing data" labelMs="Data penghalaan terbitan" petakerjaKey="domain/group-derived">
-          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#7f8a9a,#566173);strokeWidth=1.5;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=13;fontStyle=1;verticalAlign=top;align=left;spacingTop=8;spacingLeft=10;">
-            <mxGeometry x="1210" y="130" width="340" height="840" as="geometry" />
+        <object id="domain-package-geo" label="&lt;b&gt;MAP &amp;amp; GEOSPATIAL CONTRACTS&lt;/b&gt;" labelEn="&lt;b&gt;MAP &amp;amp; GEOSPATIAL CONTRACTS&lt;/b&gt;" labelMs="&lt;b&gt;KONTRAK PETA &amp;amp; GEOSPATIAL&lt;/b&gt;" petakerjaKey="domain/package-geo" umlPackage="1" tone="geo">
+          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#f6fcf8,#0d2017);strokeColor=light-dark(#247a4d,#70d09d);dashed=1;align=left;verticalAlign=top;spacingTop=10;spacingLeft=12;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=light-dark(#344054,#d8e0eb);dashPattern=6 4;shadow=0;">
+            <mxGeometry x="580" y="130" width="1280" height="1550" as="geometry" />
           </mxCell>
         </object>
-        <object id="domain-user" label="UserProfile&#10;id, role, selected_state" labelEn="UserProfile&#10;id, role, selected_state" labelMs="ProfilPengguna&#10;id, peranan, selected_state" petakerjaKey="domain/user" nodeIds="user-profile" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="100" y="215" width="300" height="120" as="geometry" />
+        <object id="domain-package-persistence" label="&lt;b&gt;DERIVED ROUTING PERSISTENCE&lt;/b&gt;" labelEn="&lt;b&gt;DERIVED ROUTING PERSISTENCE&lt;/b&gt;" labelMs="&lt;b&gt;KEGIGIHAN PENGHALAAN TERBITAN&lt;/b&gt;" petakerjaKey="domain/package-persistence" umlPackage="1" tone="persistence">
+          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#faf7ff,#1b1527);strokeColor=light-dark(#6941c6,#b9a2ff);dashed=1;align=left;verticalAlign=top;spacingTop=10;spacingLeft=12;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=light-dark(#344054,#d8e0eb);dashPattern=6 4;shadow=0;">
+            <mxGeometry x="1890" y="130" width="460" height="1550" as="geometry" />
           </mxCell>
         </object>
-        <object id="domain-poi" label="POI&#10;id, category, geom, address" labelEn="POI&#10;id, category, geom, address" labelMs="POI&#10;id, kategori, geom, alamat" petakerjaKey="domain/poi" nodeIds="poi-entity" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="100" y="400" width="300" height="120" as="geometry" />
+        <object id="domain-user" label="&lt;b&gt;UserProfile&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;entity: public.users&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;UserProfile&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;entity: public.users&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;UserProfile&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;entity: public.users&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="domain/user" nodeIds="user-profile" component="1" tableName="users" umlClass="1" stereotype="entity: public.users" tone="identity">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#edf5ff,#14263a);swimlaneFillColor=light-dark(#fbfdff,#111a25);strokeColor=light-dark(#3975a6,#86b9e6);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="160" y="235" width="280" height="160" as="geometry" />
           </mxCell>
         </object>
-        <object id="domain-job" label="JobListing&#10;id, title, company, location" labelEn="JobListing&#10;id, title, company, location" labelMs="SenaraiKerja&#10;id, tajuk, syarikat, lokasi" petakerjaKey="domain/job" nodeIds="job-entity" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="100" y="585" width="300" height="120" as="geometry" />
+        <object id="domain-user-attributes" label="&lt;div&gt;- id : uuid&lt;/div&gt;&lt;div&gt;- better_auth_user_id : string&lt;/div&gt;&lt;div&gt;- display_name : string | null&lt;/div&gt;&lt;div&gt;- email : string | null&lt;/div&gt;&lt;div&gt;- selected_state : string | null&lt;/div&gt;&lt;div&gt;- role : &amp;#x27;user&amp;#x27; | &amp;#x27;admin&amp;#x27; | &amp;#x27;owner&amp;#x27;&lt;/div&gt;" labelEn="&lt;div&gt;- id : uuid&lt;/div&gt;&lt;div&gt;- better_auth_user_id : string&lt;/div&gt;&lt;div&gt;- display_name : string | null&lt;/div&gt;&lt;div&gt;- email : string | null&lt;/div&gt;&lt;div&gt;- selected_state : string | null&lt;/div&gt;&lt;div&gt;- role : &amp;#x27;user&amp;#x27; | &amp;#x27;admin&amp;#x27; | &amp;#x27;owner&amp;#x27;&lt;/div&gt;" labelMs="&lt;div&gt;- id : uuid&lt;/div&gt;&lt;div&gt;- better_auth_user_id : string&lt;/div&gt;&lt;div&gt;- display_name : string | null&lt;/div&gt;&lt;div&gt;- email : string | null&lt;/div&gt;&lt;div&gt;- selected_state : string | null&lt;/div&gt;&lt;div&gt;- role : &amp;#x27;user&amp;#x27; | &amp;#x27;admin&amp;#x27; | &amp;#x27;owner&amp;#x27;&lt;/div&gt;" petakerjaKey="domain/user/attributes" umlCompartment="attributes">
+          <mxCell parent="domain-user" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="280" height="114" as="geometry" />
           </mxCell>
         </object>
-        <object id="domain-state" label="UserJobState&#10;user_id, job_key, state" labelEn="UserJobState&#10;user_id, job_key, state" labelMs="StatusKerjaPengguna&#10;user_id, job_key, status" petakerjaKey="domain/state" nodeIds="job-state-entity" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="100" y="770" width="300" height="120" as="geometry" />
+        <object id="domain-job" label="&lt;b&gt;JobListing&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;JobListing&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;JobListing&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="domain/job" nodeIds="job-entity" component="1" umlClass="1" stereotype="interface" tone="jobs">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#fff6df,#392c14);swimlaneFillColor=light-dark(#fffdf8,#201b12);strokeColor=light-dark(#9a6700,#edc35b);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="120" y="690" width="360" height="390" as="geometry" />
           </mxCell>
         </object>
-        <object id="domain-location" label="GeoLocation&#10;lat, lng, label?" labelEn="GeoLocation&#10;lat, lng, label?" labelMs="LokasiGeo&#10;lat, lng, label?" petakerjaKey="domain/location" nodeIds="geo-location" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="520" y="215" width="290" height="120" as="geometry" />
+        <object id="domain-job-attributes" label="&lt;div&gt;- id : string&lt;/div&gt;&lt;div&gt;- title : string&lt;/div&gt;&lt;div&gt;- company : string&lt;/div&gt;&lt;div&gt;- companyLogo? : string&lt;/div&gt;&lt;div&gt;- address? : string&lt;/div&gt;&lt;div&gt;- location : string&lt;/div&gt;&lt;div&gt;- description : string&lt;/div&gt;&lt;div&gt;- salary? : string&lt;/div&gt;&lt;div&gt;- employmentType : string&lt;/div&gt;&lt;div&gt;- datePosted : string&lt;/div&gt;&lt;div&gt;- applyLink : string&lt;/div&gt;&lt;div&gt;- source : string&lt;/div&gt;&lt;div&gt;- lat? : number&lt;/div&gt;&lt;div&gt;- lng? : number&lt;/div&gt;&lt;div&gt;- locationPrecision? : &amp;#x27;exact&amp;#x27; | &amp;#x27;approximate&amp;#x27; | &amp;#x27;remote&amp;#x27;&lt;/div&gt;&lt;div&gt;- matchScore? : number&lt;/div&gt;&lt;div&gt;- skills? : string[]&lt;/div&gt;&lt;div&gt;- remoteType? : string&lt;/div&gt;&lt;div&gt;- experienceLevel? : string&lt;/div&gt;" labelEn="&lt;div&gt;- id : string&lt;/div&gt;&lt;div&gt;- title : string&lt;/div&gt;&lt;div&gt;- company : string&lt;/div&gt;&lt;div&gt;- companyLogo? : string&lt;/div&gt;&lt;div&gt;- address? : string&lt;/div&gt;&lt;div&gt;- location : string&lt;/div&gt;&lt;div&gt;- description : string&lt;/div&gt;&lt;div&gt;- salary? : string&lt;/div&gt;&lt;div&gt;- employmentType : string&lt;/div&gt;&lt;div&gt;- datePosted : string&lt;/div&gt;&lt;div&gt;- applyLink : string&lt;/div&gt;&lt;div&gt;- source : string&lt;/div&gt;&lt;div&gt;- lat? : number&lt;/div&gt;&lt;div&gt;- lng? : number&lt;/div&gt;&lt;div&gt;- locationPrecision? : &amp;#x27;exact&amp;#x27; | &amp;#x27;approximate&amp;#x27; | &amp;#x27;remote&amp;#x27;&lt;/div&gt;&lt;div&gt;- matchScore? : number&lt;/div&gt;&lt;div&gt;- skills? : string[]&lt;/div&gt;&lt;div&gt;- remoteType? : string&lt;/div&gt;&lt;div&gt;- experienceLevel? : string&lt;/div&gt;" labelMs="&lt;div&gt;- id : string&lt;/div&gt;&lt;div&gt;- title : string&lt;/div&gt;&lt;div&gt;- company : string&lt;/div&gt;&lt;div&gt;- companyLogo? : string&lt;/div&gt;&lt;div&gt;- address? : string&lt;/div&gt;&lt;div&gt;- location : string&lt;/div&gt;&lt;div&gt;- description : string&lt;/div&gt;&lt;div&gt;- salary? : string&lt;/div&gt;&lt;div&gt;- employmentType : string&lt;/div&gt;&lt;div&gt;- datePosted : string&lt;/div&gt;&lt;div&gt;- applyLink : string&lt;/div&gt;&lt;div&gt;- source : string&lt;/div&gt;&lt;div&gt;- lat? : number&lt;/div&gt;&lt;div&gt;- lng? : number&lt;/div&gt;&lt;div&gt;- locationPrecision? : &amp;#x27;exact&amp;#x27; | &amp;#x27;approximate&amp;#x27; | &amp;#x27;remote&amp;#x27;&lt;/div&gt;&lt;div&gt;- matchScore? : number&lt;/div&gt;&lt;div&gt;- skills? : string[]&lt;/div&gt;&lt;div&gt;- remoteType? : string&lt;/div&gt;&lt;div&gt;- experienceLevel? : string&lt;/div&gt;" petakerjaKey="domain/job/attributes" umlCompartment="attributes">
+          <mxCell parent="domain-job" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="360" height="344" as="geometry" />
           </mxCell>
         </object>
-        <object id="domain-place" label="GeoPlace&#10;source, confidence, boundary?" labelEn="GeoPlace&#10;source, confidence, boundary?" labelMs="TempatGeo&#10;sumber, keyakinan, sempadan?" petakerjaKey="domain/place" nodeIds="geo-place" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="850" y="215" width="290" height="120" as="geometry" />
+        <object id="domain-state" label="&lt;b&gt;UserJobState&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;entity: public.user_job_states&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;UserJobState&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;entity: public.user_job_states&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;UserJobState&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;entity: public.user_job_states&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="domain/state" nodeIds="job-state-entity" component="1" tableName="user_job_states" umlClass="1" stereotype="entity: public.user_job_states" tone="jobs">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#fff6df,#392c14);swimlaneFillColor=light-dark(#fffdf8,#201b12);strokeColor=light-dark(#9a6700,#edc35b);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="120" y="1150" width="360" height="330" as="geometry" />
           </mxCell>
         </object>
-        <object id="domain-route" label="GeoRoute&#10;profile, geometry, distance, duration?" labelEn="GeoRoute&#10;profile, geometry, distance, duration?" labelMs="LaluanGeo&#10;profil, geometri, jarak, tempoh?" petakerjaKey="domain/route" nodeIds="geo-route" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="520" y="400" width="290" height="120" as="geometry" />
+        <object id="domain-state-attributes" label="&lt;div&gt;- id : uuid&lt;/div&gt;&lt;div&gt;- user_id : uuid&lt;/div&gt;&lt;div&gt;- source : UserJobSource&lt;/div&gt;&lt;div&gt;- job_key : string&lt;/div&gt;&lt;div&gt;- state : UserJobStateValue&lt;/div&gt;&lt;div&gt;- job_title : string&lt;/div&gt;&lt;div&gt;- company_name : string | null&lt;/div&gt;&lt;div&gt;- apply_url : string | null&lt;/div&gt;&lt;div&gt;- location : string | null&lt;/div&gt;&lt;div&gt;- salary_raw : string | null&lt;/div&gt;&lt;div&gt;- posted_at : string | null&lt;/div&gt;&lt;div&gt;- notes : string | null&lt;/div&gt;&lt;div&gt;- fit_score : number | null&lt;/div&gt;&lt;div&gt;- saved_at : string&lt;/div&gt;&lt;div&gt;- applied_at : string | null&lt;/div&gt;&lt;div&gt;- updated_at : string&lt;/div&gt;" labelEn="&lt;div&gt;- id : uuid&lt;/div&gt;&lt;div&gt;- user_id : uuid&lt;/div&gt;&lt;div&gt;- source : UserJobSource&lt;/div&gt;&lt;div&gt;- job_key : string&lt;/div&gt;&lt;div&gt;- state : UserJobStateValue&lt;/div&gt;&lt;div&gt;- job_title : string&lt;/div&gt;&lt;div&gt;- company_name : string | null&lt;/div&gt;&lt;div&gt;- apply_url : string | null&lt;/div&gt;&lt;div&gt;- location : string | null&lt;/div&gt;&lt;div&gt;- salary_raw : string | null&lt;/div&gt;&lt;div&gt;- posted_at : string | null&lt;/div&gt;&lt;div&gt;- notes : string | null&lt;/div&gt;&lt;div&gt;- fit_score : number | null&lt;/div&gt;&lt;div&gt;- saved_at : string&lt;/div&gt;&lt;div&gt;- applied_at : string | null&lt;/div&gt;&lt;div&gt;- updated_at : string&lt;/div&gt;" labelMs="&lt;div&gt;- id : uuid&lt;/div&gt;&lt;div&gt;- user_id : uuid&lt;/div&gt;&lt;div&gt;- source : UserJobSource&lt;/div&gt;&lt;div&gt;- job_key : string&lt;/div&gt;&lt;div&gt;- state : UserJobStateValue&lt;/div&gt;&lt;div&gt;- job_title : string&lt;/div&gt;&lt;div&gt;- company_name : string | null&lt;/div&gt;&lt;div&gt;- apply_url : string | null&lt;/div&gt;&lt;div&gt;- location : string | null&lt;/div&gt;&lt;div&gt;- salary_raw : string | null&lt;/div&gt;&lt;div&gt;- posted_at : string | null&lt;/div&gt;&lt;div&gt;- notes : string | null&lt;/div&gt;&lt;div&gt;- fit_score : number | null&lt;/div&gt;&lt;div&gt;- saved_at : string&lt;/div&gt;&lt;div&gt;- applied_at : string | null&lt;/div&gt;&lt;div&gt;- updated_at : string&lt;/div&gt;" petakerjaKey="domain/state/attributes" umlCompartment="attributes">
+          <mxCell parent="domain-state" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="360" height="284" as="geometry" />
           </mxCell>
         </object>
-        <object id="domain-alternative" label="GeoRouteAlternative&#10;geometry, duration, maneuvers" labelEn="GeoRouteAlternative&#10;geometry, duration, maneuvers" labelMs="AlternatifLaluanGeo&#10;geometri, tempoh, arahan" petakerjaKey="domain/alternative" nodeIds="geo-route-alternative" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="850" y="400" width="290" height="120" as="geometry" />
+        <object id="domain-poi" label="&lt;b&gt;POI&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;entity: public.pois&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;POI&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;entity: public.pois&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;POI&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;entity: public.pois&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="domain/poi" nodeIds="poi-entity" component="1" tableName="pois" umlClass="1" stereotype="entity: public.pois" tone="geo">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eafaf1,#123222);swimlaneFillColor=light-dark(#fbfefc,#101d17);strokeColor=light-dark(#247a4d,#70d09d);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="640" y="235" width="340" height="280" as="geometry" />
           </mxCell>
         </object>
-        <object id="domain-maneuver" label="GeoManeuver&#10;instruction, shape indexes" labelEn="GeoManeuver&#10;instruction, shape indexes" labelMs="ArahanGeo&#10;arahan, indeks bentuk" petakerjaKey="domain/maneuver" nodeIds="geo-maneuver" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="520" y="585" width="290" height="120" as="geometry" />
+        <object id="domain-poi-attributes" label="&lt;div&gt;- id : uuid&lt;/div&gt;&lt;div&gt;- name : string | null&lt;/div&gt;&lt;div&gt;- category : string&lt;/div&gt;&lt;div&gt;- category_group : string&lt;/div&gt;&lt;div&gt;- lat : number&lt;/div&gt;&lt;div&gt;- lng : number&lt;/div&gt;&lt;div&gt;- address : string | null&lt;/div&gt;&lt;div&gt;- postcode : string | null&lt;/div&gt;&lt;div&gt;- website : string | null&lt;/div&gt;&lt;div&gt;- is_verified : boolean&lt;/div&gt;&lt;div&gt;- source_name : string&lt;/div&gt;&lt;div&gt;- avg_rating : number&lt;/div&gt;&lt;div&gt;- review_count : number&lt;/div&gt;" labelEn="&lt;div&gt;- id : uuid&lt;/div&gt;&lt;div&gt;- name : string | null&lt;/div&gt;&lt;div&gt;- category : string&lt;/div&gt;&lt;div&gt;- category_group : string&lt;/div&gt;&lt;div&gt;- lat : number&lt;/div&gt;&lt;div&gt;- lng : number&lt;/div&gt;&lt;div&gt;- address : string | null&lt;/div&gt;&lt;div&gt;- postcode : string | null&lt;/div&gt;&lt;div&gt;- website : string | null&lt;/div&gt;&lt;div&gt;- is_verified : boolean&lt;/div&gt;&lt;div&gt;- source_name : string&lt;/div&gt;&lt;div&gt;- avg_rating : number&lt;/div&gt;&lt;div&gt;- review_count : number&lt;/div&gt;" labelMs="&lt;div&gt;- id : uuid&lt;/div&gt;&lt;div&gt;- name : string | null&lt;/div&gt;&lt;div&gt;- category : string&lt;/div&gt;&lt;div&gt;- category_group : string&lt;/div&gt;&lt;div&gt;- lat : number&lt;/div&gt;&lt;div&gt;- lng : number&lt;/div&gt;&lt;div&gt;- address : string | null&lt;/div&gt;&lt;div&gt;- postcode : string | null&lt;/div&gt;&lt;div&gt;- website : string | null&lt;/div&gt;&lt;div&gt;- is_verified : boolean&lt;/div&gt;&lt;div&gt;- source_name : string&lt;/div&gt;&lt;div&gt;- avg_rating : number&lt;/div&gt;&lt;div&gt;- review_count : number&lt;/div&gt;" petakerjaKey="domain/poi/attributes" umlCompartment="attributes">
+          <mxCell parent="domain-poi" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="340" height="234" as="geometry" />
           </mxCell>
         </object>
-        <object id="domain-matrix" label="GeoMatrixResult&#10;sources, targets, distances, durations" labelEn="GeoMatrixResult&#10;sources, targets, distances, durations" labelMs="HasilMatriksGeo&#10;sumber, sasaran, jarak, tempoh" petakerjaKey="domain/matrix" nodeIds="geo-matrix" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="850" y="585" width="290" height="120" as="geometry" />
+        <object id="domain-location" label="&lt;b&gt;GeoLocation&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;GeoLocation&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;GeoLocation&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="domain/location" nodeIds="geo-location" component="1" umlClass="1" stereotype="interface" tone="geo">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eafaf1,#123222);swimlaneFillColor=light-dark(#fbfefc,#101d17);strokeColor=light-dark(#247a4d,#70d09d);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="1050" y="235" width="260" height="110" as="geometry" />
           </mxCell>
         </object>
-        <object id="domain-isochrone" label="GeoIsochroneResult&#10;origin, contours, FeatureCollection" labelEn="GeoIsochroneResult&#10;origin, contours, FeatureCollection" labelMs="HasilIsokronGeo&#10;asal, kontur, FeatureCollection" petakerjaKey="domain/isochrone" nodeIds="geo-isochrone" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="685" y="770" width="290" height="120" as="geometry" />
+        <object id="domain-location-attributes" label="&lt;div&gt;- lat : number&lt;/div&gt;&lt;div&gt;- lng : number&lt;/div&gt;&lt;div&gt;- label? : string&lt;/div&gt;" labelEn="&lt;div&gt;- lat : number&lt;/div&gt;&lt;div&gt;- lng : number&lt;/div&gt;&lt;div&gt;- label? : string&lt;/div&gt;" labelMs="&lt;div&gt;- lat : number&lt;/div&gt;&lt;div&gt;- lng : number&lt;/div&gt;&lt;div&gt;- label? : string&lt;/div&gt;" petakerjaKey="domain/location/attributes" umlCompartment="attributes">
+          <mxCell parent="domain-location" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="260" height="64" as="geometry" />
           </mxCell>
         </object>
-        <object id="domain-resolution" label="JobLocationResolution&#10;scraped_job_id&#10;coordinates, confidence&#10;routable, is_remote" labelEn="JobLocationResolution&#10;scraped_job_id&#10;coordinates, confidence&#10;routable, is_remote" labelMs="PenyelesaianLokasiKerja&#10;scraped_job_id&#10;koordinat, keyakinan&#10;boleh_dihala, jarak_jauh" petakerjaKey="domain/resolution" nodeIds="job-location-resolution" component="1" tableName="job_location_resolutions">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eee8fb,#2d2140);strokeColor=light-dark(#815ebc,#a989de);fontColor=light-dark(#402665,#f2e9ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="1260" y="235" width="240" height="170" as="geometry" />
+        <object id="domain-boundary" label="&lt;b&gt;GeoBoundary&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;GeoBoundary&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;GeoBoundary&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="domain/boundary" nodeIds="geo-place" component="1" umlClass="1" stereotype="interface" tone="geo">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eafaf1,#123222);swimlaneFillColor=light-dark(#fbfefc,#101d17);strokeColor=light-dark(#247a4d,#70d09d);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="1410" y="235" width="360" height="110" as="geometry" />
           </mxCell>
         </object>
-        <object id="domain-route-cache" label="GeoRouteCache&#10;operation, provider&#10;payload, expires_at" labelEn="GeoRouteCache&#10;operation, provider&#10;payload, expires_at" labelMs="CacheLaluanGeo&#10;operasi, penyedia&#10;payload, expires_at" petakerjaKey="domain/route-cache" nodeIds="geo-route-cache" component="1" tableName="geo_route_cache">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eee8fb,#2d2140);strokeColor=light-dark(#815ebc,#a989de);fontColor=light-dark(#402665,#f2e9ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="1260" y="505" width="240" height="140" as="geometry" />
+        <object id="domain-boundary-attributes" label="&lt;div&gt;- type : &amp;#x27;Feature&amp;#x27;&lt;/div&gt;&lt;div&gt;- geometry : Polygon | MultiPolygon&lt;/div&gt;&lt;div&gt;- properties : Record&amp;lt;string, unknown&amp;gt;&lt;/div&gt;" labelEn="&lt;div&gt;- type : &amp;#x27;Feature&amp;#x27;&lt;/div&gt;&lt;div&gt;- geometry : Polygon | MultiPolygon&lt;/div&gt;&lt;div&gt;- properties : Record&amp;lt;string, unknown&amp;gt;&lt;/div&gt;" labelMs="&lt;div&gt;- type : &amp;#x27;Feature&amp;#x27;&lt;/div&gt;&lt;div&gt;- geometry : Polygon | MultiPolygon&lt;/div&gt;&lt;div&gt;- properties : Record&amp;lt;string, unknown&amp;gt;&lt;/div&gt;" petakerjaKey="domain/boundary/attributes" umlCompartment="attributes">
+          <mxCell parent="domain-boundary" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="360" height="64" as="geometry" />
           </mxCell>
         </object>
-        <object id="domain-geocode-cache" label="GeoGeocodeCache&#10;operation, provider&#10;payload, expires_at" labelEn="GeoGeocodeCache&#10;operation, provider&#10;payload, expires_at" labelMs="CacheGeokodGeo&#10;operasi, penyedia&#10;payload, expires_at" petakerjaKey="domain/geocode-cache" nodeIds="geo-geocode-cache" component="1" tableName="geo_geocode_cache">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eee8fb,#2d2140);strokeColor=light-dark(#815ebc,#a989de);fontColor=light-dark(#402665,#f2e9ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="1260" y="745" width="240" height="140" as="geometry" />
+        <object id="domain-place" label="&lt;b&gt;GeoPlace&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;GeoPlace&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;GeoPlace&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="domain/place" nodeIds="geo-place" component="1" umlClass="1" stereotype="interface" tone="geo">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eafaf1,#123222);swimlaneFillColor=light-dark(#fbfefc,#101d17);strokeColor=light-dark(#247a4d,#70d09d);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="1010" y="500" width="390" height="280" as="geometry" />
           </mxCell>
         </object>
-        <object id="domain-edge-1" label="has" labelEn="has" labelMs="mempunyai" petakerjaKey="domain/edge-1">
-          <mxCell parent="1" edge="1" source="domain-place" target="domain-location" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
-            <mxGeometry relative="1" as="geometry" />
+        <object id="domain-place-attributes" label="&lt;div&gt;- id : string&lt;/div&gt;&lt;div&gt;- source : &amp;#x27;petakerja&amp;#x27; | &amp;#x27;nominatim&amp;#x27;&lt;/div&gt;&lt;div&gt;- name : string&lt;/div&gt;&lt;div&gt;- displayName : string&lt;/div&gt;&lt;div&gt;- category : string&lt;/div&gt;&lt;div&gt;- address : string | null&lt;/div&gt;&lt;div&gt;- location : GeoLocation&lt;/div&gt;&lt;div&gt;- boundingBox : [number, number, number, number] | null&lt;/div&gt;&lt;div&gt;- osmType : &amp;#x27;node&amp;#x27; | &amp;#x27;way&amp;#x27; | &amp;#x27;relation&amp;#x27; | null&lt;/div&gt;&lt;div&gt;- osmId : string | null&lt;/div&gt;&lt;div&gt;- confidence : LocationConfidence&lt;/div&gt;&lt;div&gt;- boundary? : GeoBoundary | null&lt;/div&gt;&lt;div&gt;- metadata? : Record&amp;lt;string, unknown&amp;gt;&lt;/div&gt;" labelEn="&lt;div&gt;- id : string&lt;/div&gt;&lt;div&gt;- source : &amp;#x27;petakerja&amp;#x27; | &amp;#x27;nominatim&amp;#x27;&lt;/div&gt;&lt;div&gt;- name : string&lt;/div&gt;&lt;div&gt;- displayName : string&lt;/div&gt;&lt;div&gt;- category : string&lt;/div&gt;&lt;div&gt;- address : string | null&lt;/div&gt;&lt;div&gt;- location : GeoLocation&lt;/div&gt;&lt;div&gt;- boundingBox : [number, number, number, number] | null&lt;/div&gt;&lt;div&gt;- osmType : &amp;#x27;node&amp;#x27; | &amp;#x27;way&amp;#x27; | &amp;#x27;relation&amp;#x27; | null&lt;/div&gt;&lt;div&gt;- osmId : string | null&lt;/div&gt;&lt;div&gt;- confidence : LocationConfidence&lt;/div&gt;&lt;div&gt;- boundary? : GeoBoundary | null&lt;/div&gt;&lt;div&gt;- metadata? : Record&amp;lt;string, unknown&amp;gt;&lt;/div&gt;" labelMs="&lt;div&gt;- id : string&lt;/div&gt;&lt;div&gt;- source : &amp;#x27;petakerja&amp;#x27; | &amp;#x27;nominatim&amp;#x27;&lt;/div&gt;&lt;div&gt;- name : string&lt;/div&gt;&lt;div&gt;- displayName : string&lt;/div&gt;&lt;div&gt;- category : string&lt;/div&gt;&lt;div&gt;- address : string | null&lt;/div&gt;&lt;div&gt;- location : GeoLocation&lt;/div&gt;&lt;div&gt;- boundingBox : [number, number, number, number] | null&lt;/div&gt;&lt;div&gt;- osmType : &amp;#x27;node&amp;#x27; | &amp;#x27;way&amp;#x27; | &amp;#x27;relation&amp;#x27; | null&lt;/div&gt;&lt;div&gt;- osmId : string | null&lt;/div&gt;&lt;div&gt;- confidence : LocationConfidence&lt;/div&gt;&lt;div&gt;- boundary? : GeoBoundary | null&lt;/div&gt;&lt;div&gt;- metadata? : Record&amp;lt;string, unknown&amp;gt;&lt;/div&gt;" petakerjaKey="domain/place/attributes" umlCompartment="attributes">
+          <mxCell parent="domain-place" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="390" height="234" as="geometry" />
           </mxCell>
         </object>
-        <object id="domain-edge-2" label="origin + destination" labelEn="origin + destination" labelMs="asal + destinasi" petakerjaKey="domain/edge-2">
-          <mxCell parent="1" edge="1" source="domain-route" target="domain-location" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
-            <mxGeometry relative="1" as="geometry" />
+        <object id="domain-route" label="&lt;b&gt;GeoRoute&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;GeoRoute&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;GeoRoute&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="domain/route" nodeIds="geo-route" component="1" umlClass="1" stereotype="interface" tone="geo">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eafaf1,#123222);swimlaneFillColor=light-dark(#fbfefc,#101d17);strokeColor=light-dark(#247a4d,#70d09d);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="640" y="820" width="390" height="270" as="geometry" />
           </mxCell>
         </object>
-        <object id="domain-edge-3" label="0..*" labelEn="0..*" labelMs="0..*" petakerjaKey="domain/edge-3">
-          <mxCell parent="1" edge="1" source="domain-route" target="domain-alternative" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
-            <mxGeometry relative="1" as="geometry" />
+        <object id="domain-route-attributes" label="&lt;div&gt;- provider : &amp;#x27;valhalla&amp;#x27; | &amp;#x27;straight-line&amp;#x27;&lt;/div&gt;&lt;div&gt;- profile : GeoRouteProfile&lt;/div&gt;&lt;div&gt;- origin : GeoLocation&lt;/div&gt;&lt;div&gt;- destination : GeoLocation&lt;/div&gt;&lt;div&gt;- distanceMeters : number&lt;/div&gt;&lt;div&gt;- durationSeconds : number | null&lt;/div&gt;&lt;div&gt;- trafficAware : false&lt;/div&gt;&lt;div&gt;- estimateKind : &amp;#x27;routed&amp;#x27; | &amp;#x27;straight-line&amp;#x27;&lt;/div&gt;&lt;div&gt;- geometry : Feature&amp;lt;LineString&amp;gt;&lt;/div&gt;&lt;div&gt;- maneuvers : GeoManeuver[]&lt;/div&gt;&lt;div&gt;- alternatives : GeoRouteAlternative[]&lt;/div&gt;&lt;div&gt;- dataTimestamp : string | null&lt;/div&gt;" labelEn="&lt;div&gt;- provider : &amp;#x27;valhalla&amp;#x27; | &amp;#x27;straight-line&amp;#x27;&lt;/div&gt;&lt;div&gt;- profile : GeoRouteProfile&lt;/div&gt;&lt;div&gt;- origin : GeoLocation&lt;/div&gt;&lt;div&gt;- destination : GeoLocation&lt;/div&gt;&lt;div&gt;- distanceMeters : number&lt;/div&gt;&lt;div&gt;- durationSeconds : number | null&lt;/div&gt;&lt;div&gt;- trafficAware : false&lt;/div&gt;&lt;div&gt;- estimateKind : &amp;#x27;routed&amp;#x27; | &amp;#x27;straight-line&amp;#x27;&lt;/div&gt;&lt;div&gt;- geometry : Feature&amp;lt;LineString&amp;gt;&lt;/div&gt;&lt;div&gt;- maneuvers : GeoManeuver[]&lt;/div&gt;&lt;div&gt;- alternatives : GeoRouteAlternative[]&lt;/div&gt;&lt;div&gt;- dataTimestamp : string | null&lt;/div&gt;" labelMs="&lt;div&gt;- provider : &amp;#x27;valhalla&amp;#x27; | &amp;#x27;straight-line&amp;#x27;&lt;/div&gt;&lt;div&gt;- profile : GeoRouteProfile&lt;/div&gt;&lt;div&gt;- origin : GeoLocation&lt;/div&gt;&lt;div&gt;- destination : GeoLocation&lt;/div&gt;&lt;div&gt;- distanceMeters : number&lt;/div&gt;&lt;div&gt;- durationSeconds : number | null&lt;/div&gt;&lt;div&gt;- trafficAware : false&lt;/div&gt;&lt;div&gt;- estimateKind : &amp;#x27;routed&amp;#x27; | &amp;#x27;straight-line&amp;#x27;&lt;/div&gt;&lt;div&gt;- geometry : Feature&amp;lt;LineString&amp;gt;&lt;/div&gt;&lt;div&gt;- maneuvers : GeoManeuver[]&lt;/div&gt;&lt;div&gt;- alternatives : GeoRouteAlternative[]&lt;/div&gt;&lt;div&gt;- dataTimestamp : string | null&lt;/div&gt;" petakerjaKey="domain/route/attributes" umlCompartment="attributes">
+          <mxCell parent="domain-route" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="390" height="224" as="geometry" />
           </mxCell>
         </object>
-        <object id="domain-edge-4" label="0..*" labelEn="0..*" labelMs="0..*" petakerjaKey="domain/edge-4">
-          <mxCell parent="1" edge="1" source="domain-alternative" target="domain-maneuver" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
-            <mxGeometry relative="1" as="geometry" />
+        <object id="domain-alternative" label="&lt;b&gt;GeoRouteAlternative&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;GeoRouteAlternative&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;GeoRouteAlternative&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="domain/alternative" nodeIds="geo-route-alternative" component="1" umlClass="1" stereotype="interface" tone="geo">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eafaf1,#123222);swimlaneFillColor=light-dark(#fbfefc,#101d17);strokeColor=light-dark(#247a4d,#70d09d);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="1100" y="840" width="350" height="150" as="geometry" />
           </mxCell>
         </object>
-        <object id="domain-edge-5" label="resolved as" labelEn="resolved as" labelMs="diselesaikan sebagai" petakerjaKey="domain/edge-5">
-          <mxCell parent="1" edge="1" source="domain-resolution" target="domain-place" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
-            <mxGeometry relative="1" as="geometry" />
+        <object id="domain-alternative-attributes" label="&lt;div&gt;- id : string&lt;/div&gt;&lt;div&gt;- distanceMeters : number&lt;/div&gt;&lt;div&gt;- durationSeconds : number&lt;/div&gt;&lt;div&gt;- geometry : Feature&amp;lt;LineString&amp;gt;&lt;/div&gt;&lt;div&gt;- maneuvers : GeoManeuver[]&lt;/div&gt;" labelEn="&lt;div&gt;- id : string&lt;/div&gt;&lt;div&gt;- distanceMeters : number&lt;/div&gt;&lt;div&gt;- durationSeconds : number&lt;/div&gt;&lt;div&gt;- geometry : Feature&amp;lt;LineString&amp;gt;&lt;/div&gt;&lt;div&gt;- maneuvers : GeoManeuver[]&lt;/div&gt;" labelMs="&lt;div&gt;- id : string&lt;/div&gt;&lt;div&gt;- distanceMeters : number&lt;/div&gt;&lt;div&gt;- durationSeconds : number&lt;/div&gt;&lt;div&gt;- geometry : Feature&amp;lt;LineString&amp;gt;&lt;/div&gt;&lt;div&gt;- maneuvers : GeoManeuver[]&lt;/div&gt;" petakerjaKey="domain/alternative/attributes" umlCompartment="attributes">
+          <mxCell parent="domain-alternative" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="350" height="104" as="geometry" />
           </mxCell>
         </object>
-        <object id="domain-edge-job-resolution" label="derived from" labelEn="derived from" labelMs="diterbitkan daripada" petakerjaKey="domain/edge-job-resolution">
-          <mxCell parent="1" edge="1" source="domain-resolution" target="domain-job" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+        <object id="domain-maneuver" label="&lt;b&gt;GeoManeuver&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;GeoManeuver&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;GeoManeuver&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="domain/maneuver" nodeIds="geo-maneuver" component="1" umlClass="1" stereotype="interface" tone="geo">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eafaf1,#123222);swimlaneFillColor=light-dark(#fbfefc,#101d17);strokeColor=light-dark(#247a4d,#70d09d);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="1510" y="840" width="290" height="180" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-maneuver-attributes" label="&lt;div&gt;- instruction : string&lt;/div&gt;&lt;div&gt;- distanceMeters : number&lt;/div&gt;&lt;div&gt;- durationSeconds : number&lt;/div&gt;&lt;div&gt;- beginShapeIndex? : number&lt;/div&gt;&lt;div&gt;- endShapeIndex? : number&lt;/div&gt;&lt;div&gt;- type? : number&lt;/div&gt;&lt;div&gt;- streetNames? : string[]&lt;/div&gt;" labelEn="&lt;div&gt;- instruction : string&lt;/div&gt;&lt;div&gt;- distanceMeters : number&lt;/div&gt;&lt;div&gt;- durationSeconds : number&lt;/div&gt;&lt;div&gt;- beginShapeIndex? : number&lt;/div&gt;&lt;div&gt;- endShapeIndex? : number&lt;/div&gt;&lt;div&gt;- type? : number&lt;/div&gt;&lt;div&gt;- streetNames? : string[]&lt;/div&gt;" labelMs="&lt;div&gt;- instruction : string&lt;/div&gt;&lt;div&gt;- distanceMeters : number&lt;/div&gt;&lt;div&gt;- durationSeconds : number&lt;/div&gt;&lt;div&gt;- beginShapeIndex? : number&lt;/div&gt;&lt;div&gt;- endShapeIndex? : number&lt;/div&gt;&lt;div&gt;- type? : number&lt;/div&gt;&lt;div&gt;- streetNames? : string[]&lt;/div&gt;" petakerjaKey="domain/maneuver/attributes" umlCompartment="attributes">
+          <mxCell parent="domain-maneuver" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="290" height="134" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-matrix" label="&lt;b&gt;GeoMatrixResult&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;GeoMatrixResult&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;GeoMatrixResult&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="domain/matrix" nodeIds="geo-matrix" component="1" umlClass="1" stereotype="interface" tone="geo">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eafaf1,#123222);swimlaneFillColor=light-dark(#fbfefc,#101d17);strokeColor=light-dark(#247a4d,#70d09d);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="790" y="1240" width="410" height="160" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-matrix-attributes" label="&lt;div&gt;- provider : &amp;#x27;valhalla&amp;#x27;&lt;/div&gt;&lt;div&gt;- profile : GeoRouteProfile&lt;/div&gt;&lt;div&gt;- sources : GeoLocation[]&lt;/div&gt;&lt;div&gt;- targets : GeoLocation[]&lt;/div&gt;&lt;div&gt;- distancesMeters : Array&amp;lt;Array&amp;lt;number | null&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;- durationsSeconds : Array&amp;lt;Array&amp;lt;number | null&amp;gt;&amp;gt;&lt;/div&gt;" labelEn="&lt;div&gt;- provider : &amp;#x27;valhalla&amp;#x27;&lt;/div&gt;&lt;div&gt;- profile : GeoRouteProfile&lt;/div&gt;&lt;div&gt;- sources : GeoLocation[]&lt;/div&gt;&lt;div&gt;- targets : GeoLocation[]&lt;/div&gt;&lt;div&gt;- distancesMeters : Array&amp;lt;Array&amp;lt;number | null&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;- durationsSeconds : Array&amp;lt;Array&amp;lt;number | null&amp;gt;&amp;gt;&lt;/div&gt;" labelMs="&lt;div&gt;- provider : &amp;#x27;valhalla&amp;#x27;&lt;/div&gt;&lt;div&gt;- profile : GeoRouteProfile&lt;/div&gt;&lt;div&gt;- sources : GeoLocation[]&lt;/div&gt;&lt;div&gt;- targets : GeoLocation[]&lt;/div&gt;&lt;div&gt;- distancesMeters : Array&amp;lt;Array&amp;lt;number | null&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;- durationsSeconds : Array&amp;lt;Array&amp;lt;number | null&amp;gt;&amp;gt;&lt;/div&gt;" petakerjaKey="domain/matrix/attributes" umlCompartment="attributes">
+          <mxCell parent="domain-matrix" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="410" height="114" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-isochrone" label="&lt;b&gt;GeoIsochroneResult&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;GeoIsochroneResult&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;GeoIsochroneResult&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="domain/isochrone" nodeIds="geo-isochrone" component="1" umlClass="1" stereotype="interface" tone="geo">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eafaf1,#123222);swimlaneFillColor=light-dark(#fbfefc,#101d17);strokeColor=light-dark(#247a4d,#70d09d);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="1320" y="1240" width="420" height="150" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-isochrone-attributes" label="&lt;div&gt;- provider : &amp;#x27;valhalla&amp;#x27;&lt;/div&gt;&lt;div&gt;- profile : GeoRouteProfile&lt;/div&gt;&lt;div&gt;- origin : GeoLocation&lt;/div&gt;&lt;div&gt;- contoursMinutes : number[]&lt;/div&gt;&lt;div&gt;- featureCollection : FeatureCollection&amp;lt;Polygon | MultiPolygon&amp;gt;&lt;/div&gt;" labelEn="&lt;div&gt;- provider : &amp;#x27;valhalla&amp;#x27;&lt;/div&gt;&lt;div&gt;- profile : GeoRouteProfile&lt;/div&gt;&lt;div&gt;- origin : GeoLocation&lt;/div&gt;&lt;div&gt;- contoursMinutes : number[]&lt;/div&gt;&lt;div&gt;- featureCollection : FeatureCollection&amp;lt;Polygon | MultiPolygon&amp;gt;&lt;/div&gt;" labelMs="&lt;div&gt;- provider : &amp;#x27;valhalla&amp;#x27;&lt;/div&gt;&lt;div&gt;- profile : GeoRouteProfile&lt;/div&gt;&lt;div&gt;- origin : GeoLocation&lt;/div&gt;&lt;div&gt;- contoursMinutes : number[]&lt;/div&gt;&lt;div&gt;- featureCollection : FeatureCollection&amp;lt;Polygon | MultiPolygon&amp;gt;&lt;/div&gt;" petakerjaKey="domain/isochrone/attributes" umlCompartment="attributes">
+          <mxCell parent="domain-isochrone" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="420" height="104" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-resolution" label="&lt;b&gt;JobLocationResolution&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;entity: public.job_location_resolutions&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;JobLocationResolution&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;entity: public.job_location_resolutions&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;JobLocationResolution&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;entity: public.job_location_resolutions&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="domain/resolution" nodeIds="job-location-resolution" component="1" tableName="job_location_resolutions" umlClass="1" stereotype="entity: public.job_location_resolutions" tone="persistence">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#f4efff,#2b2140);swimlaneFillColor=light-dark(#fdfbff,#191424);strokeColor=light-dark(#6941c6,#b9a2ff);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="1945" y="235" width="350" height="320" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-resolution-attributes" label="&lt;div&gt;- id : uuid&lt;/div&gt;&lt;div&gt;- scraped_job_id : string&lt;/div&gt;&lt;div&gt;- source_location : string&lt;/div&gt;&lt;div&gt;- normalized_location : string&lt;/div&gt;&lt;div&gt;- display_name : string | null&lt;/div&gt;&lt;div&gt;- latitude : number | null&lt;/div&gt;&lt;div&gt;- longitude : number | null&lt;/div&gt;&lt;div&gt;- geom : geometry(Point, 4326) generated&lt;/div&gt;&lt;div&gt;- confidence : LocationConfidence&lt;/div&gt;&lt;div&gt;- routable : boolean&lt;/div&gt;&lt;div&gt;- is_remote : boolean&lt;/div&gt;&lt;div&gt;- provider : string&lt;/div&gt;&lt;div&gt;- osm_type : &amp;#x27;node&amp;#x27; | &amp;#x27;way&amp;#x27; | &amp;#x27;relation&amp;#x27; | null&lt;/div&gt;&lt;div&gt;- resolved_at : timestamptz&lt;/div&gt;&lt;div&gt;- expires_at : timestamptz | null&lt;/div&gt;" labelEn="&lt;div&gt;- id : uuid&lt;/div&gt;&lt;div&gt;- scraped_job_id : string&lt;/div&gt;&lt;div&gt;- source_location : string&lt;/div&gt;&lt;div&gt;- normalized_location : string&lt;/div&gt;&lt;div&gt;- display_name : string | null&lt;/div&gt;&lt;div&gt;- latitude : number | null&lt;/div&gt;&lt;div&gt;- longitude : number | null&lt;/div&gt;&lt;div&gt;- geom : geometry(Point, 4326) generated&lt;/div&gt;&lt;div&gt;- confidence : LocationConfidence&lt;/div&gt;&lt;div&gt;- routable : boolean&lt;/div&gt;&lt;div&gt;- is_remote : boolean&lt;/div&gt;&lt;div&gt;- provider : string&lt;/div&gt;&lt;div&gt;- osm_type : &amp;#x27;node&amp;#x27; | &amp;#x27;way&amp;#x27; | &amp;#x27;relation&amp;#x27; | null&lt;/div&gt;&lt;div&gt;- resolved_at : timestamptz&lt;/div&gt;&lt;div&gt;- expires_at : timestamptz | null&lt;/div&gt;" labelMs="&lt;div&gt;- id : uuid&lt;/div&gt;&lt;div&gt;- scraped_job_id : string&lt;/div&gt;&lt;div&gt;- source_location : string&lt;/div&gt;&lt;div&gt;- normalized_location : string&lt;/div&gt;&lt;div&gt;- display_name : string | null&lt;/div&gt;&lt;div&gt;- latitude : number | null&lt;/div&gt;&lt;div&gt;- longitude : number | null&lt;/div&gt;&lt;div&gt;- geom : geometry(Point, 4326) generated&lt;/div&gt;&lt;div&gt;- confidence : LocationConfidence&lt;/div&gt;&lt;div&gt;- routable : boolean&lt;/div&gt;&lt;div&gt;- is_remote : boolean&lt;/div&gt;&lt;div&gt;- provider : string&lt;/div&gt;&lt;div&gt;- osm_type : &amp;#x27;node&amp;#x27; | &amp;#x27;way&amp;#x27; | &amp;#x27;relation&amp;#x27; | null&lt;/div&gt;&lt;div&gt;- resolved_at : timestamptz&lt;/div&gt;&lt;div&gt;- expires_at : timestamptz | null&lt;/div&gt;" petakerjaKey="domain/resolution/attributes" umlCompartment="attributes">
+          <mxCell parent="domain-resolution" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="350" height="274" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-route-cache" label="&lt;b&gt;GeoRouteCache&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;entity: public.geo_route_cache&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;GeoRouteCache&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;entity: public.geo_route_cache&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;GeoRouteCache&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;entity: public.geo_route_cache&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="domain/route-cache" nodeIds="geo-route-cache" component="1" tableName="geo_route_cache" umlClass="1" stereotype="entity: public.geo_route_cache" tone="persistence">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#f4efff,#2b2140);swimlaneFillColor=light-dark(#fdfbff,#191424);strokeColor=light-dark(#6941c6,#b9a2ff);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="1945" y="760" width="350" height="200" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-route-cache-attributes" label="&lt;div&gt;- cache_key : string&lt;/div&gt;&lt;div&gt;- operation : &amp;#x27;route&amp;#x27; | &amp;#x27;matrix&amp;#x27; | &amp;#x27;isochrone&amp;#x27;&lt;/div&gt;&lt;div&gt;- provider : string&lt;/div&gt;&lt;div&gt;- payload : jsonb&lt;/div&gt;&lt;div&gt;- expires_at : timestamptz&lt;/div&gt;&lt;div&gt;- last_accessed_at : timestamptz&lt;/div&gt;&lt;div&gt;- hit_count : bigint&lt;/div&gt;&lt;div&gt;- created_at : timestamptz&lt;/div&gt;" labelEn="&lt;div&gt;- cache_key : string&lt;/div&gt;&lt;div&gt;- operation : &amp;#x27;route&amp;#x27; | &amp;#x27;matrix&amp;#x27; | &amp;#x27;isochrone&amp;#x27;&lt;/div&gt;&lt;div&gt;- provider : string&lt;/div&gt;&lt;div&gt;- payload : jsonb&lt;/div&gt;&lt;div&gt;- expires_at : timestamptz&lt;/div&gt;&lt;div&gt;- last_accessed_at : timestamptz&lt;/div&gt;&lt;div&gt;- hit_count : bigint&lt;/div&gt;&lt;div&gt;- created_at : timestamptz&lt;/div&gt;" labelMs="&lt;div&gt;- cache_key : string&lt;/div&gt;&lt;div&gt;- operation : &amp;#x27;route&amp;#x27; | &amp;#x27;matrix&amp;#x27; | &amp;#x27;isochrone&amp;#x27;&lt;/div&gt;&lt;div&gt;- provider : string&lt;/div&gt;&lt;div&gt;- payload : jsonb&lt;/div&gt;&lt;div&gt;- expires_at : timestamptz&lt;/div&gt;&lt;div&gt;- last_accessed_at : timestamptz&lt;/div&gt;&lt;div&gt;- hit_count : bigint&lt;/div&gt;&lt;div&gt;- created_at : timestamptz&lt;/div&gt;" petakerjaKey="domain/route-cache/attributes" umlCompartment="attributes">
+          <mxCell parent="domain-route-cache" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="350" height="154" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-geocode-cache" label="&lt;b&gt;GeoGeocodeCache&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;entity: public.geo_geocode_cache&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;GeoGeocodeCache&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;entity: public.geo_geocode_cache&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;GeoGeocodeCache&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;entity: public.geo_geocode_cache&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="domain/geocode-cache" nodeIds="geo-geocode-cache" component="1" tableName="geo_geocode_cache" umlClass="1" stereotype="entity: public.geo_geocode_cache" tone="persistence">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#f4efff,#2b2140);swimlaneFillColor=light-dark(#fdfbff,#191424);strokeColor=light-dark(#6941c6,#b9a2ff);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="1945" y="1160" width="350" height="200" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-geocode-cache-attributes" label="&lt;div&gt;- cache_key : string&lt;/div&gt;&lt;div&gt;- operation : &amp;#x27;search&amp;#x27; | &amp;#x27;reverse&amp;#x27; | &amp;#x27;lookup&amp;#x27;&lt;/div&gt;&lt;div&gt;- provider : string&lt;/div&gt;&lt;div&gt;- payload : jsonb&lt;/div&gt;&lt;div&gt;- expires_at : timestamptz&lt;/div&gt;&lt;div&gt;- last_accessed_at : timestamptz&lt;/div&gt;&lt;div&gt;- hit_count : bigint&lt;/div&gt;&lt;div&gt;- created_at : timestamptz&lt;/div&gt;" labelEn="&lt;div&gt;- cache_key : string&lt;/div&gt;&lt;div&gt;- operation : &amp;#x27;search&amp;#x27; | &amp;#x27;reverse&amp;#x27; | &amp;#x27;lookup&amp;#x27;&lt;/div&gt;&lt;div&gt;- provider : string&lt;/div&gt;&lt;div&gt;- payload : jsonb&lt;/div&gt;&lt;div&gt;- expires_at : timestamptz&lt;/div&gt;&lt;div&gt;- last_accessed_at : timestamptz&lt;/div&gt;&lt;div&gt;- hit_count : bigint&lt;/div&gt;&lt;div&gt;- created_at : timestamptz&lt;/div&gt;" labelMs="&lt;div&gt;- cache_key : string&lt;/div&gt;&lt;div&gt;- operation : &amp;#x27;search&amp;#x27; | &amp;#x27;reverse&amp;#x27; | &amp;#x27;lookup&amp;#x27;&lt;/div&gt;&lt;div&gt;- provider : string&lt;/div&gt;&lt;div&gt;- payload : jsonb&lt;/div&gt;&lt;div&gt;- expires_at : timestamptz&lt;/div&gt;&lt;div&gt;- last_accessed_at : timestamptz&lt;/div&gt;&lt;div&gt;- hit_count : bigint&lt;/div&gt;&lt;div&gt;- created_at : timestamptz&lt;/div&gt;" petakerjaKey="domain/geocode-cache/attributes" umlCompartment="attributes">
+          <mxCell parent="domain-geocode-cache" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="350" height="154" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-relation-place-location" label="" labelEn="" labelMs="" petakerjaKey="domain/relation-place-location" umlRelationship="association">
+          <mxCell parent="1" edge="1" source="domain-place" target="domain-location" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=none;startArrow=none;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
             <mxGeometry relative="1" as="geometry">
               <Array as="points">
-                <mxPoint x="1190" y="925" />
-                <mxPoint x="455" y="925" />
-                <mxPoint x="455" y="645" />
+                <mxPoint x="960" y="590" />
+                <mxPoint x="960" y="360" />
               </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-place-location-source-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="domain/relation-place-location/source-multiplicity" umlRelationLabel="source-multiplicity">
+          <mxCell parent="domain-relation-place-location" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="-0.92">
+              <mxPoint x="15" y="-20" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-place-location-label" label="location" labelEn="location" labelMs="lokasi" petakerjaKey="domain/relation-place-location/label" umlRelationLabel="role">
+          <mxCell parent="domain-relation-place-location" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-place-location-target-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="domain/relation-place-location/target-multiplicity" umlRelationLabel="target-multiplicity">
+          <mxCell parent="domain-relation-place-location" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="0.92">
+              <mxPoint x="15" y="5" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-place-boundary" label="" labelEn="" labelMs="" petakerjaKey="domain/relation-place-boundary" umlRelationship="association">
+          <mxCell parent="1" edge="1" source="domain-place" target="domain-boundary" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=none;startArrow=none;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1450" y="610" />
+                <mxPoint x="1450" y="390" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-place-boundary-source-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="domain/relation-place-boundary/source-multiplicity" umlRelationLabel="source-multiplicity">
+          <mxCell parent="domain-relation-place-boundary" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="-0.92">
+              <mxPoint x="15" y="-20" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-place-boundary-label" label="boundary" labelEn="boundary" labelMs="sempadan" petakerjaKey="domain/relation-place-boundary/label" umlRelationLabel="role">
+          <mxCell parent="domain-relation-place-boundary" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-place-boundary-target-multiplicity" label="0..1" labelEn="0..1" labelMs="0..1" petakerjaKey="domain/relation-place-boundary/target-multiplicity" umlRelationLabel="target-multiplicity">
+          <mxCell parent="domain-relation-place-boundary" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="0.92">
+              <mxPoint x="15" y="5" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-route-origin" label="" labelEn="" labelMs="" petakerjaKey="domain/relation-route-origin" umlRelationship="association">
+          <mxCell parent="1" edge="1" source="domain-route" target="domain-location" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=none;startArrow=none;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="720" y="760" />
+                <mxPoint x="1120" y="760" />
+                <mxPoint x="1120" y="410" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-route-origin-source-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="domain/relation-route-origin/source-multiplicity" umlRelationLabel="source-multiplicity">
+          <mxCell parent="domain-relation-route-origin" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="-0.92">
+              <mxPoint x="15" y="-20" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-route-origin-label" label="origin" labelEn="origin" labelMs="asal" petakerjaKey="domain/relation-route-origin/label" umlRelationLabel="role">
+          <mxCell parent="domain-relation-route-origin" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-route-origin-target-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="domain/relation-route-origin/target-multiplicity" umlRelationLabel="target-multiplicity">
+          <mxCell parent="domain-relation-route-origin" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="0.92">
+              <mxPoint x="15" y="5" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-route-destination" label="" labelEn="" labelMs="" petakerjaKey="domain/relation-route-destination" umlRelationship="association">
+          <mxCell parent="1" edge="1" source="domain-route" target="domain-location" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=none;startArrow=none;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="840" y="790" />
+                <mxPoint x="1220" y="790" />
+                <mxPoint x="1220" y="430" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-route-destination-source-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="domain/relation-route-destination/source-multiplicity" umlRelationLabel="source-multiplicity">
+          <mxCell parent="domain-relation-route-destination" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="-0.92">
+              <mxPoint x="15" y="-20" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-route-destination-label" label="destination" labelEn="destination" labelMs="destinasi" petakerjaKey="domain/relation-route-destination/label" umlRelationLabel="role">
+          <mxCell parent="domain-relation-route-destination" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-route-destination-target-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="domain/relation-route-destination/target-multiplicity" umlRelationLabel="target-multiplicity">
+          <mxCell parent="domain-relation-route-destination" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="0.92">
+              <mxPoint x="15" y="5" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-route-alternatives" label="" labelEn="" labelMs="" petakerjaKey="domain/relation-route-alternatives" umlRelationship="aggregation">
+          <mxCell parent="1" edge="1" source="domain-route" target="domain-alternative" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=none;startArrow=diamond;startFill=0;startSize=12;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-relation-route-alternatives-source-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="domain/relation-route-alternatives/source-multiplicity" umlRelationLabel="source-multiplicity">
+          <mxCell parent="domain-relation-route-alternatives" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="-0.92">
+              <mxPoint x="15" y="-20" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-route-alternatives-label" label="alternatives" labelEn="alternatives" labelMs="alternatif" petakerjaKey="domain/relation-route-alternatives/label" umlRelationLabel="role">
+          <mxCell parent="domain-relation-route-alternatives" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-route-alternatives-target-multiplicity" label="0..*" labelEn="0..*" labelMs="0..*" petakerjaKey="domain/relation-route-alternatives/target-multiplicity" umlRelationLabel="target-multiplicity">
+          <mxCell parent="domain-relation-route-alternatives" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="0.92">
+              <mxPoint x="15" y="5" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-route-maneuvers" label="" labelEn="" labelMs="" petakerjaKey="domain/relation-route-maneuvers" umlRelationship="aggregation">
+          <mxCell parent="1" edge="1" source="domain-route" target="domain-maneuver" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=none;startArrow=diamond;startFill=0;startSize=12;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1040" y="1140" />
+                <mxPoint x="1660" y="1140" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-route-maneuvers-source-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="domain/relation-route-maneuvers/source-multiplicity" umlRelationLabel="source-multiplicity">
+          <mxCell parent="domain-relation-route-maneuvers" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="-0.92">
+              <mxPoint x="15" y="-20" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-route-maneuvers-label" label="primary maneuvers" labelEn="primary maneuvers" labelMs="arahan utama" petakerjaKey="domain/relation-route-maneuvers/label" umlRelationLabel="role">
+          <mxCell parent="domain-relation-route-maneuvers" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-route-maneuvers-target-multiplicity" label="0..*" labelEn="0..*" labelMs="0..*" petakerjaKey="domain/relation-route-maneuvers/target-multiplicity" umlRelationLabel="target-multiplicity">
+          <mxCell parent="domain-relation-route-maneuvers" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="0.92">
+              <mxPoint x="15" y="5" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-alternative-maneuvers" label="" labelEn="" labelMs="" petakerjaKey="domain/relation-alternative-maneuvers" umlRelationship="aggregation">
+          <mxCell parent="1" edge="1" source="domain-alternative" target="domain-maneuver" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=none;startArrow=diamond;startFill=0;startSize=12;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="domain-relation-alternative-maneuvers-source-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="domain/relation-alternative-maneuvers/source-multiplicity" umlRelationLabel="source-multiplicity">
+          <mxCell parent="domain-relation-alternative-maneuvers" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="-0.92">
+              <mxPoint x="15" y="-20" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-alternative-maneuvers-label" label="maneuvers" labelEn="maneuvers" labelMs="arahan" petakerjaKey="domain/relation-alternative-maneuvers/label" umlRelationLabel="role">
+          <mxCell parent="domain-relation-alternative-maneuvers" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-alternative-maneuvers-target-multiplicity" label="0..*" labelEn="0..*" labelMs="0..*" petakerjaKey="domain/relation-alternative-maneuvers/target-multiplicity" umlRelationLabel="target-multiplicity">
+          <mxCell parent="domain-relation-alternative-maneuvers" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="0.92">
+              <mxPoint x="15" y="5" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-matrix-locations" label="" labelEn="" labelMs="" petakerjaKey="domain/relation-matrix-locations" umlRelationship="association">
+          <mxCell parent="1" edge="1" source="domain-matrix" target="domain-location" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=none;startArrow=none;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="720" y="1330" />
+                <mxPoint x="610" y="1330" />
+                <mxPoint x="610" y="360" />
+                <mxPoint x="1040" y="360" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-matrix-locations-source-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="domain/relation-matrix-locations/source-multiplicity" umlRelationLabel="source-multiplicity">
+          <mxCell parent="domain-relation-matrix-locations" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="-0.92">
+              <mxPoint x="15" y="-20" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-matrix-locations-label" label="sources + targets" labelEn="sources + targets" labelMs="sumber + sasaran" petakerjaKey="domain/relation-matrix-locations/label" umlRelationLabel="role">
+          <mxCell parent="domain-relation-matrix-locations" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-matrix-locations-target-multiplicity" label="1..*" labelEn="1..*" labelMs="1..*" petakerjaKey="domain/relation-matrix-locations/target-multiplicity" umlRelationLabel="target-multiplicity">
+          <mxCell parent="domain-relation-matrix-locations" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="0.92">
+              <mxPoint x="15" y="5" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-isochrone-origin" label="" labelEn="" labelMs="" petakerjaKey="domain/relation-isochrone-origin" umlRelationship="association">
+          <mxCell parent="1" edge="1" source="domain-isochrone" target="domain-location" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=none;startArrow=none;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1780" y="1320" />
+                <mxPoint x="1825" y="1320" />
+                <mxPoint x="1825" y="360" />
+                <mxPoint x="1320" y="360" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-isochrone-origin-source-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="domain/relation-isochrone-origin/source-multiplicity" umlRelationLabel="source-multiplicity">
+          <mxCell parent="domain-relation-isochrone-origin" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="-0.92">
+              <mxPoint x="15" y="-20" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-isochrone-origin-label" label="origin" labelEn="origin" labelMs="asal" petakerjaKey="domain/relation-isochrone-origin/label" umlRelationLabel="role">
+          <mxCell parent="domain-relation-isochrone-origin" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-isochrone-origin-target-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="domain/relation-isochrone-origin/target-multiplicity" umlRelationLabel="target-multiplicity">
+          <mxCell parent="domain-relation-isochrone-origin" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="0.92">
+              <mxPoint x="15" y="5" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-resolution-place" label="" labelEn="" labelMs="" petakerjaKey="domain/relation-resolution-place" umlRelationship="dependency">
+          <mxCell parent="1" edge="1" source="domain-resolution" target="domain-place" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=open;startArrow=none;dashed=1;dashPattern=6 4;endFill=0;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1890" y="620" />
+                <mxPoint x="1815" y="620" />
+                <mxPoint x="1815" y="680" />
+                <mxPoint x="1400" y="680" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-resolution-place-label" label="resolved as" labelEn="resolved as" labelMs="diselesaikan sebagai" petakerjaKey="domain/relation-resolution-place/label" umlRelationLabel="role">
+          <mxCell parent="domain-relation-resolution-place" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-route-cache-route" label="" labelEn="" labelMs="" petakerjaKey="domain/relation-route-cache-route" umlRelationship="dependency">
+          <mxCell parent="1" edge="1" source="domain-route-cache" target="domain-route" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=open;startArrow=none;dashed=1;dashPattern=6 4;endFill=0;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1890" y="870" />
+                <mxPoint x="1840" y="870" />
+                <mxPoint x="1840" y="1160" />
+                <mxPoint x="1030" y="1160" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-route-cache-route-label" label="stores normalized routes" labelEn="stores normalized routes" labelMs="menyimpan laluan ternormal" petakerjaKey="domain/relation-route-cache-route/label" umlRelationLabel="role">
+          <mxCell parent="domain-relation-route-cache-route" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-geocode-cache-place" label="" labelEn="" labelMs="" petakerjaKey="domain/relation-geocode-cache-place" umlRelationship="dependency">
+          <mxCell parent="1" edge="1" source="domain-geocode-cache" target="domain-place" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=open;startArrow=none;dashed=1;dashPattern=6 4;endFill=0;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1890" y="1260" />
+                <mxPoint x="1810" y="1260" />
+                <mxPoint x="1810" y="720" />
+                <mxPoint x="1400" y="720" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-geocode-cache-place-label" label="stores normalized places" labelEn="stores normalized places" labelMs="menyimpan tempat ternormal" petakerjaKey="domain/relation-geocode-cache-place/label" umlRelationLabel="role">
+          <mxCell parent="domain-relation-geocode-cache-place" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-resolution-job" label="" labelEn="" labelMs="" petakerjaKey="domain/relation-resolution-job" umlRelationship="dependency">
+          <mxCell parent="1" edge="1" source="domain-resolution" target="domain-job" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=open;startArrow=none;dashed=1;dashPattern=6 4;endFill=0;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="2320" y="1645" />
+                <mxPoint x="25" y="1645" />
+                <mxPoint x="25" y="900" />
+                <mxPoint x="120" y="900" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="domain-relation-resolution-job-label" label="derived from scraped_job_id" labelEn="derived from scraped_job_id" labelMs="diterbitkan daripada scraped_job_id" petakerjaKey="domain/relation-resolution-job/label" umlRelationLabel="role">
+          <mxCell parent="domain-relation-resolution-job" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
             </mxGeometry>
           </mxCell>
         </object>
         <object id="v2_geo_domain-runtime" label="Runtime verified 2026-07-19: Valhalla enabled and available; shared cache available; Nominatim disabled." labelEn="Runtime verified 2026-07-19: Valhalla enabled and available; shared cache available; Nominatim disabled." labelMs="Runtime disahkan 2026-07-19: Valhalla diaktifkan dan tersedia; cache bersama tersedia; Nominatim dinyahaktifkan." petakerjaKey="runtime-status">
           <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#fff8df,#3d3418);strokeColor=light-dark(#d9a928,#bd8b16);fontColor=light-dark(#5f4700,#ffe8a3);fontFamily=Arial;fontSize=11;align=left;verticalAlign=middle;spacing=8;">
-            <mxGeometry x="50" y="1042" width="1500" height="36" as="geometry" />
+            <mxGeometry x="50" y="1742" width="2300" height="36" as="geometry" />
           </mxCell>
         </object>
       </root>

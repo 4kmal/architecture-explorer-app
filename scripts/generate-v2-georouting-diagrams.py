@@ -7,6 +7,10 @@ The layout system is intentionally derived from the project templates:
 * Sequence actors, participants, activations, messages and fragments are read
   from the supplied template; lanes use a fixed 200 px pitch and 50 px rows.
 * Flowchart processes and decisions use a 10 px grid and orthogonal edges.
+* UML class packages, compartments and relationships are read from the
+  supplied class template; class cards use 46 px headers and typed members.
+* Layered responsibility stacks, depth copies, cards, rails and callouts are
+  read from the supplied stack template and projected into both themes.
 
 Only files below ``assets/editor/v2-georouting`` are owned by this generator.
 The historical vanilla diagrams are comparison assets and must remain untouched.
@@ -15,6 +19,7 @@ The historical vanilla diagrams are comparison assets and must remain untouched.
 from __future__ import annotations
 
 from dataclasses import dataclass
+import html
 from pathlib import Path
 import re
 import xml.etree.ElementTree as ET
@@ -23,18 +28,20 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "assets" / "editor" / "v2-georouting"
 SEQUENCE_TEMPLATE = ROOT / "templates" / "Sequence Diagram Template.drawio"
+CLASS_TEMPLATE = ROOT / "templates" / "Class Diagram Template.drawio"
+STACK_TEMPLATE = ROOT / "templates" / "Stack Template.drawio"
 STAMP = "2026-07-19"
 
 
-def template_style(predicate, description: str) -> str:
-    """Return a required style from the canonical sequence template."""
-    if not SEQUENCE_TEMPLATE.exists():
-        raise RuntimeError(f"Missing sequence template: {SEQUENCE_TEMPLATE}")
-    for cell in ET.parse(SEQUENCE_TEMPLATE).getroot().findall(".//mxCell"):
+def template_style(template: Path, predicate, description: str) -> str:
+    """Return a required style from a canonical Draw.io template."""
+    if not template.exists():
+        raise RuntimeError(f"Missing template: {template}")
+    for cell in ET.parse(template).getroot().findall(".//mxCell"):
         style = cell.get("style", "")
         if predicate(cell, style):
             return style
-    raise RuntimeError(f"Sequence template is missing its required {description} style")
+    raise RuntimeError(f"{template.name} is missing its required {description} style")
 
 
 def strip_style_properties(style: str, names: tuple[str, ...]) -> str:
@@ -43,26 +50,31 @@ def strip_style_properties(style: str, names: tuple[str, ...]) -> str:
     return style.strip(";")
 
 
-SEQUENCE_ACTOR = template_style(lambda _cell, style: "shape=umlActor" in style, "actor")
-SEQUENCE_PARTICIPANT = template_style(lambda _cell, style: "shape=umlLifeline" in style, "participant")
+SEQUENCE_ACTOR = template_style(SEQUENCE_TEMPLATE, lambda _cell, style: "shape=umlActor" in style, "actor")
+SEQUENCE_PARTICIPANT = template_style(SEQUENCE_TEMPLATE, lambda _cell, style: "shape=umlLifeline" in style, "participant")
 SEQUENCE_ACTIVATION = template_style(
+    SEQUENCE_TEMPLATE,
     lambda cell, style: cell.get("vertex") == "1" and "targetShapes=umlLifeline" in style,
     "activation",
 )
-SEQUENCE_FRAME = template_style(lambda _cell, style: "shape=umlFrame" in style, "combined fragment")
+SEQUENCE_FRAME = template_style(SEQUENCE_TEMPLATE, lambda _cell, style: "shape=umlFrame" in style, "combined fragment")
 SEQUENCE_ACTOR_STEM = template_style(
+    SEQUENCE_TEMPLATE,
     lambda cell, style: cell.get("vertex") == "1" and style.startswith("line;") and cell.find("mxGeometry") is not None,
     "actor stem",
 )
 TEMPLATE_CALL = template_style(
+    SEQUENCE_TEMPLATE,
     lambda cell, style: cell.get("edge") == "1" and "startArrow=classic" in style,
     "synchronous call",
 )
 TEMPLATE_RETURN = template_style(
+    SEQUENCE_TEMPLATE,
     lambda cell, style: cell.get("edge") == "1" and "endArrow=open" in style and "dashed=1" in style,
     "return message",
 )
 TEMPLATE_DIVIDER = template_style(
+    SEQUENCE_TEMPLATE,
     lambda cell, style: cell.get("edge") == "1" and "endArrow=none" in style and "dashed=1" in style,
     "fragment divider",
 )
@@ -79,6 +91,237 @@ SEQUENCE_RETURN = strip_style_properties(
 ) + ";strokeWidth=1;fontSize=10;labelBackgroundColor=none;"
 
 
+def template_label(cell: ET.Element) -> str:
+    return html.unescape(cell.get("labelEn") or cell.get("value", ""))
+
+
+CLASS_PACKAGE_STYLES = {
+    "identity": template_style(
+        CLASS_TEMPLATE,
+        lambda cell, style: cell.get("vertex") == "1" and "IDENTITY & PROFILE" in template_label(cell)
+        and "dashed=1" in style,
+        "identity package",
+    ),
+    "jobs": template_style(
+        CLASS_TEMPLATE,
+        lambda cell, style: cell.get("vertex") == "1" and "JOBS & USER STATUS" in template_label(cell)
+        and "dashed=1" in style,
+        "jobs package",
+    ),
+    "geo": template_style(
+        CLASS_TEMPLATE,
+        lambda cell, style: cell.get("vertex") == "1" and "MAPPING, POI & OPEN DATA" in template_label(cell)
+        and "dashed=1" in style,
+        "mapping package",
+    ),
+    "persistence": template_style(
+        CLASS_TEMPLATE,
+        lambda cell, style: cell.get("vertex") == "1" and "AI & ADMINISTRATION" in template_label(cell)
+        and "dashed=1" in style,
+        "administration package",
+    ),
+}
+CLASS_CARD_STYLES = {
+    "identity": template_style(
+        CLASS_TEMPLATE,
+        lambda cell, style: cell.get("vertex") == "1" and "<b>UserProfile</b>" in template_label(cell)
+        and style.startswith("swimlane;"),
+        "identity class",
+    ),
+    "jobs": template_style(
+        CLASS_TEMPLATE,
+        lambda cell, style: cell.get("vertex") == "1" and "<b>JobListing</b>" in template_label(cell)
+        and style.startswith("swimlane;"),
+        "jobs class",
+    ),
+    "geo": template_style(
+        CLASS_TEMPLATE,
+        lambda cell, style: cell.get("vertex") == "1" and "<b>POI</b>" in template_label(cell)
+        and style.startswith("swimlane;"),
+        "mapping class",
+    ),
+    "persistence": template_style(
+        CLASS_TEMPLATE,
+        lambda cell, style: cell.get("vertex") == "1" and "<b>AIProviderCredential</b>" in template_label(cell)
+        and style.startswith("swimlane;"),
+        "administration class",
+    ),
+}
+CLASS_MEMBER = template_style(
+    CLASS_TEMPLATE,
+    lambda cell, style: cell.get("vertex") == "1" and style.startswith("text;strokeColor=none;fillColor=none;align=left;"),
+    "class member compartment",
+)
+CLASS_DIVIDER = template_style(
+    CLASS_TEMPLATE,
+    lambda cell, style: cell.get("vertex") == "1" and style.startswith("line;strokeWidth=1;fillColor=none;"),
+    "class compartment divider",
+)
+CLASS_RELATION_LABEL = template_style(
+    CLASS_TEMPLATE,
+    lambda cell, style: cell.get("vertex") == "1" and style.startswith("edgeLabel;"),
+    "relationship label",
+)
+CLASS_ASSOCIATION = strip_style_properties(
+    template_style(
+        CLASS_TEMPLATE,
+        lambda cell, style: cell.get("edge") == "1" and "endArrow=none" in style
+        and "startArrow=none" in style and "dashed=1" not in style,
+        "association",
+    ),
+    ("entryX", "entryY", "entryDx", "entryDy", "entryPerimeter", "exitX", "exitY", "exitDx", "exitDy", "exitPerimeter"),
+)
+CLASS_DEPENDENCY = strip_style_properties(
+    template_style(
+        CLASS_TEMPLATE,
+        lambda cell, style: cell.get("edge") == "1" and "endArrow=open" in style and "dashed=1" in style,
+        "dependency",
+    ),
+    ("entryX", "entryY", "entryDx", "entryDy", "entryPerimeter", "exitX", "exitY", "exitDx", "exitDy", "exitPerimeter"),
+)
+CLASS_AGGREGATION = strip_style_properties(
+    template_style(
+        CLASS_TEMPLATE,
+        lambda cell, style: cell.get("edge") == "1" and "startArrow=diamond" in style and "startFill=0" in style,
+        "aggregation",
+    ),
+    ("entryX", "entryY", "entryDx", "entryDy", "entryPerimeter", "exitX", "exitY", "exitDx", "exitDy", "exitPerimeter"),
+)
+
+
+def required_template_element(template: Path, identifier: str, description: str) -> ET.Element:
+    if not template.exists():
+        raise RuntimeError(f"Missing template: {template}")
+    element = ET.parse(template).getroot().find(f".//*[@id='{identifier}']")
+    if element is None:
+        raise RuntimeError(f"{template.name} is missing its required {description} element ({identifier})")
+    return element
+
+
+def required_template_cell(template: Path, identifier: str, description: str) -> ET.Element:
+    element = required_template_element(template, identifier, description)
+    cell = element.find("mxCell") if element.tag == "object" else element
+    if cell is None:
+        raise RuntimeError(f"{template.name} {description} element ({identifier}) has no mxCell")
+    return cell
+
+
+def required_template_geometry(template: Path, identifier: str, description: str) -> tuple[float, float, float, float]:
+    geometry = required_template_cell(template, identifier, description).find("mxGeometry")
+    if geometry is None:
+        raise RuntimeError(f"{template.name} {description} element ({identifier}) has no geometry")
+    try:
+        return tuple(float(geometry.get(name, "0")) for name in ("x", "y", "width", "height"))
+    except ValueError as error:
+        raise RuntimeError(f"{template.name} {description} element ({identifier}) has invalid geometry") from error
+
+
+STACK_DARK_COLORS = {
+    "#F7F9FC": "#10151B", "#172033": "#E8EDF7", "#475467": "#AEB8C8",
+    "#E8EEF5": "#202B39", "#66758A": "#8493A8", "#B7C3D0": "#111923",
+    "#DCEBFA": "#152A42", "#2D72D2": "#69A8EF", "#9CBFE4": "#0E1A29",
+    "#EEE5FA": "#2A1F3B", "#7E57C2": "#AE8AE8", "#C4AEE3": "#171121",
+    "#FFF1D6": "#382914", "#C87600": "#E0A24E", "#E6C27E": "#21170C",
+    "#E1F4E8": "#173125", "#238551": "#61CC83", "#97C9AA": "#0E1D16",
+    "#FFFFFF": "#171C23", "#A7B2C1": "#727F92", "#78A9DA": "#69A8EF",
+    "#A184CF": "#AE8AE8", "#D89A39": "#E0A24E", "#58A777": "#61CC83",
+    "#7A271A": "#FFD4CE", "#FDECEC": "#3A1C1C", "#CD4246": "#EF7377",
+    "#B8C2CF": "#727F92", "#EEF4FB": "#17283F", "#5C87B2": "#78A9DA",
+    "#7C8CA1": "#7F8DA1", "#7A4B00": "#FFE0A3", "#FFF4D6": "#3B2D14",
+    "#344054": "#D7DEEA", "#EEF1F5": "#222832", "#98A2B3": "#727F92",
+    "#667085": "#AEB8C8", "#1D4E89": "#BBD8FF", "#18663E": "#BBF2CC",
+}
+
+
+def theme_stack_style(style: str) -> str:
+    """Make the supplied light-only Stack Template colors Explorer-theme aware."""
+    property_pattern = re.compile(r"(fontColor|fillColor|strokeColor|labelBackgroundColor)=(#[0-9A-Fa-f]{6})")
+
+    def replace_color(match: re.Match[str]) -> str:
+        property_name, light = match.groups()
+        canonical = light.upper()
+        if property_name == "fillColor" and canonical == "#172033":
+            dark = "#0B1016"
+        elif property_name == "strokeColor" and canonical == "#172033":
+            dark = "#596579"
+        elif property_name == "fontColor" and canonical == "#FFFFFF":
+            dark = "#F5F7FA"
+        else:
+            dark = STACK_DARK_COLORS.get(canonical)
+        return f"{property_name}=light-dark({light},{dark})" if dark else match.group(0)
+
+    return property_pattern.sub(replace_color, style)
+
+
+def stack_template_style(identifier: str, description: str) -> str:
+    style = required_template_cell(STACK_TEMPLATE, identifier, description).get("style", "")
+    if not style:
+        raise RuntimeError(f"{STACK_TEMPLATE.name} {description} element ({identifier}) has no style")
+    return theme_stack_style(style)
+
+
+STACK_TITLE_STYLE = stack_template_style("diagram-title", "title")
+STACK_SUBTITLE_STYLE = stack_template_style("diagram-subtitle", "subtitle")
+STACK_TITLE_GEOMETRY = required_template_geometry(STACK_TEMPLATE, "diagram-title", "title")
+STACK_SUBTITLE_GEOMETRY = required_template_geometry(STACK_TEMPLATE, "diagram-subtitle", "subtitle")
+STACK_LAYER_SLOTS = ("layer1-inputs", "layer2-maplibre", "layer3-browser", "layer4-gateway", "layer5-providers")
+STACK_DEPTH_SLOTS = ("layer1-depth", "layer2-depth", "layer3-depth", "layer4-depth", "layer5-depth")
+STACK_LAYER_STYLES = tuple(stack_template_style(slot, f"foreground layer {index}") for index, slot in enumerate(STACK_LAYER_SLOTS, 1))
+STACK_DEPTH_STYLES = tuple(stack_template_style(slot, f"depth layer {index}") for index, slot in enumerate(STACK_DEPTH_SLOTS, 1))
+STACK_LAYER_GEOMETRIES = tuple(required_template_geometry(STACK_TEMPLATE, slot, f"foreground layer {index}") for index, slot in enumerate(STACK_LAYER_SLOTS, 1))
+STACK_DEPTH_GEOMETRIES = tuple(required_template_geometry(STACK_TEMPLATE, slot, f"depth layer {index}") for index, slot in enumerate(STACK_DEPTH_SLOTS, 1))
+STACK_CARD_SLOTS = {
+    "input-left": "input-search", "input-center": "input-ab", "input-right": "input-gps",
+    "render-left": "maplibre-current", "render-right": "maplibre-capability",
+    "browser-left": "browser-search-manager", "browser-center": "browser-navigation-manager", "browser-right": "browser-geo-service",
+    "gateway-left": "gateway-express", "gateway-center": "gateway-core", "gateway-right": "gateway-guards",
+    "provider-left": "provider-nominatim", "provider-center": "provider-valhalla", "provider-right": "provider-supabase",
+}
+STACK_CARD_GEOMETRIES = {
+    key: required_template_geometry(STACK_TEMPLATE, slot, f"{key} card") for key, slot in STACK_CARD_SLOTS.items()
+}
+STACK_CARD_TEMPLATE_STYLES = {
+    key: stack_template_style(slot, f"{key} card") for key, slot in STACK_CARD_SLOTS.items()
+}
+STACK_CARD_STYLES = {
+    "neutral": stack_template_style("input-search", "neutral card"),
+    "render": stack_template_style("maplibre-current", "rendering card"),
+    "browser": stack_template_style("browser-search-manager", "browser card"),
+    "gateway": stack_template_style("gateway-express", "gateway card"),
+    "provider": stack_template_style("provider-valhalla", "provider card"),
+}
+STACK_CALLOUT_SLOTS = (
+    "takeaway", "maplibre-boundary", "navigation-control-note", "directions-plugin-note",
+    "side-flows", "fallback-note", "rollout-status",
+)
+STACK_CALLOUT_GEOMETRIES = {
+    slot: required_template_geometry(STACK_TEMPLATE, slot, f"{slot} callout") for slot in STACK_CALLOUT_SLOTS
+}
+STACK_CALLOUT_STYLES = {slot: stack_template_style(slot, f"{slot} callout") for slot in STACK_CALLOUT_SLOTS}
+STACK_FOOTER_GEOMETRY = required_template_geometry(STACK_TEMPLATE, "source-footer", "source footer")
+STACK_FOOTER_STYLE = stack_template_style("source-footer", "source footer")
+STACK_ANCHOR_STYLE = stack_template_style("request-start", "invisible rail anchor")
+STACK_REQUEST_STYLE = stack_template_style("request-flow", "request rail")
+STACK_RESPONSE_STYLE = stack_template_style("response-flow", "response rail")
+STACK_REQUEST_LABEL_STYLE = stack_template_style("request-flow-label", "request label")
+STACK_RESPONSE_LABEL_STYLE = stack_template_style("response-flow-label", "response label")
+STACK_FALLBACK_STYLE = stack_template_style("gateway-fallback-branch", "fallback branch")
+STACK_REQUEST_ANCHORS = (
+    required_template_geometry(STACK_TEMPLATE, "request-start", "request start anchor"),
+    required_template_geometry(STACK_TEMPLATE, "request-end", "request end anchor"),
+)
+STACK_RESPONSE_ANCHORS = (
+    required_template_geometry(STACK_TEMPLATE, "response-start", "response start anchor"),
+    required_template_geometry(STACK_TEMPLATE, "response-end", "response end anchor"),
+)
+STACK_REQUEST_LABEL_GEOMETRY = required_template_geometry(STACK_TEMPLATE, "request-flow-label", "request label")
+STACK_RESPONSE_LABEL_GEOMETRY = required_template_geometry(STACK_TEMPLATE, "response-flow-label", "response label")
+STACK_INTERNAL_FLOW_STYLE = strip_style_properties(
+    STACK_REQUEST_STYLE,
+    ("rounded", "strokeColor", "strokeWidth", "endArrow", "endFill", "fontColor", "labelBackgroundColor", "fontStyle"),
+) + ";rounded=0;strokeColor=light-dark(#596579,#AEB8C8);strokeWidth=1.25;endArrow=classic;endFill=1;"
+
+
 # Template-derived geometry. Keep these constants explicit so future diagram
 # edits cannot silently drift back to oversized, free-form components.
 GRID = 10
@@ -90,6 +333,9 @@ PROCESS_W, PROCESS_H = 220, 60
 DECISION_W, DECISION_H = 180, 100
 CARD_W, CARD_H = 240, 80
 PAGE_MARGIN = 50
+CLASS_HEADER_H = 46
+CLASS_DIVIDER_H = 8
+CLASS_MEMBER_ROW_H = 17
 
 
 TITLE = "text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=24;fontStyle=1;fontColor=light-dark(#172033,#e8edf7);"
@@ -131,6 +377,75 @@ class Page:
     subtitle_ms: str
 
 
+@dataclass(frozen=True)
+class ClassSpec:
+    key: str
+    name: str
+    stereotype: str
+    attributes: tuple[str, ...]
+    operations: tuple[str, ...]
+    x: int
+    y: int
+    width: int
+    tone: str
+    node_ids: str
+    table_name: str = ""
+
+
+@dataclass(frozen=True)
+class RelationshipSpec:
+    key: str
+    source: str
+    target: str
+    label_en: str
+    label_ms: str
+    kind: str = "association"
+    source_multiplicity: str = ""
+    target_multiplicity: str = ""
+    points: tuple[tuple[int, int], ...] = ()
+
+
+@dataclass(frozen=True)
+class StackCardSpec:
+    key: str
+    identifier: str
+    slot: str
+    label_en: str
+    label_ms: str
+    tone: str
+    node_ids: str
+
+
+@dataclass(frozen=True)
+class StackLayerSpec:
+    key: str
+    identifier: str
+    label_en: str
+    label_ms: str
+    cards: tuple[StackCardSpec, ...]
+
+
+@dataclass(frozen=True)
+class StackCalloutSpec:
+    key: str
+    identifier: str
+    slot: str
+    label_en: str
+    label_ms: str
+    node_ids: str = ""
+
+
+@dataclass(frozen=True)
+class StackFlowSpec:
+    key: str
+    source: str
+    target: str
+    points: tuple[tuple[float, float], ...]
+    label_en: str = ""
+    label_ms: str = ""
+    style: str = "internal"
+
+
 def attrs_for(label_en: str, label_ms: str, key: str, node_ids: str = "", table_name: str = "", hotspots: str = "") -> dict[str, str]:
     attrs = {"label": label_en, "labelEn": label_en, "labelMs": label_ms, "petakerjaKey": key}
     if node_ids:
@@ -148,6 +463,19 @@ def add_vertex(root: ET.Element, identifier: str, key: str, label_en: str, label
     wrapper = ET.SubElement(root, "object", {"id": identifier, **attrs_for(label_en, label_ms, key, node_ids, table_name, hotspots)})
     cell = ET.SubElement(wrapper, "mxCell", {"parent": "1", "vertex": "1", "style": style})
     ET.SubElement(cell, "mxGeometry", {"x": str(x), "y": str(y), "width": str(width), "height": str(height), "as": "geometry"})
+    return identifier
+
+
+def add_child_vertex(root: ET.Element, identifier: str, parent: str, key: str,
+                     label_en: str, label_ms: str, y: int, width: int, height: int,
+                     style: str, compartment: str) -> str:
+    wrapper = ET.SubElement(root, "object", {
+        "id": identifier,
+        **attrs_for(label_en, label_ms, key),
+        "umlCompartment": compartment,
+    })
+    cell = ET.SubElement(wrapper, "mxCell", {"parent": parent, "vertex": "1", "style": style})
+    ET.SubElement(cell, "mxGeometry", {"y": str(y), "width": str(width), "height": str(height), "as": "geometry"})
     return identifier
 
 
@@ -185,6 +513,410 @@ def add_text(root: ET.Element, identifier: str, key: str, en: str, ms: str,
     return add_vertex(root, identifier, key, en, ms, x, y, width, height, style)
 
 
+def stack_card_label(title: str, detail: str) -> str:
+    return (
+        f"<b>{html.escape(title)}</b><br>"
+        f"<font style=\"font-size:11px\">{html.escape(detail)}</font>"
+    )
+
+
+def stack_callout_label(title: str, *lines: str) -> str:
+    body = "<br>".join(html.escape(line) for line in lines)
+    return f"<b>{html.escape(title)}</b><br><br>{body}"
+
+
+def set_stack_headers(root: ET.Element, page: Page) -> None:
+    for suffix, label_en, label_ms, style, geometry in (
+        ("title", page.title_en, page.title_ms, STACK_TITLE_STYLE, STACK_TITLE_GEOMETRY),
+        ("subtitle", page.subtitle_en, page.subtitle_ms, STACK_SUBTITLE_STYLE, STACK_SUBTITLE_GEOMETRY),
+    ):
+        identifier = f"{page.page_id}-{suffix}"
+        wrapper = root.find(f".//*[@id='{identifier}']")
+        if wrapper is None:
+            raise RuntimeError(f"Generated stack page is missing {identifier}")
+        wrapper.set("label", label_en)
+        wrapper.set("labelEn", label_en)
+        wrapper.set("labelMs", label_ms)
+        wrapper.set("stackRole", suffix)
+        wrapper.set("templateSlot", f"diagram-{suffix}")
+        cell = wrapper.find("mxCell")
+        if cell is None:
+            raise RuntimeError(f"Generated stack page {identifier} has no mxCell")
+        cell.set("style", style)
+        mx_geometry = cell.find("mxGeometry")
+        if mx_geometry is None:
+            raise RuntimeError(f"Generated stack page {identifier} has no geometry")
+        x, y, width, height = geometry
+        mx_geometry.attrib.update({
+            "x": str(x), "y": str(y), "width": str(width), "height": str(height),
+        })
+
+
+def add_stack_vertex(
+    root: ET.Element,
+    identifier: str,
+    key: str,
+    label_en: str,
+    label_ms: str,
+    geometry: tuple[float, float, float, float],
+    style: str,
+    role: str,
+    template_slot: str,
+    node_ids: str = "",
+    **metadata: str,
+) -> str:
+    wrapper = ET.SubElement(root, "object", {
+        "id": identifier,
+        **attrs_for(label_en, label_ms, key, node_ids),
+        "stackRole": role,
+        "templateSlot": template_slot,
+        **metadata,
+    })
+    cell = ET.SubElement(wrapper, "mxCell", {
+        "parent": "1", "vertex": "1", "style": style,
+    })
+    x, y, width, height = geometry
+    ET.SubElement(cell, "mxGeometry", {
+        "x": str(x), "y": str(y), "width": str(width), "height": str(height), "as": "geometry",
+    })
+    return identifier
+
+
+def add_stack_edge(
+    root: ET.Element,
+    identifier: str,
+    key: str,
+    source: str,
+    target: str,
+    style: str,
+    role: str,
+    label_en: str = "",
+    label_ms: str = "",
+    points: tuple[tuple[float, float], ...] = (),
+    template_slot: str = "",
+    relative_x: str | None = None,
+    relative_y: str | None = None,
+) -> str:
+    wrapper_attrs = {
+        "id": identifier,
+        **attrs_for(label_en, label_ms, key),
+        "stackRole": role,
+    }
+    if template_slot:
+        wrapper_attrs["templateSlot"] = template_slot
+    wrapper = ET.SubElement(root, "object", wrapper_attrs)
+    cell = ET.SubElement(wrapper, "mxCell", {
+        "parent": "1", "edge": "1", "source": source, "target": target, "style": style,
+    })
+    geometry_attrs = {"relative": "1", "as": "geometry"}
+    if relative_x is not None:
+        geometry_attrs["x"] = relative_x
+    if relative_y is not None:
+        geometry_attrs["y"] = relative_y
+    geometry = ET.SubElement(cell, "mxGeometry", geometry_attrs)
+    if points:
+        point_array = ET.SubElement(geometry, "Array", {"as": "points"})
+        for x, y in points:
+            ET.SubElement(point_array, "mxPoint", {"x": str(x), "y": str(y)})
+    return identifier
+
+
+def add_stack_rail(
+    root: ET.Element,
+    prefix: str,
+    direction: str,
+    label_en: str,
+    label_ms: str,
+) -> None:
+    if direction == "request":
+        geometries = STACK_REQUEST_ANCHORS
+        rail_style = STACK_REQUEST_STYLE
+        label_style = STACK_REQUEST_LABEL_STYLE
+        label_geometry = STACK_REQUEST_LABEL_GEOMETRY
+        relative_y = "-16"
+    elif direction == "response":
+        geometries = STACK_RESPONSE_ANCHORS
+        rail_style = STACK_RESPONSE_STYLE
+        label_style = STACK_RESPONSE_LABEL_STYLE
+        label_geometry = STACK_RESPONSE_LABEL_GEOMETRY
+        relative_y = "-18"
+    else:
+        raise ValueError(f"Unknown stack rail direction: {direction}")
+    anchor_ids: list[str] = []
+    for endpoint, geometry in zip(("start", "end"), geometries, strict=True):
+        anchor_ids.append(add_stack_vertex(
+            root,
+            f"{prefix}-{direction}-{endpoint}",
+            f"{prefix}/{direction}-{endpoint}",
+            "", "", geometry, STACK_ANCHOR_STYLE, "anchor", f"{direction}-{endpoint}",
+            stackDirection=direction,
+        ))
+    add_stack_edge(
+        root,
+        f"{prefix}-{direction}-flow",
+        f"{prefix}/{direction}-flow",
+        anchor_ids[0], anchor_ids[1], rail_style, "rail",
+        template_slot=f"{direction}-flow", relative_x="0.05", relative_y=relative_y,
+    )
+    add_stack_vertex(
+        root,
+        f"{prefix}-{direction}-flow-label",
+        f"{prefix}/{direction}-flow-label",
+        label_en, label_ms, label_geometry, label_style, "rail-label", f"{direction}-flow-label",
+        stackDirection=direction,
+    )
+
+
+def render_stack_diagram(
+    root: ET.Element,
+    page: Page,
+    prefix: str,
+    layers: tuple[StackLayerSpec, ...],
+    callouts: tuple[StackCalloutSpec, ...],
+    flows: tuple[StackFlowSpec, ...],
+    request_label_en: str,
+    request_label_ms: str,
+    response_label_en: str,
+    response_label_ms: str,
+    footer_en: str,
+    footer_ms: str,
+) -> None:
+    if len(layers) != 5:
+        raise ValueError(f"{prefix}: expected five stack layers, got {len(layers)}")
+    if tuple(callout.slot for callout in callouts) != STACK_CALLOUT_SLOTS:
+        raise ValueError(f"{prefix}: callouts must follow the seven Stack Template slots")
+    set_stack_headers(root, page)
+
+    # Depth copies must precede the foreground layers in document order.
+    for index, layer in enumerate(layers):
+        add_stack_vertex(
+            root,
+            f"{layer.identifier}-depth",
+            f"{prefix}/layer-{layer.key}-depth",
+            "", "", STACK_DEPTH_GEOMETRIES[index], STACK_DEPTH_STYLES[index],
+            "depth", STACK_DEPTH_SLOTS[index], stackLayer=layer.key,
+        )
+    card_ids: set[str] = set()
+    for index, layer in enumerate(layers):
+        add_stack_vertex(
+            root,
+            layer.identifier,
+            f"{prefix}/layer-{layer.key}",
+            layer.label_en, layer.label_ms,
+            STACK_LAYER_GEOMETRIES[index], STACK_LAYER_STYLES[index],
+            "layer", STACK_LAYER_SLOTS[index], stackLayer=layer.key,
+        )
+        for card in layer.cards:
+            if card.identifier in card_ids:
+                raise ValueError(f"{prefix}: duplicate stack card id {card.identifier}")
+            card_ids.add(card.identifier)
+            add_stack_vertex(
+                root,
+                card.identifier,
+                f"{prefix}/{card.key}",
+                card.label_en, card.label_ms,
+                STACK_CARD_GEOMETRIES[card.slot], STACK_CARD_TEMPLATE_STYLES[card.slot],
+                "card", STACK_CARD_SLOTS[card.slot], card.node_ids,
+                stackLayer=layer.key, tone=card.tone,
+            )
+    callout_ids = {callout.identifier for callout in callouts}
+    known_targets = card_ids | callout_ids
+    for flow in flows:
+        if flow.source not in known_targets or flow.target not in known_targets:
+            raise ValueError(f"{prefix}: flow {flow.key} references an unknown stack endpoint")
+        if not flow.points:
+            raise ValueError(f"{prefix}: flow {flow.key} requires explicit orthogonal waypoints")
+        flow_style = STACK_FALLBACK_STYLE if flow.style == "fallback" else STACK_INTERNAL_FLOW_STYLE
+        add_stack_edge(
+            root,
+            f"{prefix}-flow-{flow.key}",
+            f"{prefix}/flow-{flow.key}",
+            flow.source, flow.target, flow_style, "flow",
+            flow.label_en, flow.label_ms, flow.points,
+            "gateway-fallback-branch" if flow.style == "fallback" else "internal-flow",
+        )
+    # Callouts render after connectors so routed lines cannot cross their text.
+    for callout in callouts:
+        add_stack_vertex(
+            root,
+            callout.identifier,
+            f"{prefix}/callout-{callout.key}",
+            callout.label_en, callout.label_ms,
+            STACK_CALLOUT_GEOMETRIES[callout.slot], STACK_CALLOUT_STYLES[callout.slot],
+            "callout", callout.slot, callout.node_ids,
+        )
+    add_stack_rail(root, prefix, "request", request_label_en, request_label_ms)
+    add_stack_rail(root, prefix, "response", response_label_en, response_label_ms)
+    add_stack_vertex(
+        root,
+        f"{prefix}-source-footer",
+        f"{prefix}/source-footer",
+        footer_en, footer_ms,
+        STACK_FOOTER_GEOMETRY, STACK_FOOTER_STYLE,
+        "footer", "source-footer",
+    )
+
+
+def member_height(lines: tuple[str, ...]) -> int:
+    return max(31, 12 + CLASS_MEMBER_ROW_H * len(lines))
+
+
+def member_html(lines: tuple[str, ...]) -> str:
+    return "".join(f"<div>{html.escape(line)}</div>" for line in lines)
+
+
+def class_title(name: str, stereotype: str) -> str:
+    stereotype_text = html.escape(f"<<{stereotype}>>")
+    return (
+        f"<b>{html.escape(name)}</b><br>"
+        f"<span style=\"font-size:10px;color:light-dark(#475467,#c5cedb);\">{stereotype_text}</span>"
+    )
+
+
+def add_uml_class(root: ET.Element, prefix: str, spec: ClassSpec) -> tuple[str, int]:
+    identifier = f"{prefix}-{spec.key}"
+    stable_key = f"{prefix}/{spec.key}"
+    attributes_height = member_height(spec.attributes)
+    operations_height = member_height(spec.operations) if spec.operations else 0
+    raw_height = CLASS_HEADER_H + attributes_height + (CLASS_DIVIDER_H + operations_height if spec.operations else 0)
+    height = ((raw_height + GRID - 1) // GRID) * GRID
+    if spec.operations:
+        operations_height += height - raw_height
+    else:
+        attributes_height += height - raw_height
+    title = class_title(spec.name, spec.stereotype)
+    wrapper_attrs = {
+        "id": identifier,
+        **attrs_for(title, title, stable_key, spec.node_ids, spec.table_name),
+        "umlClass": "1",
+        "stereotype": spec.stereotype,
+        "tone": spec.tone,
+    }
+    wrapper = ET.SubElement(root, "object", wrapper_attrs)
+    cell = ET.SubElement(wrapper, "mxCell", {
+        "parent": "1", "vertex": "1", "style": CLASS_CARD_STYLES[spec.tone],
+    })
+    ET.SubElement(cell, "mxGeometry", {
+        "x": str(spec.x), "y": str(spec.y), "width": str(spec.width), "height": str(height), "as": "geometry",
+    })
+    attributes = member_html(spec.attributes)
+    add_child_vertex(
+        root, f"{identifier}-attributes", identifier, f"{stable_key}/attributes",
+        attributes, attributes, CLASS_HEADER_H, spec.width, attributes_height, CLASS_MEMBER, "attributes",
+    )
+    if spec.operations:
+        divider_y = CLASS_HEADER_H + attributes_height
+        divider = ET.SubElement(root, "object", {
+            "id": f"{identifier}-divider",
+            **attrs_for("", "", f"{stable_key}/divider"),
+            "umlCompartment": "divider",
+        })
+        divider_cell = ET.SubElement(divider, "mxCell", {
+            "parent": identifier, "vertex": "1", "style": CLASS_DIVIDER,
+        })
+        ET.SubElement(divider_cell, "mxGeometry", {
+            "y": str(divider_y), "width": str(spec.width), "height": str(CLASS_DIVIDER_H), "as": "geometry",
+        })
+        operations = member_html(spec.operations)
+        add_child_vertex(
+            root, f"{identifier}-operations", identifier, f"{stable_key}/operations",
+            operations, operations, divider_y + CLASS_DIVIDER_H, spec.width, operations_height,
+            CLASS_MEMBER, "operations",
+        )
+    return identifier, height
+
+
+def add_relationship_label(root: ET.Element, identifier: str, parent: str, key: str,
+                           label_en: str, label_ms: str, relative_x: float | None,
+                           offset_x: int, offset_y: int, role: str) -> None:
+    wrapper = ET.SubElement(root, "object", {
+        "id": identifier,
+        **attrs_for(label_en, label_ms, key),
+        "umlRelationLabel": role,
+    })
+    cell = ET.SubElement(wrapper, "mxCell", {
+        "parent": parent, "vertex": "1", "connectable": "0", "style": CLASS_RELATION_LABEL,
+    })
+    geometry_attrs = {"relative": "1", "as": "geometry"}
+    if relative_x is not None:
+        geometry_attrs["x"] = str(relative_x)
+    geometry = ET.SubElement(cell, "mxGeometry", geometry_attrs)
+    ET.SubElement(geometry, "mxPoint", {"x": str(offset_x), "y": str(offset_y), "as": "offset"})
+
+
+def add_uml_relationship(root: ET.Element, prefix: str, spec: RelationshipSpec,
+                         ids: dict[str, str]) -> str:
+    identifier = f"{prefix}-relation-{spec.key}"
+    stable_key = f"{prefix}/relation-{spec.key}"
+    relation_styles = {
+        "association": CLASS_ASSOCIATION,
+        "dependency": CLASS_DEPENDENCY,
+        "aggregation": CLASS_AGGREGATION,
+    }
+    wrapper = ET.SubElement(root, "object", {
+        "id": identifier,
+        **attrs_for("", "", stable_key),
+        "umlRelationship": spec.kind,
+    })
+    cell = ET.SubElement(wrapper, "mxCell", {
+        "parent": "1", "edge": "1", "source": ids[spec.source], "target": ids[spec.target],
+        "style": relation_styles[spec.kind],
+    })
+    geometry = ET.SubElement(cell, "mxGeometry", {"relative": "1", "as": "geometry"})
+    if spec.points:
+        points = ET.SubElement(geometry, "Array", {"as": "points"})
+        for x, y in spec.points:
+            ET.SubElement(points, "mxPoint", {"x": str(x), "y": str(y)})
+    if spec.source_multiplicity:
+        add_relationship_label(
+            root, f"{identifier}-source-multiplicity", identifier,
+            f"{stable_key}/source-multiplicity", spec.source_multiplicity, spec.source_multiplicity,
+            -0.92, 15, -20, "source-multiplicity",
+        )
+    if spec.label_en:
+        add_relationship_label(
+            root, f"{identifier}-label", identifier, f"{stable_key}/label",
+            spec.label_en, spec.label_ms, None, 0, -13, "role",
+        )
+    if spec.target_multiplicity:
+        add_relationship_label(
+            root, f"{identifier}-target-multiplicity", identifier,
+            f"{stable_key}/target-multiplicity", spec.target_multiplicity, spec.target_multiplicity,
+            0.92, 15, 5, "target-multiplicity",
+        )
+    return identifier
+
+
+def add_uml_package(root: ET.Element, prefix: str, key: str, label_en: str, label_ms: str,
+                    x: int, y: int, width: int, height: int, tone: str) -> str:
+    label_en_html = f"<b>{html.escape(label_en.upper())}</b>"
+    label_ms_html = f"<b>{html.escape(label_ms.upper())}</b>"
+    identifier = f"{prefix}-package-{key}"
+    wrapper = ET.SubElement(root, "object", {
+        "id": identifier,
+        **attrs_for(label_en_html, label_ms_html, f"{prefix}/package-{key}"),
+        "umlPackage": "1",
+        "tone": tone,
+    })
+    cell = ET.SubElement(wrapper, "mxCell", {
+        "parent": "1", "vertex": "1", "style": CLASS_PACKAGE_STYLES[tone],
+    })
+    ET.SubElement(cell, "mxGeometry", {
+        "x": str(x), "y": str(y), "width": str(width), "height": str(height), "as": "geometry",
+    })
+    return identifier
+
+
+def add_class(root: ET.Element, identifier: str, key: str, title_en: str, title_ms: str,
+              body_en: str, body_ms: str, x: int, y: int, width: int, height: int,
+              node_ids: str, table_name: str = "") -> str:
+    """Render the legacy compact class card used by the unchanged V2 ERD."""
+    return add_vertex(
+        root, identifier, key, f"{title_en}\n{body_en}", f"{title_ms}\n{body_ms}",
+        x, y, width, height, TABLE_BOX if table_name else CLASS_BOX, node_ids, table_name,
+    )
+
+
 def create_page(page: Page) -> tuple[ET.Element, ET.Element]:
     mxfile = ET.Element("mxfile", {
         "host": "PetaKerja Architecture Explorer", "agent": "PetaKerja V2 Georouting Generator",
@@ -217,13 +949,6 @@ def base_note(root: ET.Element, page: Page) -> None:
              f"Runtime verified {STAMP}: Valhalla enabled and available; shared cache available; Nominatim disabled.",
              f"Runtime disahkan {STAMP}: Valhalla diaktifkan dan tersedia; cache bersama tersedia; Nominatim dinyahaktifkan.",
              PAGE_MARGIN, page.height - 58, page.width - 2 * PAGE_MARGIN, 36, NOTE)
-
-
-def add_class(root: ET.Element, identifier: str, key: str, title_en: str, title_ms: str,
-              body_en: str, body_ms: str, x: int, y: int, width: int, height: int,
-              node_ids: str, table_name: str = "") -> str:
-    return add_vertex(root, identifier, key, f"{title_en}\n{body_en}", f"{title_ms}\n{body_ms}", x, y, width, height,
-                      TABLE_BOX if table_name else CLASS_BOX, node_ids, table_name)
 
 
 def generate_usecase() -> None:
@@ -586,138 +1311,385 @@ def generate_job_sequence() -> None:
 
 
 def generate_domain() -> None:
-    page = Page("domain.drawio", "v2_geo_domain", "V2 Georouting Domain", 1600, 1100,
+    page = Page("domain.drawio", "v2_geo_domain", "V2 Georouting Domain", 2400, 1800,
                 "PetaKerja Domain Classes — V2 Georouting", "Kelas Domain PetaKerja — Georouting V2",
-                "Compact class cards follow the class proportions in the supplied template.",
-                "Kad kelas padat mengikut perkadaran kelas dalam templat yang dibekalkan.")
+                "Full UML contracts, entities and multiplicities derived from the supplied class template.",
+                "Kontrak, entiti dan kardinaliti UML penuh berdasarkan templat kelas yang dibekalkan.")
     mxfile, root = create_page(page)
-    groups = [("core", "Existing core domain", "Domain teras sedia ada", 50, 130, 400, 840),
-              ("geo", "Geospatial contracts", "Kontrak geospatial", 480, 130, 700, 840),
-              ("derived", "Derived routing data", "Data penghalaan terbitan", 1210, 130, 340, 840)]
-    for key, en, ms, x, y, w, h in groups:
-        add_vertex(root, f"domain-group-{key}", f"domain/group-{key}", en, ms, x, y, w, h, GROUP)
+    packages = [
+        ("identity", "Identity & application context", "Identiti & konteks aplikasi", 50, 130, 500, 410, "identity"),
+        ("jobs", "Jobs & user status", "Kerja & status pengguna", 50, 570, 500, 1110, "jobs"),
+        ("geo", "Map & geospatial contracts", "Kontrak peta & geospatial", 580, 130, 1280, 1550, "geo"),
+        ("persistence", "Derived routing persistence", "Kegigihan penghalaan terbitan", 1890, 130, 460, 1550, "persistence"),
+    ]
+    for key, en, ms, x, y, width, height, tone in packages:
+        add_uml_package(root, "domain", key, en, ms, x, y, width, height, tone)
+
+    specs = [
+        ClassSpec("user", "UserProfile", "entity: public.users", (
+            "- id : uuid", "- better_auth_user_id : string", "- display_name : string | null",
+            "- email : string | null", "- selected_state : string | null",
+            "- role : 'user' | 'admin' | 'owner'",
+        ), (), 160, 235, 280, "identity", "user-profile", "users"),
+        ClassSpec("job", "JobListing", "interface", (
+            "- id : string", "- title : string", "- company : string", "- companyLogo? : string",
+            "- address? : string", "- location : string", "- description : string", "- salary? : string",
+            "- employmentType : string", "- datePosted : string", "- applyLink : string", "- source : string",
+            "- lat? : number", "- lng? : number", "- locationPrecision? : 'exact' | 'approximate' | 'remote'",
+            "- matchScore? : number", "- skills? : string[]", "- remoteType? : string",
+            "- experienceLevel? : string",
+        ), (), 120, 690, 360, "jobs", "job-entity"),
+        ClassSpec("state", "UserJobState", "entity: public.user_job_states", (
+            "- id : uuid", "- user_id : uuid", "- source : UserJobSource", "- job_key : string",
+            "- state : UserJobStateValue", "- job_title : string", "- company_name : string | null",
+            "- apply_url : string | null", "- location : string | null", "- salary_raw : string | null",
+            "- posted_at : string | null", "- notes : string | null", "- fit_score : number | null",
+            "- saved_at : string", "- applied_at : string | null", "- updated_at : string",
+        ), (), 120, 1150, 360, "jobs", "job-state-entity", "user_job_states"),
+        ClassSpec("poi", "POI", "entity: public.pois", (
+            "- id : uuid", "- name : string | null", "- category : string", "- category_group : string",
+            "- lat : number", "- lng : number", "- address : string | null", "- postcode : string | null",
+            "- website : string | null", "- is_verified : boolean", "- source_name : string",
+            "- avg_rating : number", "- review_count : number",
+        ), (), 640, 235, 340, "geo", "poi-entity", "pois"),
+        ClassSpec("location", "GeoLocation", "interface", (
+            "- lat : number", "- lng : number", "- label? : string",
+        ), (), 1050, 235, 260, "geo", "geo-location"),
+        ClassSpec("boundary", "GeoBoundary", "interface", (
+            "- type : 'Feature'", "- geometry : Polygon | MultiPolygon",
+            "- properties : Record<string, unknown>",
+        ), (), 1410, 235, 360, "geo", "geo-place"),
+        ClassSpec("place", "GeoPlace", "interface", (
+            "- id : string", "- source : 'petakerja' | 'nominatim'", "- name : string",
+            "- displayName : string", "- category : string", "- address : string | null",
+            "- location : GeoLocation", "- boundingBox : [number, number, number, number] | null",
+            "- osmType : 'node' | 'way' | 'relation' | null", "- osmId : string | null",
+            "- confidence : LocationConfidence", "- boundary? : GeoBoundary | null",
+            "- metadata? : Record<string, unknown>",
+        ), (), 1010, 500, 390, "geo", "geo-place"),
+        ClassSpec("route", "GeoRoute", "interface", (
+            "- provider : 'valhalla' | 'straight-line'", "- profile : GeoRouteProfile",
+            "- origin : GeoLocation", "- destination : GeoLocation", "- distanceMeters : number",
+            "- durationSeconds : number | null", "- trafficAware : false",
+            "- estimateKind : 'routed' | 'straight-line'", "- geometry : Feature<LineString>",
+            "- maneuvers : GeoManeuver[]", "- alternatives : GeoRouteAlternative[]",
+            "- dataTimestamp : string | null",
+        ), (), 640, 820, 390, "geo", "geo-route"),
+        ClassSpec("alternative", "GeoRouteAlternative", "interface", (
+            "- id : string", "- distanceMeters : number", "- durationSeconds : number",
+            "- geometry : Feature<LineString>", "- maneuvers : GeoManeuver[]",
+        ), (), 1100, 840, 350, "geo", "geo-route-alternative"),
+        ClassSpec("maneuver", "GeoManeuver", "interface", (
+            "- instruction : string", "- distanceMeters : number", "- durationSeconds : number",
+            "- beginShapeIndex? : number", "- endShapeIndex? : number", "- type? : number",
+            "- streetNames? : string[]",
+        ), (), 1510, 840, 290, "geo", "geo-maneuver"),
+        ClassSpec("matrix", "GeoMatrixResult", "interface", (
+            "- provider : 'valhalla'", "- profile : GeoRouteProfile", "- sources : GeoLocation[]",
+            "- targets : GeoLocation[]", "- distancesMeters : Array<Array<number | null>>",
+            "- durationsSeconds : Array<Array<number | null>>",
+        ), (), 790, 1240, 410, "geo", "geo-matrix"),
+        ClassSpec("isochrone", "GeoIsochroneResult", "interface", (
+            "- provider : 'valhalla'", "- profile : GeoRouteProfile", "- origin : GeoLocation",
+            "- contoursMinutes : number[]", "- featureCollection : FeatureCollection<Polygon | MultiPolygon>",
+        ), (), 1320, 1240, 420, "geo", "geo-isochrone"),
+        ClassSpec("resolution", "JobLocationResolution", "entity: public.job_location_resolutions", (
+            "- id : uuid", "- scraped_job_id : string", "- source_location : string",
+            "- normalized_location : string", "- display_name : string | null", "- latitude : number | null",
+            "- longitude : number | null", "- geom : geometry(Point, 4326) generated",
+            "- confidence : LocationConfidence", "- routable : boolean", "- is_remote : boolean",
+            "- provider : string", "- osm_type : 'node' | 'way' | 'relation' | null",
+            "- resolved_at : timestamptz", "- expires_at : timestamptz | null",
+        ), (), 1945, 235, 350, "persistence", "job-location-resolution", "job_location_resolutions"),
+        ClassSpec("route-cache", "GeoRouteCache", "entity: public.geo_route_cache", (
+            "- cache_key : string", "- operation : 'route' | 'matrix' | 'isochrone'", "- provider : string",
+            "- payload : jsonb", "- expires_at : timestamptz", "- last_accessed_at : timestamptz",
+            "- hit_count : bigint", "- created_at : timestamptz",
+        ), (), 1945, 760, 350, "persistence", "geo-route-cache", "geo_route_cache"),
+        ClassSpec("geocode-cache", "GeoGeocodeCache", "entity: public.geo_geocode_cache", (
+            "- cache_key : string", "- operation : 'search' | 'reverse' | 'lookup'", "- provider : string",
+            "- payload : jsonb", "- expires_at : timestamptz", "- last_accessed_at : timestamptz",
+            "- hit_count : bigint", "- created_at : timestamptz",
+        ), (), 1945, 1160, 350, "persistence", "geo-geocode-cache", "geo_geocode_cache"),
+    ]
     ids: dict[str, str] = {}
-    core = [
-        ("user", "UserProfile", "ProfilPengguna", "id, role, selected_state", "id, peranan, selected_state", 100, 215, "user-profile"),
-        ("poi", "POI", "POI", "id, category, geom, address", "id, kategori, geom, alamat", 100, 400, "poi-entity"),
-        ("job", "JobListing", "SenaraiKerja", "id, title, company, location", "id, tajuk, syarikat, lokasi", 100, 585, "job-entity"),
-        ("state", "UserJobState", "StatusKerjaPengguna", "user_id, job_key, state", "user_id, job_key, status", 100, 770, "job-state-entity"),
+    for spec in specs:
+        ids[spec.key], _ = add_uml_class(root, "domain", spec)
+
+    relationships = [
+        RelationshipSpec("place-location", "place", "location", "location", "lokasi", "association", "1", "1", ((960, 590), (960, 360))),
+        RelationshipSpec("place-boundary", "place", "boundary", "boundary", "sempadan", "association", "1", "0..1", ((1450, 610), (1450, 390))),
+        RelationshipSpec("route-origin", "route", "location", "origin", "asal", "association", "1", "1", ((720, 760), (1120, 760), (1120, 410))),
+        RelationshipSpec("route-destination", "route", "location", "destination", "destinasi", "association", "1", "1", ((840, 790), (1220, 790), (1220, 430))),
+        RelationshipSpec("route-alternatives", "route", "alternative", "alternatives", "alternatif", "aggregation", "1", "0..*"),
+        RelationshipSpec("route-maneuvers", "route", "maneuver", "primary maneuvers", "arahan utama", "aggregation", "1", "0..*", ((1040, 1140), (1660, 1140))),
+        RelationshipSpec("alternative-maneuvers", "alternative", "maneuver", "maneuvers", "arahan", "aggregation", "1", "0..*"),
+        RelationshipSpec("matrix-locations", "matrix", "location", "sources + targets", "sumber + sasaran", "association", "1", "1..*", ((720, 1330), (610, 1330), (610, 360), (1040, 360))),
+        RelationshipSpec("isochrone-origin", "isochrone", "location", "origin", "asal", "association", "1", "1", ((1780, 1320), (1825, 1320), (1825, 360), (1320, 360))),
+        RelationshipSpec("resolution-place", "resolution", "place", "resolved as", "diselesaikan sebagai", "dependency", points=((1890, 620), (1815, 620), (1815, 680), (1400, 680))),
+        RelationshipSpec("route-cache-route", "route-cache", "route", "stores normalized routes", "menyimpan laluan ternormal", "dependency", points=((1890, 870), (1840, 870), (1840, 1160), (1030, 1160))),
+        RelationshipSpec("geocode-cache-place", "geocode-cache", "place", "stores normalized places", "menyimpan tempat ternormal", "dependency", points=((1890, 1260), (1810, 1260), (1810, 720), (1400, 720))),
+        RelationshipSpec("resolution-job", "resolution", "job", "derived from scraped_job_id", "diterbitkan daripada scraped_job_id", "dependency", points=((2320, 1645), (25, 1645), (25, 900), (120, 900))),
     ]
-    for key, en, ms, ben, bms, x, y, node in core:
-        ids[key] = add_class(root, f"domain-{key}", f"domain/{key}", en, ms, ben, bms, x, y, 300, 120, node)
-    geo = [
-        ("location", "GeoLocation", "LokasiGeo", "lat, lng, label?", "lat, lng, label?", 520, 215, "geo-location"),
-        ("place", "GeoPlace", "TempatGeo", "source, confidence, boundary?", "sumber, keyakinan, sempadan?", 850, 215, "geo-place"),
-        ("route", "GeoRoute", "LaluanGeo", "profile, geometry, distance, duration?", "profil, geometri, jarak, tempoh?", 520, 400, "geo-route"),
-        ("alternative", "GeoRouteAlternative", "AlternatifLaluanGeo", "geometry, duration, maneuvers", "geometri, tempoh, arahan", 850, 400, "geo-route-alternative"),
-        ("maneuver", "GeoManeuver", "ArahanGeo", "instruction, shape indexes", "arahan, indeks bentuk", 520, 585, "geo-maneuver"),
-        ("matrix", "GeoMatrixResult", "HasilMatriksGeo", "sources, targets, distances, durations", "sumber, sasaran, jarak, tempoh", 850, 585, "geo-matrix"),
-        ("isochrone", "GeoIsochroneResult", "HasilIsokronGeo", "origin, contours, FeatureCollection", "asal, kontur, FeatureCollection", 685, 770, "geo-isochrone"),
-    ]
-    for key, en, ms, ben, bms, x, y, node in geo:
-        ids[key] = add_class(root, f"domain-{key}", f"domain/{key}", en, ms, ben, bms, x, y, 290, 120, node)
-    derived = [
-        ("resolution", "JobLocationResolution", "PenyelesaianLokasiKerja", "scraped_job_id\ncoordinates, confidence\nroutable, is_remote", "scraped_job_id\nkoordinat, keyakinan\nboleh_dihala, jarak_jauh", 1260, 235, 240, 170, "job-location-resolution", "job_location_resolutions"),
-        ("route-cache", "GeoRouteCache", "CacheLaluanGeo", "operation, provider\npayload, expires_at", "operasi, penyedia\npayload, expires_at", 1260, 505, 240, 140, "geo-route-cache", "geo_route_cache"),
-        ("geocode-cache", "GeoGeocodeCache", "CacheGeokodGeo", "operation, provider\npayload, expires_at", "operasi, penyedia\npayload, expires_at", 1260, 745, 240, 140, "geo-geocode-cache", "geo_geocode_cache"),
-    ]
-    for key, en, ms, ben, bms, x, y, w, h, node, table in derived:
-        ids[key] = add_class(root, f"domain-{key}", f"domain/{key}", en, ms, ben, bms, x, y, w, h, node, table)
-    links = [("place", "location", "has", "mempunyai"), ("route", "location", "origin + destination", "asal + destinasi"),
-             ("route", "alternative", "0..*", "0..*"), ("alternative", "maneuver", "0..*", "0..*"),
-             ("resolution", "place", "resolved as", "diselesaikan sebagai")]
-    for index, (source, target, en, ms) in enumerate(links, 1):
-        add_edge(root, f"domain-edge-{index}", f"domain/edge-{index}", ids[source], ids[target], en, ms)
-    add_edge_points(root, "domain-edge-job-resolution", "domain/edge-job-resolution", ids["resolution"], ids["job"],
-                    [(1190, 925), (455, 925), (455, 645)], "derived from", "diterbitkan daripada")
+    for relationship in relationships:
+        add_uml_relationship(root, "domain", relationship, ids)
     base_note(root, page)
     write(page, mxfile)
 
 
 def generate_implementation() -> None:
-    page = Page("implementation.drawio", "v2_geo_implementation", "V2 Georouting Implementation", 1680, 1180,
+    page = Page("implementation.drawio", "v2_geo_implementation", "V2 Georouting Implementation", 2400, 1900,
                 "Implementation Dependencies — V2 Georouting", "Kebergantungan Pelaksanaan — Georouting V2",
-                "Aligned responsibility lanes replace the previous free-form dependency field.",
-                "Lorong tanggungjawab sejajar menggantikan medan kebergantungan bebas sebelumnya.")
+                "Template-derived UML classes show retained collaborators, owned managers and provider dependencies.",
+                "Kelas UML berasaskan templat menunjukkan rakan tersimpan, pengurus milik dan kebergantungan penyedia.")
     mxfile, root = create_page(page)
-    lanes = [("app", "Application composition", "Komposisi aplikasi", 50, 130, 1580, 175),
-             ("browser", "Browser managers and rendering", "Pengurus pelayar dan pemaparan", 50, 335, 1580, 300),
-             ("service", "Client and server boundary", "Sempadan klien dan pelayan", 50, 665, 1580, 190),
-             ("provider", "Providers and persistent data", "Penyedia dan data kekal", 50, 885, 1580, 190)]
-    for key, en, ms, x, y, w, h in lanes:
-        add_vertex(root, f"impl-group-{key}", f"implementation/group-{key}", en, ms, x, y, w, h, GROUP)
+    packages = [
+        ("app", "Application composition", "Komposisi aplikasi", 50, 130, 2300, 300, "identity"),
+        ("browser", "Browser managers & rendering", "Pengurus pelayar & pemaparan", 50, 460, 2300, 620, "geo"),
+        ("service", "Client & server boundary", "Sempadan klien & pelayan", 50, 1110, 2300, 350, "jobs"),
+        ("provider", "Providers & persistent data", "Penyedia & data kekal", 50, 1490, 2300, 320, "persistence"),
+    ]
+    for key, en, ms, x, y, width, height, tone in packages:
+        add_uml_package(root, "implementation", key, en, ms, x, y, width, height, tone)
     specs = [
-        ("state", "AppState", "AppState", "map, userLocation, jobFinder", "map, userLocation, jobFinder", 290, 195, 260, 80, "app-state"),
-        ("app", "MyPetaApp", "MyPetaApp", "creates and binds managers", "mencipta dan mengikat pengurus", 710, 185, 260, 100, "mypeta-app"),
-        ("map", "MapManager", "MapManager", "style lifecycle and camera", "kitar gaya dan kamera", 105, 420, 220, 90, "map-manager"),
-        ("tools", "MapToolsPanelManager", "MapToolsPanelManager", "rail, drawer and fit padding", "rel, laci dan ruang fit", 360, 420, 220, 90, "map-tools-manager"),
-        ("nav", "GeoNavigationManager", "GeoNavigationManager", "A/B, route, matrix, isochrone", "A/B, laluan, matriks, isokron", 615, 405, 260, 120, "geo-navigation-manager"),
-        ("renderer", "GeoRouteRenderer", "GeoRouteRenderer", "ordered MapLibre layers", "lapisan MapLibre tersusun", 910, 420, 220, 90, "geo-route-renderer"),
-        ("appearance", "RouteAppearanceManager", "RouteAppearanceManager", "versioned visual settings", "tetapan visual berversi", 1165, 420, 220, 90, "route-appearance-manager"),
-        ("job", "JobFinderManager", "JobFinderManager", "workplace destination event", "peristiwa destinasi kerja", 615, 545, 260, 65, "job-manager"),
-        ("client", "src/services/geo.ts", "src/services/geo.ts", "typed same-origin fetches", "fetch asal sama berjenis", 500, 725, 280, 90, "geo-service"),
-        ("api", "server/routes/geo.ts", "server/routes/geo.ts", "validation, auth and rate limits", "pengesahan, auth dan had kadar", 820, 725, 280, 90, "geo-api"),
-        ("gateway", "server/geo/gateway.ts", "server/geo/gateway.ts", "normalization, cache and fallback", "normalisasi, cache dan sandaran", 1140, 715, 300, 110, "geo-gateway"),
-        ("supabase", "Supabase / PostGIS", "Supabase / PostGIS", "cache and job resolution", "cache dan penyelesaian kerja", 500, 950, 300, 80, "supabase-db"),
-        ("valhalla", "Valhalla", "Valhalla", "route, matrix and isochrone", "laluan, matriks dan isokron", 820, 950, 300, 80, "valhalla"),
-        ("nominatim", "Nominatim (disabled)", "Nominatim (dinyahaktifkan)", "search, reverse and lookup", "carian, songsang dan lookup", 1140, 950, 300, 80, "nominatim"),
+        ClassSpec("state", "AppState", "interface", (
+            "- appMode : AppMode", "- map : maplibregl.Map", "- lang : 'en' | 'ms'",
+            "- userLocation : [number, number] | null", "- jobFinder : JobFinderState",
+        ), (), 300, 220, 400, "identity", "app-state"),
+        ClassSpec("app", "MyPetaApp", "class", (
+            "- state : AppState", "- mapManager : MapManager", "- mapToolsPanelManager : MapToolsPanelManager",
+            "- geoNavigationManager : GeoNavigationManager | null",
+            "- routeAppearanceManager : RouteAppearanceManager", "- jobFinderManager : JobFinderManager",
+        ), ("+ init() : Promise<void>",), 1000, 185, 430, "identity", "mypeta-app"),
+        ClassSpec("map", "MapManager", "class", (
+            "- state : AppState", "- basemapMode : BasemapMode", "- baseLayersReady : boolean",
+            "- jobOrbitAnimationId : number",
+        ), (
+            "+ init() : void", "+ getBasemapMode() : BasemapMode", "+ setBasemapMode(mode) : void",
+            "+ fitBoundsGuarded(bounds, options?) : void",
+        ), 100, 570, 330, "geo", "map-manager"),
+        ClassSpec("tools", "MapToolsPanelManager", "class", (
+            "- state : AppState", "- definitions : Map<MapToolId, MapToolDefinition>",
+            "- rail : HTMLElement | null", "- drawer : HTMLElement | null",
+        ), (
+            "+ bind() : void", "+ registerTool(definition) : void", "+ openTool(id, focusDrawer?) : void",
+            "+ close(restoreFocus?) : void", "+ getFitPadding(base?) : PaddingOptions",
+        ), 480, 550, 350, "geo", "map-tools-manager"),
+        ClassSpec("nav", "GeoNavigationManager", "class", (
+            "- state : AppState", "- start : GeoPlace | null", "- destination : GeoPlace | null",
+            "- profile : GeoRouteProfile", "- currentRoute : GeoRoute | null",
+            "- routeRenderer : GeoRouteRenderer | null",
+        ), ("+ bind() : void",), 880, 560, 360, "geo", "geo-navigation-manager"),
+        ClassSpec("renderer", "GeoRouteRenderer", "class", (
+            "- route : GeoRoute | null", "- selectedRouteId : string", "- start : GeoPlace | null",
+            "- destination : GeoPlace | null", "- preview : JourneyPreviewState", "- destroyed : boolean",
+        ), (
+            "+ setRoute(route, selectedRouteId?) : void", "+ setSelectedRoute(routeId) : void",
+            "+ setAppearance(settings) : void", "+ setEndpoints(start, destination) : void",
+            "+ playPreview() : void", "+ pausePreview() : void", "+ redraw() : void", "+ destroy() : void",
+        ), 1290, 500, 430, "geo", "geo-route-renderer"),
+        ClassSpec("appearance", "RouteAppearanceManager", "class", (
+            "- settings : RouteAppearanceSettings", "- controller : RouteAppearanceController | null",
+            "- host : HTMLElement | null",
+        ), (
+            "+ bind() : void", "+ bindController(controller) : void", "+ getSettings() : RouteAppearanceSettings",
+            "+ updatePreviewState() : void",
+        ), 1780, 560, 390, "geo", "route-appearance-manager"),
+        ClassSpec("job", "JobFinderManager", "class", (
+            "- state : AppState", "- jobsById : Map<string, JobListing>",
+            "- jobCoordsById : Map<string, [number, number]>", "- activeJobId : string | null",
+            "- mapTools? : MapToolsPanelManager",
+        ), (
+            "+ bind() : void", "+ executeSearch() : Promise<void>", "+ onTabActivated() : void",
+        ), 880, 840, 360, "geo", "job-manager"),
+        ClassSpec("client", "GeoClient", "module: src/services/geo.ts", (), (
+            "+ searchGeoPlaces(options) : Promise<GeoPlace[]>",
+            "+ reverseGeoLocation(location, language) : Promise<GeoPlace | null>",
+            "+ calculateGeoRoute(origin, destination, profile) : Promise<GeoRoute>",
+            "+ calculateGeoMatrix(sources, targets, profile) : Promise<GeoMatrixResult>",
+            "+ calculateGeoIsochrone(origin, contours, profile) : Promise<GeoIsochroneResult>",
+            "+ resolveGeoJobLocation(jobId) : Promise<JobGeoResolution>",
+        ), 230, 1200, 500, "jobs", "geo-service"),
+        ClassSpec("api", "GeoApiController", "controller: server/routes/geo.ts", (), (
+            "+ GET /search | /reverse | /lookup", "+ POST /route | /matrix | /isochrone",
+            "+ POST /within", "+ GET /status", "+ GET /datasets/:name", "+ POST /jobs/:jobId/resolve",
+        ), 850, 1200, 500, "jobs", "geo-api"),
+        ClassSpec("gateway", "GeoGateway", "service: server/geo/gateway.ts", (), (
+            "+ isEnabled() : boolean", "+ search(options) : Promise<GeoPlace[]>",
+            "+ reverse(location, language) : Promise<GeoPlace | null>",
+            "+ lookup(osmIds, language, boundary?) : Promise<GeoPlace[]>",
+            "+ route(options) : Promise<GeoRoute>",
+            "+ straightLineRoute(origin, destination, profile) : GeoRoute",
+            "+ matrix(sources, targets, profile) : Promise<GeoMatrixResult>",
+            "+ isochrone(origin, contours, profile) : Promise<GeoIsochroneResult>",
+            "+ status() : Promise<GeoStatus>",
+        ), 1480, 1145, 560, "jobs", "geo-gateway"),
+        ClassSpec("supabase", "Supabase / PostGIS", "database", (
+            "- geo_geocode_cache : server-only", "- geo_route_cache : server-only",
+            "- job_location_resolutions : server-only",
+        ), (), 150, 1600, 480, "persistence", "supabase-db"),
+        ClassSpec("valhalla", "Valhalla", "external service: enabled", (
+            "- provider : 'valhalla'", "- enabled : true", "- available : true",
+        ), ("+ route()", "+ matrix()", "+ isochrone()"), 760, 1570, 400, "persistence", "valhalla"),
+        ClassSpec("nominatim", "Nominatim", "external service: disabled", (
+            "- provider : 'nominatim'", "- enabled : false", "- available : false",
+        ), ("+ search()", "+ reverse()", "+ lookup()"), 1310, 1570, 420, "persistence", "nominatim"),
     ]
     ids: dict[str, str] = {}
-    for key, en, ms, ben, bms, x, y, w, h, node in specs:
-        ids[key] = add_class(root, f"impl-{key}", f"implementation/{key}", en, ms, ben, bms, x, y, w, h, node)
-    links = [("app", "state"), ("app", "nav"), ("nav", "tools"), ("nav", "map"), ("nav", "renderer"),
-             ("nav", "appearance"), ("job", "nav"), ("nav", "client"), ("client", "api"), ("api", "gateway"),
-             ("gateway", "supabase"), ("gateway", "valhalla"), ("gateway", "nominatim")]
-    for index, (source, target) in enumerate(links, 1):
-        add_edge(root, f"impl-edge-{index}", f"implementation/edge-{index}", ids[source], ids[target])
+    for spec in specs:
+        ids[spec.key], _ = add_uml_class(root, "implementation", spec)
+    relationships = [
+        RelationshipSpec("app-state", "app", "state", "owns state", "memiliki keadaan", "association", "1", "1"),
+        RelationshipSpec("app-map", "app", "map", "owns", "memiliki", "aggregation", "1", "1", ((900, 400), (265, 400), (265, 570))),
+        RelationshipSpec("app-tools", "app", "tools", "owns", "memiliki", "aggregation", "1", "1", ((940, 420), (655, 420), (655, 550))),
+        RelationshipSpec("app-nav", "app", "nav", "owns", "memiliki", "aggregation", "1", "0..1"),
+        RelationshipSpec("app-appearance", "app", "appearance", "owns", "memiliki", "aggregation", "1", "1", ((1450, 400), (1975, 400), (1975, 560))),
+        RelationshipSpec("app-job", "app", "job", "owns", "memiliki", "aggregation", "1", "1", ((1110, 430), (1110, 840))),
+        RelationshipSpec("nav-map", "nav", "map", "retains", "menyimpan", "association", "1", "1", ((850, 730), (430, 730))),
+        RelationshipSpec("nav-tools", "nav", "tools", "retains", "menyimpan", "association", "1", "1"),
+        RelationshipSpec("nav-renderer", "nav", "renderer", "creates", "mencipta", "aggregation", "1", "0..1"),
+        RelationshipSpec("nav-appearance", "nav", "appearance", "binds controller", "mengikat pengawal", "association", "1", "1", ((1260, 790), (1750, 790))),
+        RelationshipSpec("job-nav", "job", "nav", "emits workplace destination", "memancar destinasi tempat kerja", "dependency", points=((1060, 840), (1060, 800))),
+        RelationshipSpec("nav-client", "nav", "client", "calls typed geo client", "memanggil klien geo berjenis", "dependency", points=((850, 1035), (760, 1035), (760, 1190), (650, 1190))),
+        RelationshipSpec("job-client", "job", "client", "resolves workplace", "menyelesaikan tempat kerja", "dependency", points=((850, 1000), (700, 1000), (700, 1170), (600, 1170))),
+        RelationshipSpec("client-api", "client", "api", "same-origin /api/geo/*", "asal sama /api/geo/*", "dependency"),
+        RelationshipSpec("api-gateway", "api", "gateway", "validates and delegates", "mengesah dan mewakilkan", "association", "1", "1"),
+        RelationshipSpec("gateway-supabase", "gateway", "supabase", "reads and writes normalized cache", "membaca dan menulis cache ternormal", "dependency", points=((1470, 1450), (390, 1450), (390, 1600))),
+        RelationshipSpec("gateway-valhalla", "gateway", "valhalla", "route, matrix and isochrone", "laluan, matriks dan isokron", "dependency", points=((1620, 1460), (960, 1460), (960, 1570))),
+        RelationshipSpec("gateway-nominatim", "gateway", "nominatim", "search only when enabled", "carian hanya apabila diaktifkan", "dependency", points=((1760, 1460), (1520, 1460), (1520, 1570))),
+    ]
+    for relationship in relationships:
+        add_uml_relationship(root, "implementation", relationship, ids)
+    add_text(
+        root, "implementation-fallback-constraint", "implementation/fallback-constraint",
+        "{constraint} straightLineRoute sets estimateKind='straight-line', durationSeconds=null and maneuvers=[]; it is a non-navigable fallback.",
+        "{kekangan} straightLineRoute menetapkan estimateKind='straight-line', durationSeconds=null dan maneuvers=[]; ia sandaran yang tidak boleh dinavigasi.",
+        1710, 1375, 590, 55, TEXT + "align=left;verticalAlign=middle;fontStyle=2;",
+    )
     base_note(root, page)
     write(page, mxfile)
 
 
-def trapezoid_style(fill: str, stroke: str) -> str:
-    return f"shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;direction=south;fillColor=light-dark({fill},#20252d);strokeColor=light-dark({stroke},{stroke});strokeWidth=2;fontFamily=Arial;fontSize=15;fontStyle=1;verticalAlign=top;align=left;spacingTop=10;spacingLeft=28;fontColor=light-dark(#172033,#e8edf7);"
-
-
 def generate_architecture() -> None:
-    page = Page("architecture.drawio", "v2_geo_architecture", "V2 Georouting Layered Architecture", 1600, 1200,
+    page = Page("architecture.drawio", "v2_geo_architecture", "V2 Georouting Layered Architecture", 1900, 1180,
                 "Layered Architecture — V2 Georouting", "Seni Bina Berlapis — Georouting V2",
-                "A centered stacked-responsibility view with three evenly spaced components per layer.",
-                "Paparan tanggungjawab bertindan berpusat dengan tiga komponen berjarak sekata setiap lapisan.")
+                "Broad georouting capabilities arranged on the supplied five-layer responsibility stack.",
+                "Keupayaan georouting luas disusun pada tindanan tanggungjawab lima lapisan yang dibekalkan.")
     mxfile, root = create_page(page)
-    layers = [
-        ("inputs", "1 · Inputs and user intent", "1 · Input dan niat pengguna", 250, 130, 1100, 160, "#e8eef5", "#66758a"),
-        ("render", "2 · MapLibre rendering", "2 · Pemaparan MapLibre", 200, 330, 1200, 160, "#dcebfa", "#2d72d2"),
-        ("browser", "3 · Browser orchestration", "3 · Orkestrasi pelayar", 150, 530, 1300, 175, "#eee5fa", "#7e57c2"),
-        ("gateway", "4 · Same-origin GeoGateway", "4 · GeoGateway asal sama", 100, 745, 1400, 175, "#fff1d6", "#c87600"),
-        ("providers", "5 · Providers and reusable data", "5 · Penyedia dan data boleh guna semula", 50, 960, 1500, 150, "#e9f6ed", "#3d965b"),
-    ]
-    for key, en, ms, x, y, w, h, fill, stroke in layers:
-        add_vertex(root, f"arch-layer-{key}", f"architecture/layer-{key}", en, ms, x, y, w, h, trapezoid_style(fill, stroke))
-    specs = [
-        ("search", "Place or address", "Tempat atau alamat", 390, 205, BOX_GRAY, "search-manager"),
-        ("ab", "A/B, map click or GPS", "A/B, klik peta atau GPS", 680, 205, BOX_GRAY, "geo-navigation-manager"),
-        ("job", "Workplace destination", "Destinasi tempat kerja", 970, 205, BOX_GRAY, "job-manager"),
-        ("maplibre", "MapLibre route and polygon layers", "Lapisan laluan dan poligon MapLibre", 680, 405, BOX_BLUE, "maplibre-gl"),
-        ("renderer", "GeoRouteRenderer interactions", "Interaksi GeoRouteRenderer", 970, 405, BOX_BLUE, "geo-route-renderer"),
-        ("tools", "Map Tools UI", "UI Alat Peta", 390, 610, BOX_PURPLE, "map-tools-manager"),
-        ("nav", "GeoNavigationManager", "GeoNavigationManager", 680, 610, BOX_PURPLE, "geo-navigation-manager"),
-        ("client", "Geo client contracts", "Kontrak klien Geo", 970, 610, BOX_PURPLE, "geo-service"),
-        ("api", "Express /api/geo/*", "Express /api/geo/*", 970, 825, BOX_ORANGE, "geo-api"),
-        ("gateway", "GeoGateway normalization", "Normalisasi GeoGateway", 680, 825, BOX_ORANGE, "geo-gateway"),
-        ("fallback", "Haversine fallback", "Sandaran Haversine", 390, 825, BOX_ORANGE, "geo-gateway"),
-        ("cache", "Supabase cache", "Cache Supabase", 390, 1020, BOX_GREEN, "supabase-db,geo-route-cache"),
-        ("valhalla", "Valhalla · enabled", "Valhalla · diaktifkan", 680, 1020, BOX_GREEN, "valhalla"),
-        ("nominatim", "Nominatim · disabled", "Nominatim · dinyahaktifkan", 970, 1020, BOX_GRAY, "nominatim"),
-    ]
-    ids: dict[str, str] = {}
-    for key, en, ms, x, y, style, nodes in specs:
-        ids[key] = add_vertex(root, f"arch-{key}", f"architecture/{key}", en, ms, x, y, CARD_W, 58, style, nodes)
-    links = [("ab", "maplibre"), ("maplibre", "nav"), ("tools", "nav"), ("nav", "renderer"), ("nav", "client"),
-             ("client", "api"), ("api", "gateway"), ("gateway", "cache"), ("gateway", "valhalla"),
-             ("gateway", "nominatim"), ("gateway", "fallback")]
-    for index, (source, target) in enumerate(links, 1):
-        add_edge(root, f"arch-edge-{index}", f"architecture/edge-{index}", ids[source], ids[target])
-    base_note(root, page)
+    layers = (
+        StackLayerSpec("inputs", "arch-layer-inputs", "<b>LAYER 1 · INPUTS &amp; CONSUMERS</b>", "<b>LAPISAN 1 · INPUT &amp; PENGGUNA</b>", (
+            StackCardSpec("search", "arch-search", "input-left",
+                          stack_card_label("Place, address & boundary", "Search · reverse · POI within"),
+                          stack_card_label("Tempat, alamat & sempadan", "Cari · songsang · POI dalam"),
+                          "neutral", "search-manager,geo-place"),
+            StackCardSpec("ab", "arch-ab", "input-center",
+                          stack_card_label("A/B, GPS & travel profile", "Route · matrix · isochrone intent"),
+                          stack_card_label("A/B, GPS & profil perjalanan", "Niat laluan · matriks · isokron"),
+                          "neutral", "geo-navigation-manager,geo-location"),
+            StackCardSpec("job", "arch-job", "input-right",
+                          stack_card_label("Workplace / Geo Studio", "Job destination · analysis handoff"),
+                          stack_card_label("Tempat kerja / Studio Geo", "Destinasi kerja · serahan analisis"),
+                          "neutral", "job-manager,geo-studio"),
+        )),
+        StackLayerSpec("render", "arch-layer-render", "<b>LAYER 2 · MAPLIBRE RENDERING</b>", "<b>LAPISAN 2 · PEMAPARAN MAPLIBRE</b>", (
+            StackCardSpec("maplibre", "arch-maplibre", "render-left",
+                          stack_card_label("Routes & alternatives", "Lines · markers · maneuvers · camera fit"),
+                          stack_card_label("Laluan & alternatif", "Garisan · penanda · arahan · pelarasan kamera"),
+                          "render", "maplibre-gl"),
+            StackCardSpec("renderer", "arch-renderer", "render-right",
+                          stack_card_label("Analytical overlays", "Isochrones · boundaries · Geo Studio layers"),
+                          stack_card_label("Tindihan analisis", "Isokron · sempadan · lapisan Studio Geo"),
+                          "render", "geo-route-renderer,maplibre-gl,geo-studio"),
+        )),
+        StackLayerSpec("browser", "arch-layer-browser", "<b>LAYER 3 · BROWSER ORCHESTRATION</b>", "<b>LAPISAN 3 · ORKESTRASI PELAYAR</b>", (
+            StackCardSpec("tools", "arch-tools", "browser-left",
+                          stack_card_label("Map Tools + SearchManager", "Intent · panels · place discovery"),
+                          stack_card_label("Alat Peta + SearchManager", "Niat · panel · penemuan tempat"),
+                          "browser", "map-tools-manager,search-manager"),
+            StackCardSpec("nav", "arch-nav", "browser-center",
+                          stack_card_label("GeoNavigationManager", "A/B · profiles · alternatives · analysis"),
+                          stack_card_label("GeoNavigationManager", "A/B · profil · alternatif · analisis"),
+                          "browser", "geo-navigation-manager,geo-route-renderer"),
+            StackCardSpec("client", "arch-client", "browser-right",
+                          stack_card_label("JobFinder + geo client", "Workplace confidence · typed requests"),
+                          stack_card_label("JobFinder + klien geo", "Keyakinan tempat kerja · permintaan berjenis"),
+                          "browser", "job-manager,geo-service"),
+        )),
+        StackLayerSpec("gateway", "arch-layer-gateway", "<b>LAYER 4 · SAME-ORIGIN GEOGATEWAY</b>", "<b>LAPISAN 4 · GEOGATEWAY ASAL SAMA</b>", (
+            StackCardSpec("fallback", "arch-fallback", "gateway-left",
+                          stack_card_label("Safety, cache & fallback", "Malaysia bounds · rate limits · labels"),
+                          stack_card_label("Keselamatan, cache & sandaran", "Had Malaysia · had kadar · label"),
+                          "gateway", "geo-gateway"),
+            StackCardSpec("gateway", "arch-gateway", "gateway-center",
+                          stack_card_label("GeoGateway", "Provider-neutral normalization"),
+                          stack_card_label("GeoGateway", "Normalisasi bebas penyedia"),
+                          "gateway", "geo-gateway"),
+            StackCardSpec("api", "arch-api", "gateway-right",
+                          stack_card_label("Express /api/geo/*", "Same-origin API surface"),
+                          stack_card_label("Express /api/geo/*", "Permukaan API asal sama"),
+                          "gateway", "geo-api"),
+        )),
+        StackLayerSpec("providers", "arch-layer-providers", "<b>LAYER 5 · PROVIDERS &amp; PERSISTENCE</b>", "<b>LAPISAN 5 · PENYEDIA &amp; KEKALAN</b>", (
+            StackCardSpec("nominatim", "arch-nominatim", "provider-left",
+                          stack_card_label("Nominatim · disabled", "Search · reverse · boundary lookup"),
+                          stack_card_label("Nominatim · dinyahaktifkan", "Cari · songsang · carian sempadan"),
+                          "neutral", "nominatim"),
+            StackCardSpec("valhalla", "arch-valhalla", "provider-center",
+                          stack_card_label("Valhalla · enabled", "Routes · alternatives · matrix · isochrone"),
+                          stack_card_label("Valhalla · diaktifkan", "Laluan · alternatif · matriks · isokron"),
+                          "provider", "valhalla"),
+            StackCardSpec("cache", "arch-cache", "provider-right",
+                          stack_card_label("Supabase / PostGIS", "Routing cache · workplace resolutions"),
+                          stack_card_label("Supabase / PostGIS", "Cache laluan · penyelesaian tempat kerja"),
+                          "provider", "supabase-db,geo-route-cache,job-location-resolution"),
+        )),
+    )
+    callouts = (
+        StackCalloutSpec("takeaway", "arch-callout-takeaway", "takeaway",
+                         stack_callout_label("ARCHITECTURE AT A GLANCE", "Intent enters once", "Browser coordinates capabilities", "Providers remain replaceable"),
+                         stack_callout_label("RINGKASAN SENI BINA", "Niat masuk sekali", "Pelayar menyelaras keupayaan", "Penyedia kekal boleh diganti")),
+        StackCalloutSpec("maplibre", "arch-callout-maplibre", "maplibre-boundary",
+                         stack_callout_label("MAPLIBRE IS THE VISUAL BOUNDARY", "It renders route and analytical GeoJSON.", "It does not calculate routes or search addresses."),
+                         stack_callout_label("MAPLIBRE IALAH SEMPADAN VISUAL", "Ia memapar GeoJSON laluan dan analisis.", "Ia tidak mengira laluan atau mencari alamat."), "maplibre-gl"),
+        StackCalloutSpec("analysis", "arch-callout-analysis", "navigation-control-note",
+                         stack_callout_label("ANALYTICS", "Matrix + isochrone + boundary flows stay explicit."),
+                         stack_callout_label("ANALISIS", "Aliran matriks + isokron + sempadan kekal jelas."), "geo-navigation-manager"),
+        StackCalloutSpec("workplace", "arch-callout-workplace", "directions-plugin-note",
+                         stack_callout_label("WORKPLACE ROUTING", "Remote and low-confidence jobs are rejected before routing."),
+                         stack_callout_label("PENGHALAAN TEMPAT KERJA", "Kerja jarak jauh dan keyakinan rendah ditolak sebelum penghalaan."), "job-manager"),
+        StackCalloutSpec("studio", "arch-callout-studio", "side-flows",
+                         stack_callout_label("GEO STUDIO HANDOFF", "Normalized boundaries and analytical outputs can open as editable workspace context."),
+                         stack_callout_label("SERAHAN STUDIO GEO", "Sempadan ternormal dan output analisis boleh dibuka sebagai konteks ruang kerja boleh sunting."), "geo-studio"),
+        StackCalloutSpec("fallback", "arch-callout-fallback", "fallback-note",
+                         stack_callout_label("GATED SEARCH + HONEST FALLBACK", "Nominatim calls stop while disabled.", "Straight-line fallback has no ETA, maneuvers", "or navigable-route claim."),
+                         stack_callout_label("CARIAN BERPAGAR + SANDARAN JUJUR", "Panggilan Nominatim berhenti ketika dinyahaktifkan.", "Sandaran garis lurus tiada ETA, arahan", "atau dakwaan laluan boleh dinavigasi."), "geo-gateway,nominatim"),
+        StackCalloutSpec("status", "arch-callout-status", "rollout-status",
+                         stack_callout_label("RUNTIME · 2026-07-19", "Valhalla + shared cache available", "Nominatim disabled · ETA traffic-independent"),
+                         stack_callout_label("MASA JALAN · 2026-07-19", "Valhalla + cache bersama tersedia", "Nominatim dinyahaktifkan · ETA bebas trafik")),
+    )
+    flows = (
+        StackFlowSpec("ab-to-route-render", "arch-ab", "arch-maplibre", ((680, 305), (490, 305))),
+        StackFlowSpec("job-to-analysis-render", "arch-job", "arch-renderer", ((887.5, 320), (825, 320))),
+        StackFlowSpec("tools-to-navigation", "arch-tools", "arch-nav", ((545, 576),)),
+        StackFlowSpec("navigation-to-client", "arch-nav", "arch-client", ((835, 576),)),
+        StackFlowSpec("navigation-to-renderer", "arch-nav", "arch-renderer", ((690, 655), (1180, 655), (1180, 393), (975, 393))),
+        StackFlowSpec("client-to-api", "arch-client", "arch-api", ((955, 680), (930, 680))),
+        StackFlowSpec("api-to-gateway", "arch-api", "arch-gateway", ((768, 761),)),
+        StackFlowSpec("gateway-to-safety", "arch-gateway", "arch-fallback", ((498, 761),)),
+        StackFlowSpec("gateway-to-valhalla", "arch-gateway", "arch-valhalla", ((632.5, 865), (665, 865))),
+        StackFlowSpec("gateway-to-nominatim", "arch-gateway", "arch-nominatim", ((632.5, 850), (180, 850), (180, 961), (210, 961))),
+        StackFlowSpec("safety-to-cache", "arch-fallback", "arch-cache", ((370, 845), (1180, 845), (1180, 961), (1115, 961))),
+        StackFlowSpec("fallback-constraint", "arch-fallback", "arch-callout-fallback", ((370, 840), (1250, 840), (1250, 980), (1570, 980), (1570, 975)), style="fallback"),
+    )
+    render_stack_diagram(
+        root, page, "architecture", layers, callouts, flows,
+        "INTENT + REQUEST ↓<br>A/B · jobs · analytics<br>/api/geo/*",
+        "NIAT + PERMINTAAN ↓<br>A/B · kerja · analisis<br>/api/geo/*",
+        "RESULTS ↑<br>normalized GeoJSON<br>routes + polygons",
+        "HASIL ↑<br>GeoJSON ternormal<br>laluan + poligon",
+        "Source-grounded in Map Tools, GeoNavigationManager, JobFinderManager, src/services/geo.ts, Express /api/geo/* and GeoGateway. Current ETA is traffic-independent.",
+        "Berasaskan sumber Alat Peta, GeoNavigationManager, JobFinderManager, src/services/geo.ts, Express /api/geo/* dan GeoGateway. ETA semasa tidak mengambil kira trafik.",
+    )
     write(page, mxfile)
 
 
@@ -821,38 +1793,125 @@ def generate_erd() -> None:
 
 
 def generate_routing_stack() -> None:
-    page = Page("routing-stack.drawio", "v2_geo_routing_stack", "V2 Routing Responsibility Stack", 1600, 1120,
+    page = Page("routing-stack.drawio", "v2_geo_routing_stack", "V2 Routing Responsibility Stack", 1900, 1180,
                 "A-to-B Routing Responsibilities — V2", "Tanggungjawab Penghalaan A-ke-B — V2",
-                "The established stacked-Doritos view, re-centered on a regular spacing grid.",
-                "Paparan Doritos bertindan yang ditetapkan, dipusatkan semula pada grid jarak seragam.")
+                "Focused request and normalized-response ownership on the supplied five-layer stack.",
+                "Pemilikan permintaan dan respons ternormal yang berfokus pada tindanan lima lapisan yang dibekalkan.")
     mxfile, root = create_page(page)
-    layers = [
-        ("inputs", "1 · Inputs", "1 · Input", 250, 125, 1100, 150, "#e8eef5", "#66758a"),
-        ("render", "2 · MapLibre rendering", "2 · Pemaparan MapLibre", 200, 315, 1200, 150, "#dcebfa", "#2d72d2"),
-        ("browser", "3 · Browser orchestration", "3 · Orkestrasi pelayar", 150, 505, 1300, 160, "#eee5fa", "#7e57c2"),
-        ("gateway", "4 · GeoGateway boundary", "4 · Sempadan GeoGateway", 100, 705, 1400, 160, "#fff1d6", "#c87600"),
-        ("providers", "5 · Providers and cache", "5 · Penyedia dan cache", 50, 905, 1500, 145, "#e9f6ed", "#3d965b"),
-    ]
-    for key, en, ms, x, y, w, h, fill, stroke in layers:
-        add_vertex(root, f"stack-layer-{key}", f"routing-stack/layer-{key}", en, ms, x, y, w, h, trapezoid_style(fill, stroke))
-    specs = [
-        ("input", "A/B + GPS + profile", "A/B + GPS + profil", 650, 195, 300, BOX_GRAY, "geo-location"),
-        ("map", "MapLibre · renderer and interaction only", "MapLibre · pemapar dan interaksi sahaja", 560, 385, 480, BOX_BLUE, "maplibre-gl"),
-        ("nav", "GeoNavigationManager + GeoRouteRenderer", "GeoNavigationManager + GeoRouteRenderer", 390, 575, 390, BOX_PURPLE, "geo-navigation-manager,geo-route-renderer"),
-        ("client", "src/services/geo.ts", "src/services/geo.ts", 900, 575, 300, BOX_PURPLE, "geo-service"),
-        ("api", "Express /api/geo + safety checks", "Express /api/geo + semakan keselamatan", 900, 775, 390, BOX_ORANGE, "geo-api"),
-        ("gateway", "GeoGateway normalization + fallback", "Normalisasi + sandaran GeoGateway", 330, 775, 420, BOX_ORANGE, "geo-gateway"),
-        ("cache", "Supabase cache · available", "Cache Supabase · tersedia", 250, 970, 310, BOX_GREEN, "supabase-db,geo-route-cache"),
-        ("valhalla", "Valhalla · enabled", "Valhalla · diaktifkan", 645, 970, 310, BOX_GREEN, "valhalla"),
-        ("nominatim", "Nominatim · disabled", "Nominatim · dinyahaktifkan", 1040, 970, 310, BOX_GRAY, "nominatim"),
-    ]
-    ids: dict[str, str] = {}
-    for key, en, ms, x, y, w, style, nodes in specs:
-        ids[key] = add_vertex(root, f"stack-{key}", f"routing-stack/{key}", en, ms, x, y, w, 55, style, nodes)
-    for index, (source, target) in enumerate([("input", "nav"), ("nav", "map"), ("nav", "client"), ("client", "api"),
-                                                   ("api", "gateway"), ("gateway", "cache"), ("gateway", "valhalla"), ("gateway", "nominatim")], 1):
-        add_edge(root, f"stack-edge-{index}", f"routing-stack/edge-{index}", ids[source], ids[target])
-    add_text(root, "stack-fallback", "routing-stack/fallback", "Provider failure → Haversine straight line → no ETA, maneuvers or navigable claim", "Kegagalan penyedia → garis lurus Haversine → tiada ETA, arahan atau dakwaan navigasi", 360, 1055, 880, 35, NOTE)
+    layers = (
+        StackLayerSpec("inputs", "stack-layer-inputs", "<b>LAYER 1 · ROUTE INPUTS</b>", "<b>LAPISAN 1 · INPUT LALUAN</b>", (
+            StackCardSpec("origin", "stack-origin", "input-left",
+                          stack_card_label("Origin A", "Map click · selected place"),
+                          stack_card_label("Asal A", "Klik peta · tempat dipilih"),
+                          "neutral", "geo-location,geo-navigation-manager"),
+            StackCardSpec("input", "stack-input", "input-center",
+                          stack_card_label("Destination B", "Map click · selected workplace"),
+                          stack_card_label("Destinasi B", "Klik peta · tempat kerja dipilih"),
+                          "neutral", "geo-location,job-manager"),
+            StackCardSpec("profile", "stack-profile", "input-right",
+                          stack_card_label("GPS + profile", "Current location · drive/walk/cycle"),
+                          stack_card_label("GPS + profil", "Lokasi semasa · pandu/jalan/basikal"),
+                          "neutral", "geo-location,geo-navigation-manager"),
+        )),
+        StackLayerSpec("render", "stack-layer-render", "<b>LAYER 2 · MAPLIBRE RENDERING</b>", "<b>LAPISAN 2 · PEMAPARAN MAPLIBRE</b>", (
+            StackCardSpec("map", "stack-map", "render-left",
+                          stack_card_label("MapLibre route rendering", "Primary + alternatives · A/B markers"),
+                          stack_card_label("Pemaparan laluan MapLibre", "Utama + alternatif · penanda A/B"),
+                          "render", "maplibre-gl"),
+            StackCardSpec("rendering", "stack-rendering", "render-right",
+                          stack_card_label("Route interaction", "Selection · maneuvers · camera fit"),
+                          stack_card_label("Interaksi laluan", "Pemilihan · arahan · pelarasan kamera"),
+                          "render", "geo-route-renderer,maplibre-gl"),
+        )),
+        StackLayerSpec("browser", "stack-layer-browser", "<b>LAYER 3 · BROWSER ORCHESTRATION</b>", "<b>LAPISAN 3 · ORKESTRASI PELAYAR</b>", (
+            StackCardSpec("nav", "stack-nav", "browser-left",
+                          stack_card_label("GeoNavigationManager", "A/B state · profile · alternatives"),
+                          stack_card_label("GeoNavigationManager", "Keadaan A/B · profil · alternatif"),
+                          "browser", "geo-navigation-manager"),
+            StackCardSpec("renderer", "stack-renderer", "browser-center",
+                          stack_card_label("GeoRouteRenderer", "Ordered sources · layers · selection"),
+                          stack_card_label("GeoRouteRenderer", "Sumber tersusun · lapisan · pemilihan"),
+                          "browser", "geo-route-renderer"),
+            StackCardSpec("client", "stack-client", "browser-right",
+                          stack_card_label("src/services/geo.ts", "Typed same-origin route request"),
+                          stack_card_label("src/services/geo.ts", "Permintaan laluan asal sama berjenis"),
+                          "browser", "geo-service"),
+        )),
+        StackLayerSpec("gateway", "stack-layer-gateway", "<b>LAYER 4 · API &amp; GEOGATEWAY</b>", "<b>LAPISAN 4 · API &amp; GEOGATEWAY</b>", (
+            StackCardSpec("safety", "stack-safety", "gateway-left",
+                          stack_card_label("Safety + fallback", "Malaysia bounds · limits · explicit label"),
+                          stack_card_label("Keselamatan + sandaran", "Had Malaysia · had kadar · label jelas"),
+                          "gateway", "geo-gateway"),
+            StackCardSpec("gateway", "stack-gateway", "gateway-center",
+                          stack_card_label("GeoGateway", "Cache key · dispatch · normalize"),
+                          stack_card_label("GeoGateway", "Kunci cache · agihan · normalisasi"),
+                          "gateway", "geo-gateway"),
+            StackCardSpec("api", "stack-api", "gateway-right",
+                          stack_card_label("Express /api/geo/route", "Validate · authenticate · rate-limit"),
+                          stack_card_label("Express /api/geo/route", "Sah · pengesahan · had kadar"),
+                          "gateway", "geo-api"),
+        )),
+        StackLayerSpec("providers", "stack-layer-providers", "<b>LAYER 5 · CACHE &amp; PROVIDERS</b>", "<b>LAPISAN 5 · CACHE &amp; PENYEDIA</b>", (
+            StackCardSpec("nominatim", "stack-nominatim", "provider-left",
+                          stack_card_label("Nominatim · disabled", "Not used for A-to-B calculations"),
+                          stack_card_label("Nominatim · dinyahaktifkan", "Tidak digunakan untuk pengiraan A-ke-B"),
+                          "neutral", "nominatim"),
+            StackCardSpec("valhalla", "stack-valhalla", "provider-center",
+                          stack_card_label("Valhalla · enabled", "Road route · alternatives · maneuvers"),
+                          stack_card_label("Valhalla · diaktifkan", "Laluan jalan · alternatif · arahan"),
+                          "provider", "valhalla"),
+            StackCardSpec("cache", "stack-cache", "provider-right",
+                          stack_card_label("Supabase cache · available", "Stable normalized route results"),
+                          stack_card_label("Cache Supabase · tersedia", "Hasil laluan ternormal stabil"),
+                          "provider", "supabase-db,geo-route-cache"),
+        )),
+    )
+    callouts = (
+        StackCalloutSpec("takeaway", "stack-callout-takeaway", "takeaway",
+                         stack_callout_label("THE BOTTOM LINE", "MapLibre = visualizer", "GeoGateway = orchestrator", "Valhalla = route calculator"),
+                         stack_callout_label("RINGKASANNYA", "MapLibre = pemapar", "GeoGateway = pengatur", "Valhalla = pengira laluan")),
+        StackCalloutSpec("maplibre", "stack-callout-maplibre", "maplibre-boundary",
+                         stack_callout_label("MAPLIBRE DOES NOT ROUTE", "It draws normalized route GeoJSON and handles interaction.", "Road calculations remain outside the renderer."),
+                         stack_callout_label("MAPLIBRE TIDAK MENGHALA", "Ia melukis GeoJSON laluan ternormal dan mengurus interaksi.", "Pengiraan jalan kekal di luar pemapar."), "maplibre-gl"),
+        StackCalloutSpec("eta", "stack-callout-eta", "navigation-control-note",
+                         stack_callout_label("ETA", "Duration is provider-derived and traffic-independent."),
+                         stack_callout_label("ETA", "Tempoh diperoleh daripada penyedia dan bebas trafik."), "geo-gateway"),
+        StackCalloutSpec("response", "stack-callout-response", "directions-plugin-note",
+                         stack_callout_label("NORMALIZED RESPONSE", "Route geometry, alternatives, distance, duration and maneuvers share one contract."),
+                         stack_callout_label("RESPONS TERNORMAL", "Geometri laluan, alternatif, jarak, tempoh dan arahan berkongsi satu kontrak."), "geo-service,geo-gateway"),
+        StackCalloutSpec("dispatch", "stack-callout-dispatch", "side-flows",
+                         stack_callout_label("CACHE + PROVIDER DISPATCH", "Stable keys can return cached output before Valhalla is called."),
+                         stack_callout_label("CACHE + AGIHAN PENYEDIA", "Kunci stabil boleh memulangkan output cache sebelum Valhalla dipanggil."), "geo-gateway,geo-route-cache"),
+        StackCalloutSpec("fallback", "stack-fallback", "fallback-note",
+                         stack_callout_label("LABELLED FALLBACK ONLY", "Provider failure → Haversine straight line", "No ETA · no maneuvers", "No navigable-route claim"),
+                         stack_callout_label("SANDARAN BERLABEL SAHAJA", "Kegagalan penyedia → garis lurus Haversine", "Tiada ETA · tiada arahan", "Tiada dakwaan laluan boleh dinavigasi"), "geo-gateway"),
+        StackCalloutSpec("status", "stack-callout-status", "rollout-status",
+                         stack_callout_label("RUNTIME · 2026-07-19", "Valhalla + shared cache available", "Nominatim disabled · ETA traffic-independent"),
+                         stack_callout_label("MASA JALAN · 2026-07-19", "Valhalla + cache bersama tersedia", "Nominatim dinyahaktifkan · ETA bebas trafik")),
+    )
+    flows = (
+        StackFlowSpec("destination-to-navigation", "stack-input", "stack-nav", ((680, 300), (170, 300), (170, 576), (300, 576))),
+        StackFlowSpec("navigation-to-renderer", "stack-nav", "stack-renderer", ((545, 576),)),
+        StackFlowSpec("renderer-to-client", "stack-renderer", "stack-client", ((835, 576),)),
+        StackFlowSpec("renderer-to-map", "stack-renderer", "stack-map", ((690, 655), (170, 655), (170, 393), (335, 393))),
+        StackFlowSpec("map-to-interaction", "stack-map", "stack-rendering", ((660, 393),)),
+        StackFlowSpec("client-to-api", "stack-client", "stack-api", ((955, 680), (930, 680))),
+        StackFlowSpec("api-to-gateway", "stack-api", "stack-gateway", ((768, 761),)),
+        StackFlowSpec("gateway-to-safety", "stack-gateway", "stack-safety", ((498, 761),)),
+        StackFlowSpec("gateway-to-valhalla", "stack-gateway", "stack-valhalla", ((632.5, 865), (665, 865))),
+        StackFlowSpec("gateway-to-nominatim", "stack-gateway", "stack-nominatim", ((632.5, 850), (180, 850), (180, 961), (210, 961))),
+        StackFlowSpec("safety-to-cache", "stack-safety", "stack-cache", ((370, 845), (1180, 845), (1180, 961), (1115, 961))),
+        StackFlowSpec("fallback-constraint", "stack-safety", "stack-fallback", ((370, 840), (1250, 840), (1250, 980), (1570, 980), (1570, 975)), style="fallback"),
+    )
+    render_stack_diagram(
+        root, page, "routing-stack", layers, callouts, flows,
+        "REQUEST ↓<br>A + B + profile<br>POST /api/geo/route",
+        "PERMINTAAN ↓<br>A + B + profil<br>POST /api/geo/route",
+        "RESPONSE ↑<br>normalized route<br>distance · duration",
+        "RESPONS ↑<br>laluan ternormal<br>jarak · tempoh",
+        "Source-grounded in GeoNavigationManager, GeoRouteRenderer, src/services/geo.ts, Express /api/geo/route and GeoGateway. Current ETA is traffic-independent.",
+        "Berasaskan sumber GeoNavigationManager, GeoRouteRenderer, src/services/geo.ts, Express /api/geo/route dan GeoGateway. ETA semasa tidak mengambil kira trafik.",
+    )
     write(page, mxfile)
 
 

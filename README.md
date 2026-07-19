@@ -54,6 +54,10 @@ The persisted **V2 Georouting** sidebar folder contains 13 independent, bilingua
 
 The three V2 sequence diagrams extract their actor, participant, activation, fragment, call, return, divider and actor-stem styles directly from `templates/Sequence Diagram Template.drawio`. They retain nine 200-pixel-pitch lanes, use one 20x40 human actor plus eight 100x60 system participants, and place messages on a 50-pixel row grid. Template `alt` and `opt` frames distinguish cache, provider, geocoder, remote-work, confidence and fallback behavior instead of presenting mutually exclusive paths as one linear exchange.
 
+The V2 Domain and Implementation diagrams use `templates/Class Diagram Template.drawio` as their read-only UML style authority. The generator validates and copies its package, swimlane header, member, divider, relationship and multiplicity-label styles. Every class has a 46-pixel header, a typed attribute compartment, an optional 8-pixel divider and public-operation compartment, with variable heights rounded to the 10-pixel template grid. Parent classes keep the Explorer's stable component keys; child compartments use deterministic `/attributes`, `/divider` and `/operations` keys. Associations, dashed dependencies and hollow-diamond aggregations use orthogonal connector gutters with role labels and endpoint multiplicities.
+
+The V2 Georouting Architecture and Routing Responsibility Stack use `templates/Stack Template.drawio` as a third read-only visual authority. Both keep its exact `1900 x 1180` canvas, five progressively wider foreground trapezoids, five 12-pixel-offset depth copies, fourteen fixed card slots, 480-pixel explanation column, source footer, invisible anchors and separate request/normalized-response rails. Architecture remains the broad capability overview for routing, travel analysis, workplace navigation and Geo Studio; Routing Responsibility Stack remains the focused A-to-B operational flow. Every internal connector has explicit orthogonal gutter points, and the dedicated fallback branch states that a straight line has no ETA, maneuvers or navigable-route claim. Template colors are projected through `light-dark(...)` so the same structural palette remains legible in both Explorer themes.
+
 The runtime note is dated **19 July 2026**: Valhalla routing and shared geo cache were enabled and available, while Nominatim geocoding was disabled and unavailable. Nominatim-dependent boundary and POI-within flows are therefore marked feature-gated. The Haversine fallback is documented only as a straight-line result with no ETA, maneuvers or navigable-route claim. The Supabase snapshot records 87 public tables and 119 foreign keys and identifies `geo_geocode_cache`, `geo_route_cache`, `job_location_resolutions`, `geo_workspaces` and `geo_workspace_assets`.
 
 To regenerate only the owned source collection and then rebuild Explorer previews:
@@ -63,6 +67,8 @@ python .\scripts\generate-v2-georouting-diagrams.py
 python .\scripts\build-diagram-assets.py
 python .\scripts\test-v2-georouting-collection.py
 ```
+
+The generator rewrites the 13 owned V2 sources deterministically. For a class-only visual refresh, export only `domain.drawio` and `implementation.drawio`; for a stack-only refresh, export only `architecture.drawio` and `routing-stack.drawio` to their matching `assets/diagrams/v2-georouting/` SVG files. Then run the asset builder with `PETAKERJA_REUSE_DIAGRAM_EXPORTS=1`; the regression test confirms the remaining V2 and historical vanilla assets did not drift.
 
 Update the date and counts only after a fresh runtime/status and schema verification. The generator writes solely to `assets/editor/v2-georouting/`; generated previews are published under `assets/diagrams/v2-georouting/` by the shared asset builder.
 
@@ -215,7 +221,7 @@ Portable sources / Sumber mudah alih:
 - `assets/editor/` contains every registered canonical Draw.io source used by Edit mode and workspace saving. No active generator depends on a Desktop, Semester or user-profile directory.
 - `assets/diagrams/` contains generated interactive SVG assets used by View mode.
 - `assets/editor/v2-georouting/` and `assets/diagrams/v2-georouting/` isolate the 13 V2 georouting sources and previews from all historical vanilla assets.
-- `templates/Flow Chart Template.drawio`, `templates/Sequence Diagram Template.drawio` and `templates/Use Case Template.drawio` are the visual authorities for the V2 layout system. The generator keeps their 10-pixel grid, 70x140 use-case actors, 62-pixel use cases, 20x40 sequence actors, 100x60 system participants, separate 10-pixel lifelines, blue UML fragments and template arrow styles.
+- `templates/Flow Chart Template.drawio`, `templates/Sequence Diagram Template.drawio`, `templates/Use Case Template.drawio`, `templates/Class Diagram Template.drawio` and `templates/Stack Template.drawio` are the read-only visual authorities for the V2 layout system. The generator keeps their 10-pixel grid, UML dimensions, compartment rules, exact responsibility-stack geometry, depth offsets, card/callout slots and connector semantics.
 - `exports/diagrams/` is the ignored local destination for report-ready Draw.io, SVG and PNG exports.
 - `workspace-manifest.json` is the single allowlist mapping writable diagram IDs to their repository-relative XML and SVG paths. Arbitrary imports remain session-only and download-only until deliberately registered.
 - `scripts\build-admin-manage-users-flowchart.py` and `scripts\build-admin-flowcharts.py`: generate the five verified original Administrator flow charts from the read-only template, validate branch coverage and reachability, and preserve their editor copies with the `-original.drawio` suffix.
@@ -249,7 +255,7 @@ The generator reads the corrected Domain source and copies it into the local edi
 - BM/EN and Ringkas/Kod changes use the same safe reload handshake. Before reload, the bridge commits active text editing and returns the latest XML, page, selection and scale. The controller canonicalises bilingual wrapper labels and native `mxCell value` labels, then reloads the requested projection and restores the editor view.
 - Canonical XML and hashes do not contain a transient visible-language projection. Therefore a presentation-only language or label-mode switch does not mark the diagram dirty or advance cloud history. **Save as** projects the selected language into the visible `label` values while retaining the hidden bilingual metadata for Draw.io Desktop.
 - `scripts/test-bilingual-diagram-editor.py` inventories the workspace manifest and protects the all-diagram contract: 51 registered diagrams, 50 source files, complete BM/EN fields and unchanged geometry, styles and connector endpoints.
-- `scripts/test-v2-georouting-collection.py` verifies nested paths, six subgroup counts, bilingual navigation labels, stable keys, connected edges, sequence label metadata, exact template-derived sequence styles, the 200-pixel lane and 50-pixel row grids, UML fragments, ordered collection metadata, comparison links, runtime claims and the 87-table/119-FK snapshot.
+- `scripts/test-v2-georouting-collection.py` verifies nested paths, six subgroup counts, bilingual navigation labels, stable keys, connected edges, exact sequence/class/stack template styles, fixed UML and stack geometry, 12-pixel depth offsets, explicit non-crossing stack gutters, request/response rails, fallback semantics, ordered collection metadata, comparison links, runtime claims and the 87-table/119-FK snapshot.
 
 ## PetaKerja mini-app integration
 

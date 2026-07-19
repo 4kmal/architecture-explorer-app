@@ -1,177 +1,747 @@
 <mxfile host="PetaKerja Architecture Explorer" agent="PetaKerja V2 Georouting Generator" version="27.0.2" compressed="false" pages="1" petakerjaProjectionLanguage="en" petakerjaSequenceLabelMode="simple" petakerjaLayoutStandard="project-template-v2">
   <diagram id="v2_geo_implementation" name="V2 Georouting Implementation">
-    <mxGraphModel dx="1680" dy="1180" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1680" pageHeight="1180" math="0" shadow="0">
+    <mxGraphModel dx="2400" dy="1900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1900" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <object id="v2_geo_implementation-title" label="Implementation Dependencies — V2 Georouting" labelEn="Implementation Dependencies — V2 Georouting" labelMs="Kebergantungan Pelaksanaan — Georouting V2" petakerjaKey="title">
           <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=24;fontStyle=1;fontColor=light-dark(#172033,#e8edf7);">
-            <mxGeometry x="50" y="25" width="1580" height="38" as="geometry" />
+            <mxGeometry x="50" y="25" width="2300" height="38" as="geometry" />
           </mxCell>
         </object>
-        <object id="v2_geo_implementation-subtitle" label="Aligned responsibility lanes replace the previous free-form dependency field." labelEn="Aligned responsibility lanes replace the previous free-form dependency field." labelMs="Lorong tanggungjawab sejajar menggantikan medan kebergantungan bebas sebelumnya." petakerjaKey="subtitle">
+        <object id="v2_geo_implementation-subtitle" label="Template-derived UML classes show retained collaborators, owned managers and provider dependencies." labelEn="Template-derived UML classes show retained collaborators, owned managers and provider dependencies." labelMs="Kelas UML berasaskan templat menunjukkan rakan tersimpan, pengurus milik dan kebergantungan penyedia." petakerjaKey="subtitle">
           <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontColor=light-dark(#596579,#aeb8c8);">
-            <mxGeometry x="50" y="65" width="1580" height="42" as="geometry" />
+            <mxGeometry x="50" y="65" width="2300" height="42" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-group-app" label="Application composition" labelEn="Application composition" labelMs="Komposisi aplikasi" petakerjaKey="implementation/group-app">
-          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#7f8a9a,#566173);strokeWidth=1.5;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=13;fontStyle=1;verticalAlign=top;align=left;spacingTop=8;spacingLeft=10;">
-            <mxGeometry x="50" y="130" width="1580" height="175" as="geometry" />
+        <object id="implementation-package-app" label="&lt;b&gt;APPLICATION COMPOSITION&lt;/b&gt;" labelEn="&lt;b&gt;APPLICATION COMPOSITION&lt;/b&gt;" labelMs="&lt;b&gt;KOMPOSISI APLIKASI&lt;/b&gt;" petakerjaKey="implementation/package-app" umlPackage="1" tone="identity">
+          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#f7fbff,#0f1b29);strokeColor=light-dark(#3975a6,#86b9e6);dashed=1;align=left;verticalAlign=top;spacingTop=10;spacingLeft=12;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=light-dark(#344054,#d8e0eb);dashPattern=6 4;shadow=0;">
+            <mxGeometry x="50" y="130" width="2300" height="300" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-group-browser" label="Browser managers and rendering" labelEn="Browser managers and rendering" labelMs="Pengurus pelayar dan pemaparan" petakerjaKey="implementation/group-browser">
-          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#7f8a9a,#566173);strokeWidth=1.5;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=13;fontStyle=1;verticalAlign=top;align=left;spacingTop=8;spacingLeft=10;">
-            <mxGeometry x="50" y="335" width="1580" height="300" as="geometry" />
+        <object id="implementation-package-browser" label="&lt;b&gt;BROWSER MANAGERS &amp;amp; RENDERING&lt;/b&gt;" labelEn="&lt;b&gt;BROWSER MANAGERS &amp;amp; RENDERING&lt;/b&gt;" labelMs="&lt;b&gt;PENGURUS PELAYAR &amp;amp; PEMAPARAN&lt;/b&gt;" petakerjaKey="implementation/package-browser" umlPackage="1" tone="geo">
+          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#f6fcf8,#0d2017);strokeColor=light-dark(#247a4d,#70d09d);dashed=1;align=left;verticalAlign=top;spacingTop=10;spacingLeft=12;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=light-dark(#344054,#d8e0eb);dashPattern=6 4;shadow=0;">
+            <mxGeometry x="50" y="460" width="2300" height="620" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-group-service" label="Client and server boundary" labelEn="Client and server boundary" labelMs="Sempadan klien dan pelayan" petakerjaKey="implementation/group-service">
-          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#7f8a9a,#566173);strokeWidth=1.5;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=13;fontStyle=1;verticalAlign=top;align=left;spacingTop=8;spacingLeft=10;">
-            <mxGeometry x="50" y="665" width="1580" height="190" as="geometry" />
+        <object id="implementation-package-service" label="&lt;b&gt;CLIENT &amp;amp; SERVER BOUNDARY&lt;/b&gt;" labelEn="&lt;b&gt;CLIENT &amp;amp; SERVER BOUNDARY&lt;/b&gt;" labelMs="&lt;b&gt;SEMPADAN KLIEN &amp;amp; PELAYAN&lt;/b&gt;" petakerjaKey="implementation/package-service" umlPackage="1" tone="jobs">
+          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#fffcf4,#211b11);strokeColor=light-dark(#9a6700,#edc35b);dashed=1;align=left;verticalAlign=top;spacingTop=10;spacingLeft=12;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=light-dark(#344054,#d8e0eb);dashPattern=6 4;shadow=0;">
+            <mxGeometry x="50" y="1110" width="2300" height="350" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-group-provider" label="Providers and persistent data" labelEn="Providers and persistent data" labelMs="Penyedia dan data kekal" petakerjaKey="implementation/group-provider">
-          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#7f8a9a,#566173);strokeWidth=1.5;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=13;fontStyle=1;verticalAlign=top;align=left;spacingTop=8;spacingLeft=10;">
-            <mxGeometry x="50" y="885" width="1580" height="190" as="geometry" />
+        <object id="implementation-package-provider" label="&lt;b&gt;PROVIDERS &amp;amp; PERSISTENT DATA&lt;/b&gt;" labelEn="&lt;b&gt;PROVIDERS &amp;amp; PERSISTENT DATA&lt;/b&gt;" labelMs="&lt;b&gt;PENYEDIA &amp;amp; DATA KEKAL&lt;/b&gt;" petakerjaKey="implementation/package-provider" umlPackage="1" tone="persistence">
+          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#faf7ff,#1b1527);strokeColor=light-dark(#6941c6,#b9a2ff);dashed=1;align=left;verticalAlign=top;spacingTop=10;spacingLeft=12;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=light-dark(#344054,#d8e0eb);dashPattern=6 4;shadow=0;">
+            <mxGeometry x="50" y="1490" width="2300" height="320" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-state" label="AppState&#10;map, userLocation, jobFinder" labelEn="AppState&#10;map, userLocation, jobFinder" labelMs="AppState&#10;map, userLocation, jobFinder" petakerjaKey="implementation/state" nodeIds="app-state" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="290" y="195" width="260" height="80" as="geometry" />
+        <object id="implementation-state" label="&lt;b&gt;AppState&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;AppState&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;AppState&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="implementation/state" nodeIds="app-state" component="1" umlClass="1" stereotype="interface" tone="identity">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#edf5ff,#14263a);swimlaneFillColor=light-dark(#fbfdff,#111a25);strokeColor=light-dark(#3975a6,#86b9e6);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="300" y="220" width="400" height="150" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-app" label="MyPetaApp&#10;creates and binds managers" labelEn="MyPetaApp&#10;creates and binds managers" labelMs="MyPetaApp&#10;mencipta dan mengikat pengurus" petakerjaKey="implementation/app" nodeIds="mypeta-app" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="710" y="185" width="260" height="100" as="geometry" />
+        <object id="implementation-state-attributes" label="&lt;div&gt;- appMode : AppMode&lt;/div&gt;&lt;div&gt;- map : maplibregl.Map&lt;/div&gt;&lt;div&gt;- lang : &amp;#x27;en&amp;#x27; | &amp;#x27;ms&amp;#x27;&lt;/div&gt;&lt;div&gt;- userLocation : [number, number] | null&lt;/div&gt;&lt;div&gt;- jobFinder : JobFinderState&lt;/div&gt;" labelEn="&lt;div&gt;- appMode : AppMode&lt;/div&gt;&lt;div&gt;- map : maplibregl.Map&lt;/div&gt;&lt;div&gt;- lang : &amp;#x27;en&amp;#x27; | &amp;#x27;ms&amp;#x27;&lt;/div&gt;&lt;div&gt;- userLocation : [number, number] | null&lt;/div&gt;&lt;div&gt;- jobFinder : JobFinderState&lt;/div&gt;" labelMs="&lt;div&gt;- appMode : AppMode&lt;/div&gt;&lt;div&gt;- map : maplibregl.Map&lt;/div&gt;&lt;div&gt;- lang : &amp;#x27;en&amp;#x27; | &amp;#x27;ms&amp;#x27;&lt;/div&gt;&lt;div&gt;- userLocation : [number, number] | null&lt;/div&gt;&lt;div&gt;- jobFinder : JobFinderState&lt;/div&gt;" petakerjaKey="implementation/state/attributes" umlCompartment="attributes">
+          <mxCell parent="implementation-state" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="400" height="104" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-map" label="MapManager&#10;style lifecycle and camera" labelEn="MapManager&#10;style lifecycle and camera" labelMs="MapManager&#10;kitar gaya dan kamera" petakerjaKey="implementation/map" nodeIds="map-manager" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="105" y="420" width="220" height="90" as="geometry" />
+        <object id="implementation-app" label="&lt;b&gt;MyPetaApp&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;MyPetaApp&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;MyPetaApp&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="implementation/app" nodeIds="mypeta-app" component="1" umlClass="1" stereotype="class" tone="identity">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#edf5ff,#14263a);swimlaneFillColor=light-dark(#fbfdff,#111a25);strokeColor=light-dark(#3975a6,#86b9e6);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="1000" y="185" width="430" height="200" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-tools" label="MapToolsPanelManager&#10;rail, drawer and fit padding" labelEn="MapToolsPanelManager&#10;rail, drawer and fit padding" labelMs="MapToolsPanelManager&#10;rel, laci dan ruang fit" petakerjaKey="implementation/tools" nodeIds="map-tools-manager" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="360" y="420" width="220" height="90" as="geometry" />
+        <object id="implementation-app-attributes" label="&lt;div&gt;- state : AppState&lt;/div&gt;&lt;div&gt;- mapManager : MapManager&lt;/div&gt;&lt;div&gt;- mapToolsPanelManager : MapToolsPanelManager&lt;/div&gt;&lt;div&gt;- geoNavigationManager : GeoNavigationManager | null&lt;/div&gt;&lt;div&gt;- routeAppearanceManager : RouteAppearanceManager&lt;/div&gt;&lt;div&gt;- jobFinderManager : JobFinderManager&lt;/div&gt;" labelEn="&lt;div&gt;- state : AppState&lt;/div&gt;&lt;div&gt;- mapManager : MapManager&lt;/div&gt;&lt;div&gt;- mapToolsPanelManager : MapToolsPanelManager&lt;/div&gt;&lt;div&gt;- geoNavigationManager : GeoNavigationManager | null&lt;/div&gt;&lt;div&gt;- routeAppearanceManager : RouteAppearanceManager&lt;/div&gt;&lt;div&gt;- jobFinderManager : JobFinderManager&lt;/div&gt;" labelMs="&lt;div&gt;- state : AppState&lt;/div&gt;&lt;div&gt;- mapManager : MapManager&lt;/div&gt;&lt;div&gt;- mapToolsPanelManager : MapToolsPanelManager&lt;/div&gt;&lt;div&gt;- geoNavigationManager : GeoNavigationManager | null&lt;/div&gt;&lt;div&gt;- routeAppearanceManager : RouteAppearanceManager&lt;/div&gt;&lt;div&gt;- jobFinderManager : JobFinderManager&lt;/div&gt;" petakerjaKey="implementation/app/attributes" umlCompartment="attributes">
+          <mxCell parent="implementation-app" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="430" height="114" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-nav" label="GeoNavigationManager&#10;A/B, route, matrix, isochrone" labelEn="GeoNavigationManager&#10;A/B, route, matrix, isochrone" labelMs="GeoNavigationManager&#10;A/B, laluan, matriks, isokron" petakerjaKey="implementation/nav" nodeIds="geo-navigation-manager" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="615" y="405" width="260" height="120" as="geometry" />
+        <object id="implementation-app-divider" label="" labelEn="" labelMs="" petakerjaKey="implementation/app/divider" umlCompartment="divider">
+          <mxCell parent="implementation-app" vertex="1" style="line;strokeWidth=1;fillColor=none;strokeColor=light-dark(#98a2b3,#667085);">
+            <mxGeometry y="160" width="430" height="8" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-renderer" label="GeoRouteRenderer&#10;ordered MapLibre layers" labelEn="GeoRouteRenderer&#10;ordered MapLibre layers" labelMs="GeoRouteRenderer&#10;lapisan MapLibre tersusun" petakerjaKey="implementation/renderer" nodeIds="geo-route-renderer" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="910" y="420" width="220" height="90" as="geometry" />
+        <object id="implementation-app-operations" label="&lt;div&gt;+ init() : Promise&amp;lt;void&amp;gt;&lt;/div&gt;" labelEn="&lt;div&gt;+ init() : Promise&amp;lt;void&amp;gt;&lt;/div&gt;" labelMs="&lt;div&gt;+ init() : Promise&amp;lt;void&amp;gt;&lt;/div&gt;" petakerjaKey="implementation/app/operations" umlCompartment="operations">
+          <mxCell parent="implementation-app" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="168" width="430" height="32" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-appearance" label="RouteAppearanceManager&#10;versioned visual settings" labelEn="RouteAppearanceManager&#10;versioned visual settings" labelMs="RouteAppearanceManager&#10;tetapan visual berversi" petakerjaKey="implementation/appearance" nodeIds="route-appearance-manager" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="1165" y="420" width="220" height="90" as="geometry" />
+        <object id="implementation-map" label="&lt;b&gt;MapManager&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;MapManager&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;MapManager&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="implementation/map" nodeIds="map-manager" component="1" umlClass="1" stereotype="class" tone="geo">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eafaf1,#123222);swimlaneFillColor=light-dark(#fbfefc,#101d17);strokeColor=light-dark(#247a4d,#70d09d);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="100" y="570" width="330" height="220" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-job" label="JobFinderManager&#10;workplace destination event" labelEn="JobFinderManager&#10;workplace destination event" labelMs="JobFinderManager&#10;peristiwa destinasi kerja" petakerjaKey="implementation/job" nodeIds="job-manager" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="615" y="545" width="260" height="65" as="geometry" />
+        <object id="implementation-map-attributes" label="&lt;div&gt;- state : AppState&lt;/div&gt;&lt;div&gt;- basemapMode : BasemapMode&lt;/div&gt;&lt;div&gt;- baseLayersReady : boolean&lt;/div&gt;&lt;div&gt;- jobOrbitAnimationId : number&lt;/div&gt;" labelEn="&lt;div&gt;- state : AppState&lt;/div&gt;&lt;div&gt;- basemapMode : BasemapMode&lt;/div&gt;&lt;div&gt;- baseLayersReady : boolean&lt;/div&gt;&lt;div&gt;- jobOrbitAnimationId : number&lt;/div&gt;" labelMs="&lt;div&gt;- state : AppState&lt;/div&gt;&lt;div&gt;- basemapMode : BasemapMode&lt;/div&gt;&lt;div&gt;- baseLayersReady : boolean&lt;/div&gt;&lt;div&gt;- jobOrbitAnimationId : number&lt;/div&gt;" petakerjaKey="implementation/map/attributes" umlCompartment="attributes">
+          <mxCell parent="implementation-map" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="330" height="80" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-client" label="src/services/geo.ts&#10;typed same-origin fetches" labelEn="src/services/geo.ts&#10;typed same-origin fetches" labelMs="src/services/geo.ts&#10;fetch asal sama berjenis" petakerjaKey="implementation/client" nodeIds="geo-service" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="500" y="725" width="280" height="90" as="geometry" />
+        <object id="implementation-map-divider" label="" labelEn="" labelMs="" petakerjaKey="implementation/map/divider" umlCompartment="divider">
+          <mxCell parent="implementation-map" vertex="1" style="line;strokeWidth=1;fillColor=none;strokeColor=light-dark(#98a2b3,#667085);">
+            <mxGeometry y="126" width="330" height="8" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-api" label="server/routes/geo.ts&#10;validation, auth and rate limits" labelEn="server/routes/geo.ts&#10;validation, auth and rate limits" labelMs="server/routes/geo.ts&#10;pengesahan, auth dan had kadar" petakerjaKey="implementation/api" nodeIds="geo-api" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="820" y="725" width="280" height="90" as="geometry" />
+        <object id="implementation-map-operations" label="&lt;div&gt;+ init() : void&lt;/div&gt;&lt;div&gt;+ getBasemapMode() : BasemapMode&lt;/div&gt;&lt;div&gt;+ setBasemapMode(mode) : void&lt;/div&gt;&lt;div&gt;+ fitBoundsGuarded(bounds, options?) : void&lt;/div&gt;" labelEn="&lt;div&gt;+ init() : void&lt;/div&gt;&lt;div&gt;+ getBasemapMode() : BasemapMode&lt;/div&gt;&lt;div&gt;+ setBasemapMode(mode) : void&lt;/div&gt;&lt;div&gt;+ fitBoundsGuarded(bounds, options?) : void&lt;/div&gt;" labelMs="&lt;div&gt;+ init() : void&lt;/div&gt;&lt;div&gt;+ getBasemapMode() : BasemapMode&lt;/div&gt;&lt;div&gt;+ setBasemapMode(mode) : void&lt;/div&gt;&lt;div&gt;+ fitBoundsGuarded(bounds, options?) : void&lt;/div&gt;" petakerjaKey="implementation/map/operations" umlCompartment="operations">
+          <mxCell parent="implementation-map" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="134" width="330" height="86" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-gateway" label="server/geo/gateway.ts&#10;normalization, cache and fallback" labelEn="server/geo/gateway.ts&#10;normalization, cache and fallback" labelMs="server/geo/gateway.ts&#10;normalisasi, cache dan sandaran" petakerjaKey="implementation/gateway" nodeIds="geo-gateway" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="1140" y="715" width="300" height="110" as="geometry" />
+        <object id="implementation-tools" label="&lt;b&gt;MapToolsPanelManager&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;MapToolsPanelManager&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;MapToolsPanelManager&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="implementation/tools" nodeIds="map-tools-manager" component="1" umlClass="1" stereotype="class" tone="geo">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eafaf1,#123222);swimlaneFillColor=light-dark(#fbfefc,#101d17);strokeColor=light-dark(#247a4d,#70d09d);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="480" y="550" width="350" height="240" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-supabase" label="Supabase / PostGIS&#10;cache and job resolution" labelEn="Supabase / PostGIS&#10;cache and job resolution" labelMs="Supabase / PostGIS&#10;cache dan penyelesaian kerja" petakerjaKey="implementation/supabase" nodeIds="supabase-db" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="500" y="950" width="300" height="80" as="geometry" />
+        <object id="implementation-tools-attributes" label="&lt;div&gt;- state : AppState&lt;/div&gt;&lt;div&gt;- definitions : Map&amp;lt;MapToolId, MapToolDefinition&amp;gt;&lt;/div&gt;&lt;div&gt;- rail : HTMLElement | null&lt;/div&gt;&lt;div&gt;- drawer : HTMLElement | null&lt;/div&gt;" labelEn="&lt;div&gt;- state : AppState&lt;/div&gt;&lt;div&gt;- definitions : Map&amp;lt;MapToolId, MapToolDefinition&amp;gt;&lt;/div&gt;&lt;div&gt;- rail : HTMLElement | null&lt;/div&gt;&lt;div&gt;- drawer : HTMLElement | null&lt;/div&gt;" labelMs="&lt;div&gt;- state : AppState&lt;/div&gt;&lt;div&gt;- definitions : Map&amp;lt;MapToolId, MapToolDefinition&amp;gt;&lt;/div&gt;&lt;div&gt;- rail : HTMLElement | null&lt;/div&gt;&lt;div&gt;- drawer : HTMLElement | null&lt;/div&gt;" petakerjaKey="implementation/tools/attributes" umlCompartment="attributes">
+          <mxCell parent="implementation-tools" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="350" height="80" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-valhalla" label="Valhalla&#10;route, matrix and isochrone" labelEn="Valhalla&#10;route, matrix and isochrone" labelMs="Valhalla&#10;laluan, matriks dan isokron" petakerjaKey="implementation/valhalla" nodeIds="valhalla" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="820" y="950" width="300" height="80" as="geometry" />
+        <object id="implementation-tools-divider" label="" labelEn="" labelMs="" petakerjaKey="implementation/tools/divider" umlCompartment="divider">
+          <mxCell parent="implementation-tools" vertex="1" style="line;strokeWidth=1;fillColor=none;strokeColor=light-dark(#98a2b3,#667085);">
+            <mxGeometry y="126" width="350" height="8" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-nominatim" label="Nominatim (disabled)&#10;search, reverse and lookup" labelEn="Nominatim (disabled)&#10;search, reverse and lookup" labelMs="Nominatim (dinyahaktifkan)&#10;carian, songsang dan lookup" petakerjaKey="implementation/nominatim" nodeIds="nominatim" component="1">
-          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=left;verticalAlign=top;startSize=28;horizontal=1;collapsible=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eaf3ff,#17283f);strokeColor=light-dark(#4f86c6,#6da9ef);fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=11;spacingLeft=7;spacingTop=5;">
-            <mxGeometry x="1140" y="950" width="300" height="80" as="geometry" />
+        <object id="implementation-tools-operations" label="&lt;div&gt;+ bind() : void&lt;/div&gt;&lt;div&gt;+ registerTool(definition) : void&lt;/div&gt;&lt;div&gt;+ openTool(id, focusDrawer?) : void&lt;/div&gt;&lt;div&gt;+ close(restoreFocus?) : void&lt;/div&gt;&lt;div&gt;+ getFitPadding(base?) : PaddingOptions&lt;/div&gt;" labelEn="&lt;div&gt;+ bind() : void&lt;/div&gt;&lt;div&gt;+ registerTool(definition) : void&lt;/div&gt;&lt;div&gt;+ openTool(id, focusDrawer?) : void&lt;/div&gt;&lt;div&gt;+ close(restoreFocus?) : void&lt;/div&gt;&lt;div&gt;+ getFitPadding(base?) : PaddingOptions&lt;/div&gt;" labelMs="&lt;div&gt;+ bind() : void&lt;/div&gt;&lt;div&gt;+ registerTool(definition) : void&lt;/div&gt;&lt;div&gt;+ openTool(id, focusDrawer?) : void&lt;/div&gt;&lt;div&gt;+ close(restoreFocus?) : void&lt;/div&gt;&lt;div&gt;+ getFitPadding(base?) : PaddingOptions&lt;/div&gt;" petakerjaKey="implementation/tools/operations" umlCompartment="operations">
+          <mxCell parent="implementation-tools" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="134" width="350" height="106" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-edge-1" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-1">
-          <mxCell parent="1" edge="1" source="impl-app" target="impl-state" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+        <object id="implementation-nav" label="&lt;b&gt;GeoNavigationManager&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;GeoNavigationManager&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;GeoNavigationManager&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="implementation/nav" nodeIds="geo-navigation-manager" component="1" umlClass="1" stereotype="class" tone="geo">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eafaf1,#123222);swimlaneFillColor=light-dark(#fbfefc,#101d17);strokeColor=light-dark(#247a4d,#70d09d);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="880" y="560" width="360" height="200" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-nav-attributes" label="&lt;div&gt;- state : AppState&lt;/div&gt;&lt;div&gt;- start : GeoPlace | null&lt;/div&gt;&lt;div&gt;- destination : GeoPlace | null&lt;/div&gt;&lt;div&gt;- profile : GeoRouteProfile&lt;/div&gt;&lt;div&gt;- currentRoute : GeoRoute | null&lt;/div&gt;&lt;div&gt;- routeRenderer : GeoRouteRenderer | null&lt;/div&gt;" labelEn="&lt;div&gt;- state : AppState&lt;/div&gt;&lt;div&gt;- start : GeoPlace | null&lt;/div&gt;&lt;div&gt;- destination : GeoPlace | null&lt;/div&gt;&lt;div&gt;- profile : GeoRouteProfile&lt;/div&gt;&lt;div&gt;- currentRoute : GeoRoute | null&lt;/div&gt;&lt;div&gt;- routeRenderer : GeoRouteRenderer | null&lt;/div&gt;" labelMs="&lt;div&gt;- state : AppState&lt;/div&gt;&lt;div&gt;- start : GeoPlace | null&lt;/div&gt;&lt;div&gt;- destination : GeoPlace | null&lt;/div&gt;&lt;div&gt;- profile : GeoRouteProfile&lt;/div&gt;&lt;div&gt;- currentRoute : GeoRoute | null&lt;/div&gt;&lt;div&gt;- routeRenderer : GeoRouteRenderer | null&lt;/div&gt;" petakerjaKey="implementation/nav/attributes" umlCompartment="attributes">
+          <mxCell parent="implementation-nav" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="360" height="114" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-nav-divider" label="" labelEn="" labelMs="" petakerjaKey="implementation/nav/divider" umlCompartment="divider">
+          <mxCell parent="implementation-nav" vertex="1" style="line;strokeWidth=1;fillColor=none;strokeColor=light-dark(#98a2b3,#667085);">
+            <mxGeometry y="160" width="360" height="8" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-nav-operations" label="&lt;div&gt;+ bind() : void&lt;/div&gt;" labelEn="&lt;div&gt;+ bind() : void&lt;/div&gt;" labelMs="&lt;div&gt;+ bind() : void&lt;/div&gt;" petakerjaKey="implementation/nav/operations" umlCompartment="operations">
+          <mxCell parent="implementation-nav" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="168" width="360" height="32" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-renderer" label="&lt;b&gt;GeoRouteRenderer&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;GeoRouteRenderer&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;GeoRouteRenderer&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="implementation/renderer" nodeIds="geo-route-renderer" component="1" umlClass="1" stereotype="class" tone="geo">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eafaf1,#123222);swimlaneFillColor=light-dark(#fbfefc,#101d17);strokeColor=light-dark(#247a4d,#70d09d);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="1290" y="500" width="430" height="320" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-renderer-attributes" label="&lt;div&gt;- route : GeoRoute | null&lt;/div&gt;&lt;div&gt;- selectedRouteId : string&lt;/div&gt;&lt;div&gt;- start : GeoPlace | null&lt;/div&gt;&lt;div&gt;- destination : GeoPlace | null&lt;/div&gt;&lt;div&gt;- preview : JourneyPreviewState&lt;/div&gt;&lt;div&gt;- destroyed : boolean&lt;/div&gt;" labelEn="&lt;div&gt;- route : GeoRoute | null&lt;/div&gt;&lt;div&gt;- selectedRouteId : string&lt;/div&gt;&lt;div&gt;- start : GeoPlace | null&lt;/div&gt;&lt;div&gt;- destination : GeoPlace | null&lt;/div&gt;&lt;div&gt;- preview : JourneyPreviewState&lt;/div&gt;&lt;div&gt;- destroyed : boolean&lt;/div&gt;" labelMs="&lt;div&gt;- route : GeoRoute | null&lt;/div&gt;&lt;div&gt;- selectedRouteId : string&lt;/div&gt;&lt;div&gt;- start : GeoPlace | null&lt;/div&gt;&lt;div&gt;- destination : GeoPlace | null&lt;/div&gt;&lt;div&gt;- preview : JourneyPreviewState&lt;/div&gt;&lt;div&gt;- destroyed : boolean&lt;/div&gt;" petakerjaKey="implementation/renderer/attributes" umlCompartment="attributes">
+          <mxCell parent="implementation-renderer" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="430" height="114" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-renderer-divider" label="" labelEn="" labelMs="" petakerjaKey="implementation/renderer/divider" umlCompartment="divider">
+          <mxCell parent="implementation-renderer" vertex="1" style="line;strokeWidth=1;fillColor=none;strokeColor=light-dark(#98a2b3,#667085);">
+            <mxGeometry y="160" width="430" height="8" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-renderer-operations" label="&lt;div&gt;+ setRoute(route, selectedRouteId?) : void&lt;/div&gt;&lt;div&gt;+ setSelectedRoute(routeId) : void&lt;/div&gt;&lt;div&gt;+ setAppearance(settings) : void&lt;/div&gt;&lt;div&gt;+ setEndpoints(start, destination) : void&lt;/div&gt;&lt;div&gt;+ playPreview() : void&lt;/div&gt;&lt;div&gt;+ pausePreview() : void&lt;/div&gt;&lt;div&gt;+ redraw() : void&lt;/div&gt;&lt;div&gt;+ destroy() : void&lt;/div&gt;" labelEn="&lt;div&gt;+ setRoute(route, selectedRouteId?) : void&lt;/div&gt;&lt;div&gt;+ setSelectedRoute(routeId) : void&lt;/div&gt;&lt;div&gt;+ setAppearance(settings) : void&lt;/div&gt;&lt;div&gt;+ setEndpoints(start, destination) : void&lt;/div&gt;&lt;div&gt;+ playPreview() : void&lt;/div&gt;&lt;div&gt;+ pausePreview() : void&lt;/div&gt;&lt;div&gt;+ redraw() : void&lt;/div&gt;&lt;div&gt;+ destroy() : void&lt;/div&gt;" labelMs="&lt;div&gt;+ setRoute(route, selectedRouteId?) : void&lt;/div&gt;&lt;div&gt;+ setSelectedRoute(routeId) : void&lt;/div&gt;&lt;div&gt;+ setAppearance(settings) : void&lt;/div&gt;&lt;div&gt;+ setEndpoints(start, destination) : void&lt;/div&gt;&lt;div&gt;+ playPreview() : void&lt;/div&gt;&lt;div&gt;+ pausePreview() : void&lt;/div&gt;&lt;div&gt;+ redraw() : void&lt;/div&gt;&lt;div&gt;+ destroy() : void&lt;/div&gt;" petakerjaKey="implementation/renderer/operations" umlCompartment="operations">
+          <mxCell parent="implementation-renderer" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="168" width="430" height="152" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-appearance" label="&lt;b&gt;RouteAppearanceManager&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;RouteAppearanceManager&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;RouteAppearanceManager&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="implementation/appearance" nodeIds="route-appearance-manager" component="1" umlClass="1" stereotype="class" tone="geo">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eafaf1,#123222);swimlaneFillColor=light-dark(#fbfefc,#101d17);strokeColor=light-dark(#247a4d,#70d09d);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="1780" y="560" width="390" height="200" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-appearance-attributes" label="&lt;div&gt;- settings : RouteAppearanceSettings&lt;/div&gt;&lt;div&gt;- controller : RouteAppearanceController | null&lt;/div&gt;&lt;div&gt;- host : HTMLElement | null&lt;/div&gt;" labelEn="&lt;div&gt;- settings : RouteAppearanceSettings&lt;/div&gt;&lt;div&gt;- controller : RouteAppearanceController | null&lt;/div&gt;&lt;div&gt;- host : HTMLElement | null&lt;/div&gt;" labelMs="&lt;div&gt;- settings : RouteAppearanceSettings&lt;/div&gt;&lt;div&gt;- controller : RouteAppearanceController | null&lt;/div&gt;&lt;div&gt;- host : HTMLElement | null&lt;/div&gt;" petakerjaKey="implementation/appearance/attributes" umlCompartment="attributes">
+          <mxCell parent="implementation-appearance" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="390" height="63" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-appearance-divider" label="" labelEn="" labelMs="" petakerjaKey="implementation/appearance/divider" umlCompartment="divider">
+          <mxCell parent="implementation-appearance" vertex="1" style="line;strokeWidth=1;fillColor=none;strokeColor=light-dark(#98a2b3,#667085);">
+            <mxGeometry y="109" width="390" height="8" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-appearance-operations" label="&lt;div&gt;+ bind() : void&lt;/div&gt;&lt;div&gt;+ bindController(controller) : void&lt;/div&gt;&lt;div&gt;+ getSettings() : RouteAppearanceSettings&lt;/div&gt;&lt;div&gt;+ updatePreviewState() : void&lt;/div&gt;" labelEn="&lt;div&gt;+ bind() : void&lt;/div&gt;&lt;div&gt;+ bindController(controller) : void&lt;/div&gt;&lt;div&gt;+ getSettings() : RouteAppearanceSettings&lt;/div&gt;&lt;div&gt;+ updatePreviewState() : void&lt;/div&gt;" labelMs="&lt;div&gt;+ bind() : void&lt;/div&gt;&lt;div&gt;+ bindController(controller) : void&lt;/div&gt;&lt;div&gt;+ getSettings() : RouteAppearanceSettings&lt;/div&gt;&lt;div&gt;+ updatePreviewState() : void&lt;/div&gt;" petakerjaKey="implementation/appearance/operations" umlCompartment="operations">
+          <mxCell parent="implementation-appearance" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="117" width="390" height="83" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-job" label="&lt;b&gt;JobFinderManager&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;JobFinderManager&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;JobFinderManager&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="implementation/job" nodeIds="job-manager" component="1" umlClass="1" stereotype="class" tone="geo">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#eafaf1,#123222);swimlaneFillColor=light-dark(#fbfefc,#101d17);strokeColor=light-dark(#247a4d,#70d09d);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="880" y="840" width="360" height="220" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-job-attributes" label="&lt;div&gt;- state : AppState&lt;/div&gt;&lt;div&gt;- jobsById : Map&amp;lt;string, JobListing&amp;gt;&lt;/div&gt;&lt;div&gt;- jobCoordsById : Map&amp;lt;string, [number, number]&amp;gt;&lt;/div&gt;&lt;div&gt;- activeJobId : string | null&lt;/div&gt;&lt;div&gt;- mapTools? : MapToolsPanelManager&lt;/div&gt;" labelEn="&lt;div&gt;- state : AppState&lt;/div&gt;&lt;div&gt;- jobsById : Map&amp;lt;string, JobListing&amp;gt;&lt;/div&gt;&lt;div&gt;- jobCoordsById : Map&amp;lt;string, [number, number]&amp;gt;&lt;/div&gt;&lt;div&gt;- activeJobId : string | null&lt;/div&gt;&lt;div&gt;- mapTools? : MapToolsPanelManager&lt;/div&gt;" labelMs="&lt;div&gt;- state : AppState&lt;/div&gt;&lt;div&gt;- jobsById : Map&amp;lt;string, JobListing&amp;gt;&lt;/div&gt;&lt;div&gt;- jobCoordsById : Map&amp;lt;string, [number, number]&amp;gt;&lt;/div&gt;&lt;div&gt;- activeJobId : string | null&lt;/div&gt;&lt;div&gt;- mapTools? : MapToolsPanelManager&lt;/div&gt;" petakerjaKey="implementation/job/attributes" umlCompartment="attributes">
+          <mxCell parent="implementation-job" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="360" height="97" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-job-divider" label="" labelEn="" labelMs="" petakerjaKey="implementation/job/divider" umlCompartment="divider">
+          <mxCell parent="implementation-job" vertex="1" style="line;strokeWidth=1;fillColor=none;strokeColor=light-dark(#98a2b3,#667085);">
+            <mxGeometry y="143" width="360" height="8" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-job-operations" label="&lt;div&gt;+ bind() : void&lt;/div&gt;&lt;div&gt;+ executeSearch() : Promise&amp;lt;void&amp;gt;&lt;/div&gt;&lt;div&gt;+ onTabActivated() : void&lt;/div&gt;" labelEn="&lt;div&gt;+ bind() : void&lt;/div&gt;&lt;div&gt;+ executeSearch() : Promise&amp;lt;void&amp;gt;&lt;/div&gt;&lt;div&gt;+ onTabActivated() : void&lt;/div&gt;" labelMs="&lt;div&gt;+ bind() : void&lt;/div&gt;&lt;div&gt;+ executeSearch() : Promise&amp;lt;void&amp;gt;&lt;/div&gt;&lt;div&gt;+ onTabActivated() : void&lt;/div&gt;" petakerjaKey="implementation/job/operations" umlCompartment="operations">
+          <mxCell parent="implementation-job" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="151" width="360" height="69" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-client" label="&lt;b&gt;GeoClient&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;module: src/services/geo.ts&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;GeoClient&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;module: src/services/geo.ts&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;GeoClient&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;module: src/services/geo.ts&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="implementation/client" nodeIds="geo-service" component="1" umlClass="1" stereotype="module: src/services/geo.ts" tone="jobs">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#fff6df,#392c14);swimlaneFillColor=light-dark(#fffdf8,#201b12);strokeColor=light-dark(#9a6700,#edc35b);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="230" y="1200" width="500" height="200" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-client-attributes" label="" labelEn="" labelMs="" petakerjaKey="implementation/client/attributes" umlCompartment="attributes">
+          <mxCell parent="implementation-client" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="500" height="31" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-client-divider" label="" labelEn="" labelMs="" petakerjaKey="implementation/client/divider" umlCompartment="divider">
+          <mxCell parent="implementation-client" vertex="1" style="line;strokeWidth=1;fillColor=none;strokeColor=light-dark(#98a2b3,#667085);">
+            <mxGeometry y="77" width="500" height="8" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-client-operations" label="&lt;div&gt;+ searchGeoPlaces(options) : Promise&amp;lt;GeoPlace[]&amp;gt;&lt;/div&gt;&lt;div&gt;+ reverseGeoLocation(location, language) : Promise&amp;lt;GeoPlace | null&amp;gt;&lt;/div&gt;&lt;div&gt;+ calculateGeoRoute(origin, destination, profile) : Promise&amp;lt;GeoRoute&amp;gt;&lt;/div&gt;&lt;div&gt;+ calculateGeoMatrix(sources, targets, profile) : Promise&amp;lt;GeoMatrixResult&amp;gt;&lt;/div&gt;&lt;div&gt;+ calculateGeoIsochrone(origin, contours, profile) : Promise&amp;lt;GeoIsochroneResult&amp;gt;&lt;/div&gt;&lt;div&gt;+ resolveGeoJobLocation(jobId) : Promise&amp;lt;JobGeoResolution&amp;gt;&lt;/div&gt;" labelEn="&lt;div&gt;+ searchGeoPlaces(options) : Promise&amp;lt;GeoPlace[]&amp;gt;&lt;/div&gt;&lt;div&gt;+ reverseGeoLocation(location, language) : Promise&amp;lt;GeoPlace | null&amp;gt;&lt;/div&gt;&lt;div&gt;+ calculateGeoRoute(origin, destination, profile) : Promise&amp;lt;GeoRoute&amp;gt;&lt;/div&gt;&lt;div&gt;+ calculateGeoMatrix(sources, targets, profile) : Promise&amp;lt;GeoMatrixResult&amp;gt;&lt;/div&gt;&lt;div&gt;+ calculateGeoIsochrone(origin, contours, profile) : Promise&amp;lt;GeoIsochroneResult&amp;gt;&lt;/div&gt;&lt;div&gt;+ resolveGeoJobLocation(jobId) : Promise&amp;lt;JobGeoResolution&amp;gt;&lt;/div&gt;" labelMs="&lt;div&gt;+ searchGeoPlaces(options) : Promise&amp;lt;GeoPlace[]&amp;gt;&lt;/div&gt;&lt;div&gt;+ reverseGeoLocation(location, language) : Promise&amp;lt;GeoPlace | null&amp;gt;&lt;/div&gt;&lt;div&gt;+ calculateGeoRoute(origin, destination, profile) : Promise&amp;lt;GeoRoute&amp;gt;&lt;/div&gt;&lt;div&gt;+ calculateGeoMatrix(sources, targets, profile) : Promise&amp;lt;GeoMatrixResult&amp;gt;&lt;/div&gt;&lt;div&gt;+ calculateGeoIsochrone(origin, contours, profile) : Promise&amp;lt;GeoIsochroneResult&amp;gt;&lt;/div&gt;&lt;div&gt;+ resolveGeoJobLocation(jobId) : Promise&amp;lt;JobGeoResolution&amp;gt;&lt;/div&gt;" petakerjaKey="implementation/client/operations" umlCompartment="operations">
+          <mxCell parent="implementation-client" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="85" width="500" height="115" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-api" label="&lt;b&gt;GeoApiController&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;controller: server/routes/geo.ts&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;GeoApiController&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;controller: server/routes/geo.ts&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;GeoApiController&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;controller: server/routes/geo.ts&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="implementation/api" nodeIds="geo-api" component="1" umlClass="1" stereotype="controller: server/routes/geo.ts" tone="jobs">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#fff6df,#392c14);swimlaneFillColor=light-dark(#fffdf8,#201b12);strokeColor=light-dark(#9a6700,#edc35b);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="850" y="1200" width="500" height="200" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-api-attributes" label="" labelEn="" labelMs="" petakerjaKey="implementation/api/attributes" umlCompartment="attributes">
+          <mxCell parent="implementation-api" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="500" height="31" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-api-divider" label="" labelEn="" labelMs="" petakerjaKey="implementation/api/divider" umlCompartment="divider">
+          <mxCell parent="implementation-api" vertex="1" style="line;strokeWidth=1;fillColor=none;strokeColor=light-dark(#98a2b3,#667085);">
+            <mxGeometry y="77" width="500" height="8" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-api-operations" label="&lt;div&gt;+ GET /search | /reverse | /lookup&lt;/div&gt;&lt;div&gt;+ POST /route | /matrix | /isochrone&lt;/div&gt;&lt;div&gt;+ POST /within&lt;/div&gt;&lt;div&gt;+ GET /status&lt;/div&gt;&lt;div&gt;+ GET /datasets/:name&lt;/div&gt;&lt;div&gt;+ POST /jobs/:jobId/resolve&lt;/div&gt;" labelEn="&lt;div&gt;+ GET /search | /reverse | /lookup&lt;/div&gt;&lt;div&gt;+ POST /route | /matrix | /isochrone&lt;/div&gt;&lt;div&gt;+ POST /within&lt;/div&gt;&lt;div&gt;+ GET /status&lt;/div&gt;&lt;div&gt;+ GET /datasets/:name&lt;/div&gt;&lt;div&gt;+ POST /jobs/:jobId/resolve&lt;/div&gt;" labelMs="&lt;div&gt;+ GET /search | /reverse | /lookup&lt;/div&gt;&lt;div&gt;+ POST /route | /matrix | /isochrone&lt;/div&gt;&lt;div&gt;+ POST /within&lt;/div&gt;&lt;div&gt;+ GET /status&lt;/div&gt;&lt;div&gt;+ GET /datasets/:name&lt;/div&gt;&lt;div&gt;+ POST /jobs/:jobId/resolve&lt;/div&gt;" petakerjaKey="implementation/api/operations" umlCompartment="operations">
+          <mxCell parent="implementation-api" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="85" width="500" height="115" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-gateway" label="&lt;b&gt;GeoGateway&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;service: server/geo/gateway.ts&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;GeoGateway&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;service: server/geo/gateway.ts&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;GeoGateway&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;service: server/geo/gateway.ts&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="implementation/gateway" nodeIds="geo-gateway" component="1" umlClass="1" stereotype="service: server/geo/gateway.ts" tone="jobs">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#fff6df,#392c14);swimlaneFillColor=light-dark(#fffdf8,#201b12);strokeColor=light-dark(#9a6700,#edc35b);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="1480" y="1145" width="560" height="250" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-gateway-attributes" label="" labelEn="" labelMs="" petakerjaKey="implementation/gateway/attributes" umlCompartment="attributes">
+          <mxCell parent="implementation-gateway" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="560" height="31" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-gateway-divider" label="" labelEn="" labelMs="" petakerjaKey="implementation/gateway/divider" umlCompartment="divider">
+          <mxCell parent="implementation-gateway" vertex="1" style="line;strokeWidth=1;fillColor=none;strokeColor=light-dark(#98a2b3,#667085);">
+            <mxGeometry y="77" width="560" height="8" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-gateway-operations" label="&lt;div&gt;+ isEnabled() : boolean&lt;/div&gt;&lt;div&gt;+ search(options) : Promise&amp;lt;GeoPlace[]&amp;gt;&lt;/div&gt;&lt;div&gt;+ reverse(location, language) : Promise&amp;lt;GeoPlace | null&amp;gt;&lt;/div&gt;&lt;div&gt;+ lookup(osmIds, language, boundary?) : Promise&amp;lt;GeoPlace[]&amp;gt;&lt;/div&gt;&lt;div&gt;+ route(options) : Promise&amp;lt;GeoRoute&amp;gt;&lt;/div&gt;&lt;div&gt;+ straightLineRoute(origin, destination, profile) : GeoRoute&lt;/div&gt;&lt;div&gt;+ matrix(sources, targets, profile) : Promise&amp;lt;GeoMatrixResult&amp;gt;&lt;/div&gt;&lt;div&gt;+ isochrone(origin, contours, profile) : Promise&amp;lt;GeoIsochroneResult&amp;gt;&lt;/div&gt;&lt;div&gt;+ status() : Promise&amp;lt;GeoStatus&amp;gt;&lt;/div&gt;" labelEn="&lt;div&gt;+ isEnabled() : boolean&lt;/div&gt;&lt;div&gt;+ search(options) : Promise&amp;lt;GeoPlace[]&amp;gt;&lt;/div&gt;&lt;div&gt;+ reverse(location, language) : Promise&amp;lt;GeoPlace | null&amp;gt;&lt;/div&gt;&lt;div&gt;+ lookup(osmIds, language, boundary?) : Promise&amp;lt;GeoPlace[]&amp;gt;&lt;/div&gt;&lt;div&gt;+ route(options) : Promise&amp;lt;GeoRoute&amp;gt;&lt;/div&gt;&lt;div&gt;+ straightLineRoute(origin, destination, profile) : GeoRoute&lt;/div&gt;&lt;div&gt;+ matrix(sources, targets, profile) : Promise&amp;lt;GeoMatrixResult&amp;gt;&lt;/div&gt;&lt;div&gt;+ isochrone(origin, contours, profile) : Promise&amp;lt;GeoIsochroneResult&amp;gt;&lt;/div&gt;&lt;div&gt;+ status() : Promise&amp;lt;GeoStatus&amp;gt;&lt;/div&gt;" labelMs="&lt;div&gt;+ isEnabled() : boolean&lt;/div&gt;&lt;div&gt;+ search(options) : Promise&amp;lt;GeoPlace[]&amp;gt;&lt;/div&gt;&lt;div&gt;+ reverse(location, language) : Promise&amp;lt;GeoPlace | null&amp;gt;&lt;/div&gt;&lt;div&gt;+ lookup(osmIds, language, boundary?) : Promise&amp;lt;GeoPlace[]&amp;gt;&lt;/div&gt;&lt;div&gt;+ route(options) : Promise&amp;lt;GeoRoute&amp;gt;&lt;/div&gt;&lt;div&gt;+ straightLineRoute(origin, destination, profile) : GeoRoute&lt;/div&gt;&lt;div&gt;+ matrix(sources, targets, profile) : Promise&amp;lt;GeoMatrixResult&amp;gt;&lt;/div&gt;&lt;div&gt;+ isochrone(origin, contours, profile) : Promise&amp;lt;GeoIsochroneResult&amp;gt;&lt;/div&gt;&lt;div&gt;+ status() : Promise&amp;lt;GeoStatus&amp;gt;&lt;/div&gt;" petakerjaKey="implementation/gateway/operations" umlCompartment="operations">
+          <mxCell parent="implementation-gateway" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="85" width="560" height="165" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-supabase" label="&lt;b&gt;Supabase / PostGIS&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;database&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;Supabase / PostGIS&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;database&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;Supabase / PostGIS&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;database&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="implementation/supabase" nodeIds="supabase-db" component="1" umlClass="1" stereotype="database" tone="persistence">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#f4efff,#2b2140);swimlaneFillColor=light-dark(#fdfbff,#191424);strokeColor=light-dark(#6941c6,#b9a2ff);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="150" y="1600" width="480" height="110" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-supabase-attributes" label="&lt;div&gt;- geo_geocode_cache : server-only&lt;/div&gt;&lt;div&gt;- geo_route_cache : server-only&lt;/div&gt;&lt;div&gt;- job_location_resolutions : server-only&lt;/div&gt;" labelEn="&lt;div&gt;- geo_geocode_cache : server-only&lt;/div&gt;&lt;div&gt;- geo_route_cache : server-only&lt;/div&gt;&lt;div&gt;- job_location_resolutions : server-only&lt;/div&gt;" labelMs="&lt;div&gt;- geo_geocode_cache : server-only&lt;/div&gt;&lt;div&gt;- geo_route_cache : server-only&lt;/div&gt;&lt;div&gt;- job_location_resolutions : server-only&lt;/div&gt;" petakerjaKey="implementation/supabase/attributes" umlCompartment="attributes">
+          <mxCell parent="implementation-supabase" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="480" height="64" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-valhalla" label="&lt;b&gt;Valhalla&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;external service: enabled&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;Valhalla&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;external service: enabled&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;Valhalla&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;external service: enabled&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="implementation/valhalla" nodeIds="valhalla" component="1" umlClass="1" stereotype="external service: enabled" tone="persistence">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#f4efff,#2b2140);swimlaneFillColor=light-dark(#fdfbff,#191424);strokeColor=light-dark(#6941c6,#b9a2ff);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="760" y="1570" width="400" height="180" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-valhalla-attributes" label="&lt;div&gt;- provider : &amp;#x27;valhalla&amp;#x27;&lt;/div&gt;&lt;div&gt;- enabled : true&lt;/div&gt;&lt;div&gt;- available : true&lt;/div&gt;" labelEn="&lt;div&gt;- provider : &amp;#x27;valhalla&amp;#x27;&lt;/div&gt;&lt;div&gt;- enabled : true&lt;/div&gt;&lt;div&gt;- available : true&lt;/div&gt;" labelMs="&lt;div&gt;- provider : &amp;#x27;valhalla&amp;#x27;&lt;/div&gt;&lt;div&gt;- enabled : true&lt;/div&gt;&lt;div&gt;- available : true&lt;/div&gt;" petakerjaKey="implementation/valhalla/attributes" umlCompartment="attributes">
+          <mxCell parent="implementation-valhalla" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="400" height="63" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-valhalla-divider" label="" labelEn="" labelMs="" petakerjaKey="implementation/valhalla/divider" umlCompartment="divider">
+          <mxCell parent="implementation-valhalla" vertex="1" style="line;strokeWidth=1;fillColor=none;strokeColor=light-dark(#98a2b3,#667085);">
+            <mxGeometry y="109" width="400" height="8" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-valhalla-operations" label="&lt;div&gt;+ route()&lt;/div&gt;&lt;div&gt;+ matrix()&lt;/div&gt;&lt;div&gt;+ isochrone()&lt;/div&gt;" labelEn="&lt;div&gt;+ route()&lt;/div&gt;&lt;div&gt;+ matrix()&lt;/div&gt;&lt;div&gt;+ isochrone()&lt;/div&gt;" labelMs="&lt;div&gt;+ route()&lt;/div&gt;&lt;div&gt;+ matrix()&lt;/div&gt;&lt;div&gt;+ isochrone()&lt;/div&gt;" petakerjaKey="implementation/valhalla/operations" umlCompartment="operations">
+          <mxCell parent="implementation-valhalla" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="117" width="400" height="63" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-nominatim" label="&lt;b&gt;Nominatim&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;external service: disabled&amp;gt;&amp;gt;&lt;/span&gt;" labelEn="&lt;b&gt;Nominatim&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;external service: disabled&amp;gt;&amp;gt;&lt;/span&gt;" labelMs="&lt;b&gt;Nominatim&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:light-dark(#475467,#c5cedb);&quot;&gt;&amp;lt;&amp;lt;external service: disabled&amp;gt;&amp;gt;&lt;/span&gt;" petakerjaKey="implementation/nominatim" nodeIds="nominatim" component="1" umlClass="1" stereotype="external service: disabled" tone="persistence">
+          <mxCell parent="1" vertex="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=46;horizontalStack=0;resizeParent=0;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rounded=0;fillColor=light-dark(#f4efff,#2b2140);swimlaneFillColor=light-dark(#fdfbff,#191424);strokeColor=light-dark(#6941c6,#b9a2ff);strokeWidth=1.4;fontFamily=Arial;fontSize=13;fontColor=light-dark(#172033,#f3f6fb);shadow=1;">
+            <mxGeometry x="1310" y="1570" width="420" height="180" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-nominatim-attributes" label="&lt;div&gt;- provider : &amp;#x27;nominatim&amp;#x27;&lt;/div&gt;&lt;div&gt;- enabled : false&lt;/div&gt;&lt;div&gt;- available : false&lt;/div&gt;" labelEn="&lt;div&gt;- provider : &amp;#x27;nominatim&amp;#x27;&lt;/div&gt;&lt;div&gt;- enabled : false&lt;/div&gt;&lt;div&gt;- available : false&lt;/div&gt;" labelMs="&lt;div&gt;- provider : &amp;#x27;nominatim&amp;#x27;&lt;/div&gt;&lt;div&gt;- enabled : false&lt;/div&gt;&lt;div&gt;- available : false&lt;/div&gt;" petakerjaKey="implementation/nominatim/attributes" umlCompartment="attributes">
+          <mxCell parent="implementation-nominatim" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="46" width="420" height="63" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-nominatim-divider" label="" labelEn="" labelMs="" petakerjaKey="implementation/nominatim/divider" umlCompartment="divider">
+          <mxCell parent="implementation-nominatim" vertex="1" style="line;strokeWidth=1;fillColor=none;strokeColor=light-dark(#98a2b3,#667085);">
+            <mxGeometry y="109" width="420" height="8" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-nominatim-operations" label="&lt;div&gt;+ search()&lt;/div&gt;&lt;div&gt;+ reverse()&lt;/div&gt;&lt;div&gt;+ lookup()&lt;/div&gt;" labelEn="&lt;div&gt;+ search()&lt;/div&gt;&lt;div&gt;+ reverse()&lt;/div&gt;&lt;div&gt;+ lookup()&lt;/div&gt;" labelMs="&lt;div&gt;+ search()&lt;/div&gt;&lt;div&gt;+ reverse()&lt;/div&gt;&lt;div&gt;+ lookup()&lt;/div&gt;" petakerjaKey="implementation/nominatim/operations" umlCompartment="operations">
+          <mxCell parent="implementation-nominatim" vertex="1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingTop=5;spacingLeft=7;spacingRight=5;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=11;fontColor=light-dark(#273244,#e6ebf2);">
+            <mxGeometry y="117" width="420" height="63" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="implementation-relation-app-state" label="" labelEn="" labelMs="" petakerjaKey="implementation/relation-app-state" umlRelationship="association">
+          <mxCell parent="1" edge="1" source="implementation-app" target="implementation-state" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=none;startArrow=none;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
             <mxGeometry relative="1" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-edge-2" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-2">
-          <mxCell parent="1" edge="1" source="impl-app" target="impl-nav" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+        <object id="implementation-relation-app-state-source-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="implementation/relation-app-state/source-multiplicity" umlRelationLabel="source-multiplicity">
+          <mxCell parent="implementation-relation-app-state" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="-0.92">
+              <mxPoint x="15" y="-20" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-app-state-label" label="owns state" labelEn="owns state" labelMs="memiliki keadaan" petakerjaKey="implementation/relation-app-state/label" umlRelationLabel="role">
+          <mxCell parent="implementation-relation-app-state" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-app-state-target-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="implementation/relation-app-state/target-multiplicity" umlRelationLabel="target-multiplicity">
+          <mxCell parent="implementation-relation-app-state" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="0.92">
+              <mxPoint x="15" y="5" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-app-map" label="" labelEn="" labelMs="" petakerjaKey="implementation/relation-app-map" umlRelationship="aggregation">
+          <mxCell parent="1" edge="1" source="implementation-app" target="implementation-map" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=none;startArrow=diamond;startFill=0;startSize=12;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="900" y="400" />
+                <mxPoint x="265" y="400" />
+                <mxPoint x="265" y="570" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-app-map-source-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="implementation/relation-app-map/source-multiplicity" umlRelationLabel="source-multiplicity">
+          <mxCell parent="implementation-relation-app-map" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="-0.92">
+              <mxPoint x="15" y="-20" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-app-map-label" label="owns" labelEn="owns" labelMs="memiliki" petakerjaKey="implementation/relation-app-map/label" umlRelationLabel="role">
+          <mxCell parent="implementation-relation-app-map" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-app-map-target-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="implementation/relation-app-map/target-multiplicity" umlRelationLabel="target-multiplicity">
+          <mxCell parent="implementation-relation-app-map" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="0.92">
+              <mxPoint x="15" y="5" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-app-tools" label="" labelEn="" labelMs="" petakerjaKey="implementation/relation-app-tools" umlRelationship="aggregation">
+          <mxCell parent="1" edge="1" source="implementation-app" target="implementation-tools" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=none;startArrow=diamond;startFill=0;startSize=12;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="940" y="420" />
+                <mxPoint x="655" y="420" />
+                <mxPoint x="655" y="550" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-app-tools-source-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="implementation/relation-app-tools/source-multiplicity" umlRelationLabel="source-multiplicity">
+          <mxCell parent="implementation-relation-app-tools" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="-0.92">
+              <mxPoint x="15" y="-20" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-app-tools-label" label="owns" labelEn="owns" labelMs="memiliki" petakerjaKey="implementation/relation-app-tools/label" umlRelationLabel="role">
+          <mxCell parent="implementation-relation-app-tools" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-app-tools-target-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="implementation/relation-app-tools/target-multiplicity" umlRelationLabel="target-multiplicity">
+          <mxCell parent="implementation-relation-app-tools" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="0.92">
+              <mxPoint x="15" y="5" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-app-nav" label="" labelEn="" labelMs="" petakerjaKey="implementation/relation-app-nav" umlRelationship="aggregation">
+          <mxCell parent="1" edge="1" source="implementation-app" target="implementation-nav" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=none;startArrow=diamond;startFill=0;startSize=12;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
             <mxGeometry relative="1" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-edge-3" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-3">
-          <mxCell parent="1" edge="1" source="impl-nav" target="impl-tools" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+        <object id="implementation-relation-app-nav-source-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="implementation/relation-app-nav/source-multiplicity" umlRelationLabel="source-multiplicity">
+          <mxCell parent="implementation-relation-app-nav" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="-0.92">
+              <mxPoint x="15" y="-20" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-app-nav-label" label="owns" labelEn="owns" labelMs="memiliki" petakerjaKey="implementation/relation-app-nav/label" umlRelationLabel="role">
+          <mxCell parent="implementation-relation-app-nav" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-app-nav-target-multiplicity" label="0..1" labelEn="0..1" labelMs="0..1" petakerjaKey="implementation/relation-app-nav/target-multiplicity" umlRelationLabel="target-multiplicity">
+          <mxCell parent="implementation-relation-app-nav" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="0.92">
+              <mxPoint x="15" y="5" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-app-appearance" label="" labelEn="" labelMs="" petakerjaKey="implementation/relation-app-appearance" umlRelationship="aggregation">
+          <mxCell parent="1" edge="1" source="implementation-app" target="implementation-appearance" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=none;startArrow=diamond;startFill=0;startSize=12;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1450" y="400" />
+                <mxPoint x="1975" y="400" />
+                <mxPoint x="1975" y="560" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-app-appearance-source-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="implementation/relation-app-appearance/source-multiplicity" umlRelationLabel="source-multiplicity">
+          <mxCell parent="implementation-relation-app-appearance" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="-0.92">
+              <mxPoint x="15" y="-20" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-app-appearance-label" label="owns" labelEn="owns" labelMs="memiliki" petakerjaKey="implementation/relation-app-appearance/label" umlRelationLabel="role">
+          <mxCell parent="implementation-relation-app-appearance" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-app-appearance-target-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="implementation/relation-app-appearance/target-multiplicity" umlRelationLabel="target-multiplicity">
+          <mxCell parent="implementation-relation-app-appearance" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="0.92">
+              <mxPoint x="15" y="5" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-app-job" label="" labelEn="" labelMs="" petakerjaKey="implementation/relation-app-job" umlRelationship="aggregation">
+          <mxCell parent="1" edge="1" source="implementation-app" target="implementation-job" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=none;startArrow=diamond;startFill=0;startSize=12;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1110" y="430" />
+                <mxPoint x="1110" y="840" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-app-job-source-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="implementation/relation-app-job/source-multiplicity" umlRelationLabel="source-multiplicity">
+          <mxCell parent="implementation-relation-app-job" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="-0.92">
+              <mxPoint x="15" y="-20" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-app-job-label" label="owns" labelEn="owns" labelMs="memiliki" petakerjaKey="implementation/relation-app-job/label" umlRelationLabel="role">
+          <mxCell parent="implementation-relation-app-job" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-app-job-target-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="implementation/relation-app-job/target-multiplicity" umlRelationLabel="target-multiplicity">
+          <mxCell parent="implementation-relation-app-job" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="0.92">
+              <mxPoint x="15" y="5" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-nav-map" label="" labelEn="" labelMs="" petakerjaKey="implementation/relation-nav-map" umlRelationship="association">
+          <mxCell parent="1" edge="1" source="implementation-nav" target="implementation-map" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=none;startArrow=none;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="850" y="730" />
+                <mxPoint x="430" y="730" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-nav-map-source-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="implementation/relation-nav-map/source-multiplicity" umlRelationLabel="source-multiplicity">
+          <mxCell parent="implementation-relation-nav-map" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="-0.92">
+              <mxPoint x="15" y="-20" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-nav-map-label" label="retains" labelEn="retains" labelMs="menyimpan" petakerjaKey="implementation/relation-nav-map/label" umlRelationLabel="role">
+          <mxCell parent="implementation-relation-nav-map" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-nav-map-target-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="implementation/relation-nav-map/target-multiplicity" umlRelationLabel="target-multiplicity">
+          <mxCell parent="implementation-relation-nav-map" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="0.92">
+              <mxPoint x="15" y="5" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-nav-tools" label="" labelEn="" labelMs="" petakerjaKey="implementation/relation-nav-tools" umlRelationship="association">
+          <mxCell parent="1" edge="1" source="implementation-nav" target="implementation-tools" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=none;startArrow=none;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
             <mxGeometry relative="1" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-edge-4" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-4">
-          <mxCell parent="1" edge="1" source="impl-nav" target="impl-map" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+        <object id="implementation-relation-nav-tools-source-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="implementation/relation-nav-tools/source-multiplicity" umlRelationLabel="source-multiplicity">
+          <mxCell parent="implementation-relation-nav-tools" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="-0.92">
+              <mxPoint x="15" y="-20" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-nav-tools-label" label="retains" labelEn="retains" labelMs="menyimpan" petakerjaKey="implementation/relation-nav-tools/label" umlRelationLabel="role">
+          <mxCell parent="implementation-relation-nav-tools" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-nav-tools-target-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="implementation/relation-nav-tools/target-multiplicity" umlRelationLabel="target-multiplicity">
+          <mxCell parent="implementation-relation-nav-tools" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="0.92">
+              <mxPoint x="15" y="5" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-nav-renderer" label="" labelEn="" labelMs="" petakerjaKey="implementation/relation-nav-renderer" umlRelationship="aggregation">
+          <mxCell parent="1" edge="1" source="implementation-nav" target="implementation-renderer" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=none;startArrow=diamond;startFill=0;startSize=12;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
             <mxGeometry relative="1" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-edge-5" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-5">
-          <mxCell parent="1" edge="1" source="impl-nav" target="impl-renderer" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+        <object id="implementation-relation-nav-renderer-source-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="implementation/relation-nav-renderer/source-multiplicity" umlRelationLabel="source-multiplicity">
+          <mxCell parent="implementation-relation-nav-renderer" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="-0.92">
+              <mxPoint x="15" y="-20" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-nav-renderer-label" label="creates" labelEn="creates" labelMs="mencipta" petakerjaKey="implementation/relation-nav-renderer/label" umlRelationLabel="role">
+          <mxCell parent="implementation-relation-nav-renderer" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-nav-renderer-target-multiplicity" label="0..1" labelEn="0..1" labelMs="0..1" petakerjaKey="implementation/relation-nav-renderer/target-multiplicity" umlRelationLabel="target-multiplicity">
+          <mxCell parent="implementation-relation-nav-renderer" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="0.92">
+              <mxPoint x="15" y="5" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-nav-appearance" label="" labelEn="" labelMs="" petakerjaKey="implementation/relation-nav-appearance" umlRelationship="association">
+          <mxCell parent="1" edge="1" source="implementation-nav" target="implementation-appearance" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=none;startArrow=none;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1260" y="790" />
+                <mxPoint x="1750" y="790" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-nav-appearance-source-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="implementation/relation-nav-appearance/source-multiplicity" umlRelationLabel="source-multiplicity">
+          <mxCell parent="implementation-relation-nav-appearance" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="-0.92">
+              <mxPoint x="15" y="-20" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-nav-appearance-label" label="binds controller" labelEn="binds controller" labelMs="mengikat pengawal" petakerjaKey="implementation/relation-nav-appearance/label" umlRelationLabel="role">
+          <mxCell parent="implementation-relation-nav-appearance" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-nav-appearance-target-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="implementation/relation-nav-appearance/target-multiplicity" umlRelationLabel="target-multiplicity">
+          <mxCell parent="implementation-relation-nav-appearance" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="0.92">
+              <mxPoint x="15" y="5" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-job-nav" label="" labelEn="" labelMs="" petakerjaKey="implementation/relation-job-nav" umlRelationship="dependency">
+          <mxCell parent="1" edge="1" source="implementation-job" target="implementation-nav" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=open;startArrow=none;dashed=1;dashPattern=6 4;endFill=0;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1060" y="840" />
+                <mxPoint x="1060" y="800" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-job-nav-label" label="emits workplace destination" labelEn="emits workplace destination" labelMs="memancar destinasi tempat kerja" petakerjaKey="implementation/relation-job-nav/label" umlRelationLabel="role">
+          <mxCell parent="implementation-relation-job-nav" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-nav-client" label="" labelEn="" labelMs="" petakerjaKey="implementation/relation-nav-client" umlRelationship="dependency">
+          <mxCell parent="1" edge="1" source="implementation-nav" target="implementation-client" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=open;startArrow=none;dashed=1;dashPattern=6 4;endFill=0;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="850" y="1035" />
+                <mxPoint x="760" y="1035" />
+                <mxPoint x="760" y="1190" />
+                <mxPoint x="650" y="1190" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-nav-client-label" label="calls typed geo client" labelEn="calls typed geo client" labelMs="memanggil klien geo berjenis" petakerjaKey="implementation/relation-nav-client/label" umlRelationLabel="role">
+          <mxCell parent="implementation-relation-nav-client" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-job-client" label="" labelEn="" labelMs="" petakerjaKey="implementation/relation-job-client" umlRelationship="dependency">
+          <mxCell parent="1" edge="1" source="implementation-job" target="implementation-client" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=open;startArrow=none;dashed=1;dashPattern=6 4;endFill=0;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="850" y="1000" />
+                <mxPoint x="700" y="1000" />
+                <mxPoint x="700" y="1170" />
+                <mxPoint x="600" y="1170" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-job-client-label" label="resolves workplace" labelEn="resolves workplace" labelMs="menyelesaikan tempat kerja" petakerjaKey="implementation/relation-job-client/label" umlRelationLabel="role">
+          <mxCell parent="implementation-relation-job-client" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-client-api" label="" labelEn="" labelMs="" petakerjaKey="implementation/relation-client-api" umlRelationship="dependency">
+          <mxCell parent="1" edge="1" source="implementation-client" target="implementation-api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=open;startArrow=none;dashed=1;dashPattern=6 4;endFill=0;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
             <mxGeometry relative="1" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-edge-6" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-6">
-          <mxCell parent="1" edge="1" source="impl-nav" target="impl-appearance" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+        <object id="implementation-relation-client-api-label" label="same-origin /api/geo/*" labelEn="same-origin /api/geo/*" labelMs="asal sama /api/geo/*" petakerjaKey="implementation/relation-client-api/label" umlRelationLabel="role">
+          <mxCell parent="implementation-relation-client-api" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-api-gateway" label="" labelEn="" labelMs="" petakerjaKey="implementation/relation-api-gateway" umlRelationship="association">
+          <mxCell parent="1" edge="1" source="implementation-api" target="implementation-gateway" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=none;startArrow=none;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
             <mxGeometry relative="1" as="geometry" />
           </mxCell>
         </object>
-        <object id="impl-edge-7" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-7">
-          <mxCell parent="1" edge="1" source="impl-job" target="impl-nav" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
-            <mxGeometry relative="1" as="geometry" />
+        <object id="implementation-relation-api-gateway-source-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="implementation/relation-api-gateway/source-multiplicity" umlRelationLabel="source-multiplicity">
+          <mxCell parent="implementation-relation-api-gateway" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="-0.92">
+              <mxPoint x="15" y="-20" as="offset" />
+            </mxGeometry>
           </mxCell>
         </object>
-        <object id="impl-edge-8" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-8">
-          <mxCell parent="1" edge="1" source="impl-nav" target="impl-client" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
-            <mxGeometry relative="1" as="geometry" />
+        <object id="implementation-relation-api-gateway-label" label="validates and delegates" labelEn="validates and delegates" labelMs="mengesah dan mewakilkan" petakerjaKey="implementation/relation-api-gateway/label" umlRelationLabel="role">
+          <mxCell parent="implementation-relation-api-gateway" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
           </mxCell>
         </object>
-        <object id="impl-edge-9" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-9">
-          <mxCell parent="1" edge="1" source="impl-client" target="impl-api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
-            <mxGeometry relative="1" as="geometry" />
+        <object id="implementation-relation-api-gateway-target-multiplicity" label="1" labelEn="1" labelMs="1" petakerjaKey="implementation/relation-api-gateway/target-multiplicity" umlRelationLabel="target-multiplicity">
+          <mxCell parent="implementation-relation-api-gateway" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry" x="0.92">
+              <mxPoint x="15" y="5" as="offset" />
+            </mxGeometry>
           </mxCell>
         </object>
-        <object id="impl-edge-10" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-10">
-          <mxCell parent="1" edge="1" source="impl-api" target="impl-gateway" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
-            <mxGeometry relative="1" as="geometry" />
+        <object id="implementation-relation-gateway-supabase" label="" labelEn="" labelMs="" petakerjaKey="implementation/relation-gateway-supabase" umlRelationship="dependency">
+          <mxCell parent="1" edge="1" source="implementation-gateway" target="implementation-supabase" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=open;startArrow=none;dashed=1;dashPattern=6 4;endFill=0;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1470" y="1450" />
+                <mxPoint x="390" y="1450" />
+                <mxPoint x="390" y="1600" />
+              </Array>
+            </mxGeometry>
           </mxCell>
         </object>
-        <object id="impl-edge-11" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-11">
-          <mxCell parent="1" edge="1" source="impl-gateway" target="impl-supabase" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
-            <mxGeometry relative="1" as="geometry" />
+        <object id="implementation-relation-gateway-supabase-label" label="reads and writes normalized cache" labelEn="reads and writes normalized cache" labelMs="membaca dan menulis cache ternormal" petakerjaKey="implementation/relation-gateway-supabase/label" umlRelationLabel="role">
+          <mxCell parent="implementation-relation-gateway-supabase" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
           </mxCell>
         </object>
-        <object id="impl-edge-12" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-12">
-          <mxCell parent="1" edge="1" source="impl-gateway" target="impl-valhalla" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
-            <mxGeometry relative="1" as="geometry" />
+        <object id="implementation-relation-gateway-valhalla" label="" labelEn="" labelMs="" petakerjaKey="implementation/relation-gateway-valhalla" umlRelationship="dependency">
+          <mxCell parent="1" edge="1" source="implementation-gateway" target="implementation-valhalla" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=open;startArrow=none;dashed=1;dashPattern=6 4;endFill=0;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1620" y="1460" />
+                <mxPoint x="960" y="1460" />
+                <mxPoint x="960" y="1570" />
+              </Array>
+            </mxGeometry>
           </mxCell>
         </object>
-        <object id="impl-edge-13" label="" labelEn="" labelMs="" petakerjaKey="implementation/edge-13">
-          <mxCell parent="1" edge="1" source="impl-gateway" target="impl-nominatim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#596579,#aeb8c8);fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
-            <mxGeometry relative="1" as="geometry" />
+        <object id="implementation-relation-gateway-valhalla-label" label="route, matrix and isochrone" labelEn="route, matrix and isochrone" labelMs="laluan, matriks dan isokron" petakerjaKey="implementation/relation-gateway-valhalla/label" umlRelationLabel="role">
+          <mxCell parent="implementation-relation-gateway-valhalla" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-gateway-nominatim" label="" labelEn="" labelMs="" petakerjaKey="implementation/relation-gateway-nominatim" umlRelationship="dependency">
+          <mxCell parent="1" edge="1" source="implementation-gateway" target="implementation-nominatim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#475467,#b8c2d0);strokeWidth=1.3;endArrow=open;startArrow=none;dashed=1;dashPattern=6 4;endFill=0;fontColor=light-dark(#344054,#d8e0eb);fontSize=11;fontFamily=Arial;labelBackgroundColor=light-dark(#fbfcfe,#0b1118)">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1760" y="1460" />
+                <mxPoint x="1520" y="1460" />
+                <mxPoint x="1520" y="1570" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-relation-gateway-nominatim-label" label="search only when enabled" labelEn="search only when enabled" labelMs="carian hanya apabila diaktifkan" petakerjaKey="implementation/relation-gateway-nominatim/label" umlRelationLabel="role">
+          <mxCell parent="implementation-relation-gateway-nominatim" vertex="1" connectable="0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Arial;fontSize=11;labelBackgroundColor=light-dark(#fbfcfe,#0b1118);fontColor=light-dark(#344054,#d8e0eb);">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="0" y="-13" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="implementation-fallback-constraint" label="{constraint} straightLineRoute sets estimateKind='straight-line', durationSeconds=null and maneuvers=[]; it is a non-navigable fallback." labelEn="{constraint} straightLineRoute sets estimateKind='straight-line', durationSeconds=null and maneuvers=[]; it is a non-navigable fallback." labelMs="{kekangan} straightLineRoute menetapkan estimateKind='straight-line', durationSeconds=null dan maneuvers=[]; ia sandaran yang tidak boleh dinavigasi." petakerjaKey="implementation/fallback-constraint">
+          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#e8edf7);align=left;verticalAlign=middle;fontStyle=2;">
+            <mxGeometry x="1710" y="1375" width="590" height="55" as="geometry" />
           </mxCell>
         </object>
         <object id="v2_geo_implementation-runtime" label="Runtime verified 2026-07-19: Valhalla enabled and available; shared cache available; Nominatim disabled." labelEn="Runtime verified 2026-07-19: Valhalla enabled and available; shared cache available; Nominatim disabled." labelMs="Runtime disahkan 2026-07-19: Valhalla diaktifkan dan tersedia; cache bersama tersedia; Nominatim dinyahaktifkan." petakerjaKey="runtime-status">
           <mxCell parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=light-dark(#fff8df,#3d3418);strokeColor=light-dark(#d9a928,#bd8b16);fontColor=light-dark(#5f4700,#ffe8a3);fontFamily=Arial;fontSize=11;align=left;verticalAlign=middle;spacing=8;">
-            <mxGeometry x="50" y="1122" width="1580" height="36" as="geometry" />
+            <mxGeometry x="50" y="1842" width="2300" height="36" as="geometry" />
           </mxCell>
         </object>
       </root>
