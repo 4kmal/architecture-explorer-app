@@ -24,7 +24,8 @@ TRANSLATION_ATTRIBUTES = {
 VOLATILE_ATTRIBUTES = {"modified", "etag", "agent"}
 EXPECTED_DIAGRAMS = 53
 EXPECTED_SOURCES = 52
-EXPECTED_STRUCTURE = "14499459c8ccef8630615215e2317319d88d428b99a4bf11e7fecd5626b927b4"
+EXPECTED_STRUCTURE = "cf35e0665ba85a82ca16425f3181e8ad785d12375e614e21cc2f6a74daa1fe13"
+REVIEWED_MAP_FLOWCHART = ROOT / "assets" / "editor" / "flowchart-user-explore-3d-map.drawio"
 
 
 def structural_node(element: ET.Element) -> dict[str, object]:
@@ -123,6 +124,44 @@ def main() -> int:
         errors.append(f"expected {EXPECTED_SOURCES} editor sources, found {len(parsed_sources)}")
     if len(checked_pages) != EXPECTED_DIAGRAMS:
         errors.append(f"expected {EXPECTED_DIAGRAMS} unique registered pages, found {len(checked_pages)}")
+
+    reviewed_root = ET.parse(REVIEWED_MAP_FLOWCHART).getroot()
+    reviewed_page = reviewed_root.find("diagram")
+    reviewed_model = reviewed_page.find("mxGraphModel") if reviewed_page is not None else None
+    reviewed_wrappers = reviewed_page.findall(".//object") if reviewed_page is not None else []
+    reviewed_vertices = []
+    reviewed_edges = []
+    max_bottom = 0.0
+    for wrapper in reviewed_wrappers:
+        cell = wrapper.find("mxCell")
+        if cell is None:
+            continue
+        if cell.get("vertex") == "1" and wrapper.get("petakerjaKey", "").startswith(
+            "user-explore-3d-map-flowchart/"
+        ):
+            reviewed_vertices.append(wrapper)
+            geometry = cell.find("mxGeometry")
+            if geometry is not None:
+                max_bottom = max(
+                    max_bottom,
+                    float(geometry.get("y", "0")) + float(geometry.get("height", "0")),
+                )
+        elif cell.get("edge") == "1":
+            reviewed_edges.append(wrapper)
+    if reviewed_page is None or reviewed_page.get("id") != "petakerja_flow_user_explore_3d_map":
+        errors.append("reviewed Explore the 3D Map flow chart has the wrong page id")
+    if reviewed_model is None or (
+        reviewed_model.get("pageWidth"), reviewed_model.get("pageHeight")
+    ) != ("1100", "1500"):
+        errors.append("reviewed Explore the 3D Map flow chart must retain its 1100x1500 first page")
+    if len(reviewed_vertices) != 21 or len(reviewed_edges) != 24:
+        errors.append(
+            "reviewed Explore the 3D Map flow chart must retain 21 components and 24 connectors"
+        )
+    if max_bottom != 1660.0:
+        errors.append(
+            f"reviewed Explore the 3D Map flow chart multi-page bottom drifted ({max_bottom})"
+        )
 
     actual_structure = page_structure_hash(structure_pages)
     if actual_structure != EXPECTED_STRUCTURE:

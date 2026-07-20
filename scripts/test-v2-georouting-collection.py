@@ -75,6 +75,17 @@ SEQUENCE_ACTOR_SIZE = (20.0, 40.0)
 LIFELINE_WIDTH = 10.0
 SEQUENCE_TEMPLATE = ROOT / "templates" / "Sequence Diagram Template.drawio"
 CLASS_TEMPLATE = ROOT / "templates" / "Class Diagram Template.drawio"
+CLASS_DEFAULT_SOURCE = ROOT / "assets" / "editor" / "class-domain-petakerja.drawio"
+CLASS_TITLE_FONT_SIZE = 16
+CLASS_STEREOTYPE_FONT_SIZE = 12
+CLASS_MEMBER_FONT_SIZE = 14
+CLASS_DEFAULT_GEOMETRIES = {
+    "domain/job-entity": (80.0, 1420.0, 270.94, 359.0),
+    "domain/job-state-entity": (500.0, 1275.88, 275.66, 365.25),
+    "domain/open-data-api": (890.0, 1910.0, 350.0, 192.5),
+    "domain/poi-category-entity": (1840.0, 1788.5, 393.57, 268.0),
+    "domain/poi-group-entity": (1840.0, 2360.0, 396.33, 180.0),
+}
 STACK_TEMPLATE = ROOT / "templates" / "Stack Template.drawio"
 STACK_DIAGRAMS = {"v2-geo-architecture", "v2-geo-routing-stack"}
 STACK_PAGE_SIZE = (1900.0, 1180.0)
@@ -346,6 +357,38 @@ def fail(errors: list[str], message: str) -> None:
     errors.append(message)
 
 
+def canonical_class_layout(path: Path) -> tuple:
+    """Return layout/component data while ignoring the active language projection.
+
+    The asset builder intentionally rewrites ``value`` attributes to the active
+    language.  The template and editable source must still agree on every cell,
+    style, endpoint, stable key, and nested geometry value.
+    """
+
+    def canonical_element(element: ET.Element) -> tuple:
+        attributes = tuple(
+            sorted(
+                (name, value)
+                for name, value in element.attrib.items()
+                if name not in {"value", "labelEn", "labelMs"}
+            )
+        )
+        return (
+            element.tag,
+            attributes,
+            tuple(canonical_element(child) for child in element),
+        )
+
+    root = ET.parse(path).getroot()
+    cells = root.findall(".//mxCell")
+    return tuple(
+        sorted(
+            ((cell.get("id", ""), canonical_element(cell)) for cell in cells),
+            key=lambda item: item[0],
+        )
+    )
+
+
 def main() -> int:
     errors: list[str] = []
     manifest = json.loads((ROOT / "workspace-manifest.json").read_text(encoding="utf-8"))["diagrams"]
@@ -353,6 +396,41 @@ def main() -> int:
     editor = (ROOT / "editor-core.js").read_text(encoding="utf-8")
     translations = (ROOT / "translations.js").read_text(encoding="utf-8")
     app = (ROOT / "app.js").read_text(encoding="utf-8")
+
+    if canonical_class_layout(CLASS_TEMPLATE) != canonical_class_layout(CLASS_DEFAULT_SOURCE):
+        fail(errors, "default Core Domain layout drifted from Class Diagram Template")
+    default_root = ET.parse(CLASS_DEFAULT_SOURCE).getroot()
+    default_classes = {
+        cell.get("petakerjaKey", ""): cell
+        for cell in default_root.findall(".//mxCell")
+        if cell.get("petakerjaKey", "").startswith("domain/")
+        and cell.get("style", "").startswith("swimlane;")
+    }
+    if len(default_classes) != 15:
+        fail(errors, f"default Core Domain expected 15 classes, got {len(default_classes)}")
+    for key, expected_geometry in CLASS_DEFAULT_GEOMETRIES.items():
+        cell = default_classes.get(key)
+        node = cell.find("mxGeometry") if cell is not None else None
+        actual_geometry = (
+            tuple(float(node.get(name, "0")) for name in ("x", "y", "width", "height"))
+            if node is not None else None
+        )
+        if actual_geometry != expected_geometry:
+            fail(errors, f"default Core Domain {key} geometry drifted: {actual_geometry}")
+    class_ids = {cell.get("id", "") for cell in default_classes.values()}
+    for key, cell in default_classes.items():
+        if f"fontSize={CLASS_TITLE_FONT_SIZE}" not in cell.get("style", ""):
+            fail(errors, f"default Core Domain {key} title is not {CLASS_TITLE_FONT_SIZE}px")
+        if f"font-size:{CLASS_STEREOTYPE_FONT_SIZE}px" not in cell.get("value", ""):
+            fail(errors, f"default Core Domain {key} stereotype is not {CLASS_STEREOTYPE_FONT_SIZE}px")
+    for member in default_root.findall(".//mxCell"):
+        if (
+            member.get("parent") in class_ids
+            and member.get("vertex") == "1"
+            and member.get("style", "").startswith("text;")
+            and f"fontSize={CLASS_MEMBER_FONT_SIZE}" not in member.get("style", "")
+        ):
+            fail(errors, f"default Core Domain member {member.get('id')} is not {CLASS_MEMBER_FONT_SIZE}px")
 
     for order, (diagram_id, (source_name, page_id, svg_name, vanilla_id)) in enumerate(IDS.items(), 1):
         entry = manifest.get(diagram_id)
@@ -435,6 +513,10 @@ def main() -> int:
                     fail(errors, f"{diagram_id}:{wrapper_id}: class style drifted from class template")
                 if "startSize=46" not in cell_style(wrapper):
                     fail(errors, f"{diagram_id}:{wrapper_id}: class header is not exactly 46px")
+                if f"fontSize={CLASS_TITLE_FONT_SIZE}" not in cell_style(wrapper):
+                    fail(errors, f"{diagram_id}:{wrapper_id}: class title is not {CLASS_TITLE_FONT_SIZE}px")
+                if f"font-size:{CLASS_STEREOTYPE_FONT_SIZE}px" not in wrapper.get("labelEn", ""):
+                    fail(errors, f"{diagram_id}:{wrapper_id}: stereotype is not {CLASS_STEREOTYPE_FONT_SIZE}px")
                 if class_geometry is None or class_geometry[3] % 10 != 0:
                     fail(errors, f"{diagram_id}:{wrapper_id}: class height is not on the 10px template grid")
                 if wrapper.get("labelEn") != wrapper.get("labelMs"):
@@ -451,6 +533,7 @@ def main() -> int:
                     or attributes.get("umlCompartment") != "attributes"
                     or attr_cell is None or attr_cell.get("parent") != wrapper_id
                     or cell_style(attributes) != CLASS_MEMBER_STYLE
+                    or f"fontSize={CLASS_MEMBER_FONT_SIZE}" not in cell_style(attributes)
                     or attr_geometry is None or attr_geometry[1] != 46.0
                 ):
                     fail(errors, f"{diagram_id}:{wrapper_id}: invalid deterministic attribute compartment")
@@ -471,6 +554,7 @@ def main() -> int:
                         or operations.get("umlCompartment") != "operations"
                         or operation_cell is None or operation_cell.get("parent") != wrapper_id
                         or cell_style(operations) != CLASS_MEMBER_STYLE
+                        or f"fontSize={CLASS_MEMBER_FONT_SIZE}" not in cell_style(operations)
                         or operations.get("labelEn") != operations.get("labelMs")
                         or "+ " not in operations.get("labelEn", "")
                     ):

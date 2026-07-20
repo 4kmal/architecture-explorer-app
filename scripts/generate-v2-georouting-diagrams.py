@@ -8,7 +8,8 @@ The layout system is intentionally derived from the project templates:
   from the supplied template; lanes use a fixed 200 px pitch and 50 px rows.
 * Flowchart processes and decisions use a 10 px grid and orthogonal edges.
 * UML class packages, compartments and relationships are read from the
-  supplied class template; class cards use 46 px headers and typed members.
+  supplied class template; class cards use 46 px headers, 16 px titles,
+  12 px stereotypes and 14 px typed members.
 * Layered responsibility stacks, depth copies, cards, rails and callouts are
   read from the supplied stack template and projected into both themes.
 
@@ -336,6 +337,7 @@ PAGE_MARGIN = 50
 CLASS_HEADER_H = 46
 CLASS_DIVIDER_H = 8
 CLASS_MEMBER_ROW_H = 17
+CLASS_STEREOTYPE_FONT_SIZE = 12
 
 
 TITLE = "text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=24;fontStyle=1;fontColor=light-dark(#172033,#e8edf7);"
@@ -769,7 +771,7 @@ def class_title(name: str, stereotype: str) -> str:
     stereotype_text = html.escape(f"<<{stereotype}>>")
     return (
         f"<b>{html.escape(name)}</b><br>"
-        f"<span style=\"font-size:10px;color:light-dark(#475467,#c5cedb);\">{stereotype_text}</span>"
+        f"<span style=\"font-size:{CLASS_STEREOTYPE_FONT_SIZE}px;color:light-dark(#475467,#c5cedb);\">{stereotype_text}</span>"
     )
 
 
@@ -1523,7 +1525,7 @@ def generate_implementation() -> None:
             "+ matrix(sources, targets, profile) : Promise<GeoMatrixResult>",
             "+ isochrone(origin, contours, profile) : Promise<GeoIsochroneResult>",
             "+ status() : Promise<GeoStatus>",
-        ), 1480, 1145, 560, "jobs", "geo-gateway"),
+        ), 1440, 1145, 800, "jobs", "geo-gateway"),
         ClassSpec("supabase", "Supabase / PostGIS", "database", (
             "- geo_geocode_cache : server-only", "- geo_route_cache : server-only",
             "- job_location_resolutions : server-only",
@@ -1562,9 +1564,9 @@ def generate_implementation() -> None:
         add_uml_relationship(root, "implementation", relationship, ids)
     add_text(
         root, "implementation-fallback-constraint", "implementation/fallback-constraint",
-        "{constraint} straightLineRoute sets estimateKind='straight-line', durationSeconds=null and maneuvers=[]; it is a non-navigable fallback.",
-        "{kekangan} straightLineRoute menetapkan estimateKind='straight-line', durationSeconds=null dan maneuvers=[]; ia sandaran yang tidak boleh dinavigasi.",
-        1710, 1375, 590, 55, TEXT + "align=left;verticalAlign=middle;fontStyle=2;",
+        "{constraint} straightLineRoute sets estimateKind='straight-line',<br>durationSeconds=null and maneuvers=[];<br>it is a non-navigable fallback.",
+        "{kekangan} straightLineRoute menetapkan estimateKind='straight-line',<br>durationSeconds=null dan maneuvers=[];<br>ia sandaran yang tidak boleh dinavigasi.",
+        1440, 1370, 800, 75, TEXT + "align=left;verticalAlign=middle;fontStyle=2;",
     )
     base_note(root, page)
     write(page, mxfile)
