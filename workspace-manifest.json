@@ -39,6 +39,8 @@
     "modules": { "xml": "assets/editor/module-hierarchy.drawio", "svg": "assets/diagrams/module-hierarchy.svg", "pageId": "petakerja_module_hierarchy" },
     "modules-original": { "xml": "assets/editor/module-hierarchy-original.drawio", "svg": "assets/diagrams/module-hierarchy-original.svg", "pageId": "petakerja_module_hierarchy" },
     "map-routing-responsibility-stack": { "xml": "assets/editor/petakerja-map-routing-responsibility-stack.drawio", "svg": "assets/diagrams/petakerja-map-routing-responsibility-stack.svg", "pageId": "petakerja_map_routing_stack", "title": "A-to-B routing responsibilities", "diagramType": "architecture" },
+    "etl-pipeline": { "xml": "assets/editor/etl-pipeline.drawio", "svg": "assets/diagrams/etl-pipeline.svg", "pageId": "petakerja_etl_pipeline", "title": "PetaKerja Operational ETL & Serving Pipeline", "diagramType": "data-flow" },
+    "deployment-infrastructure": { "xml": "assets/editor/deployment-infrastructure.drawio", "svg": "assets/diagrams/deployment-infrastructure.svg", "pageId": "petakerja_deployment_infrastructure", "title": "PetaKerja Production Deployment & Infrastructure", "diagramType": "architecture" },
     "v2-geo-usecase": { "xml": "assets/editor/v2-georouting/usecase.drawio", "svg": "assets/diagrams/v2-georouting/usecase.svg", "pageId": "v2_geo_usecase" },
     "v2-geo-map-flowchart": { "xml": "assets/editor/v2-georouting/map-flowchart.drawio", "svg": "assets/diagrams/v2-georouting/map-flowchart.svg", "pageId": "v2_geo_map_flowchart" },
     "v2-geo-route-sequence": { "xml": "assets/editor/v2-georouting/route-sequence.drawio", "svg": "assets/diagrams/v2-georouting/route-sequence.svg", "pageId": "v2_geo_route_sequence" },

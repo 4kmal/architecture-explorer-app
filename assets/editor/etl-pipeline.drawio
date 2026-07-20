@@ -1,0 +1,389 @@
+<mxfile host="PetaKerja Architecture Explorer" agent="PetaKerja ETL Pipeline Generator" version="27.0.2" compressed="false" pages="1" petakerjaProjectionLanguage="en" petakerjaLayoutStandard="etl-pipeline-v1">
+  <diagram id="petakerja_etl_pipeline" name="PetaKerja Operational ETL &amp; Serving Pipeline">
+    <mxGraphModel dx="2048" dy="1120" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2048" pageHeight="1120" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <object id="etl-title" label="PetaKerja Operational ETL &amp; Serving Pipeline" labelEn="PetaKerja Operational ETL &amp; Serving Pipeline" labelMs="Pipeline ETL Operasi &amp; Penyampaian PetaKerja" petakerjaKey="etl-pipeline/title" etlRole="title">
+          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=25;fontStyle=1;fontColor=light-dark(#172033,#e8edf7);">
+            <mxGeometry x="50" y="18" width="1948" height="38" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-subtitle" label="Current batch ingestion, normalization, operational storage and application delivery" labelEn="Current batch ingestion, normalization, operational storage and application delivery" labelMs="Ingest kelompok, penormalan, storan operasi dan penyampaian aplikasi semasa" petakerjaKey="etl-pipeline/subtitle" etlRole="subtitle">
+          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=2;fontColor=light-dark(#667085,#aeb8c8);">
+            <mxGeometry x="50" y="58" width="1948" height="26" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-region-control" label="CONTROL &amp; SCHEDULING" labelEn="CONTROL &amp; SCHEDULING" labelMs="KAWALAN &amp; PENJADUALAN" petakerjaKey="etl-pipeline/region-control" etlRole="region">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=light-dark(#eef2ff,#172037);strokeColor=light-dark(#8fa4ff,#637ee8);strokeWidth=1.25;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=16;fontStyle=1;align=left;verticalAlign=top;spacingTop=14;spacingLeft=16;">
+            <mxGeometry x="50" y="100" width="1948" height="125" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-control-github" label="&lt;b&gt;GitHub Actions&lt;/b&gt;&lt;br&gt;events every 6 h&lt;br&gt;jobs 02:00 UTC · extractors 03:00 UTC&lt;br&gt;coffee weekly" labelEn="&lt;b&gt;GitHub Actions&lt;/b&gt;&lt;br&gt;events every 6 h&lt;br&gt;jobs 02:00 UTC · extractors 03:00 UTC&lt;br&gt;coffee weekly" labelMs="&lt;b&gt;GitHub Actions&lt;/b&gt;&lt;br&gt;acara setiap 6 jam&lt;br&gt;kerja 02:00 UTC · extractor 03:00 UTC&lt;br&gt;kopi mingguan" petakerjaKey="etl-pipeline/control-github" etlRole="card" nodeIds="github-actions" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#202943);strokeColor=light-dark(#7759d8,#9a82ef);strokeWidth=1.25;fontColor=light-dark(#172033,#eef1ff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;shadow=1;">
+            <mxGeometry x="250" y="135" width="330" height="66" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-control-vercel" label="&lt;b&gt;Vercel Cron&lt;/b&gt;&lt;br&gt;/api/cron/daily · 01:00 UTC&lt;br&gt;four isolated maintenance steps" labelEn="&lt;b&gt;Vercel Cron&lt;/b&gt;&lt;br&gt;/api/cron/daily · 01:00 UTC&lt;br&gt;four isolated maintenance steps" labelMs="&lt;b&gt;Cron Vercel&lt;/b&gt;&lt;br&gt;/api/cron/daily · 01:00 UTC&lt;br&gt;empat langkah penyelenggaraan terasing" petakerjaKey="etl-pipeline/control-vercel" etlRole="card" nodeIds="vercel-daily-cron" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#202943);strokeColor=light-dark(#7759d8,#9a82ef);strokeWidth=1.25;fontColor=light-dark(#172033,#eef1ff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;shadow=1;">
+            <mxGeometry x="650" y="135" width="330" height="66" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-control-admin" label="&lt;b&gt;Administrator / manual run&lt;/b&gt;&lt;br&gt;feature-gated extractor runtimes&lt;br&gt;source-scoped execution" labelEn="&lt;b&gt;Administrator / manual run&lt;/b&gt;&lt;br&gt;feature-gated extractor runtimes&lt;br&gt;source-scoped execution" labelMs="&lt;b&gt;Pentadbir / pelaksanaan manual&lt;/b&gt;&lt;br&gt;runtime extractor berpagar ciri&lt;br&gt;pelaksanaan mengikut sumber" petakerjaKey="etl-pipeline/control-admin" etlRole="card" nodeIds="extractor-service" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#202943);strokeColor=light-dark(#7759d8,#9a82ef);strokeWidth=1.25;fontColor=light-dark(#172033,#eef1ff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;shadow=1;">
+            <mxGeometry x="1050" y="135" width="330" height="66" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-control-do" label="&lt;b&gt;DigitalOcean maintenance&lt;/b&gt;&lt;br&gt;monthly regional tile rebuild&lt;br&gt;preflight · rollback · route checks" labelEn="&lt;b&gt;DigitalOcean maintenance&lt;/b&gt;&lt;br&gt;monthly regional tile rebuild&lt;br&gt;preflight · rollback · route checks" labelMs="&lt;b&gt;Penyelenggaraan DigitalOcean&lt;/b&gt;&lt;br&gt;binaan semula jubin wilayah bulanan&lt;br&gt;prasemak · undur · semak laluan" petakerjaKey="etl-pipeline/control-do" etlRole="card" nodeIds="valhalla-tile-builder" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#202943);strokeColor=light-dark(#7759d8,#9a82ef);strokeWidth=1.25;fontColor=light-dark(#172033,#eef1ff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;shadow=1;">
+            <mxGeometry x="1450" y="135" width="330" height="66" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-region-sources" label="SOURCE CONTEXT" labelEn="SOURCE CONTEXT" labelMs="KONTEKS SUMBER" petakerjaKey="etl-pipeline/region-sources" etlRole="region">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=light-dark(#eef6ff,#142235);strokeColor=light-dark(#83b8ec,#4f8bc6);strokeWidth=1.25;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=16;fontStyle=1;align=center;verticalAlign=bottom;spacingBottom=12;">
+            <mxGeometry x="50" y="245" width="330" height="680" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-source-jobs" label="&lt;b&gt;Malaysian job boards&lt;/b&gt;&lt;br&gt;8 configured sources&lt;br&gt;HTML + public listing endpoints" labelEn="&lt;b&gt;Malaysian job boards&lt;/b&gt;&lt;br&gt;8 configured sources&lt;br&gt;HTML + public listing endpoints" labelMs="&lt;b&gt;Papan kerja Malaysia&lt;/b&gt;&lt;br&gt;8 sumber dikonfigurasi&lt;br&gt;HTML + endpoint senarai awam" petakerjaKey="etl-pipeline/source-jobs" etlRole="card">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#1b2d43);strokeColor=light-dark(#4f91d4,#70afea);strokeWidth=1.1;fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="85" y="300" width="260" height="90" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-source-apis" label="&lt;b&gt;Extractor sources&lt;/b&gt;&lt;br&gt;Adzuna · Khamsat · Wuzzuf&lt;br&gt;operator-only runtimes remain gated" labelEn="&lt;b&gt;Extractor sources&lt;/b&gt;&lt;br&gt;Adzuna · Khamsat · Wuzzuf&lt;br&gt;operator-only runtimes remain gated" labelMs="&lt;b&gt;Sumber extractor&lt;/b&gt;&lt;br&gt;Adzuna · Khamsat · Wuzzuf&lt;br&gt;runtime operator kekal berpagar" petakerjaKey="etl-pipeline/source-apis" etlRole="card">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#1b2d43);strokeColor=light-dark(#4f91d4,#70afea);strokeWidth=1.1;fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="85" y="410" width="260" height="90" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-source-community" label="&lt;b&gt;Community sources&lt;/b&gt;&lt;br&gt;Petakopi specialty cafés&lt;br&gt;Luma technology and AI events" labelEn="&lt;b&gt;Community sources&lt;/b&gt;&lt;br&gt;Petakopi specialty cafés&lt;br&gt;Luma technology and AI events" labelMs="&lt;b&gt;Sumber komuniti&lt;/b&gt;&lt;br&gt;kafe specialty Petakopi&lt;br&gt;acara teknologi dan AI Luma" petakerjaKey="etl-pipeline/source-community" etlRole="card">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#1b2d43);strokeColor=light-dark(#4f91d4,#70afea);strokeWidth=1.1;fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="85" y="520" width="260" height="90" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-source-app" label="&lt;b&gt;Application maintenance&lt;/b&gt;&lt;br&gt;scheduled posts · view events&lt;br&gt;broadcast queue · watchlists" labelEn="&lt;b&gt;Application maintenance&lt;/b&gt;&lt;br&gt;scheduled posts · view events&lt;br&gt;broadcast queue · watchlists" labelMs="&lt;b&gt;Penyelenggaraan aplikasi&lt;/b&gt;&lt;br&gt;post berjadual · peristiwa paparan&lt;br&gt;baris siar · senarai pantau" petakerjaKey="etl-pipeline/source-app" etlRole="card">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#1b2d43);strokeColor=light-dark(#4f91d4,#70afea);strokeWidth=1.1;fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="85" y="630" width="260" height="90" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-source-osm" label="&lt;b&gt;Geofabrik OSM extract&lt;/b&gt;&lt;br&gt;regional .osm.pbf&lt;br&gt;routing-only pilot input" labelEn="&lt;b&gt;Geofabrik OSM extract&lt;/b&gt;&lt;br&gt;regional .osm.pbf&lt;br&gt;routing-only pilot input" labelMs="&lt;b&gt;Ekstrak OSM Geofabrik&lt;/b&gt;&lt;br&gt;.osm.pbf wilayah&lt;br&gt;input rintis penghalaan sahaja" petakerjaKey="etl-pipeline/source-osm" etlRole="card">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#1b2d43);strokeColor=light-dark(#4f91d4,#70afea);strokeWidth=1.1;fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="85" y="740" width="260" height="90" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-region-etl" label="OPERATIONAL ETL" labelEn="OPERATIONAL ETL" labelMs="ETL OPERASI" petakerjaKey="etl-pipeline/region-etl" etlRole="region">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=light-dark(#fff8ee,#2a2118);strokeColor=light-dark(#e6ad69,#b87931);strokeWidth=1.25;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=16;fontStyle=1;align=center;verticalAlign=bottom;spacingBottom=12;">
+            <mxGeometry x="400" y="245" width="980" height="680" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-stage-extract" label="1 · EXTRACT" labelEn="1 · EXTRACT" labelMs="1 · EKSTRAK" petakerjaKey="etl-pipeline/stage-extract" etlRole="stage">
+          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#b9834b,#916332);strokeWidth=1;dashed=1;dashPattern=6 4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=14;fontStyle=1;align=center;verticalAlign=top;spacingTop=12;">
+            <mxGeometry x="430" y="290" width="290" height="570" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-stage-transform" label="2 · NORMALIZE &amp; VALIDATE" labelEn="2 · NORMALIZE &amp; VALIDATE" labelMs="2 · NORMALISASI &amp; SAH" petakerjaKey="etl-pipeline/stage-transform" etlRole="stage">
+          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#b9834b,#916332);strokeWidth=1;dashed=1;dashPattern=6 4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=14;fontStyle=1;align=center;verticalAlign=top;spacingTop=12;">
+            <mxGeometry x="745" y="290" width="290" height="570" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-stage-load" label="3 · PERSIST &amp; PROTECT" labelEn="3 · PERSIST &amp; PROTECT" labelMs="3 · SIMPAN &amp; LINDUNGI" petakerjaKey="etl-pipeline/stage-load" etlRole="stage">
+          <mxCell parent="1" vertex="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#b9834b,#916332);strokeWidth=1;dashed=1;dashPattern=6 4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=14;fontStyle=1;align=center;verticalAlign=top;spacingTop=12;">
+            <mxGeometry x="1060" y="290" width="290" height="570" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-extract-jobs" label="&lt;b&gt;Job ingestion&lt;/b&gt;&lt;br&gt;TypeScript workers + Scrapling bridge&lt;br&gt;parallel sources; polite delay per source" labelEn="&lt;b&gt;Job ingestion&lt;/b&gt;&lt;br&gt;TypeScript workers + Scrapling bridge&lt;br&gt;parallel sources; polite delay per source" labelMs="&lt;b&gt;Ingest pekerjaan&lt;/b&gt;&lt;br&gt;worker TypeScript + bridge Scrapling&lt;br&gt;sumber selari; sela sopan setiap sumber" petakerjaKey="etl-pipeline/extract-jobs" etlRole="card" nodeIds="extractor-service" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#fffdf9,#332719);strokeColor=light-dark(#d58e3b,#d8a25d);strokeWidth=1.1;fontColor=light-dark(#5c3912,#fff0d6);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="455" y="345" width="240" height="92" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-extract-community" label="&lt;b&gt;Community ingestion&lt;/b&gt;&lt;br&gt;Python Scrapling Fetcher&lt;br&gt;stealth browser fallback when required" labelEn="&lt;b&gt;Community ingestion&lt;/b&gt;&lt;br&gt;Python Scrapling Fetcher&lt;br&gt;stealth browser fallback when required" labelMs="&lt;b&gt;Ingest komuniti&lt;/b&gt;&lt;br&gt;Scrapling Fetcher Python&lt;br&gt;sandaran pelayar stealth apabila perlu" petakerjaKey="etl-pipeline/extract-community" etlRole="card" nodeIds="kopi-manager,event-manager" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#fffdf9,#332719);strokeColor=light-dark(#d58e3b,#d8a25d);strokeWidth=1.1;fontColor=light-dark(#5c3912,#fff0d6);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="455" y="470" width="240" height="92" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-extract-maintenance" label="&lt;b&gt;Daily maintenance&lt;/b&gt;&lt;br&gt;promote · roll up · drain · poll&lt;br&gt;each step reports independently" labelEn="&lt;b&gt;Daily maintenance&lt;/b&gt;&lt;br&gt;promote · roll up · drain · poll&lt;br&gt;each step reports independently" labelMs="&lt;b&gt;Penyelenggaraan harian&lt;/b&gt;&lt;br&gt;promosi · gulung · hantar · tinjau&lt;br&gt;setiap langkah melapor berasingan" petakerjaKey="etl-pipeline/extract-maintenance" etlRole="card" nodeIds="vercel-daily-cron,blog-routes,watchlist-service" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#fffdf9,#332719);strokeColor=light-dark(#d58e3b,#d8a25d);strokeWidth=1.1;fontColor=light-dark(#5c3912,#fff0d6);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="455" y="595" width="240" height="92" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-extract-tiles" label="&lt;b&gt;Valhalla tile build&lt;/b&gt;&lt;br&gt;download regional PBF&lt;br&gt;retain previous archive before rebuild" labelEn="&lt;b&gt;Valhalla tile build&lt;/b&gt;&lt;br&gt;download regional PBF&lt;br&gt;retain previous archive before rebuild" labelMs="&lt;b&gt;Binaan jubin Valhalla&lt;/b&gt;&lt;br&gt;muat turun PBF wilayah&lt;br&gt;simpan arkib lama sebelum bina semula" petakerjaKey="etl-pipeline/extract-tiles" etlRole="card" nodeIds="valhalla-tile-builder" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#fffdf9,#332719);strokeColor=light-dark(#d58e3b,#d8a25d);strokeWidth=1.1;fontColor=light-dark(#5c3912,#fff0d6);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="455" y="720" width="240" height="92" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-transform-jobs" label="&lt;b&gt;Normalize job records&lt;/b&gt;&lt;br&gt;canonical URL · Malaysia location/state&lt;br&gt;salary · remote · experience · expiry" labelEn="&lt;b&gt;Normalize job records&lt;/b&gt;&lt;br&gt;canonical URL · Malaysia location/state&lt;br&gt;salary · remote · experience · expiry" labelMs="&lt;b&gt;Normalisasi rekod kerja&lt;/b&gt;&lt;br&gt;URL kanonik · lokasi/negeri Malaysia&lt;br&gt;gaji · remote · pengalaman · tamat" petakerjaKey="etl-pipeline/transform-jobs" etlRole="card" nodeIds="extractor-service,job-entity" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#fffdf9,#332719);strokeColor=light-dark(#d58e3b,#d8a25d);strokeWidth=1.1;fontColor=light-dark(#5c3912,#fff0d6);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="770" y="345" width="240" height="92" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-transform-community" label="&lt;b&gt;Normalize community records&lt;/b&gt;&lt;br&gt;deduplicate cafés&lt;br&gt;event coordinates · city fallback · KL bounds" labelEn="&lt;b&gt;Normalize community records&lt;/b&gt;&lt;br&gt;deduplicate cafés&lt;br&gt;event coordinates · city fallback · KL bounds" labelMs="&lt;b&gt;Normalisasi rekod komuniti&lt;/b&gt;&lt;br&gt;nyahpendua kafe&lt;br&gt;koordinat acara · sandaran bandar · sempadan KL" petakerjaKey="etl-pipeline/transform-community" etlRole="card" nodeIds="kopi-manager,event-manager" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#fffdf9,#332719);strokeColor=light-dark(#d58e3b,#d8a25d);strokeWidth=1.1;fontColor=light-dark(#5c3912,#fff0d6);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="770" y="470" width="240" height="92" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-transform-safeguards" label="&lt;b&gt;Batch safeguards&lt;/b&gt;&lt;br&gt;validate required fields&lt;br&gt;non-zero guard · source-scoped stale cleanup" labelEn="&lt;b&gt;Batch safeguards&lt;/b&gt;&lt;br&gt;validate required fields&lt;br&gt;non-zero guard · source-scoped stale cleanup" labelMs="&lt;b&gt;Perlindungan kelompok&lt;/b&gt;&lt;br&gt;sahkan medan wajib&lt;br&gt;penghadang bukan sifar · bersih lapuk ikut sumber" petakerjaKey="etl-pipeline/transform-safeguards" etlRole="card" nodeIds="extractor-service,supabase-db" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#fffdf9,#332719);strokeColor=light-dark(#d58e3b,#d8a25d);strokeWidth=1.1;fontColor=light-dark(#5c3912,#fff0d6);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="770" y="595" width="240" height="92" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-transform-tiles" label="&lt;b&gt;Validate routing artifacts&lt;/b&gt;&lt;br&gt;disk-headroom preflight&lt;br&gt;health + representative route checks" labelEn="&lt;b&gt;Validate routing artifacts&lt;/b&gt;&lt;br&gt;disk-headroom preflight&lt;br&gt;health + representative route checks" labelMs="&lt;b&gt;Sahkan artifak penghalaan&lt;/b&gt;&lt;br&gt;prasemak ruang cakera&lt;br&gt;kesihatan + semakan laluan contoh" petakerjaKey="etl-pipeline/transform-tiles" etlRole="card" nodeIds="valhalla-tile-builder,valhalla" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#fffdf9,#332719);strokeColor=light-dark(#d58e3b,#d8a25d);strokeWidth=1.1;fontColor=light-dark(#5c3912,#fff0d6);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="770" y="720" width="240" height="92" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-load-jobs" label="&lt;b&gt;Job serving data&lt;/b&gt;&lt;br&gt;scraped_jobs&lt;br&gt;extractor_runs · extractor_jobs JSONB" labelEn="&lt;b&gt;Job serving data&lt;/b&gt;&lt;br&gt;scraped_jobs&lt;br&gt;extractor_runs · extractor_jobs JSONB" labelMs="&lt;b&gt;Data penyampaian kerja&lt;/b&gt;&lt;br&gt;scraped_jobs&lt;br&gt;extractor_runs · extractor_jobs JSONB" petakerjaKey="etl-pipeline/load-jobs" etlRole="card" nodeIds="supabase-db,extractor-entity,job-entity" component="1" tableName="scraped_jobs">
+          <mxCell parent="1" vertex="1" style="shape=cylinder3;boundedLbl=1;backgroundOutline=1;whiteSpace=wrap;html=1;fillColor=light-dark(#fff3ca,#3a3019);strokeColor=light-dark(#c38b21,#d5a941);strokeWidth=1.2;fontColor=light-dark(#513700,#fff0bd);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="1085" y="335" width="240" height="112" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-load-community" label="&lt;b&gt;Community + app data&lt;/b&gt;&lt;br&gt;coffee_shops · events&lt;br&gt;blog analytics · broadcasts · watchlists" labelEn="&lt;b&gt;Community + app data&lt;/b&gt;&lt;br&gt;coffee_shops · events&lt;br&gt;blog analytics · broadcasts · watchlists" labelMs="&lt;b&gt;Data komuniti + aplikasi&lt;/b&gt;&lt;br&gt;coffee_shops · events&lt;br&gt;analitik blog · siaran · senarai pantau" petakerjaKey="etl-pipeline/load-community" etlRole="card" nodeIds="supabase-db,community-data" component="1">
+          <mxCell parent="1" vertex="1" style="shape=cylinder3;boundedLbl=1;backgroundOutline=1;whiteSpace=wrap;html=1;fillColor=light-dark(#fff3ca,#3a3019);strokeColor=light-dark(#c38b21,#d5a941);strokeWidth=1.2;fontColor=light-dark(#513700,#fff0bd);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="1085" y="475" width="240" height="112" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-load-cache" label="&lt;b&gt;Reusable geo data&lt;/b&gt;&lt;br&gt;geo_route_cache&lt;br&gt;geo_geocode_cache remains gated" labelEn="&lt;b&gt;Reusable geo data&lt;/b&gt;&lt;br&gt;geo_route_cache&lt;br&gt;geo_geocode_cache remains gated" labelMs="&lt;b&gt;Data geo boleh guna semula&lt;/b&gt;&lt;br&gt;geo_route_cache&lt;br&gt;geo_geocode_cache kekal berpagar" petakerjaKey="etl-pipeline/load-cache" etlRole="card" nodeIds="supabase-db,geo-route-cache,geo-geocode-cache" component="1" tableName="geo_route_cache">
+          <mxCell parent="1" vertex="1" style="shape=cylinder3;boundedLbl=1;backgroundOutline=1;whiteSpace=wrap;html=1;fillColor=light-dark(#fff3ca,#3a3019);strokeColor=light-dark(#c38b21,#d5a941);strokeWidth=1.2;fontColor=light-dark(#513700,#fff0bd);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="1085" y="615" width="240" height="112" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-load-tiles" label="&lt;b&gt;Routing archive&lt;/b&gt;&lt;br&gt;valhalla_tiles.tar&lt;br&gt;previous archive retained for rollback" labelEn="&lt;b&gt;Routing archive&lt;/b&gt;&lt;br&gt;valhalla_tiles.tar&lt;br&gt;previous archive retained for rollback" labelMs="&lt;b&gt;Arkib penghalaan&lt;/b&gt;&lt;br&gt;valhalla_tiles.tar&lt;br&gt;arkib lama disimpan untuk undur" petakerjaKey="etl-pipeline/load-tiles" etlRole="card" nodeIds="valhalla-tile-builder" component="1">
+          <mxCell parent="1" vertex="1" style="shape=cylinder3;boundedLbl=1;backgroundOutline=1;whiteSpace=wrap;html=1;fillColor=light-dark(#fff3ca,#3a3019);strokeColor=light-dark(#c38b21,#d5a941);strokeWidth=1.2;fontColor=light-dark(#513700,#fff0bd);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="1085" y="755" width="240" height="76" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-region-serving" label="PLATFORMS &amp; CONSUMPTION" labelEn="PLATFORMS &amp; CONSUMPTION" labelMs="PLATFORM &amp; PENGGUNAAN" petakerjaKey="etl-pipeline/region-serving" etlRole="region">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=light-dark(#eefaf3,#14281d);strokeColor=light-dark(#75c997,#4a9d6c);strokeWidth=1.25;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=16;fontStyle=1;align=center;verticalAlign=bottom;spacingBottom=12;">
+            <mxGeometry x="1400" y="245" width="598" height="680" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-serve-supabase" label="&lt;b&gt;Supabase PostgreSQL + PostGIS&lt;/b&gt;&lt;br&gt;operational tables + normalized serving data&lt;br&gt;service role: server / CI only" labelEn="&lt;b&gt;Supabase PostgreSQL + PostGIS&lt;/b&gt;&lt;br&gt;operational tables + normalized serving data&lt;br&gt;service role: server / CI only" labelMs="&lt;b&gt;Supabase PostgreSQL + PostGIS&lt;/b&gt;&lt;br&gt;jadual operasi + data penyampaian ternormal&lt;br&gt;service role: pelayan / CI sahaja" petakerjaKey="etl-pipeline/serve-supabase" etlRole="card" nodeIds="supabase-db" component="1">
+          <mxCell parent="1" vertex="1" style="shape=cylinder3;boundedLbl=1;backgroundOutline=1;whiteSpace=wrap;html=1;fillColor=light-dark(#fff3ca,#3a3019);strokeColor=light-dark(#c38b21,#d5a941);strokeWidth=1.2;fontColor=light-dark(#513700,#fff0bd);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="1445" y="315" width="235" height="175" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-serve-do" label="&lt;b&gt;DigitalOcean Valhalla&lt;/b&gt;&lt;br&gt;Singapore routing-only pilot&lt;br&gt;Caddy gateway · internal tile service" labelEn="&lt;b&gt;DigitalOcean Valhalla&lt;/b&gt;&lt;br&gt;Singapore routing-only pilot&lt;br&gt;Caddy gateway · internal tile service" labelMs="&lt;b&gt;Valhalla DigitalOcean&lt;/b&gt;&lt;br&gt;rintis penghalaan sahaja di Singapura&lt;br&gt;gerbang Caddy · servis jubin dalaman" petakerjaKey="etl-pipeline/serve-do" etlRole="card" nodeIds="digitalocean-geo-host,valhalla" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#193126);strokeColor=light-dark(#3da86a,#62ca88);strokeWidth=1.2;fontColor=light-dark(#174a2b,#e5ffed);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;shadow=1;">
+            <mxGeometry x="1720" y="315" width="235" height="175" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-serve-vercel" label="&lt;b&gt;Vercel Vite + Express&lt;/b&gt;&lt;br&gt;/api/jobs/supa · /api/intel/*&lt;br&gt;/api/geo/* through GeoGateway" labelEn="&lt;b&gt;Vercel Vite + Express&lt;/b&gt;&lt;br&gt;/api/jobs/supa · /api/intel/*&lt;br&gt;/api/geo/* through GeoGateway" labelMs="&lt;b&gt;Vite + Express di Vercel&lt;/b&gt;&lt;br&gt;/api/jobs/supa · /api/intel/*&lt;br&gt;/api/geo/* melalui GeoGateway" petakerjaKey="etl-pipeline/serve-vercel" etlRole="card" nodeIds="vercel-runtime,express-app,geo-gateway" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#193126);strokeColor=light-dark(#3da86a,#62ca88);strokeWidth=1.2;fontColor=light-dark(#174a2b,#e5ffed);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;shadow=1;">
+            <mxGeometry x="1445" y="545" width="235" height="150" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-serve-browser" label="&lt;b&gt;PetaKerja browser&lt;/b&gt;&lt;br&gt;Job Finder · MapLibre job map&lt;br&gt;Kopi · Events · route visualization" labelEn="&lt;b&gt;PetaKerja browser&lt;/b&gt;&lt;br&gt;Job Finder · MapLibre job map&lt;br&gt;Kopi · Events · route visualization" labelMs="&lt;b&gt;Pelayar PetaKerja&lt;/b&gt;&lt;br&gt;Job Finder · peta kerja MapLibre&lt;br&gt;Kopi · Acara · visualisasi laluan" petakerjaKey="etl-pipeline/serve-browser" etlRole="card" nodeIds="browser,job-manager,kopi-manager,event-manager,map-manager" component="1" uiHotspots="jobs-search,jobs-cards,jobs-map,map-canvas">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#193126);strokeColor=light-dark(#3da86a,#62ca88);strokeWidth=1.2;fontColor=light-dark(#174a2b,#e5ffed);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;shadow=1;">
+            <mxGeometry x="1720" y="545" width="235" height="150" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-serve-nominatim" label="&lt;b&gt;Nominatim&lt;/b&gt;&lt;br&gt;supported by code · currently disabled&lt;br&gt;no active geocoding ingestion" labelEn="&lt;b&gt;Nominatim&lt;/b&gt;&lt;br&gt;supported by code · currently disabled&lt;br&gt;no active geocoding ingestion" labelMs="&lt;b&gt;Nominatim&lt;/b&gt;&lt;br&gt;disokong kod · kini dinyahaktifkan&lt;br&gt;tiada ingest geokod aktif" petakerjaKey="etl-pipeline/serve-nominatim" etlRole="card" nodeIds="nominatim" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#f2f4f7,#242932);strokeColor=light-dark(#98a2b3,#747f90);strokeWidth=1.1;dashed=1;dashPattern=6 4;fontColor=light-dark(#475467,#d0d5dd);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="1580" y="755" width="240" height="76" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-region-notes" label="OPERATIONAL TRUTH" labelEn="OPERATIONAL TRUTH" labelMs="KEADAAN OPERASI" petakerjaKey="etl-pipeline/region-notes" etlRole="region">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=light-dark(#f7f9fc,#171c24);strokeColor=light-dark(#c7d0dc,#596579);strokeWidth=1;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=16;">
+            <mxGeometry x="50" y="955" width="1948" height="120" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-note-stack" label="&lt;b&gt;Current pattern&lt;/b&gt;&lt;br&gt;sources → batch ETL → operational stores → APIs → browser" labelEn="&lt;b&gt;Current pattern&lt;/b&gt;&lt;br&gt;sources → batch ETL → operational stores → APIs → browser" labelMs="&lt;b&gt;Corak semasa&lt;/b&gt;&lt;br&gt;sumber → ETL kelompok → storan operasi → API → pelayar" petakerjaKey="etl-pipeline/note-stack" etlRole="note">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#202630);strokeColor=light-dark(#98a2b3,#697586);strokeWidth=1;fontColor=light-dark(#344054,#e2e7ef);fontFamily=Arial;fontSize=11;align=center;verticalAlign=middle;spacing=7;">
+            <mxGeometry x="245" y="980" width="365" height="68" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-note-security" label="&lt;b&gt;Security boundary&lt;/b&gt;&lt;br&gt;service-role and provider tokens never enter the browser" labelEn="&lt;b&gt;Security boundary&lt;/b&gt;&lt;br&gt;service-role and provider tokens never enter the browser" labelMs="&lt;b&gt;Sempadan keselamatan&lt;/b&gt;&lt;br&gt;service-role dan token penyedia tidak masuk ke pelayar" petakerjaKey="etl-pipeline/note-security" etlRole="note">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#202630);strokeColor=light-dark(#98a2b3,#697586);strokeWidth=1;fontColor=light-dark(#344054,#e2e7ef);fontFamily=Arial;fontSize=11;align=center;verticalAlign=middle;spacing=7;">
+            <mxGeometry x="660" y="980" width="365" height="68" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-note-failure" label="&lt;b&gt;Failure behavior&lt;/b&gt;&lt;br&gt;failed or zero-result scrapes preserve existing serving data" labelEn="&lt;b&gt;Failure behavior&lt;/b&gt;&lt;br&gt;failed or zero-result scrapes preserve existing serving data" labelMs="&lt;b&gt;Tingkah laku kegagalan&lt;/b&gt;&lt;br&gt;scrape gagal atau sifar mengekalkan data sedia ada" petakerjaKey="etl-pipeline/note-failure" etlRole="note">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#202630);strokeColor=light-dark(#98a2b3,#697586);strokeWidth=1;fontColor=light-dark(#344054,#e2e7ef);fontFamily=Arial;fontSize=11;align=center;verticalAlign=middle;spacing=7;">
+            <mxGeometry x="1075" y="980" width="365" height="68" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-note-routing" label="&lt;b&gt;Routing status · 20 Jul 2026&lt;/b&gt;&lt;br&gt;Valhalla available · ETA traffic-independent · Nominatim disabled" labelEn="&lt;b&gt;Routing status · 20 Jul 2026&lt;/b&gt;&lt;br&gt;Valhalla available · ETA traffic-independent · Nominatim disabled" labelMs="&lt;b&gt;Status penghalaan · 20 Jul 2026&lt;/b&gt;&lt;br&gt;Valhalla tersedia · ETA tanpa trafik · Nominatim dinyahaktifkan" petakerjaKey="etl-pipeline/note-routing" etlRole="note">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#202630);strokeColor=light-dark(#98a2b3,#697586);strokeWidth=1;fontColor=light-dark(#344054,#e2e7ef);fontFamily=Arial;fontSize=11;align=center;verticalAlign=middle;spacing=7;">
+            <mxGeometry x="1490" y="980" width="365" height="68" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-flow-control-jobs" label="" labelEn="" labelMs="" petakerjaKey="etl-pipeline/control/github-jobs" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-control-github" target="etl-extract-jobs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);dashed=1;dashPattern=7 4;strokeColor=light-dark(#7759d8,#9a82ef);">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="415" y="230" />
+                <mxPoint x="575" y="230" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="etl-flow-control-community" label="" labelEn="" labelMs="" petakerjaKey="etl-pipeline/control/github-community" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-control-github" target="etl-extract-community" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);dashed=1;dashPattern=7 4;strokeColor=light-dark(#7759d8,#9a82ef);">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="415" y="235" />
+                <mxPoint x="405" y="235" />
+                <mxPoint x="405" y="515" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="etl-flow-control-vercel" label="" labelEn="" labelMs="" petakerjaKey="etl-pipeline/control/vercel" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-control-vercel" target="etl-extract-maintenance" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);dashed=1;dashPattern=7 4;strokeColor=light-dark(#7759d8,#9a82ef);">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="815" y="235" />
+                <mxPoint x="730" y="235" />
+                <mxPoint x="730" y="640" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="etl-flow-control-admin" label="manual" labelEn="manual" labelMs="manual" petakerjaKey="etl-pipeline/control/admin" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-control-admin" target="etl-extract-jobs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);dashed=1;dashPattern=7 4;strokeColor=light-dark(#7759d8,#9a82ef);">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1215" y="235" />
+                <mxPoint x="705" y="235" />
+                <mxPoint x="705" y="390" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="etl-flow-control-do" label="" labelEn="" labelMs="" petakerjaKey="etl-pipeline/control/digitalocean" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-control-do" target="etl-extract-tiles" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);dashed=1;dashPattern=7 4;strokeColor=light-dark(#7759d8,#9a82ef);">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1615" y="235" />
+                <mxPoint x="1370" y="235" />
+                <mxPoint x="1370" y="845" />
+                <mxPoint x="705" y="845" />
+                <mxPoint x="705" y="765" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="etl-flow-source-jobs" label="" labelEn="" labelMs="" petakerjaKey="etl-pipeline/source/jobs" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-source-jobs" target="etl-extract-jobs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#c17424,#e0a24e);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-flow-source-apis" label="" labelEn="" labelMs="" petakerjaKey="etl-pipeline/source/apis" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-source-apis" target="etl-extract-jobs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#c17424,#e0a24e);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-flow-source-community" label="" labelEn="" labelMs="" petakerjaKey="etl-pipeline/source/community" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-source-community" target="etl-extract-community" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#c17424,#e0a24e);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-flow-source-app" label="" labelEn="" labelMs="" petakerjaKey="etl-pipeline/source/app" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-source-app" target="etl-extract-maintenance" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#c17424,#e0a24e);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-flow-source-osm" label="" labelEn="" labelMs="" petakerjaKey="etl-pipeline/source/osm" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-source-osm" target="etl-extract-tiles" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#c17424,#e0a24e);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-flow-jobs-normalize" label="validated records" labelEn="validated records" labelMs="rekod disahkan" petakerjaKey="etl-pipeline/jobs/extract-transform" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-extract-jobs" target="etl-transform-jobs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#c17424,#e0a24e);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-flow-community-normalize" label="" labelEn="" labelMs="" petakerjaKey="etl-pipeline/community/extract-transform" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-extract-community" target="etl-transform-community" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#c17424,#e0a24e);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-flow-maintenance-safeguards" label="" labelEn="" labelMs="" petakerjaKey="etl-pipeline/maintenance/extract-transform" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-extract-maintenance" target="etl-transform-safeguards" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#c17424,#e0a24e);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-flow-tiles-validate" label="" labelEn="" labelMs="" petakerjaKey="etl-pipeline/tiles/extract-transform" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-extract-tiles" target="etl-transform-tiles" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#c17424,#e0a24e);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-flow-jobs-load" label="source-scoped upsert" labelEn="source-scoped upsert" labelMs="upsert mengikut sumber" petakerjaKey="etl-pipeline/jobs/transform-load" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-transform-jobs" target="etl-load-jobs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#c17424,#e0a24e);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-flow-community-load" label="" labelEn="" labelMs="" petakerjaKey="etl-pipeline/community/transform-load" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-transform-community" target="etl-load-community" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#c17424,#e0a24e);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-flow-tiles-load" label="" labelEn="" labelMs="" petakerjaKey="etl-pipeline/tiles/transform-load" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-transform-tiles" target="etl-load-tiles" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#c17424,#e0a24e);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-flow-jobs-supabase" label="" labelEn="" labelMs="" petakerjaKey="etl-pipeline/load/jobs-supabase" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-load-jobs" target="etl-serve-supabase" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#2f9b5e,#62ca88);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-flow-community-supabase" label="" labelEn="" labelMs="" petakerjaKey="etl-pipeline/load/community-supabase" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-load-community" target="etl-serve-supabase" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#2f9b5e,#62ca88);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-flow-cache-supabase" label="" labelEn="" labelMs="" petakerjaKey="etl-pipeline/load/cache-supabase" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-load-cache" target="etl-serve-supabase" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#2f9b5e,#62ca88);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-flow-tiles-digitalocean" label="" labelEn="" labelMs="" petakerjaKey="etl-pipeline/load/tiles-digitalocean" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-load-tiles" target="etl-serve-do" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#2f9b5e,#62ca88);">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1365" y="793" />
+                <mxPoint x="1380" y="793" />
+                <mxPoint x="1380" y="510" />
+                <mxPoint x="1837" y="510" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="etl-flow-supabase-vercel" label="server/Data API" labelEn="server/Data API" labelMs="API pelayan/Data" petakerjaKey="etl-pipeline/serve/supabase-vercel" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-serve-supabase" target="etl-serve-vercel" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#2f9b5e,#62ca88);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-flow-vercel-do" label="server-only route request" labelEn="server-only route request" labelMs="permintaan laluan pelayan sahaja" petakerjaKey="etl-pipeline/serve/vercel-digitalocean" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-serve-vercel" target="etl-serve-do" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#2f9b5e,#62ca88);">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1700" y="620" />
+                <mxPoint x="1700" y="520" />
+                <mxPoint x="1837" y="520" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="etl-flow-vercel-browser" label="" labelEn="" labelMs="" petakerjaKey="etl-pipeline/serve/vercel-browser" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-serve-vercel" target="etl-serve-browser" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#2f9b5e,#62ca88);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="etl-flow-vercel-cache" label="runtime cache writes" labelEn="runtime cache writes" labelMs="tulisan cache masa jalan" petakerjaKey="etl-pipeline/serve/vercel-cache" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-serve-vercel" target="etl-load-cache" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#2f9b5e,#62ca88);">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1425" y="680" />
+                <mxPoint x="1365" y="680" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="etl-flow-nominatim-gateway" label="feature gate: off" labelEn="feature gate: off" labelMs="pagar ciri: tutup" petakerjaKey="etl-pipeline/serve/nominatim-gateway" etlRole="flow">
+          <mxCell parent="1" edge="1" source="etl-serve-vercel" target="etl-serve-nominatim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.4;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);dashed=1;dashPattern=7 4;strokeColor=light-dark(#7759d8,#9a82ef);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

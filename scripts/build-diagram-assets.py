@@ -62,6 +62,8 @@ LAYERED_ARCHITECTURE_ORIGINAL_SOURCE = ROOT / "assets" / "editor" / "architectur
 MODULE_HIERARCHY_SOURCE = ROOT / "assets" / "editor" / "module-hierarchy.drawio"
 MODULE_HIERARCHY_ORIGINAL_SOURCE = ROOT / "assets" / "editor" / "module-hierarchy-original.drawio"
 MAP_ROUTING_STACK_SOURCE = ROOT / "assets" / "editor" / "petakerja-map-routing-responsibility-stack.drawio"
+ETL_PIPELINE_SOURCE = ROOT / "assets" / "editor" / "etl-pipeline.drawio"
+DEPLOYMENT_INFRASTRUCTURE_SOURCE = ROOT / "assets" / "editor" / "deployment-infrastructure.drawio"
 V2_GEOROUTING_EDITOR = EDITOR / "v2-georouting"
 
 V2_GEOROUTING_EXPORTS = {
@@ -80,6 +82,7 @@ V2_GEOROUTING_EXPORTS = {
     "v2-geo-supabase": ("supabase.drawio", "v2_geo_supabase", "supabase.svg"),
 }
 V2_GEOROUTING_IDS = frozenset(V2_GEOROUTING_EXPORTS)
+EMBEDDED_BILINGUAL_IDS = frozenset({"etl-pipeline", "deployment-infrastructure"})
 V2_GEOROUTING_SEQUENCE_IDS = frozenset({
     "v2-geo-route-sequence", "v2-geo-travel-analysis-sequence", "v2-geo-job-route-sequence",
 })
@@ -123,6 +126,8 @@ DRAWIO_EXPORTS = {
     "modules": (MODULE_HIERARCHY_SOURCE, 1, "module-hierarchy.svg"),
     "modules-original": (MODULE_HIERARCHY_ORIGINAL_SOURCE, 1, "module-hierarchy-original.svg"),
     "map-routing-responsibility-stack": (MAP_ROUTING_STACK_SOURCE, 1, "petakerja-map-routing-responsibility-stack.svg"),
+    "etl-pipeline": (ETL_PIPELINE_SOURCE, 1, "etl-pipeline.svg"),
+    "deployment-infrastructure": (DEPLOYMENT_INFRASTRUCTURE_SOURCE, 1, "deployment-infrastructure.svg"),
     **{
         diagram_id: (V2_GEOROUTING_EDITOR / source_name, 1, f"v2-georouting/{svg_name}")
         for diagram_id, (source_name, _page_id, svg_name) in V2_GEOROUTING_EXPORTS.items()
@@ -1750,7 +1755,7 @@ def v2_georouting_translations(source: Path) -> dict[str, str]:
 
 def bilingual_translation_spec(diagram_id: str, source: Path) -> tuple[str, dict[str, str]] | None:
     """Return the source language and BM/EN dictionary for an editor page."""
-    if diagram_id in V2_GEOROUTING_IDS:
+    if diagram_id in V2_GEOROUTING_IDS or diagram_id in EMBEDDED_BILINGUAL_IDS:
         return "en", v2_georouting_translations(source)
     if diagram_id == "usecase":
         return "ms", USECASE_EN
@@ -2194,7 +2199,7 @@ def main() -> None:
             if exported != existing_export:
                 export_drawio(source, page, exported)
             exported_svg = slim_svg(exported.read_text(encoding="utf-8"))
-            if diagram_id in V2_GEOROUTING_IDS:
+            if diagram_id in V2_GEOROUTING_IDS or diagram_id in EMBEDDED_BILINGUAL_IDS:
                 en = exported_svg
                 ms = translate_svg(en, v2_georouting_translations(source))
             elif diagram_id in ("user-google-sign-in-flowchart", "user-google-sign-in-flowchart-original"):
@@ -2245,7 +2250,7 @@ def main() -> None:
             output_path = output_dir / filename
             output_path.parent.mkdir(parents=True, exist_ok=True)
             output_path.write_text(exported_svg, encoding="utf-8")
-            if diagram_id in V2_GEOROUTING_IDS:
+            if diagram_id in V2_GEOROUTING_IDS or diagram_id in EMBEDDED_BILINGUAL_IDS:
                 components, connections = v2_georouting_components(source)
             elif diagram_id == "usecase":
                 components, connections = usecase_components()

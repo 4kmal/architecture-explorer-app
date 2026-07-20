@@ -48,6 +48,36 @@ Jika butang `Edit` dibuka dalam mod `file://`, Explorer kini memaparkan arahan p
 - Access Administrator Dashboard documents the real parallel load of provider, AI-usage and user overview data after Better Auth and `admin|owner` authorization. Monitor System Activity Logs is deliberately scoped to the latest AI-assistant usage events from `public.ai_usage_events`; it does not imply a general server-log or `ai_admin_audit_logs` viewer.
 - The User Explore the 3D Map sequence follows the Malaysia preset through `MyPetaApp`, `MapManager`, MapLibre, POI/category RPCs, terrain and the 3D-building toggle. Separate User and Administrator Sign Out sequences show Better Auth invalidation and the actual protected-view cleanup behavior.
 
+### ETL Pipeline diagram
+
+The top-level **ETL Pipeline** category contains one independent, bilingual and editable **PetaKerja Operational ETL & Serving Pipeline** diagram. Its `2048 x 1120` canvas follows the supplied wide-zone reference while documenting the checked-in runtime rather than an aspirational medallion lake. Functional regions separate control and scheduling, source context, operational ETL, platforms and consumption, and operational truth.
+
+The control plane distinguishes the four GitHub Actions ingestion workflows from Vercel's `/api/cron/daily` maintenance route and the monthly DigitalOcean routing-data rebuild. The processing lanes show extraction, normalization/validation and protected persistence for jobs, coffee shops, events, application maintenance and Valhalla tiles. Supabase is represented as the operational PostgreSQL/PostGIS serving store; DigitalOcean is limited to the routing-only Valhalla pilot; Vercel hosts the Vite/Express application and server-side GeoGateway; the browser receives normalized API responses and never receives service-role or provider tokens. Nominatim remains visibly disabled.
+
+The deterministic generator owns only `assets/editor/etl-pipeline.drawio`. It validates the exact canvas, bilingual labels, stable `etl-pipeline/*` keys, connected endpoints, required platform mappings and the absence of unimplemented AWS/dbt/medallion claims. Regenerate the source and shared preview bundle with:
+
+```powershell
+python .\scripts\generate-etl-pipeline-diagram.py
+python .\scripts\build-diagram-assets.py
+python .\scripts\test-etl-pipeline-diagram.py
+```
+
+### Deployment & Infra diagram
+
+The top-level **Deployment & Infra** category follows **ETL Pipeline** and contains the independent, bilingual and editable **PetaKerja Production Deployment & Infrastructure** diagram. Its `2048 x 1120` production-only canvas uses seven responsibility columns: Domain & DNS, Source & Automation, Build & Release, Vercel Runtime, Data & Identity, DigitalOcean Geo, and Users. The layout adapts the supplied vertical deployment reference without importing its AWS, Terraform, S3, dbt or medallion assumptions.
+
+The delivery path begins with Exabytes registrar ownership and Cloudflare authoritative DNS-only records. A `main` commit enters the Vercel `npm run build` pipeline, which produces the Vite application, Docusaurus docs, Geo Studio, Architecture Explorer and Express server bundle. Vercel edge delivery serves the static outputs, while `api/server.ts` invokes `server/app.ts` in the Node Function for same-origin APIs and `/api/cron/daily`. Supabase PostgreSQL/PostGIS, Storage, Data API/RPC and Better Auth are separated by trust boundary: browser reads use the publishable/anon key with explicit grants and RLS; direct SQL, service-role work, privileged Storage administration and provider secrets remain server- or CI-only.
+
+The routing origin stays isolated: `geo.petakerja.my` resolves to the DigitalOcean Singapore Droplet, Caddy terminates public TLS, and the Valhalla container remains private on the Docker network. Only the Vercel GeoGateway calls it with the server token. The browser has no DigitalOcean edge, Nominatim remains gated and disabled, and the rollback path records Vercel rollback, `GEO_ROUTER_ENABLED=false` and restoration of the previous validated Valhalla archive. The cost note is deliberately incomplete: the verified routing pilot is USD 24/month, while Vercel, Supabase, email and AI depend on plan and usage.
+
+The deterministic generator owns only `assets/editor/deployment-infrastructure.drawio`. It validates the exact canvas, bilingual labels, stable `deployment-infrastructure/*` keys, connected endpoints, required production mappings, the browser-to-DigitalOcean prohibition and the absence of excluded platform claims. Regenerate and verify with:
+
+```powershell
+python .\scripts\generate-deployment-infrastructure-diagram.py
+python .\scripts\build-diagram-assets.py
+python .\scripts\test-deployment-infrastructure-diagram.py
+```
+
 ### V2 Georouting collection
 
 The persisted **V2 Georouting** sidebar folder contains 13 independent, bilingual and editable Draw.io diagrams. Six nested subcategories separate Use Case Diagrams, Flowcharts, Sequence Diagrams, Class Diagrams, Architecture & Modules, and Data Diagrams. Only the subgroup containing the active diagram opens on a fresh load; subgroup choices then persist independently under `petakerja-explorer-diagram-collection-groups`. Paired views expose **Open vanilla / Open V2** in Details; the three additive sequences remain standalone. The historical Draw.io and SVG assets outside `v2-georouting/` are comparison references and must not be rewritten by this collection.

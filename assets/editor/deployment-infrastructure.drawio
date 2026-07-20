@@ -1,0 +1,598 @@
+<mxfile host="PetaKerja Architecture Explorer" agent="PetaKerja Deployment Infrastructure Generator" version="27.0.2" compressed="false" pages="1" petakerjaProjectionLanguage="en" petakerjaLayoutStandard="deployment-infrastructure-v1">
+  <diagram id="petakerja_deployment_infrastructure" name="PetaKerja Production Deployment &amp; Infrastructure">
+    <mxGraphModel dx="2048" dy="1120" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2048" pageHeight="1120" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <object id="deployment-title" label="PetaKerja Production Deployment &amp; Infrastructure" labelEn="PetaKerja Production Deployment &amp; Infrastructure" labelMs="Deployment &amp; Infrastruktur Produksi PetaKerja" petakerjaKey="deployment-infrastructure/title" deploymentRole="title">
+          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=25;fontStyle=1;fontColor=light-dark(#172033,#e8edf7);">
+            <mxGeometry x="50" y="18" width="1948" height="38" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-subtitle" label="Production delivery, operational data, secure routing origin and external platform boundaries" labelEn="Production delivery, operational data, secure routing origin and external platform boundaries" labelMs="Penyampaian produksi, data operasi, origin penghalaan selamat dan sempadan platform luaran" petakerjaKey="deployment-infrastructure/subtitle" deploymentRole="subtitle">
+          <mxCell parent="1" vertex="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontStyle=2;fontColor=light-dark(#667085,#aeb8c8);">
+            <mxGeometry x="50" y="58" width="1948" height="26" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-region-control" label="PRODUCTION CONTROL PLANE" labelEn="PRODUCTION CONTROL PLANE" labelMs="KAWALAN PRODUKSI" petakerjaKey="deployment-infrastructure/region-control" deploymentRole="region">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=light-dark(#f3f0ff,#1f1b32);strokeColor=light-dark(#9b82e8,#8168d6);strokeWidth=1.25;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=16;fontStyle=1;align=left;verticalAlign=top;spacingTop=14;spacingLeft=16;">
+            <mxGeometry x="50" y="95" width="1948" height="125" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-control-main" label="&lt;b&gt;GitHub main branch&lt;/b&gt;&lt;br&gt;release source of truth&lt;br&gt;four independent ingestion workflows" labelEn="&lt;b&gt;GitHub main branch&lt;/b&gt;&lt;br&gt;release source of truth&lt;br&gt;four independent ingestion workflows" labelMs="&lt;b&gt;Branch utama GitHub&lt;/b&gt;&lt;br&gt;sumber benar release&lt;br&gt;empat workflow ingest berasingan" petakerjaKey="deployment-infrastructure/control-main" deploymentRole="card" nodeIds="github-repository,github-actions" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#28213f);strokeColor=light-dark(#7759d8,#9a82ef);strokeWidth=1.25;fontColor=light-dark(#172033,#eef1ff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;shadow=1;">
+            <mxGeometry x="230" y="130" width="330" height="66" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-control-vercel" label="&lt;b&gt;Vercel Production&lt;/b&gt;&lt;br&gt;petakerja.my&lt;br&gt;build, deploy, TLS and application rollback" labelEn="&lt;b&gt;Vercel Production&lt;/b&gt;&lt;br&gt;petakerja.my&lt;br&gt;build, deploy, TLS and application rollback" labelMs="&lt;b&gt;Produksi Vercel&lt;/b&gt;&lt;br&gt;petakerja.my&lt;br&gt;bina, deploy, TLS dan undur aplikasi" petakerjaKey="deployment-infrastructure/control-vercel" deploymentRole="card" nodeIds="vercel-runtime,vercel-build-pipeline,vercel-edge-delivery" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#28213f);strokeColor=light-dark(#7759d8,#9a82ef);strokeWidth=1.25;fontColor=light-dark(#172033,#eef1ff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;shadow=1;">
+            <mxGeometry x="635" y="130" width="330" height="66" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-control-secrets" label="&lt;b&gt;Secret domains&lt;/b&gt;&lt;br&gt;GitHub Actions secrets&lt;br&gt;Vercel server env · Droplet runtime token" labelEn="&lt;b&gt;Secret domains&lt;/b&gt;&lt;br&gt;GitHub Actions secrets&lt;br&gt;Vercel server env · Droplet runtime token" labelMs="&lt;b&gt;Domain rahsia&lt;/b&gt;&lt;br&gt;rahsia GitHub Actions&lt;br&gt;env pelayan Vercel · token runtime Droplet" petakerjaKey="deployment-infrastructure/control-secrets" deploymentRole="card" nodeIds="github-actions,vercel-node-function,digitalocean-geo-host" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#28213f);strokeColor=light-dark(#7759d8,#9a82ef);strokeWidth=1.25;fontColor=light-dark(#172033,#eef1ff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;shadow=1;">
+            <mxGeometry x="1040" y="130" width="330" height="66" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-control-ops" label="&lt;b&gt;Operations &amp;amp; rollback&lt;/b&gt;&lt;br&gt;Vercel deployment rollback&lt;br&gt;GEO_ROUTER_ENABLED=false · tile archive restore" labelEn="&lt;b&gt;Operations &amp;amp; rollback&lt;/b&gt;&lt;br&gt;Vercel deployment rollback&lt;br&gt;GEO_ROUTER_ENABLED=false · tile archive restore" labelMs="&lt;b&gt;Operasi &amp;amp; undur&lt;/b&gt;&lt;br&gt;undur deployment Vercel&lt;br&gt;GEO_ROUTER_ENABLED=false · pulih arkib jubin" petakerjaKey="deployment-infrastructure/control-ops" deploymentRole="card" nodeIds="vercel-runtime,valhalla-tile-builder" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#28213f);strokeColor=light-dark(#7759d8,#9a82ef);strokeWidth=1.25;fontColor=light-dark(#172033,#eef1ff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;shadow=1;">
+            <mxGeometry x="1445" y="130" width="330" height="66" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-region-domain" label="DOMAIN &amp; DNS" labelEn="DOMAIN &amp; DNS" labelMs="DOMAIN &amp; DNS" petakerjaKey="deployment-infrastructure/region-domain" deploymentRole="region">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=light-dark(#eef6ff,#142235);strokeColor=light-dark(#83b8ec,#4f8bc6);strokeWidth=1.25;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=15;fontStyle=1;align=center;verticalAlign=top;spacingTop=14;">
+            <mxGeometry x="50" y="245" width="235" height="680" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-domain-exabytes" label="&lt;b&gt;Exabytes&lt;/b&gt;&lt;br&gt;petakerja.my registrar&lt;br&gt;renewal and nameserver ownership" labelEn="&lt;b&gt;Exabytes&lt;/b&gt;&lt;br&gt;petakerja.my registrar&lt;br&gt;renewal and nameserver ownership" labelMs="&lt;b&gt;Exabytes&lt;/b&gt;&lt;br&gt;pendaftar petakerja.my&lt;br&gt;pembaharuan dan pemilikan nameserver" petakerjaKey="deployment-infrastructure/domain-exabytes" deploymentRole="card" nodeIds="exabytes-registrar" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#1b2d43);strokeColor=light-dark(#4f91d4,#70afea);strokeWidth=1.1;fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="70" y="315" width="195" height="95" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-domain-cloudflare" label="&lt;b&gt;Cloudflare authoritative DNS&lt;/b&gt;&lt;br&gt;DNS-only records&lt;br&gt;no proxy layer in front of Vercel" labelEn="&lt;b&gt;Cloudflare authoritative DNS&lt;/b&gt;&lt;br&gt;DNS-only records&lt;br&gt;no proxy layer in front of Vercel" labelMs="&lt;b&gt;DNS autoritatif Cloudflare&lt;/b&gt;&lt;br&gt;rekod DNS sahaja&lt;br&gt;tiada lapisan proksi di hadapan Vercel" petakerjaKey="deployment-infrastructure/domain-cloudflare" deploymentRole="card" nodeIds="cloudflare-dns" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#1b2d43);strokeColor=light-dark(#4f91d4,#70afea);strokeWidth=1.1;fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="70" y="450" width="195" height="120" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-domain-routes" label="&lt;b&gt;Production hostnames&lt;/b&gt;&lt;br&gt;petakerja.my + www → Vercel&lt;br&gt;geo.petakerja.my → DigitalOcean" labelEn="&lt;b&gt;Production hostnames&lt;/b&gt;&lt;br&gt;petakerja.my + www → Vercel&lt;br&gt;geo.petakerja.my → DigitalOcean" labelMs="&lt;b&gt;Nama hos produksi&lt;/b&gt;&lt;br&gt;petakerja.my + www → Vercel&lt;br&gt;geo.petakerja.my → DigitalOcean" petakerjaKey="deployment-infrastructure/domain-routes" deploymentRole="card" nodeIds="cloudflare-dns,vercel-edge-delivery,digitalocean-geo-host" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#1b2d43);strokeColor=light-dark(#4f91d4,#70afea);strokeWidth=1.1;fontColor=light-dark(#17375e,#e7f2ff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="70" y="620" width="195" height="135" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-region-source" label="SOURCE &amp; AUTOMATION" labelEn="SOURCE &amp; AUTOMATION" labelMs="SUMBER &amp; AUTOMASI" petakerjaKey="deployment-infrastructure/region-source" deploymentRole="region">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=light-dark(#f3f0ff,#211a35);strokeColor=light-dark(#a38ae9,#8068d2);strokeWidth=1.25;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=15;fontStyle=1;align=center;verticalAlign=top;spacingTop=14;">
+            <mxGeometry x="300" y="245" width="245" height="680" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-source-repo" label="&lt;b&gt;GitHub repository&lt;/b&gt;&lt;br&gt;main production branch&lt;br&gt;application + docs + infra definitions" labelEn="&lt;b&gt;GitHub repository&lt;/b&gt;&lt;br&gt;main production branch&lt;br&gt;application + docs + infra definitions" labelMs="&lt;b&gt;Repositori GitHub&lt;/b&gt;&lt;br&gt;branch produksi utama&lt;br&gt;definisi aplikasi + docs + infra" petakerjaKey="deployment-infrastructure/source-repo" deploymentRole="card" nodeIds="github-repository" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#2a2140);strokeColor=light-dark(#8064cf,#a48cec);strokeWidth=1.1;fontColor=light-dark(#38236d,#f0eaff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="320" y="315" width="205" height="100" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-source-actions" label="&lt;b&gt;GitHub Actions&lt;/b&gt;&lt;br&gt;events 6 h · jobs 02:00 UTC&lt;br&gt;extractors 03:00 UTC · coffee weekly&lt;br&gt;service-role batch writes" labelEn="&lt;b&gt;GitHub Actions&lt;/b&gt;&lt;br&gt;events 6 h · jobs 02:00 UTC&lt;br&gt;extractors 03:00 UTC · coffee weekly&lt;br&gt;service-role batch writes" labelMs="&lt;b&gt;GitHub Actions&lt;/b&gt;&lt;br&gt;acara 6 jam · kerja 02:00 UTC&lt;br&gt;extractor 03:00 UTC · kopi mingguan&lt;br&gt;tulisan kelompok service-role" petakerjaKey="deployment-infrastructure/source-actions" deploymentRole="card" nodeIds="github-actions" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#2a2140);strokeColor=light-dark(#8064cf,#a48cec);strokeWidth=1.1;fontColor=light-dark(#38236d,#f0eaff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="320" y="455" width="205" height="125" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-source-operator" label="&lt;b&gt;Maintainer / administrator&lt;/b&gt;&lt;br&gt;manual release and smoke checks&lt;br&gt;monthly routing-data maintenance" labelEn="&lt;b&gt;Maintainer / administrator&lt;/b&gt;&lt;br&gt;manual release and smoke checks&lt;br&gt;monthly routing-data maintenance" labelMs="&lt;b&gt;Penyelenggara / pentadbir&lt;/b&gt;&lt;br&gt;release manual dan semakan asap&lt;br&gt;selenggara data penghalaan bulanan" petakerjaKey="deployment-infrastructure/source-operator" deploymentRole="card" nodeIds="pentadbir,valhalla-tile-builder" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#2a2140);strokeColor=light-dark(#8064cf,#a48cec);strokeWidth=1.1;fontColor=light-dark(#38236d,#f0eaff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="320" y="625" width="205" height="115" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-region-build" label="BUILD &amp; RELEASE" labelEn="BUILD &amp; RELEASE" labelMs="BINA &amp; RELEASE" petakerjaKey="deployment-infrastructure/region-build" deploymentRole="region">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=light-dark(#fff8e8,#2d2516);strokeColor=light-dark(#e3b45d,#bd8730);strokeWidth=1.25;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=15;fontStyle=1;align=center;verticalAlign=top;spacingTop=14;">
+            <mxGeometry x="560" y="245" width="270" height="680" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-build-pipeline" label="&lt;b&gt;Vercel build pipeline&lt;/b&gt;&lt;br&gt;npm run build&lt;br&gt;TypeScript + deterministic asset generation" labelEn="&lt;b&gt;Vercel build pipeline&lt;/b&gt;&lt;br&gt;npm run build&lt;br&gt;TypeScript + deterministic asset generation" labelMs="&lt;b&gt;Pipeline binaan Vercel&lt;/b&gt;&lt;br&gt;npm run build&lt;br&gt;TypeScript + penjanaan aset deterministik" petakerjaKey="deployment-infrastructure/build-pipeline" deploymentRole="card" nodeIds="vercel-build-pipeline" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#fffdf8,#342918);strokeColor=light-dark(#cf8b30,#d9a04c);strokeWidth=1.1;fontColor=light-dark(#57380e,#fff0d3);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="580" y="315" width="230" height="115" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-build-app" label="&lt;b&gt;Application bundles&lt;/b&gt;&lt;br&gt;Vite SPA → dist&lt;br&gt;api/server.ts → Node Function" labelEn="&lt;b&gt;Application bundles&lt;/b&gt;&lt;br&gt;Vite SPA → dist&lt;br&gt;api/server.ts → Node Function" labelMs="&lt;b&gt;Bundle aplikasi&lt;/b&gt;&lt;br&gt;SPA Vite → dist&lt;br&gt;api/server.ts → Fungsi Node" petakerjaKey="deployment-infrastructure/build-app" deploymentRole="card" nodeIds="vercel-build-pipeline,vercel-node-function" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#fffdf8,#342918);strokeColor=light-dark(#cf8b30,#d9a04c);strokeWidth=1.1;fontColor=light-dark(#57380e,#fff0d3);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="580" y="465" width="230" height="90" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-build-docs" label="&lt;b&gt;Documentation bundles&lt;/b&gt;&lt;br&gt;Docusaurus → dist/docs&lt;br&gt;Architecture Explorer → protected route" labelEn="&lt;b&gt;Documentation bundles&lt;/b&gt;&lt;br&gt;Docusaurus → dist/docs&lt;br&gt;Architecture Explorer → protected route" labelMs="&lt;b&gt;Bundle dokumentasi&lt;/b&gt;&lt;br&gt;Docusaurus → dist/docs&lt;br&gt;Architecture Explorer → route dilindungi" petakerjaKey="deployment-infrastructure/build-docs" deploymentRole="card" nodeIds="vercel-build-pipeline" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#fffdf8,#342918);strokeColor=light-dark(#cf8b30,#d9a04c);strokeWidth=1.1;fontColor=light-dark(#57380e,#fff0d3);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="580" y="590" width="230" height="105" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-build-geo-studio" label="&lt;b&gt;Geo Studio bundle&lt;/b&gt;&lt;br&gt;nested npm ci&lt;br&gt;Kepler workspace → dist/geo-studio" labelEn="&lt;b&gt;Geo Studio bundle&lt;/b&gt;&lt;br&gt;nested npm ci&lt;br&gt;Kepler workspace → dist/geo-studio" labelMs="&lt;b&gt;Bundle Geo Studio&lt;/b&gt;&lt;br&gt;npm ci bersarang&lt;br&gt;workspace Kepler → dist/geo-studio" petakerjaKey="deployment-infrastructure/build-geo-studio" deploymentRole="card" nodeIds="vercel-build-pipeline" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#fffdf8,#342918);strokeColor=light-dark(#cf8b30,#d9a04c);strokeWidth=1.1;fontColor=light-dark(#57380e,#fff0d3);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="580" y="730" width="230" height="105" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-region-vercel" label="VERCEL RUNTIME" labelEn="VERCEL RUNTIME" labelMs="RUNTIME VERCEL" petakerjaKey="deployment-infrastructure/region-vercel" deploymentRole="region">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=light-dark(#f4f6f8,#1a1f27);strokeColor=light-dark(#8d99a8,#6f7b8c);strokeWidth=1.25;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=15;fontStyle=1;align=center;verticalAlign=top;spacingTop=14;">
+            <mxGeometry x="845" y="245" width="295" height="680" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-vercel-edge" label="&lt;b&gt;Vercel edge delivery&lt;/b&gt;&lt;br&gt;CDN + managed TLS&lt;br&gt;/ · /docs · /geo-studio · static assets" labelEn="&lt;b&gt;Vercel edge delivery&lt;/b&gt;&lt;br&gt;CDN + managed TLS&lt;br&gt;/ · /docs · /geo-studio · static assets" labelMs="&lt;b&gt;Penyampaian edge Vercel&lt;/b&gt;&lt;br&gt;CDN + TLS terurus&lt;br&gt;/ · /docs · /geo-studio · aset statik" petakerjaKey="deployment-infrastructure/vercel-edge" deploymentRole="card" nodeIds="vercel-edge-delivery,vercel-runtime" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#242a33);strokeColor=light-dark(#667085,#8a95a6);strokeWidth=1.15;fontColor=light-dark(#273142,#eef1f5);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;shadow=1;">
+            <mxGeometry x="865" y="315" width="255" height="105" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-vercel-function" label="&lt;b&gt;Vercel Node Function&lt;/b&gt;&lt;br&gt;api/server.ts&lt;br&gt;restores rewritten path and invokes Express" labelEn="&lt;b&gt;Vercel Node Function&lt;/b&gt;&lt;br&gt;api/server.ts&lt;br&gt;restores rewritten path and invokes Express" labelMs="&lt;b&gt;Fungsi Node Vercel&lt;/b&gt;&lt;br&gt;api/server.ts&lt;br&gt;pulih path rewrite dan panggil Express" petakerjaKey="deployment-infrastructure/vercel-function" deploymentRole="card" nodeIds="vercel-node-function,vercel-runtime" component="1" routes="/api/*">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#242a33);strokeColor=light-dark(#667085,#8a95a6);strokeWidth=1.15;fontColor=light-dark(#273142,#eef1f5);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;shadow=1;">
+            <mxGeometry x="865" y="455" width="255" height="110" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-vercel-express" label="&lt;b&gt;Express application boundary&lt;/b&gt;&lt;br&gt;server/app.ts · Better Auth · protected APIs&lt;br&gt;/api/geo/* → GeoGateway" labelEn="&lt;b&gt;Express application boundary&lt;/b&gt;&lt;br&gt;server/app.ts · Better Auth · protected APIs&lt;br&gt;/api/geo/* → GeoGateway" labelMs="&lt;b&gt;Sempadan aplikasi Express&lt;/b&gt;&lt;br&gt;server/app.ts · Better Auth · API dilindungi&lt;br&gt;/api/geo/* → GeoGateway" petakerjaKey="deployment-infrastructure/vercel-express" deploymentRole="card" nodeIds="express-app,better-auth,geo-gateway" component="1" routes="/api/*,/api/auth/*,/api/geo/*">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#242a33);strokeColor=light-dark(#667085,#8a95a6);strokeWidth=1.15;fontColor=light-dark(#273142,#eef1f5);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;shadow=1;">
+            <mxGeometry x="865" y="600" width="255" height="125" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-vercel-cron" label="&lt;b&gt;Vercel daily cron&lt;/b&gt;&lt;br&gt;/api/cron/daily · 01:00 UTC&lt;br&gt;four bounded maintenance steps" labelEn="&lt;b&gt;Vercel daily cron&lt;/b&gt;&lt;br&gt;/api/cron/daily · 01:00 UTC&lt;br&gt;four bounded maintenance steps" labelMs="&lt;b&gt;Cron harian Vercel&lt;/b&gt;&lt;br&gt;/api/cron/daily · 01:00 UTC&lt;br&gt;empat langkah penyelenggaraan terhad" petakerjaKey="deployment-infrastructure/vercel-cron" deploymentRole="card" nodeIds="vercel-daily-cron" component="1" routes="/api/cron/daily">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#242a33);strokeColor=light-dark(#667085,#8a95a6);strokeWidth=1.15;fontColor=light-dark(#273142,#eef1f5);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;shadow=1;">
+            <mxGeometry x="865" y="765" width="255" height="95" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-region-data" label="DATA &amp; IDENTITY" labelEn="DATA &amp; IDENTITY" labelMs="DATA &amp; IDENTITI" petakerjaKey="deployment-infrastructure/region-data" deploymentRole="region">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=light-dark(#eefaf3,#14281d);strokeColor=light-dark(#75c997,#4a9d6c);strokeWidth=1.25;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=15;fontStyle=1;align=center;verticalAlign=top;spacingTop=14;">
+            <mxGeometry x="1155" y="245" width="275" height="680" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-data-postgres" label="&lt;b&gt;Supabase PostgreSQL + PostGIS&lt;/b&gt;&lt;br&gt;operational and geo tables&lt;br&gt;direct SQL restricted to trusted server workloads" labelEn="&lt;b&gt;Supabase PostgreSQL + PostGIS&lt;/b&gt;&lt;br&gt;operational and geo tables&lt;br&gt;direct SQL restricted to trusted server workloads" labelMs="&lt;b&gt;Supabase PostgreSQL + PostGIS&lt;/b&gt;&lt;br&gt;jadual operasi dan geo&lt;br&gt;SQL terus terhad kepada beban pelayan dipercayai" petakerjaKey="deployment-infrastructure/data-postgres" deploymentRole="card" nodeIds="supabase-db" component="1">
+          <mxCell parent="1" vertex="1" style="shape=cylinder3;boundedLbl=1;backgroundOutline=1;whiteSpace=wrap;html=1;fillColor=light-dark(#eaf9f0,#183324);strokeColor=light-dark(#3da86a,#62ca88);strokeWidth=1.2;fontColor=light-dark(#174a2b,#e5ffed);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="1175" y="315" width="235" height="160" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-data-storage" label="&lt;b&gt;Supabase Storage&lt;/b&gt;&lt;br&gt;blog media · diagrams · presentations&lt;br&gt;resume and Geo Studio assets" labelEn="&lt;b&gt;Supabase Storage&lt;/b&gt;&lt;br&gt;blog media · diagrams · presentations&lt;br&gt;resume and Geo Studio assets" labelMs="&lt;b&gt;Supabase Storage&lt;/b&gt;&lt;br&gt;media blog · rajah · pembentangan&lt;br&gt;resume dan aset Geo Studio" petakerjaKey="deployment-infrastructure/data-storage" deploymentRole="card" nodeIds="supabase-storage" component="1">
+          <mxCell parent="1" vertex="1" style="shape=cylinder3;boundedLbl=1;backgroundOutline=1;whiteSpace=wrap;html=1;fillColor=light-dark(#eaf9f0,#183324);strokeColor=light-dark(#3da86a,#62ca88);strokeWidth=1.2;fontColor=light-dark(#174a2b,#e5ffed);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="1175" y="510" width="235" height="115" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-data-api" label="&lt;b&gt;Data API + RPC&lt;/b&gt;&lt;br&gt;publishable/anon key&lt;br&gt;explicit grants + RLS + least privilege" labelEn="&lt;b&gt;Data API + RPC&lt;/b&gt;&lt;br&gt;publishable/anon key&lt;br&gt;explicit grants + RLS + least privilege" labelMs="&lt;b&gt;Data API + RPC&lt;/b&gt;&lt;br&gt;kunci publishable/anon&lt;br&gt;grant nyata + RLS + hak minimum" petakerjaKey="deployment-infrastructure/data-api" deploymentRole="card" nodeIds="supabase-db,supabase-module" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#193126);strokeColor=light-dark(#3da86a,#62ca88);strokeWidth=1.15;fontColor=light-dark(#174a2b,#e5ffed);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="1175" y="665" width="235" height="105" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-data-auth" label="&lt;b&gt;Better Auth persistence&lt;/b&gt;&lt;br&gt;cookie-backed sessions&lt;br&gt;identity tables + public.users bridge" labelEn="&lt;b&gt;Better Auth persistence&lt;/b&gt;&lt;br&gt;cookie-backed sessions&lt;br&gt;identity tables + public.users bridge" labelMs="&lt;b&gt;Persistensi Better Auth&lt;/b&gt;&lt;br&gt;sesi berasaskan cookie&lt;br&gt;jadual identiti + jambatan public.users" petakerjaKey="deployment-infrastructure/data-auth" deploymentRole="card" nodeIds="better-auth,supabase-db" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#193126);strokeColor=light-dark(#3da86a,#62ca88);strokeWidth=1.15;fontColor=light-dark(#174a2b,#e5ffed);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="1175" y="805" width="235" height="85" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-region-geo" label="DIGITALOCEAN GEO" labelEn="DIGITALOCEAN GEO" labelMs="GEO DIGITALOCEAN" petakerjaKey="deployment-infrastructure/region-geo" deploymentRole="region">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=light-dark(#eef9fb,#13282d);strokeColor=light-dark(#63becb,#4496a4);strokeWidth=1.25;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=15;fontStyle=1;align=center;verticalAlign=top;spacingTop=14;">
+            <mxGeometry x="1445" y="245" width="300" height="680" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-geo-builder" label="&lt;b&gt;Geofabrik → tile builder&lt;/b&gt;&lt;br&gt;Malaysia + Singapore + Brunei PBF&lt;br&gt;monthly preflight, build and route validation" labelEn="&lt;b&gt;Geofabrik → tile builder&lt;/b&gt;&lt;br&gt;Malaysia + Singapore + Brunei PBF&lt;br&gt;monthly preflight, build and route validation" labelMs="&lt;b&gt;Geofabrik → pembina jubin&lt;/b&gt;&lt;br&gt;PBF Malaysia + Singapura + Brunei&lt;br&gt;prasemak, bina dan sah laluan bulanan" petakerjaKey="deployment-infrastructure/geo-builder" deploymentRole="card" nodeIds="valhalla-tile-builder,external-data-platforms" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#173138);strokeColor=light-dark(#3498a7,#61c3d2);strokeWidth=1.15;fontColor=light-dark(#14505a,#e3fbff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="1465" y="315" width="260" height="105" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-geo-droplet" label="&lt;b&gt;DigitalOcean Droplet&lt;/b&gt;&lt;br&gt;Singapore · 2 vCPU · 4 GB RAM · 80 GB SSD&lt;br&gt;firewall + USD 20 billing alert" labelEn="&lt;b&gt;DigitalOcean Droplet&lt;/b&gt;&lt;br&gt;Singapore · 2 vCPU · 4 GB RAM · 80 GB SSD&lt;br&gt;firewall + USD 20 billing alert" labelMs="&lt;b&gt;Droplet DigitalOcean&lt;/b&gt;&lt;br&gt;Singapura · 2 vCPU · RAM 4 GB · SSD 80 GB&lt;br&gt;firewall + amaran bil USD 20" petakerjaKey="deployment-infrastructure/geo-droplet" deploymentRole="card" nodeIds="digitalocean-geo-host" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#173138);strokeColor=light-dark(#3498a7,#61c3d2);strokeWidth=1.15;fontColor=light-dark(#14505a,#e3fbff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="1465" y="455" width="260" height="110" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-geo-caddy" label="&lt;b&gt;Caddy public gateway&lt;/b&gt;&lt;br&gt;ports 80/443 · managed TLS&lt;br&gt;/healthz public · bearer token otherwise" labelEn="&lt;b&gt;Caddy public gateway&lt;/b&gt;&lt;br&gt;ports 80/443 · managed TLS&lt;br&gt;/healthz public · bearer token otherwise" labelMs="&lt;b&gt;Gerbang awam Caddy&lt;/b&gt;&lt;br&gt;port 80/443 · TLS terurus&lt;br&gt;/healthz awam · token bearer selainnya" petakerjaKey="deployment-infrastructure/geo-caddy" deploymentRole="card" nodeIds="digitalocean-geo-host" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#173138);strokeColor=light-dark(#3498a7,#61c3d2);strokeWidth=1.15;fontColor=light-dark(#14505a,#e3fbff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="1465" y="605" width="260" height="90" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-geo-valhalla" label="&lt;b&gt;Valhalla private container&lt;/b&gt;&lt;br&gt;port 8002 internal only&lt;br&gt;route · matrix · isochrone · traffic-independent ETA" labelEn="&lt;b&gt;Valhalla private container&lt;/b&gt;&lt;br&gt;port 8002 internal only&lt;br&gt;route · matrix · isochrone · traffic-independent ETA" labelMs="&lt;b&gt;Kontena Valhalla persendirian&lt;/b&gt;&lt;br&gt;port 8002 dalaman sahaja&lt;br&gt;laluan · matriks · isokron · ETA tanpa trafik" petakerjaKey="deployment-infrastructure/geo-valhalla" deploymentRole="card" nodeIds="valhalla" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#173138);strokeColor=light-dark(#3498a7,#61c3d2);strokeWidth=1.15;fontColor=light-dark(#14505a,#e3fbff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="1465" y="730" width="260" height="105" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-geo-nominatim" label="&lt;b&gt;Nominatim&lt;/b&gt;&lt;br&gt;feature gate disabled" labelEn="&lt;b&gt;Nominatim&lt;/b&gt;&lt;br&gt;feature gate disabled" labelMs="&lt;b&gt;Nominatim&lt;/b&gt;&lt;br&gt;pagar ciri dinyahaktifkan" petakerjaKey="deployment-infrastructure/geo-nominatim" deploymentRole="card" nodeIds="nominatim" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#f2f4f7,#242932);strokeColor=light-dark(#98a2b3,#747f90);strokeWidth=1.1;dashed=1;dashPattern=6 4;fontColor=light-dark(#475467,#d0d5dd);fontFamily=Arial;fontSize=11;align=center;verticalAlign=middle;spacing=6;">
+            <mxGeometry x="1465" y="850" width="260" height="55" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-region-users" label="USERS" labelEn="USERS" labelMs="PENGGUNA" petakerjaKey="deployment-infrastructure/region-users" deploymentRole="region">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=16;whiteSpace=wrap;html=1;fillColor=light-dark(#f2f7ff,#172235);strokeColor=light-dark(#8aa9dc,#5f82bd);strokeWidth=1.25;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=15;fontStyle=1;align=center;verticalAlign=top;spacingTop=14;">
+            <mxGeometry x="1760" y="245" width="238" height="680" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-user-browser" label="&lt;b&gt;PetaKerja browser&lt;/b&gt;&lt;br&gt;public + signed-in workspaces&lt;br&gt;MapLibre, jobs, blog, docs and Geo Studio" labelEn="&lt;b&gt;PetaKerja browser&lt;/b&gt;&lt;br&gt;public + signed-in workspaces&lt;br&gt;MapLibre, jobs, blog, docs and Geo Studio" labelMs="&lt;b&gt;Pelayar PetaKerja&lt;/b&gt;&lt;br&gt;workspace awam + log masuk&lt;br&gt;MapLibre, kerja, blog, docs dan Geo Studio" petakerjaKey="deployment-infrastructure/user-browser" deploymentRole="card" nodeIds="browser,pengguna" component="1" uiHotspots="map-canvas,jobs-search,blog-posts">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#1d2b43);strokeColor=light-dark(#5d83bd,#7ea4df);strokeWidth=1.15;fontColor=light-dark(#263c61,#eaf2ff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="1780" y="315" width="198" height="120" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-user-admin" label="&lt;b&gt;Administrator&lt;/b&gt;&lt;br&gt;release and operational checks&lt;br&gt;protected application controls" labelEn="&lt;b&gt;Administrator&lt;/b&gt;&lt;br&gt;release and operational checks&lt;br&gt;protected application controls" labelMs="&lt;b&gt;Pentadbir&lt;/b&gt;&lt;br&gt;semakan release dan operasi&lt;br&gt;kawalan aplikasi dilindungi" petakerjaKey="deployment-infrastructure/user-admin" deploymentRole="card" nodeIds="pentadbir" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#1d2b43);strokeColor=light-dark(#5d83bd,#7ea4df);strokeWidth=1.15;fontColor=light-dark(#263c61,#eaf2ff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="1780" y="475" width="198" height="100" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-user-integrations" label="&lt;b&gt;Grouped external platforms&lt;/b&gt;&lt;br&gt;Google OAuth + Gmail&lt;br&gt;SMTP/Mailgun · AI providers&lt;br&gt;public-data + job-source APIs" labelEn="&lt;b&gt;Grouped external platforms&lt;/b&gt;&lt;br&gt;Google OAuth + Gmail&lt;br&gt;SMTP/Mailgun · AI providers&lt;br&gt;public-data + job-source APIs" labelMs="&lt;b&gt;Platform luaran berkumpulan&lt;/b&gt;&lt;br&gt;Google OAuth + Gmail&lt;br&gt;SMTP/Mailgun · penyedia AI&lt;br&gt;API data awam + sumber kerja" petakerjaKey="deployment-infrastructure/user-integrations" deploymentRole="card" nodeIds="google-cloud-services,email-platforms,ai-provider,external-data-platforms,data-gov" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#1d2b43);strokeColor=light-dark(#5d83bd,#7ea4df);strokeWidth=1.15;fontColor=light-dark(#263c61,#eaf2ff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="1780" y="615" width="198" height="175" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-user-monitor" label="&lt;b&gt;Operational monitoring&lt;/b&gt;&lt;br&gt;public /healthz uptime check&lt;br&gt;CPU · RAM · disk alerts" labelEn="&lt;b&gt;Operational monitoring&lt;/b&gt;&lt;br&gt;public /healthz uptime check&lt;br&gt;CPU · RAM · disk alerts" labelMs="&lt;b&gt;Pemantauan operasi&lt;/b&gt;&lt;br&gt;semakan uptime /healthz awam&lt;br&gt;amaran CPU · RAM · cakera" petakerjaKey="deployment-infrastructure/user-monitor" deploymentRole="card" nodeIds="digitalocean-geo-host" component="1">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#1d2b43);strokeColor=light-dark(#5d83bd,#7ea4df);strokeWidth=1.15;fontColor=light-dark(#263c61,#eaf2ff);fontFamily=Arial;fontSize=12;align=center;verticalAlign=middle;spacing=8;">
+            <mxGeometry x="1780" y="825" width="198" height="80" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-region-notes" label="VERIFIED OPERATING NOTES" labelEn="VERIFIED OPERATING NOTES" labelMs="NOTA OPERASI DISAHKAN" petakerjaKey="deployment-infrastructure/region-notes" deploymentRole="region">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=light-dark(#f7f9fc,#171c24);strokeColor=light-dark(#c7d0dc,#596579);strokeWidth=1;fontColor=light-dark(#172033,#e8edf7);fontFamily=Arial;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;spacingLeft=16;">
+            <mxGeometry x="50" y="955" width="1948" height="120" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-note-cost" label="&lt;b&gt;Verified cost direction&lt;/b&gt;&lt;br&gt;DigitalOcean routing pilot: USD 24/month&lt;br&gt;Vercel, Supabase, email and AI: plan/usage dependent" labelEn="&lt;b&gt;Verified cost direction&lt;/b&gt;&lt;br&gt;DigitalOcean routing pilot: USD 24/month&lt;br&gt;Vercel, Supabase, email and AI: plan/usage dependent" labelMs="&lt;b&gt;Arah kos disahkan&lt;/b&gt;&lt;br&gt;Rintis penghalaan DigitalOcean: USD 24/bulan&lt;br&gt;Vercel, Supabase, e-mel dan AI: ikut pelan/penggunaan" petakerjaKey="deployment-infrastructure/note-cost" deploymentRole="note">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#202630);strokeColor=light-dark(#98a2b3,#697586);strokeWidth=1;fontColor=light-dark(#344054,#e2e7ef);fontFamily=Arial;fontSize=11;align=center;verticalAlign=middle;spacing=7;">
+            <mxGeometry x="245" y="980" width="365" height="68" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-note-security" label="&lt;b&gt;Secret boundary&lt;/b&gt;&lt;br&gt;service-role, DATABASE_URL and provider tokens never enter the browser" labelEn="&lt;b&gt;Secret boundary&lt;/b&gt;&lt;br&gt;service-role, DATABASE_URL and provider tokens never enter the browser" labelMs="&lt;b&gt;Sempadan rahsia&lt;/b&gt;&lt;br&gt;service-role, DATABASE_URL dan token penyedia tidak masuk ke pelayar" petakerjaKey="deployment-infrastructure/note-security" deploymentRole="note">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#202630);strokeColor=light-dark(#98a2b3,#697586);strokeWidth=1;fontColor=light-dark(#344054,#e2e7ef);fontFamily=Arial;fontSize=11;align=center;verticalAlign=middle;spacing=7;">
+            <mxGeometry x="660" y="980" width="365" height="68" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-note-rollback" label="&lt;b&gt;Rollback&lt;/b&gt;&lt;br&gt;Vercel deployment rollback · GEO_ROUTER_ENABLED=false&lt;br&gt;previous Valhalla archive restored after failed rebuild" labelEn="&lt;b&gt;Rollback&lt;/b&gt;&lt;br&gt;Vercel deployment rollback · GEO_ROUTER_ENABLED=false&lt;br&gt;previous Valhalla archive restored after failed rebuild" labelMs="&lt;b&gt;Undur&lt;/b&gt;&lt;br&gt;undur deployment Vercel · GEO_ROUTER_ENABLED=false&lt;br&gt;arkib Valhalla lama dipulih selepas binaan gagal" petakerjaKey="deployment-infrastructure/note-rollback" deploymentRole="note">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#202630);strokeColor=light-dark(#98a2b3,#697586);strokeWidth=1;fontColor=light-dark(#344054,#e2e7ef);fontFamily=Arial;fontSize=11;align=center;verticalAlign=middle;spacing=7;">
+            <mxGeometry x="1075" y="980" width="365" height="68" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-note-status" label="&lt;b&gt;Production status · 20 Jul 2026&lt;/b&gt;&lt;br&gt;Valhalla available · Nominatim disabled&lt;br&gt;cost footer is not a complete TCO estimate" labelEn="&lt;b&gt;Production status · 20 Jul 2026&lt;/b&gt;&lt;br&gt;Valhalla available · Nominatim disabled&lt;br&gt;cost footer is not a complete TCO estimate" labelMs="&lt;b&gt;Status produksi · 20 Jul 2026&lt;/b&gt;&lt;br&gt;Valhalla tersedia · Nominatim dinyahaktifkan&lt;br&gt;footer kos bukan anggaran TCO lengkap" petakerjaKey="deployment-infrastructure/note-status" deploymentRole="note">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=light-dark(#ffffff,#202630);strokeColor=light-dark(#98a2b3,#697586);strokeWidth=1;fontColor=light-dark(#344054,#e2e7ef);fontFamily=Arial;fontSize=11;align=center;verticalAlign=middle;spacing=7;">
+            <mxGeometry x="1490" y="980" width="365" height="68" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-flow-control-main" label="" labelEn="" labelMs="" petakerjaKey="deployment-infrastructure/control/main-repo" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-control-main" target="deployment-source-repo" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);dashed=1;dashPattern=7 4;strokeColor=light-dark(#7759d8,#9a82ef);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="395" y="225" />
+                <mxPoint x="422" y="225" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-control-vercel" label="" labelEn="" labelMs="" petakerjaKey="deployment-infrastructure/control/vercel-build" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-control-vercel" target="deployment-build-pipeline" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);dashed=1;dashPattern=7 4;strokeColor=light-dark(#7759d8,#9a82ef);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="800" y="225" />
+                <mxPoint x="695" y="225" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-control-secrets-function" label="server environment" labelEn="server environment" labelMs="env pelayan" petakerjaKey="deployment-infrastructure/control/secrets-function" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-control-secrets" target="deployment-vercel-function" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);dashed=1;dashPattern=7 4;strokeColor=light-dark(#7759d8,#9a82ef);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+              <Array as="points">
+                <mxPoint x="1205" y="230" />
+                <mxPoint x="1135" y="230" />
+                <mxPoint x="1135" y="510" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-control-ops" label="" labelEn="" labelMs="" petakerjaKey="deployment-infrastructure/control/ops-monitor" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-control-ops" target="deployment-user-monitor" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);dashed=1;dashPattern=7 4;strokeColor=light-dark(#7759d8,#9a82ef);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="1610" y="230" />
+                <mxPoint x="1748" y="230" />
+                <mxPoint x="1748" y="865" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-registrar-dns" label="nameservers" labelEn="nameservers" labelMs="nameserver" petakerjaKey="deployment-infrastructure/dns/registrar" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-domain-exabytes" target="deployment-domain-cloudflare" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);dashed=1;dashPattern=6 4;strokeColor=light-dark(#397bb5,#70afea);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-dns-vercel" label="petakerja.my DNS-only" labelEn="petakerja.my DNS-only" labelMs="DNS sahaja petakerja.my" petakerjaKey="deployment-infrastructure/dns/vercel" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-domain-cloudflare" target="deployment-vercel-edge" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);dashed=1;dashPattern=6 4;strokeColor=light-dark(#397bb5,#70afea);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+              <Array as="points">
+                <mxPoint x="285" y="510" />
+                <mxPoint x="290" y="510" />
+                <mxPoint x="290" y="232" />
+                <mxPoint x="1135" y="232" />
+                <mxPoint x="1135" y="367" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-dns-geo" label="geo.petakerja.my DNS-only" labelEn="geo.petakerja.my DNS-only" labelMs="DNS sahaja geo.petakerja.my" petakerjaKey="deployment-infrastructure/dns/geo" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-domain-cloudflare" target="deployment-geo-caddy" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);dashed=1;dashPattern=6 4;strokeColor=light-dark(#397bb5,#70afea);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+              <Array as="points">
+                <mxPoint x="285" y="530" />
+                <mxPoint x="295" y="530" />
+                <mxPoint x="295" y="238" />
+                <mxPoint x="1435" y="238" />
+                <mxPoint x="1435" y="650" />
+                <mxPoint x="1465" y="650" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-repo-actions" label="" labelEn="" labelMs="" petakerjaKey="deployment-infrastructure/source/repo-actions" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-source-repo" target="deployment-source-actions" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#bd7621,#e0a24e);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-flow-repo-build" label="main commit" labelEn="main commit" labelMs="commit utama" petakerjaKey="deployment-infrastructure/source/repo-build" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-source-repo" target="deployment-build-pipeline" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#bd7621,#e0a24e);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-actions-data" label="service-role batch upsert" labelEn="service-role batch upsert" labelMs="upsert kelompok service-role" petakerjaKey="deployment-infrastructure/source/actions-data" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-source-actions" target="deployment-data-postgres" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#2f9b5e,#62ca88);exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+              <Array as="points">
+                <mxPoint x="540" y="518" />
+                <mxPoint x="550" y="518" />
+                <mxPoint x="550" y="940" />
+                <mxPoint x="1140" y="940" />
+                <mxPoint x="1140" y="395" />
+                <mxPoint x="1175" y="395" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-operator-builder" label="monthly maintenance" labelEn="monthly maintenance" labelMs="selenggara bulanan" petakerjaKey="deployment-infrastructure/source/operator-builder" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-source-operator" target="deployment-geo-builder" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);dashed=1;dashPattern=7 4;strokeColor=light-dark(#7759d8,#9a82ef);exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+              <Array as="points">
+                <mxPoint x="540" y="682" />
+                <mxPoint x="550" y="682" />
+                <mxPoint x="550" y="946" />
+                <mxPoint x="1435" y="946" />
+                <mxPoint x="1435" y="368" />
+                <mxPoint x="1465" y="368" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-build-app" label="" labelEn="" labelMs="" petakerjaKey="deployment-infrastructure/build/pipeline-app" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-build-pipeline" target="deployment-build-app" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#bd7621,#e0a24e);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-flow-build-docs" label="" labelEn="" labelMs="" petakerjaKey="deployment-infrastructure/build/pipeline-docs" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-build-pipeline" target="deployment-build-docs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#bd7621,#e0a24e);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="570" y="372" />
+                <mxPoint x="550" y="372" />
+                <mxPoint x="550" y="642" />
+                <mxPoint x="580" y="642" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-build-geo" label="nested npm ci" labelEn="nested npm ci" labelMs="npm ci bersarang" petakerjaKey="deployment-infrastructure/build/pipeline-geo" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-build-pipeline" target="deployment-build-geo-studio" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#bd7621,#e0a24e);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+              <Array as="points">
+                <mxPoint x="820" y="372" />
+                <mxPoint x="830" y="372" />
+                <mxPoint x="830" y="782" />
+                <mxPoint x="810" y="782" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-app-edge" label="static output" labelEn="static output" labelMs="output statik" petakerjaKey="deployment-infrastructure/build/app-edge" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-build-app" target="deployment-vercel-edge" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#bd7621,#e0a24e);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+              <Array as="points">
+                <mxPoint x="820" y="510" />
+                <mxPoint x="835" y="510" />
+                <mxPoint x="835" y="367" />
+                <mxPoint x="865" y="367" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-app-function" label="server bundle" labelEn="server bundle" labelMs="bundle pelayan" petakerjaKey="deployment-infrastructure/build/app-function" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-build-app" target="deployment-vercel-function" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#bd7621,#e0a24e);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-docs-edge" label="" labelEn="" labelMs="" petakerjaKey="deployment-infrastructure/build/docs-edge" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-build-docs" target="deployment-vercel-edge" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#bd7621,#e0a24e);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="820" y="642" />
+                <mxPoint x="838" y="642" />
+                <mxPoint x="838" y="390" />
+                <mxPoint x="865" y="390" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-geo-edge" label="" labelEn="" labelMs="" petakerjaKey="deployment-infrastructure/build/geo-edge" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-build-geo-studio" target="deployment-vercel-edge" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#bd7621,#e0a24e);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <Array as="points">
+                <mxPoint x="820" y="782" />
+                <mxPoint x="840" y="782" />
+                <mxPoint x="840" y="405" />
+                <mxPoint x="865" y="405" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-browser-edge" label="HTTPS application request" labelEn="HTTPS application request" labelMs="permintaan aplikasi HTTPS" petakerjaKey="deployment-infrastructure/runtime/browser-edge" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-user-browser" target="deployment-vercel-edge" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+              <Array as="points">
+                <mxPoint x="1780" y="375" />
+                <mxPoint x="1750" y="375" />
+                <mxPoint x="1750" y="234" />
+                <mxPoint x="1138" y="234" />
+                <mxPoint x="1138" y="350" />
+                <mxPoint x="1120" y="350" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-edge-function" label="rewritten dynamic routes" labelEn="rewritten dynamic routes" labelMs="route dinamik rewrite" petakerjaKey="deployment-infrastructure/runtime/edge-function" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-vercel-edge" target="deployment-vercel-function" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-function-express" label="" labelEn="" labelMs="" petakerjaKey="deployment-infrastructure/runtime/function-express" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-vercel-function" target="deployment-vercel-express" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="deployment-flow-cron-express" label="CRON_SECRET" labelEn="CRON_SECRET" labelMs="CRON_SECRET" petakerjaKey="deployment-infrastructure/runtime/cron-express" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-vercel-cron" target="deployment-vercel-express" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);dashed=1;dashPattern=7 4;strokeColor=light-dark(#7759d8,#9a82ef);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-express-postgres" label="DATABASE_URL / service-role" labelEn="DATABASE_URL / service-role" labelMs="DATABASE_URL / service-role" petakerjaKey="deployment-infrastructure/data/express-postgres" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-vercel-express" target="deployment-data-postgres" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#2f9b5e,#62ca88);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+              <Array as="points">
+                <mxPoint x="1120" y="645" />
+                <mxPoint x="1145" y="645" />
+                <mxPoint x="1145" y="410" />
+                <mxPoint x="1175" y="410" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-express-storage" label="server-only asset operations" labelEn="server-only asset operations" labelMs="operasi aset pelayan sahaja" petakerjaKey="deployment-infrastructure/data/express-storage" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-vercel-express" target="deployment-data-storage" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#2f9b5e,#62ca88);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-browser-data-api" label="publishable key + RLS" labelEn="publishable key + RLS" labelMs="kunci publishable + RLS" petakerjaKey="deployment-infrastructure/data/browser-api" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-user-browser" target="deployment-data-api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#2f9b5e,#62ca88);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+              <Array as="points">
+                <mxPoint x="1780" y="415" />
+                <mxPoint x="1752" y="415" />
+                <mxPoint x="1752" y="712" />
+                <mxPoint x="1410" y="712" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-api-postgres" label="least-privilege grants" labelEn="least-privilege grants" labelMs="grant hak minimum" petakerjaKey="deployment-infrastructure/data/api-postgres" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-data-api" target="deployment-data-postgres" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#2f9b5e,#62ca88);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-auth-postgres" label="identity + application users" labelEn="identity + application users" labelMs="identiti + pengguna aplikasi" petakerjaKey="deployment-infrastructure/data/auth-postgres" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-data-auth" target="deployment-data-postgres" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#2f9b5e,#62ca88);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+              <Array as="points">
+                <mxPoint x="1145" y="847" />
+                <mxPoint x="1145" y="450" />
+                <mxPoint x="1175" y="450" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-builder-droplet" label="validated tile archive" labelEn="validated tile archive" labelMs="arkib jubin disahkan" petakerjaKey="deployment-infrastructure/geo/builder-droplet" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-geo-builder" target="deployment-geo-droplet" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#278899,#61c3d2);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-droplet-caddy" label="Docker network" labelEn="Docker network" labelMs="rangkaian Docker" petakerjaKey="deployment-infrastructure/geo/droplet-caddy" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-geo-droplet" target="deployment-geo-caddy" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#278899,#61c3d2);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-caddy-valhalla" label="reverse proxy · internal port 8002" labelEn="reverse proxy · internal port 8002" labelMs="proksi songsang · port dalaman 8002" petakerjaKey="deployment-infrastructure/geo/caddy-valhalla" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-geo-caddy" target="deployment-geo-valhalla" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#278899,#61c3d2);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-gateway-caddy" label="server-only bearer token" labelEn="server-only bearer token" labelMs="token bearer pelayan sahaja" petakerjaKey="deployment-infrastructure/geo/gateway-caddy" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-vercel-express" target="deployment-geo-caddy" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#278899,#61c3d2);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+              <Array as="points">
+                <mxPoint x="1120" y="660" />
+                <mxPoint x="1140" y="660" />
+                <mxPoint x="1140" y="645" />
+                <mxPoint x="1465" y="645" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-nominatim-gate" label="feature gate: off" labelEn="feature gate: off" labelMs="pagar ciri: tutup" petakerjaKey="deployment-infrastructure/geo/nominatim-gate" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-vercel-express" target="deployment-geo-nominatim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);dashed=1;dashPattern=7 4;strokeColor=light-dark(#7759d8,#9a82ef);">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+              <Array as="points">
+                <mxPoint x="1118" y="700" />
+                <mxPoint x="1132" y="700" />
+                <mxPoint x="1132" y="934" />
+                <mxPoint x="1438" y="934" />
+                <mxPoint x="1438" y="878" />
+                <mxPoint x="1465" y="878" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-external-platforms" label="server-side provider calls" labelEn="server-side provider calls" labelMs="panggilan penyedia sisi pelayan" petakerjaKey="deployment-infrastructure/external/express-platforms" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-vercel-express" target="deployment-user-integrations" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);exitX=1;exitY=0.8;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+              <Array as="points">
+                <mxPoint x="1138" y="700" />
+                <mxPoint x="1138" y="942" />
+                <mxPoint x="1750" y="942" />
+                <mxPoint x="1750" y="702" />
+                <mxPoint x="1780" y="702" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="deployment-flow-monitor-health" label="public /healthz" labelEn="public /healthz" labelMs="/healthz awam" petakerjaKey="deployment-infrastructure/monitor/healthz" deploymentRole="flow">
+          <mxCell parent="1" edge="1" source="deployment-user-monitor" target="deployment-geo-caddy" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeColor=light-dark(#667085,#aeb8c8);strokeWidth=1.35;fontColor=light-dark(#344054,#d7deea);fontFamily=Arial;fontSize=10;labelBackgroundColor=light-dark(#ffffff,#15191f);strokeColor=light-dark(#278899,#61c3d2);exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.8;entryDx=0;entryDy=0;">
+            <mxGeometry x="0" y="0" relative="1" as="geometry">
+              <mxPoint x="0" y="-8" as="offset" />
+              <Array as="points">
+                <mxPoint x="1752" y="865" />
+                <mxPoint x="1752" y="948" />
+                <mxPoint x="1440" y="948" />
+                <mxPoint x="1440" y="680" />
+                <mxPoint x="1465" y="680" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

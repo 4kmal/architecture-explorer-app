@@ -44,6 +44,8 @@
     modules: 'folder-tree',
     erd: 'database',
     'data-flow': 'waypoints',
+    'etl-pipeline': 'workflow',
+    'deployment-infrastructure': 'network',
     supabase: 'table-properties',
     jobops: 'briefcase-business',
     blog: 'newspaper',
