@@ -1162,6 +1162,622 @@
       collectionId: 'v2-georouting', collectionGroupId: 'data', collectionOrder: 13, versionTag: 'V2', basedOnDiagramId: 'supabase',
       columns: [['geo-geocode-cache', 'geo-route-cache', 'job-location-resolution'], ['geo-studio'], ['supabase-db']],
     },
+    {
+      id: 'code-geo-routing', title: 'a. Algoritma Penghalaan Geo A-ke-B PetaKerja', category: 'Code Snippets', status: 'current', reference: null,
+      description: 'Kod pseudo sedia laporan bagi penghalaan geo pelayar, API, gateway, Valhalla, sandaran Haversine dan pemaparan MapLibre.',
+      layout: 'code', snippetGroup: 'Algorithms', reportHeading: 'a. Algoritma Penghalaan Geo A-ke-B PetaKerja',
+      reportHeadingEn: 'a. PetaKerja A-to-B Geo Routing Algorithm',
+      caption: 'Rajah 3.33 Algoritma penghalaan geo A-ke-B PetaKerja',
+      captionEn: 'Figure 3.33 PetaKerja A-to-B geo routing algorithm', columns: [],
+      sourceFiles: [
+        'src/managers/GeoNavigationManager.ts',
+        'src/geo/multimodal-route-coordinator.ts',
+        'src/services/geo.ts',
+        'server/routes/geo.ts',
+        'server/geo/gateway.ts',
+        'src/managers/GeoRouteRenderer.ts',
+      ],
+      code: `Function KiraDanPaparLaluan(titikA, titikB, profil)
+    If titikA tiada OR titikB tiada Then
+        Papar "Pilih kedua-dua titik A dan B"
+        Return
+    End If
+
+    Sahkan titikA dan titikB berada di Malaysia
+    kunci = BinaKunci(titikA, titikB, profil)
+
+    If cachePelayar mempunyai kunci Then
+        hasil = cachePelayar[kunci]
+    Else
+        hasil = POST /api/geo/route(titikA, titikB, profil, alternatif = 2)
+        cachePelayar[kunci] = hasil
+    End If
+
+    Abaikan hasil jika titik atau profil telah berubah
+
+    If hasil.route.estimateKind = "routed" Then
+        Papar laluan utama, alternatif, ETA dan manuver pada MapLibre
+    Else
+        Papar garis Haversine antara titik A dan B
+        Papar amaran "Anggaran garis lurus; bukan laluan navigasi"
+    End If
+
+    Muat awal profil perjalanan lain di latar belakang
+    Return hasil.route
+End Function
+
+Function DapatkanLaluanServer(titikA, titikB, profil)
+    If geo_route_cache mempunyai permintaan ini Then
+        Return laluan daripada cache
+    End If
+
+    If Valhalla diaktifkan Then
+        Try
+            respons = MintaLaluanValhalla(titikA, titikB, profil)
+            laluan = NormalisasiGeoJSONDanManuver(respons)
+            Simpan laluan dalam geo_route_cache
+            Return laluan
+        Catch ralatPenyedia
+            Log ralatPenyedia
+        End Try
+    End If
+
+    Return BinaAnggaranGarisLurusHaversine(titikA, titikB)
+End Function`,
+      codeEn: `Function CalculateAndDisplayRoute(pointA, pointB, profile)
+    If pointA is missing OR pointB is missing Then
+        Display "Select both points A and B"
+        Return
+    End If
+
+    Validate pointA and pointB are within Malaysia
+    key = BuildKey(pointA, pointB, profile)
+
+    If browserCache contains key Then
+        result = browserCache[key]
+    Else
+        result = POST /api/geo/route(pointA, pointB, profile, alternatives = 2)
+        browserCache[key] = result
+    End If
+
+    Discard result if the points or profile have changed
+
+    If result.route.estimateKind = "routed" Then
+        Display the primary route, alternatives, ETA and maneuvers on MapLibre
+    Else
+        Display a Haversine line between points A and B
+        Display warning "Straight-line estimate; not a navigable route"
+    End If
+
+    Preload other travel profiles in the background
+    Return result.route
+End Function
+
+Function GetServerRoute(pointA, pointB, profile)
+    If geo_route_cache contains this request Then
+        Return the route from cache
+    End If
+
+    If Valhalla is enabled Then
+        Try
+            response = RequestValhallaRoute(pointA, pointB, profile)
+            route = NormalizeGeoJSONAndManeuvers(response)
+            Store route in geo_route_cache
+            Return route
+        Catch providerError
+            Log providerError
+        End Try
+    End If
+
+    Return BuildStraightLineHaversineEstimate(pointA, pointB)
+End Function`,
+    },
+    {
+      id: 'code-job-scraping', title: 'b. Algoritma Pengikisan Data Pekerjaan', category: 'Code Snippets', status: 'current', reference: null,
+      description: 'Kod pseudo sedia laporan bagi pengikisan pekerjaan berbilang sumber, normalisasi, penyahduaan dan upsert Supabase.',
+      layout: 'code', snippetGroup: 'Algorithms', reportHeading: 'b. Algoritma Pengikisan Data Pekerjaan',
+      reportHeadingEn: 'b. Job Data Scraping Algorithm',
+      caption: 'Rajah 3.34 Algoritma pengikisan data pekerjaan',
+      captionEn: 'Figure 3.34 Job data scraping algorithm', columns: [],
+      sourceFiles: [
+        'scripts/scrape-jobs.ts',
+        'server/lib/scrapers/maukerja.ts',
+        'server/lib/scrapers/hiredly.ts',
+        'server/lib/scrapers/ricebowl.ts',
+        'server/lib/scrapers/graduan.ts',
+        'server/lib/scrapers/jora.ts',
+        'server/lib/scrapers/jobstreet.ts',
+        'server/lib/scrapers/jobstore.ts',
+      ],
+      code: `Function JalankanPengikisanPekerjaan()
+    masaMula = MasaSemasa()
+    semuaBaris = SenaraiKosong()
+
+    Parallel For each sumber in SUMBER_PENGIKIS
+        idDilihat = SetKosong()
+
+        For each kataKunci in KATA_KUNCI_TEKNIKAL
+            For each lokasi in ["Malaysia", "Kuala Lumpur", "Selangor"]
+                Try
+                    kerja = KikisDenganHadMasa(sumber, kataKunci, lokasi, 15 saat)
+
+                    For each rekod in kerja
+                        If rekod bukan berkaitan Malaysia AND bukan kerja remote Then
+                            Continue
+                        End If
+
+                        url = BersihkanURLPermohonan(rekod.url)
+                        If url atau tajuk tidak sah Then Continue
+
+                        baris = NormalisasiRekod(rekod)
+                        baris.id = SlugSumber(sumber) + SHA1(url)
+                        baris.tarikhLuput = TarikhAsas(rekod) + 60 hari
+
+                        If baris.id belum dalam idDilihat Then
+                            Tambah baris ke semuaBaris
+                            Tambah baris.id ke idDilihat
+                        End If
+                    End For
+                Catch ralat
+                    Log ralat dan teruskan tuple seterusnya
+                End Try
+
+                Tunggu 2 saat
+            End For
+        End For
+    End For
+
+    If semuaBaris kosong Then
+        Kekalkan data Supabase sedia ada
+        Return Gagal
+    End If
+
+    semuaBaris = BuangPenduaMengikutID(semuaBaris)
+    Upsert semuaBaris ke scraped_jobs dalam kelompok 500
+
+    Try
+        Padam rekod dengan scraped_at lebih lama daripada masaMula
+    Catch ralatPembersihan
+        Log ralat sebagai tidak kritikal
+    End Try
+
+    Return Berjaya
+End Function`,
+      codeEn: `Function RunJobScraping()
+    startTime = CurrentTime()
+    allRows = EmptyList()
+
+    Parallel For each source in SCRAPER_SOURCES
+        seenIds = EmptySet()
+
+        For each keyword in TECHNICAL_KEYWORDS
+            For each location in ["Malaysia", "Kuala Lumpur", "Selangor"]
+                Try
+                    jobs = ScrapeWithTimeout(source, keyword, location, 15 seconds)
+
+                    For each record in jobs
+                        If record is not related to Malaysia AND is not remote work Then
+                            Continue
+                        End If
+
+                        applicationUrl = CleanApplicationURL(record.url)
+                        If applicationUrl or title is invalid Then Continue
+
+                        row = NormalizeRecord(record)
+                        row.id = SourceSlug(source) + SHA1(applicationUrl)
+                        row.expiryDate = BaseDate(record) + 60 days
+
+                        If row.id is not in seenIds Then
+                            Add row to allRows
+                            Add row.id to seenIds
+                        End If
+                    End For
+                Catch error
+                    Log error and continue with the next tuple
+                End Try
+
+                Wait 2 seconds
+            End For
+        End For
+    End For
+
+    If allRows is empty Then
+        Keep the existing Supabase data
+        Return Failed
+    End If
+
+    allRows = DeduplicateByID(allRows)
+    Upsert allRows into scraped_jobs in batches of 500
+
+    Try
+        Delete records with scraped_at older than startTime
+    Catch cleanupError
+        Log cleanupError as non-critical
+    End Try
+
+    Return Succeeded
+End Function`,
+    },
+    {
+      id: 'code-poi-search', title: 'c. Algoritma Carian POI Hibrid', category: 'Code Snippets', status: 'current', reference: null,
+      description: 'Kod pseudo sedia laporan bagi carian POI Supabase dan Nominatim dengan debounce, perlindungan permintaan lapuk serta penyahduaan.',
+      layout: 'code', snippetGroup: 'Algorithms', reportHeading: 'c. Algoritma Carian POI Hibrid',
+      reportHeadingEn: 'c. Hybrid POI Search Algorithm',
+      caption: 'Rajah 3.35 Algoritma carian POI hibrid',
+      captionEn: 'Figure 3.35 Hybrid POI search algorithm', columns: [],
+      sourceFiles: ['src/managers/SearchManager.ts', 'src/services/supabase.ts', 'src/services/geo.ts'],
+      code: `Function CariPOI(teksCarian)
+    query = Trim(teksCarian)
+
+    If Panjang(query) < 2 Then
+        Sembunyikan hasil carian
+        Return
+    End If
+
+    Tunggu debounce 300 milisaat
+    nomborPermintaan = nomborPermintaan + 1
+    permintaanSemasa = nomborPermintaan
+    lokasiPengguna = DapatkanLokasiPengguna()
+    viewbox = DapatkanSempadanPetaSemasa()
+
+    carianDalaman = CariSupabasePOI(
+        query, lokasiPengguna, radius = 50000, had = 20
+    )
+
+    If carianGeoHibrid diaktifkan Then
+        carianTambahan = CariNominatim(query, viewbox, had = 12)
+    Else
+        carianTambahan = SenaraiKosong()
+    End If
+
+    hasil = Tunggu carianDalaman
+    If permintaanSemasa bukan permintaan terkini Then Return
+    Papar hasil PetaKerja terlebih dahulu
+
+    tambahan = Tunggu carianTambahan
+    If permintaanSemasa bukan permintaan terkini Then Return
+
+    Kira jarak setiap hasil daripada lokasi pengguna
+    Gabung hasil dalaman dan tambahan
+    Buang pendua berdasarkan OSM ID atau nama sama dalam jarak 80 meter
+    Kumpulkan hasil sebagai POI, alamat, tempat atau kawasan pentadbiran
+    Papar kumpulan hasil
+
+    Apabila hasil dipilih:
+        Gerakkan kamera MapLibre ke lokasi
+        Jika hasil ialah POI PetaKerja Then Papar popup POI
+End Function`,
+      codeEn: `Function SearchPOI(searchText)
+    query = Trim(searchText)
+
+    If Length(query) < 2 Then
+        Hide search results
+        Return
+    End If
+
+    Wait for 300 millisecond debounce
+    requestNumber = requestNumber + 1
+    currentRequest = requestNumber
+    userLocation = GetUserLocation()
+    viewbox = GetCurrentMapBounds()
+
+    internalSearch = SearchSupabasePOI(
+        query, userLocation, radius = 50000, limit = 20
+    )
+
+    If hybridGeoSearch is enabled Then
+        supplementalSearch = SearchNominatim(query, viewbox, limit = 12)
+    Else
+        supplementalSearch = EmptyList()
+    End If
+
+    results = Await internalSearch
+    If currentRequest is not the latest request Then Return
+    Display PetaKerja results first
+
+    supplemental = Await supplementalSearch
+    If currentRequest is not the latest request Then Return
+
+    Calculate the distance of each result from the user location
+    Merge internal and supplemental results
+    Remove duplicates by OSM ID or the same name within 80 metres
+    Group results as POIs, addresses, places or administrative areas
+    Display grouped results
+
+    When a result is selected:
+        Move the MapLibre camera to the location
+        If the result is a PetaKerja POI Then Display the POI popup
+End Function`,
+    },
+    {
+      id: 'code-poi-clustering', title: 'd. Algoritma Pengelompokan Penanda POI', category: 'Code Snippets', status: 'current', reference: null,
+      description: 'Kod pseudo sedia laporan bagi sumber GeoJSON berkluster, penanda individu dan interaksi klik MapLibre.',
+      layout: 'code', snippetGroup: 'Algorithms', reportHeading: 'd. Algoritma Pengelompokan Penanda POI',
+      reportHeadingEn: 'd. POI Marker Clustering Algorithm',
+      caption: 'Rajah 3.36 Algoritma pengelompokan penanda POI',
+      captionEn: 'Figure 3.36 POI marker clustering algorithm', columns: [],
+      sourceFiles: ['src/managers/POIManager.ts'],
+      code: `Function SediakanPenandaKlusterPOI(senaraiPOI)
+    ciriGeoJSON = TukarSetiapPOIKepadaGeoJSONPoint(senaraiPOI)
+
+    sumber = TambahSumberMapLibre(
+        nama = "pois",
+        data = ciriGeoJSON,
+        cluster = true,
+        clusterMaxZoom = 13,
+        clusterRadius = 50
+    )
+
+    Untuk ciri yang mempunyai point_count:
+        Papar bulatan kluster dan cahaya latar
+        Jika point_count < 50 Then radius = 18
+        Else If point_count < 200 Then radius = 24
+        Else radius = 32
+        Papar point_count_abbreviated di tengah kluster
+
+    Untuk ciri yang tiada point_count:
+        Papar penanda individu menggunakan warna kategori
+        Papar label nama apabila zoom sekurang-kurangnya 14
+
+    Apabila kluster diklik:
+        If mod Highlight aktif Then Return
+        kluster = CariKlusterPadaKedudukanKlik()
+        zoom = sumber.getClusterExpansionZoom(kluster.id)
+        Gerakkan peta ke pusat kluster dengan zoom tersebut
+
+    Apabila penanda individu diklik:
+        Papar butiran POI
+End Function`,
+      codeEn: `Function PreparePOIClusterMarkers(poiList)
+    geoJSONFeatures = ConvertEachPOIToGeoJSONPoint(poiList)
+
+    source = AddMapLibreSource(
+        name = "pois",
+        data = geoJSONFeatures,
+        cluster = true,
+        clusterMaxZoom = 13,
+        clusterRadius = 50
+    )
+
+    For each feature with point_count:
+        Display the cluster circle and background halo
+        If point_count < 50 Then radius = 18
+        Else If point_count < 200 Then radius = 24
+        Else radius = 32
+        Display point_count_abbreviated in the centre of the cluster
+
+    For each feature without point_count:
+        Display an individual marker using its category colour
+        Display the name label when zoom is at least 14
+
+    When a cluster is clicked:
+        If Highlight mode is active Then Return
+        cluster = FindClusterAtClickPosition()
+        zoom = source.getClusterExpansionZoom(cluster.id)
+        Move the map to the cluster centre at that zoom
+
+    When an individual marker is clicked:
+        Display POI details
+End Function`,
+    },
+    {
+      id: 'code-live-job-search', title: 'e. Algoritma Carian Pekerjaan Langsung PetaKerja', category: 'Code Snippets', status: 'current', reference: null,
+      description: 'Kod pseudo sedia laporan bagi carian pekerjaan langsung berautentikasi, cache lima minit, pengambilan berbilang sumber dan pemaparan hasil.',
+      layout: 'code', snippetGroup: 'Algorithms', reportHeading: 'e. Algoritma Carian Pekerjaan Langsung PetaKerja',
+      reportHeadingEn: 'e. PetaKerja Live Job Search Algorithm',
+      caption: 'Rajah 3.37 Algoritma carian pekerjaan langsung PetaKerja',
+      captionEn: 'Figure 3.37 PetaKerja live job search algorithm', columns: [],
+      sourceFiles: [
+        'src/modes/jobs/manager.ts',
+        'src/modes/jobs/api.ts',
+        'server/app.ts',
+        'server/routes/search-jobs.ts',
+        'server/lib/scrapers/maukerja.ts',
+        'server/lib/scrapers/hiredly.ts',
+        'server/lib/scrapers/ricebowl.ts',
+        'server/lib/scrapers/graduan.ts',
+        'server/lib/scrapers/jora.ts',
+        'server/lib/scrapers/jobstreet.ts',
+        'server/lib/scrapers/jobstore.ts',
+        'server/lib/scrapers/scrapling-bridge.ts',
+        'scripts/lib/scrapling-fetch.py',
+        'shared/jobSearchRelevance.ts',
+      ],
+      upstreamSources: [
+        {
+          name: 'Maukerja', website: 'https://www.maukerja.my/', kind: 'html', implementationFile: 'server/lib/scrapers/maukerja.ts',
+          method: 'Pengikisan HTML Axios/Cheerio', methodEn: 'Axios/Cheerio HTML scraping',
+          requestScope: 'Kata kunci dan halaman; lokasi ditapis selepas itu', requestScopeEn: 'Keyword and page; location is filtered afterward',
+        },
+        {
+          name: 'Hiredly', website: 'https://my.hiredly.com/', kind: 'html', implementationFile: 'server/lib/scrapers/hiredly.ts',
+          method: 'Axios/Cheerio dengan pengekstrakan __NEXT_DATA__', methodEn: 'Axios/Cheerio with __NEXT_DATA__ extraction',
+          requestScope: 'Kata kunci, lokasi dan halaman', requestScopeEn: 'Keyword, location and page',
+        },
+        {
+          name: 'Ricebowl', website: 'https://www.ricebowl.my/', kind: 'html', implementationFile: 'server/lib/scrapers/ricebowl.ts',
+          method: 'Pengikisan HTML Axios/Cheerio', methodEn: 'Axios/Cheerio HTML scraping',
+          requestScope: 'Kata kunci dan halaman; lokasi ditapis selepas itu', requestScopeEn: 'Keyword and page; location is filtered afterward',
+        },
+        {
+          name: 'GRADUAN', website: 'https://graduan.com/', kind: 'html', implementationFile: 'server/lib/scrapers/graduan.ts',
+          method: 'Axios/Cheerio dengan sandaran Inertia, Next.js, JSON-LD dan CSS', methodEn: 'Axios/Cheerio with Inertia, Next.js, JSON-LD and CSS fallbacks',
+          requestScope: 'Kata kunci dan halaman', requestScopeEn: 'Keyword and page',
+        },
+        {
+          name: 'Jora Malaysia', website: 'https://my.jora.com/', kind: 'html', implementationFile: 'server/lib/scrapers/jora.ts',
+          method: 'Pengikisan HTML Axios/Cheerio', methodEn: 'Axios/Cheerio HTML scraping',
+          requestScope: 'Kata kunci, lokasi dan halaman', requestScopeEn: 'Keyword, location and page',
+        },
+        {
+          name: 'JobStreet Malaysia', website: 'https://my.jobstreet.com/', kind: 'scrapling', implementationFile: 'server/lib/scrapers/jobstreet.ts',
+          method: 'Scrapling StealthyFetcher', methodEn: 'Scrapling StealthyFetcher',
+          requestScope: 'Halaman kata kunci serta tiga halaman klasifikasi teknologi', requestScopeEn: 'Keyword pages plus three technology classification pages',
+        },
+        {
+          name: 'Jobstore', website: 'https://www.jobstore.com/', kind: 'scrapling', implementationFile: 'server/lib/scrapers/jobstore.ts',
+          method: 'Jambatan Scrapling', methodEn: 'Scrapling bridge',
+          requestScope: 'Lima kategori teknologi tetap; URL kategori semasa menghala ke halaman carian umum', requestScopeEn: 'Five fixed technology categories; current category URLs redirect to the generic browse page',
+        },
+        {
+          name: 'Careerjet Malaysia', website: 'https://www.careerjet.com.my/', kind: 'api', implementationFile: 'server/routes/search-jobs.ts',
+          method: 'API JSON Careerjet (bukan pengikisan HTML)', methodEn: 'Careerjet JSON API (not HTML scraping)',
+          requestScope: 'Pilihan; memerlukan CAREERJET_AFFID', requestScopeEn: 'Optional; requires CAREERJET_AFFID',
+        },
+      ],
+      code: `Function CariPekerjaanLangsung(teksCarian, lokasi, penapis)
+    If pengguna belum log masuk Then
+        Minta pengguna log masuk
+        Return
+    End If
+
+    parameter = BinaParameterCarian(teksCarian, lokasi, penapis)
+    respons = GET /api/search-jobs(parameter)
+
+    kerja = KiraSkorPadanan(respons.jobs)
+    kerja = GunakanPenapisPelayar(kerja)
+
+    Papar kad pekerjaan, pecahan sumber dan penanda peta
+    Return kerja
+End Function
+
+Function JalankanCarianLangsungServer(permintaan)
+    query = NormalisasiQueryKepadaMaksimumTigaPerkataan(permintaan.query)
+    lokasi = permintaan.lokasi atau "Malaysia"
+    kunci = BinaKunciCache(query, lokasi, permintaan.penapis)
+
+    If cache lima minit mempunyai kunci AND refresh bukan true Then
+        Return hasil daripada cache
+    End If
+
+    If carian dengan kunci sama sedang berjalan Then
+        Return Tunggu carian tersebut
+    End If
+
+    sumberScrape = [
+        Maukerja, Hiredly, Ricebowl, Graduan,
+        Jora, JobStreet, Jobstore
+    ]
+    tugas = SenaraiKosong()
+
+    If CAREERJET_AFFID dikonfigurasi Then
+        Tambah MintaCareerjetAPI(query, lokasi) ke tugas
+    Else
+        Rekod Careerjet sebagai tidak tersedia
+    End If
+
+    Parallel For each sumber in sumberScrape
+        Try
+            If sumber = JobStreet OR sumber = Jobstore Then
+                html = AmbilHTMLDenganScrapling(sumber, query, lokasi)
+            Else
+                html = AmbilHTMLDenganAxiosDanCheerio(sumber, query, lokasi)
+            End If
+
+            kerjaSumber = EkstrakDanNormalisasiPekerjaan(html)
+            Tambah kerjaSumber ke tugas
+        Catch ralatSumber
+            Rekod kegagalan sumber dan teruskan
+        End Try
+    End For
+
+    hasilSumber = TungguSemuaDenganHadMasa(tugas, 7 saat)
+
+    If semua sumber kosong Then
+        Return pekerjaan demo dengan isDemoMode = true
+    End If
+
+    kerja = GabungSumberSecaraBergilir(hasilSumber)
+    kerja = BuangRekodTanpaTajukAtauURL(kerja)
+    kerja = TambahKoordinatLokasi(kerja)
+    kerja = BuangPenduaMengikutIDDanTajukSyarikatLokasi(kerja)
+
+    Tapis kerja mengikut Malaysia, remote, aturan kerja,
+        jenis pekerjaan dan julat gaji
+    Kekalkan pekerjaan teknologi sahaja
+    Susun kerja mengikut kerelevanan query
+
+    hasil = BinaRespons(kerja, pecahanSumber, kesihatanScrape)
+    Simpan hasil berjaya dalam cache selama lima minit
+    Return hasil
+End Function`,
+      codeEn: `Function SearchLiveJobs(searchText, location, filters)
+    If the user is not signed in Then
+        Request user sign-in
+        Return
+    End If
+
+    parameters = BuildSearchParameters(searchText, location, filters)
+    response = GET /api/search-jobs(parameters)
+
+    jobs = CalculateMatchScores(response.jobs)
+    jobs = ApplyBrowserFilters(jobs)
+
+    Display job cards, source breakdown and map markers
+    Return jobs
+End Function
+
+Function RunLiveSearchServer(request)
+    query = NormalizeQueryToMaximumThreeWords(request.query)
+    location = request.location or "Malaysia"
+    key = BuildCacheKey(query, location, request.filters)
+
+    If the five-minute cache contains key AND refresh is not true Then
+        Return the cached result
+    End If
+
+    If a search with the same key is already running Then
+        Return Await that search
+    End If
+
+    scrapeSources = [
+        Maukerja, Hiredly, Ricebowl, Graduan,
+        Jora, JobStreet, Jobstore
+    ]
+    tasks = EmptyList()
+
+    If CAREERJET_AFFID is configured Then
+        Add RequestCareerjetAPI(query, location) to tasks
+    Else
+        Record Careerjet as unavailable
+    End If
+
+    Parallel For each source in scrapeSources
+        Try
+            If source = JobStreet OR source = Jobstore Then
+                html = FetchHTMLWithScrapling(source, query, location)
+            Else
+                html = FetchHTMLWithAxiosAndCheerio(source, query, location)
+            End If
+
+            sourceJobs = ExtractAndNormalizeJobs(html)
+            Add sourceJobs to tasks
+        Catch sourceError
+            Record the source failure and continue
+        End Try
+    End For
+
+    sourceResults = AwaitAllWithTimeout(tasks, 7 seconds)
+
+    If every source is empty Then
+        Return demo jobs with isDemoMode = true
+    End If
+
+    jobs = InterleaveSourceResults(sourceResults)
+    jobs = RemoveRecordsWithoutTitleOrURL(jobs)
+    jobs = EnrichJobLocations(jobs)
+    jobs = DeduplicateByIDAndTitleCompanyLocation(jobs)
+
+    Filter jobs by Malaysia, remote arrangement, work schedule,
+        employment type and salary range
+    Keep technology jobs only
+    Rank jobs by query relevance
+
+    result = BuildResponse(jobs, sourceBreakdown, scrapeHealth)
+    Store the successful result in the cache for five minutes
+    Return result
+End Function`,
+    },
   ];
 
   const rawTables = `

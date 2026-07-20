@@ -6,10 +6,14 @@
   const translations = window.PETAKERJA_TRANSLATIONS || {};
   const editorAPI = window.PETAKERJA_EDITOR;
   const agentAPI = window.PETAKERJA_AGENT;
+  const codeSnippetHighlighter = window.PETAKERJA_CODE_SNIPPET_HIGHLIGHTER;
+  const codeSnippetClipboard = window.PETAKERJA_CODE_SNIPPET_CLIPBOARD;
   const runtimeCapabilities = window.PETAKERJA_EXPLORER_RUNTIME?.capabilities || {};
   const localAPI = (path) => window.PETAKERJA_EXPLORER_RUNTIME?.api(path) || `/api/${String(path || '').replace(/^\/+/, '')}`;
   if (!data) throw new Error('PETAKERJA_ARCHITECTURE is not loaded.');
   if (!editorAPI) throw new Error('PETAKERJA_EDITOR is not loaded.');
+  if (!codeSnippetHighlighter) throw new Error('PETAKERJA_CODE_SNIPPET_HIGHLIGHTER is not loaded.');
+  if (!codeSnippetClipboard) throw new Error('PETAKERJA_CODE_SNIPPET_CLIPBOARD is not loaded.');
 
   function isCanonicalEditable(id) {
     return Array.isArray(editorAPI.EDITABLE_DIAGRAMS) && editorAPI.EDITABLE_DIAGRAMS.includes(id);
@@ -63,6 +67,11 @@
     'v2-geo-erd': 'database',
     'v2-geo-routing-stack': 'layers-2',
     'v2-geo-supabase': 'table-properties',
+    'code-geo-routing': 'map',
+    'code-job-scraping': 'briefcase-business',
+    'code-poi-search': 'search',
+    'code-poi-clustering': 'map',
+    'code-live-job-search': 'search',
   });
 
   function storedLanguage() {
@@ -115,6 +124,28 @@
 
   function storeFlowchartFolders(value) {
     try { localStorage.setItem('petakerja-explorer-flowchart-folders', JSON.stringify(value)); }
+    catch (_error) { /* Some file:// browser policies disable storage. */ }
+  }
+
+  function storedCodeSnippetFolders() {
+    try {
+      const value = JSON.parse(localStorage.getItem('petakerja-explorer-code-snippet-folders') || '{}');
+      return { Algorithms: value.Algorithms !== false };
+    } catch (_error) { return { Algorithms: true }; }
+  }
+
+  function storeCodeSnippetFolders(value) {
+    try { localStorage.setItem('petakerja-explorer-code-snippet-folders', JSON.stringify(value)); }
+    catch (_error) { /* Some file:// browser policies disable storage. */ }
+  }
+
+  function storedCodeSnippetLanguage() {
+    try { return localStorage.getItem('petakerja-explorer-code-snippet-language') === 'en' ? 'en' : 'ms'; }
+    catch (_error) { return 'ms'; }
+  }
+
+  function storeCodeSnippetLanguage(value) {
+    try { localStorage.setItem('petakerja-explorer-code-snippet-language', value); }
     catch (_error) { /* Some file:// browser policies disable storage. */ }
   }
 
@@ -177,7 +208,7 @@
     workspaceMode: 'view', editorAnalysis: null, pendingImport: null, dropDepth: 0,
     runtimeDocuments: new Map(), importedDiagrams: [], runtimeExporting: false, editorDocumentKey: null, agentProviderStatus: null,
     workspaceToken: null, workspaceDiagramIds: new Set(), workspaceLoaded: new Set(), workspaceSessionPromise: null,
-    sequenceFolders: storedSequenceFolders(), flowchartFolders: storedFlowchartFolders(),
+    sequenceFolders: storedSequenceFolders(), flowchartFolders: storedFlowchartFolders(), codeSnippetFolders: storedCodeSnippetFolders(), snippetLanguage: storedCodeSnippetLanguage(),
     diagramVariantFolders: storedDiagramVariantFolders(), diagramCollections: storedDiagramCollections(),
     diagramCollectionGroups: storedDiagramCollectionGroups(), sequenceLabelMode: storedSequenceLabelMode(),
   };
@@ -291,6 +322,9 @@
       'ui.collectionClasses': 'Rajah Kelas', 'ui.collectionArchitectureModules': 'Seni Bina & Modul', 'ui.collectionData': 'Rajah Data',
       'ui.collectionDiagram': 'rajah', 'ui.collectionDiagrams': 'rajah',
       'ui.reportExplanation': 'Penerangan laporan', 'ui.copyReportParagraph': 'Salin perenggan', 'ui.reportParagraphCopied': 'Perenggan disalin',
+      'ui.copyCode': 'Salin kod', 'ui.copyCaption': 'Salin kapsyen', 'ui.codeCopied': 'Kod disalin', 'ui.captionCopied': 'Kapsyen disalin',
+      'ui.reportCaption': 'Kapsyen laporan', 'ui.codeSources': 'Fail sumber kod', 'ui.reportReadyCode': 'Kod pseudo sedia laporan',
+      'ui.snippetLanguage': 'Bahasa kod pseudo', 'ui.snippetLanguageChanged': 'Bahasa kod pseudo ditukar',
       'ui.flow': 'Aliran hujung ke hujung', 'ui.sourceFiles': 'Fail sumber', 'ui.routes': 'Route / RPC', 'ui.tables': 'Jadual Supabase',
       'ui.uiComponents': 'Komponen UI', 'ui.auth': 'Syarat akses', 'ui.related': 'Nod berhubung', 'ui.reference': 'Aset rujukan', 'ui.close': 'Tutup',
       'ui.dependsOn': 'Bergantung pada', 'ui.usedBy': 'Digunakan oleh', 'ui.dataRelations': 'Hubungan data', 'ui.secondLevel': 'Konteks tahap kedua',
@@ -427,6 +461,15 @@
   function scopeAllows(scope) { return scopeDefinition().includes.includes(scope); }
   function allDiagrams() { return [...data.diagrams, ...state.importedDiagrams]; }
   function activeDiagram() { return allDiagrams().find((diagram) => diagram.id === state.diagramId) || data.diagrams[0]; }
+  function isCodeDiagram(diagram = activeDiagram()) { return diagram?.layout === 'code'; }
+  function codeSnippetText(diagram = activeDiagram()) {
+    const english = state.snippetLanguage === 'en';
+    return {
+      reportHeading: english ? diagram.reportHeadingEn || diagram.reportHeading : diagram.reportHeading,
+      caption: english ? diagram.captionEn || diagram.caption : diagram.caption,
+      code: english ? diagram.codeEn || diagram.code : diagram.code,
+    };
+  }
   function runtimeDocument(id = state.diagramId) { return state.runtimeDocuments.get(id) || null; }
   async function ensureWorkspaceSession() {
     if (!editorController?.available || runtimeCapabilities.localWorkspace === false) return null;
@@ -659,6 +702,12 @@
       const emptyKey = family === 'flowchart' ? 'ui.flowchartEmpty' : 'ui.sequenceEmpty';
       return `<details class="nav-subgroup" data-nav-family="${family}" data-nav-audience="${audience}"${open ? ' open' : ''}><summary><span class="nav-subgroup__icon" aria-hidden="true"><i data-bp-icon="${icon}"></i></span><span>${escapeHTML(t(labelKey))}</span><i class="nav-subgroup__chevron" data-bp-icon="chevron-right" aria-hidden="true"></i></summary><div class="nav-subgroup__items">${diagrams.length ? audienceItems(family, audience, diagrams) : `<p class="nav-subgroup__empty">${escapeHTML(t(emptyKey))}</p>`}</div></details>`;
     };
+    const codeSnippetGroup = (group, diagrams) => {
+      const active = diagrams.some((diagram) => diagram.id === state.diagramId);
+      if (active) state.codeSnippetFolders[group] = true;
+      const open = state.codeSnippetFolders[group] !== false;
+      return `<details class="nav-subgroup nav-subgroup--code" data-nav-family="code-snippets" data-nav-audience="${escapeHTML(group)}"${open ? ' open' : ''}><summary><span class="nav-subgroup__icon" aria-hidden="true"><i data-bp-icon="folder"></i></span><span>${escapeHTML(group)}</span><i class="nav-subgroup__chevron" data-bp-icon="chevron-right" aria-hidden="true"></i></summary><div class="nav-subgroup__items">${variantItems(diagrams)}</div></details>`;
+    };
     const collectionFolder = (collectionId, diagrams) => {
       const ordered = [...diagrams].sort((a, b) => (a.collectionOrder || 99) - (b.collectionOrder || 99));
       const open = state.diagramCollections[collectionId] !== false;
@@ -684,6 +733,10 @@
       const categoryDiagrams = visible.filter((diagram) => diagram.category === category);
       const collectionId = categoryDiagrams[0]?.collectionId;
       if (collectionId && categoryDiagrams.every((diagram) => diagram.collectionId === collectionId)) return collectionFolder(collectionId, categoryDiagrams);
+      if (category === 'Code Snippets') {
+        const groups = [...new Set(categoryDiagrams.map((diagram) => diagram.snippetGroup).filter(Boolean))];
+        return `<section class="nav-group nav-group--code"><h2>${escapeHTML(categoryLabel(category))}</h2>${groups.map((group) => codeSnippetGroup(group, categoryDiagrams.filter((diagram) => diagram.snippetGroup === group))).join('')}</section>`;
+      }
       if (category !== 'Jujukan' && category !== 'Carta Alir') return `<section class="nav-group"><h2>${escapeHTML(categoryLabel(category))}</h2>${variantItems(categoryDiagrams)}</section>`;
       const isFlowchart = category === 'Carta Alir';
       const family = isFlowchart ? 'flowchart' : 'sequence';
@@ -699,9 +752,11 @@
       return `<section class="nav-group nav-group--sequence nav-group--${family}"><h2>${categoryIcon}${escapeHTML(categoryLabel(category))}</h2>${audienceGroup(family, 'user', userDiagrams, 'user-round', folderState.user)}${audienceGroup(family, 'administrator', administratorDiagrams, 'shield-user', folderState.administrator)}</section>`;
     }).join('');
     els.diagramNav.querySelectorAll('.nav-subgroup').forEach((folder) => folder.addEventListener('toggle', () => {
-      const target = folder.dataset.navFamily === 'flowchart' ? state.flowchartFolders : state.sequenceFolders;
+      const target = folder.dataset.navFamily === 'flowchart' ? state.flowchartFolders
+        : folder.dataset.navFamily === 'code-snippets' ? state.codeSnippetFolders : state.sequenceFolders;
       target[folder.dataset.navAudience] = folder.open;
       if (folder.dataset.navFamily === 'flowchart') storeFlowchartFolders(target);
+      else if (folder.dataset.navFamily === 'code-snippets') storeCodeSnippetFolders(target);
       else storeSequenceFolders(target);
     }));
     els.diagramNav.querySelectorAll('.nav-variant-group').forEach((folder) => folder.addEventListener('toggle', () => {
@@ -1265,9 +1320,10 @@
     const importEnabled = runtimeCapabilities.import !== false;
     const agentEnabled = runtimeCapabilities.agent !== false;
     const localWorkspaceEnabled = runtimeCapabilities.localWorkspace !== false;
+    const codeLayout = isCodeDiagram();
     const editable = isEditableDiagram();
     const canEdit = editorEnabled && editable && editorController?.available;
-    els.workspaceModeControl.hidden = !editorEnabled || !editable;
+    els.workspaceModeControl.hidden = codeLayout || !editorEnabled || !editable;
     els.workspaceView.setAttribute('aria-pressed', String(state.workspaceMode === 'view'));
     els.workspaceEdit.setAttribute('aria-pressed', String(state.workspaceMode === 'edit'));
     els.workspaceAgent.setAttribute('aria-pressed', String(state.workspaceMode === 'agent'));
@@ -1282,16 +1338,16 @@
     els.workspaceAgent.setAttribute('aria-disabled', String(!agentEnabled || !editable));
     els.workspaceAgent.dataset.runtimeRequired = String(editable && !canEdit);
     els.workspaceAgent.title = canEdit ? '' : t('ui.editorHttpRequired');
-    els.importButton.hidden = !importEnabled;
+    els.importButton.hidden = codeLayout || !importEnabled;
     els.importButton.disabled = !importEnabled;
     els.importButton.setAttribute('aria-disabled', 'false');
     els.importButton.dataset.runtimeRequired = String(!editorController?.available);
     els.importButton.title = editorController?.available ? '' : t('ui.editorHttpRequired');
     els.validateButton.hidden = !editorEnabled || state.workspaceMode === 'view'; els.saveButton.hidden = !editorEnabled || state.workspaceMode === 'view';
     els.workspaceSaveButton.hidden = !localWorkspaceEnabled || state.workspaceMode === 'view' || !state.workspaceDiagramIds.has(state.diagramId);
-    byId('zoom-out').parentElement.hidden = state.workspaceMode !== 'view';
-    els.referenceButton.hidden = state.workspaceMode !== 'view' || !activeDiagram().reference;
-    const showSequenceLabels = (state.workspaceMode === 'view' || state.workspaceMode === 'edit')
+    byId('zoom-out').parentElement.hidden = codeLayout || state.workspaceMode !== 'view';
+    els.referenceButton.hidden = codeLayout || state.workspaceMode !== 'view' || !activeDiagram().reference;
+    const showSequenceLabels = !codeLayout && (state.workspaceMode === 'view' || state.workspaceMode === 'edit')
       && effectiveMode() === 'actual' && Boolean(activeAsset()?.supportsSequenceLabels);
     els.sequenceLabelControl.hidden = !showSequenceLabels;
     els.sequenceSimple.setAttribute('aria-pressed', String(state.sequenceLabelMode === 'simple'));
@@ -1350,18 +1406,71 @@
     if (options.announce) els.statusMessage.textContent = options.announce;
   }
 
+  function renderCodeSnippet(diagram) {
+    const snippet = codeSnippetText(diagram);
+    const sourceFiles = (diagram.sourceFiles || []).map((file) => `<li><code>${escapeHTML(file)}</code></li>`).join('');
+    const english = state.snippetLanguage === 'en';
+    const legendItems = [
+      ['control', 'If', english ? 'Control flow' : 'Kawalan aliran'],
+      ['function', english ? 'SearchPOI()' : 'CariPOI()', english ? 'Function' : 'Fungsi'],
+      ['message', english ? '"Message"' : '"Mesej"', english ? 'Message' : 'Mesej'],
+      ['system', 'MapLibre', english ? 'System/data' : 'Sistem/data'],
+    ].map(([type, sample, label]) => `<li><code class="pseudo-token pseudo-token--${type}">${escapeHTML(sample)}</code><span>${escapeHTML(label)}</span></li>`).join('');
+    const upstreamRows = (diagram.upstreamSources || []).map((source) => {
+      const method = english ? source.methodEn : source.method;
+      const requestScope = english ? source.requestScopeEn : source.requestScope;
+      const websiteLabel = String(source.website || '').replace(/^https:\/\//, '').replace(/\/$/, '');
+      return `<tr data-source-kind="${escapeHTML(source.kind)}"><th scope="row">${escapeHTML(source.name)}</th><td><a href="${escapeHTML(source.website)}" target="_blank" rel="noopener noreferrer">${escapeHTML(websiteLabel)}</a></td><td>${escapeHTML(method)}</td><td>${escapeHTML(requestScope)}</td></tr>`;
+    }).join('');
+    const upstreamSourceTable = upstreamRows ? `<section class="code-upstream-sources" aria-labelledby="code-upstream-sources-title">
+      <h4 id="code-upstream-sources-title">${escapeHTML(english ? 'Verified Live Search sources' : 'Sumber Carian Langsung yang disahkan')}</h4>
+      <div class="code-upstream-table-wrap" role="region" aria-label="${escapeHTML(english ? 'Live Search source table' : 'Jadual sumber Carian Langsung')}">
+        <table class="code-upstream-table">
+          <thead><tr><th scope="col">${escapeHTML(english ? 'Source' : 'Sumber')}</th><th scope="col">${escapeHTML(english ? 'Website' : 'Laman')}</th><th scope="col">${escapeHTML(english ? 'Method' : 'Kaedah')}</th><th scope="col">${escapeHTML(english ? 'Request scope' : 'Skop permintaan')}</th></tr></thead>
+          <tbody>${upstreamRows}</tbody>
+        </table>
+      </div>
+    </section>` : '';
+    els.graphViewport.innerHTML = `<article class="code-snippet-view" aria-labelledby="code-snippet-heading">
+      <header class="code-snippet-header">
+        <div><p class="eyebrow">${escapeHTML(t('ui.reportReadyCode'))}</p><h3 id="code-snippet-heading">${escapeHTML(snippet.reportHeading)}</h3></div>
+        <div class="code-snippet-tools">
+          <div class="segmented code-snippet-language" role="group" aria-label="${escapeHTML(t('ui.snippetLanguage'))}">
+            <button type="button" data-snippet-language="ms" aria-pressed="${state.snippetLanguage === 'ms'}">BM</button>
+            <button type="button" data-snippet-language="en" aria-pressed="${state.snippetLanguage === 'en'}">English</button>
+          </div>
+          <div class="code-snippet-actions" aria-label="${escapeHTML(state.language === 'en' ? 'Copy report content' : 'Salin kandungan laporan')}">
+            <button type="button" class="secondary-button" data-copy-snippet-code><i data-bp-icon="copy-plus" aria-hidden="true"></i><span>${escapeHTML(t('ui.copyCode'))}</span></button>
+            <button type="button" class="secondary-button" data-copy-snippet-caption><i data-bp-icon="heading" aria-hidden="true"></i><span>${escapeHTML(t('ui.copyCaption'))}</span></button>
+          </div>
+        </div>
+      </header>
+      <div class="code-snippet-legend" aria-label="${escapeHTML(english ? 'Semantic colour legend' : 'Petunjuk warna semantik')}"><span class="code-snippet-legend__title">${escapeHTML(english ? 'Colour meaning:' : 'Maksud warna:')}</span><ul>${legendItems}</ul></div>
+      ${upstreamSourceTable}
+      <pre class="report-code-block" tabindex="0" aria-label="${escapeHTML(snippet.reportHeading)}"><code>${codeSnippetHighlighter.highlightHTML(snippet.code)}</code></pre>
+      <section class="report-caption-preview" aria-labelledby="report-caption-title"><h4 id="report-caption-title">${escapeHTML(t('ui.reportCaption'))}</h4><p>${escapeHTML(snippet.caption)}</p></section>
+      <details class="code-source-files"><summary>${escapeHTML(t('ui.codeSources'))}</summary><ul>${sourceFiles}</ul></details>
+    </article>`;
+    window.renderBlueprintIcons?.(els.graphViewport);
+  }
+
   function renderDiagram() {
     const diagram = activeDiagram(); const text = diagramText(diagram); const hasAsset = Boolean(activeAsset() || runtimeDocument()?.workingXml);
+    const codeLayout = isCodeDiagram(diagram);
+    document.body.classList.toggle('is-code-snippet-mode', codeLayout);
     els.diagramTitle.textContent = text.title; els.diagramDescription.textContent = text.description;
     els.diagramStatus.textContent = labelStatus(diagram.status); els.diagramStatus.dataset.status = diagram.status;
-    els.modeControl.hidden = !hasAsset;
+    els.modeControl.hidden = codeLayout || !hasAsset;
     els.actualMode.setAttribute('aria-pressed', String(effectiveMode() === 'actual'));
     els.mapMode.setAttribute('aria-pressed', String(effectiveMode() === 'map'));
-    els.referenceButton.hidden = !diagram.reference;
+    els.referenceButton.hidden = codeLayout || !diagram.reference;
     els.empty.hidden = true;
     renderWorkspaceControls();
     if (state.workspaceMode !== 'view') return;
-    if (effectiveMode() === 'actual') renderActualDiagram(); else if (diagram.layout === 'schema') renderSchema(); else renderGraph(diagram);
+    if (codeLayout) renderCodeSnippet(diagram);
+    else if (effectiveMode() === 'actual') renderActualDiagram();
+    else if (diagram.layout === 'schema') renderSchema();
+    else renderGraph(diagram);
   }
 
   function renderActualDiagram() {
@@ -1522,6 +1631,7 @@
   }
 
   function fitDiagram() {
+    if (isCodeDiagram()) return;
     const padding = 18; const width = Math.max(100, els.graph.clientWidth - padding * 2); const height = Math.max(100, els.graph.clientHeight - padding * 2);
     state.scale = Math.min(width / state.naturalWidth, height / state.naturalHeight, 1.35);
     state.panX = (els.graph.clientWidth - state.naturalWidth * state.scale) / 2;
@@ -1536,6 +1646,7 @@
   }
 
   function zoomBy(factor) {
+    if (isCodeDiagram()) return;
     const old = state.scale; const next = Math.min(4, Math.max(0.12, old * factor)); const cx = els.graph.clientWidth / 2; const cy = els.graph.clientHeight / 2;
     state.panX = cx - (cx - state.panX) * (next / old); state.panY = cy - (cy - state.panY) * (next / old); state.scale = next; state.fitMode = false; applyTransform();
   }
@@ -1802,6 +1913,7 @@
       }
     }
     state.diagramId = id; state.selected = null; state.hovered = null; state.selectedComponentKey = null; state.hoveredComponentKey = null; state.selectedConnectionId = null; state.fitMode = true;
+    if (isCodeDiagram(nextDiagram)) state.mobilePanel = 'diagram';
     cloudManager?.setActiveFromDocumentKey(id);
     if (previousWorkspaceMode !== 'view' && !isEditableDiagram(id)) state.workspaceMode = 'view';
     renderAll();
@@ -1842,8 +1954,15 @@
   }
 
   function updateMobilePanels() {
+    const codeLayout = isCodeDiagram();
+    if (codeLayout) state.mobilePanel = 'diagram';
     document.querySelectorAll('[data-panel]').forEach((panel) => panel.classList.toggle('mobile-active', panel.dataset.panel === state.mobilePanel));
-    document.querySelectorAll('[data-mobile-panel]').forEach((button) => { const active = button.dataset.mobilePanel === state.mobilePanel; button.classList.toggle('is-active', active); button.setAttribute('aria-selected', String(active)); });
+    document.querySelectorAll('[data-mobile-panel]').forEach((button) => {
+      const active = button.dataset.mobilePanel === state.mobilePanel;
+      button.hidden = codeLayout && button.dataset.mobilePanel !== 'diagram';
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-selected', String(active));
+    });
   }
 
   function agentCredentials() {
@@ -2166,6 +2285,39 @@
     const node = event.target.closest('[data-node]'); const table = event.target.closest('[data-table]');
     if (node) pinSelection(node.dataset.node); else if (table) pinSelection(`table:${table.dataset.table}`);
   });
+  els.graph.addEventListener('click', async (event) => {
+    const languageButton = event.target.closest('[data-snippet-language]');
+    if (languageButton && isCodeDiagram()) {
+      state.snippetLanguage = languageButton.dataset.snippetLanguage === 'en' ? 'en' : 'ms';
+      storeCodeSnippetLanguage(state.snippetLanguage);
+      renderDiagram();
+      const languageLabel = state.snippetLanguage === 'en' ? 'English' : 'BM';
+      els.statusMessage.textContent = `${t('ui.snippetLanguageChanged')}: ${languageLabel}`;
+      return;
+    }
+    const codeButton = event.target.closest('[data-copy-snippet-code]');
+    const captionButton = event.target.closest('[data-copy-snippet-caption]');
+    const button = codeButton || captionButton;
+    const diagram = activeDiagram();
+    if (!button || !isCodeDiagram(diagram)) return;
+    const copyCode = Boolean(codeButton);
+    const snippet = codeSnippetText(diagram);
+    const plainText = copyCode ? snippet.code : snippet.caption;
+    const htmlText = copyCode ? codeSnippetClipboard.codeHTML(snippet.code) : codeSnippetClipboard.captionHTML(snippet.caption);
+    await codeSnippetClipboard.writeClipboardPayload(plainText, htmlText);
+    const copiedLabel = copyCode ? t('ui.codeCopied') : t('ui.captionCopied');
+    const defaultLabel = copyCode ? t('ui.copyCode') : t('ui.copyCaption');
+    const label = button.querySelector('span');
+    if (label) label.textContent = copiedLabel;
+    els.statusMessage.textContent = copiedLabel;
+    window.setTimeout(() => { if (label?.isConnected) label.textContent = defaultLabel; }, 1400);
+  });
+  els.graph.addEventListener('keydown', (event) => {
+    const button = event.target.closest('[data-snippet-language], [data-copy-snippet-code], [data-copy-snippet-caption]');
+    if (!button || !isCodeDiagram() || (event.key !== 'Enter' && event.key !== ' ')) return;
+    event.preventDefault();
+    button.click();
+  });
   els.uiHotspots.addEventListener('mouseover', (event) => { const button = event.target.closest('[data-hotspot]'); if (button) { const hotspot = data.hotspots.find((item) => item.id === button.dataset.hotspot); if (hotspot?.nodes[0]) setHover(hotspot.nodes[0]); } });
   els.uiHotspots.addEventListener('mouseout', (event) => { if (event.target.closest('[data-hotspot]')) clearHover(); });
   els.uiHotspots.addEventListener('click', (event) => { const button = event.target.closest('[data-hotspot]'); const hotspot = button && data.hotspots.find((item) => item.id === button.dataset.hotspot); if (hotspot?.nodes[0]) pinSelection(hotspot.nodes[0]); });
@@ -2205,10 +2357,11 @@
     window.setTimeout(() => { if (button.isConnected) button.textContent = t('ui.copyReportParagraph'); }, 1400);
   });
   byId('zoom-in').addEventListener('click', () => zoomBy(1.2)); byId('zoom-out').addEventListener('click', () => zoomBy(1 / 1.2)); byId('zoom-fit').addEventListener('click', fitDiagram);
-  els.graph.addEventListener('wheel', (event) => { event.preventDefault(); zoomBy(event.deltaY < 0 ? 1.08 : 1 / 1.08); }, { passive: false });
-  els.graph.addEventListener('selectstart', (event) => event.preventDefault());
-  els.graph.addEventListener('dragstart', (event) => event.preventDefault());
+  els.graph.addEventListener('wheel', (event) => { if (isCodeDiagram()) return; event.preventDefault(); zoomBy(event.deltaY < 0 ? 1.08 : 1 / 1.08); }, { passive: false });
+  els.graph.addEventListener('selectstart', (event) => { if (!isCodeDiagram()) event.preventDefault(); });
+  els.graph.addEventListener('dragstart', (event) => { if (!isCodeDiagram()) event.preventDefault(); });
   els.graph.addEventListener('pointerdown', (event) => {
+    if (isCodeDiagram()) return;
     if (event.button !== 0) return;
     event.preventDefault();
     state.suppressClick = false;
