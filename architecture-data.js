@@ -1625,6 +1625,20 @@ End Function`,
           requestScope: 'Pilihan; memerlukan CAREERJET_AFFID', requestScopeEn: 'Optional; requires CAREERJET_AFFID',
         },
       ],
+      markerFlowTitle: 'Aliran carian pekerjaan langsung',
+      markerFlowTitleEn: 'Live job search flow',
+      markerFlow: [
+        'Pengguna memasukkan kata kunci, lokasi dan penapis carian',
+        'PetaKerja mengesahkan pengguna lalu menghantar GET /api/search-jobs',
+        'Pelayan menggunakan cache lima minit atau menjalankan tujuh pengikis dan API Careerjet pilihan secara selari',
+        'Normalisasi, tapis, buang pendua dan susun hasil sebelum memaparkan kad pekerjaan, pecahan sumber dan penanda peta',
+      ],
+      markerFlowEn: [
+        'User enters search keywords, location and filters',
+        'PetaKerja authenticates the user and sends GET /api/search-jobs',
+        'The server uses its five-minute cache or runs seven scrapers and the optional Careerjet API in parallel',
+        'Normalize, filter, deduplicate and rank results before displaying job cards, source breakdown and map markers',
+      ],
       code: `Function CariPekerjaanLangsung(teksCarian, lokasi, penapis)
     If pengguna belum log masuk Then
         Minta pengguna log masuk
@@ -1777,6 +1791,220 @@ Function RunLiveSearchServer(request)
     Store the successful result in the cache for five minutes
     Return result
 End Function`,
+    },
+    {
+      id: 'code-job-location-resolution', title: 'f. Algoritma Penganggaran dan Penyelesaian Koordinat Lokasi Pekerjaan PetaKerja', category: 'Code Snippets', status: 'current', reference: null,
+      description: 'Kod pseudo sedia laporan bagi anggaran koordinat penanda pekerjaan, sebaran deterministik dan penyelesaian lokasi berkeyakinan melalui GeoGateway.',
+      layout: 'code', snippetGroup: 'Algorithms', reportHeading: 'f. Algoritma Penganggaran dan Penyelesaian Koordinat Lokasi Pekerjaan PetaKerja',
+      reportHeadingEn: 'f. PetaKerja Job-Location Coordinate Estimation and Resolution Algorithm',
+      caption: 'Rajah 3.38 Algoritma penganggaran dan penyelesaian koordinat lokasi pekerjaan PetaKerja',
+      captionEn: 'Figure 3.38 PetaKerja job-location coordinate estimation and resolution algorithm', columns: [],
+      sourceFiles: [
+        'server/lib/job-location.ts',
+        'server/lib/types.ts',
+        'server/routes/search-jobs.ts',
+        'server/routes/intel-jobs.ts',
+        'scripts/scrape-jobs.ts',
+        'src/modes/jobs/manager.ts',
+        'src/modes/jobs/markers.ts',
+        'src/services/geo.ts',
+        'server/geo/job-location.ts',
+        'server/geo/gateway.ts',
+        'server/routes/geo.ts',
+        'supabase/migrations/20260718011925_geo_gateway_routing_and_studio.sql',
+      ],
+      markerFlowTitle: 'Aliran penempatan penanda pekerjaan',
+      markerFlowTitleEn: 'Job marker placement flow',
+      markerFlow: [
+        'Teks lokasi/alamat daripada papan pekerjaan',
+        'Padankan dengan koordinat bandar/negeri Malaysia yang tetap',
+        'Gunakan sebaran deterministik di sekitar koordinat tersebut',
+        'Render atau kelompokkan titik yang terhasil dalam MapLibre',
+      ],
+      markerFlowEn: [
+        'Job-board location/address text',
+        'Match against fixed Malaysian city/state coordinates',
+        'Apply deterministic spreading around that coordinate',
+        'Render or cluster the resulting point in MapLibre',
+      ],
+      code: `Function AnggarDanPaparKoordinatPekerjaan(kerja)
+    If kerja.lat dan kerja.lng ialah nombor Then
+        Return koordinat sumber tanpa pengesahan sempadan daratan
+    End If
+
+    teksJarakJauh = Gabung(kerja.tajuk, kerja.lokasi, kerja.penerangan)
+
+    If teksJarakJauh mengandungi "remote", "work from home" atau "WFH" Then
+        koordinat = PusatKualaLumpur()
+        ketepatan = "remote"
+    Else
+        sumberLokasi = Gabung(kerja.alamat, kerja.lokasi)
+        pusat = PadankanPusatBandarAtauNegeriMalaysia(sumberLokasi)
+
+        If pusat ditemui Then
+            benih = Hash(kerja.syarikat, kerja.lokasi, kerja.alamat)
+            koordinat = SebarDeterministik(pusat, benih, radius = 0.025 darjah)
+
+            If kerja.alamat wujud Then
+                ketepatan = "exact"
+            Else
+                ketepatan = "approximate"
+            End If
+        Else
+            pusat = PadankanPusatBandarAtauNegeriMalaysia(
+                kerja.lokasi atau kerja.penerangan
+            )
+
+            If pusat ditemui Then
+                benih = Hash(kerja.syarikat, kerja.lokasi, kerja.alamat)
+                koordinat = SebarDeterministik(pusat, benih, radius = 0.065 darjah)
+                ketepatan = "approximate"
+            Else
+                koordinat = PadankanLokasiPadaPelayar(kerja.lokasi)
+            End If
+        End If
+    End If
+
+    If koordinat tiada Then
+        Jangan papar penanda pekerjaan
+        Return
+    End If
+
+    Tambah koordinat kepada sumber GeoJSON jobs-results
+    Render atau kelompokkan penanda dalam MapLibre
+    Return koordinat dan ketepatan
+End Function
+
+Function SelesaikanLokasiPekerjaanUntukLaluan(idPekerjaan)
+    kerja = Baca id, lokasi dan jenis remote daripada scraped_jobs
+
+    If kerja tiada Then
+        Return "Pekerjaan tidak ditemui"
+    End If
+
+    If job_location_resolutions mempunyai rekod yang belum luput Then
+        Return rekod tersebut
+    End If
+
+    If kerja ialah remote atau teks lokasi terlalu pendek Then
+        tempat = tiada
+    Else If GeoGateway geocoder tidak diaktifkan Then
+        Return "Geocoder tidak tersedia"
+    Else
+        calon = CariNominatimMelaluiGeoGateway(kerja.lokasi, had = 5)
+        tempat = PilihCalonMengikutKeyakinanDanKepentingan(calon)
+    End If
+
+    keyakinan = tempat.keyakinan atau "unknown"
+    bolehDilalui = keyakinan dalam ["exact", "street", "locality"]
+
+    Simpan koordinat terbitan, keyakinan dan status bolehDilalui
+        dalam job_location_resolutions selama 30 hari
+    Jangan ubah rekod asal dalam scraped_jobs
+
+    Return penyelesaian lokasi
+End Function
+
+Catatan:
+    Penyelesaian GeoGateway hanya digunakan apabila pengguna memilih
+    "Resolve workplace route"
+    Penanda Job Finder biasa tidak digantikan secara automatik
+    Sebaran koordinat tidak disemak terhadap poligon daratan
+    Pengelompokan MapLibre tidak mengubah koordinat yang dibekalkan`,
+      codeEn: `Function EstimateAndDisplayJobCoordinates(job)
+    If job.lat and job.lng are numbers Then
+        Return the source coordinates without land-boundary validation
+    End If
+
+    remoteText = Combine(job.title, job.location, job.description)
+
+    If remoteText contains "remote", "work from home" or "WFH" Then
+        coordinates = KualaLumpurCentre()
+        precision = "remote"
+    Else
+        locationSource = Combine(job.address, job.location)
+        centre = MatchMalaysianCityOrStateCentre(locationSource)
+
+        If centre is found Then
+            seed = Hash(job.company, job.location, job.address)
+            coordinates = SpreadDeterministically(centre, seed, radius = 0.025 degrees)
+
+            If job.address exists Then
+                precision = "exact"
+            Else
+                precision = "approximate"
+            End If
+        Else
+            centre = MatchMalaysianCityOrStateCentre(
+                job.location or job.description
+            )
+
+            If centre is found Then
+                seed = Hash(job.company, job.location, job.address)
+                coordinates = SpreadDeterministically(centre, seed, radius = 0.065 degrees)
+                precision = "approximate"
+            Else
+                coordinates = MatchLocationInBrowser(job.location)
+            End If
+        End If
+    End If
+
+    If coordinates are missing Then
+        Do not display a job marker
+        Return
+    End If
+
+    Add coordinates to the jobs-results GeoJSON source
+    Render or cluster the marker in MapLibre
+    Return coordinates and precision
+End Function
+
+Function ResolveJobLocationForRouting(jobId)
+    job = Read id, location and remote type from scraped_jobs
+
+    If job is missing Then
+        Return "Job not found"
+    End If
+
+    If job_location_resolutions contains an unexpired record Then
+        Return that record
+    End If
+
+    If the job is remote or its location text is too short Then
+        place = missing
+    Else If the GeoGateway geocoder is disabled Then
+        Return "Geocoder unavailable"
+    Else
+        candidates = SearchNominatimThroughGeoGateway(job.location, limit = 5)
+        place = SelectCandidateByConfidenceAndImportance(candidates)
+    End If
+
+    confidence = place.confidence or "unknown"
+    routable = confidence is in ["exact", "street", "locality"]
+
+    Store the derived coordinates, confidence and routable status
+        in job_location_resolutions for 30 days
+    Do not modify the original scraped_jobs record
+
+    Return the location resolution
+End Function
+
+Notes:
+    GeoGateway resolution runs only when the user selects
+    "Resolve workplace route"
+    Ordinary Job Finder markers are not replaced automatically
+    Coordinate spreading is not checked against a land polygon
+    MapLibre clustering does not move the supplied coordinates`,
+    },
+    {
+      id: 'fyp-kamus-data', title: 'Kamus Data', category: 'FYP Report Tables', status: 'current', reference: null,
+      description: 'Jadual kamus data sedia salin untuk entiti Pengguna dan Pentadbir berdasarkan skema dan akses PetaKerja semasa.',
+      layout: 'report-table', reportTableKey: 'kamus-data', columns: [],
+    },
+    {
+      id: 'fyp-use-case-specification', title: 'Spesifikasi Kes Guna', category: 'FYP Report Tables', status: 'current', reference: null,
+      description: 'Lima belas jadual spesifikasi kes guna Bahasa Melayu berdasarkan aktor dan hubungan rajah semasa.',
+      layout: 'report-table', reportTableKey: 'use-case-specification', columns: [],
     },
   ];
 

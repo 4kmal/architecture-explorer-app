@@ -534,13 +534,15 @@ USER_FLOWCHART_SPECS = {
 
 LAYERED_ARCHITECTURE_MS = {
     "PetaKerja Layered Architecture": "Seni Bina Berlapis PetaKerja",
-    "Current SPA, manager, service, Express and data responsibilities.": "Tanggungjawab semasa SPA, manager, servis, Express dan data.",
-    "Browser Frontend": "Frontend Browser", "Manager Layer": "Lapisan Manager",
-    "Service Layer": "Lapisan Servis", "Express Backend": "Backend Express",
-    "Data and External Services": "Data dan Perkhidmatan Luar",
+    "Current SPA, manager, service, Express and data responsibilities.": "Tanggungjawab semasa SPA, pengurus, perkhidmatan, Express dan data.",
+    "Browser Frontend": "Antara Muka Pelayar", "Manager Layer": "Lapisan Pengurus",
+    "Service Layer": "Lapisan Perkhidmatan", "Express Backend": "Bahagian Belakang Express",
+    "Data and External Services": "Data dan Perkhidmatan Luaran",
     "UI and map interaction": "Interaksi UI dan peta", "Data calls": "Panggilan data",
     "Job search": "Carian pekerjaan", "Protected functions": "Fungsi terlindung",
     "Profiles, status and indexes": "Profil, status dan indeks", "Open data": "Data terbuka",
+    "POI and RPC": "POI dan RPC", "Supabase RPC client": "Klien RPC Supabase",
+    "Better Auth middleware": "Middleware Better Auth", "category RPCs": "RPC kategori",
 }
 
 LAYERED_ARCHITECTURE_COMPONENTS = {
@@ -569,8 +571,17 @@ LAYERED_ARCHITECTURE_COMPONENTS = {
 MODULE_HIERARCHY_MS = {
     "PetaKerja Module Hierarchy": "Hierarki Modul PetaKerja",
     "Current core, job-search, analytics and account module responsibilities.": "Tanggungjawab semasa modul teras, carian pekerjaan, analitik dan akaun.",
+    "Top-to-bottom ownership hierarchy with cross-module dependencies listed separately.": "Hierarki pemilikan dari atas ke bawah dengan kebergantungan silang modul disenaraikan secara berasingan.",
     "Core Application": "Aplikasi Teras", "Job Search Module": "Modul Carian Pekerjaan",
     "Accounts and Administration": "Akaun dan Pentadbiran", "Analytics and Assistance": "Analitik dan Bantuan",
+    "Boot and application shell": "But dan cangkerang aplikasi", "MyPetaApp + templates": "MyPetaApp + templat",
+    "Interactive map": "Peta interaktif", "POI and categories": "POI dan kategori",
+    "Daily Index": "Indeks Harian", "Pipeline Index": "Indeks Pipeline", "Live Search": "Carian Langsung",
+    "Job cards and map markers": "Kad pekerjaan dan penanda peta",
+    "public.users profile bridge": "Jambatan profil public.users",
+    "Administration, configuration": "Pentadbiran dan konfigurasi", "and user status": "serta status pengguna",
+    "Area highlighting": "Sorotan kawasan", "AI provider routes": "Laluan penyedia AI",
+    "Cross-module dependencies": "Kebergantungan silang modul",
     "Map workspace": "Ruang kerja peta", "Location context": "Konteks lokasi",
     "Save job status": "Simpan status pekerjaan", "Protected AI functions": "Fungsi AI terlindung",
 }
@@ -589,6 +600,13 @@ MODULE_HIERARCHY_COMPONENTS = {
     "analysis-highlight": (["highlight-manager", "highlight-entity"], ["assistant-highlight", "map-canvas"]),
     "analysis-chatbot": (["chatbot-manager", "ai-provider"], ["assistant-panel"]),
 }
+
+MODULE_HIERARCHY_DEPENDENCIES = (
+    ("modules-semantic-core-jobs", "core-map", "jobs-manager", "Map workspace"),
+    ("modules-semantic-core-analysis", "core-map", "analysis-insights", "Location context"),
+    ("modules-semantic-account-jobs", "account-bridge", "jobs-manager", "Save job status"),
+    ("modules-semantic-account-analysis", "account-auth", "analysis-chatbot", "Protected AI functions"),
+)
 
 DESIGN_SPECS = {
     "architecture": (LAYERED_ARCHITECTURE_SOURCE, LAYERED_ARCHITECTURE_MS, LAYERED_ARCHITECTURE_COMPONENTS, "architecture"),
@@ -2034,7 +2052,7 @@ def keyed_drawio_components(
     connections: list[dict] = []
     for wrapper_id, wrapper in wrappers.items():
         cell = wrapper.find("mxCell")
-        if cell is None or cell.get("edge") != "1":
+        if cell is None or cell.get("edge") != "1" or wrapper.get("petakerjaRelation") == "structural":
             continue
         source = owner.get(cell.get("source", ""))
         target = owner.get(cell.get("target", ""))
@@ -2085,7 +2103,7 @@ def v2_georouting_components(source: Path) -> tuple[list[dict], list[dict]]:
     connections: list[dict] = []
     for wrapper_id, wrapper in wrappers.items():
         cell = wrapper.find("mxCell")
-        if cell is None or cell.get("edge") != "1":
+        if cell is None or cell.get("edge") != "1" or wrapper.get("petakerjaRelation") == "structural":
             continue
         source = owner.get(cell.get("source", ""))
         target = owner.get(cell.get("target", ""))
@@ -2131,7 +2149,21 @@ def user_flowchart_components(diagram_id: str) -> tuple[list[dict], list[dict]]:
 
 
 def design_components(diagram_id: str) -> tuple[list[dict], list[dict]]:
-    return keyed_drawio_components(diagram_id, DESIGN_SPECS, "dependency")
+    components, connections = keyed_drawio_components(diagram_id, DESIGN_SPECS, "dependency")
+    if diagram_id == "modules":
+        known_components = {component["componentKey"] for component in components}
+        for connection_id, source_key, target_key, label_en in MODULE_HIERARCHY_DEPENDENCIES:
+            if source_key not in known_components or target_key not in known_components:
+                raise ValueError(f"Module dependency references an unknown component: {connection_id}")
+            connections.append({
+                "id": connection_id,
+                "sourceComponentKey": source_key,
+                "targetComponentKey": target_key,
+                "kind": "dependency",
+                "label": {"ms": MODULE_HIERARCHY_MS[label_en], "en": label_en},
+                "visual": False,
+            })
+    return components, connections
 
 
 def map_routing_stack_components() -> tuple[list[dict], list[dict]]:

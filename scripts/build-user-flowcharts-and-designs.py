@@ -266,6 +266,8 @@ class DesignNode:
     y: float
     width: float
     height: float
+    interactive: bool = True
+    role: str = "responsibility"
 
 
 @dataclass(frozen=True)
@@ -281,6 +283,14 @@ class DesignLink:
     entry_y: float = 0.0
     label_x: float = 0.0
     label_y: float = 0.0
+    hierarchy: bool = False
+
+
+@dataclass(frozen=True)
+class DesignDependency:
+    source: str
+    target: str
+    label: str
 
 
 @dataclass(frozen=True)
@@ -296,6 +306,9 @@ class DesignSpec:
     groups: tuple[DesignGroup, ...]
     nodes: tuple[DesignNode, ...]
     links: tuple[DesignLink, ...]
+    dependencies: tuple[DesignDependency, ...] = ()
+    show_group_containers: bool = True
+    dependency_panel_y: float | None = None
 
 
 ARCHITECTURE = DesignSpec(
@@ -348,7 +361,7 @@ ARCHITECTURE = DesignSpec(
 )
 
 
-MODULES = DesignSpec(
+MODULES_ORIGINAL = DesignSpec(
     diagram_id="modules",
     page_id="petakerja_module_hierarchy",
     title="PetaKerja Module Hierarchy",
@@ -386,7 +399,75 @@ MODULES = DesignSpec(
 )
 
 
-DESIGNS = (ARCHITECTURE, MODULES)
+MODULES = DesignSpec(
+    diagram_id="modules",
+    page_id="petakerja_module_hierarchy",
+    title="PetaKerja Module Hierarchy",
+    subtitle="Top-to-bottom ownership hierarchy with cross-module dependencies listed separately.",
+    file_stem="PetaKerja Module Hierarchy",
+    editor_stem="module-hierarchy",
+    width=1600,
+    height=1020,
+    groups=(
+        DesignGroup("core", "Core Application", 30, 230, 340, 70, "blue"),
+        DesignGroup("jobs", "Job Search Module", 430, 230, 340, 70, "violet"),
+        DesignGroup("account", "Accounts and Administration", 830, 230, 340, 70, "amber"),
+        DesignGroup("analysis", "Analytics and Assistance", 1230, 230, 340, 70, "green"),
+    ),
+    nodes=(
+        DesignNode("application-root", "PetaKerja", "core", 650, 100, 300, 64, False, "root"),
+        DesignNode("module-core", "Core Application", "core", 30, 230, 340, 70, False, "module"),
+        DesignNode("module-jobs", "Job Search Module", "jobs", 430, 230, 340, 70, False, "module"),
+        DesignNode("module-account", "Accounts and Administration", "account", 830, 230, 340, 70, False, "module"),
+        DesignNode("module-analysis", "Analytics and Assistance", "analysis", 1230, 230, 340, 70, False, "module"),
+        DesignNode("core-shell", "Boot and application shell\nMyPetaApp + templates", "core", 60, 340, 280, 66),
+        DesignNode("core-map", "Interactive map\nMapManager + MapLibre", "core", 60, 445, 280, 66),
+        DesignNode("core-poi", "POI and categories\nPOIManager + SearchManager + CategoryManager", "core", 60, 550, 280, 72),
+        DesignNode("jobs-manager", "JobFinderManager", "jobs", 460, 340, 280, 66),
+        DesignNode("jobs-modes", "Daily Index\nPipeline Index\nLive Search", "jobs", 460, 445, 280, 72),
+        DesignNode("jobs-markers", "Job cards and map markers\nmarkers.ts", "jobs", 460, 550, 280, 72),
+        DesignNode("account-auth", "Better Auth", "account", 835, 340, 150, 66),
+        DesignNode("account-bridge", "public.users profile bridge", "account", 815, 465, 190, 72),
+        DesignNode("account-admin", "Administration, configuration\nand user status", "account", 1010, 340, 185, 72),
+        DesignNode("analysis-insights", "InsightsManager\nOpenDataAPI", "analysis", 1225, 340, 180, 72),
+        DesignNode("analysis-highlight", "Area highlighting", "analysis", 1225, 465, 180, 66),
+        DesignNode("analysis-chatbot", "ChatbotManager\nAI provider routes", "analysis", 1420, 340, 150, 72),
+    ),
+    links=(
+        DesignLink("hierarchy-root-core", "application-root", "module-core", "", ((800, 195), (200, 195)), hierarchy=True),
+        DesignLink("hierarchy-root-jobs", "application-root", "module-jobs", "", ((800, 195), (600, 195)), hierarchy=True),
+        DesignLink("hierarchy-root-account", "application-root", "module-account", "", ((800, 195), (1000, 195)), hierarchy=True),
+        DesignLink("hierarchy-root-analysis", "application-root", "module-analysis", "", ((800, 195), (1400, 195)), hierarchy=True),
+        DesignLink("hierarchy-core-shell", "module-core", "core-shell", "", hierarchy=True),
+        DesignLink("hierarchy-core-map", "core-shell", "core-map", "", hierarchy=True),
+        DesignLink("hierarchy-core-poi", "core-map", "core-poi", "", hierarchy=True),
+        DesignLink("hierarchy-jobs-manager", "module-jobs", "jobs-manager", "", hierarchy=True),
+        DesignLink("hierarchy-jobs-modes", "jobs-manager", "jobs-modes", "", hierarchy=True),
+        DesignLink("hierarchy-jobs-markers", "jobs-modes", "jobs-markers", "", hierarchy=True),
+        DesignLink("hierarchy-account-auth", "module-account", "account-auth", "", ((1000, 320), (910, 320)), hierarchy=True),
+        DesignLink("hierarchy-account-admin", "module-account", "account-admin", "", ((1000, 320), (1102.5, 320)), hierarchy=True),
+        DesignLink("hierarchy-account-bridge", "account-auth", "account-bridge", "", hierarchy=True),
+        DesignLink("hierarchy-analysis-insights", "module-analysis", "analysis-insights", "", ((1400, 320), (1315, 320)), hierarchy=True),
+        DesignLink("hierarchy-analysis-chatbot", "module-analysis", "analysis-chatbot", "", ((1400, 320), (1495, 320)), hierarchy=True),
+        DesignLink("hierarchy-analysis-highlight", "analysis-insights", "analysis-highlight", "", hierarchy=True),
+    ),
+    dependencies=(
+        DesignDependency("Interactive map", "JobFinderManager", "Map workspace"),
+        DesignDependency("Interactive map", "InsightsManager / OpenDataAPI", "Location context"),
+        DesignDependency("public.users profile bridge", "JobFinderManager", "Save job status"),
+        DesignDependency("Better Auth", "ChatbotManager", "Protected AI functions"),
+    ),
+    show_group_containers=False,
+    dependency_panel_y=690,
+)
+
+
+DESIGN_VARIANTS = (
+    (ARCHITECTURE, False),
+    (ARCHITECTURE, True),
+    (MODULES_ORIGINAL, False),
+    (MODULES, True),
+)
 
 
 COLOURS = {
@@ -436,53 +517,102 @@ def design_tree(spec: DesignSpec, polished: bool) -> ET.ElementTree:
     vertex(f"{spec.diagram_id}-subtitle", spec.subtitle, 160, 58, spec.width - 320, 26,
            "text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=11;fontStyle=2;fontColor=light-dark(#475467,#c5cedb);")
 
-    group_ids: dict[str, str] = {}
-    for group in spec.groups:
-        light_fill, dark_fill, light_stroke, dark_stroke = COLOURS[group.colour]
-        if polished:
-            fill = f"light-dark({light_fill},{dark_fill})"
-            stroke = f"light-dark({light_stroke},{dark_stroke})"
-        else:
-            fill = "light-dark(#f8fafc,#151a22)"
-            stroke = "light-dark(#98a2b3,#7d8796)"
-        group_ids[group.key] = vertex(
-            f"{spec.diagram_id}-group-{group.key}", group.label,
-            group.x, group.y, group.width, group.height,
-            style_text({
-                "rounded": "1", "arcSize": "8", "whiteSpace": "wrap", "html": "1", "container": "1",
-                "collapsible": "0", "align": "left", "verticalAlign": "top", "spacingTop": "12", "spacingLeft": "14",
-                "fontFamily": "Arial", "fontSize": "14", "fontStyle": "1", "fillColor": fill, "strokeColor": stroke,
-                "fontColor": "light-dark(#172033,#f3f6fb)", "strokeWidth": "2" if polished else "1",
-            }),
-        )
+    if spec.show_group_containers:
+        for group in spec.groups:
+            light_fill, dark_fill, light_stroke, dark_stroke = COLOURS[group.colour]
+            if polished:
+                fill = f"light-dark({light_fill},{dark_fill})"
+                stroke = f"light-dark({light_stroke},{dark_stroke})"
+            else:
+                fill = "light-dark(#f8fafc,#151a22)"
+                stroke = "light-dark(#98a2b3,#7d8796)"
+            vertex(
+                f"{spec.diagram_id}-group-{group.key}", group.label,
+                group.x, group.y, group.width, group.height,
+                style_text({
+                    "rounded": "1", "arcSize": "8", "whiteSpace": "wrap", "html": "1", "container": "1",
+                    "collapsible": "0", "align": "left", "verticalAlign": "top", "spacingTop": "12", "spacingLeft": "14",
+                    "fontFamily": "Arial", "fontSize": "14", "fontStyle": "1", "fillColor": fill, "strokeColor": stroke,
+                    "fontColor": "light-dark(#172033,#f3f6fb)", "strokeWidth": "2" if polished else "1",
+                }),
+            )
 
     node_ids: dict[str, str] = {}
     group_by_key = {group.key: group for group in spec.groups}
     for node in spec.nodes:
         group = group_by_key[node.group]
-        _lf, _df, light_stroke, dark_stroke = COLOURS[group.colour]
+        light_fill, dark_fill, light_stroke, dark_stroke = COLOURS[group.colour]
+        if node.role == "root":
+            fill = "light-dark(#17263a,#eef5ff)"
+            stroke = "light-dark(#3d6f9e,#8fb7df)"
+            font_colour = "light-dark(#ffffff,#172033)"
+            font_size, font_style, shadow = "18", "1", "1"
+        elif node.role == "module":
+            fill = f"light-dark({light_fill},{dark_fill})"
+            stroke = f"light-dark({light_stroke},{dark_stroke})"
+            font_colour = "light-dark(#172033,#f3f6fb)"
+            font_size, font_style, shadow = "14", "1", "1"
+        else:
+            fill = "light-dark(#ffffff,#1c222c)"
+            stroke = f"light-dark({light_stroke},{dark_stroke})" if polished else "light-dark(#667085,#aeb7c7)"
+            font_colour = "light-dark(#172033,#f3f6fb)"
+            font_size, font_style, shadow = "12", None, "1" if polished else "0"
+        node_style = {
+            "rounded": "1" if polished else "0", "arcSize": "8", "whiteSpace": "wrap", "html": "1",
+            "align": "center", "verticalAlign": "middle", "spacing": "8", "fontFamily": "Arial",
+            "fontSize": font_size, "fontColor": font_colour, "fillColor": fill, "strokeColor": stroke,
+            "strokeWidth": "2" if polished else "1", "shadow": shadow,
+        }
+        if font_style:
+            node_style["fontStyle"] = font_style
         node_ids[node.key] = vertex(
             f"{spec.diagram_id}-{node.key}", node.label, node.x, node.y, node.width, node.height,
-            style_text({
-                "rounded": "1" if polished else "0", "arcSize": "8", "whiteSpace": "wrap", "html": "1",
-                "align": "center", "verticalAlign": "middle", "spacing": "8", "fontFamily": "Arial",
-                "fontSize": "12", "fontColor": "light-dark(#172033,#f3f6fb)",
-                "fillColor": "light-dark(#ffffff,#1c222c)",
-                "strokeColor": f"light-dark({light_stroke},{dark_stroke})" if polished else "light-dark(#667085,#aeb7c7)",
-                "strokeWidth": "2" if polished else "1", "shadow": "1" if polished else "0",
-            }), node.key,
+            style_text(node_style), node.key if node.interactive else None,
         )
 
+    if spec.dependencies and spec.dependency_panel_y is not None:
+        panel_y = spec.dependency_panel_y
+        vertex(
+            f"{spec.diagram_id}-dependency-panel", "", 50, panel_y, spec.width - 100, spec.height - panel_y - 40,
+            style_text({
+                "rounded": "1", "arcSize": "8", "whiteSpace": "wrap", "html": "1", "pointerEvents": "0",
+                "fillColor": "light-dark(#f8fafc,#151a22)", "strokeColor": "light-dark(#98a2b3,#7d8796)",
+                "strokeWidth": "1", "shadow": "0",
+            }),
+        )
+        vertex(
+            f"{spec.diagram_id}-dependency-title", "Cross-module dependencies", 80, panel_y + 14, spec.width - 160, 28,
+            "text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=light-dark(#172033,#f3f6fb);",
+        )
+        card_width = spec.width - 140
+        for index, dependency in enumerate(spec.dependencies):
+            x = 70
+            y = panel_y + 52 + index * 54
+            label = f"{dependency.source} → {dependency.target} — {dependency.label}"
+            vertex(
+                f"{spec.diagram_id}-dependency-{index + 1}", label, x, y, card_width, 42,
+                style_text({
+                    "rounded": "1", "arcSize": "6", "whiteSpace": "wrap", "html": "1", "pointerEvents": "0",
+                    "align": "center", "verticalAlign": "middle", "spacing": "8", "fontFamily": "Arial",
+                    "fontSize": "11", "fontColor": "light-dark(#344054,#d8e0eb)",
+                    "fillColor": "light-dark(#ffffff,#1c222c)", "strokeColor": "light-dark(#667085,#aeb7c7)",
+                    "strokeWidth": "1", "shadow": "0",
+                }),
+            )
+
     for link in spec.links:
-        wrapper = ET.SubElement(root, "object", {
-            "id": f"{spec.diagram_id}-{link.key}", "label": link.label,
-            "petakerjaKey": f"{spec.diagram_id}/{link.key}",
-        })
+        wrapper_attributes = {"id": f"{spec.diagram_id}-{link.key}", "label": link.label}
+        if link.hierarchy:
+            wrapper_attributes["petakerjaRelation"] = "structural"
+        else:
+            wrapper_attributes["petakerjaKey"] = f"{spec.diagram_id}/{link.key}"
+        wrapper = ET.SubElement(root, "object", wrapper_attributes)
         cell = ET.SubElement(wrapper, "mxCell", {
             "parent": layer_id, "edge": "1", "source": node_ids[link.source], "target": node_ids[link.target],
             "style": style_text({
-                "edgeStyle": "orthogonalEdgeStyle", "rounded": "1" if polished else "0", "orthogonalLoop": "1",
-                "jettySize": "auto", "html": "1", "endArrow": "classic", "endFill": "1", "strokeWidth": "2",
+                "edgeStyle": "orthogonalEdgeStyle", "rounded": "0" if link.hierarchy else ("1" if polished else "0"), "orthogonalLoop": "1",
+                "jettySize": "auto", "html": "1", "endArrow": "none" if link.hierarchy else "classic",
+                "endFill": "0" if link.hierarchy else "1", "strokeWidth": "2",
                 "strokeColor": "light-dark(#344054,#c7d0dd)", "fontFamily": "Arial", "fontSize": "11",
                 "fontColor": "light-dark(#344054,#d8e0eb)", "labelBackgroundColor": "light-dark(#fbfcfe,#0b1118)",
                 "exitX": f"{link.exit_x:g}", "exitY": f"{link.exit_y:g}", "exitPerimeter": "0",
@@ -508,19 +638,22 @@ def validate_design(path: Path, spec: DesignSpec) -> None:
     ids = [item.get("id", "") for item in wrappers]
     if any(not item for item in ids) or len(ids) != len(set(ids)):
         raise RuntimeError(f"{spec.diagram_id}: duplicate or missing IDs")
+    interactive_nodes = [node for node in spec.nodes if node.interactive]
+    semantic_links = [link for link in spec.links if not link.hierarchy]
     keys = [item.get("petakerjaKey", "") for item in wrappers if item.get("petakerjaKey")]
-    if len(keys) != len(spec.nodes) + len(spec.links) or any(value > 1 for value in Counter(keys).values()):
+    if len(keys) != len(interactive_nodes) + len(semantic_links) or any(value > 1 for value in Counter(keys).values()):
         raise RuntimeError(f"{spec.diagram_id}: stable-key mismatch")
-    node_ids = {
+    interactive_node_ids = {
         item.get("id", "") for item in wrappers
-        if item.get("petakerjaKey", "").split("/")[-1] in {node.key for node in spec.nodes}
+        if item.get("petakerjaKey", "").split("/")[-1] in {node.key for node in interactive_nodes}
     }
+    all_node_ids = {f"{spec.diagram_id}-{node.key}" for node in spec.nodes}
     edges = [item for item in wrappers if (item.find("mxCell") is not None and item.find("mxCell").get("edge") == "1")]
-    if len(node_ids) != len(spec.nodes) or len(edges) != len(spec.links):
+    if len(interactive_node_ids) != len(interactive_nodes) or len(edges) != len(spec.links):
         raise RuntimeError(f"{spec.diagram_id}: node or relationship count mismatch")
     for wrapper in edges:
         cell = wrapper.find("mxCell")
-        if cell is None or cell.get("source") not in node_ids or cell.get("target") not in node_ids:
+        if cell is None or cell.get("source") not in all_node_ids or cell.get("target") not in all_node_ids:
             raise RuntimeError(f"{spec.diagram_id}: detached relationship {wrapper.get('id')}")
 
 
@@ -556,18 +689,19 @@ def build_flowcharts() -> None:
 
 
 def build_designs() -> None:
-    for spec in DESIGNS:
-        for polished in (False, True):
-            variant = "Polished" if polished else "Original"
-            output = DIAGRAMS / f"{spec.file_stem} - {variant}.drawio"
-            svg = DIAGRAMS / f"{spec.file_stem} - {variant}.svg"
-            png = DIAGRAMS / f"{spec.file_stem} - {variant}.png"
-            editor = EDITOR / f"{spec.editor_stem}{'' if polished else '-original'}.drawio"
-            write_xml(design_tree(spec, polished), output)
-            validate_design(output, spec)
-            shutil.copy2(output, editor)
-            export_report(output, svg, png)
-        print(f"{spec.diagram_id}: {len(spec.nodes)} components, {len(spec.links)} relationships")
+    for spec, polished in DESIGN_VARIANTS:
+        variant = "Polished" if polished else "Original"
+        output = DIAGRAMS / f"{spec.file_stem} - {variant}.drawio"
+        svg = DIAGRAMS / f"{spec.file_stem} - {variant}.svg"
+        png = DIAGRAMS / f"{spec.file_stem} - {variant}.png"
+        editor = EDITOR / f"{spec.editor_stem}{'' if polished else '-original'}.drawio"
+        write_xml(design_tree(spec, polished), output)
+        validate_design(output, spec)
+        shutil.copy2(output, editor)
+        export_report(output, svg, png)
+        components = sum(1 for node in spec.nodes if node.interactive)
+        relationships = sum(1 for link in spec.links if not link.hierarchy) + len(spec.dependencies)
+        print(f"{spec.diagram_id}-{variant.lower()}: {components} components, {relationships} semantic relationships")
 
 
 def main() -> None:

@@ -14,32 +14,32 @@
             <mxGeometry x="160" y="22" width="1280" height="38" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-subtitle" label="Current SPA, manager, service, Express and data responsibilities." labelEn="Current SPA, manager, service, Express and data responsibilities." labelMs="Tanggungjawab semasa SPA, manager, servis, Express dan data.">
+        <object id="architecture-subtitle" label="Current SPA, manager, service, Express and data responsibilities." labelEn="Current SPA, manager, service, Express and data responsibilities." labelMs="Tanggungjawab semasa SPA, pengurus, perkhidmatan, Express dan data.">
           <mxCell parent="architecture-layer" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=11;fontStyle=2;fontColor=light-dark(#475467,#c5cedb);">
             <mxGeometry x="160" y="58" width="1280" height="26" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-group-frontend" label="Browser Frontend" labelEn="Browser Frontend" labelMs="Frontend Browser">
+        <object id="architecture-group-frontend" label="Browser Frontend" labelEn="Browser Frontend" labelMs="Antara Muka Pelayar">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;container=1;collapsible=0;align=left;verticalAlign=top;spacingTop=12;spacingLeft=14;fontFamily=Arial;fontSize=14;fontStyle=1;fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);fontColor=light-dark(#172033,#f3f6fb);strokeWidth=2;">
             <mxGeometry x="70" y="90" width="1460" height="145" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-group-managers" label="Manager Layer" labelEn="Manager Layer" labelMs="Lapisan Manager">
+        <object id="architecture-group-managers" label="Manager Layer" labelEn="Manager Layer" labelMs="Lapisan Pengurus">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;container=1;collapsible=0;align=left;verticalAlign=top;spacingTop=12;spacingLeft=14;fontFamily=Arial;fontSize=14;fontStyle=1;fillColor=light-dark(#f5f0ff,#2b2140);strokeColor=light-dark(#6941c6,#b9a2ff);fontColor=light-dark(#172033,#f3f6fb);strokeWidth=2;">
             <mxGeometry x="70" y="250" width="1460" height="145" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-group-services" label="Service Layer" labelEn="Service Layer" labelMs="Lapisan Servis">
+        <object id="architecture-group-services" label="Service Layer" labelEn="Service Layer" labelMs="Lapisan Perkhidmatan">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;container=1;collapsible=0;align=left;verticalAlign=top;spacingTop=12;spacingLeft=14;fontFamily=Arial;fontSize=14;fontStyle=1;fillColor=light-dark(#fff7df,#3a2e16);strokeColor=light-dark(#9a6700,#f4c95d);fontColor=light-dark(#172033,#f3f6fb);strokeWidth=2;">
             <mxGeometry x="70" y="410" width="1460" height="145" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-group-backend" label="Express Backend" labelEn="Express Backend" labelMs="Backend Express">
+        <object id="architecture-group-backend" label="Express Backend" labelEn="Express Backend" labelMs="Bahagian Belakang Express">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;container=1;collapsible=0;align=left;verticalAlign=top;spacingTop=12;spacingLeft=14;fontFamily=Arial;fontSize=14;fontStyle=1;fillColor=light-dark(#fff1f2,#3b1d22);strokeColor=light-dark(#b42318,#ff9b92);fontColor=light-dark(#172033,#f3f6fb);strokeWidth=2;">
             <mxGeometry x="70" y="570" width="1460" height="145" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-group-data" label="Data and External Services" labelEn="Data and External Services" labelMs="Data dan Perkhidmatan Luar">
+        <object id="architecture-group-data" label="Data and External Services" labelEn="Data and External Services" labelMs="Data dan Perkhidmatan Luaran">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;container=1;collapsible=0;align=left;verticalAlign=top;spacingTop=12;spacingLeft=14;fontFamily=Arial;fontSize=14;fontStyle=1;fillColor=light-dark(#ecfdf3,#133221);strokeColor=light-dark(#1f7a4d,#72d6a1);fontColor=light-dark(#172033,#f3f6fb);strokeWidth=2;">
             <mxGeometry x="70" y="730" width="1460" height="170" as="geometry" />
           </mxCell>
@@ -79,7 +79,7 @@
             <mxGeometry x="1190" y="300" width="280" height="64" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-service-supabase" label="Supabase RPC client" petakerjaKey="architecture/service-supabase" labelEn="Supabase RPC client" labelMs="Supabase RPC client">
+        <object id="architecture-service-supabase" label="Supabase RPC client" petakerjaKey="architecture/service-supabase" labelEn="Supabase RPC client" labelMs="Klien RPC Supabase">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#9a6700,#f4c95d);strokeWidth=2;shadow=1;">
             <mxGeometry x="110" y="460" width="300" height="64" as="geometry" />
           </mxCell>
@@ -119,7 +119,7 @@
             <mxGeometry x="960" y="620" width="250" height="64" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-backend-auth" label="Better Auth middleware" petakerjaKey="architecture/backend-auth" labelEn="Better Auth middleware" labelMs="Better Auth middleware">
+        <object id="architecture-backend-auth" label="Better Auth middleware" petakerjaKey="architecture/backend-auth" labelEn="Better Auth middleware" labelMs="Middleware Better Auth">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#b42318,#ff9b92);strokeWidth=2;shadow=1;">
             <mxGeometry x="1250" y="620" width="250" height="64" as="geometry" />
           </mxCell>
@@ -139,7 +139,7 @@
             <mxGeometry x="830" y="790" width="280" height="70" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-data-pois" label="public.pois&#10;category RPCs" petakerjaKey="architecture/data-pois" labelEn="public.pois&#10;category RPCs" labelMs="public.pois&#10;category RPCs">
+        <object id="architecture-data-pois" label="public.pois&#10;category RPCs" petakerjaKey="architecture/data-pois" labelEn="public.pois&#10;category RPCs" labelMs="public.pois&#10;RPC kategori">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#1f7a4d,#72d6a1);strokeWidth=2;shadow=1;">
             <mxGeometry x="1190" y="790" width="280" height="70" as="geometry" />
           </mxCell>
@@ -154,7 +154,7 @@
             <mxGeometry relative="1" as="geometry" x="0" y="0" />
           </mxCell>
         </object>
-        <object id="architecture-supabase-data" label="POI and RPC" petakerjaKey="architecture/supabase-data" labelEn="POI and RPC" labelMs="POI and RPC">
+        <object id="architecture-supabase-data" label="POI and RPC" petakerjaKey="architecture/supabase-data" labelEn="POI and RPC" labelMs="POI dan RPC">
           <mxCell parent="architecture-layer" edge="1" source="architecture-service-supabase" target="architecture-data-postgres" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontFamily=Arial;fontSize=11;fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.83;exitY=1;exitPerimeter=0;entryX=0.83;entryY=0;entryPerimeter=0;">
             <mxGeometry relative="1" as="geometry" x="0" y="0">
               <Array as="points">

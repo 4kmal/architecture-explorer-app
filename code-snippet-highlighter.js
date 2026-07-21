@@ -17,7 +17,7 @@
   ]);
 
   const SYSTEM_WORDS = new Set([
-    'MapLibre', 'Valhalla', 'Haversine', 'GeoJSON', 'Supabase', 'Nominatim', 'PetaKerja',
+    'MapLibre', 'Valhalla', 'Haversine', 'GeoJSON', 'Supabase', 'Nominatim', 'GeoGateway', 'PetaKerja',
     'POI', 'OSM', 'ETA', 'POST', 'GET', 'Highlight', 'Maukerja', 'Hiredly', 'Ricebowl',
     'Graduan', 'GRADUAN', 'Jora', 'JobStreet', 'Jobstore', 'Careerjet', 'Scrapling', 'Axios',
     'Cheerio', 'CAREERJET_AFFID',

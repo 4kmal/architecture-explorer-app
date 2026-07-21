@@ -21,9 +21,10 @@ const expected = [
   ['code-poi-search', 'c. Algoritma Carian POI Hibrid', 'c. Hybrid POI Search Algorithm', 'Rajah 3.35 Algoritma carian POI hibrid', 'Figure 3.35 Hybrid POI search algorithm'],
   ['code-poi-clustering', 'd. Algoritma Pengelompokan Penanda POI', 'd. POI Marker Clustering Algorithm', 'Rajah 3.36 Algoritma pengelompokan penanda POI', 'Figure 3.36 POI marker clustering algorithm'],
   ['code-live-job-search', 'e. Algoritma Carian Pekerjaan Langsung PetaKerja', 'e. PetaKerja Live Job Search Algorithm', 'Rajah 3.37 Algoritma carian pekerjaan langsung PetaKerja', 'Figure 3.37 PetaKerja live job search algorithm'],
+  ['code-job-location-resolution', 'f. Algoritma Penganggaran dan Penyelesaian Koordinat Lokasi Pekerjaan PetaKerja', 'f. PetaKerja Job-Location Coordinate Estimation and Resolution Algorithm', 'Rajah 3.38 Algoritma penganggaran dan penyelesaian koordinat lokasi pekerjaan PetaKerja', 'Figure 3.38 PetaKerja job-location coordinate estimation and resolution algorithm'],
 ];
 
-assert.equal(snippets.length, 5, 'Exactly five code snippets must be published.');
+assert.equal(snippets.length, 6, 'Exactly six code snippets must be published.');
 assert.deepEqual(Array.from(snippets, ({ id, reportHeading, reportHeadingEn, caption, captionEn }) => [id, reportHeading, reportHeadingEn, caption, captionEn]), expected);
 assert.ok(snippets.every((snippet) => snippet.category === 'Code Snippets'), 'All snippets must use the Code Snippets category.');
 assert.ok(snippets.every((snippet) => snippet.snippetGroup === 'Algorithms'), 'All snippets must use the Algorithms subgroup.');
@@ -36,6 +37,7 @@ assert.deepEqual(Array.from(snippets, (snippet) => snippet.codeEn.split('\n')[0]
   'Function SearchPOI(searchText)',
   'Function PreparePOIClusterMarkers(poiList)',
   'Function SearchLiveJobs(searchText, location, filters)',
+  'Function EstimateAndDisplayJobCoordinates(job)',
 ]);
 
 for (const snippet of snippets) {
@@ -52,6 +54,44 @@ for (const requiredTerm of ['Maukerja', 'Hiredly', 'Ricebowl', 'Graduan', 'Jora'
 }
 assert.doesNotMatch(liveSearch.code, /scraped_jobs|scraped_at|Upsert|60 hari|kron harian/i, 'Live Search must remain distinct from the daily indexed-job ingestion algorithm.');
 assert.doesNotMatch(liveSearch.codeEn, /scraped_jobs|scraped_at|Upsert|60 days|daily cron|stale-row/i, 'English Live Search must remain distinct from the daily indexed-job ingestion algorithm.');
+assert.equal(liveSearch.markerFlowTitle, 'Aliran carian pekerjaan langsung');
+assert.equal(liveSearch.markerFlowTitleEn, 'Live job search flow');
+assert.deepEqual(Array.from(liveSearch.markerFlow), [
+  'Pengguna memasukkan kata kunci, lokasi dan penapis carian',
+  'PetaKerja mengesahkan pengguna lalu menghantar GET /api/search-jobs',
+  'Pelayan menggunakan cache lima minit atau menjalankan tujuh pengikis dan API Careerjet pilihan secara selari',
+  'Normalisasi, tapis, buang pendua dan susun hasil sebelum memaparkan kad pekerjaan, pecahan sumber dan penanda peta',
+]);
+assert.deepEqual(Array.from(liveSearch.markerFlowEn), [
+  'User enters search keywords, location and filters',
+  'PetaKerja authenticates the user and sends GET /api/search-jobs',
+  'The server uses its five-minute cache or runs seven scrapers and the optional Careerjet API in parallel',
+  'Normalize, filter, deduplicate and rank results before displaying job cards, source breakdown and map markers',
+]);
+
+const jobLocation = snippets.find((snippet) => snippet.id === 'code-job-location-resolution');
+assert.ok(jobLocation, 'The job-location algorithm must be published after Live Search.');
+for (const requiredTerm of ['0.025', '0.065', 'GeoJSON', 'MapLibre', 'GeoGateway', 'Nominatim', 'scraped_jobs', 'job_location_resolutions', '30 hari', 'exact', 'street', 'locality', 'poligon daratan']) {
+  assert.match(jobLocation.code, new RegExp(requiredTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'), `Job-location pseudocode must explain ${requiredTerm}.`);
+}
+for (const requiredTerm of ['30 days', 'land polygon', 'not replaced automatically', 'does not move the supplied coordinates']) {
+  assert.match(jobLocation.codeEn, new RegExp(requiredTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'), `English job-location pseudocode must explain ${requiredTerm}.`);
+}
+assert.doesNotMatch(jobLocation.codeEn, /random placement|verified workplace building|rooftop accuracy/i, 'The snippet must not overstate ordinary marker accuracy.');
+assert.equal(jobLocation.markerFlowTitle, 'Aliran penempatan penanda pekerjaan');
+assert.equal(jobLocation.markerFlowTitleEn, 'Job marker placement flow');
+assert.deepEqual(Array.from(jobLocation.markerFlow), [
+  'Teks lokasi/alamat daripada papan pekerjaan',
+  'Padankan dengan koordinat bandar/negeri Malaysia yang tetap',
+  'Gunakan sebaran deterministik di sekitar koordinat tersebut',
+  'Render atau kelompokkan titik yang terhasil dalam MapLibre',
+]);
+assert.deepEqual(Array.from(jobLocation.markerFlowEn), [
+  'Job-board location/address text',
+  'Match against fixed Malaysian city/state coordinates',
+  'Apply deterministic spreading around that coordinate',
+  'Render or cluster the resulting point in MapLibre',
+]);
 
 const upstreamSources = liveSearch.upstreamSources;
 assert.ok(Array.isArray(upstreamSources), 'Live Search must include a verified upstreamSources contract.');
@@ -108,6 +148,10 @@ const liveSystemTokens = highlighterAPI.tokenize('Maukerja Hiredly Ricebowl Grad
 for (const expectedSystem of ['Maukerja', 'Hiredly', 'Ricebowl', 'Graduan', 'Jora', 'JobStreet', 'Jobstore', 'Careerjet', 'Scrapling', 'CAREERJET_AFFID', 'GET', '/api/search-jobs']) {
   assert.ok(liveSystemTokens.some(({ type, value }) => type === 'system' && value === expectedSystem), `${expectedSystem} must use system/data highlighting.`);
 }
+const jobLocationSystemTokens = highlighterAPI.tokenize('GeoGateway Nominatim MapLibre scraped_jobs job_location_resolutions');
+for (const expectedSystem of ['GeoGateway', 'Nominatim', 'MapLibre', 'scraped_jobs', 'job_location_resolutions']) {
+  assert.ok(jobLocationSystemTokens.some(({ type, value }) => type === 'system' && value === expectedSystem), `${expectedSystem} must use job-location system/data highlighting.`);
+}
 const escapedFixture = highlighterAPI.highlightHTML(tokenizerFixture);
 assert.match(escapedFixture, /&quot;&lt;unsafe &amp; value&gt;&quot;/, 'Highlighted strings must be safely HTML escaped.');
 assert.doesNotMatch(escapedFixture, /"<unsafe & value>"/, 'Highlighted output must not contain unsafe source HTML.');
@@ -137,6 +181,65 @@ assert.match(captionHTML, /font-family:'Times New Roman',serif/);
 assert.match(captionHTML, /font-size:10pt/);
 assert.match(captionHTML, /Algoritma &amp; ujian/);
 
+const bmTablePayload = clipboardAPI.sourceTablePayload(upstreamSources, 'ms');
+const englishTablePayload = clipboardAPI.sourceTablePayload(upstreamSources, 'en');
+assert.equal(bmTablePayload.plainText.split('\n')[0], 'Sumber\tLaman\tKaedah\tSkop permintaan');
+assert.equal(englishTablePayload.plainText.split('\n')[0], 'Source\tWebsite\tMethod\tRequest scope');
+assert.equal(englishTablePayload.plainText.split('\n').length, 9, 'Plain-table copying must contain one header and eight source rows.');
+for (const source of upstreamSources) {
+  assert.match(englishTablePayload.plainText, new RegExp(source.website.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')), `${source.name} plain-text copying must retain its complete HTTPS link.`);
+  assert.match(englishTablePayload.htmlText, new RegExp(`href="${source.website.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`), `${source.name} rich copying must retain a clickable link.`);
+}
+assert.match(englishTablePayload.htmlText, /^<table /);
+assert.match(englishTablePayload.htmlText, /border-collapse:collapse/);
+assert.match(englishTablePayload.htmlText, /font-family:'Times New Roman',serif/);
+assert.match(englishTablePayload.htmlText, /font-size:10pt/);
+assert.match(englishTablePayload.htmlText, /<th[^>]*>Source<\/th>/);
+assert.match(englishTablePayload.htmlText, /color:#0563C1;text-decoration:underline/);
+const unsafeTablePayload = clipboardAPI.sourceTablePayload([{
+  name: '<Unsafe & source>', website: 'javascript:alert(1)', method: '<method>', methodEn: '<method>', requestScope: '"scope"', requestScopeEn: '"scope"',
+}], 'en');
+assert.match(unsafeTablePayload.htmlText, /&lt;Unsafe &amp; source&gt;/);
+assert.doesNotMatch(unsafeTablePayload.htmlText, /javascript:/i, 'Non-HTTPS table links must not enter Word HTML.');
+
+const bmFlowPayload = clipboardAPI.markerFlowPayload(jobLocation.markerFlowTitle, jobLocation.markerFlow);
+const englishFlowPayload = clipboardAPI.markerFlowPayload(jobLocation.markerFlowTitleEn, jobLocation.markerFlowEn);
+const liveBmFlowPayload = clipboardAPI.markerFlowPayload(liveSearch.markerFlowTitle, liveSearch.markerFlow);
+const liveEnglishFlowPayload = clipboardAPI.markerFlowPayload(liveSearch.markerFlowTitleEn, liveSearch.markerFlowEn);
+assert.equal(liveBmFlowPayload.plainText, `Aliran carian pekerjaan langsung
+Pengguna memasukkan kata kunci, lokasi dan penapis carian
+        ↓
+PetaKerja mengesahkan pengguna lalu menghantar GET /api/search-jobs
+        ↓
+Pelayan menggunakan cache lima minit atau menjalankan tujuh pengikis dan API Careerjet pilihan secara selari
+        ↓
+Normalisasi, tapis, buang pendua dan susun hasil sebelum memaparkan kad pekerjaan, pecahan sumber dan penanda peta`);
+assert.match(liveEnglishFlowPayload.htmlText, /font-family:'Times New Roman',serif/);
+assert.match(liveEnglishFlowPayload.htmlText, /font-size:10pt/);
+assert.match(liveEnglishFlowPayload.htmlText, /border-collapse:collapse/);
+assert.equal((liveEnglishFlowPayload.htmlText.match(/<tr><td/g) || []).length, 7, 'Live Search Word flow HTML must contain four step rows and three arrow rows.');
+assert.match(liveEnglishFlowPayload.htmlText, /Live job search flow/);
+assert.match(liveEnglishFlowPayload.htmlText, /GET \/api\/search-jobs/);
+assert.match(liveEnglishFlowPayload.htmlText, /optional Careerjet API in parallel/);
+assert.equal(bmFlowPayload.plainText, `Aliran penempatan penanda pekerjaan
+Teks lokasi/alamat daripada papan pekerjaan
+        ↓
+Padankan dengan koordinat bandar/negeri Malaysia yang tetap
+        ↓
+Gunakan sebaran deterministik di sekitar koordinat tersebut
+        ↓
+Render atau kelompokkan titik yang terhasil dalam MapLibre`);
+assert.match(englishFlowPayload.htmlText, /font-family:'Times New Roman',serif/);
+assert.match(englishFlowPayload.htmlText, /font-size:10pt/);
+assert.match(englishFlowPayload.htmlText, /border-collapse:collapse/);
+assert.equal((englishFlowPayload.htmlText.match(/<tr><td/g) || []).length, 7, 'Word flow HTML must contain four step rows and three arrow rows.');
+assert.match(englishFlowPayload.htmlText, /Job marker placement flow/);
+assert.match(englishFlowPayload.htmlText, /Job-board location\/address text/);
+const unsafeFlowPayload = clipboardAPI.markerFlowPayload('<Unsafe & flow>', ['<Step one>', '"Step two"']);
+assert.match(unsafeFlowPayload.htmlText, /&lt;Unsafe &amp; flow&gt;/);
+assert.match(unsafeFlowPayload.htmlText, /&lt;Step one&gt;/);
+assert.match(unsafeFlowPayload.htmlText, /&quot;Step two&quot;/);
+
 let richItems = null;
 class TestClipboardItem {
   constructor(payload) { this.payload = payload; }
@@ -151,6 +254,14 @@ assert.equal(richItems.length, 1);
 assert.deepEqual(Object.keys(richItems[0].payload).sort(), ['text/html', 'text/plain']);
 assert.equal(await richItems[0].payload['text/plain'].text(), indentedCode);
 assert.equal(await richItems[0].payload['text/html'].text(), codeHTML);
+richItems = null;
+assert.equal(await clipboardAPI.writeClipboardPayload(englishTablePayload.plainText, englishTablePayload.htmlText, richRuntime), 'rich');
+assert.equal(await richItems[0].payload['text/plain'].text(), englishTablePayload.plainText);
+assert.equal(await richItems[0].payload['text/html'].text(), englishTablePayload.htmlText);
+richItems = null;
+assert.equal(await clipboardAPI.writeClipboardPayload(englishFlowPayload.plainText, englishFlowPayload.htmlText, richRuntime), 'rich');
+assert.equal(await richItems[0].payload['text/plain'].text(), englishFlowPayload.plainText);
+assert.equal(await richItems[0].payload['text/html'].text(), englishFlowPayload.htmlText);
 
 let plainFallback = null;
 const plainRuntime = {
@@ -158,6 +269,8 @@ const plainRuntime = {
 };
 assert.equal(await clipboardAPI.writeClipboardPayload(indentedCode, codeHTML, plainRuntime), 'plain');
 assert.equal(plainFallback, indentedCode);
+assert.equal(await clipboardAPI.writeClipboardPayload(bmFlowPayload.plainText, bmFlowPayload.htmlText, plainRuntime), 'plain');
+assert.equal(plainFallback, bmFlowPayload.plainText);
 
 let selected = false;
 let selectionFallback = null;
@@ -174,9 +287,15 @@ const selectionRuntime = {
 assert.equal(await clipboardAPI.writeClipboardPayload(indentedCode, codeHTML, selectionRuntime), 'selection');
 assert.equal(selectionFallback.value, indentedCode);
 assert.equal(selected, true);
+selected = false;
+selectionFallback = null;
+assert.equal(await clipboardAPI.writeClipboardPayload(englishFlowPayload.plainText, englishFlowPayload.htmlText, selectionRuntime), 'selection');
+assert.equal(selectionFallback.value, englishFlowPayload.plainText);
+assert.equal(selected, true);
 
 const appSource = read('app.js');
 const styles = read('styles.css');
+const translationsSource = read('translations.js');
 assert.match(appSource, /petakerja-explorer-code-snippet-folders/);
 assert.match(appSource, /petakerja-explorer-code-snippet-language/);
 assert.match(appSource, /data-nav-family="code-snippets"/);
@@ -190,6 +309,13 @@ assert.match(appSource, /Sistem\/data/);
 assert.match(appSource, /System\/data/);
 assert.match(appSource, /data-copy-snippet-code/);
 assert.match(appSource, /data-copy-snippet-caption/);
+assert.match(appSource, /data-copy-upstream-table/);
+assert.match(appSource, /sourceTablePayload\(diagram\.upstreamSources, state\.snippetLanguage\)/);
+assert.match(appSource, /ui\.tableCopied/);
+assert.match(appSource, /data-copy-marker-flow/);
+assert.match(appSource, /markerFlowPayload\(flowTitle, flowSteps\)/);
+assert.match(appSource, /diagram\.markerFlowEn/);
+assert.match(appSource, /ui\.flowCopied/);
 assert.match(appSource, /diagram\.upstreamSources/);
 assert.match(appSource, /Verified Live Search sources/);
 assert.match(appSource, /Sumber Carian Langsung yang disahkan/);
@@ -204,7 +330,15 @@ assert.match(styles, /--code-control: #7dd3fc/);
 assert.match(styles, /\.pseudo-token--function/);
 assert.match(styles, /\.code-snippet-legend/);
 assert.match(styles, /\.code-upstream-table-wrap/);
+assert.match(styles, /\.code-upstream-sources__header/);
+assert.match(styles, /\.code-marker-flow/);
+assert.match(styles, /\.code-marker-flow__arrow/);
 assert.match(styles, /overflow-x: auto/);
 assert.match(styles, /min-width: 760px/);
+assert.match(translationsSource, /copyTable: 'Copy table'/);
+assert.match(translationsSource, /tableCopied: 'Table copied'/);
+assert.match(translationsSource, /copyFlow: 'Copy flow'/);
+assert.match(translationsSource, /flowCopied: 'Flow copied'/);
+assert.match(translationsSource, /code-job-location-resolution/);
 
-console.log('Five code snippets, the verified Live Search source table, bilingual semantic highlighting, copy payloads, fallbacks and presentation contract passed.');
+console.log('Six code snippets, the copyable Live Search source table, bilingual explanatory flows, semantic highlighting, Word payloads, fallbacks and presentation contract passed.');

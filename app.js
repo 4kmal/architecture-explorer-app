@@ -3,6 +3,7 @@
 
   const data = window.PETAKERJA_ARCHITECTURE;
   const assets = window.PETAKERJA_DIAGRAM_ASSETS || {};
+  const fypReportTables = window.PETAKERJA_FYP_REPORT_TABLES || { pages: {} };
   const translations = window.PETAKERJA_TRANSLATIONS || {};
   const editorAPI = window.PETAKERJA_EDITOR;
   const agentAPI = window.PETAKERJA_AGENT;
@@ -72,6 +73,9 @@
     'code-poi-search': 'search',
     'code-poi-clustering': 'map',
     'code-live-job-search': 'search',
+    'code-job-location-resolution': 'map',
+    'fyp-kamus-data': 'table-properties',
+    'fyp-use-case-specification': 'list-checks',
   });
 
   function storedLanguage() {
@@ -149,6 +153,26 @@
     catch (_error) { /* Some file:// browser policies disable storage. */ }
   }
 
+  function storedReportTableLanguage() {
+    try { return localStorage.getItem('petakerja-explorer-report-table-language') === 'en' ? 'en' : 'ms'; }
+    catch (_error) { return 'ms'; }
+  }
+
+  function storeReportTableLanguage(value) {
+    try { localStorage.setItem('petakerja-explorer-report-table-language', value); }
+    catch (_error) { /* Some file:// browser policies disable storage. */ }
+  }
+
+  function storedDictionaryColumnMode() {
+    try { return localStorage.getItem('petakerja-explorer-data-dictionary-column') === 'size' ? 'size' : 'constraints'; }
+    catch (_error) { return 'constraints'; }
+  }
+
+  function storeDictionaryColumnMode(value) {
+    try { localStorage.setItem('petakerja-explorer-data-dictionary-column', value); }
+    catch (_error) { /* Some file:// browser policies disable storage. */ }
+  }
+
   function storedDiagramVariantFolders() {
     try {
       const current = localStorage.getItem('petakerja-explorer-diagram-variant-folders');
@@ -209,6 +233,7 @@
     runtimeDocuments: new Map(), importedDiagrams: [], runtimeExporting: false, editorDocumentKey: null, agentProviderStatus: null,
     workspaceToken: null, workspaceDiagramIds: new Set(), workspaceLoaded: new Set(), workspaceSessionPromise: null,
     sequenceFolders: storedSequenceFolders(), flowchartFolders: storedFlowchartFolders(), codeSnippetFolders: storedCodeSnippetFolders(), snippetLanguage: storedCodeSnippetLanguage(),
+    reportTableLanguage: storedReportTableLanguage(), dictionaryColumnMode: storedDictionaryColumnMode(), reportColumnSelection: null,
     diagramVariantFolders: storedDiagramVariantFolders(), diagramCollections: storedDiagramCollections(),
     diagramCollectionGroups: storedDiagramCollectionGroups(), sequenceLabelMode: storedSequenceLabelMode(),
   };
@@ -257,6 +282,8 @@
   let diagramAgent = null;
   let cloudManager = null;
   let pendingEditorThemePreference = null;
+  let reportContextMenu = null;
+  let reportContextTarget = null;
   const systemThemeQuery = window.matchMedia?.('(prefers-color-scheme: dark)') || null;
 
   function syncEditorThemePreference(preference, options = {}) {
@@ -322,9 +349,13 @@
       'ui.collectionClasses': 'Rajah Kelas', 'ui.collectionArchitectureModules': 'Seni Bina & Modul', 'ui.collectionData': 'Rajah Data',
       'ui.collectionDiagram': 'rajah', 'ui.collectionDiagrams': 'rajah',
       'ui.reportExplanation': 'Penerangan laporan', 'ui.copyReportParagraph': 'Salin perenggan', 'ui.reportParagraphCopied': 'Perenggan disalin',
-      'ui.copyCode': 'Salin kod', 'ui.copyCaption': 'Salin kapsyen', 'ui.codeCopied': 'Kod disalin', 'ui.captionCopied': 'Kapsyen disalin',
+      'ui.copyCode': 'Salin kod', 'ui.copyCaption': 'Salin kapsyen', 'ui.copyTable': 'Salin jadual', 'ui.copyFlow': 'Salin aliran', 'ui.codeCopied': 'Kod disalin', 'ui.captionCopied': 'Kapsyen disalin', 'ui.tableCopied': 'Jadual disalin', 'ui.flowCopied': 'Aliran disalin',
+      'ui.reportTableReady': 'Jadual sedia laporan', 'ui.reportVerified': 'Snapshot disahkan', 'ui.reportSource': 'Sumber', 'ui.reportNote': 'Catatan',
       'ui.reportCaption': 'Kapsyen laporan', 'ui.codeSources': 'Fail sumber kod', 'ui.reportReadyCode': 'Kod pseudo sedia laporan',
       'ui.snippetLanguage': 'Bahasa kod pseudo', 'ui.snippetLanguageChanged': 'Bahasa kod pseudo ditukar',
+      'ui.reportLanguage': 'Bahasa jadual laporan', 'ui.reportLanguageChanged': 'Bahasa jadual laporan ditukar',
+      'ui.dictionaryColumn': 'Paparan lajur Kamus Data', 'ui.dictionaryConstraints': 'Wajib / Kekangan', 'ui.dictionarySize': 'Saiz Data',
+      'ui.dictionaryColumnChanged': 'Paparan lajur Kamus Data ditukar',
       'ui.flow': 'Aliran hujung ke hujung', 'ui.sourceFiles': 'Fail sumber', 'ui.routes': 'Route / RPC', 'ui.tables': 'Jadual Supabase',
       'ui.uiComponents': 'Komponen UI', 'ui.auth': 'Syarat akses', 'ui.related': 'Nod berhubung', 'ui.reference': 'Aset rujukan', 'ui.close': 'Tutup',
       'ui.dependsOn': 'Bergantung pada', 'ui.usedBy': 'Digunakan oleh', 'ui.dataRelations': 'Hubungan data', 'ui.secondLevel': 'Konteks tahap kedua',
@@ -462,6 +493,16 @@
   function allDiagrams() { return [...data.diagrams, ...state.importedDiagrams]; }
   function activeDiagram() { return allDiagrams().find((diagram) => diagram.id === state.diagramId) || data.diagrams[0]; }
   function isCodeDiagram(diagram = activeDiagram()) { return diagram?.layout === 'code'; }
+  function isReportTableDiagram(diagram = activeDiagram()) { return diagram?.layout === 'report-table'; }
+  function isDocumentDiagram(diagram = activeDiagram()) { return isCodeDiagram(diagram) || isReportTableDiagram(diagram); }
+  function activeReportPage(diagram = activeDiagram()) { return fypReportTables.pages?.[diagram?.reportTableKey] || null; }
+  function reportValue(value, language = state.reportTableLanguage) {
+    if (value && typeof value === 'object' && !Array.isArray(value) && ('ms' in value || 'en' in value)) {
+      return String(value[language] ?? value.ms ?? value.en ?? '');
+    }
+    return String(value ?? '');
+  }
+  function reportList(values) { return (Array.isArray(values) ? values : []).map((value) => reportValue(value)); }
   function codeSnippetText(diagram = activeDiagram()) {
     const english = state.snippetLanguage === 'en';
     return {
@@ -499,7 +540,12 @@
       if (!response.ok) throw new Error(`Workspace diagram is unavailable (${response.status}).`);
       const payload = await response.json();
       const analysis = editorController.preflight(payload.xml);
-      if (analysis.fatal) throw new Error('The saved workspace XML could not be analysed.');
+      if (analysis.fatal) {
+        const diagnostic = analysis.issues?.[0]?.message?.[state.language]
+          || analysis.issues?.[0]?.message?.en
+          || 'The saved workspace XML could not be analysed.';
+        throw new Error(diagnostic);
+      }
       const sanitized = sanitizeRuntimeSVG(payload.svg);
       const asset = runtimeAssetFromAnalysis(sanitized, analysis);
       const source = editorAPI.SOURCE_FILES[diagramId];
@@ -1203,18 +1249,36 @@
     ],
   };
 
-  function translateRuntimeSvg(svg, diagramType, language) {
-    const replacements = language === 'en' ? RUNTIME_DIAGRAM_EN[diagramType] : RUNTIME_DIAGRAM_MS[diagramType];
-    if (!replacements) return svg;
+  function translateRuntimeSvg(svg, diagramType, language, localizedPairs = []) {
+    const fallbackPairs = language === 'en' ? RUNTIME_DIAGRAM_EN[diagramType] : RUNTIME_DIAGRAM_MS[diagramType];
+    const replacements = new Map();
+    (fallbackPairs || []).forEach(([source, target]) => {
+      if (source && target && source !== target) replacements.set(source, target);
+    });
+    localizedPairs.forEach((pair) => {
+      const target = pair?.[language];
+      if (!target) return;
+      [pair.en, pair.ms].filter(Boolean).forEach((source) => {
+        if (source !== target) replacements.set(source, target);
+      });
+    });
+    if (!replacements.size) return svg;
     const parsed = new DOMParser().parseFromString(svg, 'image/svg+xml');
     if (parsed.querySelector('parsererror')) return svg;
+    const ordered = [...replacements.entries()].sort((left, right) => right[0].length - left[0].length);
     const walker = parsed.createTreeWalker(parsed.documentElement, NodeFilter.SHOW_TEXT);
     let textNode = walker.nextNode();
     while (textNode) {
       if (!['style', 'script'].includes(textNode.parentElement?.localName)) {
         let translated = textNode.nodeValue || '';
-        [...replacements].sort((left, right) => right[0].length - left[0].length)
-          .forEach(([source, target]) => { translated = translated.split(source).join(target); });
+        const applied = [];
+        ordered.forEach(([source, target], index) => {
+          if (!translated.includes(source)) return;
+          const token = `\uE000PETAKERJA_${index}_\uE001`;
+          translated = translated.split(source).join(token);
+          applied.push([token, target]);
+        });
+        applied.forEach(([token, target]) => { translated = translated.split(token).join(target); });
         textNode.nodeValue = translated;
       }
       textNode = walker.nextNode();
@@ -1224,7 +1288,14 @@
 
   function runtimeAssetFromAnalysis(svg, analysis) {
     const page = analysis?.selectedPage;
-    if (!page) return { svg: { ms: svg, en: svg }, components: [], connections: [] };
+    const localizedPairs = editorAPI?.localizedLabelPairs?.(analysis?.xml || '') || [];
+    if (!page) return {
+      svg: {
+        ms: translateRuntimeSvg(svg, state.diagramId, 'ms', localizedPairs),
+        en: translateRuntimeSvg(svg, state.diagramId, 'en', localizedPairs),
+      },
+      components: [], connections: [],
+    };
     const components = (page.matches || []).filter((match) => match.identity).map((match) => ({
       componentKey: match.identity.componentKey,
       id: match.identity.target || match.identity.key,
@@ -1266,13 +1337,21 @@
       });
       const connectionIds = new Set(connections.map((connection) => connection.id));
       (canonicalAsset.connections || []).forEach((connection) => {
-        if (connectionIds.has(connection.id) || !presentCellIds.has(connection.id)) return;
+        if (connectionIds.has(connection.id)) return;
+        if (connection.visual !== false && !presentCellIds.has(connection.id)) return;
         if (!componentKeys.has(connection.sourceComponentKey) || !componentKeys.has(connection.targetComponentKey)) return;
         connections.push({ ...connection });
         connectionIds.add(connection.id);
       });
     }
-    return { svg: { ms: translateRuntimeSvg(svg, diagramType, 'ms'), en: translateRuntimeSvg(svg, diagramType, 'en') }, components, connections, runtime: true, supportsSequenceLabels: connections.some((item) => item.labels?.simple && item.labels?.code) };
+    return {
+      svg: {
+        ms: translateRuntimeSvg(svg, diagramType, 'ms', localizedPairs),
+        en: translateRuntimeSvg(svg, diagramType, 'en', localizedPairs),
+      },
+      components, connections, runtime: true,
+      supportsSequenceLabels: connections.some((item) => item.labels?.simple && item.labels?.code),
+    };
   }
 
   function updateRuntimeDocument(snapshot, key = state.editorDocumentKey || state.diagramId) {
@@ -1320,10 +1399,10 @@
     const importEnabled = runtimeCapabilities.import !== false;
     const agentEnabled = runtimeCapabilities.agent !== false;
     const localWorkspaceEnabled = runtimeCapabilities.localWorkspace !== false;
-    const codeLayout = isCodeDiagram();
+    const documentLayout = isDocumentDiagram();
     const editable = isEditableDiagram();
     const canEdit = editorEnabled && editable && editorController?.available;
-    els.workspaceModeControl.hidden = codeLayout || !editorEnabled || !editable;
+    els.workspaceModeControl.hidden = documentLayout || !editorEnabled || !editable;
     els.workspaceView.setAttribute('aria-pressed', String(state.workspaceMode === 'view'));
     els.workspaceEdit.setAttribute('aria-pressed', String(state.workspaceMode === 'edit'));
     els.workspaceAgent.setAttribute('aria-pressed', String(state.workspaceMode === 'agent'));
@@ -1338,16 +1417,16 @@
     els.workspaceAgent.setAttribute('aria-disabled', String(!agentEnabled || !editable));
     els.workspaceAgent.dataset.runtimeRequired = String(editable && !canEdit);
     els.workspaceAgent.title = canEdit ? '' : t('ui.editorHttpRequired');
-    els.importButton.hidden = codeLayout || !importEnabled;
+    els.importButton.hidden = documentLayout || !importEnabled;
     els.importButton.disabled = !importEnabled;
     els.importButton.setAttribute('aria-disabled', 'false');
     els.importButton.dataset.runtimeRequired = String(!editorController?.available);
     els.importButton.title = editorController?.available ? '' : t('ui.editorHttpRequired');
     els.validateButton.hidden = !editorEnabled || state.workspaceMode === 'view'; els.saveButton.hidden = !editorEnabled || state.workspaceMode === 'view';
     els.workspaceSaveButton.hidden = !localWorkspaceEnabled || state.workspaceMode === 'view' || !state.workspaceDiagramIds.has(state.diagramId);
-    byId('zoom-out').parentElement.hidden = codeLayout || state.workspaceMode !== 'view';
-    els.referenceButton.hidden = codeLayout || state.workspaceMode !== 'view' || !activeDiagram().reference;
-    const showSequenceLabels = !codeLayout && (state.workspaceMode === 'view' || state.workspaceMode === 'edit')
+    byId('zoom-out').parentElement.hidden = documentLayout || state.workspaceMode !== 'view';
+    els.referenceButton.hidden = documentLayout || state.workspaceMode !== 'view' || !activeDiagram().reference;
+    const showSequenceLabels = !documentLayout && (state.workspaceMode === 'view' || state.workspaceMode === 'edit')
       && effectiveMode() === 'actual' && Boolean(activeAsset()?.supportsSequenceLabels);
     els.sequenceLabelControl.hidden = !showSequenceLabels;
     els.sequenceSimple.setAttribute('aria-pressed', String(state.sequenceLabelMode === 'simple'));
@@ -1423,13 +1502,26 @@
       return `<tr data-source-kind="${escapeHTML(source.kind)}"><th scope="row">${escapeHTML(source.name)}</th><td><a href="${escapeHTML(source.website)}" target="_blank" rel="noopener noreferrer">${escapeHTML(websiteLabel)}</a></td><td>${escapeHTML(method)}</td><td>${escapeHTML(requestScope)}</td></tr>`;
     }).join('');
     const upstreamSourceTable = upstreamRows ? `<section class="code-upstream-sources" aria-labelledby="code-upstream-sources-title">
-      <h4 id="code-upstream-sources-title">${escapeHTML(english ? 'Verified Live Search sources' : 'Sumber Carian Langsung yang disahkan')}</h4>
+      <div class="code-upstream-sources__header">
+        <h4 id="code-upstream-sources-title">${escapeHTML(english ? 'Verified Live Search sources' : 'Sumber Carian Langsung yang disahkan')}</h4>
+        <button type="button" class="secondary-button" data-copy-upstream-table><i data-bp-icon="copy-plus" aria-hidden="true"></i><span>${escapeHTML(t('ui.copyTable'))}</span></button>
+      </div>
       <div class="code-upstream-table-wrap" role="region" aria-label="${escapeHTML(english ? 'Live Search source table' : 'Jadual sumber Carian Langsung')}">
         <table class="code-upstream-table">
           <thead><tr><th scope="col">${escapeHTML(english ? 'Source' : 'Sumber')}</th><th scope="col">${escapeHTML(english ? 'Website' : 'Laman')}</th><th scope="col">${escapeHTML(english ? 'Method' : 'Kaedah')}</th><th scope="col">${escapeHTML(english ? 'Request scope' : 'Skop permintaan')}</th></tr></thead>
           <tbody>${upstreamRows}</tbody>
         </table>
       </div>
+    </section>` : '';
+    const markerFlowSteps = english ? diagram.markerFlowEn : diagram.markerFlow;
+    const markerFlowTitle = english ? diagram.markerFlowTitleEn : diagram.markerFlowTitle;
+    const markerFlowItems = (markerFlowSteps || []).map((step, index, steps) => `<li><span>${escapeHTML(step)}</span>${index < steps.length - 1 ? '<span class="code-marker-flow__arrow" aria-hidden="true">↓</span>' : ''}</li>`).join('');
+    const markerFlow = markerFlowItems ? `<section class="code-marker-flow" aria-labelledby="code-marker-flow-title">
+      <div class="code-marker-flow__header">
+        <h4 id="code-marker-flow-title">${escapeHTML(markerFlowTitle)}</h4>
+        <button type="button" class="secondary-button" data-copy-marker-flow><i data-bp-icon="copy-plus" aria-hidden="true"></i><span>${escapeHTML(t('ui.copyFlow'))}</span></button>
+      </div>
+      <ol>${markerFlowItems}</ol>
     </section>` : '';
     els.graphViewport.innerHTML = `<article class="code-snippet-view" aria-labelledby="code-snippet-heading">
       <header class="code-snippet-header">
@@ -1449,25 +1541,316 @@
       ${upstreamSourceTable}
       <pre class="report-code-block" tabindex="0" aria-label="${escapeHTML(snippet.reportHeading)}"><code>${codeSnippetHighlighter.highlightHTML(snippet.code)}</code></pre>
       <section class="report-caption-preview" aria-labelledby="report-caption-title"><h4 id="report-caption-title">${escapeHTML(t('ui.reportCaption'))}</h4><p>${escapeHTML(snippet.caption)}</p></section>
+      ${markerFlow}
       <details class="code-source-files"><summary>${escapeHTML(t('ui.codeSources'))}</summary><ul>${sourceFiles}</ul></details>
     </article>`;
     window.renderBlueprintIcons?.(els.graphViewport);
   }
 
+  function dictionaryTableDefinition(table) {
+    const english = state.reportTableLanguage === 'en';
+    const showSize = state.dictionaryColumnMode === 'size';
+    return {
+      id: table.id,
+      title: reportValue(table.title),
+      source: reportValue(table.source),
+      note: reportValue(table.operation),
+      sourceLabel: english ? 'Source' : 'Sumber',
+      noteLabel: english ? 'Note' : 'Catatan',
+      columns: [
+        { label: english ? 'No.' : 'Bil.', width: '7%' },
+        { label: english ? 'Field' : 'Medan', width: '19%' },
+        { label: english ? 'Data Type' : 'Jenis Data', width: '15%' },
+        { label: showSize ? (english ? 'Data Size' : 'Saiz Data') : (english ? 'Required / Constraints' : 'Wajib / Kekangan'), width: '25%' },
+        { label: english ? 'Description' : 'Huraian', width: '34%' },
+      ],
+      rows: (table.fields || []).map((field, index) => [index + 1, field.name, reportValue(field.type), reportValue(showSize ? field.size : field.constraints), reportValue(field.description)]),
+      rowHeaderIndex: 1,
+    };
+  }
+
+  function useCaseTableDefinition(useCase) {
+    const english = state.reportTableLanguage === 'en';
+    return {
+      id: useCase.id.toLowerCase(),
+      title: `${useCase.id} — ${reportValue(useCase.name)}`,
+      source: english ? 'PetaKerja System Use Case Diagram' : 'Rajah Kes Guna Sistem PetaKerja',
+      note: english ? 'Relationships verified against the current use-case diagram asset.' : 'Hubungan disahkan terhadap aset rajah kes guna semasa.',
+      sourceLabel: english ? 'Source' : 'Sumber',
+      noteLabel: english ? 'Note' : 'Catatan',
+      columns: [{ label: english ? 'Item' : 'Perkara', width: '24%' }, { label: english ? 'Specification' : 'Spesifikasi', width: '76%' }],
+      rows: [
+        ['ID', useCase.id],
+        [english ? 'Name' : 'Nama', reportValue(useCase.name)],
+        [english ? 'Purpose' : 'Tujuan', reportValue(useCase.purpose)],
+        [english ? 'Actor' : 'Pelakon', reportValue(useCase.actors)],
+        [english ? 'Preconditions' : 'Prasyarat', reportList(useCase.preconditions)],
+        [english ? 'Main Scenario' : 'Senario Utama', reportList(useCase.mainFlow)],
+        [english ? 'Alternative Scenario' : 'Senario Alternatif', reportList(useCase.alternatives)],
+        [english ? 'Postconditions' : 'Pascasyarat', reportList(useCase.postconditions)],
+        [english ? 'Relationships' : 'Hubungan', reportList(useCase.relationships)],
+      ],
+      rowHeaderIndex: 0,
+    };
+  }
+
+  function reportPageSections(page) {
+    if (!page) return [];
+    if (Array.isArray(page.sections)) return page.sections.map((section) => ({
+      ...section,
+      title: reportValue(section.title),
+      description: reportValue(section.description),
+      tables: (section.tables || []).map(dictionaryTableDefinition),
+    }));
+    const definitions = (page.useCases || []).map(useCaseTableDefinition);
+    const english = state.reportTableLanguage === 'en';
+    return [
+      {
+        id: 'pengguna-dan-bersama', title: english ? 'User and shared functions' : 'Pengguna dan fungsi bersama',
+        description: english ? 'User use cases together with authentication and sign-out functions also used by administrators.' : 'Kes guna pengguna serta fungsi pengesahan dan log keluar yang turut digunakan oleh pentadbir.',
+        tables: definitions.slice(0, 11),
+      },
+      {
+        id: 'pentadbir', title: english ? 'Administrator' : 'Pentadbir',
+        description: english ? 'Protected use cases for the admin or owner role.' : 'Kes guna terlindung bagi peranan admin atau owner.',
+        tables: definitions.slice(11),
+      },
+    ];
+  }
+
+  function reportCellMarkup(value) {
+    if (!Array.isArray(value)) return escapeHTML(value);
+    return `<ol>${value.map((item) => `<li>${escapeHTML(item)}</li>`).join('')}</ol>`;
+  }
+
+  function reportTableMarkup(table) {
+    const english = state.reportTableLanguage === 'en';
+    const headings = table.columns.map((column, index) => {
+      const selectLabel = english ? `Select ${column.label} column` : `Pilih lajur ${column.label}`;
+      return `<th scope="col" data-report-column-index="${index}" data-report-row-index="-1">
+        <span class="fyp-report-column-heading"><span>${escapeHTML(column.label)}</span><button type="button" data-report-column-select="${escapeHTML(table.id)}" data-report-column-index="${index}" data-report-column-label="${escapeHTML(column.label)}" aria-label="${escapeHTML(selectLabel)}" title="${escapeHTML(selectLabel)}" aria-pressed="false"><i data-bp-icon="chevron-down" aria-hidden="true"></i></button></span>
+      </th>`;
+    }).join('');
+    const columns = `<colgroup>${table.columns.map((column) => `<col style="width:${escapeHTML(column.width)}">`).join('')}</colgroup>`;
+    const rows = table.rows.map((row, rowIndex) => `<tr data-report-row-index="${rowIndex}">${table.columns.map((_column, index) => {
+      const tag = index === table.rowHeaderIndex ? 'th' : 'td';
+      const scope = tag === 'th' ? ' scope="row"' : '';
+      return `<${tag}${scope} data-report-column-index="${index}" data-report-row-index="${rowIndex}">${reportCellMarkup(row[index])}</${tag}>`;
+    }).join('')}</tr>`).join('');
+    const sourceId = `fyp-report-source-${table.id}`;
+    return `<article class="fyp-report-table-card" data-report-table-card="${escapeHTML(table.id)}">
+      <header class="fyp-report-table-card__header">
+        <div><h4>${escapeHTML(table.title)}</h4><p id="${escapeHTML(sourceId)}"><strong>${escapeHTML(table.sourceLabel || 'Sumber')}:</strong> ${escapeHTML(table.source)}</p></div>
+        <button type="button" class="secondary-button" data-copy-report-table="${escapeHTML(table.id)}"><i data-bp-icon="copy-plus" aria-hidden="true"></i><span>${escapeHTML(t('ui.copyTable'))}</span></button>
+      </header>
+      <div class="fyp-report-table-wrap" role="region" aria-label="${escapeHTML(table.title)}" tabindex="0">
+        <table class="fyp-report-table" aria-describedby="${escapeHTML(sourceId)}">
+          <caption>${escapeHTML(table.title)}</caption>${columns}<thead><tr>${headings}</tr></thead><tbody>${rows}</tbody>
+        </table>
+      </div>
+      <p class="fyp-report-table-note"><strong>${escapeHTML(table.noteLabel || 'Catatan')}:</strong> ${escapeHTML(table.note)}</p>
+    </article>`;
+  }
+
+  function renderReportTables(diagram) {
+    const page = activeReportPage(diagram);
+    const sections = reportPageSections(page);
+    if (!page) {
+      els.graphViewport.innerHTML = `<p class="empty-state">${escapeHTML(state.language === 'en' ? 'Report-table data is unavailable.' : 'Data jadual laporan tidak tersedia.')}</p>`;
+      return;
+    }
+    const english = state.reportTableLanguage === 'en';
+    const isDictionary = diagram.reportTableKey === 'kamus-data';
+    const languageControl = `<div class="segmented fyp-report-control" role="group" aria-label="${escapeHTML(t('ui.reportLanguage'))}">
+      <button type="button" data-report-language="ms" aria-pressed="${state.reportTableLanguage === 'ms'}">BM</button>
+      <button type="button" data-report-language="en" aria-pressed="${state.reportTableLanguage === 'en'}">English</button>
+    </div>`;
+    const columnControl = isDictionary ? `<div class="segmented fyp-report-control" role="group" aria-label="${escapeHTML(t('ui.dictionaryColumn'))}">
+      <button type="button" data-report-column-mode="constraints" aria-pressed="${state.dictionaryColumnMode === 'constraints'}">${escapeHTML(english ? 'Required / Constraints' : 'Wajib / Kekangan')}</button>
+      <button type="button" data-report-column-mode="size" aria-pressed="${state.dictionaryColumnMode === 'size'}">${escapeHTML(english ? 'Data Size' : 'Saiz Data')}</button>
+    </div>` : '';
+    const sectionMarkup = sections.map((section) => `<section class="fyp-report-section" aria-labelledby="fyp-report-section-${escapeHTML(section.id)}">
+      <header class="fyp-report-section__header"><h3 id="fyp-report-section-${escapeHTML(section.id)}">${escapeHTML(section.title)}</h3><p>${escapeHTML(section.description || '')}</p></header>
+      <div class="fyp-report-table-list">${section.tables.map(reportTableMarkup).join('')}</div>
+    </section>`).join('');
+    els.graphViewport.innerHTML = `<article class="fyp-report-view" lang="${english ? 'en' : 'ms'}" aria-labelledby="fyp-report-heading">
+      <header class="fyp-report-view__header">
+        <p class="eyebrow">${escapeHTML(reportValue(page.eyebrow))}</p>
+        <h3 id="fyp-report-heading">${escapeHTML(reportValue(page.title))}</h3>
+        <p>${escapeHTML(reportValue(page.description))}</p>
+        <small>${english ? 'Verified snapshot' : 'Snapshot disahkan'}: ${escapeHTML(reportValue(fypReportTables.verifiedAt))}</small>
+        <div class="fyp-report-view__tools">${languageControl}${columnControl}</div>
+      </header>
+      ${sectionMarkup}
+    </article>`;
+    window.renderBlueprintIcons?.(els.graphViewport);
+    applyReportColumnSelection();
+  }
+
+  function reportColumnSelectionMessage(columnLabel) {
+    return state.reportTableLanguage === 'en'
+      ? `Column ${columnLabel} selected. Press Ctrl+C or Command+C to copy it.`
+      : `Lajur ${columnLabel} dipilih. Tekan Ctrl+C atau Command+C untuk menyalinnya.`;
+  }
+
+  function applyReportColumnSelection() {
+    const selected = state.reportColumnSelection;
+    els.graphViewport.querySelectorAll('[data-report-table-card]').forEach((card) => {
+      const tableSelected = selected?.tableId === card.dataset.reportTableCard;
+      card.querySelectorAll('th[data-report-column-index], td[data-report-column-index]').forEach((cell) => {
+        const active = tableSelected && Number(cell.dataset.reportColumnIndex) === selected.columnIndex;
+        cell.classList.toggle('is-report-column-selected', active);
+      });
+      card.querySelectorAll('[data-report-column-select]').forEach((button) => {
+        const active = tableSelected && Number(button.dataset.reportColumnIndex) === selected.columnIndex;
+        button.setAttribute('aria-pressed', String(active));
+      });
+    });
+  }
+
+  function clearReportColumnSelection(options = {}) {
+    if (!state.reportColumnSelection) return false;
+    state.reportColumnSelection = null;
+    applyReportColumnSelection();
+    if (options.announce) {
+      els.statusMessage.textContent = state.reportTableLanguage === 'en' ? 'Column selection cleared.' : 'Pemilihan lajur dikosongkan.';
+    }
+    return true;
+  }
+
+  function toggleReportColumnSelection(tableId, columnIndex, columnLabel) {
+    const current = state.reportColumnSelection;
+    const sameColumn = current?.tableId === tableId && current.columnIndex === columnIndex;
+    closeReportContextMenu();
+    if (sameColumn) {
+      clearReportColumnSelection({ announce: true });
+      return;
+    }
+    state.reportColumnSelection = { tableId, columnIndex };
+    applyReportColumnSelection();
+    els.statusMessage.textContent = reportColumnSelectionMessage(columnLabel);
+  }
+
+  function selectedReportColumnCopyData() {
+    const selected = state.reportColumnSelection;
+    if (!selected || !isReportTableDiagram()) return null;
+    const table = activeReportTableById(selected.tableId);
+    const column = table?.columns?.[selected.columnIndex];
+    if (!table || !column) return null;
+    const payload = codeSnippetClipboard.reportTableFragmentPayload(table, {
+      kind: 'column',
+      rowIndex: -1,
+      columnIndex: selected.columnIndex,
+    });
+    return { column, payload };
+  }
+
+  function reportContextLabels() {
+    return state.reportTableLanguage === 'en'
+      ? { title: 'Copy for Word', selection: 'Copy selected text', cell: 'Copy cell', row: 'Copy row', column: 'Copy column', copied: 'Copied' }
+      : { title: 'Salin untuk Word', selection: 'Salin teks dipilih', cell: 'Salin sel', row: 'Salin baris', column: 'Salin lajur', copied: 'Disalin' };
+  }
+
+  function activeReportTableById(tableId) {
+    return reportPageSections(activeReportPage()).flatMap((section) => section.tables).find((item) => item.id === tableId) || null;
+  }
+
+  function selectedReportText() {
+    const selection = window.getSelection?.();
+    if (!selection || selection.isCollapsed) return '';
+    const view = els.graphViewport.querySelector('.fyp-report-view');
+    const anchor = selection.anchorNode?.nodeType === 1 ? selection.anchorNode : selection.anchorNode?.parentElement;
+    const focus = selection.focusNode?.nodeType === 1 ? selection.focusNode : selection.focusNode?.parentElement;
+    return view?.contains(anchor) && view?.contains(focus) ? selection.toString().trim() : '';
+  }
+
+  function closeReportContextMenu() {
+    if (reportContextMenu) reportContextMenu.hidden = true;
+    reportContextTarget = null;
+  }
+
+  function ensureReportContextMenu() {
+    if (reportContextMenu) return reportContextMenu;
+    reportContextMenu = document.createElement('div');
+    reportContextMenu.className = 'fyp-report-context-menu';
+    reportContextMenu.hidden = true;
+    reportContextMenu.setAttribute('role', 'menu');
+    document.body.appendChild(reportContextMenu);
+    reportContextMenu.addEventListener('click', async (event) => {
+      const button = event.target.closest('[data-report-context-copy]');
+      if (!button || !reportContextTarget) return;
+      const action = button.dataset.reportContextCopy;
+      let payload;
+      if (action === 'selection') {
+        const plainText = reportContextTarget.selectionText;
+        payload = {
+          plainText,
+          htmlText: `<p style="margin:0;color:#000000;font-family:'Times New Roman',serif;font-size:10pt;line-height:1.25;">${escapeHTML(plainText).replace(/\r?\n/g, '<br>')}</p>`,
+        };
+      } else {
+        const table = activeReportTableById(reportContextTarget.tableId);
+        if (!table) return;
+        payload = codeSnippetClipboard.reportTableFragmentPayload(table, {
+          kind: action,
+          rowIndex: reportContextTarget.rowIndex,
+          columnIndex: reportContextTarget.columnIndex,
+        });
+      }
+      await codeSnippetClipboard.writeClipboardPayload(payload.plainText, payload.htmlText);
+      const labels = reportContextLabels();
+      els.statusMessage.textContent = `${labels.copied}: ${button.textContent.trim()}`;
+      closeReportContextMenu();
+    });
+    return reportContextMenu;
+  }
+
+  function openReportContextMenu(event) {
+    if (!isReportTableDiagram()) return;
+    const cell = event.target.closest('.fyp-report-table th, .fyp-report-table td');
+    const selectionText = selectedReportText();
+    if (!cell && !selectionText) return;
+    const card = cell?.closest('[data-report-table-card]');
+    const labels = reportContextLabels();
+    const actions = [];
+    if (selectionText) actions.push(['selection', labels.selection]);
+    if (cell && card) actions.push(['cell', labels.cell], ['row', labels.row], ['column', labels.column]);
+    if (!actions.length) return;
+    event.preventDefault();
+    event.stopPropagation();
+    reportContextTarget = {
+      tableId: card?.dataset.reportTableCard || '',
+      rowIndex: Number(cell?.dataset.reportRowIndex ?? -1),
+      columnIndex: Number(cell?.dataset.reportColumnIndex ?? -1),
+      selectionText,
+    };
+    const menu = ensureReportContextMenu();
+    menu.setAttribute('aria-label', labels.title);
+    menu.innerHTML = `<p class="fyp-report-context-menu__title">${escapeHTML(labels.title)}</p>${actions.map(([action, label]) => `<button type="button" role="menuitem" data-report-context-copy="${action}">${escapeHTML(label)}</button>`).join('')}`;
+    menu.hidden = false;
+    const bounds = menu.getBoundingClientRect();
+    menu.style.left = `${Math.max(8, Math.min(event.clientX, window.innerWidth - bounds.width - 8))}px`;
+    menu.style.top = `${Math.max(8, Math.min(event.clientY, window.innerHeight - bounds.height - 8))}px`;
+    menu.querySelector('[role="menuitem"]')?.focus();
+  }
+
   function renderDiagram() {
+    closeReportContextMenu();
     const diagram = activeDiagram(); const text = diagramText(diagram); const hasAsset = Boolean(activeAsset() || runtimeDocument()?.workingXml);
     const codeLayout = isCodeDiagram(diagram);
+    const reportTableLayout = isReportTableDiagram(diagram);
     document.body.classList.toggle('is-code-snippet-mode', codeLayout);
+    document.body.classList.toggle('is-report-table-mode', reportTableLayout);
     els.diagramTitle.textContent = text.title; els.diagramDescription.textContent = text.description;
     els.diagramStatus.textContent = labelStatus(diagram.status); els.diagramStatus.dataset.status = diagram.status;
-    els.modeControl.hidden = codeLayout || !hasAsset;
+    els.modeControl.hidden = codeLayout || reportTableLayout || !hasAsset;
     els.actualMode.setAttribute('aria-pressed', String(effectiveMode() === 'actual'));
     els.mapMode.setAttribute('aria-pressed', String(effectiveMode() === 'map'));
-    els.referenceButton.hidden = codeLayout || !diagram.reference;
+    els.referenceButton.hidden = codeLayout || reportTableLayout || !diagram.reference;
     els.empty.hidden = true;
     renderWorkspaceControls();
     if (state.workspaceMode !== 'view') return;
     if (codeLayout) renderCodeSnippet(diagram);
+    else if (reportTableLayout) renderReportTables(diagram);
     else if (effectiveMode() === 'actual') renderActualDiagram();
     else if (diagram.layout === 'schema') renderSchema();
     else renderGraph(diagram);
@@ -1631,7 +2014,7 @@
   }
 
   function fitDiagram() {
-    if (isCodeDiagram()) return;
+    if (isDocumentDiagram()) return;
     const padding = 18; const width = Math.max(100, els.graph.clientWidth - padding * 2); const height = Math.max(100, els.graph.clientHeight - padding * 2);
     state.scale = Math.min(width / state.naturalWidth, height / state.naturalHeight, 1.35);
     state.panX = (els.graph.clientWidth - state.naturalWidth * state.scale) / 2;
@@ -1646,7 +2029,7 @@
   }
 
   function zoomBy(factor) {
-    if (isCodeDiagram()) return;
+    if (isDocumentDiagram()) return;
     const old = state.scale; const next = Math.min(4, Math.max(0.12, old * factor)); const cx = els.graph.clientWidth / 2; const cy = els.graph.clientHeight / 2;
     state.panX = cx - (cx - state.panX) * (next / old); state.panY = cy - (cy - state.panY) * (next / old); state.scale = next; state.fitMode = false; applyTransform();
   }
@@ -1912,8 +2295,9 @@
         storeDiagramCollectionGroups(state.diagramCollectionGroups);
       }
     }
+    clearReportColumnSelection();
     state.diagramId = id; state.selected = null; state.hovered = null; state.selectedComponentKey = null; state.hoveredComponentKey = null; state.selectedConnectionId = null; state.fitMode = true;
-    if (isCodeDiagram(nextDiagram)) state.mobilePanel = 'diagram';
+    if (isDocumentDiagram(nextDiagram)) state.mobilePanel = 'diagram';
     cloudManager?.setActiveFromDocumentKey(id);
     if (previousWorkspaceMode !== 'view' && !isEditableDiagram(id)) state.workspaceMode = 'view';
     renderAll();
@@ -1954,12 +2338,12 @@
   }
 
   function updateMobilePanels() {
-    const codeLayout = isCodeDiagram();
-    if (codeLayout) state.mobilePanel = 'diagram';
+    const documentLayout = isDocumentDiagram();
+    if (documentLayout) state.mobilePanel = 'diagram';
     document.querySelectorAll('[data-panel]').forEach((panel) => panel.classList.toggle('mobile-active', panel.dataset.panel === state.mobilePanel));
     document.querySelectorAll('[data-mobile-panel]').forEach((button) => {
       const active = button.dataset.mobilePanel === state.mobilePanel;
-      button.hidden = codeLayout && button.dataset.mobilePanel !== 'diagram';
+      button.hidden = documentLayout && button.dataset.mobilePanel !== 'diagram';
       button.classList.toggle('is-active', active);
       button.setAttribute('aria-selected', String(active));
     });
@@ -2286,6 +2670,51 @@
     if (node) pinSelection(node.dataset.node); else if (table) pinSelection(`table:${table.dataset.table}`);
   });
   els.graph.addEventListener('click', async (event) => {
+    const reportColumnButton = event.target.closest('[data-report-column-select]');
+    if (reportColumnButton && isReportTableDiagram()) {
+      toggleReportColumnSelection(
+        reportColumnButton.dataset.reportColumnSelect,
+        Number(reportColumnButton.dataset.reportColumnIndex),
+        reportColumnButton.dataset.reportColumnLabel || '',
+      );
+      return;
+    }
+    const reportButton = event.target.closest('[data-copy-report-table]');
+    if (reportButton && isReportTableDiagram()) {
+      const tableId = reportButton.dataset.copyReportTable;
+      const table = reportPageSections(activeReportPage()).flatMap((section) => section.tables).find((item) => item.id === tableId);
+      if (!table) return;
+      const payload = codeSnippetClipboard.reportTablePayload(table);
+      await codeSnippetClipboard.writeClipboardPayload(payload.plainText, payload.htmlText);
+      const label = reportButton.querySelector('span');
+      if (label) label.textContent = t('ui.tableCopied');
+      els.statusMessage.textContent = `${t('ui.tableCopied')}: ${table.title}`;
+      window.setTimeout(() => { if (label?.isConnected) label.textContent = t('ui.copyTable'); }, 1400);
+      return;
+    }
+    const reportLanguageButton = event.target.closest('[data-report-language]');
+    if (reportLanguageButton && isReportTableDiagram()) {
+      const nextLanguage = reportLanguageButton.dataset.reportLanguage === 'en' ? 'en' : 'ms';
+      if (nextLanguage !== state.reportTableLanguage) clearReportColumnSelection();
+      state.reportTableLanguage = nextLanguage;
+      storeReportTableLanguage(state.reportTableLanguage);
+      renderDiagram();
+      els.statusMessage.textContent = `${t('ui.reportLanguageChanged')}: ${state.reportTableLanguage === 'en' ? 'English' : 'BM'}`;
+      return;
+    }
+    const dictionaryColumnButton = event.target.closest('[data-report-column-mode]');
+    if (dictionaryColumnButton && activeDiagram()?.reportTableKey === 'kamus-data') {
+      const nextColumnMode = dictionaryColumnButton.dataset.reportColumnMode === 'size' ? 'size' : 'constraints';
+      if (nextColumnMode !== state.dictionaryColumnMode) clearReportColumnSelection();
+      state.dictionaryColumnMode = nextColumnMode;
+      storeDictionaryColumnMode(state.dictionaryColumnMode);
+      renderDiagram();
+      const modeLabel = state.dictionaryColumnMode === 'size'
+        ? (state.reportTableLanguage === 'en' ? 'Data Size' : 'Saiz Data')
+        : (state.reportTableLanguage === 'en' ? 'Required / Constraints' : 'Wajib / Kekangan');
+      els.statusMessage.textContent = `${t('ui.dictionaryColumnChanged')}: ${modeLabel}`;
+      return;
+    }
     const languageButton = event.target.closest('[data-snippet-language]');
     if (languageButton && isCodeDiagram()) {
       state.snippetLanguage = languageButton.dataset.snippetLanguage === 'en' ? 'en' : 'ms';
@@ -2297,23 +2726,50 @@
     }
     const codeButton = event.target.closest('[data-copy-snippet-code]');
     const captionButton = event.target.closest('[data-copy-snippet-caption]');
-    const button = codeButton || captionButton;
+    const tableButton = event.target.closest('[data-copy-upstream-table]');
+    const flowButton = event.target.closest('[data-copy-marker-flow]');
+    const button = codeButton || captionButton || tableButton || flowButton;
     const diagram = activeDiagram();
     if (!button || !isCodeDiagram(diagram)) return;
-    const copyCode = Boolean(codeButton);
     const snippet = codeSnippetText(diagram);
-    const plainText = copyCode ? snippet.code : snippet.caption;
-    const htmlText = copyCode ? codeSnippetClipboard.codeHTML(snippet.code) : codeSnippetClipboard.captionHTML(snippet.caption);
+    let plainText;
+    let htmlText;
+    let copiedLabel;
+    let defaultLabel;
+    if (flowButton) {
+      const english = state.snippetLanguage === 'en';
+      const flowTitle = english ? diagram.markerFlowTitleEn : diagram.markerFlowTitle;
+      const flowSteps = english ? diagram.markerFlowEn : diagram.markerFlow;
+      const payload = codeSnippetClipboard.markerFlowPayload(flowTitle, flowSteps);
+      plainText = payload.plainText;
+      htmlText = payload.htmlText;
+      copiedLabel = t('ui.flowCopied');
+      defaultLabel = t('ui.copyFlow');
+    } else if (tableButton) {
+      const payload = codeSnippetClipboard.sourceTablePayload(diagram.upstreamSources, state.snippetLanguage);
+      plainText = payload.plainText;
+      htmlText = payload.htmlText;
+      copiedLabel = t('ui.tableCopied');
+      defaultLabel = t('ui.copyTable');
+    } else if (codeButton) {
+      plainText = snippet.code;
+      htmlText = codeSnippetClipboard.codeHTML(snippet.code);
+      copiedLabel = t('ui.codeCopied');
+      defaultLabel = t('ui.copyCode');
+    } else {
+      plainText = snippet.caption;
+      htmlText = codeSnippetClipboard.captionHTML(snippet.caption);
+      copiedLabel = t('ui.captionCopied');
+      defaultLabel = t('ui.copyCaption');
+    }
     await codeSnippetClipboard.writeClipboardPayload(plainText, htmlText);
-    const copiedLabel = copyCode ? t('ui.codeCopied') : t('ui.captionCopied');
-    const defaultLabel = copyCode ? t('ui.copyCode') : t('ui.copyCaption');
     const label = button.querySelector('span');
     if (label) label.textContent = copiedLabel;
     els.statusMessage.textContent = copiedLabel;
     window.setTimeout(() => { if (label?.isConnected) label.textContent = defaultLabel; }, 1400);
   });
   els.graph.addEventListener('keydown', (event) => {
-    const button = event.target.closest('[data-snippet-language], [data-copy-snippet-code], [data-copy-snippet-caption]');
+    const button = event.target.closest('[data-snippet-language], [data-copy-snippet-code], [data-copy-snippet-caption], [data-copy-upstream-table], [data-copy-marker-flow]');
     if (!button || !isCodeDiagram() || (event.key !== 'Enter' && event.key !== ' ')) return;
     event.preventDefault();
     button.click();
@@ -2357,11 +2813,12 @@
     window.setTimeout(() => { if (button.isConnected) button.textContent = t('ui.copyReportParagraph'); }, 1400);
   });
   byId('zoom-in').addEventListener('click', () => zoomBy(1.2)); byId('zoom-out').addEventListener('click', () => zoomBy(1 / 1.2)); byId('zoom-fit').addEventListener('click', fitDiagram);
-  els.graph.addEventListener('wheel', (event) => { if (isCodeDiagram()) return; event.preventDefault(); zoomBy(event.deltaY < 0 ? 1.08 : 1 / 1.08); }, { passive: false });
-  els.graph.addEventListener('selectstart', (event) => { if (!isCodeDiagram()) event.preventDefault(); });
-  els.graph.addEventListener('dragstart', (event) => { if (!isCodeDiagram()) event.preventDefault(); });
+  els.graph.addEventListener('wheel', (event) => { if (isDocumentDiagram()) return; event.preventDefault(); zoomBy(event.deltaY < 0 ? 1.08 : 1 / 1.08); }, { passive: false });
+  els.graph.addEventListener('contextmenu', openReportContextMenu);
+  els.graph.addEventListener('selectstart', (event) => { if (!isDocumentDiagram()) event.preventDefault(); });
+  els.graph.addEventListener('dragstart', (event) => { if (!isDocumentDiagram()) event.preventDefault(); });
   els.graph.addEventListener('pointerdown', (event) => {
-    if (isCodeDiagram()) return;
+    if (isDocumentDiagram()) return;
     if (event.button !== 0) return;
     event.preventDefault();
     state.suppressClick = false;
@@ -2376,6 +2833,29 @@
     };
     els.graph.setPointerCapture(event.pointerId);
   });
+  document.addEventListener('pointerdown', (event) => { if (!event.target.closest('.fyp-report-context-menu')) closeReportContextMenu(); });
+  document.addEventListener('keydown', async (event) => {
+    if (event.key === 'Escape') {
+      closeReportContextMenu();
+      clearReportColumnSelection({ announce: true });
+    }
+  });
+  document.addEventListener('copy', (event) => {
+    if (!isReportTableDiagram() || !state.reportColumnSelection || !event.clipboardData) return;
+    const activeElement = document.activeElement;
+    const editableTarget = activeElement?.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(activeElement?.tagName || '');
+    if (editableTarget || selectedReportText()) return;
+    const copyData = selectedReportColumnCopyData();
+    if (!copyData) return;
+    event.preventDefault();
+    event.clipboardData.setData('text/plain', copyData.payload.plainText);
+    event.clipboardData.setData('text/html', copyData.payload.htmlText);
+    els.statusMessage.textContent = state.reportTableLanguage === 'en'
+      ? `Column copied: ${copyData.column.label}`
+      : `Lajur disalin: ${copyData.column.label}`;
+  });
+  els.graph.addEventListener('scroll', closeReportContextMenu, true);
+  window.addEventListener('resize', closeReportContextMenu);
   els.graph.addEventListener('pointermove', (event) => {
     if (!state.pointer || state.pointer.id !== event.pointerId) return;
     const dx = event.clientX - state.pointer.x; const dy = event.clientY - state.pointer.y;

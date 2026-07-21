@@ -50,9 +50,13 @@
         collectionClasses: 'Class Diagrams', collectionArchitectureModules: 'Architecture & Modules', collectionData: 'Data Diagrams',
         collectionDiagram: 'diagram', collectionDiagrams: 'diagrams',
         reportExplanation: 'Report explanation', copyReportParagraph: 'Copy paragraph', reportParagraphCopied: 'Paragraph copied',
-        copyCode: 'Copy code', copyCaption: 'Copy caption', codeCopied: 'Code copied', captionCopied: 'Caption copied',
+        copyCode: 'Copy code', copyCaption: 'Copy caption', copyTable: 'Copy table', copyFlow: 'Copy flow', codeCopied: 'Code copied', captionCopied: 'Caption copied', tableCopied: 'Table copied', flowCopied: 'Flow copied',
+        reportTableReady: 'Report-ready tables', reportVerified: 'Verified snapshot', reportSource: 'Source', reportNote: 'Note',
         reportCaption: 'Report caption', codeSources: 'Code source files', reportReadyCode: 'Report-ready pseudocode',
         snippetLanguage: 'Pseudocode language', snippetLanguageChanged: 'Pseudocode language changed',
+        reportLanguage: 'Report-table language', reportLanguageChanged: 'Report-table language changed',
+        dictionaryColumn: 'Data Dictionary column view', dictionaryConstraints: 'Required / Constraints', dictionarySize: 'Data Size',
+        dictionaryColumnChanged: 'Data Dictionary column view changed',
       },
       status: { current: 'Current code', concept: 'FYP conceptual model', legacy: 'Legacy / unavailable', warning: 'Attention', gated: 'Feature-gated' },
       kind: {
@@ -62,7 +66,7 @@
       },
       categories: {
         Sistem: 'System', Keperluan: 'Requirements', 'Tingkah laku': 'Behaviour', Jujukan: 'Sequence', 'Carta Alir': 'Flow Chart', Kelas: 'Classes', 'Reka bentuk': 'Design',
-        'Peta & Penghalaan': 'Map & Routing', 'V2 Georouting': 'V2 Georouting', 'Code Snippets': 'Code Snippets', Data: 'Data', 'ETL Pipeline': 'ETL Pipeline', 'Deployment & Infra': 'Deployment & Infra', 'Modul lanjutan': 'Extended modules',
+        'Peta & Penghalaan': 'Map & Routing', 'V2 Georouting': 'V2 Georouting', 'Code Snippets': 'Code Snippets', 'FYP Report Tables': 'FYP Report Tables', Data: 'Data', 'ETL Pipeline': 'ETL Pipeline', 'Deployment & Infra': 'Deployment & Infra', 'Modul lanjutan': 'Extended modules',
       },
       scopes: {
         core: 'FYP Core', jobops: 'JobOps', blog: 'Blog & Newsletter', community: 'Community & Intel', infra: 'Infrastructure', all: 'All modules',
@@ -121,6 +125,9 @@
         'code-poi-search': ['c. Hybrid POI Search Algorithm', 'Report-ready pseudocode for Supabase and Nominatim POI search with debounce, stale-request protection and deduplication.'],
         'code-poi-clustering': ['d. POI Marker Clustering Algorithm', 'Report-ready pseudocode for clustered GeoJSON sources, individual markers and MapLibre click interaction.'],
         'code-live-job-search': ['e. PetaKerja Live Job Search Algorithm', 'Report-ready pseudocode for authenticated live search, a five-minute cache, parallel upstream requests, filtering, deduplication and rendering.'],
+        'code-job-location-resolution': ['f. PetaKerja Job-Location Coordinate Estimation and Resolution Algorithm', 'Report-ready pseudocode for deterministic job-marker estimation, its coastline limitation and on-demand confidence-labelled GeoGateway resolution.'],
+        'fyp-kamus-data': ['Data Dictionary', 'Copyable data-dictionary tables grouped by User and Administrator responsibilities.'],
+        'fyp-use-case-specification': ['Use Case Specification', 'Fifteen copyable English specifications aligned with the current actor connections.'],
       },
       views: {
         start: ['Start page', 'Workspace selection before the map starts.'], map: ['Map & POIs', 'Main workspace with ribbon, contents, map and catalogue.'],

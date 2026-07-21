@@ -36,10 +36,10 @@
     'admin-sign-out-sequence': { url: 'assets/editor/sequence-admin-sign-out.drawio', pageId: 'petakerja_administrator_sign_out_sequence', filename: 'Sequence Diagram PetaKerja - Administrator Sign Out.drawio' },
     'user-explore-3d-map-sequence': { url: 'assets/editor/sequence-user-explore-3d-map.drawio?v=20260717-1', pageId: 'petakerja_user_explore_3d_map_sequence', filename: 'Sequence Diagram PetaKerja - Explore the 3D Map.drawio' },
     'user-sign-out-sequence': { url: 'assets/editor/sequence-user-sign-out.drawio?v=20260717-1', pageId: 'petakerja_user_sign_out_sequence', filename: 'Sequence Diagram PetaKerja - User Sign Out.drawio' },
-    architecture: { url: 'assets/editor/architecture-layered.drawio?v=20260715-1', pageId: 'petakerja_layered_architecture', filename: 'PetaKerja Layered Architecture - Polished.drawio' },
-    'architecture-original': { url: 'assets/editor/architecture-layered-original.drawio?v=20260715-1', pageId: 'petakerja_layered_architecture', filename: 'PetaKerja Layered Architecture - Original.drawio' },
-    modules: { url: 'assets/editor/module-hierarchy.drawio?v=20260715-1', pageId: 'petakerja_module_hierarchy', filename: 'PetaKerja Module Hierarchy - Polished.drawio' },
-    'modules-original': { url: 'assets/editor/module-hierarchy-original.drawio?v=20260715-1', pageId: 'petakerja_module_hierarchy', filename: 'PetaKerja Module Hierarchy - Original.drawio' },
+    architecture: { url: 'assets/editor/architecture-layered.drawio?v=20260721-1', pageId: 'petakerja_layered_architecture', filename: 'PetaKerja Layered Architecture - Polished.drawio' },
+    'architecture-original': { url: 'assets/editor/architecture-layered-original.drawio?v=20260721-1', pageId: 'petakerja_layered_architecture', filename: 'PetaKerja Layered Architecture - Original.drawio' },
+    modules: { url: 'assets/editor/module-hierarchy.drawio?v=20260721-1', pageId: 'petakerja_module_hierarchy', filename: 'PetaKerja Module Hierarchy - Polished.drawio' },
+    'modules-original': { url: 'assets/editor/module-hierarchy-original.drawio?v=20260721-1', pageId: 'petakerja_module_hierarchy', filename: 'PetaKerja Module Hierarchy - Original.drawio' },
     'map-routing-responsibility-stack': { url: 'assets/editor/petakerja-map-routing-responsibility-stack.drawio?v=20260718-1', pageId: 'petakerja_map_routing_stack', filename: 'PetaKerja Map Routing Responsibility Stack.drawio' },
     'etl-pipeline': { url: 'assets/editor/etl-pipeline.drawio?v=20260720-1', pageId: 'petakerja_etl_pipeline', filename: 'PetaKerja Operational ETL and Serving Pipeline.drawio' },
     'deployment-infrastructure': { url: 'assets/editor/deployment-infrastructure.drawio?v=20260720-1', pageId: 'petakerja_deployment_infrastructure', filename: 'PetaKerja Production Deployment and Infrastructure.drawio' },
@@ -67,6 +67,36 @@
     const holder = document.createElement('div');
     holder.innerHTML = String(value || '').replace(/<br\s*\/?\s*>/gi, ' ');
     return (holder.textContent || holder.innerText || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function localizedLabelPairs(xml) {
+    const documentNode = normaliseDocument(xml);
+    const pairs = [];
+    const seen = new Set();
+    const addPair = (en, ms) => {
+      const cleanEn = cleanLabel(en);
+      const cleanMs = cleanLabel(ms);
+      if (!cleanEn || !cleanMs || cleanEn === cleanMs) return;
+      const key = `${cleanEn}\u0000${cleanMs}`;
+      if (seen.has(key)) return;
+      seen.add(key);
+      pairs.push({ en: cleanEn, ms: cleanMs });
+    };
+    const segments = (value) => String(value || '')
+      .replace(/<br\s*\/?\s*>/gi, '\n')
+      .replace(/<\/div>\s*<div[^>]*>/gi, '\n')
+      .split(/\r?\n/).map(cleanLabel).filter(Boolean);
+    bilingualElements(documentNode).forEach((element) => {
+      const labelEn = element.getAttribute('labelEn');
+      const labelMs = element.getAttribute('labelMs');
+      addPair(labelEn, labelMs);
+      const enSegments = segments(labelEn);
+      const msSegments = segments(labelMs);
+      if (enSegments.length === msSegments.length) {
+        enSegments.forEach((segment, index) => addPair(segment, msSegments[index]));
+      }
+    });
+    return pairs.sort((left, right) => Math.max(right.en.length, right.ms.length) - Math.max(left.en.length, left.ms.length));
   }
 
   function normaliseText(value) {
@@ -260,7 +290,7 @@
         };
       });
       const byComponent = new Map(identities.map((identity) => [identity.componentKey, identity]));
-      const connections = (asset.connections || []).map((connection) => ({
+      const connections = (asset.connections || []).filter((connection) => connection.visual !== false).map((connection) => ({
         id: connection.id,
         sourceKey: byComponent.get(connection.sourceComponentKey)?.key,
         targetKey: byComponent.get(connection.targetComponentKey)?.key,
@@ -566,7 +596,8 @@
       `Komponen kanonik tidak ditemui: ${identity.label}.`, `Canonical component not found: ${identity.labelEn}.`, { componentKey: identity.key })));
 
     const actualRelations = [];
-    cells.filter((cell) => cell.getAttribute('edge') === '1').forEach((edge) => {
+    cells.filter((cell) => cell.getAttribute('edge') === '1'
+      && cell.parentElement?.getAttribute('petakerjaRelation') !== 'structural').forEach((edge) => {
       const sourceId = edge.getAttribute('source');
       const targetId = edge.getAttribute('target');
       const sourceCell = cellById.get(sourceId);
@@ -1235,7 +1266,7 @@
 
   window.PETAKERJA_EDITOR = {
     EDITABLE_DIAGRAMS, SOURCE_FILES, buildCanonicalManifests, analyseXML, extractSinglePage, createBlankDocument,
-    projectLocalizedXML, canonicalizeLocalizedXML, canonicalDocumentFingerprint,
+    projectLocalizedXML, canonicalizeLocalizedXML, canonicalDocumentFingerprint, localizedLabelPairs,
     createController(options) { return new EditorController(options); },
   };
 }());

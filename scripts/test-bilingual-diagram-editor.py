@@ -4,7 +4,9 @@
 from __future__ import annotations
 
 import hashlib
+import html
 import json
+import re
 import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -24,8 +26,39 @@ TRANSLATION_ATTRIBUTES = {
 VOLATILE_ATTRIBUTES = {"modified", "etag", "agent"}
 EXPECTED_DIAGRAMS = 53
 EXPECTED_SOURCES = 52
-EXPECTED_STRUCTURE = "cf35e0665ba85a82ca16425f3181e8ad785d12375e614e21cc2f6a74daa1fe13"
+EXPECTED_STRUCTURE = "089d294eafd14e806093c64b11d1a5ec55ac006f42b292d24f20696d702efdec"
 REVIEWED_MAP_FLOWCHART = ROOT / "assets" / "editor" / "flowchart-user-explore-3d-map.drawio"
+POLISHED_MODULE_HIERARCHY = ROOT / "assets" / "editor" / "module-hierarchy.drawio"
+ORIGINAL_MODULE_HIERARCHY = ROOT / "assets" / "editor" / "module-hierarchy-original.drawio"
+ORIGINAL_MODULE_STRUCTURE = "d82873ab76b5b401502e8d7f54fa1c660aa0e63f648dc593f84415f669748291"
+DESIGN_SOURCES = {
+    ROOT / "assets" / "editor" / "architecture-layered.drawio",
+    ROOT / "assets" / "editor" / "architecture-layered-original.drawio",
+    POLISHED_MODULE_HIERARCHY,
+    ORIGINAL_MODULE_HIERARCHY,
+}
+TECHNICAL_DESIGN_LABELS = {
+    "PetaKerja",
+    "src/main.ts src/MyPetaApp.ts",
+    "templates.ts styles.css",
+    "MapLibre GL JS",
+    "POIManager SearchManager CategoryManager",
+    "JobFinderManager",
+    "InsightsManager",
+    "ChatbotManager",
+    "supa-api.ts grep-api.ts api.ts",
+    "OpenDataAPI",
+    "authenticatedFetch",
+    "server/app.ts",
+    "GET /api/jobs/supa",
+    "POST /api/search-jobs",
+    "POST /api/assistant/chat",
+    "Supabase PostgreSQL PostGIS",
+    "public.scraped_jobs public.job_listings",
+    "api.data.gov.my",
+    "Better Auth",
+    "InsightsManager OpenDataAPI",
+}
 
 
 def structural_node(element: ET.Element) -> dict[str, object]:
@@ -64,6 +97,90 @@ def visible_elements(page: ET.Element) -> list[tuple[ET.Element, str]]:
         if cell.get("id", "") not in wrapped_cell_ids
     )
     return [(element, attribute) for element, attribute in elements if element.get(attribute)]
+
+
+def clean_label(value: str) -> str:
+    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", value or ""))).strip()
+
+
+def assert_polished_module_hierarchy(errors: list[str]) -> None:
+    page = ET.parse(POLISHED_MODULE_HIERARCHY).getroot().find("diagram")
+    if page is None:
+        errors.append("polished Module Hierarchy is missing its Draw.io page")
+        return
+    wrappers = {wrapper.get("id", ""): wrapper for wrapper in page.findall(".//object")}
+    component_ids = {
+        wrapper_id for wrapper_id, wrapper in wrappers.items()
+        if wrapper.get("petakerjaKey", "").startswith("modules/")
+        and wrapper.find("mxCell") is not None
+        and wrapper.find("mxCell").get("vertex") == "1"
+    }
+    expected_structural = {
+        "modules-application-root", "modules-module-core", "modules-module-jobs",
+        "modules-module-account", "modules-module-analysis",
+    }
+    if len(component_ids) != 12:
+        errors.append(f"polished Module Hierarchy must retain 12 interactive responsibilities, found {len(component_ids)}")
+    if not expected_structural.issubset(wrappers):
+        errors.append("polished Module Hierarchy is missing its root or four module parents")
+    if any(identifier.startswith("modules-group-") for identifier in wrappers):
+        errors.append("polished Module Hierarchy still contains the old quadrant containers")
+
+    hierarchy_edges = []
+    for wrapper in wrappers.values():
+        cell = wrapper.find("mxCell")
+        if cell is not None and cell.get("edge") == "1" and wrapper.get("petakerjaRelation") == "structural":
+            hierarchy_edges.append((wrapper, cell))
+    if len(hierarchy_edges) != 16:
+        errors.append(f"polished Module Hierarchy must contain 16 structural connectors, found {len(hierarchy_edges)}")
+    incoming = {identifier: 0 for identifier in component_ids}
+    for wrapper, cell in hierarchy_edges:
+        if "endArrow=none" not in cell.get("style", ""):
+            errors.append(f"{wrapper.get('id')} must be an arrow-free hierarchy connector")
+        if cell.get("target") in incoming:
+            incoming[cell.get("target")] += 1
+        source = cell.get("source", "").replace("modules-module-", "modules-")
+        target = cell.get("target", "")
+        if not cell.get("source", "").endswith("application-root"):
+            source_branch = source.removeprefix("modules-").split("-", 1)[0]
+            target_branch = target.removeprefix("modules-").split("-", 1)[0]
+            if source_branch != target_branch:
+                errors.append(f"{wrapper.get('id')} crosses module branches")
+    if any(count != 1 for count in incoming.values()):
+        errors.append(f"each module responsibility must have one visible parent path: {incoming}")
+
+    dependency_cards = [identifier for identifier in wrappers if re.fullmatch(r"modules-dependency-[1-4]", identifier)]
+    if "modules-dependency-panel" not in wrappers or "modules-dependency-title" not in wrappers or len(dependency_cards) != 4:
+        errors.append("polished Module Hierarchy must contain the bordered four-row dependency panel")
+
+
+def assert_module_assets(errors: list[str]) -> None:
+    source = (ROOT / "diagram-assets.js").read_text(encoding="utf-8")
+    prefix = "window.PETAKERJA_DIAGRAM_ASSETS="
+    payload = source.split("\n", 1)[1]
+    if not payload.startswith(prefix) or not payload.endswith(";\n"):
+        errors.append("diagram-assets.js has an unexpected generated wrapper")
+        return
+    assets = json.loads(payload[len(prefix):-2])
+    module_connections = assets.get("modules", {}).get("connections", [])
+    expected_ids = {
+        "modules-semantic-core-jobs", "modules-semantic-core-analysis",
+        "modules-semantic-account-jobs", "modules-semantic-account-analysis",
+    }
+    actual_ids = {connection.get("id") for connection in module_connections}
+    if actual_ids != expected_ids:
+        errors.append(f"polished Module Hierarchy semantic dependencies drifted: {sorted(actual_ids)}")
+    if any(connection.get("visual") is not False for connection in module_connections):
+        errors.append("module semantic dependencies must remain non-crossing, nonvisual registry entries")
+    for diagram_id, bm_title, en_title in (
+        ("architecture", "Seni Bina Berlapis PetaKerja", "PetaKerja Layered Architecture"),
+        ("architecture-original", "Seni Bina Berlapis PetaKerja", "PetaKerja Layered Architecture"),
+        ("modules", "Hierarki Modul PetaKerja", "PetaKerja Module Hierarchy"),
+        ("modules-original", "Hierarki Modul PetaKerja", "PetaKerja Module Hierarchy"),
+    ):
+        svg = assets.get(diagram_id, {}).get("svg", {})
+        if bm_title not in svg.get("ms", "") or en_title not in svg.get("en", "") or svg.get("ms") == svg.get("en"):
+            errors.append(f"{diagram_id} does not contain distinct BM and English SVG assets")
 
 
 def main() -> int:
@@ -107,6 +224,10 @@ def main() -> int:
                 continue
             if label_en != label_ms:
                 page_has_translation = True
+            elif source in DESIGN_SOURCES and clean_label(label_en) not in TECHNICAL_DESIGN_LABELS:
+                errors.append(
+                    f"{source.name}:{page_id}:{element_id} has untranslated design text: {clean_label(label_en)!r}"
+                )
             if element.tag == "object" and "/message-" in element.get("petakerjaKey", ""):
                 sequence_messages += 1
                 for attribute in ("simpleLabelEn", "simpleLabelMs", "codeLabelEn", "codeLabelMs"):
@@ -124,6 +245,20 @@ def main() -> int:
         errors.append(f"expected {EXPECTED_SOURCES} editor sources, found {len(parsed_sources)}")
     if len(checked_pages) != EXPECTED_DIAGRAMS:
         errors.append(f"expected {EXPECTED_DIAGRAMS} unique registered pages, found {len(checked_pages)}")
+
+    assert_polished_module_hierarchy(errors)
+    assert_module_assets(errors)
+
+    original_page = ET.parse(ORIGINAL_MODULE_HIERARCHY).getroot().find("diagram")
+    if original_page is None:
+        errors.append("original Module Hierarchy is missing its Draw.io page")
+    else:
+        original_payload = json.dumps(
+            structural_node(original_page), sort_keys=True, separators=(",", ":")
+        ).encode("utf-8")
+        original_structure = hashlib.sha256(original_payload).hexdigest()
+        if original_structure != ORIGINAL_MODULE_STRUCTURE:
+            errors.append(f"original Module Hierarchy geometry changed ({original_structure})")
 
     reviewed_root = ET.parse(REVIEWED_MAP_FLOWCHART).getroot()
     reviewed_page = reviewed_root.find("diagram")
@@ -170,12 +305,23 @@ def main() -> int:
     editor_source = (ROOT / "editor-core.js").read_text(encoding="utf-8")
     for marker in (
         "function bilingualElements(documentNode)",
+        "function localizedLabelPairs(xml)",
         "cell.parentElement?.tagName !== 'object'",
         "function visibleLabelAttribute(element)",
         "element.tagName === 'mxCell' ? 'value' : 'label'",
+        "connection.visual !== false",
     ):
         if marker not in editor_source:
             errors.append(f"editor-core.js is missing raw mxCell localization marker: {marker}")
+
+    app_source = (ROOT / "app.js").read_text(encoding="utf-8")
+    for marker in (
+        "editorAPI?.localizedLabelPairs?.(analysis?.xml || '')",
+        "translateRuntimeSvg(svg, diagramType, 'ms', localizedPairs)",
+        "connection.visual !== false && !presentCellIds.has(connection.id)",
+    ):
+        if marker not in app_source:
+            errors.append(f"app.js is missing metadata-driven runtime localization marker: {marker}")
 
     if errors:
         print("Bilingual all-diagram checks failed:")
