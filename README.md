@@ -50,7 +50,7 @@ Jika butang `Edit` dibuka dalam mod `file://`, Explorer kini memaparkan arahan p
 
 ### ETL Pipeline diagram
 
-The top-level **ETL Pipeline** category contains one independent, bilingual and editable **PetaKerja Operational ETL & Serving Pipeline** diagram. Its `2048 x 1120` canvas follows the supplied wide-zone reference while documenting the checked-in runtime rather than an aspirational medallion lake. Functional regions separate control and scheduling, source context, operational ETL, platforms and consumption, and operational truth.
+The top-level **ETL Pipeline** category contains two independent, bilingual and editable diagrams. **PetaKerja Operational ETL & Serving Pipeline** uses a `2048 x 1120` canvas that follows the supplied wide-zone reference while documenting the checked-in runtime rather than an aspirational medallion lake. Functional regions separate control and scheduling, source context, operational ETL, platforms and consumption, and operational truth.
 
 The control plane distinguishes the four GitHub Actions ingestion workflows from Vercel's `/api/cron/daily` maintenance route and the monthly DigitalOcean routing-data rebuild. The processing lanes show extraction, normalization/validation and protected persistence for jobs, coffee shops, events, application maintenance and Valhalla tiles. Supabase is represented as the operational PostgreSQL/PostGIS serving store; DigitalOcean is limited to the routing-only Valhalla pilot; Vercel hosts the Vite/Express application and server-side GeoGateway; the browser receives normalized API responses and never receives service-role or provider tokens. Nominatim remains visibly disabled.
 
@@ -60,6 +60,14 @@ The deterministic generator owns only `assets/editor/etl-pipeline.drawio`. It va
 python .\scripts\generate-etl-pipeline-diagram.py
 python .\scripts\build-diagram-assets.py
 python .\scripts\test-etl-pipeline-diagram.py
+```
+
+**Daily Index Workflow** provides a simpler `1920 x 900` five-stage view of `.github/workflows/scrape-jobs.yml`, `scripts/scrape-jobs.ts`, `public.scraped_jobs`, `/api/jobs/supa` and the Job Finder Daily Index frontend. Its core platform marks and eight configured job-source logos are embedded in the Draw.io source and SVG preview, so the visual remains available offline. The diagram also records the nonzero-run cleanup guard and the rule that `SUPABASE_SERVICE_ROLE_KEY` remains confined to trusted GitHub Actions execution.
+
+```powershell
+python .\scripts\generate-daily-index-workflow-diagram.py
+python .\scripts\build-diagram-assets.py
+python .\scripts\test-daily-index-workflow-diagram.py
 ```
 
 ### Deployment & Infra diagram

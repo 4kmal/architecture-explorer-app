@@ -102,6 +102,7 @@
         erd: ['Core ERD', 'Identity, profile, POI, job and user-module relationships. public.job_listings is marked unavailable.'],
         'data-flow': ['Data flow', 'Sources, ingestion/query, storage and presentation for POIs, jobs, AI and extended modules.'],
         'etl-pipeline': ['PetaKerja Operational ETL & Serving Pipeline', 'Current batch ingestion, normalization, operational storage and application delivery across GitHub Actions, Vercel, Supabase and DigitalOcean.'],
+        'daily-index-workflow': ['Daily Index Workflow', 'Current scheduled job collection, Supabase persistence, same-origin API serving and Daily Index presentation.'],
         'deployment-infrastructure': ['PetaKerja Production Deployment & Infrastructure', 'Production delivery, operational data, secure routing origin and grouped external-platform boundaries.'],
         jobops: ['JobOps, Gmail & Watchlist', 'Saved-job pipeline, Gmail integration, company watchlists, extractors and notifications.'],
         blog: ['Blog & newsletter', 'Separate blog boot path, editor, routes, content entities, analytics and newsletter delivery.'],

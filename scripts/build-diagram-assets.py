@@ -63,6 +63,7 @@ MODULE_HIERARCHY_SOURCE = ROOT / "assets" / "editor" / "module-hierarchy.drawio"
 MODULE_HIERARCHY_ORIGINAL_SOURCE = ROOT / "assets" / "editor" / "module-hierarchy-original.drawio"
 MAP_ROUTING_STACK_SOURCE = ROOT / "assets" / "editor" / "petakerja-map-routing-responsibility-stack.drawio"
 ETL_PIPELINE_SOURCE = ROOT / "assets" / "editor" / "etl-pipeline.drawio"
+DAILY_INDEX_WORKFLOW_SOURCE = ROOT / "assets" / "editor" / "daily-index-workflow.drawio"
 DEPLOYMENT_INFRASTRUCTURE_SOURCE = ROOT / "assets" / "editor" / "deployment-infrastructure.drawio"
 V2_GEOROUTING_EDITOR = EDITOR / "v2-georouting"
 
@@ -82,7 +83,7 @@ V2_GEOROUTING_EXPORTS = {
     "v2-geo-supabase": ("supabase.drawio", "v2_geo_supabase", "supabase.svg"),
 }
 V2_GEOROUTING_IDS = frozenset(V2_GEOROUTING_EXPORTS)
-EMBEDDED_BILINGUAL_IDS = frozenset({"etl-pipeline", "deployment-infrastructure"})
+EMBEDDED_BILINGUAL_IDS = frozenset({"etl-pipeline", "daily-index-workflow", "deployment-infrastructure"})
 V2_GEOROUTING_SEQUENCE_IDS = frozenset({
     "v2-geo-route-sequence", "v2-geo-travel-analysis-sequence", "v2-geo-job-route-sequence",
 })
@@ -127,6 +128,7 @@ DRAWIO_EXPORTS = {
     "modules-original": (MODULE_HIERARCHY_ORIGINAL_SOURCE, 1, "module-hierarchy-original.svg"),
     "map-routing-responsibility-stack": (MAP_ROUTING_STACK_SOURCE, 1, "petakerja-map-routing-responsibility-stack.svg"),
     "etl-pipeline": (ETL_PIPELINE_SOURCE, 1, "etl-pipeline.svg"),
+    "daily-index-workflow": (DAILY_INDEX_WORKFLOW_SOURCE, 0, "daily-index-workflow.svg"),
     "deployment-infrastructure": (DEPLOYMENT_INFRASTRUCTURE_SOURCE, 1, "deployment-infrastructure.svg"),
     **{
         diagram_id: (V2_GEOROUTING_EDITOR / source_name, 1, f"v2-georouting/{svg_name}")
@@ -1315,8 +1317,20 @@ def export_drawio(source: Path, page: int, destination: Path) -> None:
     raise RuntimeError(f"Draw.io did not produce {destination}")
 
 
-def slim_svg(svg: str) -> str:
-    svg = re.sub(r"<image\b[^>]*(?:/>|>.*?</image>)", "", svg, flags=re.I | re.S)
+def slim_svg(svg: str, preserve_embedded_images: bool = False) -> str:
+    image_pattern = re.compile(r"<image\b[^>]*(?:/>|>.*?</image>)", flags=re.I | re.S)
+    if preserve_embedded_images:
+        def retain_workflow_logo(match: re.Match[str]) -> str:
+            tag = match.group(0)
+            if "data:image/svg+xml" in tag:
+                return tag
+            if "data:image/png" in tag and re.search(r'width="70"\s+height="70"', tag):
+                return tag
+            return ""
+
+        svg = image_pattern.sub(retain_workflow_logo, svg)
+    else:
+        svg = image_pattern.sub("", svg)
     svg = re.sub(r"<a\b[^>]*>\s*<text[^>]*>Text is not SVG[^<]*</text>\s*</a>", "", svg, flags=re.I | re.S)
     svg = re.sub(r">\s+<", "><", svg)
     return svg.strip()
@@ -1764,10 +1778,19 @@ def v2_georouting_translations(source: Path) -> dict[str, str]:
     if diagram is None:
         return replacements
     for element in [*diagram.findall(".//object"), *diagram.findall(".//mxCell")]:
-        label_en = clean_label(element.get("labelEn") or element.get("label") or element.get("value") or "")
-        label_ms = clean_label(element.get("labelMs") or "")
+        raw_en = element.get("labelEn") or element.get("label") or element.get("value") or ""
+        raw_ms = element.get("labelMs") or ""
+        label_en = clean_label(raw_en)
+        label_ms = clean_label(raw_ms)
         if label_en and label_ms and label_en != label_ms:
             replacements[label_en] = label_ms
+        if source == DAILY_INDEX_WORKFLOW_SOURCE:
+            lines_en = [clean_label(value) for value in re.split(r"<br\s*/?>", raw_en, flags=re.I)]
+            lines_ms = [clean_label(value) for value in re.split(r"<br\s*/?>", raw_ms, flags=re.I)]
+            if len(lines_en) == len(lines_ms):
+                for line_en, line_ms in zip(lines_en, lines_ms):
+                    if line_en and line_ms and line_en != line_ms:
+                        replacements[line_en] = line_ms
     return replacements
 
 
@@ -2230,7 +2253,10 @@ def main() -> None:
             exported = existing_export if reuse_exports and existing_export.exists() else temp_dir / filename
             if exported != existing_export:
                 export_drawio(source, page, exported)
-            exported_svg = slim_svg(exported.read_text(encoding="utf-8"))
+            exported_svg = slim_svg(
+                exported.read_text(encoding="utf-8"),
+                preserve_embedded_images=diagram_id == "daily-index-workflow",
+            )
             if diagram_id in V2_GEOROUTING_IDS or diagram_id in EMBEDDED_BILINGUAL_IDS:
                 en = exported_svg
                 ms = translate_svg(en, v2_georouting_translations(source))
