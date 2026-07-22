@@ -923,7 +923,7 @@ def create_page(page: Page) -> tuple[ET.Element, ET.Element]:
     mxfile = ET.Element("mxfile", {
         "host": "PetaKerja Architecture Explorer", "agent": "PetaKerja V2 Georouting Generator",
         "version": "27.0.2", "compressed": "false", "pages": "1",
-        "petakerjaProjectionLanguage": "en", "petakerjaSequenceLabelMode": "simple",
+        "petakerjaProjectionLanguage": "en", "petakerjaDiagramLabelMode": "simple",
         "petakerjaLayoutStandard": "project-template-v2",
     })
     diagram = ET.SubElement(mxfile, "diagram", {"id": page.page_id, "name": page.name})

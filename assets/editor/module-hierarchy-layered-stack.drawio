@@ -1,0 +1,246 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="Electron" agent="PetaKerja Architecture Explorer" version="27.0.2" petakerjaDiagramLabelMode="simple" petakerjaProjectionLanguage="en">
+  <diagram id="petakerja_module_hierarchy_layered_stack" name="PetaKerja Module Hierarchy - Layered Stack" petakerjaRevision="2026-07-22-layered-stack-v1">
+    <mxGraphModel dx="1900" dy="1180" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1180" math="0" shadow="0" background="light-dark(#fbfcfe,#0b1118)">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <object id="diagram-title" label="PetaKerja Module Hierarchy — Layered Stack" labelEn="PetaKerja Module Hierarchy — Layered Stack" labelMs="Hierarki Modul PetaKerja — Susunan Bertingkat">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=24;fontStyle=1;fontColor=light-dark(#172033,#f3f6fb);pointerEvents=0;">
+            <mxGeometry x="80" y="20" width="1280" height="38" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="diagram-subtitle" label="Broad ownership at the top; implementation responsibilities and outcomes below." labelEn="Broad ownership at the top; implementation responsibilities and outcomes below." labelMs="Pemilikan umum di atas; tanggungjawab pelaksanaan dan hasil di bawah.">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontColor=light-dark(#475467,#c5cedb);pointerEvents=0;">
+            <mxGeometry x="80" y="58" width="1280" height="28" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="layer-product" label="1 · PRODUCT ROOT" labelEn="1 · PRODUCT ROOT" labelMs="1 · AKAR PRODUK">
+          <mxCell parent="1" vertex="1" style="shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;size=44;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=12;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);strokeWidth=2;pointerEvents=0;">
+            <mxGeometry x="450" y="105" width="650" height="120" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="layer-modules" label="2 · MODULE FAMILIES" labelEn="2 · MODULE FAMILIES" labelMs="2 · KELUARGA MODUL">
+          <mxCell parent="1" vertex="1" style="shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;size=54;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=12;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#f5f0ff,#2b2140);strokeColor=light-dark(#6941c6,#b9a2ff);strokeWidth=2;pointerEvents=0;">
+            <mxGeometry x="150" y="250" width="1160" height="175" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="layer-coordinators" label="3 · MANAGERS AND BOUNDARIES" labelEn="3 · MANAGERS AND BOUNDARIES" labelMs="3 · PENGURUS DAN SEMPADAN">
+          <mxCell parent="1" vertex="1" style="shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;size=62;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=12;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#fff7df,#3a2e16);strokeColor=light-dark(#9a6700,#f4c95d);strokeWidth=2;pointerEvents=0;">
+            <mxGeometry x="100" y="450" width="1260" height="240" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="layer-capabilities" label="4 · CAPABILITIES AND OUTPUTS" labelEn="4 · CAPABILITIES AND OUTPUTS" labelMs="4 · KEUPAYAAN DAN HASIL">
+          <mxCell parent="1" vertex="1" style="shape=trapezoid;perimeter=trapezoidPerimeter;fixedSize=1;size=70;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=12;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ecfdf3,#133221);strokeColor=light-dark(#1f7a4d,#72d6a1);strokeWidth=2;pointerEvents=0;">
+            <mxGeometry x="50" y="720" width="1360" height="310" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-application-root" label="PetaKerja" labelEn="PetaKerja" labelMs="PetaKerja">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=light-dark(#ffffff,#172033);fillColor=light-dark(#17263a,#eef5ff);strokeColor=light-dark(#3d6f9e,#8fb7df);strokeWidth=2;">
+            <mxGeometry x="665" y="154" width="220" height="50" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-module-core" label="Core Application" labelEn="Core Application" labelMs="Aplikasi Teras">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#eef5ff,#17263a);strokeColor=light-dark(#3d6f9e,#8fb7df);strokeWidth=2;">
+            <mxGeometry x="205" y="320" width="230" height="56" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-module-jobs" label="Job Search Module" labelEn="Job Search Module" labelMs="Modul Carian Pekerjaan">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#f5f0ff,#2b2140);strokeColor=light-dark(#6941c6,#b9a2ff);strokeWidth=2;">
+            <mxGeometry x="475" y="320" width="230" height="56" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-module-account" label="Accounts and Administration" labelEn="Accounts and Administration" labelMs="Akaun dan Pentadbiran">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#fff7df,#3a2e16);strokeColor=light-dark(#9a6700,#f4c95d);strokeWidth=2;">
+            <mxGeometry x="745" y="320" width="230" height="56" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-module-analysis" label="Analytics and Assistance" labelEn="Analytics and Assistance" labelMs="Analitik dan Bantuan">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=13;fontStyle=1;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ecfdf3,#133221);strokeColor=light-dark(#1f7a4d,#72d6a1);strokeWidth=2;">
+            <mxGeometry x="1015" y="320" width="230" height="56" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-core-shell" label="Starts the application and workspace" labelEn="Starts the application and workspace" labelMs="Memulakan aplikasi dan ruang kerja" petakerjaKey="modules/core-shell" simpleLabelEn="Starts the application and workspace" simpleLabelMs="Memulakan aplikasi dan ruang kerja" codeLabelEn="src/main.ts → MyPetaApp + templates" codeLabelMs="src/main.ts → MyPetaApp + templat">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#3d6f9e,#8fb7df);strokeWidth=2;">
+            <mxGeometry x="155" y="535" width="185" height="68" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-jobs-manager" label="Coordinates job search modes" labelEn="Coordinates job search modes" labelMs="Menyelaras mod carian pekerjaan" petakerjaKey="modules/jobs-manager" simpleLabelEn="Coordinates job search modes" simpleLabelMs="Menyelaras mod carian pekerjaan" codeLabelEn="JobFinderManager" codeLabelMs="JobFinderManager">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#6941c6,#b9a2ff);strokeWidth=2;">
+            <mxGeometry x="355" y="535" width="185" height="68" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-account-auth" label="Signs users in and protects sessions" labelEn="Signs users in and protects sessions" labelMs="Log masuk pengguna dan melindungi sesi" petakerjaKey="modules/account-auth" simpleLabelEn="Signs users in and protects sessions" simpleLabelMs="Log masuk pengguna dan melindungi sesi" codeLabelEn="AuthManager + Better Auth" codeLabelMs="AuthManager + Better Auth">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#9a6700,#f4c95d);strokeWidth=2;">
+            <mxGeometry x="555" y="535" width="185" height="68" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-account-admin" label="Manages configuration and user status" labelEn="Manages configuration and user status" labelMs="Mengurus konfigurasi dan status pengguna" petakerjaKey="modules/account-admin" simpleLabelEn="Manages configuration and user status" simpleLabelMs="Mengurus konfigurasi dan status pengguna" codeLabelEn="AdminDashboardManager + /api/admin/*" codeLabelMs="AdminDashboardManager + /api/admin/*">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#9a6700,#f4c95d);strokeWidth=2;">
+            <mxGeometry x="755" y="535" width="185" height="68" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-analysis-insights" label="Loads national data and insights" labelEn="Loads national data and insights" labelMs="Memuatkan data negara dan cerapan" petakerjaKey="modules/analysis-insights" simpleLabelEn="Loads national data and insights" simpleLabelMs="Memuatkan data negara dan cerapan" codeLabelEn="InsightsManager + OpenDataAPI" codeLabelMs="InsightsManager + OpenDataAPI">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#1f7a4d,#72d6a1);strokeWidth=2;">
+            <mxGeometry x="955" y="535" width="185" height="68" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-analysis-chatbot" label="Provides AI assistance" labelEn="Provides AI assistance" labelMs="Menyediakan bantuan AI" petakerjaKey="modules/analysis-chatbot" simpleLabelEn="Provides AI assistance" simpleLabelMs="Menyediakan bantuan AI" codeLabelEn="ChatbotManager + /api/assistant/*" codeLabelMs="ChatbotManager + /api/assistant/*">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#1f7a4d,#72d6a1);strokeWidth=2;">
+            <mxGeometry x="1155" y="535" width="185" height="68" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-core-map" label="Controls and renders the interactive map" labelEn="Controls and renders the interactive map" labelMs="Mengawal dan memaparkan peta interaktif" petakerjaKey="modules/core-map" simpleLabelEn="Controls and renders the interactive map" simpleLabelMs="Mengawal dan memaparkan peta interaktif" codeLabelEn="MapManager + MapLibre GL JS" codeLabelMs="MapManager + MapLibre GL JS">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#3d6f9e,#8fb7df);strokeWidth=2;">
+            <mxGeometry x="150" y="815" width="220" height="68" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-core-poi" label="Searches places, POIs and categories" labelEn="Searches places, POIs and categories" labelMs="Mencari tempat, POI dan kategori" petakerjaKey="modules/core-poi" simpleLabelEn="Searches places, POIs and categories" simpleLabelMs="Mencari tempat, POI dan kategori" codeLabelEn="POIManager + SearchManager + CategoryManager" codeLabelMs="POIManager + SearchManager + CategoryManager">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#3d6f9e,#8fb7df);strokeWidth=2;">
+            <mxGeometry x="150" y="915" width="220" height="68" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-jobs-modes" label="Daily Index, Pipeline Index and Live Search" labelEn="Daily Index, Pipeline Index and Live Search" labelMs="Indeks Harian, Indeks Pipeline dan Carian Langsung" petakerjaKey="modules/jobs-modes" simpleLabelEn="Daily Index, Pipeline Index and Live Search" simpleLabelMs="Indeks Harian, Indeks Pipeline dan Carian Langsung" codeLabelEn="searchSupaJobs() + searchJobs() + pipeline API" codeLabelMs="searchSupaJobs() + searchJobs() + API pipeline">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#6941c6,#b9a2ff);strokeWidth=2;">
+            <mxGeometry x="405" y="815" width="220" height="68" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-jobs-markers" label="Shows job cards and map markers" labelEn="Shows job cards and map markers" labelMs="Memaparkan kad pekerjaan dan penanda peta" petakerjaKey="modules/jobs-markers" simpleLabelEn="Shows job cards and map markers" simpleLabelMs="Memaparkan kad pekerjaan dan penanda peta" codeLabelEn="JobFinderManager + markers.ts" codeLabelMs="JobFinderManager + markers.ts">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#6941c6,#b9a2ff);strokeWidth=2;">
+            <mxGeometry x="405" y="915" width="220" height="68" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-account-bridge" label="Links sign-in identity to the app profile" labelEn="Links sign-in identity to the app profile" labelMs="Menghubungkan identiti log masuk kepada profil aplikasi" petakerjaKey="modules/account-bridge" simpleLabelEn="Links sign-in identity to the app profile" simpleLabelMs="Menghubungkan identiti log masuk kepada profil aplikasi" codeLabelEn="public.users.better_auth_user_id" codeLabelMs="public.users.better_auth_user_id">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#9a6700,#f4c95d);strokeWidth=2;">
+            <mxGeometry x="720" y="865" width="240" height="68" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-analysis-highlight" label="Highlights selected areas on the map" labelEn="Highlights selected areas on the map" labelMs="Menyorot kawasan dipilih pada peta" petakerjaKey="modules/analysis-highlight" simpleLabelEn="Highlights selected areas on the map" simpleLabelMs="Menyorot kawasan dipilih pada peta" codeLabelEn="HighlightManager + highlight layer" codeLabelMs="HighlightManager + lapisan sorotan">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=11;fontStyle=1;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#1f7a4d,#72d6a1);strokeWidth=2;">
+            <mxGeometry x="1055" y="865" width="240" height="68" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-hierarchy-root-core" label="" petakerjaRelation="structural">
+          <mxCell parent="1" edge="1" source="modules-layered-stack-application-root" target="modules-layered-stack-module-core" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeWidth=2;strokeColor=light-dark(#475467,#b8c2d0);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-hierarchy-root-jobs" label="" petakerjaRelation="structural">
+          <mxCell parent="1" edge="1" source="modules-layered-stack-application-root" target="modules-layered-stack-module-jobs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeWidth=2;strokeColor=light-dark(#475467,#b8c2d0);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-hierarchy-root-account" label="" petakerjaRelation="structural">
+          <mxCell parent="1" edge="1" source="modules-layered-stack-application-root" target="modules-layered-stack-module-account" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeWidth=2;strokeColor=light-dark(#475467,#b8c2d0);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-hierarchy-root-analysis" label="" petakerjaRelation="structural">
+          <mxCell parent="1" edge="1" source="modules-layered-stack-application-root" target="modules-layered-stack-module-analysis" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeWidth=2;strokeColor=light-dark(#475467,#b8c2d0);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-hierarchy-core-shell" label="" petakerjaRelation="structural">
+          <mxCell parent="1" edge="1" source="modules-layered-stack-module-core" target="modules-layered-stack-core-shell" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeWidth=2;strokeColor=light-dark(#475467,#b8c2d0);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-hierarchy-core-map" label="" petakerjaRelation="structural">
+          <mxCell parent="1" edge="1" source="modules-layered-stack-core-shell" target="modules-layered-stack-core-map" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeWidth=2;strokeColor=light-dark(#475467,#b8c2d0);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-hierarchy-core-poi" label="" petakerjaRelation="structural">
+          <mxCell parent="1" edge="1" source="modules-layered-stack-core-map" target="modules-layered-stack-core-poi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeWidth=2;strokeColor=light-dark(#475467,#b8c2d0);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-hierarchy-jobs-manager" label="" petakerjaRelation="structural">
+          <mxCell parent="1" edge="1" source="modules-layered-stack-module-jobs" target="modules-layered-stack-jobs-manager" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeWidth=2;strokeColor=light-dark(#475467,#b8c2d0);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-hierarchy-jobs-modes" label="" petakerjaRelation="structural">
+          <mxCell parent="1" edge="1" source="modules-layered-stack-jobs-manager" target="modules-layered-stack-jobs-modes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeWidth=2;strokeColor=light-dark(#475467,#b8c2d0);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-hierarchy-jobs-markers" label="" petakerjaRelation="structural">
+          <mxCell parent="1" edge="1" source="modules-layered-stack-jobs-modes" target="modules-layered-stack-jobs-markers" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeWidth=2;strokeColor=light-dark(#475467,#b8c2d0);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-hierarchy-account-auth" label="" petakerjaRelation="structural">
+          <mxCell parent="1" edge="1" source="modules-layered-stack-module-account" target="modules-layered-stack-account-auth" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeWidth=2;strokeColor=light-dark(#475467,#b8c2d0);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-hierarchy-account-admin" label="" petakerjaRelation="structural">
+          <mxCell parent="1" edge="1" source="modules-layered-stack-module-account" target="modules-layered-stack-account-admin" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeWidth=2;strokeColor=light-dark(#475467,#b8c2d0);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-hierarchy-account-bridge" label="" petakerjaRelation="structural">
+          <mxCell parent="1" edge="1" source="modules-layered-stack-account-auth" target="modules-layered-stack-account-bridge" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeWidth=2;strokeColor=light-dark(#475467,#b8c2d0);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-hierarchy-analysis-insights" label="" petakerjaRelation="structural">
+          <mxCell parent="1" edge="1" source="modules-layered-stack-module-analysis" target="modules-layered-stack-analysis-insights" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeWidth=2;strokeColor=light-dark(#475467,#b8c2d0);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-hierarchy-analysis-chatbot" label="" petakerjaRelation="structural">
+          <mxCell parent="1" edge="1" source="modules-layered-stack-module-analysis" target="modules-layered-stack-analysis-chatbot" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeWidth=2;strokeColor=light-dark(#475467,#b8c2d0);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-hierarchy-analysis-highlight" label="" petakerjaRelation="structural">
+          <mxCell parent="1" edge="1" source="modules-layered-stack-analysis-insights" target="modules-layered-stack-analysis-highlight" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;strokeWidth=2;strokeColor=light-dark(#475467,#b8c2d0);">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-reading" label="HOW TO READ" labelEn="HOW TO READ" labelMs="CARA MEMBACA">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=18;spacingLeft=18;fontFamily=Arial;fontSize=15;fontStyle=1;fontColor=light-dark(#ffffff,#f5f7fa);fillColor=light-dark(#172033,#0b1016);strokeColor=light-dark(#172033,#596579);strokeWidth=2;pointerEvents=0;">
+            <mxGeometry x="1450" y="110" width="380" height="145" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-reading-body" label="Read downward: product → module family → coordinator → user-facing capability." labelEn="Read downward: product → module family → coordinator → user-facing capability." labelMs="Baca ke bawah: produk → keluarga modul → penyelaras → keupayaan pengguna.">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontColor=light-dark(#ffffff,#f5f7fa);pointerEvents=0;">
+            <mxGeometry x="1470" y="160" width="340" height="70" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-dependencies" label="CROSS-MODULE DEPENDENCIES" labelEn="CROSS-MODULE DEPENDENCIES" labelMs="KEBERGANTUNGAN SILANG MODUL">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=16;spacingLeft=16;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#f8fafc,#151a22);strokeColor=light-dark(#98a2b3,#7d8796);strokeWidth=1;pointerEvents=0;">
+            <mxGeometry x="1450" y="285" width="380" height="425" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-dependency-1" label="Interactive map → JobFinderManager&#10;Map workspace" labelEn="Interactive map → JobFinderManager&#10;Map workspace" labelMs="Peta interaktif → JobFinderManager&#10;Ruang kerja peta">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=11;fontColor=light-dark(#344054,#d8e0eb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#667085,#aeb7c7);strokeWidth=1;pointerEvents=0;">
+            <mxGeometry x="1470" y="335" width="340" height="66" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-dependency-2" label="Interactive map → InsightsManager / OpenDataAPI&#10;Location context" labelEn="Interactive map → InsightsManager / OpenDataAPI&#10;Location context" labelMs="Peta interaktif → InsightsManager / OpenDataAPI&#10;Konteks lokasi">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=11;fontColor=light-dark(#344054,#d8e0eb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#667085,#aeb7c7);strokeWidth=1;pointerEvents=0;">
+            <mxGeometry x="1470" y="421" width="340" height="66" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-dependency-3" label="Profile bridge → JobFinderManager&#10;Save job status" labelEn="Profile bridge → JobFinderManager&#10;Save job status" labelMs="Jambatan profil → JobFinderManager&#10;Simpan status pekerjaan">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=11;fontColor=light-dark(#344054,#d8e0eb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#667085,#aeb7c7);strokeWidth=1;pointerEvents=0;">
+            <mxGeometry x="1470" y="507" width="340" height="66" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-dependency-4" label="Better Auth → ChatbotManager&#10;Protected AI functions" labelEn="Better Auth → ChatbotManager&#10;Protected AI functions" labelMs="Better Auth → ChatbotManager&#10;Fungsi AI terlindung">
+          <mxCell parent="1" vertex="1" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=11;fontColor=light-dark(#344054,#d8e0eb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#667085,#aeb7c7);strokeWidth=1;pointerEvents=0;">
+            <mxGeometry x="1470" y="593" width="340" height="66" as="geometry" />
+          </mxCell>
+        </object>
+        <object id="modules-layered-stack-footer" label="Simple explains responsibility. Code shows the exact implementation identifiers without changing the hierarchy." labelEn="Simple explains responsibility. Code shows the exact implementation identifiers without changing the hierarchy." labelMs="Ringkas menerangkan tanggungjawab. Kod menunjukkan pengecam pelaksanaan tepat tanpa mengubah hierarki.">
+          <mxCell parent="1" vertex="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=11;fontColor=light-dark(#667085,#aeb8c8);pointerEvents=0;">
+            <mxGeometry x="90" y="1080" width="1740" height="38" as="geometry" />
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

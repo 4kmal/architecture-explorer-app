@@ -45,10 +45,17 @@
     'admin-sign-out-sequence': 'log-out',
     domain: 'boxes',
     implementation: 'network',
+    'architecture-visual-stack': 'layers-2',
     architecture: 'layers-2',
     modules: 'folder-tree',
+    'modules-layered-stack': 'layers-2',
     erd: 'database',
     'data-flow': 'waypoints',
+    'map-routing-responsibility-stack': 'route',
+    'nominatim-valhalla-workflow': 'waypoints',
+    'nominatim-maplibre-workflow': 'map',
+    'valhalla-maplibre-workflow': 'route',
+    'geo-server-communication-workflow': 'network',
     'etl-pipeline': 'workflow',
     'daily-index-workflow': 'database',
     'live-search-workflow': 'search',
@@ -213,13 +220,17 @@
     catch (_error) { /* Some file:// browser policies disable storage. */ }
   }
 
-  function storedSequenceLabelMode() {
-    try { return localStorage.getItem('petakerja-explorer-sequence-label-mode') === 'code' ? 'code' : 'simple'; }
+  function storedDiagramLabelMode() {
+    try {
+      const current = localStorage.getItem('petakerja-explorer-diagram-label-mode');
+      const legacy = localStorage.getItem('petakerja-explorer-sequence-label-mode');
+      return (current || legacy) === 'code' ? 'code' : 'simple';
+    }
     catch (_error) { return 'simple'; }
   }
 
-  function storeSequenceLabelMode(value) {
-    try { localStorage.setItem('petakerja-explorer-sequence-label-mode', value); }
+  function storeDiagramLabelMode(value) {
+    try { localStorage.setItem('petakerja-explorer-diagram-label-mode', value); }
     catch (_error) { /* Some file:// browser policies disable storage. */ }
   }
 
@@ -237,10 +248,15 @@
     sequenceFolders: storedSequenceFolders(), flowchartFolders: storedFlowchartFolders(), codeSnippetFolders: storedCodeSnippetFolders(), snippetLanguage: storedCodeSnippetLanguage(),
     reportTableLanguage: storedReportTableLanguage(), dictionaryColumnMode: storedDictionaryColumnMode(), reportColumnSelection: null,
     diagramVariantFolders: storedDiagramVariantFolders(), diagramCollections: storedDiagramCollections(),
-    diagramCollectionGroups: storedDiagramCollectionGroups(), sequenceLabelMode: storedSequenceLabelMode(),
+    diagramCollectionGroups: storedDiagramCollectionGroups(), diagramLabelMode: storedDiagramLabelMode(), diagramLabelModeSwitching: false,
   };
 
   const DIAGRAM_COLLECTION_GROUPS = Object.freeze({
+    'map-routing': Object.freeze([
+      { id: 'overview', labelKey: 'ui.collectionRoutingOverview', icon: 'route' },
+      { id: 'provider-workflows', labelKey: 'ui.collectionProviderWorkflows', icon: 'waypoints' },
+      { id: 'infrastructure', labelKey: 'ui.collectionRoutingInfrastructure', icon: 'network' },
+    ]),
     'etl-pipeline': Object.freeze([
       { id: 'overview', labelKey: 'ui.collectionETLOverview', icon: 'workflow' },
       { id: 'job-search-workflows', labelKey: 'ui.collectionJobSearchWorkflows', icon: 'search' },
@@ -265,7 +281,7 @@
     graph: byId('graph-canvas'), graphViewport: byId('graph-viewport'), empty: byId('graph-empty'), details: byId('details-content'),
     uiView: byId('ui-view-select'), uiImage: byId('ui-image'), uiStage: byId('ui-stage'), uiHotspots: byId('ui-hotspots'), uiCaption: byId('ui-caption'),
     zoomValue: byId('zoom-value'), modeControl: byId('render-mode-control'), actualMode: byId('mode-actual'), mapMode: byId('mode-map'),
-    sequenceLabelControl: byId('sequence-label-control'), sequenceSimple: byId('sequence-label-simple'), sequenceCode: byId('sequence-label-code'),
+    diagramLabelControl: byId('diagram-label-control'), diagramSimple: byId('diagram-label-simple'), diagramCode: byId('diagram-label-code'),
     referenceButton: byId('open-reference'), referenceDialog: byId('reference-dialog'), referenceImage: byId('reference-image'),
     referenceTitle: byId('reference-title'), statusMessage: byId('status-message'),
     workspaceModeControl: byId('workspace-mode-control'), workspaceView: byId('workspace-view'), workspaceEdit: byId('workspace-edit'), workspaceAgent: byId('workspace-agent'),
@@ -348,12 +364,15 @@
       'ui.publicTables': 'Jadual public', 'ui.foreignKeys': 'Foreign key', 'ui.authLinks': 'Hubungan auth logik',
       'ui.sequenceUser': 'Pengguna', 'ui.sequenceAdministrator': 'Pentadbir', 'ui.sequenceEmpty': 'Tiada rajah lagi',
       'ui.sequenceSimple': 'Ringkas', 'ui.sequenceCode': 'Kod', 'ui.sequenceLabelMode': 'Butiran mesej jujukan',
+      'ui.diagramSimple': 'Ringkas', 'ui.diagramCode': 'Kod', 'ui.diagramLabelMode': 'Butiran label rajah',
       'ui.flowchartUser': 'Pengguna', 'ui.flowchartAdministrator': 'Pentadbir', 'ui.flowchartEmpty': 'Tiada rajah lagi',
       'ui.variantPolished': 'Dikemas', 'ui.variantOriginal': 'Asal', 'ui.variantRecommended': 'Disyorkan', 'ui.variantReference': 'Rujukan asal',
+      'ui.variantLayeredStack': 'Susunan Bertingkat', 'ui.variantHierarchyTree': 'Pokok Hierarki', 'ui.variantCurrent': 'Kod semasa',
       'ui.openVanilla': 'Buka vanilla', 'ui.openV2': 'Buka V2', 'ui.collectionCollapse': 'Tutup koleksi', 'ui.collectionExpand': 'Buka koleksi',
       'ui.collectionUseCases': 'Rajah Kes Guna', 'ui.collectionFlowcharts': 'Carta Alir', 'ui.collectionSequences': 'Rajah Jujukan',
       'ui.collectionClasses': 'Rajah Kelas', 'ui.collectionArchitectureModules': 'Seni Bina & Modul', 'ui.collectionData': 'Rajah Data',
       'ui.collectionETLOverview': 'Gambaran Keseluruhan', 'ui.collectionJobSearchWorkflows': 'Aliran Kerja Carian Pekerjaan',
+      'ui.collectionRoutingOverview': 'Gambaran Keseluruhan', 'ui.collectionProviderWorkflows': 'Aliran Kerja Penyedia', 'ui.collectionRoutingInfrastructure': 'Infrastruktur',
       'ui.collectionDiagram': 'rajah', 'ui.collectionDiagrams': 'rajah',
       'ui.reportExplanation': 'Penerangan laporan', 'ui.copyReportParagraph': 'Salin perenggan', 'ui.reportParagraphCopied': 'Perenggan disalin',
       'ui.copyCode': 'Salin kod', 'ui.copyCaption': 'Salin kapsyen', 'ui.copyTable': 'Salin jadual', 'ui.copyFlow': 'Salin aliran', 'ui.codeCopied': 'Kod disalin', 'ui.captionCopied': 'Kapsyen disalin', 'ui.tableCopied': 'Jadual disalin', 'ui.flowCopied': 'Aliran disalin',
@@ -415,13 +434,31 @@
     return translated ? { title: translated[0], description: translated[1] } : { title: canonical.title, description: canonical.description || '' };
   }
 
+  function diagramVariantLabel(diagram) {
+    const custom = state.language === 'en' ? diagram.variantLabelEn : diagram.variantLabelMs;
+    if (custom) return custom;
+    if (diagram.variantKind === 'polished') return t('ui.variantPolished');
+    if (diagram.variantKind === 'original') return t('ui.variantOriginal');
+    return diagram.variantKind || '';
+  }
+
+  function diagramVariantMeta(diagram) {
+    const custom = state.language === 'en' ? diagram.variantMetaEn : diagram.variantMetaMs;
+    if (custom) return custom;
+    if (diagram.variantRecommended || diagram.variantKind === 'polished') return t('ui.variantRecommended');
+    if (diagram.variantKind === 'original') return t('ui.variantReference');
+    return labelStatus(diagram.status);
+  }
+
   function diagramText(diagram) {
     const base = diagramBaseText(diagram);
     if (!diagram.variantKind) return base;
-    const variant = diagram.variantKind === 'polished' ? t('ui.variantPolished') : t('ui.variantOriginal');
-    const suffix = diagram.variantKind === 'polished'
+    const variant = diagramVariantLabel(diagram);
+    const suffix = diagram.variantRecommended || diagram.variantKind === 'polished'
       ? (state.language === 'en' ? 'Recommended presentation layout.' : 'Susun atur persembahan yang disyorkan.')
-      : (state.language === 'en' ? 'Original layout retained for comparison.' : 'Susun atur asal dikekalkan untuk perbandingan.');
+      : diagram.variantKind === 'original'
+        ? (state.language === 'en' ? 'Original layout retained for comparison.' : 'Susun atur asal dikekalkan untuk perbandingan.')
+        : (state.language === 'en' ? 'Current implementation view.' : 'Paparan pelaksanaan semasa.');
     return { title: `${base.title} — ${variant}`, description: `${base.description} ${suffix}` };
   }
 
@@ -623,7 +660,28 @@
       els.workspaceSaveButton.disabled = false;
     }
   }
-  function activeAsset() { const runtime = runtimeDocument(); return runtime?.asset || runtime?.lastValidAsset || assets[state.diagramId] || null; }
+  function activeAsset() {
+    const runtime = runtimeDocument();
+    const runtimeAsset = runtime?.asset || runtime?.lastValidAsset || null;
+    const canonical = assets[state.diagramId] || null;
+    if (!runtimeAsset) return canonical;
+    if (!canonical) return runtimeAsset;
+    return {
+      ...canonical,
+      ...runtimeAsset,
+      svg: runtimeAsset.svg || canonical.svg,
+      components: runtimeAsset.components?.length ? runtimeAsset.components : canonical.components,
+      connections: runtimeAsset.connections?.length ? runtimeAsset.connections : canonical.connections,
+      labelElements: runtimeAsset.labelElements?.length ? runtimeAsset.labelElements : canonical.labelElements,
+      labelModes: runtimeAsset.labelModes?.length ? runtimeAsset.labelModes : canonical.labelModes,
+      supportsLabelModes: Boolean(runtimeAsset.supportsLabelModes || canonical.supportsLabelModes),
+      supportsSequenceLabels: Boolean(runtimeAsset.supportsSequenceLabels || canonical.supportsSequenceLabels),
+    };
+  }
+  function diagramSupportsLabelModes() {
+    const capabilityAsset = assets[state.diagramId] || activeAsset();
+    return Boolean(capabilityAsset?.supportsLabelModes || capabilityAsset?.supportsSequenceLabels);
+  }
   function effectiveMode() { return state.renderMode === 'actual' && (activeAsset() || runtimeDocument()?.workingXml) ? 'actual' : 'map'; }
   function currentFocus() { return state.hovered || state.selected; }
   function currentComponentKey() { return state.hovered ? state.hoveredComponentKey : state.selectedComponentKey; }
@@ -647,11 +705,13 @@
 
   function componentLabel(component) {
     if (!component) return '';
+    const variants = component.labels?.[state.diagramLabelMode];
+    if (variants) return variants[state.language] || variants.en || variants.ms;
     return (state.language === 'en' ? component.labelEn : component.label) || component.tableName || component.id;
   }
 
   function connectionLabel(connection) {
-    const variants = connection?.labels?.[state.sequenceLabelMode];
+    const variants = connection?.labels?.[state.diagramLabelMode];
     return variants?.[state.language] || variants?.en || connection?.label?.[state.language] || connection?.label?.ms || connectionKindLabel(connection?.kind);
   }
 
@@ -717,21 +777,21 @@
     const categories = [...new Set(visible.map((diagram) => diagram.category))];
     const diagramButton = (diagram, options = {}) => {
       const text = options.text || diagramText(diagram);
-      const icon = options.icon || (diagram.variantKind === 'polished' ? 'sparkles' : diagram.variantKind === 'original' ? 'history' : DIAGRAM_ICONS[diagram.id]) || 'file-question-mark';
+      const icon = options.icon || diagram.variantIcon || (diagram.variantKind === 'polished' ? 'sparkles' : diagram.variantKind === 'original' ? 'history' : DIAGRAM_ICONS[diagram.id]) || 'file-question-mark';
       const meta = options.meta || labelStatus(diagram.status);
       return `<button class="nav-item${options.variant ? ' nav-item--variant' : ''}${diagram.id === state.diagramId ? ' is-active' : ''}" type="button" data-diagram="${diagram.id}" aria-current="${diagram.id === state.diagramId ? 'page' : 'false'}"><span class="nav-item__icon" aria-hidden="true"><i data-bp-icon="${icon}"></i></span><span class="nav-item__copy"><span class="nav-item__title">${escapeHTML(text.title)}</span><small>${escapeHTML(meta)}</small></span></button>`;
     };
     const variantFolder = (familyKey, diagrams) => {
       const ordered = [...diagrams].sort((a, b) => (a.variantOrder || 99) - (b.variantOrder || 99));
-      const canonical = canonicalDiagram(ordered.find((item) => item.variantKind === 'polished') || ordered[0]);
+      const canonical = canonicalDiagram(ordered.find((item) => item.variantRecommended) || ordered.find((item) => item.variantKind === 'polished') || ordered[0]);
       const title = diagramBaseText(canonical).title;
       const active = ordered.some((item) => item.id === state.diagramId);
       if (active) state.diagramVariantFolders[familyKey] = true;
       const open = state.diagramVariantFolders[familyKey] === true;
       return `<details class="nav-variant-group" data-diagram-variant-family="${escapeHTML(familyKey)}"${open ? ' open' : ''}><summary><span class="nav-variant-group__icon" aria-hidden="true"><i data-bp-icon="folder"></i></span><span>${escapeHTML(title)}</span><i class="nav-variant-group__chevron" data-bp-icon="chevron-right" aria-hidden="true"></i></summary><div class="nav-variant-group__items">${ordered.map((diagram) => diagramButton(diagram, {
         variant: true,
-        text: { title: diagram.variantKind === 'polished' ? t('ui.variantPolished') : t('ui.variantOriginal') },
-        meta: diagram.variantKind === 'polished' ? t('ui.variantRecommended') : t('ui.variantReference'),
+        text: { title: diagramVariantLabel(diagram) },
+        meta: diagramVariantMeta(diagram),
       })).join('')}</div></details>`;
     };
     const variantItems = (diagrams) => {
@@ -860,8 +920,8 @@
     byId('zoom-fit').textContent = t('ui.fit'); byId('zoom-out').ariaLabel = t('ui.zoomOut'); byId('zoom-in').ariaLabel = t('ui.zoomIn');
     els.referenceButton.textContent = t('ui.reference'); byId('reference-title').textContent = t('ui.reference'); byId('close-reference').ariaLabel = t('ui.close');
     els.workspaceView.textContent = t('ui.viewMode'); els.workspaceEdit.textContent = t('ui.editMode'); els.workspaceAgent.textContent = state.language === 'en' ? 'Agent' : 'Ejen';
-    els.sequenceSimple.textContent = t('ui.sequenceSimple'); els.sequenceCode.textContent = t('ui.sequenceCode');
-    els.sequenceLabelControl.setAttribute('aria-label', t('ui.sequenceLabelMode'));
+    els.diagramSimple.textContent = t('ui.diagramSimple'); els.diagramCode.textContent = t('ui.diagramCode');
+    els.diagramLabelControl.setAttribute('aria-label', t('ui.diagramLabelMode'));
     els.importButton.textContent = t('ui.importDiagram'); els.validateButton.textContent = t('ui.validateDiagram');
     els.workspaceSaveButton.textContent = t('ui.saveWorkspace'); els.saveButton.textContent = t('ui.saveAs');
     els.editorLoading.textContent = t('ui.editorLoading'); els.validationTitle.textContent = t('ui.validation');
@@ -1357,6 +1417,8 @@
         en: translateRuntimeSvg(svg, diagramType, 'en', localizedPairs),
       },
       components, connections, runtime: true,
+      supportsLabelModes: components.some((item) => item.labels?.simple && item.labels?.code)
+        || connections.some((item) => item.labels?.simple && item.labels?.code),
       supportsSequenceLabels: connections.some((item) => item.labels?.simple && item.labels?.code),
     };
   }
@@ -1433,11 +1495,13 @@
     els.workspaceSaveButton.hidden = !localWorkspaceEnabled || state.workspaceMode === 'view' || !state.workspaceDiagramIds.has(state.diagramId);
     byId('zoom-out').parentElement.hidden = documentLayout || state.workspaceMode !== 'view';
     els.referenceButton.hidden = documentLayout || state.workspaceMode !== 'view' || !activeDiagram().reference;
-    const showSequenceLabels = !documentLayout && (state.workspaceMode === 'view' || state.workspaceMode === 'edit')
-      && effectiveMode() === 'actual' && Boolean(activeAsset()?.supportsSequenceLabels);
-    els.sequenceLabelControl.hidden = !showSequenceLabels;
-    els.sequenceSimple.setAttribute('aria-pressed', String(state.sequenceLabelMode === 'simple'));
-    els.sequenceCode.setAttribute('aria-pressed', String(state.sequenceLabelMode === 'code'));
+    const showDiagramLabels = !documentLayout && (state.workspaceMode === 'view' || state.workspaceMode === 'edit')
+      && effectiveMode() === 'actual' && diagramSupportsLabelModes();
+    els.diagramLabelControl.hidden = !showDiagramLabels;
+    els.diagramSimple.disabled = state.diagramLabelModeSwitching;
+    els.diagramCode.disabled = state.diagramLabelModeSwitching;
+    els.diagramSimple.setAttribute('aria-pressed', String(state.diagramLabelMode === 'simple'));
+    els.diagramCode.setAttribute('aria-pressed', String(state.diagramLabelMode === 'code'));
     cloudManager?.updateControls();
   }
 
@@ -1871,7 +1935,7 @@
     const transform = els.graphViewport.firstElementChild; const svg = transform.querySelector('svg');
     if (!svg) { els.empty.hidden = false; return; }
     svg.classList.add('actual-diagram');
-    applySequenceMessageLabels(svg, asset);
+    applyDiagramLabels(svg, asset);
     const viewBox = svg.viewBox.baseVal;
     state.naturalWidth = viewBox?.width || Number(svg.getAttribute('width')) || 1200;
     state.naturalHeight = viewBox?.height || Number(svg.getAttribute('height')) || 800;
@@ -1880,26 +1944,54 @@
     requestAnimationFrame(() => { if (state.fitMode) fitDiagram(); else applyTransform(); applyHighlights(); });
   }
 
-  function applySequenceMessageLabels(svg, asset) {
-    if (!asset?.supportsSequenceLabels) return;
-    (asset.connections || []).forEach((connection) => {
-      const label = connectionLabel(connection);
+  function replaceSvgCellLabel(svg, cellId, label) {
+    if (!cellId || !label) return;
+    const group = svg.querySelector(`[data-cell-id="${CSS.escape(cellId)}"]`);
+    if (!group) return;
+    const foreignObject = group.querySelector('foreignObject');
+    if (foreignObject) {
+      const leaves = [...foreignObject.querySelectorAll('div')].filter((element) => !element.querySelector('div'));
+      const target = leaves.at(-1) || foreignObject.querySelector('div');
+      if (target) target.textContent = label;
+    }
+    const text = group.querySelector('text');
+    if (text) {
+      const tspans = [...text.querySelectorAll('tspan')];
+      if (tspans.length) { tspans[0].textContent = label; tspans.slice(1).forEach((item) => item.remove()); }
+      else text.textContent = label;
+    }
+    group.setAttribute('aria-label', label);
+  }
+
+  function modeLabel(item) {
+    const variants = item?.labels?.[state.diagramLabelMode];
+    return variants?.[state.language] || variants?.en || variants?.ms || '';
+  }
+
+  function labelProjectionAsset(asset) {
+    if (asset?.supportsLabelModes || asset?.supportsSequenceLabels) return asset;
+    const canonical = assets[state.diagramId];
+    return canonical?.supportsLabelModes || canonical?.supportsSequenceLabels ? canonical : asset;
+  }
+
+  function applyDiagramLabels(svg, asset) {
+    if (!diagramSupportsLabelModes()) return;
+    const labels = labelProjectionAsset(asset);
+    const applied = new Set();
+    (labels.labelElements || []).forEach((item) => {
+      const label = modeLabel(item);
       if (!label) return;
-      const group = svg.querySelector(`[data-cell-id="${CSS.escape(connection.id)}"]`);
-      if (!group) return;
-      const foreignObject = group.querySelector('foreignObject');
-      if (foreignObject) {
-        const leaves = [...foreignObject.querySelectorAll('div')].filter((element) => !element.querySelector('div'));
-        const target = leaves.at(-1) || foreignObject.querySelector('div');
-        if (target) target.textContent = label;
-      }
-      const text = group.querySelector('text');
-      if (text) {
-        const tspans = [...text.querySelectorAll('tspan')];
-        if (tspans.length) { tspans[0].textContent = label; tspans.slice(1).forEach((item) => item.remove()); }
-        else text.textContent = label;
-      }
-      group.setAttribute('aria-label', label);
+      replaceSvgCellLabel(svg, item.cellId, label);
+      applied.add(item.cellId);
+    });
+    (labels.components || []).forEach((component) => {
+      const label = modeLabel(component);
+      if (!label) return;
+      (component.cellIds || []).filter((cellId) => !applied.has(cellId)).forEach((cellId) => replaceSvgCellLabel(svg, cellId, label));
+    });
+    (labels.connections || []).forEach((connection) => {
+      const label = connectionLabel(connection);
+      if (label) replaceSvgCellLabel(svg, connection.id, label);
     });
   }
 
@@ -2528,7 +2620,7 @@
 
   editorController = editorAPI.createController({
     iframe: els.editorFrame, data, assets, translations, language: state.language,
-    sequenceLabelMode: state.sequenceLabelMode, themePreference: state.themePreference,
+    diagramLabelMode: state.diagramLabelMode, themePreference: state.themePreference,
     callbacks: {
       onFrameReload() { els.editorSurface.classList.remove('is-ready'); },
       onReady() { els.editorSurface.classList.add('is-ready'); },
@@ -2613,13 +2705,26 @@
   });
   els.uiView.addEventListener('change', () => { state.uiViewId = els.uiView.value; renderUI(); });
   document.querySelectorAll('[data-render-mode]').forEach((button) => button.addEventListener('click', () => { state.renderMode = button.dataset.renderMode; state.fitMode = true; renderDiagram(); }));
-  els.sequenceLabelControl.addEventListener('click', (event) => {
-    const button = event.target.closest('[data-sequence-label-mode]');
-    if (!button) return;
-    state.sequenceLabelMode = button.dataset.sequenceLabelMode === 'code' ? 'code' : 'simple';
-    storeSequenceLabelMode(state.sequenceLabelMode);
-    editorController.setSequenceLabelMode(state.sequenceLabelMode);
-    renderDiagram(); renderDetails();
+  els.diagramLabelControl.addEventListener('click', async (event) => {
+    const button = event.target.closest('[data-diagram-label-mode]');
+    if (!button || state.diagramLabelModeSwitching) return;
+    const next = button.dataset.diagramLabelMode === 'code' ? 'code' : 'simple';
+    if (next === state.diagramLabelMode) return;
+    state.diagramLabelMode = next;
+    storeDiagramLabelMode(next);
+    state.diagramLabelModeSwitching = true;
+    renderWorkspaceControls();
+    try {
+      if (state.workspaceMode === 'edit') await editorController.setDiagramLabelMode(next);
+      renderDiagram(); renderDetails();
+    } catch (_error) {
+      els.statusMessage.textContent = state.language === 'en'
+        ? 'The label mode changed, but the editor could not reload.'
+        : 'Mod label berubah tetapi editor tidak dapat dimuatkan semula.';
+    } finally {
+      state.diagramLabelModeSwitching = false;
+      renderWorkspaceControls();
+    }
   });
   els.languageSelect.addEventListener('change', () => applyLanguagePreference(els.languageSelect.value));
   els.themeSelect.addEventListener('change', () => applyThemePreference(els.themeSelect.value, { announce: true }));

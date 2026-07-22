@@ -44,62 +44,62 @@
             <mxGeometry x="1230" y="230" width="340" height="70" as="geometry" />
           </mxCell>
         </object>
-        <object id="modules-core-shell" label="Boot and application shell&#10;MyPetaApp + templates" petakerjaKey="modules/core-shell" labelEn="Boot and application shell&#10;MyPetaApp + templates" labelMs="But dan cangkerang aplikasi&#10;MyPetaApp + templat">
+        <object id="modules-core-shell" label="Starts the application and workspace" petakerjaKey="modules/core-shell" labelEn="Starts the application and workspace" labelMs="Memulakan aplikasi dan ruang kerja" simpleLabelEn="Starts the application and workspace" simpleLabelMs="Memulakan aplikasi dan ruang kerja" codeLabelEn="src/main.ts → MyPetaApp + templates" codeLabelMs="src/main.ts → MyPetaApp + templat">
           <mxCell parent="modules-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#3d6f9e,#8fb7df);strokeWidth=2;shadow=1;">
             <mxGeometry x="60" y="340" width="280" height="66" as="geometry" />
           </mxCell>
         </object>
-        <object id="modules-core-map" label="Interactive map&#10;MapManager + MapLibre" petakerjaKey="modules/core-map" labelEn="Interactive map&#10;MapManager + MapLibre" labelMs="Peta interaktif&#10;MapManager + MapLibre">
+        <object id="modules-core-map" label="Controls and renders the interactive map" petakerjaKey="modules/core-map" labelEn="Controls and renders the interactive map" labelMs="Mengawal dan memaparkan peta interaktif" simpleLabelEn="Controls and renders the interactive map" simpleLabelMs="Mengawal dan memaparkan peta interaktif" codeLabelEn="MapManager + MapLibre GL JS" codeLabelMs="MapManager + MapLibre GL JS">
           <mxCell parent="modules-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#3d6f9e,#8fb7df);strokeWidth=2;shadow=1;">
             <mxGeometry x="60" y="445" width="280" height="66" as="geometry" />
           </mxCell>
         </object>
-        <object id="modules-core-poi" label="POI and categories&#10;POIManager + SearchManager + CategoryManager" petakerjaKey="modules/core-poi" labelEn="POI and categories&#10;POIManager + SearchManager + CategoryManager" labelMs="POI dan kategori&#10;POIManager + SearchManager + CategoryManager">
+        <object id="modules-core-poi" label="Searches places, POIs and categories" petakerjaKey="modules/core-poi" labelEn="Searches places, POIs and categories" labelMs="Mencari tempat, POI dan kategori" simpleLabelEn="Searches places, POIs and categories" simpleLabelMs="Mencari tempat, POI dan kategori" codeLabelEn="POIManager + SearchManager + CategoryManager" codeLabelMs="POIManager + SearchManager + CategoryManager">
           <mxCell parent="modules-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#3d6f9e,#8fb7df);strokeWidth=2;shadow=1;">
             <mxGeometry x="60" y="550" width="280" height="72" as="geometry" />
           </mxCell>
         </object>
-        <object id="modules-jobs-manager" label="JobFinderManager" petakerjaKey="modules/jobs-manager" labelEn="JobFinderManager" labelMs="JobFinderManager">
+        <object id="modules-jobs-manager" label="Coordinates job search modes" petakerjaKey="modules/jobs-manager" labelEn="Coordinates job search modes" labelMs="Menyelaras mod carian pekerjaan" simpleLabelEn="Coordinates job search modes" simpleLabelMs="Menyelaras mod carian pekerjaan" codeLabelEn="JobFinderManager" codeLabelMs="JobFinderManager">
           <mxCell parent="modules-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#6941c6,#b9a2ff);strokeWidth=2;shadow=1;">
             <mxGeometry x="460" y="340" width="280" height="66" as="geometry" />
           </mxCell>
         </object>
-        <object id="modules-jobs-modes" label="Daily Index&#10;Pipeline Index&#10;Live Search" petakerjaKey="modules/jobs-modes" labelEn="Daily Index&#10;Pipeline Index&#10;Live Search" labelMs="Indeks Harian&#10;Indeks Pipeline&#10;Carian Langsung">
+        <object id="modules-jobs-modes" label="Daily Index, Pipeline Index and Live Search" petakerjaKey="modules/jobs-modes" labelEn="Daily Index, Pipeline Index and Live Search" labelMs="Indeks Harian, Indeks Pipeline dan Carian Langsung" simpleLabelEn="Daily Index, Pipeline Index and Live Search" simpleLabelMs="Indeks Harian, Indeks Pipeline dan Carian Langsung" codeLabelEn="searchSupaJobs() + searchJobs() + pipeline API" codeLabelMs="searchSupaJobs() + searchJobs() + API pipeline">
           <mxCell parent="modules-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#6941c6,#b9a2ff);strokeWidth=2;shadow=1;">
             <mxGeometry x="460" y="445" width="280" height="72" as="geometry" />
           </mxCell>
         </object>
-        <object id="modules-jobs-markers" label="Job cards and map markers&#10;markers.ts" petakerjaKey="modules/jobs-markers" labelEn="Job cards and map markers&#10;markers.ts" labelMs="Kad pekerjaan dan penanda peta&#10;markers.ts">
+        <object id="modules-jobs-markers" label="Shows job cards and map markers" petakerjaKey="modules/jobs-markers" labelEn="Shows job cards and map markers" labelMs="Memaparkan kad pekerjaan dan penanda peta" simpleLabelEn="Shows job cards and map markers" simpleLabelMs="Memaparkan kad pekerjaan dan penanda peta" codeLabelEn="JobFinderManager + markers.ts" codeLabelMs="JobFinderManager + markers.ts">
           <mxCell parent="modules-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#6941c6,#b9a2ff);strokeWidth=2;shadow=1;">
             <mxGeometry x="460" y="550" width="280" height="72" as="geometry" />
           </mxCell>
         </object>
-        <object id="modules-account-auth" label="Better Auth" petakerjaKey="modules/account-auth" labelEn="Better Auth" labelMs="Better Auth">
+        <object id="modules-account-auth" label="Signs users in and protects sessions" petakerjaKey="modules/account-auth" labelEn="Signs users in and protects sessions" labelMs="Log masuk pengguna dan melindungi sesi" simpleLabelEn="Signs users in and protects sessions" simpleLabelMs="Log masuk pengguna dan melindungi sesi" codeLabelEn="AuthManager + Better Auth" codeLabelMs="AuthManager + Better Auth">
           <mxCell parent="modules-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#9a6700,#f4c95d);strokeWidth=2;shadow=1;">
             <mxGeometry x="835" y="340" width="150" height="66" as="geometry" />
           </mxCell>
         </object>
-        <object id="modules-account-bridge" label="public.users profile bridge" petakerjaKey="modules/account-bridge" labelEn="public.users profile bridge" labelMs="Jambatan profil public.users">
+        <object id="modules-account-bridge" label="Links sign-in identity to the app profile" petakerjaKey="modules/account-bridge" labelEn="Links sign-in identity to the app profile" labelMs="Menghubungkan identiti log masuk kepada profil aplikasi" simpleLabelEn="Links sign-in identity to the app profile" simpleLabelMs="Menghubungkan identiti log masuk kepada profil aplikasi" codeLabelEn="public.users.better_auth_user_id" codeLabelMs="public.users.better_auth_user_id">
           <mxCell parent="modules-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#9a6700,#f4c95d);strokeWidth=2;shadow=1;">
             <mxGeometry x="815" y="465" width="190" height="72" as="geometry" />
           </mxCell>
         </object>
-        <object id="modules-account-admin" label="Administration, configuration&#10;and user status" petakerjaKey="modules/account-admin" labelEn="Administration, configuration&#10;and user status" labelMs="Pentadbiran dan konfigurasi&#10;serta status pengguna">
+        <object id="modules-account-admin" label="Manages configuration and user status" petakerjaKey="modules/account-admin" labelEn="Manages configuration and user status" labelMs="Mengurus konfigurasi dan status pengguna" simpleLabelEn="Manages configuration and user status" simpleLabelMs="Mengurus konfigurasi dan status pengguna" codeLabelEn="AdminDashboardManager + /api/admin/*" codeLabelMs="AdminDashboardManager + /api/admin/*">
           <mxCell parent="modules-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#9a6700,#f4c95d);strokeWidth=2;shadow=1;">
             <mxGeometry x="1010" y="340" width="185" height="72" as="geometry" />
           </mxCell>
         </object>
-        <object id="modules-analysis-insights" label="InsightsManager&#10;OpenDataAPI" petakerjaKey="modules/analysis-insights" labelEn="InsightsManager&#10;OpenDataAPI" labelMs="InsightsManager&#10;OpenDataAPI">
+        <object id="modules-analysis-insights" label="Loads national data and insights" petakerjaKey="modules/analysis-insights" labelEn="Loads national data and insights" labelMs="Memuatkan data negara dan cerapan" simpleLabelEn="Loads national data and insights" simpleLabelMs="Memuatkan data negara dan cerapan" codeLabelEn="InsightsManager + OpenDataAPI" codeLabelMs="InsightsManager + OpenDataAPI">
           <mxCell parent="modules-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#1f7a4d,#72d6a1);strokeWidth=2;shadow=1;">
             <mxGeometry x="1225" y="340" width="180" height="72" as="geometry" />
           </mxCell>
         </object>
-        <object id="modules-analysis-highlight" label="Area highlighting" petakerjaKey="modules/analysis-highlight" labelEn="Area highlighting" labelMs="Sorotan kawasan">
+        <object id="modules-analysis-highlight" label="Highlights selected areas on the map" petakerjaKey="modules/analysis-highlight" labelEn="Highlights selected areas on the map" labelMs="Menyorot kawasan dipilih pada peta" simpleLabelEn="Highlights selected areas on the map" simpleLabelMs="Menyorot kawasan dipilih pada peta" codeLabelEn="HighlightManager + highlight layer" codeLabelMs="HighlightManager + lapisan sorotan">
           <mxCell parent="modules-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#1f7a4d,#72d6a1);strokeWidth=2;shadow=1;">
             <mxGeometry x="1225" y="465" width="180" height="66" as="geometry" />
           </mxCell>
         </object>
-        <object id="modules-analysis-chatbot" label="ChatbotManager&#10;AI provider routes" petakerjaKey="modules/analysis-chatbot" labelEn="ChatbotManager&#10;AI provider routes" labelMs="ChatbotManager&#10;Laluan penyedia AI">
+        <object id="modules-analysis-chatbot" label="Provides AI assistance" petakerjaKey="modules/analysis-chatbot" labelEn="Provides AI assistance" labelMs="Menyediakan bantuan AI" simpleLabelEn="Provides AI assistance" simpleLabelMs="Menyediakan bantuan AI" codeLabelEn="ChatbotManager + /api/assistant/*" codeLabelMs="ChatbotManager + /api/assistant/*">
           <mxCell parent="modules-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#1f7a4d,#72d6a1);strokeWidth=2;shadow=1;">
             <mxGeometry x="1420" y="340" width="150" height="72" as="geometry" />
           </mxCell>

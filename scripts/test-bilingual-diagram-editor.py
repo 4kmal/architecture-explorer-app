@@ -24,9 +24,9 @@ TRANSLATION_ATTRIBUTES = {
     "codeLabelMs",
 }
 VOLATILE_ATTRIBUTES = {"modified", "etag", "agent"}
-EXPECTED_DIAGRAMS = 55
-EXPECTED_SOURCES = 54
-EXPECTED_STRUCTURE = "660ac482980ffa6282fc22ba58c6f527991d017e027353e5193773368948ea5a"
+EXPECTED_DIAGRAMS = 61
+EXPECTED_SOURCES = 60
+EXPECTED_STRUCTURE = "bb6f7b783c0f73497fabd4ed14ff1b5c9c62ff1a6b03a057ad681f0de8b2e3da"
 REVIEWED_MAP_FLOWCHART = ROOT / "assets" / "editor" / "flowchart-user-explore-3d-map.drawio"
 POLISHED_MODULE_HIERARCHY = ROOT / "assets" / "editor" / "module-hierarchy.drawio"
 ORIGINAL_MODULE_HIERARCHY = ROOT / "assets" / "editor" / "module-hierarchy-original.drawio"
@@ -36,6 +36,7 @@ DESIGN_SOURCES = {
     ROOT / "assets" / "editor" / "architecture-layered-original.drawio",
     POLISHED_MODULE_HIERARCHY,
     ORIGINAL_MODULE_HIERARCHY,
+    ROOT / "assets" / "editor" / "module-hierarchy-layered-stack.drawio",
 }
 TECHNICAL_DESIGN_LABELS = {
     "PetaKerja",
@@ -177,6 +178,7 @@ def assert_module_assets(errors: list[str]) -> None:
         ("architecture-original", "Seni Bina Berlapis PetaKerja", "PetaKerja Layered Architecture"),
         ("modules", "Hierarki Modul PetaKerja", "PetaKerja Module Hierarchy"),
         ("modules-original", "Hierarki Modul PetaKerja", "PetaKerja Module Hierarchy"),
+        ("modules-layered-stack", "Hierarki Modul PetaKerja", "PetaKerja Module Hierarchy"),
     ):
         svg = assets.get(diagram_id, {}).get("svg", {})
         if bm_title not in svg.get("ms", "") or en_title not in svg.get("en", "") or svg.get("ms") == svg.get("en"):

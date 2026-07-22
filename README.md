@@ -48,6 +48,36 @@ Jika butang `Edit` dibuka dalam mod `file://`, Explorer kini memaparkan arahan p
 - Access Administrator Dashboard documents the real parallel load of provider, AI-usage and user overview data after Better Auth and `admin|owner` authorization. Monitor System Activity Logs is deliberately scoped to the latest AI-assistant usage events from `public.ai_usage_events`; it does not imply a general server-log or `ai_admin_audit_logs` viewer.
 - The User Explore the 3D Map sequence follows the Malaysia preset through `MyPetaApp`, `MapManager`, MapLibre, POI/category RPCs, terrain and the 3D-building toggle. Separate User and Administrator Sign Out sequences show Better Auth invalidation and the actual protected-view cleanup behavior.
 
+### Layered Architecture variants
+
+The **Layered Architecture / Seni Bina Berlapis** family opens with the recommended **Visual Stack / Susunan Visual**, followed by **Detailed Layers / Lapisan Terperinci** and the unchanged **Original / Asal** reference. All three variants share a persistent report explanation: PetaKerja is a layered, manager-based client-server application with MVC-inspired separation, not a strict textbook MVC implementation. The browser interface acts as the View, `MyPetaApp`, managers and Express handlers provide controller-like coordination, and services, state, caches and Supabase hold model/data responsibilities; managers may also coordinate UI state and update the DOM directly.
+
+The `1920 x 900` Visual Stack uses five top-to-bottom tiers and five connected flows. Eleven embedded logo instances identify PetaKerja, Vite, TypeScript, MapLibre, Supabase, Vercel, Express, Better Auth and PostgreSQL without any runtime network dependency. Simple mode explains responsibilities; Code mode exposes the exact classes, files, routes and tables in the same geometry. Selecting a tier keeps the report paragraph visible while opening the mapped source, route, table and UI details.
+
+The PetaKerja mark is reused from `public/icon/android-chrome-192x192.png`; Vite uses the official vector from the Vite repository; TypeScript, MapLibre, Supabase, Vercel, Express and Better Auth reuse existing local Explorer marks; and PostgreSQL uses a local Simple Icons vector in the PostgreSQL brand colour. Regenerate and verify the logo stack with:
+
+```powershell
+python .\scripts\generate-architecture-visual-stack.py
+python .\scripts\build-diagram-assets.py
+python .\scripts\test-architecture-visual-stack.py
+```
+
+### Map & Routing explainers
+
+The top-level **Map & Routing / Peta & Penghalaan** collection keeps **A-to-B Routing Responsibilities** under **Overview / Gambaran Keseluruhan**, groups **Nominatim + Valhalla**, **Nominatim + MapLibre** and **Valhalla + MapLibre** beneath **Provider Workflows / Aliran Kerja Penyedia**, and places **Geo Server Communication / Komunikasi Pelayan Geo** beneath **Infrastructure / Infrastruktur**. The four new `1920 x 900` explainers are independent bilingual Draw.io sources with fixed simple labels; selecting a stage exposes exact classes, files, routes, tables and UI hotspots without enabling the generic Simple/Code control.
+
+The provider diagrams make the responsibility boundaries explicit. Nominatim resolves places to coordinates, Valhalla calculates routes from coordinates, and MapLibre renders or interacts with normalized data; none of those providers calls another directly from the browser. The infrastructure view follows the current solid production path from the matching Vercel deployment through environment-specific Supabase caches and a server-only request to `geo.petakerja.my`, where Cloudflare is DNS-only, Caddy terminates HTTPS on the DigitalOcean VPS, and the private Docker network reaches Valhalla on `8002`. Nominatim on `8080` is shown only as a dashed, gated future path. Geofabrik PBF extracts enter through the maintenance lane, while provider ports and `GEO_SERVICE_TOKEN` remain outside the browser boundary.
+
+The shared deterministic generator owns only `assets/editor/map-routing/`; previews are emitted under `assets/diagrams/map-routing/`. Regenerate and verify them with:
+
+```powershell
+python .\scripts\generate-map-routing-workflows.py
+python .\scripts\build-diagram-assets.py
+python .\scripts\test-map-routing-workflows.py
+```
+
+All marks are stored locally and embedded into the Draw.io and SVG assets. PetaKerja uses `public/icon/android-chrome-192x192.png`; MapLibre uses its official brand asset; Valhalla uses the project logo from the official repository; Vercel, Express, TypeScript and Supabase reuse the Explorer's existing local marks; and Cloudflare, DigitalOcean, Caddy, Docker and OpenStreetMap use local monochrome SVG implementations from Simple Icons. These files are attribution inputs only and create no runtime network dependency.
+
 ### ETL Pipeline diagram
 
 The top-level **ETL Pipeline** collection contains an **Overview** subfolder for **PetaKerja Operational ETL & Serving Pipeline** and a **Job Search Workflows** subfolder for **Daily Index Workflow** and **Live Search Workflow**. All three diagrams are independent, bilingual and editable. The overview uses a `2048 x 1120` canvas that follows the supplied wide-zone reference while documenting the checked-in runtime rather than an aspirational medallion lake. Functional regions separate control and scheduling, source context, operational ETL, platforms and consumption, and operational truth.
@@ -285,11 +315,22 @@ Portable sources / Sumber mudah alih:
 - `scripts\build-admin-manage-users-flowchart.py` and `scripts\build-admin-flowcharts.py`: generate the five verified original Administrator flow charts from the read-only template, validate branch coverage and reachability, and preserve their editor copies with the `-original.drawio` suffix.
 - `scripts\build-polished-admin-flowcharts.py`: applies the shared semantic palette and tidy presentation rules to all five Administrator flows without changing their labels, branches, stable keys or endpoints. It validates each graph, runs `drawio-ai validate --strict` and `drawio-ai audit`, exports report-ready Draw.io/SVG/PNG files beside the template, and makes the polished sources canonical in Edit mode.
 - `scripts\build-polished-core-variants.py`: creates the polished Core Domain and Google sign-in variants, preserves Original hashes, resolves only audited connector fan-ins, produces light report PNGs plus theme-aware Draw.io/SVG files, and publishes matching Original/Polished editor assets.
-- `scripts\build-user-flowcharts-and-designs.py` and `scripts\build-polished-user-flowcharts.py`: generate, validate and export the User flowchart pairs plus editable Layered Architecture and Module Hierarchy Draw.io pairs. The reviewed Explore the 3D Map polished source is protected from regeneration and validated in place; the other polished variants remain generator-owned. Original variants retain their historical logic, stable keys and relationship counts.
+- `scripts\build-user-flowcharts-and-designs.py` and `scripts\build-polished-user-flowcharts.py`: generate, validate and export the User flowchart pairs plus editable Layered Architecture and Module Hierarchy Draw.io pairs. The detailed architecture and hierarchy tree carry bilingual Simple/Code labels in one fixed geometry, while Original references remain mode-free and unchanged. The reviewed Explore the 3D Map polished source is protected from regeneration and validated in place; the other polished variants remain generator-owned.
+- `scripts\generate-architecture-visual-stack.py`: generates the recommended logo-rich Layered Architecture variant with five tiers, eleven local logo instances, five flows and bilingual Simple/Code metadata.
+- `scripts\build-module-hierarchy-layered-stack.py`: generates the recommended 1900×1180 Module Hierarchy Layered Stack, validates its four trapezoidal tiers, twelve mapped responsibilities and sixteen hierarchy links, then exports the canonical Draw.io and SVG assets. `scripts\annotate-routing-label-modes.py` deterministically maintains the routing stack's bilingual Simple/Code metadata without changing its geometry.
 - `scripts\apply-user-explore-flowchart-default.py`: promotes a reviewed Explore the 3D Map Draw.io source into the canonical Polished view after validating its 21 components, 24 connected arrows, stable IDs and intentional content overflow. Its page remains `1100 x 1500`, while the reviewed final-map and End nodes continue to a second page with a content bottom of 1660 pixels.
 - `assets\editor\flowchart-admin-*.drawio`: canonical polished editor sources. Matching `flowchart-admin-*-original.drawio` files remain available through each use case's Original view. `build-diagram-assets.py` produces interactive BM/EN SVGs for both variants.
 - `assets\editor\class-domain-petakerja*.drawio` and `flowchart-user-google-sign-in*.drawio`: canonical polished sources and their unchanged Original copies. Both variants retain the same stable keys, UI hotspots and relationship manifests.
-- `assets\editor\flowchart-user-search-jobs*.drawio`, `flowchart-user-explore-3d-map*.drawio`, `flowchart-user-sign-out*.drawio`, `architecture-layered*.drawio` and `module-hierarchy*.drawio`: editable Original/Polished sources for the new User and Design variant folders. The older D2 SVGs remain reference artifacts and are not modified.
+- `assets\editor\flowchart-user-search-jobs*.drawio`, `flowchart-user-explore-3d-map*.drawio`, `flowchart-user-sign-out*.drawio`, `architecture-visual-stack.drawio`, `architecture-layered*.drawio` and `module-hierarchy*.drawio`: editable sources for the User and Design variant folders. Layered Architecture opens Visual Stack first, followed by Detailed Layers and Original; Module Hierarchy opens Layered Stack first, followed by Hierarchy Tree and Original. The older D2 SVGs remain reference artifacts and are not modified.
+
+Regenerate the layered hierarchy and label-aware asset bundle with:
+
+```powershell
+python .\scripts\build-module-hierarchy-layered-stack.py
+python .\scripts\generate-architecture-visual-stack.py
+python .\scripts\annotate-routing-label-modes.py
+python .\scripts\build-diagram-assets.py
+```
 
 To validate the tracked reviewed map flow, or adopt another approved adjustment without forcing it back onto one page, run:
 

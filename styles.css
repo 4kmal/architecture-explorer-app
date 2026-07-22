@@ -147,8 +147,8 @@ button:focus-visible, input:focus-visible, select:focus-visible, [tabindex]:focu
 .segmented button:first-child { border-radius: 4px 0 0 4px; }
 .segmented button:last-child { border-right-width: 1px; border-radius: 0 4px 4px 0; }
 .segmented button[aria-pressed="true"] { color: var(--selected-text); background: var(--selected-bg); border-color: var(--selected); }
-.sequence-label-mode { flex: 0 0 auto; }
-.sequence-label-mode button { min-width: 54px; }
+.diagram-label-mode { flex: 0 0 auto; }
+.diagram-label-mode button { min-width: 54px; }
 .compact-field { flex: 0 0 140px; }
 .theme-field { flex: 0 0 92px; }
 .language-control { flex: 0 0 64px; }

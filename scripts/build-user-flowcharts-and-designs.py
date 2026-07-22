@@ -268,6 +268,10 @@ class DesignNode:
     height: float
     interactive: bool = True
     role: str = "responsibility"
+    simple_label: str | None = None
+    simple_label_ms: str | None = None
+    code_label: str | None = None
+    code_label_ms: str | None = None
 
 
 @dataclass(frozen=True)
@@ -284,6 +288,10 @@ class DesignLink:
     label_x: float = 0.0
     label_y: float = 0.0
     hierarchy: bool = False
+    simple_label: str | None = None
+    simple_label_ms: str | None = None
+    code_label: str | None = None
+    code_label_ms: str | None = None
 
 
 @dataclass(frozen=True)
@@ -328,35 +336,35 @@ ARCHITECTURE = DesignSpec(
         DesignGroup("data", "Data and External Services", 70, 730, 1460, 170, "green"),
     ),
     nodes=(
-        DesignNode("frontend-shell", "src/main.ts\nsrc/MyPetaApp.ts", "frontend", 150, 140, 280, 64),
-        DesignNode("frontend-ui", "templates.ts\nstyles.css", "frontend", 655, 140, 280, 64),
-        DesignNode("frontend-map", "MapLibre GL JS", "frontend", 1160, 140, 280, 64),
-        DesignNode("manager-poi", "POIManager\nSearchManager\nCategoryManager", "managers", 110, 300, 300, 64),
-        DesignNode("manager-jobs", "JobFinderManager", "managers", 470, 300, 280, 64),
-        DesignNode("manager-insights", "InsightsManager", "managers", 830, 300, 280, 64),
-        DesignNode("manager-chatbot", "ChatbotManager", "managers", 1190, 300, 280, 64),
-        DesignNode("service-supabase", "Supabase RPC client", "services", 110, 460, 300, 64),
-        DesignNode("service-job-client", "supa-api.ts\ngrep-api.ts\napi.ts", "services", 470, 460, 280, 64),
-        DesignNode("service-opendata", "OpenDataAPI", "services", 830, 460, 280, 64),
-        DesignNode("service-auth", "authenticatedFetch", "services", 1190, 460, 280, 64),
-        DesignNode("backend-app", "server/app.ts", "backend", 90, 620, 250, 64),
-        DesignNode("backend-supa-jobs", "GET /api/jobs/supa", "backend", 380, 620, 250, 64),
-        DesignNode("backend-live-jobs", "POST /api/search-jobs", "backend", 670, 620, 250, 64),
-        DesignNode("backend-assistant", "POST /api/assistant/chat", "backend", 960, 620, 250, 64),
-        DesignNode("backend-auth", "Better Auth middleware", "backend", 1250, 620, 250, 64),
-        DesignNode("data-postgres", "Supabase PostgreSQL\nPostGIS", "data", 110, 790, 300, 70),
-        DesignNode("data-jobs", "public.scraped_jobs\npublic.job_listings", "data", 470, 790, 280, 70),
-        DesignNode("data-gov", "api.data.gov.my", "data", 830, 790, 280, 70),
-        DesignNode("data-pois", "public.pois\ncategory RPCs", "data", 1190, 790, 280, 70),
+        DesignNode("frontend-shell", "src/main.ts\nsrc/MyPetaApp.ts", "frontend", 150, 140, 280, 64, simple_label="Application startup and workspace shell", simple_label_ms="Permulaan aplikasi dan cangkerang ruang kerja", code_label="src/main.ts → MyPetaApp", code_label_ms="src/main.ts → MyPetaApp"),
+        DesignNode("frontend-ui", "templates.ts\nstyles.css", "frontend", 655, 140, 280, 64, simple_label="Interface templates and styling", simple_label_ms="Templat dan gaya antara muka", code_label="templates.ts + styles.css", code_label_ms="templates.ts + styles.css"),
+        DesignNode("frontend-map", "MapLibre GL JS", "frontend", 1160, 140, 280, 64, simple_label="Interactive map rendering", simple_label_ms="Paparan peta interaktif", code_label="MapLibre GL JS", code_label_ms="MapLibre GL JS"),
+        DesignNode("manager-poi", "POIManager\nSearchManager\nCategoryManager", "managers", 110, 300, 300, 64, simple_label="Coordinates places, search and categories", simple_label_ms="Menyelaras tempat, carian dan kategori", code_label="POIManager + SearchManager + CategoryManager", code_label_ms="POIManager + SearchManager + CategoryManager"),
+        DesignNode("manager-jobs", "JobFinderManager", "managers", 470, 300, 280, 64, simple_label="Coordinates job discovery", simple_label_ms="Menyelaras penemuan pekerjaan", code_label="JobFinderManager", code_label_ms="JobFinderManager"),
+        DesignNode("manager-insights", "InsightsManager", "managers", 830, 300, 280, 64, simple_label="Coordinates national-data insights", simple_label_ms="Menyelaras cerapan data negara", code_label="InsightsManager", code_label_ms="InsightsManager"),
+        DesignNode("manager-chatbot", "ChatbotManager", "managers", 1190, 300, 280, 64, simple_label="Coordinates AI assistance", simple_label_ms="Menyelaras bantuan AI", code_label="ChatbotManager", code_label_ms="ChatbotManager"),
+        DesignNode("service-supabase", "Supabase RPC client", "services", 110, 460, 300, 64, simple_label="Reads application data", simple_label_ms="Membaca data aplikasi", code_label="Supabase RPC client", code_label_ms="Klien RPC Supabase"),
+        DesignNode("service-job-client", "supa-api.ts\ngrep-api.ts\napi.ts", "services", 470, 460, 280, 64, simple_label="Requests Daily Index and Live Search", simple_label_ms="Meminta Indeks Harian dan Carian Langsung", code_label="supa-api.ts + grep-api.ts + api.ts", code_label_ms="supa-api.ts + grep-api.ts + api.ts"),
+        DesignNode("service-opendata", "OpenDataAPI", "services", 830, 460, 280, 64, simple_label="Requests government open data", simple_label_ms="Meminta data terbuka kerajaan", code_label="OpenDataAPI", code_label_ms="OpenDataAPI"),
+        DesignNode("service-auth", "authenticatedFetch", "services", 1190, 460, 280, 64, simple_label="Sends signed-in requests", simple_label_ms="Menghantar permintaan pengguna", code_label="authenticatedFetch()", code_label_ms="authenticatedFetch()"),
+        DesignNode("backend-app", "server/app.ts", "backend", 90, 620, 250, 64, simple_label="Hosts the application APIs", simple_label_ms="Mengehoskan API aplikasi", code_label="server/app.ts", code_label_ms="server/app.ts"),
+        DesignNode("backend-supa-jobs", "GET /api/jobs/supa", "backend", 380, 620, 250, 64, simple_label="Serves the Daily Index", simple_label_ms="Menyajikan Indeks Harian", code_label="GET /api/jobs/supa", code_label_ms="GET /api/jobs/supa"),
+        DesignNode("backend-live-jobs", "POST /api/search-jobs", "backend", 670, 620, 250, 64, simple_label="Runs request-time job search", simple_label_ms="Menjalankan carian pekerjaan masa nyata", code_label="GET /api/search-jobs", code_label_ms="GET /api/search-jobs"),
+        DesignNode("backend-assistant", "POST /api/assistant/chat", "backend", 960, 620, 250, 64, simple_label="Streams AI responses", simple_label_ms="Menstrim respons AI", code_label="POST /api/assistant/chat", code_label_ms="POST /api/assistant/chat"),
+        DesignNode("backend-auth", "Better Auth middleware", "backend", 1250, 620, 250, 64, simple_label="Checks sessions and access", simple_label_ms="Menyemak sesi dan akses", code_label="Better Auth middleware", code_label_ms="Middleware Better Auth"),
+        DesignNode("data-postgres", "Supabase PostgreSQL\nPostGIS", "data", 110, 790, 300, 70, simple_label="Main application database", simple_label_ms="Pangkalan data utama aplikasi", code_label="Supabase PostgreSQL + PostGIS", code_label_ms="Supabase PostgreSQL + PostGIS"),
+        DesignNode("data-jobs", "public.scraped_jobs\npublic.job_listings", "data", 470, 790, 280, 70, simple_label="Job snapshots and job records", simple_label_ms="Snapshot dan rekod pekerjaan", code_label="public.scraped_jobs + public.job_listings", code_label_ms="public.scraped_jobs + public.job_listings"),
+        DesignNode("data-gov", "api.data.gov.my", "data", 830, 790, 280, 70, simple_label="Malaysian government open data", simple_label_ms="Data terbuka kerajaan Malaysia", code_label="api.data.gov.my", code_label_ms="api.data.gov.my"),
+        DesignNode("data-pois", "public.pois\ncategory RPCs", "data", 1190, 790, 280, 70, simple_label="Places and category data", simple_label_ms="Data tempat dan kategori", code_label="public.pois + category RPCs", code_label_ms="public.pois + RPC kategori"),
     ),
     links=(
-        DesignLink("frontend-managers", "frontend-shell", "manager-poi", "UI and map interaction"),
-        DesignLink("managers-services", "manager-poi", "service-supabase", "Data calls"),
-        DesignLink("supabase-data", "service-supabase", "data-postgres", "POI and RPC", ((360, 545), (360, 765)), 0.83, 1.0, 0.83, 0.0),
-        DesignLink("jobs-backend", "service-job-client", "backend-supa-jobs", "Job search"),
-        DesignLink("auth-backend", "service-auth", "backend-auth", "Protected functions"),
-        DesignLink("backend-data", "backend-app", "data-postgres", "Profiles, status and indexes", ((170, 700), (170, 765)), 0.32, 1.0, 0.2, 0.0, -0.45, -13),
-        DesignLink("opendata-gov", "service-opendata", "data-gov", "Open data", ((940, 545), (940, 765)), 0.39, 1.0, 0.39, 0.0),
+        DesignLink("frontend-managers", "frontend-shell", "manager-poi", "UI and map interaction", simple_label="Coordinates interaction", simple_label_ms="Menyelaras interaksi", code_label="MyPetaApp → managers", code_label_ms="MyPetaApp → pengurus"),
+        DesignLink("managers-services", "manager-poi", "service-supabase", "Data calls", simple_label="Requests application data", simple_label_ms="Meminta data aplikasi", code_label="manager methods → service clients", code_label_ms="kaedah pengurus → klien servis"),
+        DesignLink("supabase-data", "service-supabase", "data-postgres", "POI and RPC", ((360, 545), (360, 765)), 0.83, 1.0, 0.83, 0.0, simple_label="Reads POIs and RPC results", simple_label_ms="Membaca POI dan hasil RPC", code_label="Supabase RPC → PostgreSQL", code_label_ms="RPC Supabase → PostgreSQL"),
+        DesignLink("jobs-backend", "service-job-client", "backend-supa-jobs", "Job search", simple_label="Requests job results", simple_label_ms="Meminta hasil pekerjaan", code_label="jobs clients → /api/jobs/*", code_label_ms="klien pekerjaan → /api/jobs/*"),
+        DesignLink("auth-backend", "service-auth", "backend-auth", "Protected functions", simple_label="Protects signed-in functions", simple_label_ms="Melindungi fungsi pengguna", code_label="authenticatedFetch() → requireAuth", code_label_ms="authenticatedFetch() → requireAuth"),
+        DesignLink("backend-data", "backend-app", "data-postgres", "Profiles, status and indexes", ((170, 700), (170, 765)), 0.32, 1.0, 0.2, 0.0, -0.45, -13, simple_label="Reads profiles and indexes", simple_label_ms="Membaca profil dan indeks", code_label="Express routes → Supabase", code_label_ms="Laluan Express → Supabase"),
+        DesignLink("opendata-gov", "service-opendata", "data-gov", "Open data", ((940, 545), (940, 765)), 0.39, 1.0, 0.39, 0.0, simple_label="Loads open data", simple_label_ms="Memuatkan data terbuka", code_label="OpenDataAPI → api.data.gov.my", code_label_ms="OpenDataAPI → api.data.gov.my"),
     ),
 )
 
@@ -420,18 +428,18 @@ MODULES = DesignSpec(
         DesignNode("module-jobs", "Job Search Module", "jobs", 430, 230, 340, 70, False, "module"),
         DesignNode("module-account", "Accounts and Administration", "account", 830, 230, 340, 70, False, "module"),
         DesignNode("module-analysis", "Analytics and Assistance", "analysis", 1230, 230, 340, 70, False, "module"),
-        DesignNode("core-shell", "Boot and application shell\nMyPetaApp + templates", "core", 60, 340, 280, 66),
-        DesignNode("core-map", "Interactive map\nMapManager + MapLibre", "core", 60, 445, 280, 66),
-        DesignNode("core-poi", "POI and categories\nPOIManager + SearchManager + CategoryManager", "core", 60, 550, 280, 72),
-        DesignNode("jobs-manager", "JobFinderManager", "jobs", 460, 340, 280, 66),
-        DesignNode("jobs-modes", "Daily Index\nPipeline Index\nLive Search", "jobs", 460, 445, 280, 72),
-        DesignNode("jobs-markers", "Job cards and map markers\nmarkers.ts", "jobs", 460, 550, 280, 72),
-        DesignNode("account-auth", "Better Auth", "account", 835, 340, 150, 66),
-        DesignNode("account-bridge", "public.users profile bridge", "account", 815, 465, 190, 72),
-        DesignNode("account-admin", "Administration, configuration\nand user status", "account", 1010, 340, 185, 72),
-        DesignNode("analysis-insights", "InsightsManager\nOpenDataAPI", "analysis", 1225, 340, 180, 72),
-        DesignNode("analysis-highlight", "Area highlighting", "analysis", 1225, 465, 180, 66),
-        DesignNode("analysis-chatbot", "ChatbotManager\nAI provider routes", "analysis", 1420, 340, 150, 72),
+        DesignNode("core-shell", "Starts the application and workspace", "core", 60, 340, 280, 66, simple_label="Starts the application and workspace", simple_label_ms="Memulakan aplikasi dan ruang kerja", code_label="src/main.ts → MyPetaApp + templates", code_label_ms="src/main.ts → MyPetaApp + templat"),
+        DesignNode("core-map", "Controls and renders the interactive map", "core", 60, 445, 280, 66, simple_label="Controls and renders the interactive map", simple_label_ms="Mengawal dan memaparkan peta interaktif", code_label="MapManager + MapLibre GL JS", code_label_ms="MapManager + MapLibre GL JS"),
+        DesignNode("core-poi", "Searches places, POIs and categories", "core", 60, 550, 280, 72, simple_label="Searches places, POIs and categories", simple_label_ms="Mencari tempat, POI dan kategori", code_label="POIManager + SearchManager + CategoryManager", code_label_ms="POIManager + SearchManager + CategoryManager"),
+        DesignNode("jobs-manager", "Coordinates job search modes", "jobs", 460, 340, 280, 66, simple_label="Coordinates job search modes", simple_label_ms="Menyelaras mod carian pekerjaan", code_label="JobFinderManager", code_label_ms="JobFinderManager"),
+        DesignNode("jobs-modes", "Daily Index, Pipeline Index and Live Search", "jobs", 460, 445, 280, 72, simple_label="Daily Index, Pipeline Index and Live Search", simple_label_ms="Indeks Harian, Indeks Pipeline dan Carian Langsung", code_label="searchSupaJobs() + searchJobs() + pipeline API", code_label_ms="searchSupaJobs() + searchJobs() + API pipeline"),
+        DesignNode("jobs-markers", "Shows job cards and map markers", "jobs", 460, 550, 280, 72, simple_label="Shows job cards and map markers", simple_label_ms="Memaparkan kad pekerjaan dan penanda peta", code_label="JobFinderManager + markers.ts", code_label_ms="JobFinderManager + markers.ts"),
+        DesignNode("account-auth", "Signs users in and protects sessions", "account", 835, 340, 150, 66, simple_label="Signs users in and protects sessions", simple_label_ms="Log masuk pengguna dan melindungi sesi", code_label="AuthManager + Better Auth", code_label_ms="AuthManager + Better Auth"),
+        DesignNode("account-bridge", "Links sign-in identity to the app profile", "account", 815, 465, 190, 72, simple_label="Links sign-in identity to the app profile", simple_label_ms="Menghubungkan identiti log masuk kepada profil aplikasi", code_label="public.users.better_auth_user_id", code_label_ms="public.users.better_auth_user_id"),
+        DesignNode("account-admin", "Manages configuration and user status", "account", 1010, 340, 185, 72, simple_label="Manages configuration and user status", simple_label_ms="Mengurus konfigurasi dan status pengguna", code_label="AdminDashboardManager + /api/admin/*", code_label_ms="AdminDashboardManager + /api/admin/*"),
+        DesignNode("analysis-insights", "Loads national data and insights", "analysis", 1225, 340, 180, 72, simple_label="Loads national data and insights", simple_label_ms="Memuatkan data negara dan cerapan", code_label="InsightsManager + OpenDataAPI", code_label_ms="InsightsManager + OpenDataAPI"),
+        DesignNode("analysis-highlight", "Highlights selected areas on the map", "analysis", 1225, 465, 180, 66, simple_label="Highlights selected areas on the map", simple_label_ms="Menyorot kawasan dipilih pada peta", code_label="HighlightManager + highlight layer", code_label_ms="HighlightManager + lapisan sorotan"),
+        DesignNode("analysis-chatbot", "Provides AI assistance", "analysis", 1420, 340, 150, 72, simple_label="Provides AI assistance", simple_label_ms="Menyediakan bantuan AI", code_label="ChatbotManager + /api/assistant/*", code_label_ms="ChatbotManager + /api/assistant/*"),
     ),
     links=(
         DesignLink("hierarchy-root-core", "application-root", "module-core", "", ((800, 195), (200, 195)), hierarchy=True),
@@ -499,10 +507,12 @@ def design_tree(spec: DesignSpec, polished: bool) -> ET.ElementTree:
     ET.SubElement(root, "mxCell", {"id": layer_id, "parent": root_id})
 
     def vertex(identifier: str, label: str, x: float, y: float, width: float, height: float,
-               style: str, key: str | None = None) -> str:
+               style: str, key: str | None = None, labels: dict[str, str] | None = None) -> str:
         attrs = {"id": identifier, "label": label}
         if key:
             attrs["petakerjaKey"] = f"{spec.diagram_id}/{key}"
+        if labels:
+            attrs.update({name: value for name, value in labels.items() if value})
         wrapper = ET.SubElement(root, "object", attrs)
         cell = ET.SubElement(wrapper, "mxCell", {"parent": layer_id, "vertex": "1", "style": style})
         ET.SubElement(cell, "mxGeometry", {
@@ -565,9 +575,20 @@ def design_tree(spec: DesignSpec, polished: bool) -> ET.ElementTree:
         }
         if font_style:
             node_style["fontStyle"] = font_style
+        label_en = (node.simple_label or node.label) if polished else node.label
+        label_ms = node.simple_label_ms or label_en
+        code_en = node.code_label or label_en
+        code_ms = node.code_label_ms or code_en
+        labels = None
+        if polished and (node.simple_label or node.code_label):
+            labels = {
+                "labelEn": label_en, "labelMs": label_ms,
+                "simpleLabelEn": label_en, "simpleLabelMs": label_ms,
+                "codeLabelEn": code_en, "codeLabelMs": code_ms,
+            }
         node_ids[node.key] = vertex(
-            f"{spec.diagram_id}-{node.key}", node.label, node.x, node.y, node.width, node.height,
-            style_text(node_style), node.key if node.interactive else None,
+            f"{spec.diagram_id}-{node.key}", label_en, node.x, node.y, node.width, node.height,
+            style_text(node_style), node.key if node.interactive else None, labels,
         )
 
     if spec.dependencies and spec.dependency_panel_y is not None:
@@ -601,7 +622,17 @@ def design_tree(spec: DesignSpec, polished: bool) -> ET.ElementTree:
             )
 
     for link in spec.links:
-        wrapper_attributes = {"id": f"{spec.diagram_id}-{link.key}", "label": link.label}
+        simple_en = (link.simple_label or link.label) if polished else link.label
+        simple_ms = link.simple_label_ms or simple_en
+        code_en = link.code_label or simple_en
+        code_ms = link.code_label_ms or code_en
+        wrapper_attributes = {"id": f"{spec.diagram_id}-{link.key}", "label": simple_en}
+        if polished and (link.simple_label or link.code_label):
+            wrapper_attributes.update({
+                "labelEn": simple_en, "labelMs": simple_ms,
+                "simpleLabelEn": simple_en, "simpleLabelMs": simple_ms,
+                "codeLabelEn": code_en, "codeLabelMs": code_ms,
+            })
         if link.hierarchy:
             wrapper_attributes["petakerjaRelation"] = "structural"
         else:

@@ -44,117 +44,117 @@
             <mxGeometry x="70" y="730" width="1460" height="170" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-frontend-shell" label="src/main.ts&#10;src/MyPetaApp.ts" petakerjaKey="architecture/frontend-shell" labelEn="src/main.ts&#10;src/MyPetaApp.ts" labelMs="src/main.ts&#10;src/MyPetaApp.ts">
+        <object id="architecture-frontend-shell" label="Application startup and workspace shell" petakerjaKey="architecture/frontend-shell" labelEn="Application startup and workspace shell" labelMs="Permulaan aplikasi dan cangkerang ruang kerja" simpleLabelEn="Application startup and workspace shell" simpleLabelMs="Permulaan aplikasi dan cangkerang ruang kerja" codeLabelEn="src/main.ts → MyPetaApp" codeLabelMs="src/main.ts → MyPetaApp">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#3d6f9e,#8fb7df);strokeWidth=2;shadow=1;">
             <mxGeometry x="150" y="140" width="280" height="64" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-frontend-ui" label="templates.ts&#10;styles.css" petakerjaKey="architecture/frontend-ui" labelEn="templates.ts&#10;styles.css" labelMs="templates.ts&#10;styles.css">
+        <object id="architecture-frontend-ui" label="Interface templates and styling" petakerjaKey="architecture/frontend-ui" labelEn="Interface templates and styling" labelMs="Templat dan gaya antara muka" simpleLabelEn="Interface templates and styling" simpleLabelMs="Templat dan gaya antara muka" codeLabelEn="templates.ts + styles.css" codeLabelMs="templates.ts + styles.css">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#3d6f9e,#8fb7df);strokeWidth=2;shadow=1;">
             <mxGeometry x="655" y="140" width="280" height="64" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-frontend-map" label="MapLibre GL JS" petakerjaKey="architecture/frontend-map" labelEn="MapLibre GL JS" labelMs="MapLibre GL JS">
+        <object id="architecture-frontend-map" label="Interactive map rendering" petakerjaKey="architecture/frontend-map" labelEn="Interactive map rendering" labelMs="Paparan peta interaktif" simpleLabelEn="Interactive map rendering" simpleLabelMs="Paparan peta interaktif" codeLabelEn="MapLibre GL JS" codeLabelMs="MapLibre GL JS">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#3d6f9e,#8fb7df);strokeWidth=2;shadow=1;">
             <mxGeometry x="1160" y="140" width="280" height="64" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-manager-poi" label="POIManager&#10;SearchManager&#10;CategoryManager" petakerjaKey="architecture/manager-poi" labelEn="POIManager&#10;SearchManager&#10;CategoryManager" labelMs="POIManager&#10;SearchManager&#10;CategoryManager">
+        <object id="architecture-manager-poi" label="Coordinates places, search and categories" petakerjaKey="architecture/manager-poi" labelEn="Coordinates places, search and categories" labelMs="Menyelaras tempat, carian dan kategori" simpleLabelEn="Coordinates places, search and categories" simpleLabelMs="Menyelaras tempat, carian dan kategori" codeLabelEn="POIManager + SearchManager + CategoryManager" codeLabelMs="POIManager + SearchManager + CategoryManager">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#6941c6,#b9a2ff);strokeWidth=2;shadow=1;">
             <mxGeometry x="110" y="300" width="300" height="64" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-manager-jobs" label="JobFinderManager" petakerjaKey="architecture/manager-jobs" labelEn="JobFinderManager" labelMs="JobFinderManager">
+        <object id="architecture-manager-jobs" label="Coordinates job discovery" petakerjaKey="architecture/manager-jobs" labelEn="Coordinates job discovery" labelMs="Menyelaras penemuan pekerjaan" simpleLabelEn="Coordinates job discovery" simpleLabelMs="Menyelaras penemuan pekerjaan" codeLabelEn="JobFinderManager" codeLabelMs="JobFinderManager">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#6941c6,#b9a2ff);strokeWidth=2;shadow=1;">
             <mxGeometry x="470" y="300" width="280" height="64" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-manager-insights" label="InsightsManager" petakerjaKey="architecture/manager-insights" labelEn="InsightsManager" labelMs="InsightsManager">
+        <object id="architecture-manager-insights" label="Coordinates national-data insights" petakerjaKey="architecture/manager-insights" labelEn="Coordinates national-data insights" labelMs="Menyelaras cerapan data negara" simpleLabelEn="Coordinates national-data insights" simpleLabelMs="Menyelaras cerapan data negara" codeLabelEn="InsightsManager" codeLabelMs="InsightsManager">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#6941c6,#b9a2ff);strokeWidth=2;shadow=1;">
             <mxGeometry x="830" y="300" width="280" height="64" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-manager-chatbot" label="ChatbotManager" petakerjaKey="architecture/manager-chatbot" labelEn="ChatbotManager" labelMs="ChatbotManager">
+        <object id="architecture-manager-chatbot" label="Coordinates AI assistance" petakerjaKey="architecture/manager-chatbot" labelEn="Coordinates AI assistance" labelMs="Menyelaras bantuan AI" simpleLabelEn="Coordinates AI assistance" simpleLabelMs="Menyelaras bantuan AI" codeLabelEn="ChatbotManager" codeLabelMs="ChatbotManager">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#6941c6,#b9a2ff);strokeWidth=2;shadow=1;">
             <mxGeometry x="1190" y="300" width="280" height="64" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-service-supabase" label="Supabase RPC client" petakerjaKey="architecture/service-supabase" labelEn="Supabase RPC client" labelMs="Klien RPC Supabase">
+        <object id="architecture-service-supabase" label="Reads application data" petakerjaKey="architecture/service-supabase" labelEn="Reads application data" labelMs="Membaca data aplikasi" simpleLabelEn="Reads application data" simpleLabelMs="Membaca data aplikasi" codeLabelEn="Supabase RPC client" codeLabelMs="Klien RPC Supabase">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#9a6700,#f4c95d);strokeWidth=2;shadow=1;">
             <mxGeometry x="110" y="460" width="300" height="64" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-service-job-client" label="supa-api.ts&#10;grep-api.ts&#10;api.ts" petakerjaKey="architecture/service-job-client" labelEn="supa-api.ts&#10;grep-api.ts&#10;api.ts" labelMs="supa-api.ts&#10;grep-api.ts&#10;api.ts">
+        <object id="architecture-service-job-client" label="Requests Daily Index and Live Search" petakerjaKey="architecture/service-job-client" labelEn="Requests Daily Index and Live Search" labelMs="Meminta Indeks Harian dan Carian Langsung" simpleLabelEn="Requests Daily Index and Live Search" simpleLabelMs="Meminta Indeks Harian dan Carian Langsung" codeLabelEn="supa-api.ts + grep-api.ts + api.ts" codeLabelMs="supa-api.ts + grep-api.ts + api.ts">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#9a6700,#f4c95d);strokeWidth=2;shadow=1;">
             <mxGeometry x="470" y="460" width="280" height="64" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-service-opendata" label="OpenDataAPI" petakerjaKey="architecture/service-opendata" labelEn="OpenDataAPI" labelMs="OpenDataAPI">
+        <object id="architecture-service-opendata" label="Requests government open data" petakerjaKey="architecture/service-opendata" labelEn="Requests government open data" labelMs="Meminta data terbuka kerajaan" simpleLabelEn="Requests government open data" simpleLabelMs="Meminta data terbuka kerajaan" codeLabelEn="OpenDataAPI" codeLabelMs="OpenDataAPI">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#9a6700,#f4c95d);strokeWidth=2;shadow=1;">
             <mxGeometry x="830" y="460" width="280" height="64" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-service-auth" label="authenticatedFetch" petakerjaKey="architecture/service-auth" labelEn="authenticatedFetch" labelMs="authenticatedFetch">
+        <object id="architecture-service-auth" label="Sends signed-in requests" petakerjaKey="architecture/service-auth" labelEn="Sends signed-in requests" labelMs="Menghantar permintaan pengguna" simpleLabelEn="Sends signed-in requests" simpleLabelMs="Menghantar permintaan pengguna" codeLabelEn="authenticatedFetch()" codeLabelMs="authenticatedFetch()">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#9a6700,#f4c95d);strokeWidth=2;shadow=1;">
             <mxGeometry x="1190" y="460" width="280" height="64" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-backend-app" label="server/app.ts" petakerjaKey="architecture/backend-app" labelEn="server/app.ts" labelMs="server/app.ts">
+        <object id="architecture-backend-app" label="Hosts the application APIs" petakerjaKey="architecture/backend-app" labelEn="Hosts the application APIs" labelMs="Mengehoskan API aplikasi" simpleLabelEn="Hosts the application APIs" simpleLabelMs="Mengehoskan API aplikasi" codeLabelEn="server/app.ts" codeLabelMs="server/app.ts">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#b42318,#ff9b92);strokeWidth=2;shadow=1;">
             <mxGeometry x="90" y="620" width="250" height="64" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-backend-supa-jobs" label="GET /api/jobs/supa" petakerjaKey="architecture/backend-supa-jobs" labelEn="GET /api/jobs/supa" labelMs="GET /api/jobs/supa">
+        <object id="architecture-backend-supa-jobs" label="Serves the Daily Index" petakerjaKey="architecture/backend-supa-jobs" labelEn="Serves the Daily Index" labelMs="Menyajikan Indeks Harian" simpleLabelEn="Serves the Daily Index" simpleLabelMs="Menyajikan Indeks Harian" codeLabelEn="GET /api/jobs/supa" codeLabelMs="GET /api/jobs/supa">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#b42318,#ff9b92);strokeWidth=2;shadow=1;">
             <mxGeometry x="380" y="620" width="250" height="64" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-backend-live-jobs" label="POST /api/search-jobs" petakerjaKey="architecture/backend-live-jobs" labelEn="POST /api/search-jobs" labelMs="POST /api/search-jobs">
+        <object id="architecture-backend-live-jobs" label="Runs request-time job search" petakerjaKey="architecture/backend-live-jobs" labelEn="Runs request-time job search" labelMs="Menjalankan carian pekerjaan masa nyata" simpleLabelEn="Runs request-time job search" simpleLabelMs="Menjalankan carian pekerjaan masa nyata" codeLabelEn="GET /api/search-jobs" codeLabelMs="GET /api/search-jobs">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#b42318,#ff9b92);strokeWidth=2;shadow=1;">
             <mxGeometry x="670" y="620" width="250" height="64" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-backend-assistant" label="POST /api/assistant/chat" petakerjaKey="architecture/backend-assistant" labelEn="POST /api/assistant/chat" labelMs="POST /api/assistant/chat">
+        <object id="architecture-backend-assistant" label="Streams AI responses" petakerjaKey="architecture/backend-assistant" labelEn="Streams AI responses" labelMs="Menstrim respons AI" simpleLabelEn="Streams AI responses" simpleLabelMs="Menstrim respons AI" codeLabelEn="POST /api/assistant/chat" codeLabelMs="POST /api/assistant/chat">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#b42318,#ff9b92);strokeWidth=2;shadow=1;">
             <mxGeometry x="960" y="620" width="250" height="64" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-backend-auth" label="Better Auth middleware" petakerjaKey="architecture/backend-auth" labelEn="Better Auth middleware" labelMs="Middleware Better Auth">
+        <object id="architecture-backend-auth" label="Checks sessions and access" petakerjaKey="architecture/backend-auth" labelEn="Checks sessions and access" labelMs="Menyemak sesi dan akses" simpleLabelEn="Checks sessions and access" simpleLabelMs="Menyemak sesi dan akses" codeLabelEn="Better Auth middleware" codeLabelMs="Middleware Better Auth">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#b42318,#ff9b92);strokeWidth=2;shadow=1;">
             <mxGeometry x="1250" y="620" width="250" height="64" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-data-postgres" label="Supabase PostgreSQL&#10;PostGIS" petakerjaKey="architecture/data-postgres" labelEn="Supabase PostgreSQL&#10;PostGIS" labelMs="Supabase PostgreSQL&#10;PostGIS">
+        <object id="architecture-data-postgres" label="Main application database" petakerjaKey="architecture/data-postgres" labelEn="Main application database" labelMs="Pangkalan data utama aplikasi" simpleLabelEn="Main application database" simpleLabelMs="Pangkalan data utama aplikasi" codeLabelEn="Supabase PostgreSQL + PostGIS" codeLabelMs="Supabase PostgreSQL + PostGIS">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#1f7a4d,#72d6a1);strokeWidth=2;shadow=1;">
             <mxGeometry x="110" y="790" width="300" height="70" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-data-jobs" label="public.scraped_jobs&#10;public.job_listings" petakerjaKey="architecture/data-jobs" labelEn="public.scraped_jobs&#10;public.job_listings" labelMs="public.scraped_jobs&#10;public.job_listings">
+        <object id="architecture-data-jobs" label="Job snapshots and job records" petakerjaKey="architecture/data-jobs" labelEn="Job snapshots and job records" labelMs="Snapshot dan rekod pekerjaan" simpleLabelEn="Job snapshots and job records" simpleLabelMs="Snapshot dan rekod pekerjaan" codeLabelEn="public.scraped_jobs + public.job_listings" codeLabelMs="public.scraped_jobs + public.job_listings">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#1f7a4d,#72d6a1);strokeWidth=2;shadow=1;">
             <mxGeometry x="470" y="790" width="280" height="70" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-data-gov" label="api.data.gov.my" petakerjaKey="architecture/data-gov" labelEn="api.data.gov.my" labelMs="api.data.gov.my">
+        <object id="architecture-data-gov" label="Malaysian government open data" petakerjaKey="architecture/data-gov" labelEn="Malaysian government open data" labelMs="Data terbuka kerajaan Malaysia" simpleLabelEn="Malaysian government open data" simpleLabelMs="Data terbuka kerajaan Malaysia" codeLabelEn="api.data.gov.my" codeLabelMs="api.data.gov.my">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#1f7a4d,#72d6a1);strokeWidth=2;shadow=1;">
             <mxGeometry x="830" y="790" width="280" height="70" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-data-pois" label="public.pois&#10;category RPCs" petakerjaKey="architecture/data-pois" labelEn="public.pois&#10;category RPCs" labelMs="public.pois&#10;RPC kategori">
+        <object id="architecture-data-pois" label="Places and category data" petakerjaKey="architecture/data-pois" labelEn="Places and category data" labelMs="Data tempat dan kategori" simpleLabelEn="Places and category data" simpleLabelMs="Data tempat dan kategori" codeLabelEn="public.pois + category RPCs" codeLabelMs="public.pois + RPC kategori">
           <mxCell parent="architecture-layer" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=8;fontFamily=Arial;fontSize=12;fontColor=light-dark(#172033,#f3f6fb);fillColor=light-dark(#ffffff,#1c222c);strokeColor=light-dark(#1f7a4d,#72d6a1);strokeWidth=2;shadow=1;">
             <mxGeometry x="1190" y="790" width="280" height="70" as="geometry" />
           </mxCell>
         </object>
-        <object id="architecture-frontend-managers" label="UI and map interaction" petakerjaKey="architecture/frontend-managers" labelEn="UI and map interaction" labelMs="Interaksi UI dan peta">
+        <object id="architecture-frontend-managers" label="Coordinates interaction" labelEn="Coordinates interaction" labelMs="Menyelaras interaksi" simpleLabelEn="Coordinates interaction" simpleLabelMs="Menyelaras interaksi" codeLabelEn="MyPetaApp → managers" codeLabelMs="MyPetaApp → pengurus" petakerjaKey="architecture/frontend-managers">
           <mxCell parent="architecture-layer" edge="1" source="architecture-frontend-shell" target="architecture-manager-poi" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontFamily=Arial;fontSize=11;fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;exitPerimeter=0;entryX=0.5;entryY=0;entryPerimeter=0;">
             <mxGeometry relative="1" as="geometry" x="0" y="0" />
           </mxCell>
         </object>
-        <object id="architecture-managers-services" label="Data calls" petakerjaKey="architecture/managers-services" labelEn="Data calls" labelMs="Panggilan data">
+        <object id="architecture-managers-services" label="Requests application data" labelEn="Requests application data" labelMs="Meminta data aplikasi" simpleLabelEn="Requests application data" simpleLabelMs="Meminta data aplikasi" codeLabelEn="manager methods → service clients" codeLabelMs="kaedah pengurus → klien servis" petakerjaKey="architecture/managers-services">
           <mxCell parent="architecture-layer" edge="1" source="architecture-manager-poi" target="architecture-service-supabase" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontFamily=Arial;fontSize=11;fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;exitPerimeter=0;entryX=0.5;entryY=0;entryPerimeter=0;">
             <mxGeometry relative="1" as="geometry" x="0" y="0" />
           </mxCell>
         </object>
-        <object id="architecture-supabase-data" label="POI and RPC" petakerjaKey="architecture/supabase-data" labelEn="POI and RPC" labelMs="POI dan RPC">
+        <object id="architecture-supabase-data" label="Reads POIs and RPC results" labelEn="Reads POIs and RPC results" labelMs="Membaca POI dan hasil RPC" simpleLabelEn="Reads POIs and RPC results" simpleLabelMs="Membaca POI dan hasil RPC" codeLabelEn="Supabase RPC → PostgreSQL" codeLabelMs="RPC Supabase → PostgreSQL" petakerjaKey="architecture/supabase-data">
           <mxCell parent="architecture-layer" edge="1" source="architecture-service-supabase" target="architecture-data-postgres" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontFamily=Arial;fontSize=11;fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.83;exitY=1;exitPerimeter=0;entryX=0.83;entryY=0;entryPerimeter=0;">
             <mxGeometry relative="1" as="geometry" x="0" y="0">
               <Array as="points">
@@ -164,17 +164,17 @@
             </mxGeometry>
           </mxCell>
         </object>
-        <object id="architecture-jobs-backend" label="Job search" petakerjaKey="architecture/jobs-backend" labelEn="Job search" labelMs="Carian pekerjaan">
+        <object id="architecture-jobs-backend" label="Requests job results" labelEn="Requests job results" labelMs="Meminta hasil pekerjaan" simpleLabelEn="Requests job results" simpleLabelMs="Meminta hasil pekerjaan" codeLabelEn="jobs clients → /api/jobs/*" codeLabelMs="klien pekerjaan → /api/jobs/*" petakerjaKey="architecture/jobs-backend">
           <mxCell parent="architecture-layer" edge="1" source="architecture-service-job-client" target="architecture-backend-supa-jobs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontFamily=Arial;fontSize=11;fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;exitPerimeter=0;entryX=0.5;entryY=0;entryPerimeter=0;">
             <mxGeometry relative="1" as="geometry" x="0" y="0" />
           </mxCell>
         </object>
-        <object id="architecture-auth-backend" label="Protected functions" petakerjaKey="architecture/auth-backend" labelEn="Protected functions" labelMs="Fungsi terlindung">
+        <object id="architecture-auth-backend" label="Protects signed-in functions" labelEn="Protects signed-in functions" labelMs="Melindungi fungsi pengguna" simpleLabelEn="Protects signed-in functions" simpleLabelMs="Melindungi fungsi pengguna" codeLabelEn="authenticatedFetch() → requireAuth" codeLabelMs="authenticatedFetch() → requireAuth" petakerjaKey="architecture/auth-backend">
           <mxCell parent="architecture-layer" edge="1" source="architecture-service-auth" target="architecture-backend-auth" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontFamily=Arial;fontSize=11;fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.5;exitY=1;exitPerimeter=0;entryX=0.5;entryY=0;entryPerimeter=0;">
             <mxGeometry relative="1" as="geometry" x="0" y="0" />
           </mxCell>
         </object>
-        <object id="architecture-backend-data" label="Profiles, status and indexes" petakerjaKey="architecture/backend-data" labelEn="Profiles, status and indexes" labelMs="Profil, status dan indeks">
+        <object id="architecture-backend-data" label="Reads profiles and indexes" labelEn="Reads profiles and indexes" labelMs="Membaca profil dan indeks" simpleLabelEn="Reads profiles and indexes" simpleLabelMs="Membaca profil dan indeks" codeLabelEn="Express routes → Supabase" codeLabelMs="Laluan Express → Supabase" petakerjaKey="architecture/backend-data">
           <mxCell parent="architecture-layer" edge="1" source="architecture-backend-app" target="architecture-data-postgres" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontFamily=Arial;fontSize=11;fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.32;exitY=1;exitPerimeter=0;entryX=0.2;entryY=0;entryPerimeter=0;">
             <mxGeometry relative="1" as="geometry" x="-0.45" y="-13">
               <Array as="points">
@@ -184,7 +184,7 @@
             </mxGeometry>
           </mxCell>
         </object>
-        <object id="architecture-opendata-gov" label="Open data" petakerjaKey="architecture/opendata-gov" labelEn="Open data" labelMs="Data terbuka">
+        <object id="architecture-opendata-gov" label="Loads open data" labelEn="Loads open data" labelMs="Memuatkan data terbuka" simpleLabelEn="Loads open data" simpleLabelMs="Memuatkan data terbuka" codeLabelEn="OpenDataAPI → api.data.gov.my" codeLabelMs="OpenDataAPI → api.data.gov.my" petakerjaKey="architecture/opendata-gov">
           <mxCell parent="architecture-layer" edge="1" source="architecture-service-opendata" target="architecture-data-gov" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=light-dark(#344054,#c7d0dd);fontFamily=Arial;fontSize=11;fontColor=light-dark(#344054,#d8e0eb);labelBackgroundColor=light-dark(#fbfcfe,#0b1118);exitX=0.39;exitY=1;exitPerimeter=0;entryX=0.39;entryY=0;entryPerimeter=0;">
             <mxGeometry relative="1" as="geometry" x="0" y="0">
               <Array as="points">

@@ -330,9 +330,24 @@
       files: source('infra/geo/compose.routing.yaml', 'infra/geo/Caddy.routing', 'infra/geo/README.md'), routes: ['https://geo.petakerja.my'],
     },
     {
+      id: 'caddy-geo-edge', label: 'Caddy geo edge', kind: 'runtime', scope: 'infra', status: 'current',
+      description: 'Menamatkan HTTPS pada VPS, menyemak token bearer pelayan dan memproksi hanya laluan penyedia yang dibenarkan.',
+      files: source('infra/geo/Caddy.routing', 'infra/geo/Caddyfile', 'infra/geo/README.md'), routes: ['https://geo.petakerja.my/valhalla/*', 'https://geo.petakerja.my/nominatim/*'], auth: 'GEO_SERVICE_TOKEN',
+    },
+    {
+      id: 'geo-docker-network', label: 'Private geo Docker network', kind: 'runtime', scope: 'infra', status: 'current',
+      description: 'Rangkaian dalaman VPS yang mengekalkan port Valhalla 8002 dan Nominatim 8080 daripada capaian pelayar atau Internet awam.',
+      files: source('infra/geo/compose.routing.yaml', 'infra/geo/compose.yaml'), routes: ['valhalla:8002', 'nominatim:8080'],
+    },
+    {
       id: 'valhalla-tile-builder', label: 'Valhalla tile builder', kind: 'service', scope: 'infra', status: 'current',
       description: 'Membina valhalla_tiles.tar daripada PBF wilayah dengan prasemak cakera, arkib undur dan semakan laluan contoh.',
       files: source('infra/geo/scripts/rebuild-valhalla-routing.sh', 'infra/geo/scripts/preflight-routing.sh', 'infra/geo/compose.routing.yaml'),
+    },
+    {
+      id: 'geofabrik-extract', label: 'Geofabrik regional extract', kind: 'external', scope: 'infra', status: 'current',
+      description: 'Ekstrak OpenStreetMap PBF Malaysia, Singapura dan Brunei yang menjadi input penyelenggaraan binaan tile Valhalla.',
+      files: source('infra/geo/scripts/rebuild-valhalla-routing.sh', 'infra/geo/README.md'), routes: ['download.geofabrik.de'],
     },
     {
       id: 'github-repository', label: 'GitHub repository', kind: 'runtime', scope: 'infra', status: 'current',
@@ -745,6 +760,30 @@
     edge('job-location-resolver', 'job-location-resolution', 'cache or persist confidence', ['v2-geo-job-route-sequence', 'v2-geo-erd']),
     edge('job-location-resolution', 'job-entity', 'scraped job relationship', ['v2-geo-job-route-sequence', 'v2-geo-erd']),
     edge('geo-navigation-manager', 'geo-studio', 'optional context handoff', ['v2-geo-usecase', 'v2-geo-map-flowchart', 'v2-geo-architecture']),
+    edge('search-manager', 'geo-service', 'same-origin place search', ['nominatim-valhalla-workflow', 'nominatim-maplibre-workflow'], 'dependency'),
+    edge('search-manager', 'supabase-module', 'parallel public.pois search', ['nominatim-maplibre-workflow'], 'dependency'),
+    edge('supabase-module', 'supabase-db', 'RPC search_pois', ['nominatim-maplibre-workflow'], 'dependency'),
+    edge('geo-service', 'geo-api', '/api/geo/search or route', ['nominatim-valhalla-workflow', 'nominatim-maplibre-workflow', 'valhalla-maplibre-workflow'], 'dependency'),
+    edge('geo-api', 'geo-gateway', 'validated provider request', ['nominatim-valhalla-workflow', 'nominatim-maplibre-workflow', 'valhalla-maplibre-workflow'], 'dependency'),
+    edge('geo-gateway', 'geo-geocode-cache', 'geocode cache hit or write', ['nominatim-valhalla-workflow', 'nominatim-maplibre-workflow'], 'dependency'),
+    edge('geo-gateway', 'nominatim', 'feature-gated geocoding', ['nominatim-valhalla-workflow', 'nominatim-maplibre-workflow'], 'dependency'),
+    edge('geo-navigation-manager', 'geo-service', 'A/B route request', ['nominatim-valhalla-workflow', 'valhalla-maplibre-workflow'], 'dependency'),
+    edge('geo-gateway', 'geo-route-cache', 'route cache hit or write', ['nominatim-valhalla-workflow', 'valhalla-maplibre-workflow'], 'dependency'),
+    edge('geo-gateway', 'valhalla', 'protected routing request', ['nominatim-valhalla-workflow', 'valhalla-maplibre-workflow'], 'dependency'),
+    edge('geo-navigation-manager', 'geo-route-renderer', 'normalized GeoRoute', ['nominatim-valhalla-workflow', 'valhalla-maplibre-workflow']),
+    edge('geo-route-renderer', 'maplibre-gl', 'GeoJSON sources and layers', ['nominatim-valhalla-workflow', 'valhalla-maplibre-workflow']),
+    edge('browser', 'vercel-runtime', 'matching same-origin deployment', ['geo-server-communication-workflow'], 'dependency'),
+    edge('vercel-runtime', 'express-app', 'api/server.ts to Express', ['geo-server-communication-workflow'], 'composition'),
+    edge('express-app', 'geo-gateway', '/api/geo/*', ['geo-server-communication-workflow'], 'dependency'),
+    edge('geo-gateway', 'supabase-db', 'environment cache read/write', ['geo-server-communication-workflow'], 'dependency'),
+    edge('cloudflare-dns', 'digitalocean-geo-host', 'DNS-only geo origin', ['geo-server-communication-workflow'], 'dependency'),
+    edge('geo-gateway', 'caddy-geo-edge', 'HTTPS plus server bearer token', ['geo-server-communication-workflow'], 'dependency'),
+    edge('digitalocean-geo-host', 'caddy-geo-edge', 'ports 80 and 443', ['geo-server-communication-workflow'], 'composition'),
+    edge('caddy-geo-edge', 'geo-docker-network', 'approved private upstream', ['geo-server-communication-workflow'], 'dependency'),
+    edge('geo-docker-network', 'valhalla', 'private port 8002 current', ['geo-server-communication-workflow'], 'composition'),
+    edge('geo-docker-network', 'nominatim', 'private port 8080 future gated', ['geo-server-communication-workflow'], 'composition'),
+    edge('geofabrik-extract', 'valhalla-tile-builder', 'regional PBF maintenance input', ['geo-server-communication-workflow'], 'dependency'),
+    edge('valhalla-tile-builder', 'valhalla', 'validated tile archive', ['geo-server-communication-workflow'], 'dependency'),
   ];
 
   const diagrams = [
@@ -1017,21 +1056,47 @@
       ],
     },
     {
+      id: 'architecture-visual-stack', title: 'Seni bina berlapis — Susunan Visual', category: 'Reka bentuk', status: 'current', reference: 'assets/diagrams/architecture-visual-stack.svg',
+      description: 'Paparan berlogo bagi lapisan View, penyelarasan aplikasi, klien perkhidmatan, API dan data sebenar PetaKerja.',
+      variantFamily: 'architecture', variantKind: 'visual-stack', variantOrder: 1, variantRecommended: true, canonicalDiagramId: 'architecture',
+      variantLabelEn: 'Visual Stack', variantLabelMs: 'Susunan Visual', variantMetaEn: 'Recommended', variantMetaMs: 'Disyorkan', variantIcon: 'layers-2',
+      columns: [['browser', 'index-html', 'main-ts', 'ui-templates', 'maplibre-gl'], ['mypeta-app', 'map-manager', 'poi-manager', 'search-manager', 'job-manager', 'geo-navigation-manager', 'auth-manager'], ['supabase-module', 'jobs-api', 'geo-api', 'open-data-api', 'auth-client'], ['vercel-runtime', 'express-app', 'better-auth'], ['supabase-db', 'job-entity', 'poi-entity', 'data-gov']],
+    },
+    {
       id: 'architecture', title: 'Seni bina berlapis', category: 'Reka bentuk', status: 'current', reference: 'assets/diagrams/architecture-layered.svg',
       description: 'Frontend browser, lapisan manager, servis, backend Express serta data dan perkhidmatan luar.',
-      variantFamily: 'architecture', variantKind: 'polished', variantOrder: 1, canonicalDiagramId: 'architecture',
+      variantFamily: 'architecture', variantKind: 'polished', variantOrder: 2, canonicalDiagramId: 'architecture',
+      variantLabelEn: 'Detailed Layers', variantLabelMs: 'Lapisan Terperinci', variantMetaEn: 'Current code', variantMetaMs: 'Kod semasa', variantIcon: 'network',
+      reportExplanation: {
+        en: 'PetaKerja does not follow strict textbook MVC. It uses a layered, manager-based client-server architecture with MVC-inspired separation: HTML/CSS, panels, cards and MapLibre form the View; MyPetaApp, frontend managers and Express route handlers perform controller-like coordination; and Supabase tables, server services, caches, API types and application state provide the model/data responsibilities. Because managers also coordinate UI state and sometimes update the DOM directly, the most accurate description is a Vite frontend, manager/application layer, Express API and service layer, and Supabase data layer rather than a formal MVC implementation.',
+        ms: 'PetaKerja tidak menggunakan MVC buku teks secara ketat. Ia menggunakan seni bina klien-pelayan berlapis dan berasaskan pengurus dengan pemisahan berinspirasikan MVC: HTML/CSS, panel, kad dan MapLibre membentuk View; MyPetaApp, pengurus frontend dan pengendali laluan Express menjalankan penyelarasan seperti controller; manakala jadual Supabase, perkhidmatan pelayan, cache, jenis API dan keadaan aplikasi menyediakan tanggungjawab model/data. Oleh sebab pengurus turut menyelaras keadaan UI dan kadangkala mengemas kini DOM secara terus, huraian paling tepat ialah frontend Vite, lapisan pengurus/aplikasi, lapisan API dan perkhidmatan Express, serta lapisan data Supabase, bukannya pelaksanaan MVC formal.',
+      },
       columns: [['browser', 'index-html', 'main-ts', 'ui-templates'], ['mypeta-app', 'map-manager', 'poi-manager', 'job-manager', 'insights-manager', 'chatbot-manager'], ['supabase-module', 'jobs-api', 'open-data-api'], ['express-app', 'better-auth'], ['supabase-db', 'data-gov']],
     },
     {
       id: 'architecture-original', title: 'Seni bina berlapis — Asal', category: 'Reka bentuk', status: 'current', reference: 'assets/diagrams/architecture-layered-original.svg',
       description: 'Rekreasi Draw.io neutral bagi kandungan D2 asal.',
-      variantFamily: 'architecture', variantKind: 'original', variantOrder: 2, canonicalDiagramId: 'architecture',
+      variantFamily: 'architecture', variantKind: 'original', variantOrder: 3, canonicalDiagramId: 'architecture',
+      variantLabelEn: 'Original', variantLabelMs: 'Asal', variantMetaEn: 'Original reference', variantMetaMs: 'Rujukan asal', variantIcon: 'history',
       columns: [['browser', 'index-html', 'main-ts', 'ui-templates'], ['mypeta-app', 'map-manager', 'poi-manager', 'job-manager', 'insights-manager', 'chatbot-manager'], ['supabase-module', 'jobs-api', 'open-data-api'], ['express-app', 'better-auth'], ['supabase-db', 'data-gov']],
+    },
+    {
+      id: 'modules-layered-stack', title: 'Hierarki modul — Susunan Bertingkat', category: 'Reka bentuk', status: 'current', reference: 'assets/diagrams/module-hierarchy-layered-stack.svg',
+      description: 'Hierarki pemilikan modul dalam susunan bertingkat daripada produk kepada keupayaan pengguna.',
+      variantFamily: 'modules', variantKind: 'layered-stack', variantOrder: 1, variantRecommended: true, canonicalDiagramId: 'modules',
+      variantLabelEn: 'Layered Stack', variantLabelMs: 'Susunan Bertingkat', variantMetaEn: 'Recommended', variantMetaMs: 'Disyorkan', variantIcon: 'layers-2',
+      columns: [
+        ['mypeta-app'],
+        ['map-manager', 'poi-manager', 'job-manager', 'insights-manager', 'chatbot-manager', 'auth-manager'],
+        ['pipeline-service', 'user-dashboard', 'gmail-service', 'watchlist-service', 'extractor-service'],
+        ['blog-manager', 'blog-editor', 'intel-manager', 'kopi-manager', 'event-manager'],
+      ],
     },
     {
       id: 'modules', title: 'Hierarki modul', category: 'Reka bentuk', status: 'current', reference: 'assets/diagrams/module-hierarchy.svg',
       description: 'Tanggungjawab modul teras, carian pekerjaan, analitik dan akaun serta hubungan antara modul.',
-      variantFamily: 'modules', variantKind: 'polished', variantOrder: 1, canonicalDiagramId: 'modules',
+      variantFamily: 'modules', variantKind: 'tree', variantOrder: 2, canonicalDiagramId: 'modules',
+      variantLabelEn: 'Hierarchy Tree', variantLabelMs: 'Pokok Hierarki', variantMetaEn: 'Current code', variantMetaMs: 'Kod semasa', variantIcon: 'folder-tree',
       columns: [
         ['mypeta-app'],
         ['map-manager', 'poi-manager', 'job-manager', 'insights-manager', 'chatbot-manager', 'auth-manager'],
@@ -1042,7 +1107,7 @@
     {
       id: 'modules-original', title: 'Hierarki modul — Asal', category: 'Reka bentuk', status: 'current', reference: 'assets/diagrams/module-hierarchy-original.svg',
       description: 'Rekreasi Draw.io neutral bagi kandungan D2 asal.',
-      variantFamily: 'modules', variantKind: 'original', variantOrder: 2, canonicalDiagramId: 'modules',
+      variantFamily: 'modules', variantKind: 'original', variantOrder: 3, canonicalDiagramId: 'modules',
       columns: [
         ['mypeta-app'],
         ['map-manager', 'poi-manager', 'job-manager', 'insights-manager', 'chatbot-manager', 'auth-manager'],
@@ -1053,11 +1118,52 @@
     {
       id: 'map-routing-responsibility-stack', title: 'Tanggungjawab penghalaan A-ke-B', category: 'Peta & Penghalaan', status: 'current', reference: 'assets/diagrams/petakerja-map-routing-responsibility-stack.svg',
       description: 'Pembahagian tanggungjawab semasa antara input pelayar, MapLibre, orkestrasi pelayar, GeoGateway, penyedia geo dan cache.',
+      collectionId: 'map-routing', collectionGroupId: 'overview', collectionOrder: 1,
       columns: [
         ['browser', 'search-manager', 'maplibre-gl'],
         ['express-app'],
         ['supabase-db'],
       ],
+    },
+    {
+      id: 'nominatim-valhalla-workflow', title: 'Aliran Kerja Nominatim + Valhalla', category: 'Peta & Penghalaan', status: 'current', reference: 'assets/diagrams/map-routing/nominatim-valhalla-workflow.svg',
+      description: 'Nominatim menyelesaikan tempat kepada koordinat; GeoNavigationManager kemudian menghantar koordinat A/B secara berasingan kepada Valhalla untuk penghalaan.',
+      collectionId: 'map-routing', collectionGroupId: 'provider-workflows', collectionOrder: 2,
+      reportExplanation: {
+        en: 'A place or address search enters through the PetaKerja browser and the same-origin `/api/geo/search` boundary, where `GeoGateway` can check `geo_geocode_cache` and call the feature-gated Nominatim provider to return a normalized `GeoPlace` with coordinates. `GeoNavigationManager` assigns those coordinates to A and B, then sends a separate `/api/geo/route` request that checks `geo_route_cache` and calls the currently enabled Valhalla pilot; Nominatim and Valhalla never call each other, because only the coordinates connect their responsibilities. If Nominatim is unavailable, GPS, a manual coordinate or a dropped pin can still provide A/B to Valhalla, while a Valhalla failure produces only the clearly labelled non-navigable Haversine fallback.',
+        ms: 'Carian tempat atau alamat masuk melalui pelayar PetaKerja dan sempadan same-origin `/api/geo/search`, tempat `GeoGateway` boleh menyemak `geo_geocode_cache` serta memanggil penyedia Nominatim yang berpagar ciri untuk memulangkan `GeoPlace` ternormal dengan koordinat. `GeoNavigationManager` menetapkan koordinat tersebut kepada A dan B, kemudian menghantar permintaan `/api/geo/route` yang berasingan untuk menyemak `geo_route_cache` dan memanggil rintis Valhalla yang kini aktif; Nominatim dan Valhalla tidak pernah saling memanggil kerana hanya koordinat menghubungkan tanggungjawab mereka. Jika Nominatim tidak tersedia, GPS, koordinat manual atau pin yang dijatuhkan masih boleh membekalkan A/B kepada Valhalla, manakala kegagalan Valhalla hanya menghasilkan sandaran Haversine bukan navigasi yang dilabel dengan jelas.',
+      },
+      columns: [['browser', 'search-manager'], ['geo-service', 'geo-api', 'geo-gateway', 'geo-geocode-cache', 'nominatim'], ['geo-navigation-manager', 'geo-location'], ['geo-route-cache', 'valhalla'], ['geo-route', 'geo-route-renderer', 'maplibre-gl']],
+    },
+    {
+      id: 'nominatim-maplibre-workflow', title: 'Aliran Kerja Nominatim + MapLibre', category: 'Peta & Penghalaan', status: 'current', reference: 'assets/diagrams/map-routing/nominatim-maplibre-workflow.svg',
+      description: 'MapLibre membekalkan konteks viewport atau pin; SearchManager menggabungkan POI dalaman dengan hasil Nominatim ternormal sebelum menggerakkan dan melabel peta.',
+      collectionId: 'map-routing', collectionGroupId: 'provider-workflows', collectionOrder: 3,
+      reportExplanation: {
+        en: 'MapLibre supplies the current viewport or dropped-pin coordinates to `SearchManager`, which runs the first-party `public.pois` search independently and can also issue a gated same-origin `/api/geo/search`, `/api/geo/reverse` or `/api/geo/lookup` request through `GeoGateway` to Nominatim. The browser normalizes and merges the internal POIs and returned `GeoPlace` values, gives precedence to PetaKerja records, and then uses MapLibre for `flyTo`, A/B markers, labels and optional boundary rendering. MapLibre never contacts Nominatim directly, and because the internal POI lane is independent, map browsing, local POI search and dropped-pin interaction continue when Nominatim is disabled or unavailable.',
+        ms: 'MapLibre membekalkan viewport semasa atau koordinat pin yang dijatuhkan kepada `SearchManager`, yang menjalankan carian pihak pertama `public.pois` secara berasingan dan juga boleh menghantar permintaan same-origin `/api/geo/search`, `/api/geo/reverse` atau `/api/geo/lookup` yang berpagar melalui `GeoGateway` kepada Nominatim. Pelayar menormalkan dan menggabungkan POI dalaman dengan nilai `GeoPlace` yang dipulangkan, mengutamakan rekod PetaKerja, kemudian menggunakan MapLibre untuk `flyTo`, marker A/B, label dan pemaparan sempadan pilihan. MapLibre tidak pernah menghubungi Nominatim secara terus, dan kerana laluan POI dalaman adalah bebas, pelayaran peta, carian POI lokal dan interaksi pin terus berfungsi apabila Nominatim dinyahaktifkan atau tidak tersedia.',
+      },
+      columns: [['browser', 'maplibre-gl', 'map-manager'], ['search-manager', 'supabase-module', 'poi-entity'], ['geo-service', 'geo-api', 'geo-gateway', 'geo-geocode-cache', 'nominatim'], ['geo-place'], ['geo-navigation-manager', 'geo-route-renderer']],
+    },
+    {
+      id: 'valhalla-maplibre-workflow', title: 'Aliran Kerja Valhalla + MapLibre', category: 'Peta & Penghalaan', status: 'current', reference: 'assets/diagrams/map-routing/valhalla-maplibre-workflow.svg',
+      description: 'Valhalla mengira laluan jalan melalui GeoGateway; GeoRouteRenderer menukar respons ternormal kepada source dan layer GeoJSON MapLibre.',
+      collectionId: 'map-routing', collectionGroupId: 'provider-workflows', collectionOrder: 4,
+      reportExplanation: {
+        en: '`GeoNavigationManager` collects A, B and the travel profile, then the browser calls only the matching same-origin Vercel deployment at `/api/geo/route`. Express and `GeoGateway` validate the request, return a fresh `geo_route_cache` hit when available, or use a server-only bearer token to call Valhalla through Caddy on the DigitalOcean VPS. The response is decoded and normalized into a `GeoRoute` containing GeoJSON, distance, duration, maneuvers and alternatives, after which `GeoRouteRenderer` creates the ordered MapLibre sources and layers for routes, markers, labels and camera framing. MapLibre is the visualizer rather than the routing engine; if Valhalla is disabled or unavailable, the fallback is explicitly labelled as a Haversine straight line with no ETA, maneuvers or navigable-route claim.',
+        ms: '`GeoNavigationManager` mengumpulkan A, B dan profil perjalanan, kemudian pelayar hanya memanggil deployment Vercel same-origin yang sepadan pada `/api/geo/route`. Express dan `GeoGateway` mengesahkan permintaan, memulangkan hit `geo_route_cache` yang masih segar jika ada, atau menggunakan token bearer pelayan sahaja untuk memanggil Valhalla melalui Caddy pada VPS DigitalOcean. Respons dinyahkod dan dinormalkan menjadi `GeoRoute` yang mengandungi GeoJSON, jarak, tempoh, arahan dan alternatif, selepas itu `GeoRouteRenderer` mencipta source serta layer MapLibre tersusun untuk laluan, marker, label dan pembingkaian kamera. MapLibre ialah pemapar dan bukannya enjin penghalaan; jika Valhalla dinyahaktifkan atau tidak tersedia, sandaran dilabel secara jelas sebagai garis lurus Haversine tanpa ETA, arahan atau dakwaan laluan navigasi.',
+      },
+      columns: [['browser', 'geo-navigation-manager', 'maplibre-gl'], ['vercel-runtime', 'express-app', 'geo-api', 'geo-gateway'], ['geo-route-cache', 'supabase-db'], ['caddy-geo-edge', 'geo-docker-network', 'valhalla'], ['geo-route', 'geo-route-renderer', 'route-appearance-manager']],
+    },
+    {
+      id: 'geo-server-communication-workflow', title: 'Komunikasi Pelayan Geo', category: 'Peta & Penghalaan', status: 'current', reference: 'assets/diagrams/map-routing/geo-server-communication-workflow.svg',
+      description: 'Sempadan produksi daripada pelayar dan Vercel kepada cache Supabase, origin geo DNS sahaja, Caddy dan rangkaian penyedia Docker peribadi.',
+      collectionId: 'map-routing', collectionGroupId: 'infrastructure', collectionOrder: 5,
+      reportExplanation: {
+        en: 'The PetaKerja browser calls only `/api/geo/*` on its matching Vercel deployment; the Vercel Node function runs Express and `GeoGateway`, reads the environment-specific Supabase route or geocode cache, and only on a provider miss calls `https://geo.petakerja.my` with the server-only `GEO_SERVICE_TOKEN`. Cloudflare is authoritative DNS-only for the geo hostname, Caddy terminates HTTPS on the DigitalOcean VPS and forwards approved requests through the private Docker network to the current Valhalla service on port `8002`; neither that port nor the future Nominatim port `8080` is exposed to the browser. The solid path is the current Valhalla-only Singapore pilot, while the dashed Nominatim lane remains disabled until the larger combined deployment is approved; Geofabrik regional PBF data feeds scheduled Valhalla tile maintenance, and provider tokens remain confined to Vercel server environments and Caddy.',
+        ms: 'Pelayar PetaKerja hanya memanggil `/api/geo/*` pada deployment Vercel yang sepadan; fungsi Node Vercel menjalankan Express dan `GeoGateway`, membaca cache laluan atau geokod Supabase khusus persekitaran, dan hanya apabila penyedia diperlukan memanggil `https://geo.petakerja.my` dengan `GEO_SERVICE_TOKEN` yang berada pada pelayan sahaja. Cloudflare ialah DNS berkuasa sahaja untuk nama hos geo, Caddy menamatkan HTTPS pada VPS DigitalOcean dan meneruskan permintaan yang dibenarkan melalui rangkaian Docker peribadi kepada perkhidmatan Valhalla semasa pada port `8002`; port itu dan port Nominatim masa depan `8080` tidak didedahkan kepada pelayar. Laluan padu ialah rintis Valhalla sahaja di Singapura, manakala laluan Nominatim putus-putus kekal dinyahaktifkan sehingga deployment gabungan yang lebih besar diluluskan; data PBF serantau Geofabrik membekalkan penyelenggaraan tile Valhalla berjadual, dan token penyedia kekal terhad kepada persekitaran pelayan Vercel serta Caddy.',
+      },
+      columns: [['browser', 'maplibre-gl', 'geo-service'], ['vercel-runtime', 'vercel-node-function', 'express-app', 'geo-api', 'geo-gateway'], ['supabase-db', 'geo-route-cache', 'geo-geocode-cache'], ['cloudflare-dns', 'digitalocean-geo-host', 'caddy-geo-edge'], ['geo-docker-network', 'valhalla', 'nominatim'], ['geofabrik-extract', 'valhalla-tile-builder']],
     },
     {
       id: 'erd', title: 'ERD teras', category: 'Data', status: 'current', reference: 'assets/diagrams/erd-core.svg',

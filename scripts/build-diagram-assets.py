@@ -59,9 +59,16 @@ DOMAIN_EDITOR_ASSET = ROOT / "assets" / "editor" / "class-domain-petakerja.drawi
 DOMAIN_ORIGINAL_SOURCE = ROOT / "assets" / "editor" / "class-domain-petakerja-original.drawio"
 LAYERED_ARCHITECTURE_SOURCE = ROOT / "assets" / "editor" / "architecture-layered.drawio"
 LAYERED_ARCHITECTURE_ORIGINAL_SOURCE = ROOT / "assets" / "editor" / "architecture-layered-original.drawio"
+ARCHITECTURE_VISUAL_STACK_SOURCE = ROOT / "assets" / "editor" / "architecture-visual-stack.drawio"
 MODULE_HIERARCHY_SOURCE = ROOT / "assets" / "editor" / "module-hierarchy.drawio"
 MODULE_HIERARCHY_ORIGINAL_SOURCE = ROOT / "assets" / "editor" / "module-hierarchy-original.drawio"
+MODULE_HIERARCHY_LAYERED_STACK_SOURCE = ROOT / "assets" / "editor" / "module-hierarchy-layered-stack.drawio"
 MAP_ROUTING_STACK_SOURCE = ROOT / "assets" / "editor" / "petakerja-map-routing-responsibility-stack.drawio"
+MAP_ROUTING_WORKFLOW_EDITOR = ROOT / "assets" / "editor" / "map-routing"
+NOMINATIM_VALHALLA_WORKFLOW_SOURCE = MAP_ROUTING_WORKFLOW_EDITOR / "nominatim-valhalla-workflow.drawio"
+NOMINATIM_MAPLIBRE_WORKFLOW_SOURCE = MAP_ROUTING_WORKFLOW_EDITOR / "nominatim-maplibre-workflow.drawio"
+VALHALLA_MAPLIBRE_WORKFLOW_SOURCE = MAP_ROUTING_WORKFLOW_EDITOR / "valhalla-maplibre-workflow.drawio"
+GEO_SERVER_COMMUNICATION_WORKFLOW_SOURCE = MAP_ROUTING_WORKFLOW_EDITOR / "geo-server-communication-workflow.drawio"
 ETL_PIPELINE_SOURCE = ROOT / "assets" / "editor" / "etl-pipeline.drawio"
 DAILY_INDEX_WORKFLOW_SOURCE = ROOT / "assets" / "editor" / "daily-index-workflow.drawio"
 LIVE_SEARCH_WORKFLOW_SOURCE = ROOT / "assets" / "editor" / "live-search-workflow.drawio"
@@ -84,8 +91,20 @@ V2_GEOROUTING_EXPORTS = {
     "v2-geo-supabase": ("supabase.drawio", "v2_geo_supabase", "supabase.svg"),
 }
 V2_GEOROUTING_IDS = frozenset(V2_GEOROUTING_EXPORTS)
-EMBEDDED_BILINGUAL_IDS = frozenset({"etl-pipeline", "daily-index-workflow", "live-search-workflow", "deployment-infrastructure"})
-WORKFLOW_SOURCES = frozenset({DAILY_INDEX_WORKFLOW_SOURCE, LIVE_SEARCH_WORKFLOW_SOURCE})
+MAP_ROUTING_WORKFLOW_IDS = frozenset({
+    "nominatim-valhalla-workflow", "nominatim-maplibre-workflow",
+    "valhalla-maplibre-workflow", "geo-server-communication-workflow",
+})
+EMBEDDED_BILINGUAL_IDS = frozenset({
+    "etl-pipeline", "daily-index-workflow", "live-search-workflow",
+    "deployment-infrastructure", "modules-layered-stack", "architecture-visual-stack", *MAP_ROUTING_WORKFLOW_IDS,
+})
+WORKFLOW_SOURCES = frozenset({
+    DAILY_INDEX_WORKFLOW_SOURCE, LIVE_SEARCH_WORKFLOW_SOURCE,
+    ARCHITECTURE_VISUAL_STACK_SOURCE,
+    NOMINATIM_VALHALLA_WORKFLOW_SOURCE, NOMINATIM_MAPLIBRE_WORKFLOW_SOURCE,
+    VALHALLA_MAPLIBRE_WORKFLOW_SOURCE, GEO_SERVER_COMMUNICATION_WORKFLOW_SOURCE,
+})
 V2_GEOROUTING_SEQUENCE_IDS = frozenset({
     "v2-geo-route-sequence", "v2-geo-travel-analysis-sequence", "v2-geo-job-route-sequence",
 })
@@ -124,11 +143,17 @@ DRAWIO_EXPORTS = {
     "admin-sign-out-sequence": (ADMIN_SIGN_OUT_SEQUENCE_SOURCE, 1, "sequence-admin-sign-out.svg"),
     "user-explore-3d-map-sequence": (USER_EXPLORE_3D_MAP_SEQUENCE_SOURCE, 1, "sequence-user-explore-3d-map.svg"),
     "user-sign-out-sequence": (USER_SIGN_OUT_SEQUENCE_SOURCE, 1, "sequence-user-sign-out.svg"),
+    "architecture-visual-stack": (ARCHITECTURE_VISUAL_STACK_SOURCE, 0, "architecture-visual-stack.svg"),
     "architecture": (LAYERED_ARCHITECTURE_SOURCE, 1, "architecture-layered.svg"),
     "architecture-original": (LAYERED_ARCHITECTURE_ORIGINAL_SOURCE, 1, "architecture-layered-original.svg"),
     "modules": (MODULE_HIERARCHY_SOURCE, 1, "module-hierarchy.svg"),
     "modules-original": (MODULE_HIERARCHY_ORIGINAL_SOURCE, 1, "module-hierarchy-original.svg"),
+    "modules-layered-stack": (MODULE_HIERARCHY_LAYERED_STACK_SOURCE, 0, "module-hierarchy-layered-stack.svg"),
     "map-routing-responsibility-stack": (MAP_ROUTING_STACK_SOURCE, 1, "petakerja-map-routing-responsibility-stack.svg"),
+    "nominatim-valhalla-workflow": (NOMINATIM_VALHALLA_WORKFLOW_SOURCE, 0, "map-routing/nominatim-valhalla-workflow.svg"),
+    "nominatim-maplibre-workflow": (NOMINATIM_MAPLIBRE_WORKFLOW_SOURCE, 0, "map-routing/nominatim-maplibre-workflow.svg"),
+    "valhalla-maplibre-workflow": (VALHALLA_MAPLIBRE_WORKFLOW_SOURCE, 0, "map-routing/valhalla-maplibre-workflow.svg"),
+    "geo-server-communication-workflow": (GEO_SERVER_COMMUNICATION_WORKFLOW_SOURCE, 0, "map-routing/geo-server-communication-workflow.svg"),
     "etl-pipeline": (ETL_PIPELINE_SOURCE, 1, "etl-pipeline.svg"),
     "daily-index-workflow": (DAILY_INDEX_WORKFLOW_SOURCE, 0, "daily-index-workflow.svg"),
     "live-search-workflow": (LIVE_SEARCH_WORKFLOW_SOURCE, 0, "live-search-workflow.svg"),
@@ -618,6 +643,7 @@ DESIGN_SPECS = {
     "architecture-original": (LAYERED_ARCHITECTURE_ORIGINAL_SOURCE, LAYERED_ARCHITECTURE_MS, LAYERED_ARCHITECTURE_COMPONENTS, "architecture"),
     "modules": (MODULE_HIERARCHY_SOURCE, MODULE_HIERARCHY_MS, MODULE_HIERARCHY_COMPONENTS, "modules"),
     "modules-original": (MODULE_HIERARCHY_ORIGINAL_SOURCE, MODULE_HIERARCHY_MS, MODULE_HIERARCHY_COMPONENTS, "modules"),
+    "modules-layered-stack": (MODULE_HIERARCHY_LAYERED_STACK_SOURCE, MODULE_HIERARCHY_MS, MODULE_HIERARCHY_COMPONENTS, "modules"),
 }
 
 ADMIN_MANAGE_USERS_FLOWCHART_MS = {
@@ -1327,7 +1353,7 @@ def slim_svg(svg: str, preserve_embedded_images: bool = False) -> str:
             tag = match.group(0)
             if "data:image/svg+xml" in tag:
                 return tag
-            if "data:image/png" in tag and re.search(r'width="70"\s+height="70"', tag):
+            if "data:image/png" in tag:
                 return tag
             return ""
 
@@ -1787,6 +1813,11 @@ def v2_georouting_translations(source: Path) -> dict[str, str]:
         label_ms = clean_label(raw_ms)
         if label_en and label_ms and label_en != label_ms:
             replacements[label_en] = label_ms
+        for prefix in ("simple", "code"):
+            mode_en = clean_label(element.get(f"{prefix}LabelEn", ""))
+            mode_ms = clean_label(element.get(f"{prefix}LabelMs", ""))
+            if mode_en and mode_ms and mode_en != mode_ms:
+                replacements[mode_en] = mode_ms
         if source in WORKFLOW_SOURCES:
             lines_en = [clean_label(value) for value in re.split(r"<br\s*/?>", raw_en, flags=re.I)]
             lines_ms = [clean_label(value) for value in re.split(r"<br\s*/?>", raw_ms, flags=re.I)]
@@ -2033,6 +2064,32 @@ def admin_flowchart_components(diagram_id: str) -> tuple[list[dict], list[dict]]
     return components, connections
 
 
+def element_label_modes(element: ET.Element, translations: dict[str, str] | None = None) -> dict | None:
+    translations = translations or {}
+    simple_en = clean_label(element.get("simpleLabelEn", ""))
+    code_en = clean_label(element.get("codeLabelEn", ""))
+    if not simple_en or not code_en:
+        return None
+    simple_ms = clean_label(element.get("simpleLabelMs", "")) or translations.get(simple_en, simple_en)
+    code_ms = clean_label(element.get("codeLabelMs", "")) or translations.get(code_en, code_en)
+    return {
+        "simple": {"en": simple_en, "ms": simple_ms},
+        "code": {"en": code_en, "ms": code_ms},
+    }
+
+
+def drawio_label_elements(source: Path, translations: dict[str, str] | None = None) -> list[dict]:
+    diagram = ET.parse(source).getroot().find("diagram")
+    if diagram is None:
+        return []
+    result = []
+    for element in [*diagram.findall(".//object"), *diagram.findall(".//mxCell")]:
+        labels = element_label_modes(element, translations)
+        if labels and element.get("id"):
+            result.append({"cellId": element.get("id"), "labels": labels})
+    return result
+
+
 def keyed_drawio_components(
     diagram_id: str,
     specs: dict[str, tuple[Path, dict[str, str], dict, str]],
@@ -2072,6 +2129,9 @@ def keyed_drawio_components(
             "label": label_ms,
             "labelEn": label_en,
         }
+        labels = element_label_modes(wrapper, translations)
+        if labels:
+            component["labels"] = labels
         components.append(component)
         owner[wrapper_id] = component
 
@@ -2089,13 +2149,17 @@ def keyed_drawio_components(
         label_en = clean_label(wrapper.get("label", ""))
         label_ms = translations.get(label_en, label_en)
         kind = "flow-decision" if connection_kind == "flow" and label_en in ("Yes", "No") else connection_kind
-        connections.append({
+        connection = {
             "id": wrapper_id,
             "sourceComponentKey": source["componentKey"],
             "targetComponentKey": target["componentKey"],
             "kind": kind,
             "label": {"ms": label_ms, "en": label_en},
-        })
+        }
+        labels = element_label_modes(wrapper, translations)
+        if labels:
+            connection["labels"] = labels
+        connections.append(connection)
     return components, connections
 
 
@@ -2176,7 +2240,7 @@ def user_flowchart_components(diagram_id: str) -> tuple[list[dict], list[dict]]:
 
 def design_components(diagram_id: str) -> tuple[list[dict], list[dict]]:
     components, connections = keyed_drawio_components(diagram_id, DESIGN_SPECS, "dependency")
-    if diagram_id == "modules":
+    if diagram_id in {"modules", "modules-layered-stack"}:
         known_components = {component["componentKey"] for component in components}
         for connection_id, source_key, target_key, label_en in MODULE_HIERARCHY_DEPENDENCIES:
             if source_key not in known_components or target_key not in known_components:
@@ -2203,7 +2267,7 @@ def map_routing_stack_components() -> tuple[list[dict], list[dict]]:
             raise ValueError(f"Missing routing-stack component {wrapper_id!r}")
         label_en = clean_label(wrapper.get("label", ""))
         label_ms = clean_label(translate_label(wrapper.get("label", ""), MAP_ROUTING_STACK_MS))
-        components.append({
+        component = {
             "componentKey": component_key,
             "id": node_ids[0],
             "cellIds": [wrapper_id],
@@ -2214,7 +2278,11 @@ def map_routing_stack_components() -> tuple[list[dict], list[dict]]:
             "matchTexts": [label_en],
             "label": label_ms,
             "labelEn": label_en,
-        })
+        }
+        labels = element_label_modes(wrapper, MAP_ROUTING_STACK_MS)
+        if labels:
+            component["labels"] = labels
+        components.append(component)
     return components, []
 
 
@@ -2258,7 +2326,7 @@ def main() -> None:
                 export_drawio(source, page, exported)
             exported_svg = slim_svg(
                 exported.read_text(encoding="utf-8"),
-                preserve_embedded_images=diagram_id in {"daily-index-workflow", "live-search-workflow"},
+                preserve_embedded_images=diagram_id in {"daily-index-workflow", "live-search-workflow", "architecture-visual-stack", *MAP_ROUTING_WORKFLOW_IDS},
             )
             if diagram_id in V2_GEOROUTING_IDS or diagram_id in EMBEDDED_BILINGUAL_IDS:
                 en = exported_svg
@@ -2311,7 +2379,11 @@ def main() -> None:
             output_path = output_dir / filename
             output_path.parent.mkdir(parents=True, exist_ok=True)
             output_path.write_text(exported_svg, encoding="utf-8")
-            if diagram_id in V2_GEOROUTING_IDS or diagram_id in EMBEDDED_BILINGUAL_IDS:
+            if diagram_id in V2_GEOROUTING_IDS:
+                components, connections = v2_georouting_components(source)
+            elif diagram_id in DESIGN_SPECS:
+                components, connections = design_components(diagram_id)
+            elif diagram_id in EMBEDDED_BILINGUAL_IDS:
                 components, connections = v2_georouting_components(source)
             elif diagram_id == "usecase":
                 components, connections = usecase_components()
@@ -2327,8 +2399,6 @@ def main() -> None:
                 components, connections = user_flowchart_components(diagram_id)
             elif diagram_id in ADMIN_FLOWCHART_SPECS:
                 components, connections = admin_flowchart_components(diagram_id)
-            elif diagram_id in DESIGN_SPECS:
-                components, connections = design_components(diagram_id)
             elif diagram_id == "map-routing-responsibility-stack":
                 components, connections = map_routing_stack_components()
             elif diagram_id == "admin-manage-users-sequence":
@@ -2355,16 +2425,22 @@ def main() -> None:
                 components, connections = class_components(
                     source, page, stable_keys=(diagram_id in ("domain", "domain-original"))
                 )
+            translation_spec = bilingual_translation_spec(diagram_id, source)
+            label_elements = drawio_label_elements(source, translation_spec[1] if translation_spec else None)
+            supports_sequence_labels = diagram_id in V2_GEOROUTING_SEQUENCE_IDS or diagram_id in (
+                "google-oauth-sequence", "sequence", "admin-manage-users-sequence",
+                "admin-manage-ai-configuration-sequence", "admin-access-dashboard-sequence",
+                "admin-monitor-activity-sequence", "admin-sign-out-sequence",
+                "user-explore-3d-map-sequence", "user-sign-out-sequence",
+            )
             assets[diagram_id] = {
                 "svg": {"ms": ms, "en": en},
                 "components": components,
                 "connections": connections,
-                "supportsSequenceLabels": diagram_id in V2_GEOROUTING_SEQUENCE_IDS or diagram_id in (
-                    "google-oauth-sequence", "sequence", "admin-manage-users-sequence",
-                    "admin-manage-ai-configuration-sequence", "admin-access-dashboard-sequence",
-                    "admin-monitor-activity-sequence", "admin-sign-out-sequence",
-                    "user-explore-3d-map-sequence", "user-sign-out-sequence",
-                ),
+                "labelElements": label_elements,
+                "labelModes": ["simple", "code"] if label_elements or supports_sequence_labels else [],
+                "supportsLabelModes": bool(label_elements) or supports_sequence_labels,
+                "supportsSequenceLabels": supports_sequence_labels,
             }
 
     for diagram_id, filename in REPORT_EXPORTS.items():
