@@ -50,6 +50,8 @@
     erd: 'database',
     'data-flow': 'waypoints',
     'etl-pipeline': 'workflow',
+    'daily-index-workflow': 'database',
+    'live-search-workflow': 'search',
     'deployment-infrastructure': 'network',
     supabase: 'table-properties',
     jobops: 'briefcase-business',
@@ -239,6 +241,10 @@
   };
 
   const DIAGRAM_COLLECTION_GROUPS = Object.freeze({
+    'etl-pipeline': Object.freeze([
+      { id: 'overview', labelKey: 'ui.collectionETLOverview', icon: 'workflow' },
+      { id: 'job-search-workflows', labelKey: 'ui.collectionJobSearchWorkflows', icon: 'search' },
+    ]),
     'v2-georouting': Object.freeze([
       { id: 'use-cases', labelKey: 'ui.collectionUseCases', icon: 'users-round' },
       { id: 'flowcharts', labelKey: 'ui.collectionFlowcharts', icon: 'workflow' },
@@ -347,6 +353,7 @@
       'ui.openVanilla': 'Buka vanilla', 'ui.openV2': 'Buka V2', 'ui.collectionCollapse': 'Tutup koleksi', 'ui.collectionExpand': 'Buka koleksi',
       'ui.collectionUseCases': 'Rajah Kes Guna', 'ui.collectionFlowcharts': 'Carta Alir', 'ui.collectionSequences': 'Rajah Jujukan',
       'ui.collectionClasses': 'Rajah Kelas', 'ui.collectionArchitectureModules': 'Seni Bina & Modul', 'ui.collectionData': 'Rajah Data',
+      'ui.collectionETLOverview': 'Gambaran Keseluruhan', 'ui.collectionJobSearchWorkflows': 'Aliran Kerja Carian Pekerjaan',
       'ui.collectionDiagram': 'rajah', 'ui.collectionDiagrams': 'rajah',
       'ui.reportExplanation': 'Penerangan laporan', 'ui.copyReportParagraph': 'Salin perenggan', 'ui.reportParagraphCopied': 'Perenggan disalin',
       'ui.copyCode': 'Salin kod', 'ui.copyCaption': 'Salin kapsyen', 'ui.copyTable': 'Salin jadual', 'ui.copyFlow': 'Salin aliran', 'ui.codeCopied': 'Kod disalin', 'ui.captionCopied': 'Kapsyen disalin', 'ui.tableCopied': 'Jadual disalin', 'ui.flowCopied': 'Aliran disalin',
@@ -754,7 +761,7 @@
       const open = state.codeSnippetFolders[group] !== false;
       return `<details class="nav-subgroup nav-subgroup--code" data-nav-family="code-snippets" data-nav-audience="${escapeHTML(group)}"${open ? ' open' : ''}><summary><span class="nav-subgroup__icon" aria-hidden="true"><i data-bp-icon="folder"></i></span><span>${escapeHTML(group)}</span><i class="nav-subgroup__chevron" data-bp-icon="chevron-right" aria-hidden="true"></i></summary><div class="nav-subgroup__items">${variantItems(diagrams)}</div></details>`;
     };
-    const collectionFolder = (collectionId, diagrams) => {
+    const collectionFolder = (collectionId, category, diagrams) => {
       const ordered = [...diagrams].sort((a, b) => (a.collectionOrder || 99) - (b.collectionOrder || 99));
       const open = state.diagramCollections[collectionId] !== false;
       const groupSpecs = DIAGRAM_COLLECTION_GROUPS[collectionId] || [];
@@ -773,12 +780,12 @@
         const countLabel = group.diagrams.length === 1 ? t('ui.collectionDiagram') : t('ui.collectionDiagrams');
         return `<details class="nav-collection-group" data-diagram-collection-group="${escapeHTML(storageKey)}"${groupOpen ? ' open' : ''}><summary><span class="nav-collection-group__icon" aria-hidden="true"><i data-bp-icon="${escapeHTML(group.icon)}"></i></span><span class="nav-collection-group__copy"><strong>${escapeHTML(label)}</strong><small>${group.diagrams.length} ${escapeHTML(countLabel)}</small></span><i class="nav-collection-group__chevron" data-bp-icon="chevron-right" aria-hidden="true"></i></summary><div class="nav-collection-group__items">${group.diagrams.map((diagram) => diagramButton(diagram, { meta: diagram.versionTag || labelStatus(diagram.status) })).join('')}</div></details>`;
       }).join('');
-      return `<section class="nav-group nav-group--collection"><details class="nav-collection" data-diagram-collection="${escapeHTML(collectionId)}"${open ? ' open' : ''}><summary><span class="nav-collection__icon" aria-hidden="true"><i data-bp-icon="folder-tree"></i></span><span class="nav-collection__copy"><strong>${escapeHTML(categoryLabel('V2 Georouting'))}</strong><small>${ordered.length} ${state.language === 'en' ? 'editable diagrams' : 'rajah boleh sunting'}</small></span><i class="nav-collection__chevron" data-bp-icon="chevron-right" aria-hidden="true"></i></summary><div class="nav-collection__items">${groupMarkup}</div></details></section>`;
+      return `<section class="nav-group nav-group--collection"><details class="nav-collection" data-diagram-collection="${escapeHTML(collectionId)}"${open ? ' open' : ''}><summary><span class="nav-collection__icon" aria-hidden="true"><i data-bp-icon="folder-tree"></i></span><span class="nav-collection__copy"><strong>${escapeHTML(categoryLabel(category))}</strong><small>${ordered.length} ${state.language === 'en' ? 'editable diagrams' : 'rajah boleh sunting'}</small></span><i class="nav-collection__chevron" data-bp-icon="chevron-right" aria-hidden="true"></i></summary><div class="nav-collection__items">${groupMarkup}</div></details></section>`;
     };
     els.diagramNav.innerHTML = categories.map((category) => {
       const categoryDiagrams = visible.filter((diagram) => diagram.category === category);
       const collectionId = categoryDiagrams[0]?.collectionId;
-      if (collectionId && categoryDiagrams.every((diagram) => diagram.collectionId === collectionId)) return collectionFolder(collectionId, categoryDiagrams);
+      if (collectionId && categoryDiagrams.every((diagram) => diagram.collectionId === collectionId)) return collectionFolder(collectionId, category, categoryDiagrams);
       if (category === 'Code Snippets') {
         const groups = [...new Set(categoryDiagrams.map((diagram) => diagram.snippetGroup).filter(Boolean))];
         return `<section class="nav-group nav-group--code"><h2>${escapeHTML(categoryLabel(category))}</h2>${groups.map((group) => codeSnippetGroup(group, categoryDiagrams.filter((diagram) => diagram.snippetGroup === group))).join('')}</section>`;

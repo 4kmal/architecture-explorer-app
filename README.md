@@ -50,7 +50,7 @@ Jika butang `Edit` dibuka dalam mod `file://`, Explorer kini memaparkan arahan p
 
 ### ETL Pipeline diagram
 
-The top-level **ETL Pipeline** category contains two independent, bilingual and editable diagrams. **PetaKerja Operational ETL & Serving Pipeline** uses a `2048 x 1120` canvas that follows the supplied wide-zone reference while documenting the checked-in runtime rather than an aspirational medallion lake. Functional regions separate control and scheduling, source context, operational ETL, platforms and consumption, and operational truth.
+The top-level **ETL Pipeline** collection contains an **Overview** subfolder for **PetaKerja Operational ETL & Serving Pipeline** and a **Job Search Workflows** subfolder for **Daily Index Workflow** and **Live Search Workflow**. All three diagrams are independent, bilingual and editable. The overview uses a `2048 x 1120` canvas that follows the supplied wide-zone reference while documenting the checked-in runtime rather than an aspirational medallion lake. Functional regions separate control and scheduling, source context, operational ETL, platforms and consumption, and operational truth.
 
 The control plane distinguishes the four GitHub Actions ingestion workflows from Vercel's `/api/cron/daily` maintenance route and the monthly DigitalOcean routing-data rebuild. The processing lanes show extraction, normalization/validation and protected persistence for jobs, coffee shops, events, application maintenance and Valhalla tiles. Supabase is represented as the operational PostgreSQL/PostGIS serving store; DigitalOcean is limited to the routing-only Valhalla pilot; Vercel hosts the Vite/Express application and server-side GeoGateway; the browser receives normalized API responses and never receives service-role or provider tokens. Nominatim remains visibly disabled.
 
@@ -68,6 +68,16 @@ python .\scripts\test-etl-pipeline-diagram.py
 python .\scripts\generate-daily-index-workflow-diagram.py
 python .\scripts\build-diagram-assets.py
 python .\scripts\test-daily-index-workflow-diagram.py
+```
+
+**Live Search Workflow** uses a `1920 x 900` five-stage request-time view of `JobFinderManager.executeLiveSearch()`, `authenticatedFetch()`, Better Auth and `requireAuth`, the Vercel/Express `/api/search-jobs` route, eight parallel job sources, and the normalized results returned to cards and map markers. Its embedded comparison makes the operational difference explicit: Live Search requires sign-in and contacts upstream sources on a five-minute cache miss, whereas Daily Index is public and reads the latest `public.scraped_jobs` snapshot through a 60-second serving cache. The diagram also records the 256-entry cache bound, single-flight joining, seven-second per-source timeout, partial-failure behavior and demo fallback without claiming any job-table access for Live Search.
+
+The PetaKerja, Better Auth, Vercel, Express, TypeScript and eight job-source marks are embedded locally in both the Draw.io source and generated SVG. Regenerate and verify the Live Search assets with:
+
+```powershell
+python .\scripts\generate-live-search-workflow-diagram.py
+python .\scripts\build-diagram-assets.py
+python .\scripts\test-live-search-workflow-diagram.py
 ```
 
 ### Deployment & Infra diagram

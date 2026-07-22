@@ -64,6 +64,7 @@ MODULE_HIERARCHY_ORIGINAL_SOURCE = ROOT / "assets" / "editor" / "module-hierarch
 MAP_ROUTING_STACK_SOURCE = ROOT / "assets" / "editor" / "petakerja-map-routing-responsibility-stack.drawio"
 ETL_PIPELINE_SOURCE = ROOT / "assets" / "editor" / "etl-pipeline.drawio"
 DAILY_INDEX_WORKFLOW_SOURCE = ROOT / "assets" / "editor" / "daily-index-workflow.drawio"
+LIVE_SEARCH_WORKFLOW_SOURCE = ROOT / "assets" / "editor" / "live-search-workflow.drawio"
 DEPLOYMENT_INFRASTRUCTURE_SOURCE = ROOT / "assets" / "editor" / "deployment-infrastructure.drawio"
 V2_GEOROUTING_EDITOR = EDITOR / "v2-georouting"
 
@@ -83,7 +84,8 @@ V2_GEOROUTING_EXPORTS = {
     "v2-geo-supabase": ("supabase.drawio", "v2_geo_supabase", "supabase.svg"),
 }
 V2_GEOROUTING_IDS = frozenset(V2_GEOROUTING_EXPORTS)
-EMBEDDED_BILINGUAL_IDS = frozenset({"etl-pipeline", "daily-index-workflow", "deployment-infrastructure"})
+EMBEDDED_BILINGUAL_IDS = frozenset({"etl-pipeline", "daily-index-workflow", "live-search-workflow", "deployment-infrastructure"})
+WORKFLOW_SOURCES = frozenset({DAILY_INDEX_WORKFLOW_SOURCE, LIVE_SEARCH_WORKFLOW_SOURCE})
 V2_GEOROUTING_SEQUENCE_IDS = frozenset({
     "v2-geo-route-sequence", "v2-geo-travel-analysis-sequence", "v2-geo-job-route-sequence",
 })
@@ -129,6 +131,7 @@ DRAWIO_EXPORTS = {
     "map-routing-responsibility-stack": (MAP_ROUTING_STACK_SOURCE, 1, "petakerja-map-routing-responsibility-stack.svg"),
     "etl-pipeline": (ETL_PIPELINE_SOURCE, 1, "etl-pipeline.svg"),
     "daily-index-workflow": (DAILY_INDEX_WORKFLOW_SOURCE, 0, "daily-index-workflow.svg"),
+    "live-search-workflow": (LIVE_SEARCH_WORKFLOW_SOURCE, 0, "live-search-workflow.svg"),
     "deployment-infrastructure": (DEPLOYMENT_INFRASTRUCTURE_SOURCE, 1, "deployment-infrastructure.svg"),
     **{
         diagram_id: (V2_GEOROUTING_EDITOR / source_name, 1, f"v2-georouting/{svg_name}")
@@ -1784,7 +1787,7 @@ def v2_georouting_translations(source: Path) -> dict[str, str]:
         label_ms = clean_label(raw_ms)
         if label_en and label_ms and label_en != label_ms:
             replacements[label_en] = label_ms
-        if source == DAILY_INDEX_WORKFLOW_SOURCE:
+        if source in WORKFLOW_SOURCES:
             lines_en = [clean_label(value) for value in re.split(r"<br\s*/?>", raw_en, flags=re.I)]
             lines_ms = [clean_label(value) for value in re.split(r"<br\s*/?>", raw_ms, flags=re.I)]
             if len(lines_en) == len(lines_ms):
@@ -2255,7 +2258,7 @@ def main() -> None:
                 export_drawio(source, page, exported)
             exported_svg = slim_svg(
                 exported.read_text(encoding="utf-8"),
-                preserve_embedded_images=diagram_id == "daily-index-workflow",
+                preserve_embedded_images=diagram_id in {"daily-index-workflow", "live-search-workflow"},
             )
             if diagram_id in V2_GEOROUTING_IDS or diagram_id in EMBEDDED_BILINGUAL_IDS:
                 en = exported_svg

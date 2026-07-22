@@ -460,6 +460,20 @@
       files: source('scripts/scrape-jobs.ts', 'src/config/job-sources.ts'),
       flow: ['senarai awam', 'scraper per sumber', 'rekod kerja mentah'],
     },
+    {
+      id: 'live-search-route', label: 'Live Search Route', kind: 'service', scope: 'core', status: 'current',
+      description: 'Route berautentikasi GET /api/search-jobs yang mengurus cache lima minit berasaskan set penapis lengkap, had 256 entri, single-flight dan sandaran kerja demo.',
+      files: source('src/modes/jobs/api.ts', 'src/modes/jobs/manager.ts', 'src/services/authenticatedFetch.ts', 'server/middleware/requireAuth.ts', 'server/app.ts', 'server/routes/search-jobs.ts'),
+      routes: ['GET /api/search-jobs'], ui: ['jobs-search', 'jobs-cards', 'jobs-map'], auth: 'Log masuk',
+      flow: ['authenticatedFetch()', 'requireAuth', 'cache atau single-flight', 'fan-keluar sumber', 'normalisasi + respons'],
+    },
+    {
+      id: 'live-search-job-sources', label: 'Live Search Job Sources', kind: 'external', scope: 'jobops', status: 'current',
+      description: 'Tujuh scraper Maukerja, Hiredly, Ricebowl, Graduan, Jora, JobStreet dan Jobstore bersama API Careerjet pilihan yang dipanggil secara selari semasa cache Live Search luput.',
+      files: source('server/lib/scrapers/maukerja.ts', 'server/lib/scrapers/hiredly.ts', 'server/lib/scrapers/ricebowl.ts', 'server/lib/scrapers/graduan.ts', 'server/lib/scrapers/jora.ts', 'server/lib/scrapers/jobstreet.ts', 'server/lib/scrapers/jobstore.ts', 'server/routes/search-jobs.ts'),
+      routes: ['Maukerja', 'Hiredly', 'Ricebowl', 'Graduan', 'Jora', 'JobStreet', 'Jobstore', 'Careerjet API'],
+      flow: ['permintaan selari', 'had masa tujuh saat setiap sumber', 'hasil separa dibenarkan'],
+    },
     { id: 'pipeline-runs-entity', label: 'pipeline_runs', kind: 'entity', scope: 'jobops', status: 'current', description: 'Header bagi setiap pipeline run pengguna.', tables: ['pipeline_runs'] },
     { id: 'pipeline-items-entity', label: 'pipeline_run_items', kind: 'entity', scope: 'jobops', status: 'current', description: 'Item pekerjaan dan status langkah dalam pipeline run.', tables: ['pipeline_run_items'] },
     { id: 'gmail-entity', label: 'Gmail entities', kind: 'entity', scope: 'jobops', status: 'current', description: 'Integration, message dan sync-run Gmail per pengguna.', tables: ['user_gmail_integrations', 'user_gmail_messages', 'user_gmail_sync_runs'] },
@@ -678,6 +692,16 @@
     edge('daily-index-scraper', 'supabase-db', 'service-role upsert and stale cleanup', ['daily-index-workflow'], 'dependency'),
     edge('vercel-runtime', 'express-app', 'hosts same-origin route', ['daily-index-workflow'], 'composition'),
     edge('browser', 'job-manager', 'select Daily Index and render results', ['daily-index-workflow'], 'dependency'),
+    edge('browser', 'job-manager', 'submit signed-in Live Search', ['live-search-workflow'], 'dependency'),
+    edge('job-manager', 'jobs-api', 'executeLiveSearch() to searchJobs()', ['live-search-workflow'], 'dependency'),
+    edge('jobs-api', 'live-search-route', 'authenticated GET /api/search-jobs', ['live-search-workflow'], 'dependency'),
+    edge('live-search-route', 'better-auth', 'requireAuth session check', ['live-search-workflow'], 'dependency'),
+    edge('vercel-runtime', 'express-app', 'hosts same-origin route', ['live-search-workflow'], 'composition'),
+    edge('express-app', 'live-search-route', 'dispatch GET /api/search-jobs', ['live-search-workflow'], 'composition'),
+    edge('live-search-route', 'live-search-job-sources', 'cache miss parallel fan-out', ['live-search-workflow'], 'dependency'),
+    edge('live-search-job-sources', 'job-search-relevance', 'normalize merge and filter', ['live-search-workflow'], 'dependency'),
+    edge('job-search-relevance', 'job-entity', 'JobListing results', ['live-search-workflow'], 'dependency'),
+    edge('job-manager', 'map-manager', 'render cards and markers', ['live-search-workflow'], 'dependency'),
     edge('exabytes-registrar', 'cloudflare-dns', 'delegates authoritative nameservers', ['deployment-infrastructure'], 'dependency'),
     edge('cloudflare-dns', 'vercel-edge-delivery', 'petakerja.my DNS-only', ['deployment-infrastructure'], 'dependency'),
     edge('cloudflare-dns', 'digitalocean-geo-host', 'geo.petakerja.my DNS-only', ['deployment-infrastructure'], 'dependency'),
@@ -1060,6 +1084,7 @@
     {
       id: 'etl-pipeline', title: 'Pipeline ETL operasi & penyampaian PetaKerja', category: 'ETL Pipeline', status: 'current', reference: 'assets/diagrams/etl-pipeline.svg',
       description: 'Ingest kelompok, penormalan, storan operasi dan penyampaian aplikasi semasa merentasi GitHub Actions, Vercel, Supabase dan DigitalOcean.',
+      collectionId: 'etl-pipeline', collectionGroupId: 'overview', collectionOrder: 1,
       columns: [
         ['github-actions', 'vercel-daily-cron', 'valhalla-tile-builder'],
         ['extractor-service', 'kopi-manager', 'event-manager', 'watchlist-service'],
@@ -1071,6 +1096,7 @@
     {
       id: 'daily-index-workflow', title: 'Aliran Kerja Indeks Harian', category: 'ETL Pipeline', status: 'current', reference: 'assets/diagrams/daily-index-workflow.svg',
       description: 'Aliran kerja semasa daripada GitHub Actions dan lapan sumber pekerjaan kepada public.scraped_jobs, route /api/jobs/supa dan paparan Daily Index PetaKerja.',
+      collectionId: 'etl-pipeline', collectionGroupId: 'job-search-workflows', collectionOrder: 2,
       reportExplanation: {
         en: 'Every day at 02:00 UTC (10:00 MYT), `.github/workflows/scrape-jobs.yml` starts a GitHub Actions runner with the Supabase URL and service-role key from GitHub Secrets, then runs `scripts/scrape-jobs.ts` to fetch jobs from eight configured sources, normalize and deduplicate them, upsert the unique rows into `public.scraped_jobs`, and remove older snapshot rows after a nonzero run; if the whole scrape yields zero jobs, the previous snapshot is left untouched. When a user selects Daily Index, `JobFinderManager` calls `searchSupaJobs()`, which requests `/api/jobs/supa`; the Vercel-hosted Express route reads and filters `scraped_jobs`, uses a 60-second cache, and returns paginated jobs plus freshness metadata for the cards and map, while the service-role key remains inside GitHub Actions and is never sent to the browser.',
         ms: 'Setiap hari pada 02:00 UTC (10:00 MYT), `.github/workflows/scrape-jobs.yml` memulakan pelaksana GitHub Actions dengan URL Supabase dan kunci service-role daripada GitHub Secrets, kemudian menjalankan `scripts/scrape-jobs.ts` untuk mengambil pekerjaan daripada lapan sumber yang dikonfigurasikan, menormalkan dan membuang pendua, mengupsert rekod unik ke `public.scraped_jobs`, serta memadam rekod snapshot lama selepas larian bukan sifar; jika keseluruhan scrape menghasilkan sifar pekerjaan, snapshot sebelumnya tidak disentuh. Apabila pengguna memilih Daily Index, `JobFinderManager` memanggil `searchSupaJobs()` yang meminta `/api/jobs/supa`; route Express yang dihoskan di Vercel membaca dan menapis `scraped_jobs`, menggunakan cache 60 saat, lalu memulangkan pekerjaan berhalaman bersama metadata kesegaran untuk kad dan peta, manakala kunci service-role kekal dalam GitHub Actions dan tidak pernah dihantar ke pelayar.',
@@ -1081,6 +1107,22 @@
         ['supabase-db'],
         ['vercel-runtime', 'express-app', 'supa-jobs-route'],
         ['browser', 'jobs-api', 'job-manager'],
+      ],
+    },
+    {
+      id: 'live-search-workflow', title: 'Aliran Kerja Carian Langsung', category: 'ETL Pipeline', status: 'current', reference: 'assets/diagrams/live-search-workflow.svg',
+      description: 'Aliran Live Search berautentikasi daripada borang PetaKerja melalui cache dan single-flight Express kepada lapan sumber kerja masa permintaan, normalisasi, kad dan marker peta.',
+      collectionId: 'etl-pipeline', collectionGroupId: 'job-search-workflows', collectionOrder: 3,
+      reportExplanation: {
+        en: 'When a signed-in user submits a query, location and filters in Live Search, `JobFinderManager.executeLiveSearch()` calls `searchJobs()`, and `authenticatedFetch()` sends the Better Auth cookie to `GET /api/search-jobs`, where `requireAuth` rejects requests without a valid session. The Vercel-hosted Express route keys a five-minute cache by the complete filter set, keeps at most 256 entries and uses single-flight so identical concurrent misses share one run; on a miss it calls seven scrapers plus the optional Careerjet API in parallel with a seven-second timeout per source, then sanitizes fields and URLs, enriches locations, merges duplicates, applies Malaysia, work-arrangement, employment, salary and technology-relevance filters, and returns jobs, source breakdown and scrape health for matching, cards, the source bar and map markers. Partial source failures preserve usable results, an all-empty or fatal run falls back to demo jobs, and fatal error responses are not cached. Unlike public Daily Index, which reads the latest scheduled snapshot from `public.scraped_jobs` through a 60-second serving cache, Live Search requires sign-in, contacts upstream sources on a cache miss and does not read or write a job table.',
+        ms: 'Apabila pengguna yang telah log masuk menghantar pertanyaan, lokasi dan penapis dalam Live Search, `JobFinderManager.executeLiveSearch()` memanggil `searchJobs()`, manakala `authenticatedFetch()` menghantar cookie Better Auth kepada `GET /api/search-jobs`, tempat `requireAuth` menolak permintaan tanpa sesi yang sah. Route Express yang dihoskan di Vercel membina kunci cache lima minit daripada set penapis lengkap, menyimpan maksimum 256 entri dan menggunakan single-flight supaya permintaan serentak yang sama berkongsi satu larian; apabila cache luput, route itu memanggil tujuh scraper serta API Careerjet pilihan secara selari dengan had masa tujuh saat bagi setiap sumber, kemudian membersihkan medan dan URL, memperkaya lokasi, menggabungkan pendua, menggunakan penapis Malaysia, aturan kerja, jenis pekerjaan, gaji dan perkaitan teknologi, lalu memulangkan pekerjaan, pecahan sumber dan tahap kesihatan scrape untuk pemadanan, kad, bar sumber dan marker peta. Kegagalan separa sumber mengekalkan hasil yang boleh digunakan, larian kosong sepenuhnya atau fatal menggunakan kerja demo, dan respons ralat fatal tidak dicache. Berbeza daripada Daily Index awam yang membaca snapshot berjadual terkini daripada `public.scraped_jobs` melalui cache penyampaian 60 saat, Live Search memerlukan log masuk, menghubungi sumber huluan apabila cache luput dan tidak membaca atau menulis jadual pekerjaan.',
+      },
+      columns: [
+        ['browser', 'job-manager'],
+        ['jobs-api', 'better-auth'],
+        ['vercel-runtime', 'express-app', 'live-search-route'],
+        ['live-search-job-sources'],
+        ['job-search-relevance', 'job-entity', 'map-manager'],
       ],
     },
     {
