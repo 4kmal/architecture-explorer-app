@@ -73,6 +73,7 @@ ETL_PIPELINE_SOURCE = ROOT / "assets" / "editor" / "etl-pipeline.drawio"
 DAILY_INDEX_WORKFLOW_SOURCE = ROOT / "assets" / "editor" / "daily-index-workflow.drawio"
 LIVE_SEARCH_WORKFLOW_SOURCE = ROOT / "assets" / "editor" / "live-search-workflow.drawio"
 DEPLOYMENT_INFRASTRUCTURE_SOURCE = ROOT / "assets" / "editor" / "deployment-infrastructure.drawio"
+FYP_WORK_BREAKDOWN_STRUCTURE_SOURCE = ROOT / "assets" / "editor" / "fyp-report" / "work-breakdown-structure.drawio"
 V2_GEOROUTING_EDITOR = EDITOR / "v2-georouting"
 
 V2_GEOROUTING_EXPORTS = {
@@ -97,11 +98,12 @@ MAP_ROUTING_WORKFLOW_IDS = frozenset({
 })
 EMBEDDED_BILINGUAL_IDS = frozenset({
     "etl-pipeline", "daily-index-workflow", "live-search-workflow",
-    "deployment-infrastructure", "modules-layered-stack", "architecture-visual-stack", *MAP_ROUTING_WORKFLOW_IDS,
+    "deployment-infrastructure", "modules-layered-stack", "architecture-visual-stack",
+    "fyp-work-breakdown-structure", *MAP_ROUTING_WORKFLOW_IDS,
 })
 WORKFLOW_SOURCES = frozenset({
     DAILY_INDEX_WORKFLOW_SOURCE, LIVE_SEARCH_WORKFLOW_SOURCE,
-    ARCHITECTURE_VISUAL_STACK_SOURCE,
+    ARCHITECTURE_VISUAL_STACK_SOURCE, FYP_WORK_BREAKDOWN_STRUCTURE_SOURCE,
     NOMINATIM_VALHALLA_WORKFLOW_SOURCE, NOMINATIM_MAPLIBRE_WORKFLOW_SOURCE,
     VALHALLA_MAPLIBRE_WORKFLOW_SOURCE, GEO_SERVER_COMMUNICATION_WORKFLOW_SOURCE,
 })
@@ -158,6 +160,7 @@ DRAWIO_EXPORTS = {
     "daily-index-workflow": (DAILY_INDEX_WORKFLOW_SOURCE, 0, "daily-index-workflow.svg"),
     "live-search-workflow": (LIVE_SEARCH_WORKFLOW_SOURCE, 0, "live-search-workflow.svg"),
     "deployment-infrastructure": (DEPLOYMENT_INFRASTRUCTURE_SOURCE, 1, "deployment-infrastructure.svg"),
+    "fyp-work-breakdown-structure": (FYP_WORK_BREAKDOWN_STRUCTURE_SOURCE, 0, "fyp-report/work-breakdown-structure.svg"),
     **{
         diagram_id: (V2_GEOROUTING_EDITOR / source_name, 1, f"v2-georouting/{svg_name}")
         for diagram_id, (source_name, _page_id, svg_name) in V2_GEOROUTING_EXPORTS.items()
@@ -2326,7 +2329,7 @@ def main() -> None:
                 export_drawio(source, page, exported)
             exported_svg = slim_svg(
                 exported.read_text(encoding="utf-8"),
-                preserve_embedded_images=diagram_id in {"daily-index-workflow", "live-search-workflow", "architecture-visual-stack", *MAP_ROUTING_WORKFLOW_IDS},
+                preserve_embedded_images=diagram_id in {"daily-index-workflow", "live-search-workflow", "architecture-visual-stack", "fyp-work-breakdown-structure", *MAP_ROUTING_WORKFLOW_IDS},
             )
             if diagram_id in V2_GEOROUTING_IDS or diagram_id in EMBEDDED_BILINGUAL_IDS:
                 en = exported_svg

@@ -83,6 +83,7 @@
     'code-poi-clustering': 'map',
     'code-live-job-search': 'search',
     'code-job-location-resolution': 'map',
+    'fyp-work-breakdown-structure': 'folder-tree',
     'fyp-kamus-data': 'table-properties',
     'fyp-use-case-specification': 'list-checks',
   });
@@ -269,6 +270,14 @@
       { id: 'architecture-modules', labelKey: 'ui.collectionArchitectureModules', icon: 'layers-2' },
       { id: 'data', labelKey: 'ui.collectionData', icon: 'database' },
     ]),
+    'fyp-report': Object.freeze([
+      { id: 'project-planning', labelKey: 'ui.collectionProjectPlanning', icon: 'workflow', countSingularKey: 'ui.collectionDiagram', countPluralKey: 'ui.collectionDiagrams' },
+      { id: 'report-tables', labelKey: 'ui.collectionReportTables', icon: 'table-properties', countSingularKey: 'ui.collectionTable', countPluralKey: 'ui.collectionTables' },
+    ]),
+  });
+
+  const DIAGRAM_COLLECTION_META = Object.freeze({
+    'fyp-report': Object.freeze({ singularKey: 'ui.collectionReportResource', pluralKey: 'ui.collectionReportResources' }),
   });
 
   const els = {
@@ -373,7 +382,10 @@
       'ui.collectionClasses': 'Rajah Kelas', 'ui.collectionArchitectureModules': 'Seni Bina & Modul', 'ui.collectionData': 'Rajah Data',
       'ui.collectionETLOverview': 'Gambaran Keseluruhan', 'ui.collectionJobSearchWorkflows': 'Aliran Kerja Carian Pekerjaan',
       'ui.collectionRoutingOverview': 'Gambaran Keseluruhan', 'ui.collectionProviderWorkflows': 'Aliran Kerja Penyedia', 'ui.collectionRoutingInfrastructure': 'Infrastruktur',
-      'ui.collectionDiagram': 'rajah', 'ui.collectionDiagrams': 'rajah',
+      'ui.collectionProjectPlanning': 'Perancangan Projek', 'ui.collectionReportTables': 'Jadual Laporan',
+      'ui.collectionDiagram': 'rajah', 'ui.collectionDiagrams': 'rajah', 'ui.collectionTable': 'jadual', 'ui.collectionTables': 'jadual',
+      'ui.collectionEditableDiagram': 'rajah boleh sunting', 'ui.collectionEditableDiagrams': 'rajah boleh sunting',
+      'ui.collectionReportResource': 'sumber laporan', 'ui.collectionReportResources': 'sumber laporan',
       'ui.reportExplanation': 'Penerangan laporan', 'ui.copyReportParagraph': 'Salin perenggan', 'ui.reportParagraphCopied': 'Perenggan disalin',
       'ui.copyCode': 'Salin kod', 'ui.copyCaption': 'Salin kapsyen', 'ui.copyTable': 'Salin jadual', 'ui.copyFlow': 'Salin aliran', 'ui.codeCopied': 'Kod disalin', 'ui.captionCopied': 'Kapsyen disalin', 'ui.tableCopied': 'Jadual disalin', 'ui.flowCopied': 'Aliran disalin',
       'ui.reportTableReady': 'Jadual sedia laporan', 'ui.reportVerified': 'Snapshot disahkan', 'ui.reportSource': 'Sumber', 'ui.reportNote': 'Catatan',
@@ -837,10 +849,16 @@
         const hasStoredState = Object.prototype.hasOwnProperty.call(state.diagramCollectionGroups, storageKey);
         const groupOpen = hasStoredState ? state.diagramCollectionGroups[storageKey] === true : active;
         const label = group.labelKey ? t(group.labelKey) : (state.language === 'en' ? 'Other diagrams' : 'Rajah lain');
-        const countLabel = group.diagrams.length === 1 ? t('ui.collectionDiagram') : t('ui.collectionDiagrams');
+        const countLabel = group.diagrams.length === 1
+          ? t(group.countSingularKey || 'ui.collectionDiagram')
+          : t(group.countPluralKey || 'ui.collectionDiagrams');
         return `<details class="nav-collection-group" data-diagram-collection-group="${escapeHTML(storageKey)}"${groupOpen ? ' open' : ''}><summary><span class="nav-collection-group__icon" aria-hidden="true"><i data-bp-icon="${escapeHTML(group.icon)}"></i></span><span class="nav-collection-group__copy"><strong>${escapeHTML(label)}</strong><small>${group.diagrams.length} ${escapeHTML(countLabel)}</small></span><i class="nav-collection-group__chevron" data-bp-icon="chevron-right" aria-hidden="true"></i></summary><div class="nav-collection-group__items">${group.diagrams.map((diagram) => diagramButton(diagram, { meta: diagram.versionTag || labelStatus(diagram.status) })).join('')}</div></details>`;
       }).join('');
-      return `<section class="nav-group nav-group--collection"><details class="nav-collection" data-diagram-collection="${escapeHTML(collectionId)}"${open ? ' open' : ''}><summary><span class="nav-collection__icon" aria-hidden="true"><i data-bp-icon="folder-tree"></i></span><span class="nav-collection__copy"><strong>${escapeHTML(categoryLabel(category))}</strong><small>${ordered.length} ${state.language === 'en' ? 'editable diagrams' : 'rajah boleh sunting'}</small></span><i class="nav-collection__chevron" data-bp-icon="chevron-right" aria-hidden="true"></i></summary><div class="nav-collection__items">${groupMarkup}</div></details></section>`;
+      const collectionMeta = DIAGRAM_COLLECTION_META[collectionId];
+      const summaryCountLabel = collectionMeta
+        ? t(ordered.length === 1 ? collectionMeta.singularKey : collectionMeta.pluralKey)
+        : t(ordered.length === 1 ? 'ui.collectionEditableDiagram' : 'ui.collectionEditableDiagrams');
+      return `<section class="nav-group nav-group--collection"><details class="nav-collection" data-diagram-collection="${escapeHTML(collectionId)}"${open ? ' open' : ''}><summary><span class="nav-collection__icon" aria-hidden="true"><i data-bp-icon="folder-tree"></i></span><span class="nav-collection__copy"><strong>${escapeHTML(categoryLabel(category))}</strong><small>${ordered.length} ${escapeHTML(summaryCountLabel)}</small></span><i class="nav-collection__chevron" data-bp-icon="chevron-right" aria-hidden="true"></i></summary><div class="nav-collection__items">${groupMarkup}</div></details></section>`;
     };
     els.diagramNav.innerHTML = categories.map((category) => {
       const categoryDiagrams = visible.filter((diagram) => diagram.category === category);

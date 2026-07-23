@@ -24,9 +24,9 @@ TRANSLATION_ATTRIBUTES = {
     "codeLabelMs",
 }
 VOLATILE_ATTRIBUTES = {"modified", "etag", "agent"}
-EXPECTED_DIAGRAMS = 61
-EXPECTED_SOURCES = 60
-EXPECTED_STRUCTURE = "bb6f7b783c0f73497fabd4ed14ff1b5c9c62ff1a6b03a057ad681f0de8b2e3da"
+EXPECTED_DIAGRAMS = 62
+EXPECTED_SOURCES = 61
+EXPECTED_STRUCTURE = "3803c07aca9901568339ef03b99f014a92d053e5458724c6bffd37bda9210a26"
 REVIEWED_MAP_FLOWCHART = ROOT / "assets" / "editor" / "flowchart-user-explore-3d-map.drawio"
 POLISHED_MODULE_HIERARCHY = ROOT / "assets" / "editor" / "module-hierarchy.drawio"
 ORIGINAL_MODULE_HIERARCHY = ROOT / "assets" / "editor" / "module-hierarchy-original.drawio"
